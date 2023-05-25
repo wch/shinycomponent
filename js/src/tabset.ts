@@ -97,7 +97,6 @@ export class Tabset extends LitElement {
 
     .main {
       grid-area: content;
-      padding: var(--size-fluid-3);
     }
 
     .footer {

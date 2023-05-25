@@ -1,0 +1,15 @@
+:where(html) {
+  --color-primary: var(--orange-7);
+  --color-darkest: var(--gray-9);
+  --color-dark: var(--gray-7);
+  --color-medium: var(--gray-6);
+  --color-light: var(--gray-3);
+  --color-lightest: var(--gray-1);
+
+  --font-heading-1: var(--font-size-8);
+  --font-heading-2: var(--font-size-6);
+  --font-heading-3: var(--font-size-5);
+  --font-heading-4: var(--font-size-4);
+  --font-body: var(--font-size-2);
+  --font-small: var(--font-size-1);
+}
