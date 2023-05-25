@@ -31,13 +31,17 @@
   "[r]": {},
   "python.formatting.provider": "black",
   "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--config", "./py/setup.cfg"],
   "[python]": {
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
-    "editor.rulers": [88]
+    "editor.rulers": [
+      88
+    ],
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "isort.args": ["--profile", "black"],
   "prettier.prettierPath": "./js/node_modules/prettier",
