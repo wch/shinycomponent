@@ -20,10 +20,10 @@ Install the R package:
 remotes::install_github("wch/shinycomponent/r")
 ```
 
-After installing, you can run the demo app. Either copy and paste the [example app](r/inst/examples/number/app.R) into your R console, or run:
+After installing, you can run the demo app. Either copy and paste the [example app](r/inst/examples/puffins/app.R) into your R console, or run:
 
 ```R
-shiny::runApp(system.file("examples/number", package = "shinycomponent"))
+shiny::runApp(system.file("examples/puffins", package = "shinycomponent"))
 ```
 
 
@@ -36,7 +36,7 @@ pip uninstall -y shinycomponent
 pip install "shinycomponent@git+https://github.com/wch/shinycomponent.git#subdirectory=py"
 ```
 
-After installing, you can run the demo app. Save the [example app](py/examples/number/app.py) to a file named app.py, and run it:
+After installing, you can run the demo app. Save the [example app](py/examples/puffins/app.py) to a file named app.py, and run it:
 
 ```bash
 shiny run app.py --port 8000 --launch-browser
@@ -45,7 +45,7 @@ shiny run app.py --port 8000 --launch-browser
 If you have cloned the repository, you run the example app (without needing to create a new copy of the file):
 
 ```bash
-shiny run py/examples/number/app.py --port 8000 --launch-browser
+shiny run py/examples/puffins/app.py --port 8000 --launch-browser
 ```
 
 
