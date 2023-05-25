@@ -3,10 +3,9 @@ from __future__ import annotations
 from pathlib import PurePath
 
 from htmltools import HTMLDependency
-
 from shiny import __version__ as shiny_package_version
 
-ex_www_path = PurePath(__file__).parent / "www/out"
+ex_www_path = PurePath(__file__).parent / "www"
 
 
 def page_dep() -> HTMLDependency:
