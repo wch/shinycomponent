@@ -1,3 +1,4 @@
+#' @export
 page <- function(..., title = NULL, lang = "en") {
   css <- "
     html { height: 100%; }
