@@ -11,14 +11,16 @@ export class ExampleNumberInput extends LitElement {
   static properties = { value: { type: Number } };
   static styles = css`
     input {
-      border-radius: var(--radius-1);
+      padding: var(--size-2);
+      border-radius: var(--radius-2);
+      font-size: var(--font-size-1);
     }
     input:invalid {
       outline: var(--border-size-2) solid var(--red-10);
     }
     span {
       display: inline-block;
-      font-size: var(--font-size-0);
+      font-size: var(--font-size-1);
       font-weight: var(--font-weight-1);
       color: var(--red-6);
       transform: scaleX(0);
