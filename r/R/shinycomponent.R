@@ -15,6 +15,6 @@ component_dep <- function() {
     version = as.character(packageVersion("shinycomponent")),
     src = system.file(package = "shinycomponent", "www"),
     stylesheet = "open-props.min.css",
-    script = list(src = "example-number-input.js", type = "module")
+    script = list(src = "components.js", type = "module")
   )
 }
