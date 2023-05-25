@@ -12,4 +12,24 @@
   --font-heading-4: var(--font-size-4);
   --font-body: var(--font-size-2);
   --font-small: var(--font-size-1);
+  --font-x-small: var(--font-size-0);
+
+  --shadow-small: var(--shadow-2);
+  --shadow-medium: var(--shadow-4);
+  --shadow-large: var(--shadow-6);
+
+  --border-small: var(--border-size-2);
+  --border-medium: var(--border-size-3);
+  --border-large: var(--border-size-4);
+
+  --radius-small: var(--radius-2);
+  --radius-medium: var(--radius-3);
+  --radius-large: var(--radius-4);
+
+  --space-x-small: var(--size-1);
+  --space-small: var(--size-fluid-1);
+  --space-medium: var(--size-fluid-2);
+  --space-large: var(--size-fluid-4);
+  --space-x-large: var(--size-fluid-5);
+  --space-xx-large: var(--size-fluid-7);
 }

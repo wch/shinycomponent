@@ -1,5 +1,6 @@
 import { Collapsible } from "./collapsible";
 import { ColorPicker } from "./color-picker";
+import { DesignPreview } from "./design-preview";
 import { Footer } from "./footer";
 import { GeneralOutput } from "./general-output";
 import { MuiSlider } from "./mui-slider";
@@ -26,3 +27,4 @@ StarRating;
 Tab;
 Tabset;
 ThemeChooser;
+DesignPreview;

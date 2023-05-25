@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/design-tokens.css"],
+  "sourcesContent": [":where(html) {\n  --color-primary: var(--orange-7);\n  --color-darkest: var(--gray-9);\n  --color-dark: var(--gray-7);\n  --color-medium: var(--gray-6);\n  --color-light: var(--gray-3);\n  --color-lightest: var(--gray-1);\n\n  --font-heading-1: var(--font-size-8);\n  --font-heading-2: var(--font-size-6);\n  --font-heading-3: var(--font-size-5);\n  --font-heading-4: var(--font-size-4);\n  --font-body: var(--font-size-2);\n  --font-small: var(--font-size-1);\n  --font-x-small: var(--font-size-0);\n\n  --shadow-small: var(--shadow-2);\n  --shadow-medium: var(--shadow-4);\n  --shadow-large: var(--shadow-6);\n\n  --border-small: var(--border-size-2);\n  --border-medium: var(--border-size-3);\n  --border-large: var(--border-size-4);\n\n  --radius-small: var(--radius-2);\n  --radius-medium: var(--radius-3);\n  --radius-large: var(--radius-4);\n\n  --space-x-small: var(--size-1);\n  --space-small: var(--size-fluid-1);\n  --space-medium: var(--size-fluid-2);\n  --space-large: var(--size-fluid-4);\n  --space-x-large: var(--size-fluid-5);\n  --space-xx-large: var(--size-fluid-7);\n}\n"],
+  "mappings": "AAAA,aACE,iCACA,+BACA,4BACA,8BACA,6BACA,gCAEA,qCACA,qCACA,qCACA,qCACA,gCACA,iCACA,mCAEA,gCACA,iCACA,gCAEA,qCACA,sCACA,qCAEA,gCACA,iCACA,gCAEA,+BACA,mCACA,oCACA,mCACA,qCACA",
+  "names": []
+}
