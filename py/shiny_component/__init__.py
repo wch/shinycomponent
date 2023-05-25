@@ -44,7 +44,7 @@ def example_number_input(
 
 
 def component_dep() -> HTMLDependency:
-    ex_www_path = PurePath(__file__).parent.parent.parent / "js" / "out"
+    ex_www_path = PurePath(__file__).parent / "www"
 
     return HTMLDependency(
         name="shiny_component",
