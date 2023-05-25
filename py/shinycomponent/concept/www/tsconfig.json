@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "out",
+    "module": "ES2020",
+    "lib": ["ES2023", "DOM"],
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "sourceMap": true,
+    "noUnusedParameters": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "useDefineForClassFields": false
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}
