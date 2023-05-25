@@ -2,6 +2,7 @@
 
 export(color_picker)
 export(footer)
+export(general_output)
 export(greeting_card)
 export(mui_slider)
 export(page)

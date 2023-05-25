@@ -1,10 +1,10 @@
 #' @importFrom htmltools tag htmlDependency tagList tags
 
 #' @export
-color_picker <- function(...) {
+color_picker <- function(id, ...) {
   tagList(
     component_dep(),
-    tag("color-picker", list(...))
+    tag("color-picker", list(id = id, ...))
   )
 }
 
@@ -73,6 +73,13 @@ simple_number_output <- function(id, ...) {
   )
 }
 
+#' @export
+general_output <- function(id, ...) {
+  tagList(
+    component_dep(),
+    tag("general-output", list(id = id, ...))
+  )
+}
 
 #' @export
 star_rating <- function(id, ...) {

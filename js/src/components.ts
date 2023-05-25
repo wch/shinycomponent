@@ -1,6 +1,7 @@
 import { Collapsible } from "./collapsible";
 import { ColorPicker } from "./color-picker";
 import { Footer } from "./footer";
+import { GeneralOutput } from "./general-output";
 import { MuiSlider } from "./mui-slider";
 import { Sidebar } from "./sidebar";
 import { SimpleNumberInput } from "./simple-number-input";
@@ -14,6 +15,7 @@ import { ThemeChooser } from "./theme-chooser";
 Collapsible;
 ColorPicker;
 Footer;
+GeneralOutput;
 MuiSlider;
 Sidebar;
 SimpleNumberInput;

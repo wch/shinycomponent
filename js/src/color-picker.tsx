@@ -3,6 +3,8 @@ import type { ColorResult } from "react-color";
 import { SketchPicker } from "react-color";
 import { createRoot } from "react-dom/client";
 import { Shiny } from "./OptionalShiny";
+import { make_value_change_emitter } from "./make_value_change_emitter";
+
 // Color Picker React component
 function ColorPickerReact({
   currentColorCallback,
@@ -23,6 +25,7 @@ function ColorPickerReact({
 export class ColorPicker extends HTMLElement {
   color: string;
   onChangeCallback: (x: boolean) => void;
+  on_value_change = make_value_change_emitter(this, this.id);
 
   constructor() {
     super();
@@ -33,6 +36,7 @@ export class ColorPicker extends HTMLElement {
   currentColorCallback(x: string): void {
     this.color = x;
     this.onChangeCallback(true);
+    this.on_value_change({ type: "string", value: this.color });
   }
 
   connectedCallback() {
