@@ -1,20 +1,110 @@
-#' @importFrom htmltools tag htmlDependency tagList
+#' @importFrom htmltools tag htmlDependency tagList tags
+
 #' @export
-example_number_input <- function(id, ...) {
-  contents <- list(id = id, ...)
+color_picker <- function(...) {
   tagList(
     component_dep(),
-    tag("example-number-input", contents)
+    tag("color-picker", list(...))
+  )
+}
+
+#' @export
+greeting_card <- function(...) {
+  tagList(
+    component_dep(),
+    tag("greeting-card", list(...))
+  )
+}
+
+#' @export
+tabset <- function(...) {
+  tagList(
+    component_dep(),
+    tag("shiny-tabset", list(...))
+  )
+}
+
+#' @export
+tab <- function(...) {
+  tagList(
+    component_dep(),
+    tag("shiny-tab", list(...))
+  )
+}
+
+#' @export
+sidebar <- function(...) {
+  tagList(
+    component_dep(),
+    tag("shiny-sidebar", list(...))
+  )
+}
+
+#' @export
+footer <- function(...) {
+  tagList(
+    component_dep(),
+    tag("shiny-footer", list(...))
+  )
+}
+
+#' @export
+shiny_collapsible <- function(...) {
+  tagList(
+    component_dep(),
+    tag("shiny-collapsible", list(...))
   )
 }
 
 
-component_dep <- function() {
-  htmlDependency(
-    name = "shinycomponent",
-    version = as.character(packageVersion("shinycomponent")),
-    src = system.file(package = "shinycomponent", "www"),
-    stylesheet = "open-props.min.css",
-    script = list(src = "components.js", type = "module")
+#' @export
+simple_number_input <- function(id, ...) {
+  tagList(
+    component_dep(),
+    tag("simple-number-input", list(id = id, ...))
   )
+}
+
+#' @export
+simple_number_output <- function(id, ...) {
+  tagList(
+    component_dep(),
+    tag("simple-number-output", list(id = id, ...))
+  )
+}
+
+
+#' @export
+star_rating <- function(id, ...) {
+  tagList(
+    component_dep(),
+    tag("star-rating", list(id = id, ...))
+  )
+}
+
+
+#' @export
+theme_chooser <- function(...) {
+  tagList(
+    component_dep(),
+    tag("theme-chooser", list(...))
+  )
+}
+
+#' @export
+mui_slider <- function(id, ...) {
+  args <- lapply(list(...), convert_to_escaped_json)
+  args$id <- id
+
+  tagList(
+    component_dep(),
+    tag("mui-slider", args)
+  )
+}
+
+
+convert_to_escaped_json <- function(x) {
+  res <- jsonlite::toJSON(x, null = "null", auto_unbox = TRUE)
+  # res <- htmltools::htmlEscape(res, attribute = TRUE)
+  res
 }
