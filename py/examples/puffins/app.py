@@ -12,7 +12,7 @@ from colors import bg_palette, palette
 from htmltools import Tag
 from shiny import App, Inputs, Outputs, Session, reactive, render, req, ui
 
-import shinycomponent as c
+import shinycomponent as sc
 
 sns.set_theme()
 
@@ -46,18 +46,18 @@ body:has([choice="wild"]) {
 }
 """
 
-app_ui = c.page(
+app_ui = sc.page(
     ui.head_content(ui.tags.style(app_css)),
     shinyswatch.theme.pulse(),
-    c.tabset(
+    sc.tabset(
         {"id": "tabset1"},
-        c.tab(
+        sc.tab(
             ui.tags.h2("No server needed!"),
             Tag("simple-number-input", id="num_in_static"),
             Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
             name="Static",
         ),
-        c.tab(
+        sc.tab(
             Tag("star-rating", id="foo"),
             Tag("star-rating", id="foo1"),
             ui.output_text_verbatim("txt"),
@@ -70,24 +70,24 @@ app_ui = c.page(
             x.ui.output_plot("scatter", fill=True),
             name="Plot",
         ),
-        c.tab(
+        sc.tab(
             Tag("simple-number-input", id="num_in"),
             ui.output_text_verbatim("num_out"),
             name="Number Input",
         ),
-        c.tab(
+        sc.tab(
             Tag("color-picker", id="color"),
             ui.div(
                 {"style": "max-width: 400px; margin-top: 15px;"},
                 ui.h4("Sliders"),
-                c.mui_slider(
+                sc.mui_slider(
                     id="slider1",
                     default_value=11,
                     min=1,
                     max=20,
                     value_label_display="auto",
                 ),
-                c.mui_slider(
+                sc.mui_slider(
                     id="slider2",
                     default_value=5,
                     min=1,
@@ -95,7 +95,7 @@ app_ui = c.page(
                     value_label_display="on",
                     size="small",
                 ),
-                c.mui_slider(
+                sc.mui_slider(
                     id="slider3",
                     default_value=11,
                     min=1,
@@ -104,7 +104,7 @@ app_ui = c.page(
                     value_label_display="auto",
                     marks=True,
                 ),
-                c.mui_slider(
+                sc.mui_slider(
                     id="slider4",
                     default_value=20,
                     min=0,
@@ -134,14 +134,14 @@ app_ui = c.page(
             ui.output_text_verbatim("current_color", placeholder=True),
             name="Color Picker",
         ),
-        c.tab(
+        sc.tab(
             Tag("shiny-collapsible", "To Top", dir="to_top", label="My Collapser"),
             Tag("shiny-collapsible", "To Right", dir="to_right"),
             Tag("shiny-collapsible", "To Bottom", dir="to_bottom"),
             Tag("shiny-collapsible", "To Left", dir="to_left"),
             name="Collapser",
         ),
-        c.sidebar(
+        sc.sidebar(
             ui.output_text_verbatim("current_tab"),
             # Artwork by @allison_horst
             ui.tags.img(
