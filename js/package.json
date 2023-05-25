@@ -1,0 +1,26 @@
+{
+  "name": "shiny-component",
+  "version": "0.0.1",
+  "description": "An example Shiny WebComponent",
+  "author": "Your Name",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/rstudio-shiny": "https://github.com/rstudio/shiny#v1.7.4",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "esbuild": "^0.17.19",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "build": "esbuild src/example-number-input.ts --bundle --minify --sourcemap --outdir=out"
+  },
+  "dependencies": {
+    "lit": "^2.7.4"
+  }
+}
