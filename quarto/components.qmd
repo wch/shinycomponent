@@ -1,0 +1,17 @@
+---
+title: "Shiny Components in a static Quarto doc"
+format: html
+---
+
+```{r include=FALSE}
+library(shinycomponent)
+library(htmltools)
+shinycomponent:::component_dep()
+```
+
+```{r}
+color_picker("color")
+
+general_output("num_in_static", watch="color")
+```
+
