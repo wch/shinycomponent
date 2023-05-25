@@ -73,11 +73,11 @@ devtools::load_all(".")
 To install the Python package in development mode:
 
 ```bash
-cd py
-
 # Create a virtual environment - recommended but not required
 python -m venv venv
 . venv/bin/activate
+
+cd py
 
 pip install -e .[dev]
 ```
