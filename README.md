@@ -10,7 +10,9 @@ The folders are organized as follows:
 - `js`: TypeScript code for the component
 
 
-## R
+## Using the component
+
+### R
 
 Install the R package:
 
@@ -25,7 +27,7 @@ shiny::runApp(system.file("examples/number", package = "shinycomponent"))
 ```
 
 
-## Python
+### Python
 
 To install the Python package:
 
@@ -44,5 +46,57 @@ If you have cloned the repository, you run the example app (without needing to c
 
 ```bash
 shiny run py/examples/number/app.py --port 8000 --launch-browser
+```
+
+
+## Developing the component
+
+To do development on the component, first clone this repository.
+
+### R
+
+You can use devtools to install the R package from the sources on disk. First start R in the `r/` directory, then run:
+
+```R
+devtools::install(".")
+```
+
+Or you can load the package from disk without installing. It will stay loaded for the duration of the R session.
+
+```R
+devtools::load_all(".")
+```
+
+
+### Python
+
+To install the Python package in development mode:
+
+```bash
+cd py
+
+# Create a virtual environment - recommended but not required
+python -m venv venv
+. venv/bin/activate
+
+pip install -e .[dev]
+```
+
+
+### TypeScript
+
+The component is written in TypeScript. To set up the build environment, first [install yarn](https://classic.yarnpkg.com/lang/en/docs/install/).
+
+Then, install the dependencies:
+
+```bash
+cd js
+yarn
+```
+
+To build the component:
+
+```bash
+yarn build
 ```
 
