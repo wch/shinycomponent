@@ -47,7 +47,7 @@ def component_dep() -> HTMLDependency:
     ex_www_path = PurePath(__file__).parent.parent.parent / "js" / "out"
 
     return HTMLDependency(
-        name="lit-elements",
+        name="shiny_component",
         version=__version__,
         source={
             "package": "shiny_component",

@@ -6,7 +6,7 @@ from shiny_component import example_number_input
 
 app_ui = ui.page_fluid(
     ui.h5("Number Input"),
-    example_number_input("x", value=10, min=0, max=20),
+    example_number_input("x", value=10, min=5, max=15),
     ui.output_text_verbatim("txt"),
 )
 

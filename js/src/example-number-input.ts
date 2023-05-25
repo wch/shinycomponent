@@ -4,11 +4,17 @@ import { LitElement, css, html } from "lit";
 // WebComponent definition
 // =============================================================================
 export class ExampleNumberInput extends LitElement {
-  low: number = 0;
-  high: number = 10;
-  value: number = (this.low + this.high) / 2;
+  min: number = 0;
+  max: number = 10;
+  value: number = (this.min + this.max) / 2;
   onChangeCallback = (x: boolean) => {};
-  static properties = { value: { type: Number } };
+
+  static properties = {
+    min: { type: Number },
+    max: { type: Number },
+    value: { type: Number },
+  };
+
   static styles = css`
     input {
       padding: var(--size-2);
@@ -35,8 +41,8 @@ export class ExampleNumberInput extends LitElement {
   handle_change(e: InputEvent) {
     this.value = clamp(
       (e.target as HTMLInputElement).valueAsNumber,
-      this.low,
-      this.high
+      this.min,
+      this.max
     );
     // Tell the output binding we've changed
     this.onChangeCallback(true);
@@ -46,12 +52,12 @@ export class ExampleNumberInput extends LitElement {
     return html`
       <input
         value=${this.value}
-        min=${this.low}
-        max=${this.high}
+        min=${this.min}
+        max=${this.max}
         @change=${this.handle_change}
         type="number"
       />
-      <span>Make sure your number is between ${this.low} and ${this.high}</span>
+      <span>Make sure your number is between ${this.min} and ${this.max}</span>
     `;
   }
 }
