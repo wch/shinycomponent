@@ -47,10 +47,15 @@
   "prettier.prettierPath": "./js/node_modules/prettier",
   "files.exclude": {
     "**/__pycache__": true,
-    "build/**": true
+    "py/build": true,
+    "**/.Rproj.user": true,
   },
   "search.exclude": {
-    "build/**": true
+    "**/__pycache__": true,
+    "py/build": true,
+    "**/*.egg-info": true,
+    "**/.Rproj.user": true,
+    "**/*.js.map": true,
   },
   "cssvar.files": [
     // if you have an alternative path to where your styles are located
