@@ -1,7 +1,7 @@
-Shiny component example
-=======================
+Shiny component experiments
+===========================
 
-This repository contains a simple example of a Shiny component for both R and Python.
+This repository contains experiments with Shiny components for both R and Python.
 
 The folders are organized as follows:
 
