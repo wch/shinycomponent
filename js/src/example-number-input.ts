@@ -27,7 +27,7 @@ export class ExampleNumberInput extends LitElement {
     span {
       display: inline-block;
       font-size: var(--font-size-1);
-      font-weight: var(--font-weight-1);
+      font-weight: var(--font-weight-2);
       color: var(--red-6);
       transform: scaleX(0);
       transition: transform 0.3s var(--ease-squish-2);
