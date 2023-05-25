@@ -47,10 +47,10 @@ def component_dep() -> HTMLDependency:
     ex_www_path = PurePath(__file__).parent / "www"
 
     return HTMLDependency(
-        name="shiny_component",
+        name="shinycomponent",
         version=__version__,
         source={
-            "package": "shiny_component",
+            "package": "shinycomponent",
             "subdir": str(ex_www_path),
         },
         stylesheet={"href": "open-props.min.css"},

@@ -1,8 +1,7 @@
 # pyright: reportUnusedFunction=false
 
 from shiny import App, Inputs, Outputs, Session, render, ui
-
-from shiny_component import example_number_input
+from shinycomponent import example_number_input
 
 app_ui = ui.page_fluid(
     ui.h5("Number Input"),

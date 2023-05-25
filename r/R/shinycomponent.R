@@ -11,7 +11,7 @@ example_number_input <- function(id, ...) {
 
 component_dep <- function() {
   htmlDependency(
-    name = "shiny_component",
+    name = "shinycomponent",
     version = as.character(packageVersion("shinycomponent")),
     src = system.file(package = "shinycomponent", "www"),
     stylesheet = "open-props.min.css",

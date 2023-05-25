@@ -17,7 +17,7 @@ The folders are organized as follows:
 Install the R package:
 
 ```R
-remotes::install_github("wch/shiny_component/r")
+remotes::install_github("wch/shinycomponent/r")
 ```
 
 After installing, you can run the demo app. Either copy and paste the [example app](r/inst/examples/number/app.R) into your R console, or run:
@@ -32,8 +32,8 @@ shiny::runApp(system.file("examples/number", package = "shinycomponent"))
 To install the Python package:
 
 ```bash
-pip uninstall -y shiny_component
-pip install "shiny_component@git+https://github.com/wch/shiny_component.git#subdirectory=py"
+pip uninstall -y shinycomponent
+pip install "shinycomponent@git+https://github.com/wch/shinycomponent.git#subdirectory=py"
 ```
 
 After installing, you can run the demo app. Save the [example app](py/examples/number/app.py) to a file named app.py, and run it:

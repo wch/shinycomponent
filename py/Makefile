@@ -73,8 +73,8 @@ dist: clean ## builds source and wheel package
 # --force-reinstall also reinstalls all deps. And if we also used --no-deps,
 # then the deps wouldn't be installed the first time.
 install: dist
-	pip uninstall -y shiny_component
-	python3 -m pip install dist/shiny_component*.whl
+	pip uninstall -y shinycomponent
+	python3 -m pip install dist/shinycomponent*.whl
 
 install-deps: ## install dependencies
 	pip install -e ".[dev,test]"
