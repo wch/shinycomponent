@@ -1,4 +1,5 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, css, html } from "lit";
+import { Shiny } from "./OptionalShiny";
 
 type TabElements = { name: string; el: HTMLElement }[];
 export class Tabset extends LitElement {
@@ -207,29 +208,31 @@ export class Tabset extends LitElement {
 
 customElements.define("shiny-tabset", Tabset);
 
-// Shiny input binding
-const Shiny = window.Shiny as Shiny;
+(() => {
+  if (!Shiny) {
+    return;
+  }
+  class TabsetInputBinding extends Shiny.InputBinding {
+    constructor() {
+      super();
+    }
 
-export class TabsetInputBinding extends Shiny.InputBinding {
-  constructor() {
-    super();
+    find(scope: HTMLElement): JQuery<HTMLElement> {
+      return $(scope).find("shiny-tabset");
+    }
+
+    getValue(el: Tabset) {
+      return el.current_tab_name();
+    }
+
+    subscribe(el: Tabset, callback: (x: boolean) => void): void {
+      el.onChangeCallback = callback;
+    }
+
+    unsubscribe(el: Tabset): void {
+      el.onChangeCallback = (x: boolean) => {};
+    }
   }
 
-  find(scope: HTMLElement): JQuery<HTMLElement> {
-    return $(scope).find("shiny-tabset");
-  }
-
-  getValue(el: Tabset) {
-    return el.current_tab_name();
-  }
-
-  subscribe(el: Tabset, callback: (x: boolean) => void): void {
-    el.onChangeCallback = callback;
-  }
-
-  unsubscribe(el: Tabset): void {
-    el.onChangeCallback = (x: boolean) => {};
-  }
-}
-
-Shiny.inputBindings.register(new TabsetInputBinding(), "TabsetInputBinding");
+  Shiny.inputBindings.register(new TabsetInputBinding(), "TabsetInputBinding");
+})();

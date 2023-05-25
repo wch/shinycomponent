@@ -1,3 +1,4 @@
+import { Shiny } from "./OptionalShiny";
 import { SimpleNumberInput } from "./simple-number-input";
 
 /**
@@ -7,6 +8,9 @@ import { SimpleNumberInput } from "./simple-number-input";
  * @returns Nothing
  */
 export function make_input_binding(tag_name: string) {
+  if (!Shiny) {
+    return;
+  }
   class NewNumberBinding extends Shiny.InputBinding {
     constructor() {
       super();

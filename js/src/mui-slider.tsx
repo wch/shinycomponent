@@ -3,6 +3,7 @@ import { CacheProvider } from "@emotion/react";
 import Slider from "@mui/material/Slider";
 import * as React from "react";
 import { createRoot } from "react-dom/client";
+import { Shiny } from "./OptionalShiny";
 
 // =============================================================================
 // MuiSlider
@@ -58,37 +59,37 @@ export class MuiSlider extends HTMLElement {
 
 customElements.define("mui-slider", MuiSlider);
 
+(() => {
+  if (!Shiny) {
+    return;
+  }
+  class MuiSliderInputBinding extends Shiny.InputBinding {
+    constructor() {
+      super();
+    }
 
-// Mui Slider Shiny input binding
-const Shiny = window.Shiny as Shiny;
+    find(scope: HTMLElement): JQuery<HTMLElement> {
+      return $(scope).find("mui-slider");
+    }
 
-export class MuiSliderInputBinding extends Shiny.InputBinding {
-  constructor() {
-    super();
+    getValue(el: MuiSlider) {
+      return el.value;
+    }
+
+    subscribe(el: MuiSlider, callback: (x: boolean) => void): void {
+      el.onChangeCallback = callback;
+    }
+
+    unsubscribe(el: MuiSlider): void {
+      el.onChangeCallback = (x: boolean) => {};
+    }
   }
 
-  find(scope: HTMLElement): JQuery<HTMLElement> {
-    return $(scope).find("mui-slider");
-  }
-
-  getValue(el: MuiSlider) {
-    return el.value;
-  }
-
-  subscribe(el: MuiSlider, callback: (x: boolean) => void): void {
-    el.onChangeCallback = callback;
-  }
-
-  unsubscribe(el: MuiSlider): void {
-    el.onChangeCallback = (x: boolean) => {};
-  }
-}
-
-Shiny.inputBindings.register(
-  new MuiSliderInputBinding(),
-  "MuiSliderInputBinding"
-);
-
+  Shiny.inputBindings.register(
+    new MuiSliderInputBinding(),
+    "MuiSliderInputBinding"
+  );
+})();
 
 // =============================================================================
 // Helper functions

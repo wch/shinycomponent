@@ -1,4 +1,5 @@
 import { LitElement, css, html } from "lit";
+import { Shiny } from "./OptionalShiny";
 
 export class StarRating extends LitElement {
   low: number = 0;
@@ -120,35 +121,38 @@ class EmojiReaction extends LitElement {
 customElements.define("emoji-reaction", EmojiReaction);
 customElements.define("star-rating", StarRating);
 
-const Shiny = window.Shiny as Shiny;
+(() => {
+  if (!Shiny) {
+    return;
+  }
+  class StarRatingInputBinding extends Shiny.InputBinding {
+    constructor() {
+      super();
+    }
 
-export class StarRatingInputBinding extends Shiny.InputBinding {
-  constructor() {
-    super();
+    find(scope: HTMLElement): JQuery<HTMLElement> {
+      return $(scope).find("star-rating");
+    }
+
+    getId(el: StarRating): string {
+      return el.id;
+    }
+
+    getValue(el: StarRating) {
+      return el.rating;
+    }
+
+    subscribe(el: StarRating, callback: (x: boolean) => void): void {
+      el.onChangeCallback = callback;
+    }
+
+    unsubscribe(el: StarRating): void {
+      el.onChangeCallback = (x: boolean) => {};
+    }
   }
 
-  find(scope: HTMLElement): JQuery<HTMLElement> {
-    return $(scope).find("star-rating");
-  }
-
-  getId(el: StarRating): string {
-    return el.id;
-  }
-
-  getValue(el: StarRating) {
-    return el.rating;
-  }
-
-  subscribe(el: StarRating, callback: (x: boolean) => void): void {
-    el.onChangeCallback = callback;
-  }
-
-  unsubscribe(el: StarRating): void {
-    el.onChangeCallback = (x: boolean) => {};
-  }
-}
-
-Shiny.inputBindings.register(
-  new StarRatingInputBinding(),
-  "StarRatingInputBinding"
-);
+  Shiny.inputBindings.register(
+    new StarRatingInputBinding(),
+    "StarRatingInputBinding"
+  );
+})();

@@ -1,10 +1,8 @@
-import { LitElement, PropertyDeclarations, css, html } from "lit";
+import { LitElement, css, html } from "lit";
 import {
   DataPassingEventWatcher,
   dummy_data_passing_watcher,
-  get_data_passing_event_value,
   make_data_passing_watcher,
-  make_input_event_id,
 } from "./make_value_change_emitter";
 
 export class SimpleNumberOutput extends LitElement {
