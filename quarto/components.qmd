@@ -12,6 +12,6 @@ shinycomponent:::component_dep()
 ```{r}
 color_picker("color")
 
-general_output("num_in_static", watch="color")
+general_output("color_static", watch="color")
 ```
 
