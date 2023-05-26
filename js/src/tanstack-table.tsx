@@ -5,11 +5,13 @@ import {
   Column,
   ColumnDef,
   RowData,
+  SortingState,
   Table,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -74,7 +76,7 @@ function TanStackTableComponent({ startData }: { startData: DfRow[] }) {
   const rerender = React.useReducer(() => ({}), {})[1];
 
   const [data, setData] = React.useState(startData);
-  const refreshData = () => setData(startData);
+  const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const [autoResetPageIndex, skipAutoResetPageIndex] = useSkipper();
 
@@ -92,7 +94,12 @@ function TanStackTableComponent({ startData }: { startData: DfRow[] }) {
     data,
     columns,
     defaultColumn,
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     autoResetPageIndex,
@@ -129,10 +136,23 @@ function TanStackTableComponent({ startData }: { startData: DfRow[] }) {
                   <th key={header.id} colSpan={header.colSpan}>
                     {header.isPlaceholder ? null : (
                       <div>
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                        <div
+                          {...{
+                            className: header.column.getCanSort()
+                              ? "cursor-pointer select-none"
+                              : "",
+                            onClick: header.column.getToggleSortingHandler(),
+                          }}
+                        >
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                          {{
+                            asc: " 🔼",
+                            desc: " 🔽",
+                          }[header.column.getIsSorted() as string] ?? null}
+                        </div>
                         {header.column.getCanFilter() ? (
                           <div>
                             <Filter column={header.column} table={table} />
@@ -226,13 +246,6 @@ function TanStackTableComponent({ startData }: { startData: DfRow[] }) {
             </option>
           ))}
         </select>
-      </div>
-      <div>{table.getRowModel().rows.length} Rows</div>
-      <div>
-        <button onClick={() => rerender()}>Force Rerender</button>
-      </div>
-      <div>
-        <button onClick={() => refreshData()}>Refresh Data</button>
       </div>
     </div>
   );
