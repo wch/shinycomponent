@@ -4,10 +4,10 @@ import { set_el_attr } from "./set_el_attr";
 type Collapse_Dir = "to_right" | "to_left" | "to_bottom" | "to_top";
 
 const dir_to_icon = {
-  to_right: "👉",
-  to_left: "👈",
-  to_bottom: "👆",
-  to_top: "👆",
+  to_right: "►",
+  to_left: "◀︎",
+  to_bottom: "▲",
+  to_top: "▲",
 };
 
 const horizontal_collapse_styles = css`
@@ -45,7 +45,7 @@ const to_left_collapse_styles = css`
   }
   .to_left .toggle {
     top: var(--size-1);
-    right: 0;
+    right: var(--space-small);
     width: var(--toggle-size);
     height: auto;
   }
@@ -81,7 +81,7 @@ const vertical_collapse_styles = css`
 
   .vertical .toggle > .icon {
     position: absolute;
-    right: 0;
+    right: var(--space-x-small);
   }
 
   .vertical.closed .toggle > .icon {
@@ -102,7 +102,7 @@ const vertical_collapse_styles = css`
 const to_bottom_collapse_styles = css`
   .to_bottom .toggle {
     order: -1;
-    right: var(--size-1);
+    right: var(--space-medium);
     bottom: 0;
   }
 `;
@@ -165,6 +165,7 @@ export class Collapsible extends LitElement {
       .toggle > .icon {
         transition: transform var(--transition);
         user-select: none;
+        color: var(--color-action);
       }
     `,
     horizontal_collapse_styles,
