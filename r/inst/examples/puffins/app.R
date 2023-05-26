@@ -9,22 +9,41 @@ app_css <- '
 :not(:defined) { visibility: hidden;}
 
 body:has([choice="purple"]) {
-   --accent-gradient: var(--gradient-2);
+   --color-bg: var(--purple-1);
+   --color-bg-1: var(--purple-2);
+   --color-bg-2: var(--purple-3);
+   --color-primary: var(--purple-10);
+   --color-border: var(--gray-10);
 }
 
 body:has([choice="green"]) {
-  --accent-gradient: var(--gradient-4);
-  --sidebar-bg-color: var(--stone-10);
-  --sidebar-color: var(--stone-0);
+  --color-bg: var(--green-1);
+   --color-bg-1: var(--green-2);
+   --color-bg-2: var(--green-3);
+   --color-primary: var(--green-10);
 }
 
 body:has([choice="wild"]) {
-  --accent-gradient: linear-gradient(
-      37deg in oklab,
-      oklch(55% .45 350) 0%, oklch(100% .4 95) 115% 115%
-    );
-    --sidebar-bg-color: oklch(55% .45 350);
-    --sidebar-color: var(--stone-0);
+   --color-bg: var(--pink-2);
+   --color-bg-1: var(--jungle-7);
+   --color-bg-2: var(--yellow-6);
+   --color-primary: var(--red-5);
+--radius-small: var(--radius-3);
+  --radius-medium: var(--radius-4);
+  --radius-large: var(--radius-5);
+
+}
+
+body:has([choice="dark"]) {
+
+   --color-bg: var(--sand-12);
+   --color-bg-1: var(--sand-11);
+   --color-bg-2: var(--sand-10);
+
+--color-text: var(--stone-0);
+  --color-text-1: var(--stone-1);
+  --color-text-2: var(--stone-2);
+   --color-primary: var(--red-11);
 }
 '
 
@@ -34,6 +53,10 @@ ui <- page(
   theme = bslib::bs_theme(bootswatch = "pulse"),
   tabset(
     id = "tabset1",
+    tab(
+      name="Design",
+      tag("design-preview", list())
+    ),
     tab(
       name = "Plot",
       star_rating(id = "foo"),

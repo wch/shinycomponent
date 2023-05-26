@@ -76,12 +76,6 @@ app_ui = sc.page(
             name="Design",
         ),
         sc.tab(
-            ui.tags.h2("No server needed!"),
-            Tag("simple-number-input", id="num_in_static"),
-            Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
-            name="Static",
-        ),
-        sc.tab(
             Tag("star-rating", id="foo"),
             Tag("star-rating", id="foo1"),
             ui.output_text_verbatim("txt"),
