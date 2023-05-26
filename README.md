@@ -49,6 +49,13 @@ shiny run py/examples/puffins/app.py --port 8000 --launch-browser
 ```
 
 
+### Quarto
+
+Quarto documents can use these components via R. First, install the R package as described above. Then in your document, use `library(shinycomponent)` and then you can simply use any components in an R code block.
+
+See the [example document](quarto/components.qmd).
+
+
 ## Developing the component
 
 To do development on the component, first clone this repository.
