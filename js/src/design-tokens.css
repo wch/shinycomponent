@@ -1,11 +1,25 @@
 :where(html) {
-  --color-primary: var(--orange-7);
-  --color-darkest: var(--gray-9);
-  --color-dark: var(--gray-7);
-  --color-medium: var(--gray-6);
-  --color-light: var(--gray-3);
-  --color-lightest: var(--gray-1);
+  /* Background colors */
+  --color-bg: var(--gray-1);
+  --color-bg-1: var(--gray-2);
+  --color-bg-2: var(--gray-3);
 
+  /* Border colors */
+  --color-border: var(--gray-3);
+  --color-border-1: var(--gray-4);
+  --color-border-2: var(--gray-5);
+
+  /* Text colors */
+  --color-text: var(--gray-9);
+  --color-text-1: var(--gray-8);
+  --color-text-2: var(--gray-7);
+
+  /* Accent colors */
+  --color-primary: var(--orange-7);
+  --color-action: var(--color-primary);
+  --color-error: var(--red-7);
+
+  /* Font Sizes */
   --font-heading-1: var(--font-size-8);
   --font-heading-2: var(--font-size-6);
   --font-heading-3: var(--font-size-5);

@@ -3,11 +3,17 @@ import "./design-tokens.css";
 
 const colors = [
   "primary",
-  "darkest",
-  "dark",
-  "medium",
-  "light",
-  "lightest",
+  "action",
+  "error",
+  "bg",
+  "bg-1",
+  "bg-2",
+  "border",
+  "border-1",
+  "border-2",
+  "text",
+  "text-1",
+  "text-2",
 ].map((c) => `--color-${c}`);
 
 const font_sizes = [
@@ -41,14 +47,14 @@ export class DesignPreview extends LitElement {
       overflow: scroll;
       position: relative;
       padding: var(--space-medium);
-      color: var(--color-darkest);
+      color: var(--color-text);
     }
 
     :host > div {
       padding: var(--space-medium);
       position: relative;
       margin-block: var(--space-medium);
-      outline: var(--border-small) solid var(--color-light);
+      outline: var(--border-small) solid var(--color-border);
       border-radius: var(--radius-small);
       box-shadow: var(--shadow-small);
     }
@@ -70,10 +76,10 @@ export class DesignPreview extends LitElement {
       aspect-ratio: 1;
       display: grid;
       align-items: end;
-      border: 0px solid var(--color-dark);
+      border: 0px solid var(--color-border);
       box-shadow: var(--shadow-medium);
       border-radius: var(--radius-small);
-      background-color: var(--color-light);
+      background-color: var(--color-bg-2);
       overflow: hidden;
     }
 
@@ -83,7 +89,7 @@ export class DesignPreview extends LitElement {
     }
 
     .box > div.label {
-      background-color: var(--color-lightest);
+      background-color: var(--color-bg-1);
       padding-inline: var(--space-medium);
     }
 
