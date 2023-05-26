@@ -133,9 +133,11 @@ app_ui = sc.page(
             ui.tags.h2("Client-side (non-Shiny) interaction"),
             Tag("simple-number-input", id="num_in_static"),
             Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
-            ui.br(),
-            sc.tanstack_table(df),
             name="Static",
+        ),
+        sc.tab(
+            sc.tanstack_table(df),
+            name="Table",
         ),
         sc.tab(
             Tag("shiny-collapsible", "To Top", dir="to_top", label="My Collapser"),
