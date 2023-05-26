@@ -53,13 +53,6 @@ app_ui = sc.page(
     sc.tabset(
         {"id": "tabset1"},
         sc.tab(
-            ui.tags.h2("No server needed!"),
-            Tag("simple-number-input", id="num_in_static"),
-            Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
-            sc.tanstack_table(df),
-            name="Static",
-        ),
-        sc.tab(
             Tag("star-rating", id="foo"),
             Tag("star-rating", id="foo1"),
             ui.output_text_verbatim("txt"),
@@ -135,6 +128,14 @@ app_ui = sc.page(
             ),
             ui.output_text_verbatim("current_color", placeholder=True),
             name="Color Picker",
+        ),
+        sc.tab(
+            ui.tags.h2("Client-side (non-Shiny) interaction"),
+            Tag("simple-number-input", id="num_in_static"),
+            Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
+            ui.br(),
+            sc.tanstack_table(df),
+            name="Static",
         ),
         sc.tab(
             Tag("shiny-collapsible", "To Top", dir="to_top", label="My Collapser"),
