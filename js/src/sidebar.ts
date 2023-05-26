@@ -16,7 +16,7 @@ export class Sidebar extends LitElement {
       display: block;
       font-family: var(--font-family, sans-serif);
       --transition: 0.4s var(--ease-3);
-      --toggle-w: 20px;
+      --toggle-w: var(--space-medium);
       height: 100%;
       position: relative;
     }

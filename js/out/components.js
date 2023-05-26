@@ -336,7 +336,7 @@ Error generating stack: `+i.message+`
       display: block;
       font-family: var(--font-family, sans-serif);
       --transition: 0.4s var(--ease-3);
-      --toggle-w: 20px;
+      --toggle-w: var(--space-medium);
       height: 100%;
       position: relative;
     }
@@ -561,6 +561,7 @@ Error generating stack: `+i.message+`
         "header  header"
         "sidebar content"
         "footer  footer";
+      isolation: isolate;
     }
 
     .tabs {
@@ -592,6 +593,16 @@ Error generating stack: `+i.message+`
     .tabset > * {
       min-width: 0;
       min-height: 0;
+    }
+
+    .header,
+    .footer,
+    .sidebar {
+      z-index: 2;
+    }
+
+    .main {
+      z-index: 1;
     }
 
     .header,

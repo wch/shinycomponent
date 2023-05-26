@@ -62,6 +62,7 @@ export class Tabset extends LitElement {
         "header  header"
         "sidebar content"
         "footer  footer";
+      isolation: isolate;
     }
 
     .tabs {
@@ -93,6 +94,16 @@ export class Tabset extends LitElement {
     .tabset > * {
       min-width: 0;
       min-height: 0;
+    }
+
+    .header,
+    .footer,
+    .sidebar {
+      z-index: 2;
+    }
+
+    .main {
+      z-index: 1;
     }
 
     .header,
