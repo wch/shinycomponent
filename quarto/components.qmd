@@ -6,12 +6,30 @@ format: html
 ```{r include=FALSE}
 library(shinycomponent)
 library(htmltools)
-shinycomponent:::component_dep()
 ```
 
-```{r}
+### Pick a color
+
+```{r echo=FALSE}
 color_picker("color")
-
-general_output("color_static", watch="color")
 ```
 
+### Pick a number
+
+```{r echo=FALSE}
+simple_number_input("number")
+```
+
+### Info
+
+The color is `r general_output("color_static", watch="color")`.
+
+
+The number is `r general_output("number_static", watch="number")`
+
+
+### Table
+
+```{r echo=FALSE}
+tanstack_table(palmerpenguins::penguins)
+```
