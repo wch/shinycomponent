@@ -35,12 +35,6 @@ ui <- page(
   tabset(
     id = "tabset1",
     tab(
-      name = "Static",
-      h2("No server needed!"),
-      simple_number_input("num_in_static"),
-      simple_number_output("num_in_static", watch="num_in_static")
-    ),
-    tab(
       name = "Plot",
       star_rating(id = "foo"),
       star_rating(id = "foo1"),
@@ -103,6 +97,14 @@ ui <- page(
         )
       ),
       verbatimTextOutput("current_color")
+    ),
+    tab(
+      name = "Static",
+      h2("Client-side (non-Shiny) interaction"),
+      simple_number_input("num_in_static"),
+      simple_number_output("num_in_static", watch="num_in_static"),
+      br(),
+      tanstack_table(penguins)
     ),
     tab(
       name = "Collapser",
