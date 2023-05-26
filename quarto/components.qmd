@@ -24,9 +24,7 @@ simple_number_input("number")
 
 The color is `r general_output("color_static", watch="color")`.
 
-
-The number is `r general_output("number_static", watch="number")`
-
+The number is `r general_output("number_static", watch="number")`.
 
 ### Table
 
