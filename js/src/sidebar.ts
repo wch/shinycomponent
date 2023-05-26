@@ -16,7 +16,7 @@ export class Sidebar extends LitElement {
       display: block;
       font-family: var(--font-family, sans-serif);
       --transition: 0.4s var(--ease-3);
-      --toggle-w: var(--space-medium);
+      --toggle-w: var(--space-small);
       height: 100%;
       position: relative;
     }
@@ -66,8 +66,8 @@ export class Sidebar extends LitElement {
       height: auto;
       color: var(--white);
       display: grid;
-      place-content: center;
       cursor: pointer;
+      color: var(--color-action);
     }
   `;
 
@@ -92,7 +92,7 @@ export class Sidebar extends LitElement {
         title=${this.is_open ? "Close sidebar" : "Open sidebar"}
         class="open-toggle"
       >
-        👈
+        ◀︎
       </div>
     `;
   }

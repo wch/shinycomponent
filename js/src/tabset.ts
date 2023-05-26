@@ -65,32 +65,6 @@ export class Tabset extends LitElement {
       isolation: isolate;
     }
 
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .tab {
-      padding: var(--_tab-spacing);
-      cursor: pointer;
-      position: relative;
-    }
-
-    ::slotted([slot="header"]) {
-      padding: var(--_tab-spacing);
-    }
-
-    .selected-tab::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: var(--_tab-spacing);
-      right: var(--_tab-spacing);
-      height: var(--_tab-selection-thickness);
-      border-radius: var(--_tab_radius);
-      background-color: currentColor;
-    }
-
     .tabset > * {
       min-width: 0;
       min-height: 0;
@@ -123,9 +97,36 @@ export class Tabset extends LitElement {
       grid-area: header;
       font-family: var(--_header-font);
       font-weight: var(--_header-font-weight);
-      font-size: var(--_header-font-size);
       padding-block: var(--_header-padding);
       margin: 0;
+    }
+
+    .selected-tab::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: var(--_tab-spacing);
+      right: var(--_tab-spacing);
+      height: var(--_tab-selection-thickness);
+      border-radius: var(--_tab_radius);
+      background-color: var(--color-primary);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: var(--font-size-fluid-1);
+    }
+
+    .tab {
+      padding: var(--_tab-spacing);
+      cursor: pointer;
+      position: relative;
+    }
+
+    ::slotted([slot="header"]) {
+      font-size: var(--_header-font-size);
+      padding: var(--_tab-spacing);
     }
 
     .divider {

@@ -329,14 +329,14 @@ Error generating stack: `+i.message+`
         title=${this.is_open?"Close sidebar":"Open sidebar"}
         class="open-toggle"
       >
-        👈
+        ◀︎
       </div>
     `}toggle_open(){this.is_open=!this.is_open}};gl.properties={is_open:{}},gl.styles=ee`
     :host {
       display: block;
       font-family: var(--font-family, sans-serif);
       --transition: 0.4s var(--ease-3);
-      --toggle-w: var(--space-medium);
+      --toggle-w: var(--space-small);
       height: 100%;
       position: relative;
     }
@@ -386,8 +386,8 @@ Error generating stack: `+i.message+`
       height: auto;
       color: var(--white);
       display: grid;
-      place-content: center;
       cursor: pointer;
+      color: var(--color-action);
     }
   `;customElements.define("shiny-sidebar",gl);function KA(e){if(!Ne)return;class t extends Ne.InputBinding{constructor(){super()}find(n){return $(n).find(e)}getId(n){return n.id}getValue(n){return n.value}subscribe(n,o){n.onChangeCallback=o}unsubscribe(n){n.onChangeCallback=o=>{}}}Ne.inputBindings.register(new t,`${e}-Binding`)}var vl=class extends Q{constructor(){super(...arguments);this.min=0;this.max=10;this.value=(this.min+this.max)/2;this.onChangeCallback=r=>{};this.on_value_change=rf(this,this.id)}handle_change(r){this.value=pX(r.target.valueAsNumber,this.min,this.max),this.alert_of_change()}alert_of_change(){this.onChangeCallback(!0),this.on_value_change({type:"number",value:this.value})}connectedCallback(){super.connectedCallback(),setTimeout(()=>{this.alert_of_change()},2)}render(){return W`
       <input
@@ -564,32 +564,6 @@ Error generating stack: `+i.message+`
       isolation: isolate;
     }
 
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .tab {
-      padding: var(--_tab-spacing);
-      cursor: pointer;
-      position: relative;
-    }
-
-    ::slotted([slot="header"]) {
-      padding: var(--_tab-spacing);
-    }
-
-    .selected-tab::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: var(--_tab-spacing);
-      right: var(--_tab-spacing);
-      height: var(--_tab-selection-thickness);
-      border-radius: var(--_tab_radius);
-      background-color: currentColor;
-    }
-
     .tabset > * {
       min-width: 0;
       min-height: 0;
@@ -622,9 +596,36 @@ Error generating stack: `+i.message+`
       grid-area: header;
       font-family: var(--_header-font);
       font-weight: var(--_header-font-weight);
-      font-size: var(--_header-font-size);
       padding-block: var(--_header-padding);
       margin: 0;
+    }
+
+    .selected-tab::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: var(--_tab-spacing);
+      right: var(--_tab-spacing);
+      height: var(--_tab-selection-thickness);
+      border-radius: var(--_tab_radius);
+      background-color: var(--color-primary);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: var(--font-size-fluid-1);
+    }
+
+    .tab {
+      padding: var(--_tab-spacing);
+      cursor: pointer;
+      position: relative;
+    }
+
+    ::slotted([slot="header"]) {
+      font-size: var(--_header-font-size);
+      padding: var(--_tab-spacing);
     }
 
     .divider {
