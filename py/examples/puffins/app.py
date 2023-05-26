@@ -56,7 +56,7 @@ app_ui = sc.page(
             ui.tags.h2("No server needed!"),
             Tag("simple-number-input", id="num_in_static"),
             Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
-            sc.tanstack_table("tbl"),
+            sc.tanstack_table(df),
             name="Static",
         ),
         sc.tab(

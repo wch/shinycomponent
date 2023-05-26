@@ -1,7 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
-import { faker } from "@faker-js/faker";
 import {
   Column,
   ColumnDef,
@@ -26,8 +25,10 @@ declare module "@tanstack/react-table" {
   }
 }
 
+type DfRow = Map<string, string | Number>;
+
 // Give our default column cell renderer editing superpowers!
-const defaultColumn: Partial<ColumnDef<Person>> = {
+const defaultColumn: Partial<ColumnDef<DfRow>> = {
   cell: ({ getValue, row: { index }, column: { id }, table }) => {
     const initialValue = getValue();
     // We need to keep and update the state of the cell normally
@@ -69,66 +70,23 @@ function useSkipper() {
   return [shouldSkip, skip] as const;
 }
 
-function TanStackTableComponent() {
+function TanStackTableComponent({ startData }: { startData: DfRow[] }) {
   const rerender = React.useReducer(() => ({}), {})[1];
 
-  const columns = React.useMemo<ColumnDef<Person>[]>(
-    () => [
-      {
-        header: "Name",
-        footer: (props) => props.column.id,
-        columns: [
-          {
-            accessorKey: "firstName",
-            footer: (props) => props.column.id,
-          },
-          {
-            accessorFn: (row) => row.lastName,
-            id: "lastName",
-            header: () => <span>Last Name</span>,
-            footer: (props) => props.column.id,
-          },
-        ],
-      },
-      {
-        header: "Info",
-        footer: (props) => props.column.id,
-        columns: [
-          {
-            accessorKey: "age",
-            header: () => "Age",
-            footer: (props) => props.column.id,
-          },
-          {
-            header: "More Info",
-            columns: [
-              {
-                accessorKey: "visits",
-                header: () => <span>Visits</span>,
-                footer: (props) => props.column.id,
-              },
-              {
-                accessorKey: "status",
-                header: "Status",
-                footer: (props) => props.column.id,
-              },
-              {
-                accessorKey: "progress",
-                header: "Profile Progress",
-                footer: (props) => props.column.id,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-    []
-  );
-
-  const [data, setData] = React.useState(() => makeData(1000));
-  const refreshData = () => setData(() => makeData(1000));
+  const [data, setData] = React.useState(startData);
+  const refreshData = () => setData(startData);
 
   const [autoResetPageIndex, skipAutoResetPageIndex] = useSkipper();
+
+  // iterate over all keys and get a columnDef for each
+  const columns = React.useMemo<ColumnDef<DfRow>[]>(() => {
+    return Object.keys(data[0]).map((key) => {
+      return {
+        accessorKey: key,
+        footer: (props) => props.column.id,
+      };
+    });
+  }, []);
 
   const table = useReactTable({
     data,
@@ -339,6 +297,8 @@ export class TanstackTable extends HTMLElement {
 
   connectedCallback() {
     const shadowRoot = this.attachShadow({ mode: "open" });
+    const dataEl = this.querySelector("script.data") as HTMLScriptElement;
+    const data = JSON.parse(dataEl.innerText);
     const root = createRoot(shadowRoot);
 
     // Create a new style tag
@@ -391,58 +351,9 @@ export class TanstackTable extends HTMLElement {
     // Append the style tag to the head of the document
     shadowRoot.appendChild(style);
 
-    root.render(<TanStackTableComponent />);
+    root.render(<TanStackTableComponent startData={data} />);
   }
 }
 
 // Register both the custom element and the input bindings
 customElements.define("tanstack-table", TanstackTable);
-
-////==============
-
-export type Person = {
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  progress: number;
-  status: "relationship" | "complicated" | "single";
-  subRows?: Person[];
-};
-
-const range = (len: number) => {
-  const arr = [];
-  for (let i = 0; i < len; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
-
-const newPerson = (): Person => {
-  return {
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    age: faker.datatype.number(40),
-    visits: faker.datatype.number(1000),
-    progress: faker.datatype.number(100),
-    status: faker.helpers.shuffle<Person["status"]>([
-      "relationship",
-      "complicated",
-      "single",
-    ])[0]!,
-  };
-};
-
-export function makeData(...lens: number[]) {
-  const makeDataLevel = (depth = 0): Person[] => {
-    const len = lens[depth]!;
-    return range(len).map((d): Person => {
-      return {
-        ...newPerson(),
-        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
-      };
-    });
-  };
-
-  return makeDataLevel();
-}

@@ -1,8 +1,12 @@
 from __future__ import annotations
 
 import json
+from typing import TYPE_CHECKING
 
-from htmltools import HTML, Tag, TagAttrs, TagAttrValue, TagChild, html_escape
+from htmltools import HTML, Tag, TagAttrs, TagAttrValue, TagChild, html_escape, tags
+
+if TYPE_CHECKING:
+    import pandas as pd
 
 
 def greeting_card(
@@ -151,9 +155,20 @@ def simple_number_input(
 
 
 def tanstack_table(
-    id: str, *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+    data: pd.DataFrame,
+    *args: TagChild | TagAttrs,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
 ) -> Tag:
-    return Tag("tanstack-table", id=id, *args, _add_ws=_add_ws, **kwargs)
+    return Tag(
+        "tanstack-table",
+        tags.script(
+            data.to_json(orient="records"), type="application/json", class_="data"
+        ),
+        *args,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
 
 
 def mui_slider(
