@@ -21,6 +21,10 @@ export class Sidebar extends LitElement {
       position: relative;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     .sidebar {
       height: 100%;
       overflow: scroll;

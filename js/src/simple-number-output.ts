@@ -40,6 +40,5 @@ export class SimpleNumberOutput extends LitElement {
     return html` <div class="value">Your number is: ${this.value}</div> `;
   }
 }
-
 // Register both the custom element and the input bindings
 customElements.define("simple-number-output", SimpleNumberOutput);

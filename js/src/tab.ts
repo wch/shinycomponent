@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, css, html } from "lit";
 
 export class Tab extends LitElement {
   name: string;
@@ -14,22 +14,21 @@ export class Tab extends LitElement {
     :host {
       display: block;
       position: relative;
+      height: 100%;
+      min-height: 0;
+      width: 100%;
+      min-width: 0;
+      padding: var(--size-fluid-2);
     }
   `;
 
   constructor() {
     super();
     this.name = "tab";
-    // set_el_attr(this, "")
-    // this.attributes.setNamedItem(make_slot_attr("footer"));
   }
 
   render() {
-    return html`
-      <div class="footer">
-        <slot></slot>
-      </div>
-    `;
+    return html` <slot></slot> `;
   }
 }
 

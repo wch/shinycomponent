@@ -16,7 +16,13 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "plugins": [
+      {
+        "name": "typescript-lit-html-plugin",
+        "tags": ["html", "template"]
+      }
+    ]
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]

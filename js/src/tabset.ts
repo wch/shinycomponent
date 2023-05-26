@@ -17,16 +17,44 @@ export class Tabset extends LitElement {
   // via CSS custom properties.
   static styles = css`
     :host {
+      /* This is where all the variables are defined. If the user wants to
+        update something they just have to replace the main variable and it
+        doesn't cascade down to other elements
+      */
+      --_font: var(--font-family, sans-serif);
+      --_main-bg: var(--main-bg, var(--color-bg));
+      --_main-color: var(--main-color, var(--color-text));
+
+      --_sidebar-bg: var(--sidebar-bg, var(--color-bg-1));
+      --_sidebar-color: var(--sidebar-color, var(--color-text-1));
+      --_sidebar-border: var(--sidebar-border, var(--border-small));
+
+      --_tab-spacing: var(--tab-spacing, var(--size-2));
+      --_tab-selection-thickness: var(
+        --tab-selection-thickness,
+        var(--border-medium)
+      );
+      --_tab_radius: var(--tab-radius, var(--radius-small));
+
+      --_header-bg-color: var(--header-bg-color, var(--color-bg-2));
+      --_header-bg-image: var(--header-bg-image);
+      --_header-color: var(--header-color);
+      --_header-font: var(--header-font, var(--font-sans));
+      --_header-font-weight: var(--header-font-weight, var(--font-weight-3));
+      --_header-font-size: var(--header-font-size, var(--font-size-fluid-1));
+      --_header-padding: var(--header-padding, var(--size-fluid-1));
+
       display: block;
-      font-family: var(--font-family, sans-serif);
+      font-family: var(--_font);
       height: 100%;
+      background-color: var(--_main-bg);
+      color: var(--_main-color);
+      box-sizing: border-box;
     }
 
     .tabset {
       height: 100%;
       width: 100%;
-      outline: 1px solid var(--border-color, black);
-      border-radius: var(--radius-2);
       display: grid;
       grid-template-columns: auto 1fr;
       grid-template-rows: auto 1fr auto;
@@ -36,21 +64,29 @@ export class Tabset extends LitElement {
         "footer  footer";
     }
 
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     .tab {
-      margin-inline: var(--size-1);
-      padding: var(--size-1);
+      padding: var(--_tab-spacing);
       cursor: pointer;
       position: relative;
+    }
+
+    ::slotted([slot="header"]) {
+      padding: var(--_tab-spacing);
     }
 
     .selected-tab::after {
       content: "";
       position: absolute;
       bottom: 0;
-      left: var(--size-1);
-      right: var(--size-1);
-      height: var(--border-size-3);
-      border-radius: var(--radius-1);
+      left: var(--_tab-spacing);
+      right: var(--_tab-spacing);
+      height: var(--_tab-selection-thickness);
+      border-radius: var(--_tab_radius);
       background-color: currentColor;
     }
 
@@ -61,43 +97,42 @@ export class Tabset extends LitElement {
 
     .header,
     .footer {
-      background-image: var(--accent-gradient, var(--gradient-7));
-      color: var(--stone-1);
+      background-color: var(--_header-bg-color);
+      /* Use background image if passed */
+      background-image: var(--_header-bg-image);
+      color: var(--_header-color);
+      margin: 0;
+      padding-inline: var(--_header-padding);
+      display: flex;
+      align-items: center;
+      gap: var(--_header-padding);
     }
 
     .header {
       grid-area: header;
-      font-family: var(--font-sans);
-      font-weight: var(--font-weight-3);
-      font-size: var(--font-size-fluid-1);
-      padding-block: var(--size-fluid-1);
+      font-family: var(--_header-font);
+      font-weight: var(--_header-font-weight);
+      font-size: var(--_header-font-size);
+      padding-block: var(--_header-padding);
       margin: 0;
-    }
-
-    .header,
-    .footer {
-      margin: 0;
-      padding-inline: var(--size-fluid-2);
-      display: flex;
-      gap: var(--size-3);
     }
 
     .divider {
-      background-color: var(--border-color, black);
-      width: var(--border-size-1);
+      background-color: var(--_header-color, var(--color-text-2));
+      width: var(--border-small);
       height: 100%;
     }
 
     .sidebar {
       padding: 0;
       grid-area: sidebar;
-      background-color: var(--sidebar-bg-color, var(--stone-1));
-      color: var(--sidebar-color, var(--stone-7));
+      background-color: var(--_sidebar-bg);
+      color: var(--_sidebar-color);
     }
 
     .main {
       grid-area: content;
-      padding: var(--size-fluid-3);
+      overflow: scroll;
     }
 
     .footer {
@@ -105,7 +140,7 @@ export class Tabset extends LitElement {
     }
 
     .footer > ::slotted(*) {
-      padding-block: var(--size-fluid-1);
+      padding-block: var(--_header-padding);
     }
   `;
 
@@ -182,13 +217,14 @@ export class Tabset extends LitElement {
           <div class="tabs">
             ${this.tabs.map(
               (tab, i) =>
-                html`<span
+                html`<div
                   class="tab ${i === this.selected_tab_index
                     ? "selected-tab"
                     : ""}"
                   @click=${() => this.select_tab(i)}
-                  >${tab.name}</span
-                >`
+                >
+                  ${tab.name}
+                </div>`
             )}
           </div>
         </div>

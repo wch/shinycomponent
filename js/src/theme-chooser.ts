@@ -1,10 +1,10 @@
 import { LitElement, css, html } from "lit";
 import { make_input_binding } from "./make_input_binding";
 
-type Theme = "purple" | "green" | "wild";
+const themes = ["default", "purple", "green", "wild", "dark"] as const;
+type Theme = (typeof themes)[number];
 export class ThemeChooser extends LitElement {
-  choices: Theme[] = ["purple", "green", "wild"];
-  choice: Theme = "purple";
+  choice: Theme = themes[0];
   static properties = { choice: { reflect: true } };
 
   static styles = css`
@@ -18,7 +18,7 @@ export class ThemeChooser extends LitElement {
   render() {
     return html`
       <form>
-        ${this.choices.map((choice, i) => {
+        ${themes.map((choice, i) => {
           return html`
             <input
               type="radio"
