@@ -1,3 +1,4 @@
+# pyright: reportUnusedFunction=false
 # TODO-future: Add filter of X varaible to reduce the data? (Here we would show "Gentoo" has count 0, rather than remove if no data exists)
 # TODO-future: Add brushing to zoom into the plot. The counts should represent the data in the zoomed area. (Single click would zoom out)
 
@@ -55,6 +56,7 @@ app_ui = sc.page(
             ui.tags.h2("No server needed!"),
             Tag("simple-number-input", id="num_in_static"),
             Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
+            sc.tanstack_table("tbl"),
             name="Static",
         ),
         sc.tab(

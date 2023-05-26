@@ -150,6 +150,12 @@ def simple_number_input(
     return Tag("example-number-input", id=id, *args, _add_ws=_add_ws, **kwargs)
 
 
+def tanstack_table(
+    id: str, *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> Tag:
+    return Tag("tanstack-table", id=id, *args, _add_ws=_add_ws, **kwargs)
+
+
 def mui_slider(
     id: str, *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: object
 ) -> Tag:

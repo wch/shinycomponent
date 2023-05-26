@@ -7,10 +7,12 @@ from ._components import (
     simple_number_input,
     tab,
     tabset,
+    tanstack_table,
 )
 from ._page import page
 
 __all__ = (
+    "tanstack_table",
     "greeting_card",
     "mui_slider",
     "page",
