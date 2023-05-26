@@ -223,7 +223,7 @@ function TanStackTableComponent({ startData }: { startData: DfRow[] }) {
           </strong>
         </span>
         <span className="flex items-center gap-1">
-          | Go to page:
+          Go to page:
           <input
             type="number"
             defaultValue={table.getState().pagination.pageIndex + 1}
@@ -235,6 +235,7 @@ function TanStackTableComponent({ startData }: { startData: DfRow[] }) {
           />
         </span>
         <select
+          className="border rounded p-1"
           value={table.getState().pagination.pageSize}
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));
@@ -326,6 +327,28 @@ export class TanstackTable extends HTMLElement {
     .shadow {
       --tw-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
       box-shadow: var(--tw-ring-offset-shadow,0 0 transparent),var(--tw-ring-shadow,0 0 transparent),var(--tw-shadow);
+    }
+    .flex {
+      display: flex;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .gap-2 {
+      gap: 0.5rem;
+    }
+    .gap-1 {
+      gap: 0.25rem;
+    }
+    .rounded {
+      border-radius: 0.25rem;
+    }
+    .border {
+      0px solid rgb(229, 231, 235);
+      border-width: 1px;
+    }
+    .p-1 {
+        padding: 0.25rem;
     }
     .w-36 {
       width: 9rem;
