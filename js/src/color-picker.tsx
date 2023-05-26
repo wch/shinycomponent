@@ -23,25 +23,34 @@ function ColorPickerReact({
 
 // Color Picker WebComponent
 export class ColorPicker extends HTMLElement {
-  color: string;
+  value: string;
   onChangeCallback: (x: boolean) => void;
   on_value_change = make_value_change_emitter(this, this.id);
 
   constructor() {
     super();
-    this.color = "#fff";
+    this.value = "#ffffff";
     this.onChangeCallback = (x: boolean) => {};
   }
 
   currentColorCallback(x: string): void {
-    this.color = x;
-    this.onChangeCallback(true);
-    this.on_value_change({ type: "string", value: this.color });
+    this.value = x;
+    this.notifyChange();
+  }
+
+  notifyChange() {
+    this.onChangeCallback(true); // Tell the output binding we've changed
+    this.on_value_change({ type: "string", value: this.value });
   }
 
   connectedCallback() {
     const shadowRoot = this.attachShadow({ mode: "open" });
     const root = createRoot(shadowRoot);
+
+    setTimeout(() => {
+      this.notifyChange();
+    }, 0);
+
     root.render(
       <ColorPickerReact
         currentColorCallback={(x) => this.currentColorCallback(x)}
@@ -66,7 +75,7 @@ customElements.define("color-picker", ColorPicker);
     }
 
     getValue(el: ColorPicker) {
-      return el.color;
+      return el.value;
     }
 
     subscribe(el: ColorPicker, callback: (x: boolean) => void): void {
