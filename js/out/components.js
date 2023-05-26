@@ -341,6 +341,10 @@ Error generating stack: `+i.message+`
       position: relative;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     .sidebar {
       height: 100%;
       overflow: scroll;
@@ -492,11 +496,12 @@ Error generating stack: `+i.message+`
           <slot name="header"></slot>
           <div class="divider"></div>
           <div class="tabs">
-            ${this.tabs.map((r,n)=>W`<span
+            ${this.tabs.map((r,n)=>W`<div
                   class="tab ${n===this.selected_tab_index?"selected-tab":""}"
                   @click=${()=>this.select_tab(n)}
-                  >${r.name}</span
-                >`)}
+                >
+                  ${r.name}
+                </div>`)}
           </div>
         </div>
         <div class="sidebar">
@@ -558,11 +563,19 @@ Error generating stack: `+i.message+`
         "footer  footer";
     }
 
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     .tab {
-      margin-inline: var(--_tab-spacing);
       padding: var(--_tab-spacing);
       cursor: pointer;
       position: relative;
+    }
+
+    ::slotted([slot="header"]) {
+      padding: var(--_tab-spacing);
     }
 
     .selected-tab::after {
@@ -584,8 +597,14 @@ Error generating stack: `+i.message+`
     .header,
     .footer {
       background-color: var(--_header-bg-color);
+      /* Use background image if passed */
       background-image: var(--_header-bg-image);
       color: var(--_header-color);
+      margin: 0;
+      padding-inline: var(--_header-padding);
+      display: flex;
+      align-items: center;
+      gap: var(--_header-padding);
     }
 
     .header {
@@ -597,17 +616,9 @@ Error generating stack: `+i.message+`
       margin: 0;
     }
 
-    .header,
-    .footer {
-      margin: 0;
-      padding-inline: var(--_header-padding);
-      display: flex;
-      gap: var(--_header-padding);
-    }
-
     .divider {
-      background-color: var(--_header-color);
-      width: var(--border-medium);
+      background-color: var(--_header-color, var(--color-text-2));
+      width: var(--border-small);
       height: 100%;
     }
 

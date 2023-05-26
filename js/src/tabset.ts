@@ -64,11 +64,19 @@ export class Tabset extends LitElement {
         "footer  footer";
     }
 
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     .tab {
-      margin-inline: var(--_tab-spacing);
       padding: var(--_tab-spacing);
       cursor: pointer;
       position: relative;
+    }
+
+    ::slotted([slot="header"]) {
+      padding: var(--_tab-spacing);
     }
 
     .selected-tab::after {
@@ -90,8 +98,14 @@ export class Tabset extends LitElement {
     .header,
     .footer {
       background-color: var(--_header-bg-color);
+      /* Use background image if passed */
       background-image: var(--_header-bg-image);
       color: var(--_header-color);
+      margin: 0;
+      padding-inline: var(--_header-padding);
+      display: flex;
+      align-items: center;
+      gap: var(--_header-padding);
     }
 
     .header {
@@ -103,17 +117,9 @@ export class Tabset extends LitElement {
       margin: 0;
     }
 
-    .header,
-    .footer {
-      margin: 0;
-      padding-inline: var(--_header-padding);
-      display: flex;
-      gap: var(--_header-padding);
-    }
-
     .divider {
-      background-color: var(--_header-color);
-      width: var(--border-medium);
+      background-color: var(--_header-color, var(--color-text-2));
+      width: var(--border-small);
       height: 100%;
     }
 
@@ -211,13 +217,14 @@ export class Tabset extends LitElement {
           <div class="tabs">
             ${this.tabs.map(
               (tab, i) =>
-                html`<span
+                html`<div
                   class="tab ${i === this.selected_tab_index
                     ? "selected-tab"
                     : ""}"
                   @click=${() => this.select_tab(i)}
-                  >${tab.name}</span
-                >`
+                >
+                  ${tab.name}
+                </div>`
             )}
           </div>
         </div>
