@@ -21,18 +21,22 @@ export class SimpleNumberInput extends LitElement {
 
   static styles = css`
     input {
-      padding: var(--size-2);
-      border-radius: var(--radius-2);
-      font-size: var(--font-size-1);
+      padding: var(--space-small);
+      border: none;
+      border-radius: var(--radius-small);
+      outline-width: var(--border-small);
+      font-size: var(--font-body);
+      max-width: 100%;
+      width: 300px;
     }
     input:invalid {
-      outline: var(--border-size-2) solid var(--red-10);
+      outline: var(--border-medium) solid var(--color-error);
     }
     span {
       display: inline-block;
-      font-size: var(--font-size-1);
-      font-weight: var(--font-weight-2);
-      color: var(--red-6);
+      margin-left: var(--space-x-small);
+      font-size: var(--font-body);
+      color: var(--color-error);
       transform: scaleX(0);
       transition: transform 0.3s var(--ease-squish-2);
       transform-origin: left;
