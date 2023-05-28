@@ -151,7 +151,7 @@ def simple_number_input(
     ~htmltools.Tag
     """
 
-    return Tag("example-number-input", id=id, *args, _add_ws=_add_ws, **kwargs)
+    return Tag("simple-number-input", id=id, *args, _add_ws=_add_ws, **kwargs)
 
 
 def tanstack_table(

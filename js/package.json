@@ -23,7 +23,7 @@
   },
   "scripts": {
     "open-props": "cp node_modules/open-props/open-props.min.css out",
-    "build": "esbuild src/components.ts --bundle --minify --sourcemap --outdir=out"
+    "build": "esbuild src/components.ts --bundle --sourcemap --outdir=out"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",

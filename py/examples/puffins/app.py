@@ -43,14 +43,13 @@ body:has([choice="green"]) {
 }
 
 body:has([choice="wild"]) {
-   --color-bg: var(--pink-2);
-   --color-bg-1: var(--jungle-7);
-   --color-bg-2: var(--yellow-6);
-   --color-primary: var(--red-5);
---radius-small: var(--radius-3);
+  --color-bg: var(--pink-2);
+  --color-bg-1: var(--jungle-7);
+  --color-bg-2: var(--yellow-6);
+  --color-primary: var(--red-5);
+  --radius-small: var(--radius-3);
   --radius-medium: var(--radius-4);
   --radius-large: var(--radius-5);
-
 }
 
 body:has([choice="dark"]) {
@@ -72,6 +71,11 @@ app_ui = sc.page(
     sc.tabset(
         {"id": "tabset1"},
         sc.tab(
+            sc.simple_number_input(id="num_in", min=0, max=100),
+            ui.output_text_verbatim("num_out"),
+            name="Number Input",
+        ),
+        sc.tab(
             Tag("design-preview"),
             name="Design",
         ),
@@ -87,11 +91,6 @@ app_ui = sc.page(
             ),
             x.ui.output_plot("scatter", fill=True),
             name="Plot",
-        ),
-        sc.tab(
-            Tag("simple-number-input", id="num_in"),
-            ui.output_text_verbatim("num_out"),
-            name="Number Input",
         ),
         sc.tab(
             Tag("color-picker", id="color"),
@@ -196,7 +195,7 @@ app_ui = sc.page(
         ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
         ui.tags.div("Puffins are cool", {"slot": "header"}),
-        selected_tab_index=2,
+        selected_tab_index=1,
     ),
 )
 
