@@ -72,7 +72,9 @@ app_ui = sc.page(
         {"id": "tabset1"},
         sc.tab(
             sc.simple_number_input(id="num_in", min=0, max=100),
-            ui.output_text_verbatim("num_out"),
+            ui.output_text_verbatim("num_out", placeholder=True),
+            Tag("material-slider", id="num_in2", value="20", withLabel=""),
+            ui.output_text_verbatim("num_out2", placeholder=True),
             name="Number Input",
         ),
         sc.tab(
@@ -155,6 +157,8 @@ app_ui = sc.page(
             ui.tags.h2("Client-side (non-Shiny) interaction"),
             Tag("simple-number-input", id="num_in_static"),
             Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
+            Tag("material-slider", id="num_in_static2", value="20", withLabel=""),
+            Tag("simple-number-output", id="num_out_static2", watch="num_in_static2"),
             name="Static",
         ),
         sc.tab(
@@ -243,6 +247,11 @@ def server(input: Inputs, output: Outputs, session: Session):
     @render.text
     def num_out():
         return str(input.num_in())
+
+    @output
+    @render.text
+    def num_out2():
+        return str(input.num_in2())
 
     @output
     @render.text

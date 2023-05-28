@@ -28,6 +28,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@material/web": "^1.0.0-pre.9",
     "@mui/material": "^5.13.2",
     "@tanstack/react-table": "^8.9.1",
     "lit": "^2.7.4",
