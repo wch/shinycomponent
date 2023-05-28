@@ -1,5 +1,5 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client";
 
 import {
   Column,
@@ -313,13 +313,10 @@ export class TanstackTable extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     const dataEl = this.querySelector("script.data") as HTMLScriptElement;
     const data = JSON.parse(dataEl.innerText);
-    const root = createRoot(shadowRoot);
-
-    // Create a new style tag
-    let style = document.createElement("style");
+    const root = ReactDOM.createRoot(shadowRoot);
 
     // Define the CSS you want to apply
-    style.innerHTML = `
+    const styleContent = `
     * {
       box-sizing: border-box;
       border: 0px solid rgb(229, 231, 235);
@@ -384,10 +381,12 @@ export class TanstackTable extends HTMLElement {
     }
     `;
 
-    // Append the style tag to the head of the document
-    shadowRoot.appendChild(style);
-
-    root.render(<TanStackTableComponent startData={data} />);
+    root.render(
+      <>
+        <style>{styleContent}</style>
+        <TanStackTableComponent startData={data} />
+      </>
+    );
   }
 }
 
