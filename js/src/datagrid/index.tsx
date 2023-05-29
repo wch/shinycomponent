@@ -327,10 +327,9 @@ const cssTemplate = document.createElement("template");
 cssTemplate.innerHTML = `<style>${css}</style>`;
 
 export class ShinyDataGridOutput extends HTMLElement {
-  reactRoot: Root;
+  reactRoot?: Root;
 
-  constructor() {
-    super();
+  connectedCallback() {
     this.attachShadow({ mode: "open" });
 
     this.shadowRoot!.appendChild(cssTemplate.content.cloneNode(true));
@@ -355,7 +354,7 @@ export class ShinyDataGridOutput extends HTMLElement {
       return;
     }
 
-    this.reactRoot.render(
+    this.reactRoot!.render(
       <StrictMode>
         <ShinyDataGrid
           data={data as PandasData}

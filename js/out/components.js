@@ -17914,8 +17914,7 @@
   var cssTemplate = document.createElement("template");
   cssTemplate.innerHTML = `<style>${styles_default}</style>`;
   var ShinyDataGridOutput = class extends HTMLElement {
-    constructor() {
-      super();
+    connectedCallback() {
       this.attachShadow({ mode: "open" });
       this.shadowRoot.appendChild(cssTemplate.content.cloneNode(true));
       const myDiv = document.createElement("div");
