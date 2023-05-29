@@ -80,43 +80,25 @@ ui <- page(
       div(
         style = "max-width: 400px; margin-top: 15px;",
         h4("Sliders"),
-        mui_slider(
-          id = "slider1",
-          `default-value` = 11,
-          min = 1,
-          max = 20,
-          `value-label-display` = "auto"
+        material_slider(id="slider1", value=11, min=1, max=20, withLabel=""),
+        material_slider(
+          id="slider2",
+          value=5,
+          min=1,
+          max=21,
+          step=2,
+          withTickMarks="",
+          withLabel=""
         ),
-        mui_slider(
-          id = "slider2",
-          `default-value`= 5,
-          min = 1,
-          max = 20,
-          `value-label-display` = "on",
-          size = "small"
-        ),
-        mui_slider(
-          id = "slider3",
-          `default-value` = 11,
-          min = 1,
-          max = 21,
-          step = 2,
-          `value-label-display` = "auto",
-          marks = TRUE
-        ),
-        mui_slider(
-          id = "slider4",
-          `default-value` = 20,
-          min = 0,
-          max = 100,
-          step = NULL,
-          `value-label-display` = "auto",
-          marks = list(
-            list(value = 0, label = "0°C"),
-            list(value = 20, label = "20°C"),
-            list(value = 37, label = "37°C"),
-            list(value = 100, label = "100°C")
-          )
+        material_slider(
+          id="slider3",
+          valueStart=8,
+          valueEnd=12,
+          range="",
+          min=1,
+          max=20,
+          step=2,
+          withLabel=""
         )
       ),
       verbatimTextOutput("current_color")
@@ -189,7 +171,6 @@ server <- function(input, output) {
       input$slider1,
       input$slider2,
       input$slider3,
-      input$slider4,
       sep = "\n"
     )
   })

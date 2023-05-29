@@ -99,55 +99,25 @@ app_ui = sc.page(
             ui.div(
                 {"style": "max-width: 400px; margin-top: 15px;"},
                 ui.h4("Sliders"),
-                sc.mui_slider(
-                    id="slider1",
-                    default_value=11,
-                    min=1,
-                    max=20,
-                    value_label_display="auto",
-                ),
-                sc.mui_slider(
+                sc.material_slider(id="slider1", value=11, min=1, max=20, withLabel=""),
+                sc.material_slider(
                     id="slider2",
-                    default_value=5,
-                    min=1,
-                    max=20,
-                    value_label_display="on",
-                    size="small",
-                ),
-                sc.mui_slider(
-                    id="slider3",
-                    default_value=11,
+                    value=5,
                     min=1,
                     max=21,
                     step=2,
-                    value_label_display="auto",
-                    marks=True,
+                    withTickMarks="",
+                    withLabel="",
                 ),
-                sc.mui_slider(
-                    id="slider4",
-                    default_value=20,
-                    min=0,
-                    max=100,
-                    step=None,
-                    value_label_display="auto",
-                    marks=[
-                        {
-                            "value": 0,
-                            "label": "0°C",
-                        },
-                        {
-                            "value": 20,
-                            "label": "20°C",
-                        },
-                        {
-                            "value": 37,
-                            "label": "37°C",
-                        },
-                        {
-                            "value": 100,
-                            "label": "100°C",
-                        },
-                    ],
+                sc.material_slider(
+                    id="slider3",
+                    valueStart=8,
+                    valueEnd=12,
+                    range="",
+                    min=1,
+                    max=20,
+                    step=2,
+                    withLabel="",
                 ),
             ),
             ui.output_text_verbatim("current_color", placeholder=True),
@@ -256,7 +226,9 @@ def server(input: Inputs, output: Outputs, session: Session):
     @output
     @render.text
     def current_color():
-        return f"{input.color()}\n{input.slider1()}\n{input.slider2()}\n{input.slider3()}\n{input.slider4()}"
+        return (
+            f"{input.color()}\n{input.slider1()}\n{input.slider2()}\n{input.slider3()}"
+        )
 
     @output
     @render.ui

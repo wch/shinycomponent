@@ -154,6 +154,12 @@ def simple_number_input(
     return Tag("simple-number-input", id=id, *args, _add_ws=_add_ws, **kwargs)
 
 
+def material_slider(
+    id: str, *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> Tag:
+    return Tag("material-slider", id=id, *args, _add_ws=_add_ws, **kwargs)
+
+
 def tanstack_table(
     data: pd.DataFrame,
     *args: TagChild | TagAttrs,
@@ -169,38 +175,6 @@ def tanstack_table(
         _add_ws=_add_ws,
         **kwargs,
     )
-
-
-def mui_slider(
-    id: str, *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: object
-) -> Tag:
-    """
-    Create a <mui-slider> tag.
-
-    An experimental web-component for creating sliders.
-
-    Parameters
-    ----------
-    *args
-        Child elements to this tag.
-    _add_ws
-        Whether whitespace should be added around this tag.
-    **kwargs
-        Attributes to this tag.
-
-    Returns
-    -------
-    Tag
-
-    See Also
-    --------
-    ~htmltools.Tag
-    """
-
-    for k, v in kwargs.items():
-        kwargs[k] = attr_to_escaped_json(v)
-
-    return Tag("mui-slider", *args, id=id, _add_ws=_add_ws, **kwargs)
 
 
 def attr_to_escaped_json(x: object) -> str:

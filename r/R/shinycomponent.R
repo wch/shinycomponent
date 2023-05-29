@@ -120,13 +120,10 @@ tanstack_table <- function(data, ...) {
 }
 
 #' @export
-mui_slider <- function(id, ...) {
-  args <- lapply(list(...), convert_to_escaped_json)
-  args$id <- id
-
+material_slider <- function(id, ...) {
   tagList(
     component_dep(),
-    tag("mui-slider", args)
+    tag("material-slider", list(id = id, ...))
   )
 }
 
