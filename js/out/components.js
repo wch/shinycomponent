@@ -17881,7 +17881,7 @@
   };
   var ShinyDataGridBinding = class extends Shiny.OutputBinding {
     find(scope) {
-      return $(scope).find("shiny-glide-data-grid-output");
+      return $(scope).find("shiny-data-grid-output");
     }
     renderValue(el, data) {
       el.renderValue(data);
@@ -17913,7 +17913,7 @@
   }
   var cssTemplate = document.createElement("template");
   cssTemplate.innerHTML = `<style>${styles_default}</style>`;
-  var ShinyGlideDataGridOutput = class extends HTMLElement {
+  var ShinyDataGridOutput = class extends HTMLElement {
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
@@ -17947,7 +17947,7 @@
       );
     }
   };
-  customElements.define("shiny-glide-data-grid-output", ShinyGlideDataGridOutput);
+  customElements.define("shiny-data-grid-output", ShinyDataGridOutput);
 
   // src/design-preview.ts
   var colors = [

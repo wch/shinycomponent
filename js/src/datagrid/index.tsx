@@ -260,10 +260,10 @@ const ShinyDataGrid: FC<ShinyDataGridProps> = (props) => {
 
 class ShinyDataGridBinding extends Shiny.OutputBinding {
   find(scope: HTMLElement | JQuery<HTMLElement>): JQuery<HTMLElement> {
-    return $(scope).find("shiny-glide-data-grid-output");
+    return $(scope).find("shiny-data-grid-output");
   }
 
-  renderValue(el: ShinyGlideDataGridOutput, data: unknown): void {
+  renderValue(el: ShinyDataGridOutput, data: unknown): void {
     el.renderValue(data);
   }
 }
@@ -321,12 +321,12 @@ function getStyle(el: Element, styleProp: string): string | undefined {
 //   }
 //   // ...
 // }
-// Shiny.outputBindings.registerReact(MyReactDataGrid, ".shiny-glide-data-grid-output");
+// Shiny.outputBindings.registerReact(MyReactDataGrid, ".shiny-data-grid-output");
 
 const cssTemplate = document.createElement("template");
 cssTemplate.innerHTML = `<style>${css}</style>`;
 
-export class ShinyGlideDataGridOutput extends HTMLElement {
+export class ShinyDataGridOutput extends HTMLElement {
   reactRoot: Root;
 
   constructor() {
@@ -368,4 +368,4 @@ export class ShinyGlideDataGridOutput extends HTMLElement {
   }
 }
 
-customElements.define("shiny-glide-data-grid-output", ShinyGlideDataGridOutput);
+customElements.define("shiny-data-grid-output", ShinyDataGridOutput);

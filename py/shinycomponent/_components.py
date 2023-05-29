@@ -182,7 +182,7 @@ def tanstack_table(
 def output_data_grid(id: str) -> Tag:
     # TODO: add resolve_id
     return Tag(
-        "shiny-glide-data-grid-output",
+        "shiny-data-grid-output",
         page_dep(),
         id=id,
     )
