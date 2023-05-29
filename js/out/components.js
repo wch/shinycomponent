@@ -13596,6 +13596,117 @@
     );
   })();
 
+  // src/datagrid/styles.scss
+  var styles_default = `
+:root,
+:host {
+  --shiny-datagrid-font-size: 0.9em;
+  --shiny-datagrid-padding: 0.3em 0.5em;
+  --shiny-datagrid-grid-header-bgcolor: #eee;
+  --shiny-datagrid-grid-header-gridlines-color: #ccc;
+  --shiny-datagrid-grid-header-gridlines-style: solid;
+  --shiny-datagrid-grid-gridlines-color: #ccc;
+  --shiny-datagrid-grid-gridlines-style: solid;
+  --shiny-datagrid-table-header-bottom-border: 1px solid black;
+  --shiny-datagrid-grid-body-hover-bgcolor: var(
+    --shiny-datagrid-grid-header-bgcolor
+  );
+  --shiny-datagrid-grid-body-selected-bgcolor: var(--bs-primary);
+  --shiny-datagrid-grid-body-selected-color: var(--bs-light);
+}
+
+.shiny-data-grid svg.sort-arrow {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-bottom: 0.15em;
+}
+
+.shiny-data-grid > table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.shiny-data-grid > table > thead {
+  position: sticky;
+  top: 0;
+}
+.shiny-data-grid > table > thead > th {
+  white-space: nowrap;
+}
+
+.shiny-data-grid.shiny-data-grid-table > table > thead > tr:last-child > th {
+  border-bottom: var(--shiny-datagrid-table-header-bottom-border);
+}
+
+/*
+ *
+ * # GRID STYLES
+ *
+ */
+.shiny-data-grid.shiny-data-grid-grid > table {
+  font-size: var(--shiny-datagrid-font-size);
+}
+.shiny-data-grid.shiny-data-grid-grid > table > thead > tr > th {
+  background-color: var(--shiny-datagrid-grid-header-bgcolor);
+  padding: var(--shiny-datagrid-padding);
+}
+.shiny-data-grid.shiny-data-grid-grid > table > tbody > tr:hover {
+  --shiny-datagrid-grid-gridlines-color: inherit;
+  background-color: var(--shiny-datagrid-grid-body-hover-bgcolor);
+}
+.shiny-data-grid.shiny-data-grid-grid > table > tbody > tr.selected {
+  --shiny-datagrid-grid-gridlines-color: var(
+    --shiny-datagrid-grid-body-selected-bgcolor
+  );
+  background-color: var(--shiny-datagrid-grid-body-selected-bgcolor);
+  color: var(--shiny-datagrid-grid-body-selected-color);
+}
+.shiny-data-grid.shiny-data-grid-grid > table > tbody > tr > td {
+  padding: var(--shiny-datagrid-padding);
+}
+
+/* ## Grid borders */
+.shiny-data-grid.shiny-data-grid-grid > table {
+  border-collapse: separate;
+}
+.shiny-data-grid.shiny-data-grid-grid > table > thead > tr:first-child > th {
+  border-top-style: var(--shiny-datagrid-grid-gridlines-style);
+}
+.shiny-data-grid.shiny-data-grid-grid > table > thead > tr > th {
+  border: 1px var(--shiny-datagrid-grid-gridlines-style) var(--shiny-datagrid-grid-header-gridlines-color);
+  border-top-style: none;
+  border-left-style: none;
+}
+.shiny-data-grid.shiny-data-grid-grid > table > thead > tr > th:first-child {
+  border-left-style: var(--shiny-datagrid-grid-gridlines-style);
+}
+.shiny-data-grid.shiny-data-grid-grid > table > tbody > tr > td {
+  border: 1px var(--shiny-datagrid-grid-gridlines-style) var(--shiny-datagrid-grid-gridlines-color);
+  border-top-style: none;
+  border-left-style: none;
+}
+.shiny-data-grid.shiny-data-grid-grid > table > tbody > tr > td:first-child {
+  border-left-style: var(--shiny-datagrid-grid-gridlines-style);
+}
+.shiny-data-grid.shiny-data-grid-grid.scrolling {
+  border: var(--shiny-datagrid-grid-gridlines-style) var(--shiny-datagrid-grid-header-gridlines-color);
+}
+.shiny-data-grid.shiny-data-grid-grid.scrolling > table > thead > tr:first-child > th {
+  border-top-style: none;
+}
+.shiny-data-grid.shiny-data-grid-grid.scrolling > table > tbody > tr:last-child > td {
+  border-bottom-style: none;
+}
+.shiny-data-grid.shiny-data-grid-grid.scrolling > table > thead > tr > th:first-child,
+.shiny-data-grid.shiny-data-grid-grid.scrolling > table > tbody > tr > td:first-child {
+  border-left-style: none;
+}
+.shiny-data-grid.shiny-data-grid-grid.scrolling > table > thead > tr > th:last-child,
+.shiny-data-grid.shiny-data-grid-grid.scrolling > table > tbody > tr > td:last-child {
+  border-right-style: none;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL1VzZXJzL3dpbnN0b24vRHJvcGJveC9Qcm9qZWN0cy9zaGlueWNvbXBvbmVudC9qcy9zcmMvZGF0YWdyaWQiLCJzb3VyY2VzIjpbInN0eWxlcy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7RUFFRTtFQUNBO0VBRUE7RUFDQTtFQUNBO0VBRUE7RUFDQTtFQUVBO0VBRUE7QUFBQTtBQUFBO0VBR0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7O0FBSUE7RUFDRTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFDQTtFQUNFOzs7QUFRSjtFQUNFOzs7QUFLTjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBT0U7RUFDRTs7QUFFQTtFQUNFO0VBQ0E7O0FBSUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7QUFBQTtBQUFBO0VBR0E7RUFDQTs7QUFHRjtFQUNFOzs7QUFNUjtBQUdFO0VBQ0U7O0FBSUk7RUFDRTs7QUFHRjtFQUNFO0VBRUE7RUFDQTs7QUFFQTtFQUNFOztBQU1SO0VBQ0U7RUFFQTtFQUNBOztBQUVBO0VBQ0U7O0FBS047RUFDRTs7QUFHQTtFQUNFOztBQUVGO0VBQ0U7O0FBRUY7QUFBQTtFQUVFOztBQUVGO0FBQUE7RUFFRSIsInNvdXJjZXNDb250ZW50IjpbIjpyb290LFxuOmhvc3Qge1xuICAtLXNoaW55LWRhdGFncmlkLWZvbnQtc2l6ZTogMC45ZW07XG4gIC0tc2hpbnktZGF0YWdyaWQtcGFkZGluZzogMC4zZW0gMC41ZW07XG5cbiAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1iZ2NvbG9yOiAjZWVlO1xuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtaGVhZGVyLWdyaWRsaW5lcy1jb2xvcjogI2NjYztcbiAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1ncmlkbGluZXMtc3R5bGU6IHNvbGlkO1xuXG4gIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtY29sb3I6ICNjY2M7XG4gIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGU6IHNvbGlkO1xuXG4gIC0tc2hpbnktZGF0YWdyaWQtdGFibGUtaGVhZGVyLWJvdHRvbS1ib3JkZXI6IDFweCBzb2xpZCBibGFjaztcblxuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtYm9keS1ob3Zlci1iZ2NvbG9yOiB2YXIoXG4gICAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1iZ2NvbG9yXG4gICk7XG4gIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LXNlbGVjdGVkLWJnY29sb3I6IHZhcigtLWJzLXByaW1hcnkpO1xuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtYm9keS1zZWxlY3RlZC1jb2xvcjogdmFyKC0tYnMtbGlnaHQpO1xufVxuXG4uc2hpbnktZGF0YS1ncmlkIHN2Zy5zb3J0LWFycm93IHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB3aWR0aDogMC44NWVtO1xuICBoZWlnaHQ6IDAuODVlbTtcbiAgbWFyZ2luLWJvdHRvbTogMC4xNWVtO1xufVxuXG4uc2hpbnktZGF0YS1ncmlkIHtcbiAgPiB0YWJsZSB7XG4gICAgYm9yZGVyLWNvbGxhcHNlOiBzZXBhcmF0ZTtcbiAgICBib3JkZXItc3BhY2luZzogMDtcblxuICAgID4gdGhlYWQge1xuICAgICAgcG9zaXRpb246IHN0aWNreTtcbiAgICAgIHRvcDogMDtcbiAgICAgID4gdGgge1xuICAgICAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG4uc2hpbnktZGF0YS1ncmlkLnNoaW55LWRhdGEtZ3JpZC10YWJsZSB7XG4gID4gdGFibGUge1xuICAgID4gdGhlYWQgPiB0cjpsYXN0LWNoaWxkID4gdGgge1xuICAgICAgYm9yZGVyLWJvdHRvbTogdmFyKC0tc2hpbnktZGF0YWdyaWQtdGFibGUtaGVhZGVyLWJvdHRvbS1ib3JkZXIpO1xuICAgIH1cbiAgfVxufVxuXG4vKlxuICpcbiAqICMgR1JJRCBTVFlMRVNcbiAqXG4gKi9cblxuLnNoaW55LWRhdGEtZ3JpZC5zaGlueS1kYXRhLWdyaWQtZ3JpZCB7XG4gID4gdGFibGUge1xuICAgIGZvbnQtc2l6ZTogdmFyKC0tc2hpbnktZGF0YWdyaWQtZm9udC1zaXplKTtcblxuICAgID4gdGhlYWQgPiB0ciA+IHRoIHtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtaGVhZGVyLWJnY29sb3IpO1xuICAgICAgcGFkZGluZzogdmFyKC0tc2hpbnktZGF0YWdyaWQtcGFkZGluZyk7XG4gICAgfVxuXG4gICAgPiB0Ym9keSA+IHRyIHtcbiAgICAgICY6aG92ZXIge1xuICAgICAgICAtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLWNvbG9yOiBpbmhlcml0O1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWJvZHktaG92ZXItYmdjb2xvcik7XG4gICAgICB9XG5cbiAgICAgICYuc2VsZWN0ZWQge1xuICAgICAgICAtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLWNvbG9yOiB2YXIoXG4gICAgICAgICAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWJvZHktc2VsZWN0ZWQtYmdjb2xvclxuICAgICAgICApO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWJvZHktc2VsZWN0ZWQtYmdjb2xvcik7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWJvZHktc2VsZWN0ZWQtY29sb3IpO1xuICAgICAgfVxuXG4gICAgICA+IHRkIHtcbiAgICAgICAgcGFkZGluZzogdmFyKC0tc2hpbnktZGF0YWdyaWQtcGFkZGluZyk7XG4gICAgICB9XG4gICAgfVxuICB9XG59XG5cbi8qICMjIEdyaWQgYm9yZGVycyAqL1xuXG4uc2hpbnktZGF0YS1ncmlkLnNoaW55LWRhdGEtZ3JpZC1ncmlkIHtcbiAgPiB0YWJsZSB7XG4gICAgYm9yZGVyLWNvbGxhcHNlOiBzZXBhcmF0ZTtcblxuICAgID4gdGhlYWQge1xuICAgICAgPiB0ciB7XG4gICAgICAgICY6Zmlyc3QtY2hpbGQgPiB0aCB7XG4gICAgICAgICAgYm9yZGVyLXRvcC1zdHlsZTogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGUpO1xuICAgICAgICB9XG5cbiAgICAgICAgPiB0aCB7XG4gICAgICAgICAgYm9yZGVyOiAxcHggdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGUpXG4gICAgICAgICAgICB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1ncmlkbGluZXMtY29sb3IpO1xuICAgICAgICAgIGJvcmRlci10b3Atc3R5bGU6IG5vbmU7XG4gICAgICAgICAgYm9yZGVyLWxlZnQtc3R5bGU6IG5vbmU7XG5cbiAgICAgICAgICAmOmZpcnN0LWNoaWxkIHtcbiAgICAgICAgICAgIGJvcmRlci1sZWZ0LXN0eWxlOiB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWdyaWRsaW5lcy1zdHlsZSk7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuXG4gICAgPiB0Ym9keSA+IHRyID4gdGQge1xuICAgICAgYm9yZGVyOiAxcHggdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGUpXG4gICAgICAgIHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLWNvbG9yKTtcbiAgICAgIGJvcmRlci10b3Atc3R5bGU6IG5vbmU7XG4gICAgICBib3JkZXItbGVmdC1zdHlsZTogbm9uZTtcblxuICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgIGJvcmRlci1sZWZ0LXN0eWxlOiB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWdyaWRsaW5lcy1zdHlsZSk7XG4gICAgICB9XG4gICAgfVxuICB9XG5cbiAgJi5zY3JvbGxpbmcge1xuICAgIGJvcmRlcjogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGUpXG4gICAgICB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1ncmlkbGluZXMtY29sb3IpO1xuXG4gICAgPiB0YWJsZSA+IHRoZWFkID4gdHI6Zmlyc3QtY2hpbGQgPiB0aCB7XG4gICAgICBib3JkZXItdG9wLXN0eWxlOiBub25lO1xuICAgIH1cbiAgICA+IHRhYmxlID4gdGJvZHkgPiB0cjpsYXN0LWNoaWxkID4gdGQge1xuICAgICAgYm9yZGVyLWJvdHRvbS1zdHlsZTogbm9uZTtcbiAgICB9XG4gICAgPiB0YWJsZSA+IHRoZWFkID4gdHIgPiB0aDpmaXJzdC1jaGlsZCxcbiAgICA+IHRhYmxlID4gdGJvZHkgPiB0ciA+IHRkOmZpcnN0LWNoaWxkIHtcbiAgICAgIGJvcmRlci1sZWZ0LXN0eWxlOiBub25lO1xuICAgIH1cbiAgICA+IHRhYmxlID4gdGhlYWQgPiB0ciA+IHRoOmxhc3QtY2hpbGQsXG4gICAgPiB0YWJsZSA+IHRib2R5ID4gdHIgPiB0ZDpsYXN0LWNoaWxkIHtcbiAgICAgIGJvcmRlci1yaWdodC1zdHlsZTogbm9uZTtcbiAgICB9XG4gIH1cbn1cbiJdfQ== */`;
+
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@tanstack/react-table/build/lib/index.mjs
   init_react();
 
@@ -17551,7 +17662,6 @@
 
   // src/datagrid/table-summary.tsx
   init_react();
-  init_react();
   function useSummary(summaryTemplate, scrollContainer, virtualRows, thead, nrows) {
     return F2(() => {
       const summaryOption = summaryTemplate ?? true;
@@ -17769,37 +17879,12 @@
       )
     ), summary);
   };
-  var roots = /* @__PURE__ */ new WeakMap();
   var ShinyDataGridBinding = class extends Shiny.OutputBinding {
     find(scope) {
-      return $(scope).find(".shiny-glide-data-grid-output");
+      return $(scope).find("shiny-glide-data-grid-output");
     }
     renderValue(el, data) {
-      let root2 = roots.get(el);
-      if (!root2) {
-        root2 = createRoot(el);
-        roots.set(el, root2);
-      }
-      const id = this.getId(el);
-      const {
-        columns,
-        index,
-        data: rows,
-        options,
-        width,
-        height
-      } = data;
-      root2.render(
-        data && /* @__PURE__ */ Cn.createElement(mn, null, /* @__PURE__ */ Cn.createElement(
-          ShinyDataGrid,
-          {
-            data,
-            bgcolor: getComputedBgColor(el),
-            width: width ?? "100%",
-            height: height ?? "500px"
-          }
-        ))
-      );
+      el.renderValue(data);
     }
   };
   Shiny.outputBindings.register(new ShinyDataGridBinding(), "shinyDataGrid");
@@ -17826,6 +17911,43 @@
   function getStyle(el, styleProp) {
     return document?.defaultView?.getComputedStyle(el, null)?.getPropertyValue(styleProp);
   }
+  var cssTemplate = document.createElement("template");
+  cssTemplate.innerHTML = `<style>${styles_default}</style>`;
+  var ShinyGlideDataGridOutput = class extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.appendChild(cssTemplate.content.cloneNode(true));
+      const myDiv = document.createElement("div");
+      this.shadowRoot.appendChild(myDiv);
+      this.reactRoot = createRoot(myDiv);
+    }
+    renderValue(data) {
+      const {
+        columns,
+        index,
+        data: rows,
+        options,
+        width,
+        height
+      } = data;
+      if (!data) {
+        return;
+      }
+      this.reactRoot.render(
+        /* @__PURE__ */ Cn.createElement(mn, null, /* @__PURE__ */ Cn.createElement(
+          ShinyDataGrid,
+          {
+            data,
+            bgcolor: getComputedBgColor(this),
+            width: width ?? "100%",
+            height: height ?? "500px"
+          }
+        ))
+      );
+    }
+  };
+  customElements.define("shiny-glide-data-grid-output", ShinyGlideDataGridOutput);
 
   // src/design-preview.ts
   var colors = [

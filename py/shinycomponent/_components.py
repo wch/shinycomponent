@@ -5,6 +5,8 @@ from typing import TYPE_CHECKING
 
 from htmltools import HTML, Tag, TagAttrs, TagAttrValue, TagChild, html_escape, tags
 
+from ._htmldeps import page_dep
+
 if TYPE_CHECKING:
     import pandas as pd
 
@@ -181,6 +183,7 @@ def output_data_grid(id: str) -> Tag:
     # TODO: add resolve_id
     return Tag(
         "shiny-glide-data-grid-output",
+        page_dep(),
         id=id,
     )
 

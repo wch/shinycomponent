@@ -9,7 +9,7 @@ async function bundle() {
       outdir: "out/",
       // minify: true, // Minify the output
       sourcemap: true, // Generate sourcemap for debugging
-      plugins: [sassPlugin()],
+      plugins: [sassPlugin({ type: "css-text" })],
     };
 
     const result = await build(options);
