@@ -111,7 +111,7 @@ tanstack_table <- function(data, ...) {
         tags$script(
           type = "application/json",
           class = "data",
-          HTML(jsonlite::toJSON(df_wide, auto_unbox = TRUE))
+          HTML(toJSON(df_wide, auto_unbox = TRUE))
         ),
         ...
       )
@@ -129,7 +129,7 @@ material_slider <- function(id, ...) {
 
 
 convert_to_escaped_json <- function(x) {
-  res <- jsonlite::toJSON(x, null = "null", auto_unbox = TRUE)
+  res <- toJSON(x, null = "null", auto_unbox = TRUE)
   # res <- htmltools::htmlEscape(res, attribute = TRUE)
   res
 }

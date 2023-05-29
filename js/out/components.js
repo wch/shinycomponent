@@ -17879,15 +17879,17 @@
       )
     ), summary);
   };
-  var ShinyDataGridBinding = class extends Shiny.OutputBinding {
-    find(scope) {
-      return $(scope).find("shiny-data-grid-output");
+  if (window.Shiny) {
+    class ShinyDataGridBinding extends Shiny.OutputBinding {
+      find(scope) {
+        return $(scope).find("shiny-data-grid-output");
+      }
+      renderValue(el, data) {
+        el.renderValue(data);
+      }
     }
-    renderValue(el, data) {
-      el.renderValue(data);
-    }
-  };
-  Shiny.outputBindings.register(new ShinyDataGridBinding(), "shinyDataGrid");
+    Shiny.outputBindings.register(new ShinyDataGridBinding(), "shinyDataGrid");
+  }
   function getComputedBgColor(el) {
     if (!el) {
       return null;

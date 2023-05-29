@@ -258,16 +258,18 @@ const ShinyDataGrid: FC<ShinyDataGridProps> = (props) => {
   );
 };
 
-class ShinyDataGridBinding extends Shiny.OutputBinding {
-  find(scope: HTMLElement | JQuery<HTMLElement>): JQuery<HTMLElement> {
-    return $(scope).find("shiny-data-grid-output");
-  }
+if (window.Shiny) {
+  class ShinyDataGridBinding extends Shiny.OutputBinding {
+    find(scope: HTMLElement | JQuery<HTMLElement>): JQuery<HTMLElement> {
+      return $(scope).find("shiny-data-grid-output");
+    }
 
-  renderValue(el: ShinyDataGridOutput, data: unknown): void {
-    el.renderValue(data);
+    renderValue(el: ShinyDataGridOutput, data: unknown): void {
+      el.renderValue(data);
+    }
   }
+  Shiny.outputBindings.register(new ShinyDataGridBinding(), "shinyDataGrid");
 }
-Shiny.outputBindings.register(new ShinyDataGridBinding(), "shinyDataGrid");
 
 function getComputedBgColor(el: HTMLElement | null): string | null | undefined {
   if (!el) {

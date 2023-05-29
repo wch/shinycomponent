@@ -47,5 +47,5 @@ The next slider is <general-output id="slider_static2" watch="slider_in_static2"
 ### Table
 
 ```{r echo=FALSE}
-tanstack_table(palmerpenguins::penguins)
+static_data_grid(palmerpenguins::penguins, height = "500px")
 ```
