@@ -6,6 +6,7 @@ from shiny import App, Inputs, Outputs, Session, reactive, render, req, ui
 import shinycomponent as sc
 
 app_ui = ui.page_fluid(
+    ui.h4("Dynamic data"),
     ui.input_select("dataset", "Dataset", sns.get_dataset_names()),
     sc.output_data_grid("grid"),
     ui.panel_absolute(
@@ -13,6 +14,9 @@ app_ui = ui.page_fluid(
         right="10px",
         bottom="10px",
     ),
+    ui.hr(),
+    ui.h4("Static data"),
+    sc.static_data_grid(sns.load_dataset("penguins")),
 )
 
 

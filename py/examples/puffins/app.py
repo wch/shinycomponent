@@ -132,7 +132,7 @@ app_ui = sc.page(
             name="Static",
         ),
         sc.tab(
-            sc.tanstack_table(df),
+            sc.static_data_grid(df),
             name="Table",
         ),
         sc.tab(

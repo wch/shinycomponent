@@ -17920,6 +17920,13 @@
       const myDiv = document.createElement("div");
       this.shadowRoot.appendChild(myDiv);
       this.reactRoot = createRoot(myDiv);
+      const dataEl = this.querySelector(
+        "script.data"
+      );
+      if (dataEl) {
+        const data = JSON.parse(dataEl.innerText);
+        this.renderValue(data);
+      }
     }
     renderValue(data) {
       const {

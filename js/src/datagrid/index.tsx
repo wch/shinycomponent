@@ -338,6 +338,16 @@ export class ShinyDataGridOutput extends HTMLElement {
     this.shadowRoot!.appendChild(myDiv);
 
     this.reactRoot = createRoot(myDiv);
+
+    // If there is a <script class="data"> element it contains static data.
+    // Render it now.
+    const dataEl = this.querySelector(
+      "script.data"
+    ) as HTMLScriptElement | null;
+    if (dataEl) {
+      const data = JSON.parse(dataEl.innerText);
+      this.renderValue(data);
+    }
   }
 
   renderValue(data: unknown) {

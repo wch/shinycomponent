@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 from htmltools import HTML, Tag, TagAttrs, TagAttrValue, TagChild, html_escape, tags
 
 from ._htmldeps import page_dep
+from ._render_datagrid import data_grid
 
 if TYPE_CHECKING:
     import pandas as pd
@@ -176,6 +177,23 @@ def tanstack_table(
         *args,
         _add_ws=_add_ws,
         **kwargs,
+    )
+
+
+def static_data_grid(
+    data: pd.DataFrame,
+    *args: TagChild | TagAttrs,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    @data_grid
+    def data_fn() -> pd.DataFrame:
+        return data
+
+    return Tag(
+        "shiny-data-grid-output",
+        tags.script(json.dumps(data_fn()), type="application/json", class_="data"),
+        page_dep(),
     )
 
 
