@@ -1,5 +1,6 @@
 import { Collapsible } from "./collapsible";
 import { ColorPicker } from "./color-picker";
+import { ShinyDataGrid } from "./datagrid";
 import { DesignPreview } from "./design-preview";
 import { Footer } from "./footer";
 import { GeneralOutput } from "./general-output";
@@ -16,8 +17,9 @@ import { ThemeChooser } from "./theme-chooser";
 // Prevent esbuild from tree-shaking these components away.
 Collapsible;
 ColorPicker;
+ShinyDataGrid;
+DesignPreview;
 Footer;
-TanstackTable;
 GeneralOutput;
 MaterialSlider;
 Sidebar;
@@ -26,5 +28,5 @@ SimpleNumberOutput;
 StarRating;
 Tab;
 Tabset;
+TanstackTable;
 ThemeChooser;
-DesignPreview;

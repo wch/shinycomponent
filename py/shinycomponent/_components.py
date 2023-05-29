@@ -177,6 +177,14 @@ def tanstack_table(
     )
 
 
+def output_data_grid(id: str) -> Tag:
+    # TODO: add resolve_id
+    return Tag(
+        "shiny-glide-data-grid-output",
+        id=id,
+    )
+
+
 def attr_to_escaped_json(x: object) -> str:
     res = json.dumps(x)
     res = html_escape(res, attr=True)
