@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING
 from htmltools import HTML, Tag, TagAttrs, TagAttrValue, TagChild, html_escape, tags
 
 from ._htmldeps import page_dep
-from ._render_datagrid import data_grid
 
 if TYPE_CHECKING:
     import pandas as pd
@@ -67,7 +66,7 @@ def tabset(
     ~htmltools.Tag
     """
 
-    return Tag("shiny-tabset", *args, _add_ws=_add_ws, **kwargs)
+    return Tag("shiny-tabset", page_dep(), *args, _add_ws=_add_ws, **kwargs)
 
 
 def tab(
@@ -96,7 +95,7 @@ def tab(
     ~htmltools.Tag
     """
 
-    return Tag("shiny-tab", *args, _add_ws=_add_ws, **kwargs)
+    return Tag("shiny-tab", page_dep(), *args, _add_ws=_add_ws, **kwargs)
 
 
 def sidebar(
@@ -124,7 +123,7 @@ def sidebar(
     --------
     ~htmltools.Tag
     """
-    return Tag("shiny-sidebar", *args, _add_ws=_add_ws, **kwargs)
+    return Tag("shiny-sidebar", page_dep(), *args, _add_ws=_add_ws, **kwargs)
 
 
 def simple_number_input(
@@ -154,13 +153,15 @@ def simple_number_input(
     ~htmltools.Tag
     """
 
-    return Tag("simple-number-input", id=id, *args, _add_ws=_add_ws, **kwargs)
+    return Tag(
+        "simple-number-input", page_dep(), id=id, *args, _add_ws=_add_ws, **kwargs
+    )
 
 
 def material_slider(
     id: str, *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
 ) -> Tag:
-    return Tag("material-slider", id=id, *args, _add_ws=_add_ws, **kwargs)
+    return Tag("material-slider", page_dep(), id=id, *args, _add_ws=_add_ws, **kwargs)
 
 
 def tanstack_table(
@@ -171,38 +172,13 @@ def tanstack_table(
 ) -> Tag:
     return Tag(
         "tanstack-table",
+        page_dep(),
         tags.script(
             data.to_json(orient="records"), type="application/json", class_="data"
         ),
         *args,
         _add_ws=_add_ws,
         **kwargs,
-    )
-
-
-def static_data_grid(
-    data: pd.DataFrame,
-    *args: TagChild | TagAttrs,
-    _add_ws: bool = True,
-    **kwargs: TagAttrValue,
-) -> Tag:
-    @data_grid
-    def data_fn() -> pd.DataFrame:
-        return data
-
-    return Tag(
-        "shiny-data-grid-output",
-        tags.script(json.dumps(data_fn()), type="application/json", class_="data"),
-        page_dep(),
-    )
-
-
-def output_data_grid(id: str) -> Tag:
-    # TODO: add resolve_id
-    return Tag(
-        "shiny-data-grid-output",
-        page_dep(),
-        id=id,
     )
 
 

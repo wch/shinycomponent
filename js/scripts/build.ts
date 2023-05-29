@@ -4,11 +4,11 @@ import { sassPlugin } from "esbuild-sass-plugin";
 async function bundle() {
   try {
     const options = {
-      entryPoints: ["src/components.ts"],
+      entryPoints: ["src/components.ts", "src/datagrid/index.tsx"],
       bundle: true,
       outdir: "out/",
       // minify: true, // Minify the output
-      sourcemap: true, // Generate sourcemap for debugging
+      sourcemap: true,
       plugins: [sassPlugin({ type: "css-text" })],
     };
 

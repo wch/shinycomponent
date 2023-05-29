@@ -3,17 +3,18 @@ from __future__ import annotations
 from pathlib import PurePath
 
 from htmltools import HTMLDependency
-from shiny import __version__ as shiny_package_version
+
+from . import __version__
 
 ex_www_path = PurePath(__file__).parent / "www"
 
 
 def page_dep() -> HTMLDependency:
     return HTMLDependency(
-        name="lit-elements",
-        version=shiny_package_version,
+        name="shinycomponent",
+        version=__version__,
         source={
-            "package": "shiny",
+            "package": "shinycomponent",
             "subdir": str(ex_www_path),
         },
         stylesheet=[{"href": "open-props.min.css"}, {"href": "components.css"}],
