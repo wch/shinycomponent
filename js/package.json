@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/node": "^20.2.5",
     "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.2.4",
     "@types/rstudio-shiny": "https://github.com/rstudio/shiny#v1.7.4",

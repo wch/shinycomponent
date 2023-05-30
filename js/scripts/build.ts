@@ -1,6 +1,6 @@
 import { build } from "esbuild";
 import { sassPlugin } from "esbuild-sass-plugin";
-import fs from "node:fs";
+import * as fs from "node:fs";
 
 async function bundle() {
   try {
