@@ -1,2 +1,2 @@
-js/out/*.js binary
-js/out/*.js.map binary
+js/out/**/*.js binary
+js/out/**/*.js.map binary
