@@ -80,8 +80,8 @@ ui <- page(
       div(
         style = "max-width: 400px; margin-top: 15px;",
         h4("Sliders"),
-        material_slider(id="slider1", value=11, min=1, max=20, withLabel=""),
-        material_slider(
+        m3_slider(id="slider1", value=11, min=1, max=20, withLabel=""),
+        m3_slider(
           id="slider2",
           value=5,
           min=1,
@@ -90,7 +90,7 @@ ui <- page(
           withTickMarks="",
           withLabel=""
         ),
-        material_slider(
+        m3_slider(
           id="slider3",
           valueStart=8,
           valueEnd=12,

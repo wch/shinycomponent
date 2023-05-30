@@ -158,12 +158,6 @@ def simple_number_input(
     )
 
 
-def material_slider(
-    id: str, *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> Tag:
-    return Tag("material-slider", page_dep(), id=id, *args, _add_ws=_add_ws, **kwargs)
-
-
 def tanstack_table(
     data: pd.DataFrame,
     *args: TagChild | TagAttrs,

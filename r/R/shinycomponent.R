@@ -119,14 +119,6 @@ tanstack_table <- function(data, ...) {
   )
 }
 
-#' @export
-material_slider <- function(id, ...) {
-  tagList(
-    component_dep(),
-    tag("material-slider", list(id = id, ...))
-  )
-}
-
 
 convert_to_escaped_json <- function(x) {
   res <- toJSON(x, null = "null", auto_unbox = TRUE)

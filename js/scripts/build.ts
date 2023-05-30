@@ -5,7 +5,11 @@ import * as fs from "node:fs";
 async function bundle() {
   try {
     const options = {
-      entryPoints: ["src/components.ts", "src/datagrid/index.tsx"],
+      entryPoints: [
+        "src/components.ts",
+        "src/datagrid/index.tsx",
+        "src/m3/index.ts",
+      ],
       bundle: true,
       outdir: "out/",
       minify: true,

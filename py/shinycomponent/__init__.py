@@ -2,7 +2,6 @@ __version__ = "0.0.1"
 
 from ._components import (
     greeting_card,
-    material_slider,
     sidebar,
     simple_number_input,
     tab,
@@ -10,12 +9,12 @@ from ._components import (
     tanstack_table,
 )
 from ._datagrid import output_data_grid, static_data_grid
+from ._m3 import m3_slider
 from ._page import page
 from ._render_datagrid import data_grid
 
 __all__ = (
     "greeting_card",
-    "material_slider",
     "sidebar",
     "simple_number_input",
     "tab",
@@ -24,5 +23,6 @@ __all__ = (
     "page",
     "output_data_grid",
     "static_data_grid",
+    "m3_slider",
     "data_grid",
 )
