@@ -14,7 +14,9 @@ async function bundle() {
       outdir: "out/",
       minify: true,
       sourcemap: true,
-      plugins: [sassPlugin({ type: "css-text" })],
+      plugins: [
+        sassPlugin({ filter: /src\/datagrid\/.*scss$/, type: "css-text" }),
+      ],
       metafile: true,
     };
 
