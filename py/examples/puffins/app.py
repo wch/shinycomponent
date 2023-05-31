@@ -125,8 +125,8 @@ app_ui = sc.page(
         sc.tab(
             sc.grid(
                 sc.grid_item(
-                    Tag("star-rating", id="foo"),
-                    Tag("star-rating", id="foo1"),
+                    # Tag("star-rating", id="foo"),
+                    sc.simple_number_input(id="num_in", min=0, max=100),
                 ),
                 ui.output_text_verbatim("txt"),
                 ui.output_ui("value_boxes", container=tall_item),
@@ -320,7 +320,7 @@ app_ui = sc.page(
         ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
         ui.tags.div("Puffins are cool", {"slot": "header"}),
-        selected_tab_index=1,
+        selected_tab_index=2,
     ),
 )
 
