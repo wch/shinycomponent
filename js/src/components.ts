@@ -15,6 +15,8 @@ import { Tabset } from "./tabset";
 import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
 
+import "./design-tokens.css";
+
 // Prevent esbuild from tree-shaking these components away.
 Collapsible;
 ColorPicker;

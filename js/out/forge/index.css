@@ -1,59 +1,8 @@
-:where(html) {
-  /* Background colors */
-  --color-bg: var(--gray-1);
-  --color-bg-1: var(--gray-2);
-  --color-bg-2: var(--gray-3);
-
-  /* Border colors */
-  --color-border: var(--gray-3);
-  --color-border-1: var(--gray-4);
-  --color-border-2: var(--gray-5);
-
-  /* Text colors */
-  --color-text: var(--gray-9);
-  --color-text-1: var(--gray-8);
-  --color-text-2: var(--gray-7);
-
-  /* Accent colors */
-  --color-primary: var(--orange-7);
-  --color-action: var(--color-primary);
-  --color-error: var(--red-7);
-
-  /* Font Sizes */
-  --font-heading-1: var(--font-size-8);
-  --font-heading-2: var(--font-size-6);
-  --font-heading-3: var(--font-size-5);
-  --font-heading-4: var(--font-size-4);
-  --font-body: var(--font-size-2);
-  --font-small: var(--font-size-1);
-  --font-x-small: var(--font-size-0);
-
-  --shadow-small: var(--shadow-2);
-  --shadow-medium: var(--shadow-4);
-  --shadow-large: var(--shadow-6);
-
-  --border-small: var(--border-size-2);
-  --border-medium: var(--border-size-3);
-  --border-large: var(--border-size-4);
-
-  --radius-small: var(--radius-2);
-  --radius-medium: var(--radius-3);
-  --radius-large: var(--radius-4);
-
-  --space-x-small: var(--size-1);
-  --space-small: var(--size-fluid-1);
-  --space-medium: var(--size-fluid-2);
-  --space-large: var(--size-fluid-4);
-  --space-x-large: var(--size-fluid-5);
-  --space-xx-large: var(--size-fluid-7);
-
+/* node_modules/@shoelace-style/shoelace/dist/themes/light.css */
+:root,
+:host,
+.sl-theme-light {
   color-scheme: light;
-
-  /*
-   * Color Primitives
-   */
-
-  /* Gray */
   --sl-color-gray-50: hsl(0 0% 97.5%);
   --sl-color-gray-100: hsl(240 4.8% 95.9%);
   --sl-color-gray-200: hsl(240 5.9% 90%);
@@ -65,8 +14,6 @@
   --sl-color-gray-800: hsl(240 3.7% 15.9%);
   --sl-color-gray-900: hsl(240 5.9% 10%);
   --sl-color-gray-950: hsl(240 7.3% 8%);
-
-  /* Red */
   --sl-color-red-50: hsl(0 85.7% 97.3%);
   --sl-color-red-100: hsl(0 93.3% 94.1%);
   --sl-color-red-200: hsl(0 96.3% 89.4%);
@@ -78,8 +25,6 @@
   --sl-color-red-800: hsl(0 70% 35.3%);
   --sl-color-red-900: hsl(0 62.8% 30.6%);
   --sl-color-red-950: hsl(0 60% 19.6%);
-
-  /* Orange */
   --sl-color-orange-50: hsl(33.3 100% 96.5%);
   --sl-color-orange-100: hsl(34.3 100% 91.8%);
   --sl-color-orange-200: hsl(32.1 97.7% 83.1%);
@@ -91,8 +36,6 @@
   --sl-color-orange-800: hsl(15 79.1% 33.7%);
   --sl-color-orange-900: hsl(15.3 74.6% 27.8%);
   --sl-color-orange-950: hsl(15.2 69.1% 19%);
-
-  /* Amber */
   --sl-color-amber-50: hsl(48 100% 96.1%);
   --sl-color-amber-100: hsl(48 96.5% 88.8%);
   --sl-color-amber-200: hsl(48 96.6% 76.7%);
@@ -104,8 +47,6 @@
   --sl-color-amber-800: hsl(22.7 82.5% 31.4%);
   --sl-color-amber-900: hsl(21.7 77.8% 26.5%);
   --sl-color-amber-950: hsl(22.9 74.1% 16.7%);
-
-  /* Yellow */
   --sl-color-yellow-50: hsl(54.5 91.7% 95.3%);
   --sl-color-yellow-100: hsl(54.9 96.7% 88%);
   --sl-color-yellow-200: hsl(52.8 98.3% 76.9%);
@@ -117,8 +58,6 @@
   --sl-color-yellow-800: hsl(31.8 81% 28.8%);
   --sl-color-yellow-900: hsl(28.4 72.5% 25.7%);
   --sl-color-yellow-950: hsl(33.1 69% 13.9%);
-
-  /* Lime */
   --sl-color-lime-50: hsl(78.3 92% 95.1%);
   --sl-color-lime-100: hsl(79.6 89.1% 89.2%);
   --sl-color-lime-200: hsl(80.9 88.5% 79.6%);
@@ -130,8 +69,6 @@
   --sl-color-lime-800: hsl(86.3 69% 22.7%);
   --sl-color-lime-900: hsl(87.6 61.2% 20.2%);
   --sl-color-lime-950: hsl(86.5 60.6% 13.9%);
-
-  /* Green */
   --sl-color-green-50: hsl(138.5 76.5% 96.7%);
   --sl-color-green-100: hsl(140.6 84.2% 92.5%);
   --sl-color-green-200: hsl(141 78.9% 85.1%);
@@ -143,8 +80,6 @@
   --sl-color-green-800: hsl(142.8 64.2% 24.1%);
   --sl-color-green-900: hsl(143.8 61.2% 20.2%);
   --sl-color-green-950: hsl(144.3 60.7% 12%);
-
-  /* Emerald */
   --sl-color-emerald-50: hsl(151.8 81% 95.9%);
   --sl-color-emerald-100: hsl(149.3 80.4% 90%);
   --sl-color-emerald-200: hsl(152.4 76% 80.4%);
@@ -156,8 +91,6 @@
   --sl-color-emerald-800: hsl(163.1 88.1% 19.8%);
   --sl-color-emerald-900: hsl(164.2 85.7% 16.5%);
   --sl-color-emerald-950: hsl(164.3 87.5% 9.4%);
-
-  /* Teal */
   --sl-color-teal-50: hsl(166.2 76.5% 96.7%);
   --sl-color-teal-100: hsl(167.2 85.5% 89.2%);
   --sl-color-teal-200: hsl(168.4 83.8% 78.2%);
@@ -169,8 +102,6 @@
   --sl-color-teal-800: hsl(176.1 69.4% 21.8%);
   --sl-color-teal-900: hsl(175.9 60.8% 19%);
   --sl-color-teal-950: hsl(176.5 58.6% 11.4%);
-
-  /* Cyan */
   --sl-color-cyan-50: hsl(183.2 100% 96.3%);
   --sl-color-cyan-100: hsl(185.1 95.9% 90.4%);
   --sl-color-cyan-200: hsl(186.2 93.5% 81.8%);
@@ -182,8 +113,6 @@
   --sl-color-cyan-800: hsl(194.4 69.6% 27.1%);
   --sl-color-cyan-900: hsl(196.4 63.6% 23.7%);
   --sl-color-cyan-950: hsl(196.8 61% 16.1%);
-
-  /* Sky */
   --sl-color-sky-50: hsl(204 100% 97.1%);
   --sl-color-sky-100: hsl(204 93.8% 93.7%);
   --sl-color-sky-200: hsl(200.6 94.4% 86.1%);
@@ -195,8 +124,6 @@
   --sl-color-sky-800: hsl(201 90% 27.5%);
   --sl-color-sky-900: hsl(202 80.3% 23.9%);
   --sl-color-sky-950: hsl(202.3 73.8% 16.5%);
-
-  /* Blue */
   --sl-color-blue-50: hsl(213.8 100% 96.9%);
   --sl-color-blue-100: hsl(214.3 94.6% 92.7%);
   --sl-color-blue-200: hsl(213.3 96.9% 87.3%);
@@ -208,8 +135,6 @@
   --sl-color-blue-800: hsl(225.9 70.7% 40.2%);
   --sl-color-blue-900: hsl(224.4 64.3% 32.9%);
   --sl-color-blue-950: hsl(226.2 55.3% 18.4%);
-
-  /* Indigo */
   --sl-color-indigo-50: hsl(225.9 100% 96.7%);
   --sl-color-indigo-100: hsl(226.5 100% 93.9%);
   --sl-color-indigo-200: hsl(228 96.5% 88.8%);
@@ -221,8 +146,6 @@
   --sl-color-indigo-800: hsl(243.7 54.5% 41.4%);
   --sl-color-indigo-900: hsl(242.2 47.4% 34.3%);
   --sl-color-indigo-950: hsl(243.5 43.6% 22.9%);
-
-  /* Violet */
   --sl-color-violet-50: hsl(250 100% 97.6%);
   --sl-color-violet-100: hsl(251.4 91.3% 95.5%);
   --sl-color-violet-200: hsl(250.5 95.2% 91.8%);
@@ -234,8 +157,6 @@
   --sl-color-violet-800: hsl(263.4 69.3% 42.2%);
   --sl-color-violet-900: hsl(263.5 67.4% 34.9%);
   --sl-color-violet-950: hsl(265.1 61.5% 21.4%);
-
-  /* Purple */
   --sl-color-purple-50: hsl(270 100% 98%);
   --sl-color-purple-100: hsl(268.7 100% 95.5%);
   --sl-color-purple-200: hsl(268.6 100% 91.8%);
@@ -247,8 +168,6 @@
   --sl-color-purple-800: hsl(272.9 67.2% 39.4%);
   --sl-color-purple-900: hsl(273.6 65.6% 32%);
   --sl-color-purple-950: hsl(276 59.5% 16.5%);
-
-  /* Fuchsia */
   --sl-color-fuchsia-50: hsl(289.1 100% 97.8%);
   --sl-color-fuchsia-100: hsl(287 100% 95.5%);
   --sl-color-fuchsia-200: hsl(288.3 95.8% 90.6%);
@@ -260,8 +179,6 @@
   --sl-color-fuchsia-800: hsl(295.4 70.2% 32.9%);
   --sl-color-fuchsia-900: hsl(296.7 63.6% 28%);
   --sl-color-fuchsia-950: hsl(297.1 56.8% 14.5%);
-
-  /* Pink */
   --sl-color-pink-50: hsl(327.3 73.3% 97.1%);
   --sl-color-pink-100: hsl(325.7 77.8% 94.7%);
   --sl-color-pink-200: hsl(325.9 84.6% 89.8%);
@@ -273,8 +190,6 @@
   --sl-color-pink-800: hsl(335.8 74.4% 35.3%);
   --sl-color-pink-900: hsl(335.9 69% 30.4%);
   --sl-color-pink-950: hsl(336.2 65.4% 15.9%);
-
-  /* Rose */
   --sl-color-rose-50: hsl(355.7 100% 97.3%);
   --sl-color-rose-100: hsl(355.6 100% 94.7%);
   --sl-color-rose-200: hsl(352.7 96.1% 90%);
@@ -286,12 +201,6 @@
   --sl-color-rose-800: hsl(343.4 79.7% 34.7%);
   --sl-color-rose-900: hsl(341.5 75.5% 30.4%);
   --sl-color-rose-950: hsl(341.3 70.1% 17.1%);
-
-  /*
-   * Theme Tokens
-   */
-
-  /* Primary */
   --sl-color-primary-50: var(--sl-color-sky-50);
   --sl-color-primary-100: var(--sl-color-sky-100);
   --sl-color-primary-200: var(--sl-color-sky-200);
@@ -303,8 +212,6 @@
   --sl-color-primary-800: var(--sl-color-sky-800);
   --sl-color-primary-900: var(--sl-color-sky-900);
   --sl-color-primary-950: var(--sl-color-sky-950);
-
-  /* Success */
   --sl-color-success-50: var(--sl-color-green-50);
   --sl-color-success-100: var(--sl-color-green-100);
   --sl-color-success-200: var(--sl-color-green-200);
@@ -316,8 +223,6 @@
   --sl-color-success-800: var(--sl-color-green-800);
   --sl-color-success-900: var(--sl-color-green-900);
   --sl-color-success-950: var(--sl-color-green-950);
-
-  /* Warning */
   --sl-color-warning-50: var(--sl-color-amber-50);
   --sl-color-warning-100: var(--sl-color-amber-100);
   --sl-color-warning-200: var(--sl-color-amber-200);
@@ -329,8 +234,6 @@
   --sl-color-warning-800: var(--sl-color-amber-800);
   --sl-color-warning-900: var(--sl-color-amber-900);
   --sl-color-warning-950: var(--sl-color-amber-950);
-
-  /* Danger */
   --sl-color-danger-50: var(--sl-color-red-50);
   --sl-color-danger-100: var(--sl-color-red-100);
   --sl-color-danger-200: var(--sl-color-red-200);
@@ -342,8 +245,6 @@
   --sl-color-danger-800: var(--sl-color-red-800);
   --sl-color-danger-900: var(--sl-color-red-900);
   --sl-color-danger-950: var(--sl-color-red-950);
-
-  /* Neutral */
   --sl-color-neutral-50: var(--sl-color-gray-50);
   --sl-color-neutral-100: var(--sl-color-gray-100);
   --sl-color-neutral-200: var(--sl-color-gray-200);
@@ -355,122 +256,89 @@
   --sl-color-neutral-800: var(--sl-color-gray-800);
   --sl-color-neutral-900: var(--sl-color-gray-900);
   --sl-color-neutral-950: var(--sl-color-gray-950);
-
-  /* Neutral one-offs */
   --sl-color-neutral-0: hsl(0, 0%, 100%);
   --sl-color-neutral-1000: hsl(0, 0%, 0%);
-
-  /*
-   * Border radii
-   */
-
-  --sl-border-radius-small: 0.1875rem; /* 3px */
-  --sl-border-radius-medium: 0.25rem; /* 4px */
-  --sl-border-radius-large: 0.5rem; /* 8px */
-  --sl-border-radius-x-large: 1rem; /* 16px */
-
+  --sl-border-radius-small: 0.1875rem;
+  --sl-border-radius-medium: 0.25rem;
+  --sl-border-radius-large: 0.5rem;
+  --sl-border-radius-x-large: 1rem;
   --sl-border-radius-circle: 50%;
   --sl-border-radius-pill: 9999px;
-
-  /*
-   * Elevations
-   */
-
   --sl-shadow-x-small: 0 1px 2px hsl(240 3.8% 46.1% / 6%);
   --sl-shadow-small: 0 1px 2px hsl(240 3.8% 46.1% / 12%);
   --sl-shadow-medium: 0 2px 4px hsl(240 3.8% 46.1% / 12%);
   --sl-shadow-large: 0 2px 8px hsl(240 3.8% 46.1% / 12%);
   --sl-shadow-x-large: 0 4px 16px hsl(240 3.8% 46.1% / 12%);
-
-  /*
-   * Spacings
-   */
-
-  --sl-spacing-3x-small: 0.125rem; /* 2px */
-  --sl-spacing-2x-small: 0.25rem; /* 4px */
-  --sl-spacing-x-small: 0.5rem; /* 8px */
-  --sl-spacing-small: 0.75rem; /* 12px */
-  --sl-spacing-medium: 1rem; /* 16px */
-  --sl-spacing-large: 1.25rem; /* 20px */
-  --sl-spacing-x-large: 1.75rem; /* 28px */
-  --sl-spacing-2x-large: 2.25rem; /* 36px */
-  --sl-spacing-3x-large: 3rem; /* 48px */
-  --sl-spacing-4x-large: 4.5rem; /* 72px */
-
-  /*
-   * Transitions
-   */
-
+  --sl-spacing-3x-small: 0.125rem;
+  --sl-spacing-2x-small: 0.25rem;
+  --sl-spacing-x-small: 0.5rem;
+  --sl-spacing-small: 0.75rem;
+  --sl-spacing-medium: 1rem;
+  --sl-spacing-large: 1.25rem;
+  --sl-spacing-x-large: 1.75rem;
+  --sl-spacing-2x-large: 2.25rem;
+  --sl-spacing-3x-large: 3rem;
+  --sl-spacing-4x-large: 4.5rem;
   --sl-transition-x-slow: 1000ms;
   --sl-transition-slow: 500ms;
   --sl-transition-medium: 250ms;
   --sl-transition-fast: 150ms;
   --sl-transition-x-fast: 50ms;
-
-  /*
-   * Typography
-   */
-
-  /* Fonts */
-  --sl-font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-  --sl-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  --sl-font-mono:
+    SFMono-Regular,
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+  --sl-font-sans:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
     "Segoe UI Symbol";
-  --sl-font-serif: Georgia, "Times New Roman", serif;
-
-  /* Font sizes */
-  --sl-font-size-2x-small: 0.625rem; /* 10px */
-  --sl-font-size-x-small: 0.75rem; /* 12px */
-  --sl-font-size-small: 0.875rem; /* 14px */
-  --sl-font-size-medium: 1rem; /* 16px */
-  --sl-font-size-large: 1.25rem; /* 20px */
-  --sl-font-size-x-large: 1.5rem; /* 24px */
-  --sl-font-size-2x-large: 2.25rem; /* 36px */
-  --sl-font-size-3x-large: 3rem; /* 48px */
-  --sl-font-size-4x-large: 4.5rem; /* 72px */
-
-  /* Font weights */
+  --sl-font-serif:
+    Georgia,
+    "Times New Roman",
+    serif;
+  --sl-font-size-2x-small: 0.625rem;
+  --sl-font-size-x-small: 0.75rem;
+  --sl-font-size-small: 0.875rem;
+  --sl-font-size-medium: 1rem;
+  --sl-font-size-large: 1.25rem;
+  --sl-font-size-x-large: 1.5rem;
+  --sl-font-size-2x-large: 2.25rem;
+  --sl-font-size-3x-large: 3rem;
+  --sl-font-size-4x-large: 4.5rem;
   --sl-font-weight-light: 300;
   --sl-font-weight-normal: 400;
   --sl-font-weight-semibold: 500;
   --sl-font-weight-bold: 700;
-
-  /* Letter spacings */
   --sl-letter-spacing-denser: -0.03em;
   --sl-letter-spacing-dense: -0.015em;
   --sl-letter-spacing-normal: normal;
   --sl-letter-spacing-loose: 0.075em;
   --sl-letter-spacing-looser: 0.15em;
-
-  /* Line heights */
   --sl-line-height-denser: 1;
   --sl-line-height-dense: 1.4;
   --sl-line-height-normal: 1.8;
   --sl-line-height-loose: 2.2;
   --sl-line-height-looser: 2.6;
-
-  /* Focus rings */
   --sl-focus-ring-color: var(--sl-color-primary-600);
   --sl-focus-ring-style: solid;
   --sl-focus-ring-width: 3px;
-  --sl-focus-ring: var(--sl-focus-ring-style) var(--sl-focus-ring-width)
-    var(--sl-focus-ring-color);
+  --sl-focus-ring: var(--sl-focus-ring-style) var(--sl-focus-ring-width) var(--sl-focus-ring-color);
   --sl-focus-ring-offset: 1px;
-
-  /*
-   * Forms
-   */
-
-  /* Buttons */
   --sl-button-font-size-small: var(--sl-font-size-x-small);
   --sl-button-font-size-medium: var(--sl-font-size-small);
   --sl-button-font-size-large: var(--sl-font-size-medium);
-
-  /* Inputs */
-  --sl-input-height-small: 1.875rem; /* 30px */
-  --sl-input-height-medium: 2.5rem; /* 40px */
-  --sl-input-height-large: 3.125rem; /* 50px */
-
+  --sl-input-height-small: 1.875rem;
+  --sl-input-height-medium: 2.5rem;
+  --sl-input-height-large: 3.125rem;
   --sl-input-background-color: var(--sl-color-neutral-0);
   --sl-input-background-color-hover: var(--sl-input-background-color);
   --sl-input-background-color-focus: var(--sl-input-background-color);
@@ -483,18 +351,15 @@
   --sl-input-required-content: "*";
   --sl-input-required-content-offset: -2px;
   --sl-input-required-content-color: var(--sl-input-label-color);
-
   --sl-input-border-radius-small: var(--sl-border-radius-medium);
   --sl-input-border-radius-medium: var(--sl-border-radius-medium);
   --sl-input-border-radius-large: var(--sl-border-radius-medium);
-
   --sl-input-font-family: var(--sl-font-sans);
   --sl-input-font-weight: var(--sl-font-weight-normal);
   --sl-input-font-size-small: var(--sl-font-size-small);
   --sl-input-font-size-medium: var(--sl-font-size-medium);
   --sl-input-font-size-large: var(--sl-font-size-large);
   --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
-
   --sl-input-color: var(--sl-color-neutral-700);
   --sl-input-color-hover: var(--sl-color-neutral-700);
   --sl-input-color-focus: var(--sl-color-neutral-700);
@@ -507,10 +372,8 @@
   --sl-input-spacing-small: var(--sl-spacing-small);
   --sl-input-spacing-medium: var(--sl-spacing-medium);
   --sl-input-spacing-large: var(--sl-spacing-large);
-
   --sl-input-focus-ring-color: hsl(198.6 88.7% 48.4% / 40%);
   --sl-input-focus-ring-offset: 0;
-
   --sl-input-filled-background-color: var(--sl-color-neutral-100);
   --sl-input-filled-background-color-hover: var(--sl-color-neutral-100);
   --sl-input-filled-background-color-focus: var(--sl-color-neutral-100);
@@ -519,42 +382,21 @@
   --sl-input-filled-color-hover: var(--sl-color-neutral-800);
   --sl-input-filled-color-focus: var(--sl-color-neutral-700);
   --sl-input-filled-color-disabled: var(--sl-color-neutral-800);
-
-  /* Labels */
   --sl-input-label-font-size-small: var(--sl-font-size-small);
   --sl-input-label-font-size-medium: var(--sl-font-size-medium);
   --sl-input-label-font-size-large: var(--sl-font-size-large);
   --sl-input-label-color: inherit;
-
-  /* Help text */
   --sl-input-help-text-font-size-small: var(--sl-font-size-x-small);
   --sl-input-help-text-font-size-medium: var(--sl-font-size-small);
   --sl-input-help-text-font-size-large: var(--sl-font-size-medium);
   --sl-input-help-text-color: var(--sl-color-neutral-500);
-
-  /* Toggles (checkboxes, radios, switches) */
-  --sl-toggle-size-small: 0.875rem; /* 14px */
-  --sl-toggle-size-medium: 1.125rem; /* 18px */
-  --sl-toggle-size-large: 1.375rem; /* 22px */
-
-  /*
-   * Overlays
-   */
-
+  --sl-toggle-size-small: 0.875rem;
+  --sl-toggle-size-medium: 1.125rem;
+  --sl-toggle-size-large: 1.375rem;
   --sl-overlay-background-color: hsl(240 3.8% 46.1% / 33%);
-
-  /*
-   * Panels
-   */
-
   --sl-panel-background-color: var(--sl-color-neutral-0);
   --sl-panel-border-color: var(--sl-color-neutral-200);
   --sl-panel-border-width: 1px;
-
-  /*
-   * Tooltips
-   */
-
   --sl-tooltip-border-radius: var(--sl-border-radius-medium);
   --sl-tooltip-background-color: var(--sl-color-neutral-800);
   --sl-tooltip-color: var(--sl-color-neutral-0);
@@ -564,14 +406,30 @@
   --sl-tooltip-line-height: var(--sl-line-height-dense);
   --sl-tooltip-padding: var(--sl-spacing-2x-small) var(--sl-spacing-x-small);
   --sl-tooltip-arrow-size: 6px;
-
-  /*
-   * Z-indexes
-   */
-
   --sl-z-index-drawer: 700;
   --sl-z-index-dialog: 800;
   --sl-z-index-dropdown: 900;
   --sl-z-index-toast: 950;
   --sl-z-index-tooltip: 1000;
 }
+.sl-scroll-lock {
+  padding-right: var(--sl-scroll-lock-size) !important;
+  overflow: hidden !important;
+}
+.sl-toast-stack {
+  position: fixed;
+  top: 0;
+  inset-inline-end: 0;
+  z-index: var(--sl-z-index-toast);
+  width: 28rem;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+.sl-toast-stack sl-alert {
+  margin: var(--sl-spacing-medium);
+}
+.sl-toast-stack sl-alert::part(base) {
+  box-shadow: var(--sl-shadow-large);
+}
+/*# sourceMappingURL=index.css.map */

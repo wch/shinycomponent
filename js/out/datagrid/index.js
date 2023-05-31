@@ -1,4 +1,7 @@
-"use strict";(()=>{var ot=`
+"use strict";
+(() => {
+  // src/datagrid/styles.scss
+  var styles_default = `
 :root,
 :host {
   --shiny-datagrid-font-size: 0.9em;
@@ -106,13 +109,4831 @@
 .shiny-data-grid.shiny-data-grid-grid.scrolling > table > tbody > tr > td:last-child {
   border-right-style: none;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL1VzZXJzL25pY2hvbGFzc3RyYXllci9kZXYvc2hpbnljb21wb25lbnQvanMvc3JjL2RhdGFncmlkIiwic291cmNlcyI6WyJzdHlsZXMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtBQUFBO0VBRUU7RUFDQTtFQUVBO0VBQ0E7RUFDQTtFQUVBO0VBQ0E7RUFFQTtFQUVBO0FBQUE7QUFBQTtFQUdBO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUlBO0VBQ0U7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBQ0E7RUFDRTs7O0FBUUo7RUFDRTs7O0FBS047QUFBQTtBQUFBO0FBQUE7QUFBQTtBQU9FO0VBQ0U7O0FBRUE7RUFDRTtFQUNBOztBQUlBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0FBQUE7QUFBQTtFQUdBO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBTVI7QUFHRTtFQUNFOztBQUlJO0VBQ0U7O0FBR0Y7RUFDRTtFQUVBO0VBQ0E7O0FBRUE7RUFDRTs7QUFNUjtFQUNFO0VBRUE7RUFDQTs7QUFFQTtFQUNFOztBQUtOO0VBQ0U7O0FBR0E7RUFDRTs7QUFFRjtFQUNFOztBQUVGO0FBQUE7RUFFRTs7QUFFRjtBQUFBO0VBRUUiLCJzb3VyY2VzQ29udGVudCI6WyI6cm9vdCxcbjpob3N0IHtcbiAgLS1zaGlueS1kYXRhZ3JpZC1mb250LXNpemU6IDAuOWVtO1xuICAtLXNoaW55LWRhdGFncmlkLXBhZGRpbmc6IDAuM2VtIDAuNWVtO1xuXG4gIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItYmdjb2xvcjogI2VlZTtcbiAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1ncmlkbGluZXMtY29sb3I6ICNjY2M7XG4gIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItZ3JpZGxpbmVzLXN0eWxlOiBzb2xpZDtcblxuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLWNvbG9yOiAjY2NjO1xuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlOiBzb2xpZDtcblxuICAtLXNoaW55LWRhdGFncmlkLXRhYmxlLWhlYWRlci1ib3R0b20tYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG5cbiAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWJvZHktaG92ZXItYmdjb2xvcjogdmFyKFxuICAgIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItYmdjb2xvclxuICApO1xuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtYm9keS1zZWxlY3RlZC1iZ2NvbG9yOiB2YXIoLS1icy1wcmltYXJ5KTtcbiAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWJvZHktc2VsZWN0ZWQtY29sb3I6IHZhcigtLWJzLWxpZ2h0KTtcbn1cblxuLnNoaW55LWRhdGEtZ3JpZCBzdmcuc29ydC1hcnJvdyB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgd2lkdGg6IDAuODVlbTtcbiAgaGVpZ2h0OiAwLjg1ZW07XG4gIG1hcmdpbi1ib3R0b206IDAuMTVlbTtcbn1cblxuLnNoaW55LWRhdGEtZ3JpZCB7XG4gID4gdGFibGUge1xuICAgIGJvcmRlci1jb2xsYXBzZTogc2VwYXJhdGU7XG4gICAgYm9yZGVyLXNwYWNpbmc6IDA7XG5cbiAgICA+IHRoZWFkIHtcbiAgICAgIHBvc2l0aW9uOiBzdGlja3k7XG4gICAgICB0b3A6IDA7XG4gICAgICA+IHRoIHtcbiAgICAgICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cblxuLnNoaW55LWRhdGEtZ3JpZC5zaGlueS1kYXRhLWdyaWQtdGFibGUge1xuICA+IHRhYmxlIHtcbiAgICA+IHRoZWFkID4gdHI6bGFzdC1jaGlsZCA+IHRoIHtcbiAgICAgIGJvcmRlci1ib3R0b206IHZhcigtLXNoaW55LWRhdGFncmlkLXRhYmxlLWhlYWRlci1ib3R0b20tYm9yZGVyKTtcbiAgICB9XG4gIH1cbn1cblxuLypcbiAqXG4gKiAjIEdSSUQgU1RZTEVTXG4gKlxuICovXG5cbi5zaGlueS1kYXRhLWdyaWQuc2hpbnktZGF0YS1ncmlkLWdyaWQge1xuICA+IHRhYmxlIHtcbiAgICBmb250LXNpemU6IHZhcigtLXNoaW55LWRhdGFncmlkLWZvbnQtc2l6ZSk7XG5cbiAgICA+IHRoZWFkID4gdHIgPiB0aCB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1iZ2NvbG9yKTtcbiAgICAgIHBhZGRpbmc6IHZhcigtLXNoaW55LWRhdGFncmlkLXBhZGRpbmcpO1xuICAgIH1cblxuICAgID4gdGJvZHkgPiB0ciB7XG4gICAgICAmOmhvdmVyIHtcbiAgICAgICAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWdyaWRsaW5lcy1jb2xvcjogaW5oZXJpdDtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LWhvdmVyLWJnY29sb3IpO1xuICAgICAgfVxuXG4gICAgICAmLnNlbGVjdGVkIHtcbiAgICAgICAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWdyaWRsaW5lcy1jb2xvcjogdmFyKFxuICAgICAgICAgIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LXNlbGVjdGVkLWJnY29sb3JcbiAgICAgICAgKTtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LXNlbGVjdGVkLWJnY29sb3IpO1xuICAgICAgICBjb2xvcjogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LXNlbGVjdGVkLWNvbG9yKTtcbiAgICAgIH1cblxuICAgICAgPiB0ZCB7XG4gICAgICAgIHBhZGRpbmc6IHZhcigtLXNoaW55LWRhdGFncmlkLXBhZGRpbmcpO1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG4vKiAjIyBHcmlkIGJvcmRlcnMgKi9cblxuLnNoaW55LWRhdGEtZ3JpZC5zaGlueS1kYXRhLWdyaWQtZ3JpZCB7XG4gID4gdGFibGUge1xuICAgIGJvcmRlci1jb2xsYXBzZTogc2VwYXJhdGU7XG5cbiAgICA+IHRoZWFkIHtcbiAgICAgID4gdHIge1xuICAgICAgICAmOmZpcnN0LWNoaWxkID4gdGgge1xuICAgICAgICAgIGJvcmRlci10b3Atc3R5bGU6IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlKTtcbiAgICAgICAgfVxuXG4gICAgICAgID4gdGgge1xuICAgICAgICAgIGJvcmRlcjogMXB4IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlKVxuICAgICAgICAgICAgdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItZ3JpZGxpbmVzLWNvbG9yKTtcbiAgICAgICAgICBib3JkZXItdG9wLXN0eWxlOiBub25lO1xuICAgICAgICAgIGJvcmRlci1sZWZ0LXN0eWxlOiBub25lO1xuXG4gICAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItbGVmdC1zdHlsZTogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGUpO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cblxuICAgID4gdGJvZHkgPiB0ciA+IHRkIHtcbiAgICAgIGJvcmRlcjogMXB4IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlKVxuICAgICAgICB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWdyaWRsaW5lcy1jb2xvcik7XG4gICAgICBib3JkZXItdG9wLXN0eWxlOiBub25lO1xuICAgICAgYm9yZGVyLWxlZnQtc3R5bGU6IG5vbmU7XG5cbiAgICAgICY6Zmlyc3QtY2hpbGQge1xuICAgICAgICBib3JkZXItbGVmdC1zdHlsZTogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGUpO1xuICAgICAgfVxuICAgIH1cbiAgfVxuXG4gICYuc2Nyb2xsaW5nIHtcbiAgICBib3JkZXI6IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlKVxuICAgICAgdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItZ3JpZGxpbmVzLWNvbG9yKTtcblxuICAgID4gdGFibGUgPiB0aGVhZCA+IHRyOmZpcnN0LWNoaWxkID4gdGgge1xuICAgICAgYm9yZGVyLXRvcC1zdHlsZTogbm9uZTtcbiAgICB9XG4gICAgPiB0YWJsZSA+IHRib2R5ID4gdHI6bGFzdC1jaGlsZCA+IHRkIHtcbiAgICAgIGJvcmRlci1ib3R0b20tc3R5bGU6IG5vbmU7XG4gICAgfVxuICAgID4gdGFibGUgPiB0aGVhZCA+IHRyID4gdGg6Zmlyc3QtY2hpbGQsXG4gICAgPiB0YWJsZSA+IHRib2R5ID4gdHIgPiB0ZDpmaXJzdC1jaGlsZCB7XG4gICAgICBib3JkZXItbGVmdC1zdHlsZTogbm9uZTtcbiAgICB9XG4gICAgPiB0YWJsZSA+IHRoZWFkID4gdHIgPiB0aDpsYXN0LWNoaWxkLFxuICAgID4gdGFibGUgPiB0Ym9keSA+IHRyID4gdGQ6bGFzdC1jaGlsZCB7XG4gICAgICBib3JkZXItcmlnaHQtc3R5bGU6IG5vbmU7XG4gICAgfVxuICB9XG59XG4iXX0= */`;var se,h,ut,On,J,rt,at,Ie,dt,fe={},gt=[],Dn=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i,me=Array.isArray;function P(e,n){for(var t in n)e[t]=n[t];return e}function ct(e){var n=e.parentNode;n&&n.removeChild(e)}function A(e,n,t){var o,r,i,l={};for(i in n)i=="key"?o=n[i]:i=="ref"?r=n[i]:l[i]=n[i];if(arguments.length>2&&(l.children=arguments.length>3?se.call(arguments,2):t),typeof e=="function"&&e.defaultProps!=null)for(i in e.defaultProps)l[i]===void 0&&(l[i]=e.defaultProps[i]);return ie(e,l,o,r,null)}function ie(e,n,t,o,r){var i={type:e,props:n,key:t,ref:o,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,__h:null,constructor:void 0,__v:r??++ut};return r==null&&h.vnode!=null&&h.vnode(i),i}function Fe(){return{current:null}}function N(e){return e.children}function V(e,n){this.props=e,this.context=n}function le(e,n){if(n==null)return e.__?le(e.__,e.__.__k.indexOf(e)+1):null;for(var t;n<e.__k.length;n++)if((t=e.__k[n])!=null&&t.__e!=null)return t.__e;return typeof e.type=="function"?le(e):null}function ft(e){var n,t;if((e=e.__)!=null&&e.__c!=null){for(e.__e=e.__c.base=null,n=0;n<e.__k.length;n++)if((t=e.__k[n])!=null&&t.__e!=null){e.__e=e.__c.base=t.__e;break}return ft(e)}}function xe(e){(!e.__d&&(e.__d=!0)&&J.push(e)&&!pe.__r++||rt!==h.debounceRendering)&&((rt=h.debounceRendering)||at)(pe)}function pe(){var e,n,t,o,r,i,l,u;for(J.sort(Ie);e=J.shift();)e.__d&&(n=J.length,o=void 0,r=void 0,l=(i=(t=e).__v).__e,(u=t.__P)&&(o=[],(r=P({},i)).__v=i.__v+1,Ee(u,i,r,t.__n,u.ownerSVGElement!==void 0,i.__h!=null?[l]:null,o,l??le(i),i.__h),vt(o,i),i.__e!=l&&ft(i)),J.length>n&&J.sort(Ie));pe.__r=0}function pt(e,n,t,o,r,i,l,u,a,d){var s,c,f,g,p,_,m,v=o&&o.__k||gt,b=v.length;for(t.__k=[],s=0;s<n.length;s++)if((g=t.__k[s]=(g=n[s])==null||typeof g=="boolean"||typeof g=="function"?null:typeof g=="string"||typeof g=="number"||typeof g=="bigint"?ie(null,g,null,null,g):me(g)?ie(N,{children:g},null,null,null):g.__b>0?ie(g.type,g.props,g.key,g.ref?g.ref:null,g.__v):g)!=null){if(g.__=t,g.__b=t.__b+1,(f=v[s])===null||f&&g.key==f.key&&g.type===f.type)v[s]=void 0;else for(c=0;c<b;c++){if((f=v[c])&&g.key==f.key&&g.type===f.type){v[c]=void 0;break}f=null}Ee(e,g,f=f||fe,r,i,l,u,a,d),p=g.__e,(c=g.ref)&&f.ref!=c&&(m||(m=[]),f.ref&&m.push(f.ref,null,g),m.push(c,g.__c||p,g)),p!=null?(_==null&&(_=p),typeof g.type=="function"&&g.__k===f.__k?g.__d=a=_t(g,a,e):a=mt(e,g,f,v,p,a),typeof t.type=="function"&&(t.__d=a)):a&&f.__e==a&&a.parentNode!=e&&(a=le(f))}for(t.__e=_,s=b;s--;)v[s]!=null&&(typeof t.type=="function"&&v[s].__e!=null&&v[s].__e==t.__d&&(t.__d=ht(o).nextSibling),bt(v[s],v[s]));if(m)for(s=0;s<m.length;s++)Ct(m[s],m[++s],m[++s])}function _t(e,n,t){for(var o,r=e.__k,i=0;r&&i<r.length;i++)(o=r[i])&&(o.__=e,n=typeof o.type=="function"?_t(o,n,t):mt(t,o,o,r,o.__e,n));return n}function L(e,n){return n=n||[],e==null||typeof e=="boolean"||(me(e)?e.some(function(t){L(t,n)}):n.push(e)),n}function mt(e,n,t,o,r,i){var l,u,a;if(n.__d!==void 0)l=n.__d,n.__d=void 0;else if(t==null||r!=i||r.parentNode==null)e:if(i==null||i.parentNode!==e)e.appendChild(r),l=null;else{for(u=i,a=0;(u=u.nextSibling)&&a<o.length;a+=1)if(u==r)break e;e.insertBefore(r,i),l=i}return l!==void 0?l:r.nextSibling}function ht(e){var n,t,o;if(e.type==null||typeof e.type=="string")return e.__e;if(e.__k){for(n=e.__k.length-1;n>=0;n--)if((t=e.__k[n])&&(o=ht(t)))return o}return null}function kn(e,n,t,o,r){var i;for(i in t)i==="children"||i==="key"||i in n||_e(e,i,null,t[i],o);for(i in n)r&&typeof n[i]!="function"||i==="children"||i==="key"||i==="value"||i==="checked"||t[i]===n[i]||_e(e,i,n[i],t[i],o)}function it(e,n,t){n[0]==="-"?e.setProperty(n,t??""):e[n]=t==null?"":typeof t!="number"||Dn.test(n)?t:t+"px"}function _e(e,n,t,o,r){var i;e:if(n==="style")if(typeof t=="string")e.style.cssText=t;else{if(typeof o=="string"&&(e.style.cssText=o=""),o)for(n in o)t&&n in t||it(e.style,n,"");if(t)for(n in t)o&&t[n]===o[n]||it(e.style,n,t[n])}else if(n[0]==="o"&&n[1]==="n")i=n!==(n=n.replace(/Capture$/,"")),n=n.toLowerCase()in e?n.toLowerCase().slice(2):n.slice(2),e.l||(e.l={}),e.l[n+i]=t,t?o||e.addEventListener(n,i?st:lt,i):e.removeEventListener(n,i?st:lt,i);else if(n!=="dangerouslySetInnerHTML"){if(r)n=n.replace(/xlink(H|:h)/,"h").replace(/sName$/,"s");else if(n!=="width"&&n!=="height"&&n!=="href"&&n!=="list"&&n!=="form"&&n!=="tabIndex"&&n!=="download"&&n!=="rowSpan"&&n!=="colSpan"&&n in e)try{e[n]=t??"";break e}catch{}typeof t=="function"||(t==null||t===!1&&n[4]!=="-"?e.removeAttribute(n):e.setAttribute(n,t))}}function lt(e){return this.l[e.type+!1](h.event?h.event(e):e)}function st(e){return this.l[e.type+!0](h.event?h.event(e):e)}function Ee(e,n,t,o,r,i,l,u,a){var d,s,c,f,g,p,_,m,v,b,w,R,F,k,H,x=n.type;if(n.constructor!==void 0)return null;t.__h!=null&&(a=t.__h,u=n.__e=t.__e,n.__h=null,i=[u]),(d=h.__b)&&d(n);try{e:if(typeof x=="function"){if(m=n.props,v=(d=x.contextType)&&o[d.__c],b=d?v?v.props.value:d.__:o,t.__c?_=(s=n.__c=t.__c).__=s.__E:("prototype"in x&&x.prototype.render?n.__c=s=new x(m,b):(n.__c=s=new V(m,b),s.constructor=x,s.render=Ln),v&&v.sub(s),s.props=m,s.state||(s.state={}),s.context=b,s.__n=o,c=s.__d=!0,s.__h=[],s._sb=[]),s.__s==null&&(s.__s=s.state),x.getDerivedStateFromProps!=null&&(s.__s==s.state&&(s.__s=P({},s.__s)),P(s.__s,x.getDerivedStateFromProps(m,s.__s))),f=s.props,g=s.state,s.__v=n,c)x.getDerivedStateFromProps==null&&s.componentWillMount!=null&&s.componentWillMount(),s.componentDidMount!=null&&s.__h.push(s.componentDidMount);else{if(x.getDerivedStateFromProps==null&&m!==f&&s.componentWillReceiveProps!=null&&s.componentWillReceiveProps(m,b),!s.__e&&s.shouldComponentUpdate!=null&&s.shouldComponentUpdate(m,s.__s,b)===!1||n.__v===t.__v){for(n.__v!==t.__v&&(s.props=m,s.state=s.__s,s.__d=!1),s.__e=!1,n.__e=t.__e,n.__k=t.__k,n.__k.forEach(function(K){K&&(K.__=n)}),w=0;w<s._sb.length;w++)s.__h.push(s._sb[w]);s._sb=[],s.__h.length&&l.push(s);break e}s.componentWillUpdate!=null&&s.componentWillUpdate(m,s.__s,b),s.componentDidUpdate!=null&&s.__h.push(function(){s.componentDidUpdate(f,g,p)})}if(s.context=b,s.props=m,s.__P=e,R=h.__r,F=0,"prototype"in x&&x.prototype.render){for(s.state=s.__s,s.__d=!1,R&&R(n),d=s.render(s.props,s.state,s.context),k=0;k<s._sb.length;k++)s.__h.push(s._sb[k]);s._sb=[]}else do s.__d=!1,R&&R(n),d=s.render(s.props,s.state,s.context),s.state=s.__s;while(s.__d&&++F<25);s.state=s.__s,s.getChildContext!=null&&(o=P(P({},o),s.getChildContext())),c||s.getSnapshotBeforeUpdate==null||(p=s.getSnapshotBeforeUpdate(f,g)),pt(e,me(H=d!=null&&d.type===N&&d.key==null?d.props.children:d)?H:[H],n,t,o,r,i,l,u,a),s.base=n.__e,n.__h=null,s.__h.length&&l.push(s),_&&(s.__E=s.__=null),s.__e=!1}else i==null&&n.__v===t.__v?(n.__k=t.__k,n.__e=t.__e):n.__e=Nn(t.__e,n,t,o,r,i,l,a);(d=h.diffed)&&d(n)}catch(K){n.__v=null,(a||i!=null)&&(n.__e=u,n.__h=!!a,i[i.indexOf(u)]=null),h.__e(K,n,t)}}function vt(e,n){h.__c&&h.__c(n,e),e.some(function(t){try{e=t.__h,t.__h=[],e.some(function(o){o.call(t)})}catch(o){h.__e(o,t.__v)}})}function Nn(e,n,t,o,r,i,l,u){var a,d,s,c=t.props,f=n.props,g=n.type,p=0;if(g==="svg"&&(r=!0),i!=null){for(;p<i.length;p++)if((a=i[p])&&"setAttribute"in a==!!g&&(g?a.localName===g:a.nodeType===3)){e=a,i[p]=null;break}}if(e==null){if(g===null)return document.createTextNode(f);e=r?document.createElementNS("http://www.w3.org/2000/svg",g):document.createElement(g,f.is&&f),i=null,u=!1}if(g===null)c===f||u&&e.data===f||(e.data=f);else{if(i=i&&se.call(e.childNodes),d=(c=t.props||fe).dangerouslySetInnerHTML,s=f.dangerouslySetInnerHTML,!u){if(i!=null)for(c={},p=0;p<e.attributes.length;p++)c[e.attributes[p].name]=e.attributes[p].value;(s||d)&&(s&&(d&&s.__html==d.__html||s.__html===e.innerHTML)||(e.innerHTML=s&&s.__html||""))}if(kn(e,f,c,r,u),s)n.__k=[];else if(pt(e,me(p=n.props.children)?p:[p],n,t,o,r&&g!=="foreignObject",i,l,i?i[0]:t.__k&&le(t,0),u),i!=null)for(p=i.length;p--;)i[p]!=null&&ct(i[p]);u||("value"in f&&(p=f.value)!==void 0&&(p!==e.value||g==="progress"&&!p||g==="option"&&p!==c.value)&&_e(e,"value",p,c.value,!1),"checked"in f&&(p=f.checked)!==void 0&&p!==e.checked&&_e(e,"checked",p,c.checked,!1))}return e}function Ct(e,n,t){try{typeof e=="function"?e(n):e.current=n}catch(o){h.__e(o,t)}}function bt(e,n,t){var o,r;if(h.unmount&&h.unmount(e),(o=e.ref)&&(o.current&&o.current!==e.__e||Ct(o,null,n)),(o=e.__c)!=null){if(o.componentWillUnmount)try{o.componentWillUnmount()}catch(i){h.__e(i,n)}o.base=o.__P=null,e.__c=void 0}if(o=e.__k)for(r=0;r<o.length;r++)o[r]&&bt(o[r],n,t||typeof e.type!="function");t||e.__e==null||ct(e.__e),e.__=e.__e=e.__d=void 0}function Ln(e,n,t){return this.constructor(e,t)}function ee(e,n,t){var o,r,i;h.__&&h.__(e,n),r=(o=typeof t=="function")?null:t&&t.__k||n.__k,i=[],Ee(n,e=(!o&&t||n).__k=A(N,null,[e]),r||fe,fe,n.ownerSVGElement!==void 0,!o&&t?[t]:r?null:n.firstChild?se.call(n.childNodes):null,i,!o&&t?t:r?r.__e:n.firstChild,o),vt(i,e)}function Ae(e,n){ee(e,n,Ae)}function yt(e,n,t){var o,r,i,l,u=P({},e.props);for(i in e.type&&e.type.defaultProps&&(l=e.type.defaultProps),n)i=="key"?o=n[i]:i=="ref"?r=n[i]:u[i]=n[i]===void 0&&l!==void 0?l[i]:n[i];return arguments.length>2&&(u.children=arguments.length>3?se.call(arguments,2):t),ie(e.type,u,o||e.key,r||e.ref,null)}function Ve(e,n){var t={__c:n="__cC"+dt++,__:e,Consumer:function(o,r){return o.children(r)},Provider:function(o){var r,i;return this.getChildContext||(r=[],(i={})[n]=this,this.getChildContext=function(){return i},this.shouldComponentUpdate=function(l){this.props.value!==l.value&&r.some(function(u){u.__e=!0,xe(u)})},this.sub=function(l){r.push(l);var u=l.componentWillUnmount;l.componentWillUnmount=function(){r.splice(r.indexOf(l),1),u&&u.call(l)}}),o.children}};return t.Provider.__=t.Consumer.contextType=t}se=gt.slice,h={__e:function(e,n,t,o){for(var r,i,l;n=n.__;)if((r=n.__c)&&!r.__)try{if((i=r.constructor)&&i.getDerivedStateFromError!=null&&(r.setState(i.getDerivedStateFromError(e)),l=r.__d),r.componentDidCatch!=null&&(r.componentDidCatch(e,o||{}),l=r.__d),l)return r.__E=r}catch(u){e=u}throw e}},ut=0,On=function(e){return e!=null&&e.constructor===void 0},V.prototype.setState=function(e,n){var t;t=this.__s!=null&&this.__s!==this.state?this.__s:this.__s=P({},this.state),typeof e=="function"&&(e=e(P({},t),this.props)),e&&P(t,e),e!=null&&this.__v&&(n&&this._sb.push(n),xe(this))},V.prototype.forceUpdate=function(e){this.__v&&(this.__e=!0,e&&this.__h.push(e),xe(this))},V.prototype.render=N,J=[],at=typeof Promise=="function"?Promise.prototype.then.bind(Promise.resolve()):setTimeout,Ie=function(e,n){return e.__v.__b-n.__v.__b},pe.__r=0,dt=0;var Z,y,$e,St,te=0,At=[],he=[],Rt=h.__b,wt=h.__r,It=h.diffed,xt=h.__c,Ft=h.unmount;function ne(e,n){h.__h&&h.__h(y,e,te||n),te=0;var t=y.__H||(y.__H={__:[],__h:[]});return e>=t.__.length&&t.__.push({__V:he}),t.__[e]}function G(e){return te=1,ue(Dt,e)}function ue(e,n,t){var o=ne(Z++,2);if(o.t=e,!o.__c&&(o.__=[t?t(n):Dt(void 0,n),function(u){var a=o.__N?o.__N[0]:o.__[0],d=o.t(a,u);a!==d&&(o.__N=[d,o.__[1]],o.__c.setState({}))}],o.__c=y,!y.u)){var r=function(u,a,d){if(!o.__c.__H)return!0;var s=o.__c.__H.__.filter(function(f){return f.__c});if(s.every(function(f){return!f.__N}))return!i||i.call(this,u,a,d);var c=!1;return s.forEach(function(f){if(f.__N){var g=f.__[0];f.__=f.__N,f.__N=void 0,g!==f.__[0]&&(c=!0)}}),!(!c&&o.__c.props===u)&&(!i||i.call(this,u,a,d))};y.u=!0;var i=y.shouldComponentUpdate,l=y.componentWillUpdate;y.componentWillUpdate=function(u,a,d){if(this.__e){var s=i;i=void 0,r(u,a,d),i=s}l&&l.call(this,u,a,d)},y.shouldComponentUpdate=r}return o.__N||o.__}function U(e,n){var t=ne(Z++,3);!h.__s&&Ge(t.__H,n)&&(t.__=e,t.i=n,y.__H.__h.push(t))}function z(e,n){var t=ne(Z++,4);!h.__s&&Ge(t.__H,n)&&(t.__=e,t.i=n,y.__h.push(t))}function oe(e){return te=5,B(function(){return{current:e}},[])}function Vt(e,n,t){te=6,z(function(){return typeof e=="function"?(e(n()),function(){return e(null)}):e?(e.current=n(),function(){return e.current=null}):void 0},t==null?t:t.concat(e))}function B(e,n){var t=ne(Z++,7);return Ge(t.__H,n)?(t.__V=e(),t.i=n,t.__h=e,t.__V):t.__}function $t(e,n){return te=8,B(function(){return e},n)}function Mt(e){var n=y.context[e.__c],t=ne(Z++,9);return t.c=e,n?(t.__==null&&(t.__=!0,n.sub(y)),n.props.value):e.__}function Gt(e,n){h.useDebugValue&&h.useDebugValue(n?n(e):e)}function Ot(){var e=ne(Z++,11);if(!e.__){for(var n=y.__v;n!==null&&!n.__m&&n.__!==null;)n=n.__;var t=n.__m||(n.__m=[0,0]);e.__="P"+t[0]+"-"+t[1]++}return e.__}function Hn(){for(var e;e=At.shift();)if(e.__P&&e.__H)try{e.__H.__h.forEach(ve),e.__H.__h.forEach(Me),e.__H.__h=[]}catch(n){e.__H.__h=[],h.__e(n,e.__v)}}h.__b=function(e){y=null,Rt&&Rt(e)},h.__r=function(e){wt&&wt(e),Z=0;var n=(y=e.__c).__H;n&&($e===y?(n.__h=[],y.__h=[],n.__.forEach(function(t){t.__N&&(t.__=t.__N),t.__V=he,t.__N=t.i=void 0})):(n.__h.forEach(ve),n.__h.forEach(Me),n.__h=[],Z=0)),$e=y},h.diffed=function(e){It&&It(e);var n=e.__c;n&&n.__H&&(n.__H.__h.length&&(At.push(n)!==1&&St===h.requestAnimationFrame||((St=h.requestAnimationFrame)||Tn)(Hn)),n.__H.__.forEach(function(t){t.i&&(t.__H=t.i),t.__V!==he&&(t.__=t.__V),t.i=void 0,t.__V=he})),$e=y=null},h.__c=function(e,n){n.some(function(t){try{t.__h.forEach(ve),t.__h=t.__h.filter(function(o){return!o.__||Me(o)})}catch(o){n.some(function(r){r.__h&&(r.__h=[])}),n=[],h.__e(o,t.__v)}}),xt&&xt(e,n)},h.unmount=function(e){Ft&&Ft(e);var n,t=e.__c;t&&t.__H&&(t.__H.__.forEach(function(o){try{ve(o)}catch(r){n=r}}),t.__H=void 0,n&&h.__e(n,t.__v))};var Et=typeof requestAnimationFrame=="function";function Tn(e){var n,t=function(){clearTimeout(o),Et&&cancelAnimationFrame(n),setTimeout(e)},o=setTimeout(t,100);Et&&(n=requestAnimationFrame(t))}function ve(e){var n=y,t=e.__c;typeof t=="function"&&(e.__c=void 0,t()),y=n}function Me(e){var n=y;e.__c=e.__(),y=n}function Ge(e,n){return!e||e.length!==n.length||n.some(function(t,o){return t!==e[o]})}function Dt(e,n){return typeof n=="function"?n(e):n}function Wt(e,n){for(var t in n)e[t]=n[t];return e}function De(e,n){for(var t in e)if(t!=="__source"&&!(t in n))return!0;for(var o in n)if(o!=="__source"&&e[o]!==n[o])return!0;return!1}function Oe(e,n){return e===n&&(e!==0||1/e==1/n)||e!=e&&n!=n}function ke(e){this.props=e}function Pn(e,n){function t(r){var i=this.props.ref,l=i==r.ref;return!l&&i&&(i.call?i(null):i.current=null),n?!n(this.props,r)||!l:De(this.props,r)}function o(r){return this.shouldComponentUpdate=t,A(e,r)}return o.displayName="Memo("+(e.displayName||e.name)+")",o.prototype.isReactComponent=!0,o.__f=!0,o}(ke.prototype=new V).isPureReactComponent=!0,ke.prototype.shouldComponentUpdate=function(e,n){return De(this.props,e)||De(this.state,n)};var kt=h.__b;h.__b=function(e){e.type&&e.type.__f&&e.ref&&(e.props.ref=e.ref,e.ref=null),kt&&kt(e)};var zn=typeof Symbol<"u"&&Symbol.for&&Symbol.for("react.forward_ref")||3911;function Bn(e){function n(t){var o=Wt({},t);return delete o.ref,e(o,t.ref||null)}return n.$$typeof=zn,n.render=n,n.prototype.isReactComponent=n.__f=!0,n.displayName="ForwardRef("+(e.displayName||e.name)+")",n}var Nt=function(e,n){return e==null?null:L(L(e).map(n))},Wn={map:Nt,forEach:Nt,count:function(e){return e?L(e).length:0},only:function(e){var n=L(e);if(n.length!==1)throw"Children.only";return n[0]},toArray:L},Zn=h.__e;h.__e=function(e,n,t,o){if(e.then){for(var r,i=n;i=i.__;)if((r=i.__c)&&r.__c)return n.__e==null&&(n.__e=t.__e,n.__k=t.__k),r.__c(e,n)}Zn(e,n,t,o)};var Lt=h.unmount;function Zt(e,n,t){return e&&(e.__c&&e.__c.__H&&(e.__c.__H.__.forEach(function(o){typeof o.__c=="function"&&o.__c()}),e.__c.__H=null),(e=Wt({},e)).__c!=null&&(e.__c.__P===t&&(e.__c.__P=n),e.__c=null),e.__k=e.__k&&e.__k.map(function(o){return Zt(o,n,t)})),e}function Ut(e,n,t){return e&&(e.__v=null,e.__k=e.__k&&e.__k.map(function(o){return Ut(o,n,t)}),e.__c&&e.__c.__P===n&&(e.__e&&t.insertBefore(e.__e,e.__d),e.__c.__e=!0,e.__c.__P=t)),e}function Ce(){this.__u=0,this.t=null,this.__b=null}function Xt(e){var n=e.__.__c;return n&&n.__a&&n.__a(e)}function Un(e){var n,t,o;function r(i){if(n||(n=e()).then(function(l){t=l.default||l},function(l){o=l}),o)throw o;if(!t)throw n;return A(t,i)}return r.displayName="Lazy",r.__f=!0,r}function ae(){this.u=null,this.o=null}h.unmount=function(e){var n=e.__c;n&&n.__R&&n.__R(),n&&e.__h===!0&&(e.type=null),Lt&&Lt(e)},(Ce.prototype=new V).__c=function(e,n){var t=n.__c,o=this;o.t==null&&(o.t=[]),o.t.push(t);var r=Xt(o.__v),i=!1,l=function(){i||(i=!0,t.__R=null,r?r(u):u())};t.__R=l;var u=function(){if(!--o.__u){if(o.state.__a){var d=o.state.__a;o.__v.__k[0]=Ut(d,d.__c.__P,d.__c.__O)}var s;for(o.setState({__a:o.__b=null});s=o.t.pop();)s.forceUpdate()}},a=n.__h===!0;o.__u++||a||o.setState({__a:o.__b=o.__v.__k[0]}),e.then(l,l)},Ce.prototype.componentWillUnmount=function(){this.t=[]},Ce.prototype.render=function(e,n){if(this.__b){if(this.__v.__k){var t=document.createElement("div"),o=this.__v.__k[0].__c;this.__v.__k[0]=Zt(this.__b,t,o.__O=o.__P)}this.__b=null}var r=n.__a&&A(N,null,e.fallback);return r&&(r.__h=null),[A(N,null,n.__a?null:e.children),r]};var Ht=function(e,n,t){if(++t[1]===t[0]&&e.o.delete(n),e.props.revealOrder&&(e.props.revealOrder[0]!=="t"||!e.o.size))for(t=e.u;t;){for(;t.length>3;)t.pop()();if(t[1]<t[0])break;e.u=t=t[2]}};function Xn(e){return this.getChildContext=function(){return e.context},e.children}function jn(e){var n=this,t=e.i;n.componentWillUnmount=function(){ee(null,n.l),n.l=null,n.i=null},n.i&&n.i!==t&&n.componentWillUnmount(),e.__v?(n.l||(n.i=t,n.l={nodeType:1,parentNode:t,childNodes:[],appendChild:function(o){this.childNodes.push(o),n.i.appendChild(o)},insertBefore:function(o,r){this.childNodes.push(o),n.i.appendChild(o)},removeChild:function(o){this.childNodes.splice(this.childNodes.indexOf(o)>>>1,1),n.i.removeChild(o)}}),ee(A(Xn,{context:n.context},e.__v),n.l)):n.l&&n.componentWillUnmount()}function Qn(e,n){var t=A(jn,{__v:e,i:n});return t.containerInfo=n,t}(ae.prototype=new V).__a=function(e){var n=this,t=Xt(n.__v),o=n.o.get(e);return o[0]++,function(r){var i=function(){n.props.revealOrder?(o.push(r),Ht(n,e,o)):r()};t?t(i):i()}},ae.prototype.render=function(e){this.u=null,this.o=new Map;var n=L(e.children);e.revealOrder&&e.revealOrder[0]==="b"&&n.reverse();for(var t=n.length;t--;)this.o.set(n[t],this.u=[1,0,this.u]);return e.children},ae.prototype.componentDidUpdate=ae.prototype.componentDidMount=function(){var e=this;this.o.forEach(function(n,t){Ht(e,t,n)})};var jt=typeof Symbol<"u"&&Symbol.for&&Symbol.for("react.element")||60103,Jn=/^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/,Yn=/^on(Ani|Tra|Tou|BeforeInp|Compo)/,Kn=/[A-Z0-9]/g,qn=typeof document<"u",eo=function(e){return(typeof Symbol<"u"&&typeof Symbol()=="symbol"?/fil|che|rad/:/fil|che|ra/).test(e)};function Ne(e,n,t){return n.__k==null&&(n.textContent=""),ee(e,n),typeof t=="function"&&t(),e?e.__c:null}function Qt(e,n,t){return Ae(e,n),typeof t=="function"&&t(),e?e.__c:null}V.prototype.isReactComponent={},["componentWillMount","componentWillReceiveProps","componentWillUpdate"].forEach(function(e){Object.defineProperty(V.prototype,e,{configurable:!0,get:function(){return this["UNSAFE_"+e]},set:function(n){Object.defineProperty(this,e,{configurable:!0,writable:!0,value:n})}})});var Tt=h.event;function to(){}function no(){return this.cancelBubble}function oo(){return this.defaultPrevented}h.event=function(e){return Tt&&(e=Tt(e)),e.persist=to,e.isPropagationStopped=no,e.isDefaultPrevented=oo,e.nativeEvent=e};var Le,ro={enumerable:!1,configurable:!0,get:function(){return this.class}},Pt=h.vnode;h.vnode=function(e){typeof e.type=="string"&&function(n){var t=n.props,o=n.type,r={};for(var i in t){var l=t[i];if(!(i==="value"&&"defaultValue"in t&&l==null||qn&&i==="children"&&o==="noscript"||i==="class"||i==="className")){var u=i.toLowerCase();i==="defaultValue"&&"value"in t&&t.value==null?i="value":i==="download"&&l===!0?l="":u==="ondoubleclick"?i="ondblclick":u!=="onchange"||o!=="input"&&o!=="textarea"||eo(t.type)?u==="onfocus"?i="onfocusin":u==="onblur"?i="onfocusout":Yn.test(i)?i=u:o.indexOf("-")===-1&&Jn.test(i)?i=i.replace(Kn,"-$&").toLowerCase():l===null&&(l=void 0):u=i="oninput",u==="oninput"&&r[i=u]&&(i="oninputCapture"),r[i]=l}}o=="select"&&r.multiple&&Array.isArray(r.value)&&(r.value=L(t.children).forEach(function(a){a.props.selected=r.value.indexOf(a.props.value)!=-1})),o=="select"&&r.defaultValue!=null&&(r.value=L(t.children).forEach(function(a){a.props.selected=r.multiple?r.defaultValue.indexOf(a.props.value)!=-1:r.defaultValue==a.props.value})),t.class&&!t.className?(r.class=t.class,Object.defineProperty(r,"className",ro)):(t.className&&!t.class||t.class&&t.className)&&(r.class=r.className=t.className),n.props=r}(e),e.$$typeof=jt,Pt&&Pt(e)};var zt=h.__r;h.__r=function(e){zt&&zt(e),Le=e.__c};var Bt=h.diffed;h.diffed=function(e){Bt&&Bt(e);var n=e.props,t=e.__e;t!=null&&e.type==="textarea"&&"value"in n&&n.value!==t.value&&(t.value=n.value==null?"":n.value),Le=null};var io={ReactCurrentDispatcher:{current:{readContext:function(e){return Le.__n[e.__c].props.value}}}};function lo(e){return A.bind(null,e)}function Jt(e){return!!e&&e.$$typeof===jt}function so(e){return Jt(e)?yt.apply(null,arguments):e}function He(e){return!!e.__k&&(ee(null,e),!0)}function uo(e){return e&&(e.base||e.nodeType===1&&e)||null}var ao=function(e,n){return e(n)},go=function(e,n){return e(n)},Te=N;function Yt(e){e()}function co(e){return e}function fo(){return[!1,Yt]}var po=z;function _o(e,n){var t=n(),o=G({h:{__:t,v:n}}),r=o[0].h,i=o[1];return z(function(){r.__=t,r.v=n,Oe(r.__,n())||i({h:r})},[e,t,n]),U(function(){return Oe(r.__,r.v())||i({h:r}),e(function(){Oe(r.__,r.v())||i({h:r})})},[e]),t}var S={useState:G,useId:Ot,useReducer:ue,useEffect:U,useLayoutEffect:z,useInsertionEffect:po,useTransition:fo,useDeferredValue:co,useSyncExternalStore:_o,startTransition:Yt,useRef:oe,useImperativeHandle:Vt,useMemo:B,useCallback:$t,useContext:Mt,useDebugValue:Gt,version:"17.0.2",Children:Wn,render:Ne,hydrate:Qt,unmountComponentAtNode:He,createPortal:Qn,createElement:A,createContext:Ve,createFactory:lo,cloneElement:so,createRef:Fe,Fragment:N,isValidElement:Jt,findDOMNode:uo,Component:V,PureComponent:ke,memo:Pn,forwardRef:Bn,flushSync:go,unstable_batchedUpdates:ao,StrictMode:Te,Suspense:Ce,SuspenseList:ae,lazy:Un,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:io};function X(e,n){return typeof e=="function"?e(n):e}function M(e,n){return t=>{n.setState(o=>({...o,[e]:X(t,o[e])}))}}function Re(e){return e instanceof Function}function mo(e){return Array.isArray(e)&&e.every(n=>typeof n=="number")}function ho(e,n){let t=[],o=r=>{r.forEach(i=>{t.push(i);let l=n(i);l!=null&&l.length&&o(l)})};return o(e),t}function C(e,n,t){let o=[],r;return()=>{let i;t.key&&t.debug&&(i=Date.now());let l=e();if(!(l.length!==o.length||l.some((d,s)=>o[s]!==d)))return r;o=l;let a;if(t.key&&t.debug&&(a=Date.now()),r=n(...l),t==null||t.onChange==null||t.onChange(r),t.key&&t.debug&&t!=null&&t.debug()){let d=Math.round((Date.now()-i)*100)/100,s=Math.round((Date.now()-a)*100)/100,c=s/16,f=(g,p)=>{for(g=String(g);g.length<p;)g=" "+g;return g};console.info(`%c\u23F1 ${f(s,5)} /${f(d,5)} ms`,`
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL1VzZXJzL25pY2hvbGFzc3RyYXllci9kZXYvc2hpbnljb21wb25lbnQvanMvc3JjL2RhdGFncmlkIiwic291cmNlcyI6WyJzdHlsZXMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtBQUFBO0VBRUU7RUFDQTtFQUVBO0VBQ0E7RUFDQTtFQUVBO0VBQ0E7RUFFQTtFQUVBO0FBQUE7QUFBQTtFQUdBO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUlBO0VBQ0U7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBQ0E7RUFDRTs7O0FBUUo7RUFDRTs7O0FBS047QUFBQTtBQUFBO0FBQUE7QUFBQTtBQU9FO0VBQ0U7O0FBRUE7RUFDRTtFQUNBOztBQUlBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0FBQUE7QUFBQTtFQUdBO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBTVI7QUFHRTtFQUNFOztBQUlJO0VBQ0U7O0FBR0Y7RUFDRTtFQUVBO0VBQ0E7O0FBRUE7RUFDRTs7QUFNUjtFQUNFO0VBRUE7RUFDQTs7QUFFQTtFQUNFOztBQUtOO0VBQ0U7O0FBR0E7RUFDRTs7QUFFRjtFQUNFOztBQUVGO0FBQUE7RUFFRTs7QUFFRjtBQUFBO0VBRUUiLCJzb3VyY2VzQ29udGVudCI6WyI6cm9vdCxcbjpob3N0IHtcbiAgLS1zaGlueS1kYXRhZ3JpZC1mb250LXNpemU6IDAuOWVtO1xuICAtLXNoaW55LWRhdGFncmlkLXBhZGRpbmc6IDAuM2VtIDAuNWVtO1xuXG4gIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItYmdjb2xvcjogI2VlZTtcbiAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1ncmlkbGluZXMtY29sb3I6ICNjY2M7XG4gIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItZ3JpZGxpbmVzLXN0eWxlOiBzb2xpZDtcblxuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLWNvbG9yOiAjY2NjO1xuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlOiBzb2xpZDtcblxuICAtLXNoaW55LWRhdGFncmlkLXRhYmxlLWhlYWRlci1ib3R0b20tYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG5cbiAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWJvZHktaG92ZXItYmdjb2xvcjogdmFyKFxuICAgIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItYmdjb2xvclxuICApO1xuICAtLXNoaW55LWRhdGFncmlkLWdyaWQtYm9keS1zZWxlY3RlZC1iZ2NvbG9yOiB2YXIoLS1icy1wcmltYXJ5KTtcbiAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWJvZHktc2VsZWN0ZWQtY29sb3I6IHZhcigtLWJzLWxpZ2h0KTtcbn1cblxuLnNoaW55LWRhdGEtZ3JpZCBzdmcuc29ydC1hcnJvdyB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgd2lkdGg6IDAuODVlbTtcbiAgaGVpZ2h0OiAwLjg1ZW07XG4gIG1hcmdpbi1ib3R0b206IDAuMTVlbTtcbn1cblxuLnNoaW55LWRhdGEtZ3JpZCB7XG4gID4gdGFibGUge1xuICAgIGJvcmRlci1jb2xsYXBzZTogc2VwYXJhdGU7XG4gICAgYm9yZGVyLXNwYWNpbmc6IDA7XG5cbiAgICA+IHRoZWFkIHtcbiAgICAgIHBvc2l0aW9uOiBzdGlja3k7XG4gICAgICB0b3A6IDA7XG4gICAgICA+IHRoIHtcbiAgICAgICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cblxuLnNoaW55LWRhdGEtZ3JpZC5zaGlueS1kYXRhLWdyaWQtdGFibGUge1xuICA+IHRhYmxlIHtcbiAgICA+IHRoZWFkID4gdHI6bGFzdC1jaGlsZCA+IHRoIHtcbiAgICAgIGJvcmRlci1ib3R0b206IHZhcigtLXNoaW55LWRhdGFncmlkLXRhYmxlLWhlYWRlci1ib3R0b20tYm9yZGVyKTtcbiAgICB9XG4gIH1cbn1cblxuLypcbiAqXG4gKiAjIEdSSUQgU1RZTEVTXG4gKlxuICovXG5cbi5zaGlueS1kYXRhLWdyaWQuc2hpbnktZGF0YS1ncmlkLWdyaWQge1xuICA+IHRhYmxlIHtcbiAgICBmb250LXNpemU6IHZhcigtLXNoaW55LWRhdGFncmlkLWZvbnQtc2l6ZSk7XG5cbiAgICA+IHRoZWFkID4gdHIgPiB0aCB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWhlYWRlci1iZ2NvbG9yKTtcbiAgICAgIHBhZGRpbmc6IHZhcigtLXNoaW55LWRhdGFncmlkLXBhZGRpbmcpO1xuICAgIH1cblxuICAgID4gdGJvZHkgPiB0ciB7XG4gICAgICAmOmhvdmVyIHtcbiAgICAgICAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWdyaWRsaW5lcy1jb2xvcjogaW5oZXJpdDtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LWhvdmVyLWJnY29sb3IpO1xuICAgICAgfVxuXG4gICAgICAmLnNlbGVjdGVkIHtcbiAgICAgICAgLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWdyaWRsaW5lcy1jb2xvcjogdmFyKFxuICAgICAgICAgIC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LXNlbGVjdGVkLWJnY29sb3JcbiAgICAgICAgKTtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LXNlbGVjdGVkLWJnY29sb3IpO1xuICAgICAgICBjb2xvcjogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ib2R5LXNlbGVjdGVkLWNvbG9yKTtcbiAgICAgIH1cblxuICAgICAgPiB0ZCB7XG4gICAgICAgIHBhZGRpbmc6IHZhcigtLXNoaW55LWRhdGFncmlkLXBhZGRpbmcpO1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG4vKiAjIyBHcmlkIGJvcmRlcnMgKi9cblxuLnNoaW55LWRhdGEtZ3JpZC5zaGlueS1kYXRhLWdyaWQtZ3JpZCB7XG4gID4gdGFibGUge1xuICAgIGJvcmRlci1jb2xsYXBzZTogc2VwYXJhdGU7XG5cbiAgICA+IHRoZWFkIHtcbiAgICAgID4gdHIge1xuICAgICAgICAmOmZpcnN0LWNoaWxkID4gdGgge1xuICAgICAgICAgIGJvcmRlci10b3Atc3R5bGU6IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlKTtcbiAgICAgICAgfVxuXG4gICAgICAgID4gdGgge1xuICAgICAgICAgIGJvcmRlcjogMXB4IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlKVxuICAgICAgICAgICAgdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItZ3JpZGxpbmVzLWNvbG9yKTtcbiAgICAgICAgICBib3JkZXItdG9wLXN0eWxlOiBub25lO1xuICAgICAgICAgIGJvcmRlci1sZWZ0LXN0eWxlOiBub25lO1xuXG4gICAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItbGVmdC1zdHlsZTogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGUpO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cblxuICAgID4gdGJvZHkgPiB0ciA+IHRkIHtcbiAgICAgIGJvcmRlcjogMXB4IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlKVxuICAgICAgICB2YXIoLS1zaGlueS1kYXRhZ3JpZC1ncmlkLWdyaWRsaW5lcy1jb2xvcik7XG4gICAgICBib3JkZXItdG9wLXN0eWxlOiBub25lO1xuICAgICAgYm9yZGVyLWxlZnQtc3R5bGU6IG5vbmU7XG5cbiAgICAgICY6Zmlyc3QtY2hpbGQge1xuICAgICAgICBib3JkZXItbGVmdC1zdHlsZTogdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1ncmlkbGluZXMtc3R5bGUpO1xuICAgICAgfVxuICAgIH1cbiAgfVxuXG4gICYuc2Nyb2xsaW5nIHtcbiAgICBib3JkZXI6IHZhcigtLXNoaW55LWRhdGFncmlkLWdyaWQtZ3JpZGxpbmVzLXN0eWxlKVxuICAgICAgdmFyKC0tc2hpbnktZGF0YWdyaWQtZ3JpZC1oZWFkZXItZ3JpZGxpbmVzLWNvbG9yKTtcblxuICAgID4gdGFibGUgPiB0aGVhZCA+IHRyOmZpcnN0LWNoaWxkID4gdGgge1xuICAgICAgYm9yZGVyLXRvcC1zdHlsZTogbm9uZTtcbiAgICB9XG4gICAgPiB0YWJsZSA+IHRib2R5ID4gdHI6bGFzdC1jaGlsZCA+IHRkIHtcbiAgICAgIGJvcmRlci1ib3R0b20tc3R5bGU6IG5vbmU7XG4gICAgfVxuICAgID4gdGFibGUgPiB0aGVhZCA+IHRyID4gdGg6Zmlyc3QtY2hpbGQsXG4gICAgPiB0YWJsZSA+IHRib2R5ID4gdHIgPiB0ZDpmaXJzdC1jaGlsZCB7XG4gICAgICBib3JkZXItbGVmdC1zdHlsZTogbm9uZTtcbiAgICB9XG4gICAgPiB0YWJsZSA+IHRoZWFkID4gdHIgPiB0aDpsYXN0LWNoaWxkLFxuICAgID4gdGFibGUgPiB0Ym9keSA+IHRyID4gdGQ6bGFzdC1jaGlsZCB7XG4gICAgICBib3JkZXItcmlnaHQtc3R5bGU6IG5vbmU7XG4gICAgfVxuICB9XG59XG4iXX0= */`;
+
+  // node_modules/preact/dist/preact.module.js
+  var n;
+  var l;
+  var u;
+  var i;
+  var t;
+  var o;
+  var r;
+  var f;
+  var e;
+  var c = {};
+  var s = [];
+  var a = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;
+  var v = Array.isArray;
+  function h(n2, l3) {
+    for (var u3 in l3)
+      n2[u3] = l3[u3];
+    return n2;
+  }
+  function p(n2) {
+    var l3 = n2.parentNode;
+    l3 && l3.removeChild(n2);
+  }
+  function y(l3, u3, i3) {
+    var t3, o3, r3, f3 = {};
+    for (r3 in u3)
+      "key" == r3 ? t3 = u3[r3] : "ref" == r3 ? o3 = u3[r3] : f3[r3] = u3[r3];
+    if (arguments.length > 2 && (f3.children = arguments.length > 3 ? n.call(arguments, 2) : i3), "function" == typeof l3 && null != l3.defaultProps)
+      for (r3 in l3.defaultProps)
+        void 0 === f3[r3] && (f3[r3] = l3.defaultProps[r3]);
+    return d(l3, f3, t3, o3, null);
+  }
+  function d(n2, i3, t3, o3, r3) {
+    var f3 = { type: n2, props: i3, key: t3, ref: o3, __k: null, __: null, __b: 0, __e: null, __d: void 0, __c: null, __h: null, constructor: void 0, __v: null == r3 ? ++u : r3 };
+    return null == r3 && null != l.vnode && l.vnode(f3), f3;
+  }
+  function _() {
+    return { current: null };
+  }
+  function k(n2) {
+    return n2.children;
+  }
+  function b(n2, l3) {
+    this.props = n2, this.context = l3;
+  }
+  function g(n2, l3) {
+    if (null == l3)
+      return n2.__ ? g(n2.__, n2.__.__k.indexOf(n2) + 1) : null;
+    for (var u3; l3 < n2.__k.length; l3++)
+      if (null != (u3 = n2.__k[l3]) && null != u3.__e)
+        return u3.__e;
+    return "function" == typeof n2.type ? g(n2) : null;
+  }
+  function m(n2) {
+    var l3, u3;
+    if (null != (n2 = n2.__) && null != n2.__c) {
+      for (n2.__e = n2.__c.base = null, l3 = 0; l3 < n2.__k.length; l3++)
+        if (null != (u3 = n2.__k[l3]) && null != u3.__e) {
+          n2.__e = n2.__c.base = u3.__e;
+          break;
+        }
+      return m(n2);
+    }
+  }
+  function w(n2) {
+    (!n2.__d && (n2.__d = true) && t.push(n2) && !x.__r++ || o !== l.debounceRendering) && ((o = l.debounceRendering) || r)(x);
+  }
+  function x() {
+    var n2, l3, u3, i3, o3, r3, e3, c3;
+    for (t.sort(f); n2 = t.shift(); )
+      n2.__d && (l3 = t.length, i3 = void 0, o3 = void 0, e3 = (r3 = (u3 = n2).__v).__e, (c3 = u3.__P) && (i3 = [], (o3 = h({}, r3)).__v = r3.__v + 1, L(c3, r3, o3, u3.__n, void 0 !== c3.ownerSVGElement, null != r3.__h ? [e3] : null, i3, null == e3 ? g(r3) : e3, r3.__h), M(i3, r3), r3.__e != e3 && m(r3)), t.length > l3 && t.sort(f));
+    x.__r = 0;
+  }
+  function P(n2, l3, u3, i3, t3, o3, r3, f3, e3, a3) {
+    var h3, p3, y3, _3, b3, m3, w4, x4 = i3 && i3.__k || s, P3 = x4.length;
+    for (u3.__k = [], h3 = 0; h3 < l3.length; h3++)
+      if (null != (_3 = u3.__k[h3] = null == (_3 = l3[h3]) || "boolean" == typeof _3 || "function" == typeof _3 ? null : "string" == typeof _3 || "number" == typeof _3 || "bigint" == typeof _3 ? d(null, _3, null, null, _3) : v(_3) ? d(k, { children: _3 }, null, null, null) : _3.__b > 0 ? d(_3.type, _3.props, _3.key, _3.ref ? _3.ref : null, _3.__v) : _3)) {
+        if (_3.__ = u3, _3.__b = u3.__b + 1, null === (y3 = x4[h3]) || y3 && _3.key == y3.key && _3.type === y3.type)
+          x4[h3] = void 0;
+        else
+          for (p3 = 0; p3 < P3; p3++) {
+            if ((y3 = x4[p3]) && _3.key == y3.key && _3.type === y3.type) {
+              x4[p3] = void 0;
+              break;
+            }
+            y3 = null;
+          }
+        L(n2, _3, y3 = y3 || c, t3, o3, r3, f3, e3, a3), b3 = _3.__e, (p3 = _3.ref) && y3.ref != p3 && (w4 || (w4 = []), y3.ref && w4.push(y3.ref, null, _3), w4.push(p3, _3.__c || b3, _3)), null != b3 ? (null == m3 && (m3 = b3), "function" == typeof _3.type && _3.__k === y3.__k ? _3.__d = e3 = C(_3, e3, n2) : e3 = $2(n2, _3, y3, x4, b3, e3), "function" == typeof u3.type && (u3.__d = e3)) : e3 && y3.__e == e3 && e3.parentNode != n2 && (e3 = g(y3));
+      }
+    for (u3.__e = m3, h3 = P3; h3--; )
+      null != x4[h3] && ("function" == typeof u3.type && null != x4[h3].__e && x4[h3].__e == u3.__d && (u3.__d = A(i3).nextSibling), q(x4[h3], x4[h3]));
+    if (w4)
+      for (h3 = 0; h3 < w4.length; h3++)
+        O(w4[h3], w4[++h3], w4[++h3]);
+  }
+  function C(n2, l3, u3) {
+    for (var i3, t3 = n2.__k, o3 = 0; t3 && o3 < t3.length; o3++)
+      (i3 = t3[o3]) && (i3.__ = n2, l3 = "function" == typeof i3.type ? C(i3, l3, u3) : $2(u3, i3, i3, t3, i3.__e, l3));
+    return l3;
+  }
+  function S(n2, l3) {
+    return l3 = l3 || [], null == n2 || "boolean" == typeof n2 || (v(n2) ? n2.some(function(n3) {
+      S(n3, l3);
+    }) : l3.push(n2)), l3;
+  }
+  function $2(n2, l3, u3, i3, t3, o3) {
+    var r3, f3, e3;
+    if (void 0 !== l3.__d)
+      r3 = l3.__d, l3.__d = void 0;
+    else if (null == u3 || t3 != o3 || null == t3.parentNode)
+      n:
+        if (null == o3 || o3.parentNode !== n2)
+          n2.appendChild(t3), r3 = null;
+        else {
+          for (f3 = o3, e3 = 0; (f3 = f3.nextSibling) && e3 < i3.length; e3 += 1)
+            if (f3 == t3)
+              break n;
+          n2.insertBefore(t3, o3), r3 = o3;
+        }
+    return void 0 !== r3 ? r3 : t3.nextSibling;
+  }
+  function A(n2) {
+    var l3, u3, i3;
+    if (null == n2.type || "string" == typeof n2.type)
+      return n2.__e;
+    if (n2.__k) {
+      for (l3 = n2.__k.length - 1; l3 >= 0; l3--)
+        if ((u3 = n2.__k[l3]) && (i3 = A(u3)))
+          return i3;
+    }
+    return null;
+  }
+  function H(n2, l3, u3, i3, t3) {
+    var o3;
+    for (o3 in u3)
+      "children" === o3 || "key" === o3 || o3 in l3 || T(n2, o3, null, u3[o3], i3);
+    for (o3 in l3)
+      t3 && "function" != typeof l3[o3] || "children" === o3 || "key" === o3 || "value" === o3 || "checked" === o3 || u3[o3] === l3[o3] || T(n2, o3, l3[o3], u3[o3], i3);
+  }
+  function I(n2, l3, u3) {
+    "-" === l3[0] ? n2.setProperty(l3, null == u3 ? "" : u3) : n2[l3] = null == u3 ? "" : "number" != typeof u3 || a.test(l3) ? u3 : u3 + "px";
+  }
+  function T(n2, l3, u3, i3, t3) {
+    var o3;
+    n:
+      if ("style" === l3)
+        if ("string" == typeof u3)
+          n2.style.cssText = u3;
+        else {
+          if ("string" == typeof i3 && (n2.style.cssText = i3 = ""), i3)
+            for (l3 in i3)
+              u3 && l3 in u3 || I(n2.style, l3, "");
+          if (u3)
+            for (l3 in u3)
+              i3 && u3[l3] === i3[l3] || I(n2.style, l3, u3[l3]);
+        }
+      else if ("o" === l3[0] && "n" === l3[1])
+        o3 = l3 !== (l3 = l3.replace(/Capture$/, "")), l3 = l3.toLowerCase() in n2 ? l3.toLowerCase().slice(2) : l3.slice(2), n2.l || (n2.l = {}), n2.l[l3 + o3] = u3, u3 ? i3 || n2.addEventListener(l3, o3 ? z : j, o3) : n2.removeEventListener(l3, o3 ? z : j, o3);
+      else if ("dangerouslySetInnerHTML" !== l3) {
+        if (t3)
+          l3 = l3.replace(/xlink(H|:h)/, "h").replace(/sName$/, "s");
+        else if ("width" !== l3 && "height" !== l3 && "href" !== l3 && "list" !== l3 && "form" !== l3 && "tabIndex" !== l3 && "download" !== l3 && "rowSpan" !== l3 && "colSpan" !== l3 && l3 in n2)
+          try {
+            n2[l3] = null == u3 ? "" : u3;
+            break n;
+          } catch (n3) {
+          }
+        "function" == typeof u3 || (null == u3 || false === u3 && "-" !== l3[4] ? n2.removeAttribute(l3) : n2.setAttribute(l3, u3));
+      }
+  }
+  function j(n2) {
+    return this.l[n2.type + false](l.event ? l.event(n2) : n2);
+  }
+  function z(n2) {
+    return this.l[n2.type + true](l.event ? l.event(n2) : n2);
+  }
+  function L(n2, u3, i3, t3, o3, r3, f3, e3, c3) {
+    var s3, a3, p3, y3, d3, _3, g4, m3, w4, x4, C3, S2, $4, A4, H3, I3 = u3.type;
+    if (void 0 !== u3.constructor)
+      return null;
+    null != i3.__h && (c3 = i3.__h, e3 = u3.__e = i3.__e, u3.__h = null, r3 = [e3]), (s3 = l.__b) && s3(u3);
+    try {
+      n:
+        if ("function" == typeof I3) {
+          if (m3 = u3.props, w4 = (s3 = I3.contextType) && t3[s3.__c], x4 = s3 ? w4 ? w4.props.value : s3.__ : t3, i3.__c ? g4 = (a3 = u3.__c = i3.__c).__ = a3.__E : ("prototype" in I3 && I3.prototype.render ? u3.__c = a3 = new I3(m3, x4) : (u3.__c = a3 = new b(m3, x4), a3.constructor = I3, a3.render = B), w4 && w4.sub(a3), a3.props = m3, a3.state || (a3.state = {}), a3.context = x4, a3.__n = t3, p3 = a3.__d = true, a3.__h = [], a3._sb = []), null == a3.__s && (a3.__s = a3.state), null != I3.getDerivedStateFromProps && (a3.__s == a3.state && (a3.__s = h({}, a3.__s)), h(a3.__s, I3.getDerivedStateFromProps(m3, a3.__s))), y3 = a3.props, d3 = a3.state, a3.__v = u3, p3)
+            null == I3.getDerivedStateFromProps && null != a3.componentWillMount && a3.componentWillMount(), null != a3.componentDidMount && a3.__h.push(a3.componentDidMount);
+          else {
+            if (null == I3.getDerivedStateFromProps && m3 !== y3 && null != a3.componentWillReceiveProps && a3.componentWillReceiveProps(m3, x4), !a3.__e && null != a3.shouldComponentUpdate && false === a3.shouldComponentUpdate(m3, a3.__s, x4) || u3.__v === i3.__v) {
+              for (u3.__v !== i3.__v && (a3.props = m3, a3.state = a3.__s, a3.__d = false), a3.__e = false, u3.__e = i3.__e, u3.__k = i3.__k, u3.__k.forEach(function(n3) {
+                n3 && (n3.__ = u3);
+              }), C3 = 0; C3 < a3._sb.length; C3++)
+                a3.__h.push(a3._sb[C3]);
+              a3._sb = [], a3.__h.length && f3.push(a3);
+              break n;
+            }
+            null != a3.componentWillUpdate && a3.componentWillUpdate(m3, a3.__s, x4), null != a3.componentDidUpdate && a3.__h.push(function() {
+              a3.componentDidUpdate(y3, d3, _3);
+            });
+          }
+          if (a3.context = x4, a3.props = m3, a3.__P = n2, S2 = l.__r, $4 = 0, "prototype" in I3 && I3.prototype.render) {
+            for (a3.state = a3.__s, a3.__d = false, S2 && S2(u3), s3 = a3.render(a3.props, a3.state, a3.context), A4 = 0; A4 < a3._sb.length; A4++)
+              a3.__h.push(a3._sb[A4]);
+            a3._sb = [];
+          } else
+            do {
+              a3.__d = false, S2 && S2(u3), s3 = a3.render(a3.props, a3.state, a3.context), a3.state = a3.__s;
+            } while (a3.__d && ++$4 < 25);
+          a3.state = a3.__s, null != a3.getChildContext && (t3 = h(h({}, t3), a3.getChildContext())), p3 || null == a3.getSnapshotBeforeUpdate || (_3 = a3.getSnapshotBeforeUpdate(y3, d3)), P(n2, v(H3 = null != s3 && s3.type === k && null == s3.key ? s3.props.children : s3) ? H3 : [H3], u3, i3, t3, o3, r3, f3, e3, c3), a3.base = u3.__e, u3.__h = null, a3.__h.length && f3.push(a3), g4 && (a3.__E = a3.__ = null), a3.__e = false;
+        } else
+          null == r3 && u3.__v === i3.__v ? (u3.__k = i3.__k, u3.__e = i3.__e) : u3.__e = N(i3.__e, u3, i3, t3, o3, r3, f3, c3);
+      (s3 = l.diffed) && s3(u3);
+    } catch (n3) {
+      u3.__v = null, (c3 || null != r3) && (u3.__e = e3, u3.__h = !!c3, r3[r3.indexOf(e3)] = null), l.__e(n3, u3, i3);
+    }
+  }
+  function M(n2, u3) {
+    l.__c && l.__c(u3, n2), n2.some(function(u4) {
+      try {
+        n2 = u4.__h, u4.__h = [], n2.some(function(n3) {
+          n3.call(u4);
+        });
+      } catch (n3) {
+        l.__e(n3, u4.__v);
+      }
+    });
+  }
+  function N(l3, u3, i3, t3, o3, r3, f3, e3) {
+    var s3, a3, h3, y3 = i3.props, d3 = u3.props, _3 = u3.type, k4 = 0;
+    if ("svg" === _3 && (o3 = true), null != r3) {
+      for (; k4 < r3.length; k4++)
+        if ((s3 = r3[k4]) && "setAttribute" in s3 == !!_3 && (_3 ? s3.localName === _3 : 3 === s3.nodeType)) {
+          l3 = s3, r3[k4] = null;
+          break;
+        }
+    }
+    if (null == l3) {
+      if (null === _3)
+        return document.createTextNode(d3);
+      l3 = o3 ? document.createElementNS("http://www.w3.org/2000/svg", _3) : document.createElement(_3, d3.is && d3), r3 = null, e3 = false;
+    }
+    if (null === _3)
+      y3 === d3 || e3 && l3.data === d3 || (l3.data = d3);
+    else {
+      if (r3 = r3 && n.call(l3.childNodes), a3 = (y3 = i3.props || c).dangerouslySetInnerHTML, h3 = d3.dangerouslySetInnerHTML, !e3) {
+        if (null != r3)
+          for (y3 = {}, k4 = 0; k4 < l3.attributes.length; k4++)
+            y3[l3.attributes[k4].name] = l3.attributes[k4].value;
+        (h3 || a3) && (h3 && (a3 && h3.__html == a3.__html || h3.__html === l3.innerHTML) || (l3.innerHTML = h3 && h3.__html || ""));
+      }
+      if (H(l3, d3, y3, o3, e3), h3)
+        u3.__k = [];
+      else if (P(l3, v(k4 = u3.props.children) ? k4 : [k4], u3, i3, t3, o3 && "foreignObject" !== _3, r3, f3, r3 ? r3[0] : i3.__k && g(i3, 0), e3), null != r3)
+        for (k4 = r3.length; k4--; )
+          null != r3[k4] && p(r3[k4]);
+      e3 || ("value" in d3 && void 0 !== (k4 = d3.value) && (k4 !== l3.value || "progress" === _3 && !k4 || "option" === _3 && k4 !== y3.value) && T(l3, "value", k4, y3.value, false), "checked" in d3 && void 0 !== (k4 = d3.checked) && k4 !== l3.checked && T(l3, "checked", k4, y3.checked, false));
+    }
+    return l3;
+  }
+  function O(n2, u3, i3) {
+    try {
+      "function" == typeof n2 ? n2(u3) : n2.current = u3;
+    } catch (n3) {
+      l.__e(n3, i3);
+    }
+  }
+  function q(n2, u3, i3) {
+    var t3, o3;
+    if (l.unmount && l.unmount(n2), (t3 = n2.ref) && (t3.current && t3.current !== n2.__e || O(t3, null, u3)), null != (t3 = n2.__c)) {
+      if (t3.componentWillUnmount)
+        try {
+          t3.componentWillUnmount();
+        } catch (n3) {
+          l.__e(n3, u3);
+        }
+      t3.base = t3.__P = null, n2.__c = void 0;
+    }
+    if (t3 = n2.__k)
+      for (o3 = 0; o3 < t3.length; o3++)
+        t3[o3] && q(t3[o3], u3, i3 || "function" != typeof n2.type);
+    i3 || null == n2.__e || p(n2.__e), n2.__ = n2.__e = n2.__d = void 0;
+  }
+  function B(n2, l3, u3) {
+    return this.constructor(n2, u3);
+  }
+  function D(u3, i3, t3) {
+    var o3, r3, f3;
+    l.__ && l.__(u3, i3), r3 = (o3 = "function" == typeof t3) ? null : t3 && t3.__k || i3.__k, f3 = [], L(i3, u3 = (!o3 && t3 || i3).__k = y(k, null, [u3]), r3 || c, c, void 0 !== i3.ownerSVGElement, !o3 && t3 ? [t3] : r3 ? null : i3.firstChild ? n.call(i3.childNodes) : null, f3, !o3 && t3 ? t3 : r3 ? r3.__e : i3.firstChild, o3), M(f3, u3);
+  }
+  function E(n2, l3) {
+    D(n2, l3, E);
+  }
+  function F(l3, u3, i3) {
+    var t3, o3, r3, f3, e3 = h({}, l3.props);
+    for (r3 in l3.type && l3.type.defaultProps && (f3 = l3.type.defaultProps), u3)
+      "key" == r3 ? t3 = u3[r3] : "ref" == r3 ? o3 = u3[r3] : e3[r3] = void 0 === u3[r3] && void 0 !== f3 ? f3[r3] : u3[r3];
+    return arguments.length > 2 && (e3.children = arguments.length > 3 ? n.call(arguments, 2) : i3), d(l3.type, e3, t3 || l3.key, o3 || l3.ref, null);
+  }
+  function G(n2, l3) {
+    var u3 = { __c: l3 = "__cC" + e++, __: n2, Consumer: function(n3, l4) {
+      return n3.children(l4);
+    }, Provider: function(n3) {
+      var u4, i3;
+      return this.getChildContext || (u4 = [], (i3 = {})[l3] = this, this.getChildContext = function() {
+        return i3;
+      }, this.shouldComponentUpdate = function(n4) {
+        this.props.value !== n4.value && u4.some(function(n5) {
+          n5.__e = true, w(n5);
+        });
+      }, this.sub = function(n4) {
+        u4.push(n4);
+        var l4 = n4.componentWillUnmount;
+        n4.componentWillUnmount = function() {
+          u4.splice(u4.indexOf(n4), 1), l4 && l4.call(n4);
+        };
+      }), n3.children;
+    } };
+    return u3.Provider.__ = u3.Consumer.contextType = u3;
+  }
+  n = s.slice, l = { __e: function(n2, l3, u3, i3) {
+    for (var t3, o3, r3; l3 = l3.__; )
+      if ((t3 = l3.__c) && !t3.__)
+        try {
+          if ((o3 = t3.constructor) && null != o3.getDerivedStateFromError && (t3.setState(o3.getDerivedStateFromError(n2)), r3 = t3.__d), null != t3.componentDidCatch && (t3.componentDidCatch(n2, i3 || {}), r3 = t3.__d), r3)
+            return t3.__E = t3;
+        } catch (l4) {
+          n2 = l4;
+        }
+    throw n2;
+  } }, u = 0, i = function(n2) {
+    return null != n2 && void 0 === n2.constructor;
+  }, b.prototype.setState = function(n2, l3) {
+    var u3;
+    u3 = null != this.__s && this.__s !== this.state ? this.__s : this.__s = h({}, this.state), "function" == typeof n2 && (n2 = n2(h({}, u3), this.props)), n2 && h(u3, n2), null != n2 && this.__v && (l3 && this._sb.push(l3), w(this));
+  }, b.prototype.forceUpdate = function(n2) {
+    this.__v && (this.__e = true, n2 && this.__h.push(n2), w(this));
+  }, b.prototype.render = k, t = [], r = "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, f = function(n2, l3) {
+    return n2.__v.__b - l3.__v.__b;
+  }, x.__r = 0, e = 0;
+
+  // node_modules/preact/hooks/dist/hooks.module.js
+  var t2;
+  var r2;
+  var u2;
+  var i2;
+  var o2 = 0;
+  var f2 = [];
+  var c2 = [];
+  var e2 = l.__b;
+  var a2 = l.__r;
+  var v2 = l.diffed;
+  var l2 = l.__c;
+  var m2 = l.unmount;
+  function d2(t3, u3) {
+    l.__h && l.__h(r2, t3, o2 || u3), o2 = 0;
+    var i3 = r2.__H || (r2.__H = { __: [], __h: [] });
+    return t3 >= i3.__.length && i3.__.push({ __V: c2 }), i3.__[t3];
+  }
+  function h2(n2) {
+    return o2 = 1, s2(B2, n2);
+  }
+  function s2(n2, u3, i3) {
+    var o3 = d2(t2++, 2);
+    if (o3.t = n2, !o3.__c && (o3.__ = [i3 ? i3(u3) : B2(void 0, u3), function(n3) {
+      var t3 = o3.__N ? o3.__N[0] : o3.__[0], r3 = o3.t(t3, n3);
+      t3 !== r3 && (o3.__N = [r3, o3.__[1]], o3.__c.setState({}));
+    }], o3.__c = r2, !r2.u)) {
+      var f3 = function(n3, t3, r3) {
+        if (!o3.__c.__H)
+          return true;
+        var u4 = o3.__c.__H.__.filter(function(n4) {
+          return n4.__c;
+        });
+        if (u4.every(function(n4) {
+          return !n4.__N;
+        }))
+          return !c3 || c3.call(this, n3, t3, r3);
+        var i4 = false;
+        return u4.forEach(function(n4) {
+          if (n4.__N) {
+            var t4 = n4.__[0];
+            n4.__ = n4.__N, n4.__N = void 0, t4 !== n4.__[0] && (i4 = true);
+          }
+        }), !(!i4 && o3.__c.props === n3) && (!c3 || c3.call(this, n3, t3, r3));
+      };
+      r2.u = true;
+      var c3 = r2.shouldComponentUpdate, e3 = r2.componentWillUpdate;
+      r2.componentWillUpdate = function(n3, t3, r3) {
+        if (this.__e) {
+          var u4 = c3;
+          c3 = void 0, f3(n3, t3, r3), c3 = u4;
+        }
+        e3 && e3.call(this, n3, t3, r3);
+      }, r2.shouldComponentUpdate = f3;
+    }
+    return o3.__N || o3.__;
+  }
+  function p2(u3, i3) {
+    var o3 = d2(t2++, 3);
+    !l.__s && z2(o3.__H, i3) && (o3.__ = u3, o3.i = i3, r2.__H.__h.push(o3));
+  }
+  function y2(u3, i3) {
+    var o3 = d2(t2++, 4);
+    !l.__s && z2(o3.__H, i3) && (o3.__ = u3, o3.i = i3, r2.__h.push(o3));
+  }
+  function _2(n2) {
+    return o2 = 5, F2(function() {
+      return { current: n2 };
+    }, []);
+  }
+  function A2(n2, t3, r3) {
+    o2 = 6, y2(function() {
+      return "function" == typeof n2 ? (n2(t3()), function() {
+        return n2(null);
+      }) : n2 ? (n2.current = t3(), function() {
+        return n2.current = null;
+      }) : void 0;
+    }, null == r3 ? r3 : r3.concat(n2));
+  }
+  function F2(n2, r3) {
+    var u3 = d2(t2++, 7);
+    return z2(u3.__H, r3) ? (u3.__V = n2(), u3.i = r3, u3.__h = n2, u3.__V) : u3.__;
+  }
+  function T2(n2, t3) {
+    return o2 = 8, F2(function() {
+      return n2;
+    }, t3);
+  }
+  function q2(n2) {
+    var u3 = r2.context[n2.__c], i3 = d2(t2++, 9);
+    return i3.c = n2, u3 ? (null == i3.__ && (i3.__ = true, u3.sub(r2)), u3.props.value) : n2.__;
+  }
+  function x2(t3, r3) {
+    l.useDebugValue && l.useDebugValue(r3 ? r3(t3) : t3);
+  }
+  function V() {
+    var n2 = d2(t2++, 11);
+    if (!n2.__) {
+      for (var u3 = r2.__v; null !== u3 && !u3.__m && null !== u3.__; )
+        u3 = u3.__;
+      var i3 = u3.__m || (u3.__m = [0, 0]);
+      n2.__ = "P" + i3[0] + "-" + i3[1]++;
+    }
+    return n2.__;
+  }
+  function b2() {
+    for (var t3; t3 = f2.shift(); )
+      if (t3.__P && t3.__H)
+        try {
+          t3.__H.__h.forEach(k2), t3.__H.__h.forEach(w2), t3.__H.__h = [];
+        } catch (r3) {
+          t3.__H.__h = [], l.__e(r3, t3.__v);
+        }
+  }
+  l.__b = function(n2) {
+    r2 = null, e2 && e2(n2);
+  }, l.__r = function(n2) {
+    a2 && a2(n2), t2 = 0;
+    var i3 = (r2 = n2.__c).__H;
+    i3 && (u2 === r2 ? (i3.__h = [], r2.__h = [], i3.__.forEach(function(n3) {
+      n3.__N && (n3.__ = n3.__N), n3.__V = c2, n3.__N = n3.i = void 0;
+    })) : (i3.__h.forEach(k2), i3.__h.forEach(w2), i3.__h = [], t2 = 0)), u2 = r2;
+  }, l.diffed = function(t3) {
+    v2 && v2(t3);
+    var o3 = t3.__c;
+    o3 && o3.__H && (o3.__H.__h.length && (1 !== f2.push(o3) && i2 === l.requestAnimationFrame || ((i2 = l.requestAnimationFrame) || j2)(b2)), o3.__H.__.forEach(function(n2) {
+      n2.i && (n2.__H = n2.i), n2.__V !== c2 && (n2.__ = n2.__V), n2.i = void 0, n2.__V = c2;
+    })), u2 = r2 = null;
+  }, l.__c = function(t3, r3) {
+    r3.some(function(t4) {
+      try {
+        t4.__h.forEach(k2), t4.__h = t4.__h.filter(function(n2) {
+          return !n2.__ || w2(n2);
+        });
+      } catch (u3) {
+        r3.some(function(n2) {
+          n2.__h && (n2.__h = []);
+        }), r3 = [], l.__e(u3, t4.__v);
+      }
+    }), l2 && l2(t3, r3);
+  }, l.unmount = function(t3) {
+    m2 && m2(t3);
+    var r3, u3 = t3.__c;
+    u3 && u3.__H && (u3.__H.__.forEach(function(n2) {
+      try {
+        k2(n2);
+      } catch (n3) {
+        r3 = n3;
+      }
+    }), u3.__H = void 0, r3 && l.__e(r3, u3.__v));
+  };
+  var g2 = "function" == typeof requestAnimationFrame;
+  function j2(n2) {
+    var t3, r3 = function() {
+      clearTimeout(u3), g2 && cancelAnimationFrame(t3), setTimeout(n2);
+    }, u3 = setTimeout(r3, 100);
+    g2 && (t3 = requestAnimationFrame(r3));
+  }
+  function k2(n2) {
+    var t3 = r2, u3 = n2.__c;
+    "function" == typeof u3 && (n2.__c = void 0, u3()), r2 = t3;
+  }
+  function w2(n2) {
+    var t3 = r2;
+    n2.__c = n2.__(), r2 = t3;
+  }
+  function z2(n2, t3) {
+    return !n2 || n2.length !== t3.length || t3.some(function(t4, r3) {
+      return t4 !== n2[r3];
+    });
+  }
+  function B2(n2, t3) {
+    return "function" == typeof t3 ? t3(n2) : t3;
+  }
+
+  // node_modules/preact/compat/dist/compat.module.js
+  function g3(n2, t3) {
+    for (var e3 in t3)
+      n2[e3] = t3[e3];
+    return n2;
+  }
+  function C2(n2, t3) {
+    for (var e3 in n2)
+      if ("__source" !== e3 && !(e3 in t3))
+        return true;
+    for (var r3 in t3)
+      if ("__source" !== r3 && n2[r3] !== t3[r3])
+        return true;
+    return false;
+  }
+  function E2(n2, t3) {
+    return n2 === t3 && (0 !== n2 || 1 / n2 == 1 / t3) || n2 != n2 && t3 != t3;
+  }
+  function w3(n2) {
+    this.props = n2;
+  }
+  function x3(n2, e3) {
+    function r3(n3) {
+      var t3 = this.props.ref, r4 = t3 == n3.ref;
+      return !r4 && t3 && (t3.call ? t3(null) : t3.current = null), e3 ? !e3(this.props, n3) || !r4 : C2(this.props, n3);
+    }
+    function u3(e4) {
+      return this.shouldComponentUpdate = r3, y(n2, e4);
+    }
+    return u3.displayName = "Memo(" + (n2.displayName || n2.name) + ")", u3.prototype.isReactComponent = true, u3.__f = true, u3;
+  }
+  (w3.prototype = new b()).isPureReactComponent = true, w3.prototype.shouldComponentUpdate = function(n2, t3) {
+    return C2(this.props, n2) || C2(this.state, t3);
+  };
+  var R = l.__b;
+  l.__b = function(n2) {
+    n2.type && n2.type.__f && n2.ref && (n2.props.ref = n2.ref, n2.ref = null), R && R(n2);
+  };
+  var N2 = "undefined" != typeof Symbol && Symbol.for && Symbol.for("react.forward_ref") || 3911;
+  function k3(n2) {
+    function t3(t4) {
+      var e3 = g3({}, t4);
+      return delete e3.ref, n2(e3, t4.ref || null);
+    }
+    return t3.$$typeof = N2, t3.render = t3, t3.prototype.isReactComponent = t3.__f = true, t3.displayName = "ForwardRef(" + (n2.displayName || n2.name) + ")", t3;
+  }
+  var A3 = function(n2, t3) {
+    return null == n2 ? null : S(S(n2).map(t3));
+  };
+  var O2 = { map: A3, forEach: A3, count: function(n2) {
+    return n2 ? S(n2).length : 0;
+  }, only: function(n2) {
+    var t3 = S(n2);
+    if (1 !== t3.length)
+      throw "Children.only";
+    return t3[0];
+  }, toArray: S };
+  var T3 = l.__e;
+  l.__e = function(n2, t3, e3, r3) {
+    if (n2.then) {
+      for (var u3, o3 = t3; o3 = o3.__; )
+        if ((u3 = o3.__c) && u3.__c)
+          return null == t3.__e && (t3.__e = e3.__e, t3.__k = e3.__k), u3.__c(n2, t3);
+    }
+    T3(n2, t3, e3, r3);
+  };
+  var I2 = l.unmount;
+  function L2(n2, t3, e3) {
+    return n2 && (n2.__c && n2.__c.__H && (n2.__c.__H.__.forEach(function(n3) {
+      "function" == typeof n3.__c && n3.__c();
+    }), n2.__c.__H = null), null != (n2 = g3({}, n2)).__c && (n2.__c.__P === e3 && (n2.__c.__P = t3), n2.__c = null), n2.__k = n2.__k && n2.__k.map(function(n3) {
+      return L2(n3, t3, e3);
+    })), n2;
+  }
+  function U(n2, t3, e3) {
+    return n2 && (n2.__v = null, n2.__k = n2.__k && n2.__k.map(function(n3) {
+      return U(n3, t3, e3);
+    }), n2.__c && n2.__c.__P === t3 && (n2.__e && e3.insertBefore(n2.__e, n2.__d), n2.__c.__e = true, n2.__c.__P = e3)), n2;
+  }
+  function D2() {
+    this.__u = 0, this.t = null, this.__b = null;
+  }
+  function F3(n2) {
+    var t3 = n2.__.__c;
+    return t3 && t3.__a && t3.__a(n2);
+  }
+  function M2(n2) {
+    var e3, r3, u3;
+    function o3(o4) {
+      if (e3 || (e3 = n2()).then(function(n3) {
+        r3 = n3.default || n3;
+      }, function(n3) {
+        u3 = n3;
+      }), u3)
+        throw u3;
+      if (!r3)
+        throw e3;
+      return y(r3, o4);
+    }
+    return o3.displayName = "Lazy", o3.__f = true, o3;
+  }
+  function V2() {
+    this.u = null, this.o = null;
+  }
+  l.unmount = function(n2) {
+    var t3 = n2.__c;
+    t3 && t3.__R && t3.__R(), t3 && true === n2.__h && (n2.type = null), I2 && I2(n2);
+  }, (D2.prototype = new b()).__c = function(n2, t3) {
+    var e3 = t3.__c, r3 = this;
+    null == r3.t && (r3.t = []), r3.t.push(e3);
+    var u3 = F3(r3.__v), o3 = false, i3 = function() {
+      o3 || (o3 = true, e3.__R = null, u3 ? u3(l3) : l3());
+    };
+    e3.__R = i3;
+    var l3 = function() {
+      if (!--r3.__u) {
+        if (r3.state.__a) {
+          var n3 = r3.state.__a;
+          r3.__v.__k[0] = U(n3, n3.__c.__P, n3.__c.__O);
+        }
+        var t4;
+        for (r3.setState({ __a: r3.__b = null }); t4 = r3.t.pop(); )
+          t4.forceUpdate();
+      }
+    }, c3 = true === t3.__h;
+    r3.__u++ || c3 || r3.setState({ __a: r3.__b = r3.__v.__k[0] }), n2.then(i3, i3);
+  }, D2.prototype.componentWillUnmount = function() {
+    this.t = [];
+  }, D2.prototype.render = function(n2, e3) {
+    if (this.__b) {
+      if (this.__v.__k) {
+        var r3 = document.createElement("div"), o3 = this.__v.__k[0].__c;
+        this.__v.__k[0] = L2(this.__b, r3, o3.__O = o3.__P);
+      }
+      this.__b = null;
+    }
+    var i3 = e3.__a && y(k, null, n2.fallback);
+    return i3 && (i3.__h = null), [y(k, null, e3.__a ? null : n2.children), i3];
+  };
+  var W = function(n2, t3, e3) {
+    if (++e3[1] === e3[0] && n2.o.delete(t3), n2.props.revealOrder && ("t" !== n2.props.revealOrder[0] || !n2.o.size))
+      for (e3 = n2.u; e3; ) {
+        for (; e3.length > 3; )
+          e3.pop()();
+        if (e3[1] < e3[0])
+          break;
+        n2.u = e3 = e3[2];
+      }
+  };
+  function P2(n2) {
+    return this.getChildContext = function() {
+      return n2.context;
+    }, n2.children;
+  }
+  function j3(n2) {
+    var e3 = this, r3 = n2.i;
+    e3.componentWillUnmount = function() {
+      D(null, e3.l), e3.l = null, e3.i = null;
+    }, e3.i && e3.i !== r3 && e3.componentWillUnmount(), n2.__v ? (e3.l || (e3.i = r3, e3.l = { nodeType: 1, parentNode: r3, childNodes: [], appendChild: function(n3) {
+      this.childNodes.push(n3), e3.i.appendChild(n3);
+    }, insertBefore: function(n3, t3) {
+      this.childNodes.push(n3), e3.i.appendChild(n3);
+    }, removeChild: function(n3) {
+      this.childNodes.splice(this.childNodes.indexOf(n3) >>> 1, 1), e3.i.removeChild(n3);
+    } }), D(y(P2, { context: e3.context }, n2.__v), e3.l)) : e3.l && e3.componentWillUnmount();
+  }
+  function z3(n2, e3) {
+    var r3 = y(j3, { __v: n2, i: e3 });
+    return r3.containerInfo = e3, r3;
+  }
+  (V2.prototype = new b()).__a = function(n2) {
+    var t3 = this, e3 = F3(t3.__v), r3 = t3.o.get(n2);
+    return r3[0]++, function(u3) {
+      var o3 = function() {
+        t3.props.revealOrder ? (r3.push(u3), W(t3, n2, r3)) : u3();
+      };
+      e3 ? e3(o3) : o3();
+    };
+  }, V2.prototype.render = function(n2) {
+    this.u = null, this.o = /* @__PURE__ */ new Map();
+    var t3 = S(n2.children);
+    n2.revealOrder && "b" === n2.revealOrder[0] && t3.reverse();
+    for (var e3 = t3.length; e3--; )
+      this.o.set(t3[e3], this.u = [1, 0, this.u]);
+    return n2.children;
+  }, V2.prototype.componentDidUpdate = V2.prototype.componentDidMount = function() {
+    var n2 = this;
+    this.o.forEach(function(t3, e3) {
+      W(n2, e3, t3);
+    });
+  };
+  var B3 = "undefined" != typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103;
+  var H2 = /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/;
+  var Z = /^on(Ani|Tra|Tou|BeforeInp|Compo)/;
+  var Y = /[A-Z0-9]/g;
+  var $3 = "undefined" != typeof document;
+  var q3 = function(n2) {
+    return ("undefined" != typeof Symbol && "symbol" == typeof Symbol() ? /fil|che|rad/ : /fil|che|ra/).test(n2);
+  };
+  function G2(n2, t3, e3) {
+    return null == t3.__k && (t3.textContent = ""), D(n2, t3), "function" == typeof e3 && e3(), n2 ? n2.__c : null;
+  }
+  function J(n2, t3, e3) {
+    return E(n2, t3), "function" == typeof e3 && e3(), n2 ? n2.__c : null;
+  }
+  b.prototype.isReactComponent = {}, ["componentWillMount", "componentWillReceiveProps", "componentWillUpdate"].forEach(function(t3) {
+    Object.defineProperty(b.prototype, t3, { configurable: true, get: function() {
+      return this["UNSAFE_" + t3];
+    }, set: function(n2) {
+      Object.defineProperty(this, t3, { configurable: true, writable: true, value: n2 });
+    } });
+  });
+  var K = l.event;
+  function Q() {
+  }
+  function X() {
+    return this.cancelBubble;
+  }
+  function nn() {
+    return this.defaultPrevented;
+  }
+  l.event = function(n2) {
+    return K && (n2 = K(n2)), n2.persist = Q, n2.isPropagationStopped = X, n2.isDefaultPrevented = nn, n2.nativeEvent = n2;
+  };
+  var tn;
+  var en = { enumerable: false, configurable: true, get: function() {
+    return this.class;
+  } };
+  var rn = l.vnode;
+  l.vnode = function(n2) {
+    "string" == typeof n2.type && function(n3) {
+      var t3 = n3.props, e3 = n3.type, u3 = {};
+      for (var o3 in t3) {
+        var i3 = t3[o3];
+        if (!("value" === o3 && "defaultValue" in t3 && null == i3 || $3 && "children" === o3 && "noscript" === e3 || "class" === o3 || "className" === o3)) {
+          var l3 = o3.toLowerCase();
+          "defaultValue" === o3 && "value" in t3 && null == t3.value ? o3 = "value" : "download" === o3 && true === i3 ? i3 = "" : "ondoubleclick" === l3 ? o3 = "ondblclick" : "onchange" !== l3 || "input" !== e3 && "textarea" !== e3 || q3(t3.type) ? "onfocus" === l3 ? o3 = "onfocusin" : "onblur" === l3 ? o3 = "onfocusout" : Z.test(o3) ? o3 = l3 : -1 === e3.indexOf("-") && H2.test(o3) ? o3 = o3.replace(Y, "-$&").toLowerCase() : null === i3 && (i3 = void 0) : l3 = o3 = "oninput", "oninput" === l3 && u3[o3 = l3] && (o3 = "oninputCapture"), u3[o3] = i3;
+        }
+      }
+      "select" == e3 && u3.multiple && Array.isArray(u3.value) && (u3.value = S(t3.children).forEach(function(n4) {
+        n4.props.selected = -1 != u3.value.indexOf(n4.props.value);
+      })), "select" == e3 && null != u3.defaultValue && (u3.value = S(t3.children).forEach(function(n4) {
+        n4.props.selected = u3.multiple ? -1 != u3.defaultValue.indexOf(n4.props.value) : u3.defaultValue == n4.props.value;
+      })), t3.class && !t3.className ? (u3.class = t3.class, Object.defineProperty(u3, "className", en)) : (t3.className && !t3.class || t3.class && t3.className) && (u3.class = u3.className = t3.className), n3.props = u3;
+    }(n2), n2.$$typeof = B3, rn && rn(n2);
+  };
+  var un = l.__r;
+  l.__r = function(n2) {
+    un && un(n2), tn = n2.__c;
+  };
+  var on = l.diffed;
+  l.diffed = function(n2) {
+    on && on(n2);
+    var t3 = n2.props, e3 = n2.__e;
+    null != e3 && "textarea" === n2.type && "value" in t3 && t3.value !== e3.value && (e3.value = null == t3.value ? "" : t3.value), tn = null;
+  };
+  var ln = { ReactCurrentDispatcher: { current: { readContext: function(n2) {
+    return tn.__n[n2.__c].props.value;
+  } } } };
+  function fn(n2) {
+    return y.bind(null, n2);
+  }
+  function an(n2) {
+    return !!n2 && n2.$$typeof === B3;
+  }
+  function sn(n2) {
+    return an(n2) ? F.apply(null, arguments) : n2;
+  }
+  function hn(n2) {
+    return !!n2.__k && (D(null, n2), true);
+  }
+  function vn(n2) {
+    return n2 && (n2.base || 1 === n2.nodeType && n2) || null;
+  }
+  var dn = function(n2, t3) {
+    return n2(t3);
+  };
+  var pn = function(n2, t3) {
+    return n2(t3);
+  };
+  var mn = k;
+  function yn(n2) {
+    n2();
+  }
+  function _n(n2) {
+    return n2;
+  }
+  function bn() {
+    return [false, yn];
+  }
+  var Sn = y2;
+  function gn(n2, t3) {
+    var e3 = t3(), r3 = h2({ h: { __: e3, v: t3 } }), u3 = r3[0].h, o3 = r3[1];
+    return y2(function() {
+      u3.__ = e3, u3.v = t3, E2(u3.__, t3()) || o3({ h: u3 });
+    }, [n2, e3, t3]), p2(function() {
+      return E2(u3.__, u3.v()) || o3({ h: u3 }), n2(function() {
+        E2(u3.__, u3.v()) || o3({ h: u3 });
+      });
+    }, [n2]), e3;
+  }
+  var Cn = { useState: h2, useId: V, useReducer: s2, useEffect: p2, useLayoutEffect: y2, useInsertionEffect: Sn, useTransition: bn, useDeferredValue: _n, useSyncExternalStore: gn, startTransition: yn, useRef: _2, useImperativeHandle: A2, useMemo: F2, useCallback: T2, useContext: q2, useDebugValue: x2, version: "17.0.2", Children: O2, render: G2, hydrate: J, unmountComponentAtNode: hn, createPortal: z3, createElement: y, createContext: G, createFactory: fn, cloneElement: sn, createRef: _, Fragment: k, isValidElement: an, findDOMNode: vn, Component: b, PureComponent: w3, memo: x3, forwardRef: k3, flushSync: pn, unstable_batchedUpdates: dn, StrictMode: mn, Suspense: D2, SuspenseList: V2, lazy: M2, __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: ln };
+
+  // node_modules/@tanstack/table-core/build/lib/index.mjs
+  function functionalUpdate(updater, input) {
+    return typeof updater === "function" ? updater(input) : updater;
+  }
+  function makeStateUpdater(key, instance) {
+    return (updater) => {
+      instance.setState((old) => {
+        return {
+          ...old,
+          [key]: functionalUpdate(updater, old[key])
+        };
+      });
+    };
+  }
+  function isFunction(d3) {
+    return d3 instanceof Function;
+  }
+  function isNumberArray(d3) {
+    return Array.isArray(d3) && d3.every((val) => typeof val === "number");
+  }
+  function flattenBy(arr, getChildren) {
+    const flat = [];
+    const recurse = (subArr) => {
+      subArr.forEach((item) => {
+        flat.push(item);
+        const children = getChildren(item);
+        if (children != null && children.length) {
+          recurse(children);
+        }
+      });
+    };
+    recurse(arr);
+    return flat;
+  }
+  function memo(getDeps, fn2, opts) {
+    let deps = [];
+    let result;
+    return () => {
+      let depTime;
+      if (opts.key && opts.debug)
+        depTime = Date.now();
+      const newDeps = getDeps();
+      const depsChanged = newDeps.length !== deps.length || newDeps.some((dep, index) => deps[index] !== dep);
+      if (!depsChanged) {
+        return result;
+      }
+      deps = newDeps;
+      let resultTime;
+      if (opts.key && opts.debug)
+        resultTime = Date.now();
+      result = fn2(...newDeps);
+      opts == null ? void 0 : opts.onChange == null ? void 0 : opts.onChange(result);
+      if (opts.key && opts.debug) {
+        if (opts != null && opts.debug()) {
+          const depEndTime = Math.round((Date.now() - depTime) * 100) / 100;
+          const resultEndTime = Math.round((Date.now() - resultTime) * 100) / 100;
+          const resultFpsPercentage = resultEndTime / 16;
+          const pad = (str, num) => {
+            str = String(str);
+            while (str.length < num) {
+              str = " " + str;
+            }
+            return str;
+          };
+          console.info(`%c\u23F1 ${pad(resultEndTime, 5)} /${pad(depEndTime, 5)} ms`, `
             font-size: .6rem;
             font-weight: bold;
-            color: hsl(${Math.max(0,Math.min(120-120*c,120))}deg 100% 31%);`,t?.key)}return r}}function vo(e,n,t,o){var r,i;let u={...e._getDefaultColumnDef(),...n},a=u.accessorKey,d=(r=(i=u.id)!=null?i:a?a.replace(".","_"):void 0)!=null?r:typeof u.header=="string"?u.header:void 0,s;if(u.accessorFn?s=u.accessorFn:a&&(a.includes(".")?s=f=>{let g=f;for(let _ of a.split(".")){var p;g=(p=g)==null?void 0:p[_]}return g}:s=f=>f[u.accessorKey]),!d)throw new Error;let c={id:`${String(d)}`,accessorFn:s,parent:o,depth:t,columnDef:u,columns:[],getFlatColumns:C(()=>[!0],()=>{var f;return[c,...(f=c.columns)==null?void 0:f.flatMap(g=>g.getFlatColumns())]},{key:"column.getFlatColumns",debug:()=>{var f;return(f=e.options.debugAll)!=null?f:e.options.debugColumns}}),getLeafColumns:C(()=>[e._getOrderColumnsFn()],f=>{var g;if((g=c.columns)!=null&&g.length){let p=c.columns.flatMap(_=>_.getLeafColumns());return f(p)}return[c]},{key:"column.getLeafColumns",debug:()=>{var f;return(f=e.options.debugAll)!=null?f:e.options.debugColumns}})};return c=e._features.reduce((f,g)=>Object.assign(f,g.createColumn==null?void 0:g.createColumn(c,e)),c),c}function qt(e,n,t){var o;let i={id:(o=t.id)!=null?o:n.id,column:n,index:t.index,isPlaceholder:!!t.isPlaceholder,placeholderId:t.placeholderId,depth:t.depth,subHeaders:[],colSpan:0,rowSpan:0,headerGroup:null,getLeafHeaders:()=>{let l=[],u=a=>{a.subHeaders&&a.subHeaders.length&&a.subHeaders.map(u),l.push(a)};return u(i),l},getContext:()=>({table:e,header:i,column:n})};return e._features.forEach(l=>{Object.assign(i,l.createHeader==null?void 0:l.createHeader(i,e))}),i}var Co={createTable:e=>({getHeaderGroups:C(()=>[e.getAllColumns(),e.getVisibleLeafColumns(),e.getState().columnPinning.left,e.getState().columnPinning.right],(n,t,o,r)=>{var i,l;let u=(i=o?.map(c=>t.find(f=>f.id===c)).filter(Boolean))!=null?i:[],a=(l=r?.map(c=>t.find(f=>f.id===c)).filter(Boolean))!=null?l:[],d=t.filter(c=>!(o!=null&&o.includes(c.id))&&!(r!=null&&r.includes(c.id)));return be(n,[...u,...d,...a],e)},{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getCenterHeaderGroups:C(()=>[e.getAllColumns(),e.getVisibleLeafColumns(),e.getState().columnPinning.left,e.getState().columnPinning.right],(n,t,o,r)=>(t=t.filter(i=>!(o!=null&&o.includes(i.id))&&!(r!=null&&r.includes(i.id))),be(n,t,e,"center")),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getLeftHeaderGroups:C(()=>[e.getAllColumns(),e.getVisibleLeafColumns(),e.getState().columnPinning.left],(n,t,o)=>{var r;let i=(r=o?.map(l=>t.find(u=>u.id===l)).filter(Boolean))!=null?r:[];return be(n,i,e,"left")},{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getRightHeaderGroups:C(()=>[e.getAllColumns(),e.getVisibleLeafColumns(),e.getState().columnPinning.right],(n,t,o)=>{var r;let i=(r=o?.map(l=>t.find(u=>u.id===l)).filter(Boolean))!=null?r:[];return be(n,i,e,"right")},{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getFooterGroups:C(()=>[e.getHeaderGroups()],n=>[...n].reverse(),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getLeftFooterGroups:C(()=>[e.getLeftHeaderGroups()],n=>[...n].reverse(),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getCenterFooterGroups:C(()=>[e.getCenterHeaderGroups()],n=>[...n].reverse(),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getRightFooterGroups:C(()=>[e.getRightHeaderGroups()],n=>[...n].reverse(),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getFlatHeaders:C(()=>[e.getHeaderGroups()],n=>n.map(t=>t.headers).flat(),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getLeftFlatHeaders:C(()=>[e.getLeftHeaderGroups()],n=>n.map(t=>t.headers).flat(),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getCenterFlatHeaders:C(()=>[e.getCenterHeaderGroups()],n=>n.map(t=>t.headers).flat(),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getRightFlatHeaders:C(()=>[e.getRightHeaderGroups()],n=>n.map(t=>t.headers).flat(),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getCenterLeafHeaders:C(()=>[e.getCenterFlatHeaders()],n=>n.filter(t=>{var o;return!((o=t.subHeaders)!=null&&o.length)}),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getLeftLeafHeaders:C(()=>[e.getLeftFlatHeaders()],n=>n.filter(t=>{var o;return!((o=t.subHeaders)!=null&&o.length)}),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getRightLeafHeaders:C(()=>[e.getRightFlatHeaders()],n=>n.filter(t=>{var o;return!((o=t.subHeaders)!=null&&o.length)}),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}}),getLeafHeaders:C(()=>[e.getLeftHeaderGroups(),e.getCenterHeaderGroups(),e.getRightHeaderGroups()],(n,t,o)=>{var r,i,l,u,a,d;return[...(r=(i=n[0])==null?void 0:i.headers)!=null?r:[],...(l=(u=t[0])==null?void 0:u.headers)!=null?l:[],...(a=(d=o[0])==null?void 0:d.headers)!=null?a:[]].map(s=>s.getLeafHeaders()).flat()},{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugHeaders}})})};function be(e,n,t,o){var r,i;let l=0,u=function(f,g){g===void 0&&(g=1),l=Math.max(l,g),f.filter(p=>p.getIsVisible()).forEach(p=>{var _;(_=p.columns)!=null&&_.length&&u(p.columns,g+1)},0)};u(e);let a=[],d=(f,g)=>{let p={depth:g,id:[o,`${g}`].filter(Boolean).join("_"),headers:[]},_=[];f.forEach(m=>{let v=[..._].reverse()[0],b=m.column.depth===p.depth,w,R=!1;if(b&&m.column.parent?w=m.column.parent:(w=m.column,R=!0),v&&v?.column===w)v.subHeaders.push(m);else{let F=qt(t,w,{id:[o,g,w.id,m?.id].filter(Boolean).join("_"),isPlaceholder:R,placeholderId:R?`${_.filter(k=>k.column===w).length}`:void 0,depth:g,index:_.length});F.subHeaders.push(m),_.push(F)}p.headers.push(m),m.headerGroup=p}),a.push(p),g>0&&d(_,g-1)},s=n.map((f,g)=>qt(t,f,{depth:l,index:g}));d(s,l-1),a.reverse();let c=f=>f.filter(p=>p.column.getIsVisible()).map(p=>{let _=0,m=0,v=[0];p.subHeaders&&p.subHeaders.length?(v=[],c(p.subHeaders).forEach(w=>{let{colSpan:R,rowSpan:F}=w;_+=R,v.push(F)})):_=1;let b=Math.min(...v);return m=m+b,p.colSpan=_,p.rowSpan=m,{colSpan:_,rowSpan:m}});return c((r=(i=a[0])==null?void 0:i.headers)!=null?r:[]),a}var ye={size:150,minSize:20,maxSize:Number.MAX_SAFE_INTEGER},Pe=()=>({startOffset:null,startSize:null,deltaOffset:null,deltaPercentage:null,isResizingColumn:!1,columnSizingStart:[]}),bo={getDefaultColumnDef:()=>ye,getInitialState:e=>({columnSizing:{},columnSizingInfo:Pe(),...e}),getDefaultOptions:e=>({columnResizeMode:"onEnd",onColumnSizingChange:M("columnSizing",e),onColumnSizingInfoChange:M("columnSizingInfo",e)}),createColumn:(e,n)=>({getSize:()=>{var t,o,r;let i=n.getState().columnSizing[e.id];return Math.min(Math.max((t=e.columnDef.minSize)!=null?t:ye.minSize,(o=i??e.columnDef.size)!=null?o:ye.size),(r=e.columnDef.maxSize)!=null?r:ye.maxSize)},getStart:t=>{let o=t?t==="left"?n.getLeftVisibleLeafColumns():n.getRightVisibleLeafColumns():n.getVisibleLeafColumns(),r=o.findIndex(i=>i.id===e.id);if(r>0){let i=o[r-1];return i.getStart(t)+i.getSize()}return 0},resetSize:()=>{n.setColumnSizing(t=>{let{[e.id]:o,...r}=t;return r})},getCanResize:()=>{var t,o;return((t=e.columnDef.enableResizing)!=null?t:!0)&&((o=n.options.enableColumnResizing)!=null?o:!0)},getIsResizing:()=>n.getState().columnSizingInfo.isResizingColumn===e.id}),createHeader:(e,n)=>({getSize:()=>{let t=0,o=r=>{if(r.subHeaders.length)r.subHeaders.forEach(o);else{var i;t+=(i=r.column.getSize())!=null?i:0}};return o(e),t},getStart:()=>{if(e.index>0){let t=e.headerGroup.headers[e.index-1];return t.getStart()+t.getSize()}return 0},getResizeHandler:()=>{let t=n.getColumn(e.column.id),o=t?.getCanResize();return r=>{if(!t||!o||(r.persist==null||r.persist(),ze(r)&&r.touches&&r.touches.length>1))return;let i=e.getSize(),l=e?e.getLeafHeaders().map(_=>[_.column.id,_.column.getSize()]):[[t.id,t.getSize()]],u=ze(r)?Math.round(r.touches[0].clientX):r.clientX,a={},d=(_,m)=>{typeof m=="number"&&(n.setColumnSizingInfo(v=>{var b,w;let R=m-((b=v?.startOffset)!=null?b:0),F=Math.max(R/((w=v?.startSize)!=null?w:0),-.999999);return v.columnSizingStart.forEach(k=>{let[H,x]=k;a[H]=Math.round(Math.max(x+x*F,0)*100)/100}),{...v,deltaOffset:R,deltaPercentage:F}}),(n.options.columnResizeMode==="onChange"||_==="end")&&n.setColumnSizing(v=>({...v,...a})))},s=_=>d("move",_),c=_=>{d("end",_),n.setColumnSizingInfo(m=>({...m,isResizingColumn:!1,startOffset:null,startSize:null,deltaOffset:null,deltaPercentage:null,columnSizingStart:[]}))},f={moveHandler:_=>s(_.clientX),upHandler:_=>{document.removeEventListener("mousemove",f.moveHandler),document.removeEventListener("mouseup",f.upHandler),c(_.clientX)}},g={moveHandler:_=>(_.cancelable&&(_.preventDefault(),_.stopPropagation()),s(_.touches[0].clientX),!1),upHandler:_=>{var m;document.removeEventListener("touchmove",g.moveHandler),document.removeEventListener("touchend",g.upHandler),_.cancelable&&(_.preventDefault(),_.stopPropagation()),c((m=_.touches[0])==null?void 0:m.clientX)}},p=yo()?{passive:!1}:!1;ze(r)?(document.addEventListener("touchmove",g.moveHandler,p),document.addEventListener("touchend",g.upHandler,p)):(document.addEventListener("mousemove",f.moveHandler,p),document.addEventListener("mouseup",f.upHandler,p)),n.setColumnSizingInfo(_=>({..._,startOffset:u,startSize:i,deltaOffset:0,deltaPercentage:0,columnSizingStart:l,isResizingColumn:t.id}))}}}),createTable:e=>({setColumnSizing:n=>e.options.onColumnSizingChange==null?void 0:e.options.onColumnSizingChange(n),setColumnSizingInfo:n=>e.options.onColumnSizingInfoChange==null?void 0:e.options.onColumnSizingInfoChange(n),resetColumnSizing:n=>{var t;e.setColumnSizing(n?{}:(t=e.initialState.columnSizing)!=null?t:{})},resetHeaderSizeInfo:n=>{var t;e.setColumnSizingInfo(n?Pe():(t=e.initialState.columnSizingInfo)!=null?t:Pe())},getTotalSize:()=>{var n,t;return(n=(t=e.getHeaderGroups()[0])==null?void 0:t.headers.reduce((o,r)=>o+r.getSize(),0))!=null?n:0},getLeftTotalSize:()=>{var n,t;return(n=(t=e.getLeftHeaderGroups()[0])==null?void 0:t.headers.reduce((o,r)=>o+r.getSize(),0))!=null?n:0},getCenterTotalSize:()=>{var n,t;return(n=(t=e.getCenterHeaderGroups()[0])==null?void 0:t.headers.reduce((o,r)=>o+r.getSize(),0))!=null?n:0},getRightTotalSize:()=>{var n,t;return(n=(t=e.getRightHeaderGroups()[0])==null?void 0:t.headers.reduce((o,r)=>o+r.getSize(),0))!=null?n:0}})},Se=null;function yo(){if(typeof Se=="boolean")return Se;let e=!1;try{let n={get passive(){return e=!0,!1}},t=()=>{};window.addEventListener("test",t,n),window.removeEventListener("test",t)}catch{e=!1}return Se=e,Se}function ze(e){return e.type==="touchstart"}var So={getInitialState:e=>({expanded:{},...e}),getDefaultOptions:e=>({onExpandedChange:M("expanded",e),paginateExpandedRows:!0}),createTable:e=>{let n=!1,t=!1;return{_autoResetExpanded:()=>{var o,r;if(!n){e._queue(()=>{n=!0});return}if((o=(r=e.options.autoResetAll)!=null?r:e.options.autoResetExpanded)!=null?o:!e.options.manualExpanding){if(t)return;t=!0,e._queue(()=>{e.resetExpanded(),t=!1})}},setExpanded:o=>e.options.onExpandedChange==null?void 0:e.options.onExpandedChange(o),toggleAllRowsExpanded:o=>{o??!e.getIsAllRowsExpanded()?e.setExpanded(!0):e.setExpanded({})},resetExpanded:o=>{var r,i;e.setExpanded(o?{}:(r=(i=e.initialState)==null?void 0:i.expanded)!=null?r:{})},getCanSomeRowsExpand:()=>e.getPrePaginationRowModel().flatRows.some(o=>o.getCanExpand()),getToggleAllRowsExpandedHandler:()=>o=>{o.persist==null||o.persist(),e.toggleAllRowsExpanded()},getIsSomeRowsExpanded:()=>{let o=e.getState().expanded;return o===!0||Object.values(o).some(Boolean)},getIsAllRowsExpanded:()=>{let o=e.getState().expanded;return typeof o=="boolean"?o===!0:!(!Object.keys(o).length||e.getRowModel().flatRows.some(r=>!r.getIsExpanded()))},getExpandedDepth:()=>{let o=0;return(e.getState().expanded===!0?Object.keys(e.getRowModel().rowsById):Object.keys(e.getState().expanded)).forEach(i=>{let l=i.split(".");o=Math.max(o,l.length)}),o},getPreExpandedRowModel:()=>e.getSortedRowModel(),getExpandedRowModel:()=>(!e._getExpandedRowModel&&e.options.getExpandedRowModel&&(e._getExpandedRowModel=e.options.getExpandedRowModel(e)),e.options.manualExpanding||!e._getExpandedRowModel?e.getPreExpandedRowModel():e._getExpandedRowModel())}},createRow:(e,n)=>({toggleExpanded:t=>{n.setExpanded(o=>{var r;let i=o===!0?!0:!!(o!=null&&o[e.id]),l={};if(o===!0?Object.keys(n.getRowModel().rowsById).forEach(u=>{l[u]=!0}):l=o,t=(r=t)!=null?r:!i,!i&&t)return{...l,[e.id]:!0};if(i&&!t){let{[e.id]:u,...a}=l;return a}return o})},getIsExpanded:()=>{var t;let o=n.getState().expanded;return!!((t=n.options.getIsRowExpanded==null?void 0:n.options.getIsRowExpanded(e))!=null?t:o===!0||o?.[e.id])},getCanExpand:()=>{var t,o,r;return(t=n.options.getRowCanExpand==null?void 0:n.options.getRowCanExpand(e))!=null?t:((o=n.options.enableExpanding)!=null?o:!0)&&!!((r=e.subRows)!=null&&r.length)},getToggleExpandedHandler:()=>{let t=e.getCanExpand();return()=>{t&&e.toggleExpanded()}}})},on=(e,n,t)=>{var o,r,i;let l=t.toLowerCase();return!!(!((o=e.getValue(n))==null||(r=o.toString())==null||(i=r.toLowerCase())==null)&&i.includes(l))};on.autoRemove=e=>O(e);var rn=(e,n,t)=>{var o,r;return!!(!((o=e.getValue(n))==null||(r=o.toString())==null)&&r.includes(t))};rn.autoRemove=e=>O(e);var ln=(e,n,t)=>{var o,r;return((o=e.getValue(n))==null||(r=o.toString())==null?void 0:r.toLowerCase())===t?.toLowerCase()};ln.autoRemove=e=>O(e);var sn=(e,n,t)=>{var o;return(o=e.getValue(n))==null?void 0:o.includes(t)};sn.autoRemove=e=>O(e)||!(e!=null&&e.length);var un=(e,n,t)=>!t.some(o=>{var r;return!((r=e.getValue(n))!=null&&r.includes(o))});un.autoRemove=e=>O(e)||!(e!=null&&e.length);var an=(e,n,t)=>t.some(o=>{var r;return(r=e.getValue(n))==null?void 0:r.includes(o)});an.autoRemove=e=>O(e)||!(e!=null&&e.length);var dn=(e,n,t)=>e.getValue(n)===t;dn.autoRemove=e=>O(e);var gn=(e,n,t)=>e.getValue(n)==t;gn.autoRemove=e=>O(e);var Ye=(e,n,t)=>{let[o,r]=t,i=e.getValue(n);return i>=o&&i<=r};Ye.resolveFilterValue=e=>{let[n,t]=e,o=typeof n!="number"?parseFloat(n):n,r=typeof t!="number"?parseFloat(t):t,i=n===null||Number.isNaN(o)?-1/0:o,l=t===null||Number.isNaN(r)?1/0:r;if(i>l){let u=i;i=l,l=u}return[i,l]};Ye.autoRemove=e=>O(e)||O(e[0])&&O(e[1]);var W={includesString:on,includesStringSensitive:rn,equalsString:ln,arrIncludes:sn,arrIncludesAll:un,arrIncludesSome:an,equals:dn,weakEquals:gn,inNumberRange:Ye};function O(e){return e==null||e===""}var Ro={getDefaultColumnDef:()=>({filterFn:"auto"}),getInitialState:e=>({columnFilters:[],globalFilter:void 0,...e}),getDefaultOptions:e=>({onColumnFiltersChange:M("columnFilters",e),onGlobalFilterChange:M("globalFilter",e),filterFromLeafRows:!1,maxLeafRowFilterDepth:100,globalFilterFn:"auto",getColumnCanGlobalFilter:n=>{var t,o;let r=(t=e.getCoreRowModel().flatRows[0])==null||(o=t._getAllCellsByColumnId()[n.id])==null?void 0:o.getValue();return typeof r=="string"||typeof r=="number"}}),createColumn:(e,n)=>({getAutoFilterFn:()=>{let t=n.getCoreRowModel().flatRows[0],o=t?.getValue(e.id);return typeof o=="string"?W.includesString:typeof o=="number"?W.inNumberRange:typeof o=="boolean"||o!==null&&typeof o=="object"?W.equals:Array.isArray(o)?W.arrIncludes:W.weakEquals},getFilterFn:()=>{var t,o;return Re(e.columnDef.filterFn)?e.columnDef.filterFn:e.columnDef.filterFn==="auto"?e.getAutoFilterFn():(t=(o=n.options.filterFns)==null?void 0:o[e.columnDef.filterFn])!=null?t:W[e.columnDef.filterFn]},getCanFilter:()=>{var t,o,r;return((t=e.columnDef.enableColumnFilter)!=null?t:!0)&&((o=n.options.enableColumnFilters)!=null?o:!0)&&((r=n.options.enableFilters)!=null?r:!0)&&!!e.accessorFn},getCanGlobalFilter:()=>{var t,o,r,i;return((t=e.columnDef.enableGlobalFilter)!=null?t:!0)&&((o=n.options.enableGlobalFilter)!=null?o:!0)&&((r=n.options.enableFilters)!=null?r:!0)&&((i=n.options.getColumnCanGlobalFilter==null?void 0:n.options.getColumnCanGlobalFilter(e))!=null?i:!0)&&!!e.accessorFn},getIsFiltered:()=>e.getFilterIndex()>-1,getFilterValue:()=>{var t,o;return(t=n.getState().columnFilters)==null||(o=t.find(r=>r.id===e.id))==null?void 0:o.value},getFilterIndex:()=>{var t,o;return(t=(o=n.getState().columnFilters)==null?void 0:o.findIndex(r=>r.id===e.id))!=null?t:-1},setFilterValue:t=>{n.setColumnFilters(o=>{let r=e.getFilterFn(),i=o?.find(s=>s.id===e.id),l=X(t,i?i.value:void 0);if(en(r,l,e)){var u;return(u=o?.filter(s=>s.id!==e.id))!=null?u:[]}let a={id:e.id,value:l};if(i){var d;return(d=o?.map(s=>s.id===e.id?a:s))!=null?d:[]}return o!=null&&o.length?[...o,a]:[a]})},_getFacetedRowModel:n.options.getFacetedRowModel&&n.options.getFacetedRowModel(n,e.id),getFacetedRowModel:()=>e._getFacetedRowModel?e._getFacetedRowModel():n.getPreFilteredRowModel(),_getFacetedUniqueValues:n.options.getFacetedUniqueValues&&n.options.getFacetedUniqueValues(n,e.id),getFacetedUniqueValues:()=>e._getFacetedUniqueValues?e._getFacetedUniqueValues():new Map,_getFacetedMinMaxValues:n.options.getFacetedMinMaxValues&&n.options.getFacetedMinMaxValues(n,e.id),getFacetedMinMaxValues:()=>{if(e._getFacetedMinMaxValues)return e._getFacetedMinMaxValues()}}),createRow:(e,n)=>({columnFilters:{},columnFiltersMeta:{}}),createTable:e=>({getGlobalAutoFilterFn:()=>W.includesString,getGlobalFilterFn:()=>{var n,t;let{globalFilterFn:o}=e.options;return Re(o)?o:o==="auto"?e.getGlobalAutoFilterFn():(n=(t=e.options.filterFns)==null?void 0:t[o])!=null?n:W[o]},setColumnFilters:n=>{let t=e.getAllLeafColumns(),o=r=>{var i;return(i=X(n,r))==null?void 0:i.filter(l=>{let u=t.find(a=>a.id===l.id);if(u){let a=u.getFilterFn();if(en(a,l.value,u))return!1}return!0})};e.options.onColumnFiltersChange==null||e.options.onColumnFiltersChange(o)},setGlobalFilter:n=>{e.options.onGlobalFilterChange==null||e.options.onGlobalFilterChange(n)},resetGlobalFilter:n=>{e.setGlobalFilter(n?void 0:e.initialState.globalFilter)},resetColumnFilters:n=>{var t,o;e.setColumnFilters(n?[]:(t=(o=e.initialState)==null?void 0:o.columnFilters)!=null?t:[])},getPreFilteredRowModel:()=>e.getCoreRowModel(),getFilteredRowModel:()=>(!e._getFilteredRowModel&&e.options.getFilteredRowModel&&(e._getFilteredRowModel=e.options.getFilteredRowModel(e)),e.options.manualFiltering||!e._getFilteredRowModel?e.getPreFilteredRowModel():e._getFilteredRowModel()),_getGlobalFacetedRowModel:e.options.getFacetedRowModel&&e.options.getFacetedRowModel(e,"__global__"),getGlobalFacetedRowModel:()=>e.options.manualFiltering||!e._getGlobalFacetedRowModel?e.getPreFilteredRowModel():e._getGlobalFacetedRowModel(),_getGlobalFacetedUniqueValues:e.options.getFacetedUniqueValues&&e.options.getFacetedUniqueValues(e,"__global__"),getGlobalFacetedUniqueValues:()=>e._getGlobalFacetedUniqueValues?e._getGlobalFacetedUniqueValues():new Map,_getGlobalFacetedMinMaxValues:e.options.getFacetedMinMaxValues&&e.options.getFacetedMinMaxValues(e,"__global__"),getGlobalFacetedMinMaxValues:()=>{if(e._getGlobalFacetedMinMaxValues)return e._getGlobalFacetedMinMaxValues()}})};function en(e,n,t){return(e&&e.autoRemove?e.autoRemove(n,t):!1)||typeof n>"u"||typeof n=="string"&&!n}var wo=(e,n,t)=>t.reduce((o,r)=>{let i=r.getValue(e);return o+(typeof i=="number"?i:0)},0),Io=(e,n,t)=>{let o;return t.forEach(r=>{let i=r.getValue(e);i!=null&&(o>i||o===void 0&&i>=i)&&(o=i)}),o},xo=(e,n,t)=>{let o;return t.forEach(r=>{let i=r.getValue(e);i!=null&&(o<i||o===void 0&&i>=i)&&(o=i)}),o},Fo=(e,n,t)=>{let o,r;return t.forEach(i=>{let l=i.getValue(e);l!=null&&(o===void 0?l>=l&&(o=r=l):(o>l&&(o=l),r<l&&(r=l)))}),[o,r]},Eo=(e,n)=>{let t=0,o=0;if(n.forEach(r=>{let i=r.getValue(e);i!=null&&(i=+i)>=i&&(++t,o+=i)}),t)return o/t},Ao=(e,n)=>{if(!n.length)return;let t=n.map(i=>i.getValue(e));if(!mo(t))return;if(t.length===1)return t[0];let o=Math.floor(t.length/2),r=t.sort((i,l)=>i-l);return t.length%2!==0?r[o]:(r[o-1]+r[o])/2},Vo=(e,n)=>Array.from(new Set(n.map(t=>t.getValue(e))).values()),$o=(e,n)=>new Set(n.map(t=>t.getValue(e))).size,Mo=(e,n)=>n.length,Be={sum:wo,min:Io,max:xo,extent:Fo,mean:Eo,median:Ao,unique:Vo,uniqueCount:$o,count:Mo},Go={getDefaultColumnDef:()=>({aggregatedCell:e=>{var n,t;return(n=(t=e.getValue())==null||t.toString==null?void 0:t.toString())!=null?n:null},aggregationFn:"auto"}),getInitialState:e=>({grouping:[],...e}),getDefaultOptions:e=>({onGroupingChange:M("grouping",e),groupedColumnMode:"reorder"}),createColumn:(e,n)=>({toggleGrouping:()=>{n.setGrouping(t=>t!=null&&t.includes(e.id)?t.filter(o=>o!==e.id):[...t??[],e.id])},getCanGroup:()=>{var t,o,r,i;return(t=(o=(r=(i=e.columnDef.enableGrouping)!=null?i:!0)!=null?r:n.options.enableGrouping)!=null?o:!0)!=null?t:!!e.accessorFn},getIsGrouped:()=>{var t;return(t=n.getState().grouping)==null?void 0:t.includes(e.id)},getGroupedIndex:()=>{var t;return(t=n.getState().grouping)==null?void 0:t.indexOf(e.id)},getToggleGroupingHandler:()=>{let t=e.getCanGroup();return()=>{t&&e.toggleGrouping()}},getAutoAggregationFn:()=>{let t=n.getCoreRowModel().flatRows[0],o=t?.getValue(e.id);if(typeof o=="number")return Be.sum;if(Object.prototype.toString.call(o)==="[object Date]")return Be.extent},getAggregationFn:()=>{var t,o;if(!e)throw new Error;return Re(e.columnDef.aggregationFn)?e.columnDef.aggregationFn:e.columnDef.aggregationFn==="auto"?e.getAutoAggregationFn():(t=(o=n.options.aggregationFns)==null?void 0:o[e.columnDef.aggregationFn])!=null?t:Be[e.columnDef.aggregationFn]}}),createTable:e=>({setGrouping:n=>e.options.onGroupingChange==null?void 0:e.options.onGroupingChange(n),resetGrouping:n=>{var t,o;e.setGrouping(n?[]:(t=(o=e.initialState)==null?void 0:o.grouping)!=null?t:[])},getPreGroupedRowModel:()=>e.getFilteredRowModel(),getGroupedRowModel:()=>(!e._getGroupedRowModel&&e.options.getGroupedRowModel&&(e._getGroupedRowModel=e.options.getGroupedRowModel(e)),e.options.manualGrouping||!e._getGroupedRowModel?e.getPreGroupedRowModel():e._getGroupedRowModel())}),createRow:(e,n)=>({getIsGrouped:()=>!!e.groupingColumnId,getGroupingValue:t=>{if(e._groupingValuesCache.hasOwnProperty(t))return e._groupingValuesCache[t];let o=n.getColumn(t);return o!=null&&o.columnDef.getGroupingValue?(e._groupingValuesCache[t]=o.columnDef.getGroupingValue(e.original),e._groupingValuesCache[t]):e.getValue(t)},_groupingValuesCache:{}}),createCell:(e,n,t,o)=>({getIsGrouped:()=>n.getIsGrouped()&&n.id===t.groupingColumnId,getIsPlaceholder:()=>!e.getIsGrouped()&&n.getIsGrouped(),getIsAggregated:()=>{var r;return!e.getIsGrouped()&&!e.getIsPlaceholder()&&!!((r=t.subRows)!=null&&r.length)}})};function Oo(e,n,t){if(!(n!=null&&n.length)||!t)return e;let o=e.filter(i=>!n.includes(i.id));return t==="remove"?o:[...n.map(i=>e.find(l=>l.id===i)).filter(Boolean),...o]}var Do={getInitialState:e=>({columnOrder:[],...e}),getDefaultOptions:e=>({onColumnOrderChange:M("columnOrder",e)}),createTable:e=>({setColumnOrder:n=>e.options.onColumnOrderChange==null?void 0:e.options.onColumnOrderChange(n),resetColumnOrder:n=>{var t;e.setColumnOrder(n?[]:(t=e.initialState.columnOrder)!=null?t:[])},_getOrderColumnsFn:C(()=>[e.getState().columnOrder,e.getState().grouping,e.options.groupedColumnMode],(n,t,o)=>r=>{let i=[];if(!(n!=null&&n.length))i=r;else{let l=[...n],u=[...r];for(;u.length&&l.length;){let a=l.shift(),d=u.findIndex(s=>s.id===a);d>-1&&i.push(u.splice(d,1)[0])}i=[...i,...u]}return Oo(i,t,o)},{key:!1})})},Xe=0,je=10,We=()=>({pageIndex:Xe,pageSize:je}),ko={getInitialState:e=>({...e,pagination:{...We(),...e?.pagination}}),getDefaultOptions:e=>({onPaginationChange:M("pagination",e)}),createTable:e=>{let n=!1,t=!1;return{_autoResetPageIndex:()=>{var o,r;if(!n){e._queue(()=>{n=!0});return}if((o=(r=e.options.autoResetAll)!=null?r:e.options.autoResetPageIndex)!=null?o:!e.options.manualPagination){if(t)return;t=!0,e._queue(()=>{e.resetPageIndex(),t=!1})}},setPagination:o=>{let r=i=>X(o,i);return e.options.onPaginationChange==null?void 0:e.options.onPaginationChange(r)},resetPagination:o=>{var r;e.setPagination(o?We():(r=e.initialState.pagination)!=null?r:We())},setPageIndex:o=>{e.setPagination(r=>{let i=X(o,r.pageIndex),l=typeof e.options.pageCount>"u"||e.options.pageCount===-1?Number.MAX_SAFE_INTEGER:e.options.pageCount-1;return i=Math.max(0,Math.min(i,l)),{...r,pageIndex:i}})},resetPageIndex:o=>{var r,i,l;e.setPageIndex(o?Xe:(r=(i=e.initialState)==null||(l=i.pagination)==null?void 0:l.pageIndex)!=null?r:Xe)},resetPageSize:o=>{var r,i,l;e.setPageSize(o?je:(r=(i=e.initialState)==null||(l=i.pagination)==null?void 0:l.pageSize)!=null?r:je)},setPageSize:o=>{e.setPagination(r=>{let i=Math.max(1,X(o,r.pageSize)),l=r.pageSize*r.pageIndex,u=Math.floor(l/i);return{...r,pageIndex:u,pageSize:i}})},setPageCount:o=>e.setPagination(r=>{var i;let l=X(o,(i=e.options.pageCount)!=null?i:-1);return typeof l=="number"&&(l=Math.max(-1,l)),{...r,pageCount:l}}),getPageOptions:C(()=>[e.getPageCount()],o=>{let r=[];return o&&o>0&&(r=[...new Array(o)].fill(null).map((i,l)=>l)),r},{key:!1,debug:()=>{var o;return(o=e.options.debugAll)!=null?o:e.options.debugTable}}),getCanPreviousPage:()=>e.getState().pagination.pageIndex>0,getCanNextPage:()=>{let{pageIndex:o}=e.getState().pagination,r=e.getPageCount();return r===-1?!0:r===0?!1:o<r-1},previousPage:()=>e.setPageIndex(o=>o-1),nextPage:()=>e.setPageIndex(o=>o+1),getPrePaginationRowModel:()=>e.getExpandedRowModel(),getPaginationRowModel:()=>(!e._getPaginationRowModel&&e.options.getPaginationRowModel&&(e._getPaginationRowModel=e.options.getPaginationRowModel(e)),e.options.manualPagination||!e._getPaginationRowModel?e.getPrePaginationRowModel():e._getPaginationRowModel()),getPageCount:()=>{var o;return(o=e.options.pageCount)!=null?o:Math.ceil(e.getPrePaginationRowModel().rows.length/e.getState().pagination.pageSize)}}}},Ze=()=>({left:[],right:[]}),No={getInitialState:e=>({columnPinning:Ze(),...e}),getDefaultOptions:e=>({onColumnPinningChange:M("columnPinning",e)}),createColumn:(e,n)=>({pin:t=>{let o=e.getLeafColumns().map(r=>r.id).filter(Boolean);n.setColumnPinning(r=>{var i,l;if(t==="right"){var u,a;return{left:((u=r?.left)!=null?u:[]).filter(c=>!(o!=null&&o.includes(c))),right:[...((a=r?.right)!=null?a:[]).filter(c=>!(o!=null&&o.includes(c))),...o]}}if(t==="left"){var d,s;return{left:[...((d=r?.left)!=null?d:[]).filter(c=>!(o!=null&&o.includes(c))),...o],right:((s=r?.right)!=null?s:[]).filter(c=>!(o!=null&&o.includes(c)))}}return{left:((i=r?.left)!=null?i:[]).filter(c=>!(o!=null&&o.includes(c))),right:((l=r?.right)!=null?l:[]).filter(c=>!(o!=null&&o.includes(c)))}})},getCanPin:()=>e.getLeafColumns().some(o=>{var r,i;return((r=o.columnDef.enablePinning)!=null?r:!0)&&((i=n.options.enablePinning)!=null?i:!0)}),getIsPinned:()=>{let t=e.getLeafColumns().map(u=>u.id),{left:o,right:r}=n.getState().columnPinning,i=t.some(u=>o?.includes(u)),l=t.some(u=>r?.includes(u));return i?"left":l?"right":!1},getPinnedIndex:()=>{var t,o,r;let i=e.getIsPinned();return i?(t=(o=n.getState().columnPinning)==null||(r=o[i])==null?void 0:r.indexOf(e.id))!=null?t:-1:0}}),createRow:(e,n)=>({getCenterVisibleCells:C(()=>[e._getAllVisibleCells(),n.getState().columnPinning.left,n.getState().columnPinning.right],(t,o,r)=>{let i=[...o??[],...r??[]];return t.filter(l=>!i.includes(l.column.id))},{key:"row.getCenterVisibleCells",debug:()=>{var t;return(t=n.options.debugAll)!=null?t:n.options.debugRows}}),getLeftVisibleCells:C(()=>[e._getAllVisibleCells(),n.getState().columnPinning.left,,],(t,o)=>(o??[]).map(i=>t.find(l=>l.column.id===i)).filter(Boolean).map(i=>({...i,position:"left"})),{key:"row.getLeftVisibleCells",debug:()=>{var t;return(t=n.options.debugAll)!=null?t:n.options.debugRows}}),getRightVisibleCells:C(()=>[e._getAllVisibleCells(),n.getState().columnPinning.right],(t,o)=>(o??[]).map(i=>t.find(l=>l.column.id===i)).filter(Boolean).map(i=>({...i,position:"right"})),{key:"row.getRightVisibleCells",debug:()=>{var t;return(t=n.options.debugAll)!=null?t:n.options.debugRows}})}),createTable:e=>({setColumnPinning:n=>e.options.onColumnPinningChange==null?void 0:e.options.onColumnPinningChange(n),resetColumnPinning:n=>{var t,o;return e.setColumnPinning(n?Ze():(t=(o=e.initialState)==null?void 0:o.columnPinning)!=null?t:Ze())},getIsSomeColumnsPinned:n=>{var t;let o=e.getState().columnPinning;if(!n){var r,i;return!!((r=o.left)!=null&&r.length||(i=o.right)!=null&&i.length)}return!!((t=o[n])!=null&&t.length)},getLeftLeafColumns:C(()=>[e.getAllLeafColumns(),e.getState().columnPinning.left],(n,t)=>(t??[]).map(o=>n.find(r=>r.id===o)).filter(Boolean),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugColumns}}),getRightLeafColumns:C(()=>[e.getAllLeafColumns(),e.getState().columnPinning.right],(n,t)=>(t??[]).map(o=>n.find(r=>r.id===o)).filter(Boolean),{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugColumns}}),getCenterLeafColumns:C(()=>[e.getAllLeafColumns(),e.getState().columnPinning.left,e.getState().columnPinning.right],(n,t,o)=>{let r=[...t??[],...o??[]];return n.filter(i=>!r.includes(i.id))},{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugColumns}})})},Lo={getInitialState:e=>({rowSelection:{},...e}),getDefaultOptions:e=>({onRowSelectionChange:M("rowSelection",e),enableRowSelection:!0,enableMultiRowSelection:!0,enableSubRowSelection:!0}),createTable:e=>({setRowSelection:n=>e.options.onRowSelectionChange==null?void 0:e.options.onRowSelectionChange(n),resetRowSelection:n=>{var t;return e.setRowSelection(n?{}:(t=e.initialState.rowSelection)!=null?t:{})},toggleAllRowsSelected:n=>{e.setRowSelection(t=>{n=typeof n<"u"?n:!e.getIsAllRowsSelected();let o={...t},r=e.getPreGroupedRowModel().flatRows;return n?r.forEach(i=>{i.getCanSelect()&&(o[i.id]=!0)}):r.forEach(i=>{delete o[i.id]}),o})},toggleAllPageRowsSelected:n=>e.setRowSelection(t=>{let o=typeof n<"u"?n:!e.getIsAllPageRowsSelected(),r={...t};return e.getRowModel().rows.forEach(i=>{Qe(r,i.id,o,e)}),r}),getPreSelectedRowModel:()=>e.getCoreRowModel(),getSelectedRowModel:C(()=>[e.getState().rowSelection,e.getCoreRowModel()],(n,t)=>Object.keys(n).length?Ue(e,t):{rows:[],flatRows:[],rowsById:{}},{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugTable}}),getFilteredSelectedRowModel:C(()=>[e.getState().rowSelection,e.getFilteredRowModel()],(n,t)=>Object.keys(n).length?Ue(e,t):{rows:[],flatRows:[],rowsById:{}},{key:"getFilteredSelectedRowModel",debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugTable}}),getGroupedSelectedRowModel:C(()=>[e.getState().rowSelection,e.getSortedRowModel()],(n,t)=>Object.keys(n).length?Ue(e,t):{rows:[],flatRows:[],rowsById:{}},{key:"getGroupedSelectedRowModel",debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugTable}}),getIsAllRowsSelected:()=>{let n=e.getFilteredRowModel().flatRows,{rowSelection:t}=e.getState(),o=!!(n.length&&Object.keys(t).length);return o&&n.some(r=>r.getCanSelect()&&!t[r.id])&&(o=!1),o},getIsAllPageRowsSelected:()=>{let n=e.getPaginationRowModel().flatRows.filter(r=>r.getCanSelect()),{rowSelection:t}=e.getState(),o=!!n.length;return o&&n.some(r=>!t[r.id])&&(o=!1),o},getIsSomeRowsSelected:()=>{var n;let t=Object.keys((n=e.getState().rowSelection)!=null?n:{}).length;return t>0&&t<e.getFilteredRowModel().flatRows.length},getIsSomePageRowsSelected:()=>{let n=e.getPaginationRowModel().flatRows;return e.getIsAllPageRowsSelected()?!1:n.filter(t=>t.getCanSelect()).some(t=>t.getIsSelected()||t.getIsSomeSelected())},getToggleAllRowsSelectedHandler:()=>n=>{e.toggleAllRowsSelected(n.target.checked)},getToggleAllPageRowsSelectedHandler:()=>n=>{e.toggleAllPageRowsSelected(n.target.checked)}}),createRow:(e,n)=>({toggleSelected:t=>{let o=e.getIsSelected();n.setRowSelection(r=>{if(t=typeof t<"u"?t:!o,o===t)return r;let i={...r};return Qe(i,e.id,t,n),i})},getIsSelected:()=>{let{rowSelection:t}=n.getState();return Ke(e,t)},getIsSomeSelected:()=>{let{rowSelection:t}=n.getState();return tn(e,t)==="some"},getIsAllSubRowsSelected:()=>{let{rowSelection:t}=n.getState();return tn(e,t)==="all"},getCanSelect:()=>{var t;return typeof n.options.enableRowSelection=="function"?n.options.enableRowSelection(e):(t=n.options.enableRowSelection)!=null?t:!0},getCanSelectSubRows:()=>{var t;return typeof n.options.enableSubRowSelection=="function"?n.options.enableSubRowSelection(e):(t=n.options.enableSubRowSelection)!=null?t:!0},getCanMultiSelect:()=>{var t;return typeof n.options.enableMultiRowSelection=="function"?n.options.enableMultiRowSelection(e):(t=n.options.enableMultiRowSelection)!=null?t:!0},getToggleSelectedHandler:()=>{let t=e.getCanSelect();return o=>{var r;t&&e.toggleSelected((r=o.target)==null?void 0:r.checked)}}})},Qe=(e,n,t,o)=>{var r;let i=o.getRow(n);t?(i.getCanMultiSelect()||Object.keys(e).forEach(l=>delete e[l]),i.getCanSelect()&&(e[n]=!0)):delete e[n],(r=i.subRows)!=null&&r.length&&i.getCanSelectSubRows()&&i.subRows.forEach(l=>Qe(e,l.id,t,o))};function Ue(e,n){let t=e.getState().rowSelection,o=[],r={},i=function(l,u){return l.map(a=>{var d;let s=Ke(a,t);if(s&&(o.push(a),r[a.id]=a),(d=a.subRows)!=null&&d.length&&(a={...a,subRows:i(a.subRows)}),s)return a}).filter(Boolean)};return{rows:i(n.rows),flatRows:o,rowsById:r}}function Ke(e,n){var t;return(t=n[e.id])!=null?t:!1}function tn(e,n,t){if(e.subRows&&e.subRows.length){let o=!0,r=!1;return e.subRows.forEach(i=>{r&&!o||(Ke(i,n)?r=!0:o=!1)}),o?"all":r?"some":!1}return!1}var Je=/([0-9]+)/gm,Ho=(e,n,t)=>cn(j(e.getValue(t)).toLowerCase(),j(n.getValue(t)).toLowerCase()),To=(e,n,t)=>cn(j(e.getValue(t)),j(n.getValue(t))),Po=(e,n,t)=>qe(j(e.getValue(t)).toLowerCase(),j(n.getValue(t)).toLowerCase()),zo=(e,n,t)=>qe(j(e.getValue(t)),j(n.getValue(t))),Bo=(e,n,t)=>{let o=e.getValue(t),r=n.getValue(t);return o>r?1:o<r?-1:0},Wo=(e,n,t)=>qe(e.getValue(t),n.getValue(t));function qe(e,n){return e===n?0:e>n?1:-1}function j(e){return typeof e=="number"?isNaN(e)||e===1/0||e===-1/0?"":String(e):typeof e=="string"?e:""}function cn(e,n){let t=e.split(Je).filter(Boolean),o=n.split(Je).filter(Boolean);for(;t.length&&o.length;){let r=t.shift(),i=o.shift(),l=parseInt(r,10),u=parseInt(i,10),a=[l,u].sort();if(isNaN(a[0])){if(r>i)return 1;if(i>r)return-1;continue}if(isNaN(a[1]))return isNaN(l)?-1:1;if(l>u)return 1;if(u>l)return-1}return t.length-o.length}var de={alphanumeric:Ho,alphanumericCaseSensitive:To,text:Po,textCaseSensitive:zo,datetime:Bo,basic:Wo},Zo={getInitialState:e=>({sorting:[],...e}),getDefaultColumnDef:()=>({sortingFn:"auto"}),getDefaultOptions:e=>({onSortingChange:M("sorting",e),isMultiSortEvent:n=>n.shiftKey}),createColumn:(e,n)=>({getAutoSortingFn:()=>{let t=n.getFilteredRowModel().flatRows.slice(10),o=!1;for(let r of t){let i=r?.getValue(e.id);if(Object.prototype.toString.call(i)==="[object Date]")return de.datetime;if(typeof i=="string"&&(o=!0,i.split(Je).length>1))return de.alphanumeric}return o?de.text:de.basic},getAutoSortDir:()=>{let t=n.getFilteredRowModel().flatRows[0];return typeof t?.getValue(e.id)=="string"?"asc":"desc"},getSortingFn:()=>{var t,o;if(!e)throw new Error;return Re(e.columnDef.sortingFn)?e.columnDef.sortingFn:e.columnDef.sortingFn==="auto"?e.getAutoSortingFn():(t=(o=n.options.sortingFns)==null?void 0:o[e.columnDef.sortingFn])!=null?t:de[e.columnDef.sortingFn]},toggleSorting:(t,o)=>{let r=e.getNextSortingOrder(),i=typeof t<"u"&&t!==null;n.setSorting(l=>{let u=l?.find(g=>g.id===e.id),a=l?.findIndex(g=>g.id===e.id),d=[],s,c=i?t:r==="desc";if(l!=null&&l.length&&e.getCanMultiSort()&&o?u?s="toggle":s="add":l!=null&&l.length&&a!==l.length-1?s="replace":u?s="toggle":s="replace",s==="toggle"&&(i||r||(s="remove")),s==="add"){var f;d=[...l,{id:e.id,desc:c}],d.splice(0,d.length-((f=n.options.maxMultiSortColCount)!=null?f:Number.MAX_SAFE_INTEGER))}else s==="toggle"?d=l.map(g=>g.id===e.id?{...g,desc:c}:g):s==="remove"?d=l.filter(g=>g.id!==e.id):d=[{id:e.id,desc:c}];return d})},getFirstSortDir:()=>{var t,o;return((t=(o=e.columnDef.sortDescFirst)!=null?o:n.options.sortDescFirst)!=null?t:e.getAutoSortDir()==="desc")?"desc":"asc"},getNextSortingOrder:t=>{var o,r;let i=e.getFirstSortDir(),l=e.getIsSorted();return l?l!==i&&((o=n.options.enableSortingRemoval)==null||o)&&(!(t&&(r=n.options.enableMultiRemove)!=null)||r)?!1:l==="desc"?"asc":"desc":i},getCanSort:()=>{var t,o;return((t=e.columnDef.enableSorting)!=null?t:!0)&&((o=n.options.enableSorting)!=null?o:!0)&&!!e.accessorFn},getCanMultiSort:()=>{var t,o;return(t=(o=e.columnDef.enableMultiSort)!=null?o:n.options.enableMultiSort)!=null?t:!!e.accessorFn},getIsSorted:()=>{var t;let o=(t=n.getState().sorting)==null?void 0:t.find(r=>r.id===e.id);return o?o.desc?"desc":"asc":!1},getSortIndex:()=>{var t,o;return(t=(o=n.getState().sorting)==null?void 0:o.findIndex(r=>r.id===e.id))!=null?t:-1},clearSorting:()=>{n.setSorting(t=>t!=null&&t.length?t.filter(o=>o.id!==e.id):[])},getToggleSortingHandler:()=>{let t=e.getCanSort();return o=>{t&&(o.persist==null||o.persist(),e.toggleSorting==null||e.toggleSorting(void 0,e.getCanMultiSort()?n.options.isMultiSortEvent==null?void 0:n.options.isMultiSortEvent(o):!1))}}}),createTable:e=>({setSorting:n=>e.options.onSortingChange==null?void 0:e.options.onSortingChange(n),resetSorting:n=>{var t,o;e.setSorting(n?[]:(t=(o=e.initialState)==null?void 0:o.sorting)!=null?t:[])},getPreSortedRowModel:()=>e.getGroupedRowModel(),getSortedRowModel:()=>(!e._getSortedRowModel&&e.options.getSortedRowModel&&(e._getSortedRowModel=e.options.getSortedRowModel(e)),e.options.manualSorting||!e._getSortedRowModel?e.getPreSortedRowModel():e._getSortedRowModel())})},Uo={getInitialState:e=>({columnVisibility:{},...e}),getDefaultOptions:e=>({onColumnVisibilityChange:M("columnVisibility",e)}),createColumn:(e,n)=>({toggleVisibility:t=>{e.getCanHide()&&n.setColumnVisibility(o=>({...o,[e.id]:t??!e.getIsVisible()}))},getIsVisible:()=>{var t,o;return(t=(o=n.getState().columnVisibility)==null?void 0:o[e.id])!=null?t:!0},getCanHide:()=>{var t,o;return((t=e.columnDef.enableHiding)!=null?t:!0)&&((o=n.options.enableHiding)!=null?o:!0)},getToggleVisibilityHandler:()=>t=>{e.toggleVisibility==null||e.toggleVisibility(t.target.checked)}}),createRow:(e,n)=>({_getAllVisibleCells:C(()=>[e.getAllCells(),n.getState().columnVisibility],t=>t.filter(o=>o.column.getIsVisible()),{key:"row._getAllVisibleCells",debug:()=>{var t;return(t=n.options.debugAll)!=null?t:n.options.debugRows}}),getVisibleCells:C(()=>[e.getLeftVisibleCells(),e.getCenterVisibleCells(),e.getRightVisibleCells()],(t,o,r)=>[...t,...o,...r],{key:!1,debug:()=>{var t;return(t=n.options.debugAll)!=null?t:n.options.debugRows}})}),createTable:e=>{let n=(t,o)=>C(()=>[o(),o().filter(r=>r.getIsVisible()).map(r=>r.id).join("_")],r=>r.filter(i=>i.getIsVisible==null?void 0:i.getIsVisible()),{key:t,debug:()=>{var r;return(r=e.options.debugAll)!=null?r:e.options.debugColumns}});return{getVisibleFlatColumns:n("getVisibleFlatColumns",()=>e.getAllFlatColumns()),getVisibleLeafColumns:n("getVisibleLeafColumns",()=>e.getAllLeafColumns()),getLeftVisibleLeafColumns:n("getLeftVisibleLeafColumns",()=>e.getLeftLeafColumns()),getRightVisibleLeafColumns:n("getRightVisibleLeafColumns",()=>e.getRightLeafColumns()),getCenterVisibleLeafColumns:n("getCenterVisibleLeafColumns",()=>e.getCenterLeafColumns()),setColumnVisibility:t=>e.options.onColumnVisibilityChange==null?void 0:e.options.onColumnVisibilityChange(t),resetColumnVisibility:t=>{var o;e.setColumnVisibility(t?{}:(o=e.initialState.columnVisibility)!=null?o:{})},toggleAllColumnsVisible:t=>{var o;t=(o=t)!=null?o:!e.getIsAllColumnsVisible(),e.setColumnVisibility(e.getAllLeafColumns().reduce((r,i)=>({...r,[i.id]:t||!(i.getCanHide!=null&&i.getCanHide())}),{}))},getIsAllColumnsVisible:()=>!e.getAllLeafColumns().some(t=>!(t.getIsVisible!=null&&t.getIsVisible())),getIsSomeColumnsVisible:()=>e.getAllLeafColumns().some(t=>t.getIsVisible==null?void 0:t.getIsVisible()),getToggleAllColumnsVisibilityHandler:()=>t=>{var o;e.toggleAllColumnsVisible((o=t.target)==null?void 0:o.checked)}}}},nn=[Co,Uo,Do,No,Ro,Zo,Go,So,ko,Lo,bo];function fn(e){var n;(e.debugAll||e.debugTable)&&console.info("Creating Table Instance...");let t={_features:nn},o=t._features.reduce((s,c)=>Object.assign(s,c.getDefaultOptions==null?void 0:c.getDefaultOptions(t)),{}),r=s=>t.options.mergeOptions?t.options.mergeOptions(o,s):{...o,...s},l={...{},...(n=e.initialState)!=null?n:{}};t._features.forEach(s=>{var c;l=(c=s.getInitialState==null?void 0:s.getInitialState(l))!=null?c:l});let u=[],a=!1,d={_features:nn,options:{...o,...e},initialState:l,_queue:s=>{u.push(s),a||(a=!0,Promise.resolve().then(()=>{for(;u.length;)u.shift()();a=!1}).catch(c=>setTimeout(()=>{throw c})))},reset:()=>{t.setState(t.initialState)},setOptions:s=>{let c=X(s,t.options);t.options=r(c)},getState:()=>t.options.state,setState:s=>{t.options.onStateChange==null||t.options.onStateChange(s)},_getRowId:(s,c,f)=>{var g;return(g=t.options.getRowId==null?void 0:t.options.getRowId(s,c,f))!=null?g:`${f?[f.id,c].join("."):c}`},getCoreRowModel:()=>(t._getCoreRowModel||(t._getCoreRowModel=t.options.getCoreRowModel(t)),t._getCoreRowModel()),getRowModel:()=>t.getPaginationRowModel(),getRow:s=>{let c=t.getRowModel().rowsById[s];if(!c)throw new Error;return c},_getDefaultColumnDef:C(()=>[t.options.defaultColumn],s=>{var c;return s=(c=s)!=null?c:{},{header:f=>{let g=f.header.column.columnDef;return g.accessorKey?g.accessorKey:g.accessorFn?g.id:null},cell:f=>{var g,p;return(g=(p=f.renderValue())==null||p.toString==null?void 0:p.toString())!=null?g:null},...t._features.reduce((f,g)=>Object.assign(f,g.getDefaultColumnDef==null?void 0:g.getDefaultColumnDef()),{}),...s}},{debug:()=>{var s;return(s=t.options.debugAll)!=null?s:t.options.debugColumns},key:!1}),_getColumnDefs:()=>t.options.columns,getAllColumns:C(()=>[t._getColumnDefs()],s=>{let c=function(f,g,p){return p===void 0&&(p=0),f.map(_=>{let m=vo(t,_,p,g),v=_;return m.columns=v.columns?c(v.columns,m,p+1):[],m})};return c(s)},{key:!1,debug:()=>{var s;return(s=t.options.debugAll)!=null?s:t.options.debugColumns}}),getAllFlatColumns:C(()=>[t.getAllColumns()],s=>s.flatMap(c=>c.getFlatColumns()),{key:!1,debug:()=>{var s;return(s=t.options.debugAll)!=null?s:t.options.debugColumns}}),_getAllFlatColumnsById:C(()=>[t.getAllFlatColumns()],s=>s.reduce((c,f)=>(c[f.id]=f,c),{}),{key:!1,debug:()=>{var s;return(s=t.options.debugAll)!=null?s:t.options.debugColumns}}),getAllLeafColumns:C(()=>[t.getAllColumns(),t._getOrderColumnsFn()],(s,c)=>{let f=s.flatMap(g=>g.getLeafColumns());return c(f)},{key:!1,debug:()=>{var s;return(s=t.options.debugAll)!=null?s:t.options.debugColumns}}),getColumn:s=>t._getAllFlatColumnsById()[s]};return Object.assign(t,d),t._features.forEach(s=>Object.assign(t,s.createTable==null?void 0:s.createTable(t))),t}function Xo(e,n,t,o){let r=()=>{var l;return(l=i.getValue())!=null?l:e.options.renderFallbackValue},i={id:`${n.id}_${t.id}`,row:n,column:t,getValue:()=>n.getValue(o),renderValue:r,getContext:C(()=>[e,t,n,i],(l,u,a,d)=>({table:l,column:u,row:a,cell:d,getValue:d.getValue,renderValue:d.renderValue}),{key:!1,debug:()=>e.options.debugAll})};return e._features.forEach(l=>{Object.assign(i,l.createCell==null?void 0:l.createCell(i,t,n,e))},{}),i}var jo=(e,n,t,o,r,i,l)=>{let u={id:n,index:o,original:t,depth:r,parentId:l,_valuesCache:{},_uniqueValuesCache:{},getValue:a=>{if(u._valuesCache.hasOwnProperty(a))return u._valuesCache[a];let d=e.getColumn(a);if(d!=null&&d.accessorFn)return u._valuesCache[a]=d.accessorFn(u.original,o),u._valuesCache[a]},getUniqueValues:a=>{if(u._uniqueValuesCache.hasOwnProperty(a))return u._uniqueValuesCache[a];let d=e.getColumn(a);if(d!=null&&d.accessorFn)return d.columnDef.getUniqueValues?(u._uniqueValuesCache[a]=d.columnDef.getUniqueValues(u.original,o),u._uniqueValuesCache[a]):(u._uniqueValuesCache[a]=[u.getValue(a)],u._uniqueValuesCache[a])},renderValue:a=>{var d;return(d=u.getValue(a))!=null?d:e.options.renderFallbackValue},subRows:i??[],getLeafRows:()=>ho(u.subRows,a=>a.subRows),getParentRow:()=>u.parentId?e.getRow(u.parentId):void 0,getParentRows:()=>{let a=[],d=u;for(;;){let s=d.getParentRow();if(!s)break;a.push(s),d=s}return a.reverse()},getAllCells:C(()=>[e.getAllLeafColumns()],a=>a.map(d=>Xo(e,u,d,d.id)),{key:!1,debug:()=>{var a;return(a=e.options.debugAll)!=null?a:e.options.debugRows}}),_getAllCellsByColumnId:C(()=>[u.getAllCells()],a=>a.reduce((d,s)=>(d[s.column.id]=s,d),{}),{key:"row.getAllCellsByColumnId",debug:()=>{var a;return(a=e.options.debugAll)!=null?a:e.options.debugRows}})};for(let a=0;a<e._features.length;a++){let d=e._features[a];Object.assign(u,d==null||d.createRow==null?void 0:d.createRow(u,e))}return u};function pn(){return e=>C(()=>[e.options.data],n=>{let t={rows:[],flatRows:[],rowsById:{}},o=function(r,i,l){i===void 0&&(i=0);let u=[];for(let d=0;d<r.length;d++){let s=jo(e,e._getRowId(r[d],d,l),r[d],d,i,void 0,l?.id);if(t.flatRows.push(s),t.rowsById[s.id]=s,u.push(s),e.options.getSubRows){var a;s.originalSubRows=e.options.getSubRows(r[d],d),(a=s.originalSubRows)!=null&&a.length&&(s.subRows=o(s.originalSubRows,i+1,s))}}return u};return t.rows=o(n),t},{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugTable},onChange:()=>{e._autoResetPageIndex()}})}function _n(){return e=>C(()=>[e.getState().sorting,e.getPreSortedRowModel()],(n,t)=>{if(!t.rows.length||!(n!=null&&n.length))return t;let o=e.getState().sorting,r=[],i=o.filter(a=>{var d;return(d=e.getColumn(a.id))==null?void 0:d.getCanSort()}),l={};i.forEach(a=>{let d=e.getColumn(a.id);d&&(l[a.id]={sortUndefined:d.columnDef.sortUndefined,invertSorting:d.columnDef.invertSorting,sortingFn:d.getSortingFn()})});let u=a=>{let d=[...a];return d.sort((s,c)=>{for(let g=0;g<i.length;g+=1){var f;let p=i[g],_=l[p.id],m=(f=p?.desc)!=null?f:!1;if(_.sortUndefined){let b=s.getValue(p.id),w=c.getValue(p.id),R=typeof b>"u",F=typeof w>"u";if(R||F)return R&&F?0:R?_.sortUndefined:-_.sortUndefined}let v=_.sortingFn(s,c,p.id);if(v!==0)return m&&(v*=-1),_.invertSorting&&(v*=-1),v}return s.index-c.index}),d.forEach(s=>{var c;r.push(s),(c=s.subRows)!=null&&c.length&&(s.subRows=u(s.subRows))}),d};return{rows:u(t.rows),flatRows:r,rowsById:t.rowsById}},{key:!1,debug:()=>{var n;return(n=e.options.debugAll)!=null?n:e.options.debugTable},onChange:()=>{e._autoResetPageIndex()}})}function et(e,n){return e?Qo(e)?A(e,n):e:null}function Qo(e){return Jo(e)||typeof e=="function"||Yo(e)}function Jo(e){return typeof e=="function"&&(()=>{let n=Object.getPrototypeOf(e);return n.prototype&&n.prototype.isReactComponent})()}function Yo(e){return typeof e=="object"&&typeof e.$$typeof=="symbol"&&["react.memo","react.forward_ref"].includes(e.$$typeof.description)}function mn(e){let n={state:{},onStateChange:()=>{},renderFallbackValue:null,...e},[t]=G(()=>({current:fn(n)})),[o,r]=G(()=>t.current.initialState);return t.current.setOptions(i=>({...i,...e,state:{...o,...e.state},onStateChange:l=>{r(l),e.onStateChange==null||e.onStateChange(l)}})),t.current}function ge(){return ge=Object.assign?Object.assign.bind():function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e},ge.apply(this,arguments)}function ce(){return ce=Object.assign?Object.assign.bind():function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e},ce.apply(this,arguments)}function Y(e,n,t){var o,r=(o=t.initialDeps)!=null?o:[],i;return function(){var l;t.key&&t.debug!=null&&t.debug()&&(l=Date.now());var u=e(),a=u.length!==r.length||u.some(function(p,_){return r[_]!==p});if(!a)return i;r=u;var d;if(t.key&&t.debug!=null&&t.debug()&&(d=Date.now()),i=n.apply(void 0,u),t.key&&t.debug!=null&&t.debug()){var s=Math.round((Date.now()-l)*100)/100,c=Math.round((Date.now()-d)*100)/100,f=c/16,g=function(_,m){for(_=String(_);_.length<m;)_=" "+_;return _};console.info("%c\u23F1 "+g(c,5)+" /"+g(s,5)+" ms",`
-            font-size: .6rem;
-            font-weight: bold;
-            color: hsl(`+Math.max(0,Math.min(120-120*f,120))+"deg 100% 31%);",t?.key)}return t==null||t.onChange==null||t.onChange(i),i}}function we(e,n){if(e===void 0)throw new Error("Unexpected undefined"+(n?": "+n:""));return e}var hn=function(n,t){return Math.abs(n-t)<1};var Ko=function(n){return n},qo=function(n){for(var t=Math.max(n.startIndex-n.overscan,0),o=Math.min(n.endIndex+n.overscan,n.count-1),r=[],i=t;i<=o;i++)r.push(i);return r},vn=function(n,t){var o=n.scrollElement;if(o){var r=function(u){var a=u.width,d=u.height;t({width:Math.round(a),height:Math.round(d)})};r(o.getBoundingClientRect());var i=new ResizeObserver(function(l){var u=l[0];if(u!=null&&u.borderBoxSize){var a=u.borderBoxSize[0];if(a){r({width:a.inlineSize,height:a.blockSize});return}}r(o.getBoundingClientRect())});return i.observe(o,{box:"border-box"}),function(){i.unobserve(o)}}};var Cn=function(n,t){var o=n.scrollElement;if(o){var r=function(){t(o[n.options.horizontal?"scrollLeft":"scrollTop"])};return r(),o.addEventListener("scroll",r,{passive:!0}),function(){o.removeEventListener("scroll",r)}}};var er=function(n,t,o){if(t!=null&&t.borderBoxSize){var r=t.borderBoxSize[0];if(r){var i=Math.round(r[o.options.horizontal?"inlineSize":"blockSize"]);return i}}return Math.round(n.getBoundingClientRect()[o.options.horizontal?"width":"height"])};var bn=function(n,t,o){var r,i,l=t.adjustments,u=l===void 0?0:l,a=t.behavior,d=n+u;(r=o.scrollElement)==null||r.scrollTo==null||r.scrollTo((i={},i[o.options.horizontal?"left":"top"]=d,i.behavior=a,i))},yn=function(n){var t=this;this.unsubs=[],this.scrollElement=null,this.isScrolling=!1,this.isScrollingTimeoutId=null,this.scrollToIndexTimeoutId=null,this.measurementsCache=[],this.itemSizeCache=new Map,this.pendingMeasuredCacheIndexes=[],this.scrollDirection=null,this.scrollAdjustments=0,this.measureElementCache=new Map,this.observer=function(){var o=null,r=function(){return o||(typeof ResizeObserver<"u"?o=new ResizeObserver(function(l){l.forEach(function(u){t._measureElement(u.target,u)})}):null)};return{disconnect:function(){var l;return(l=r())==null?void 0:l.disconnect()},observe:function(l){var u;return(u=r())==null?void 0:u.observe(l,{box:"border-box"})},unobserve:function(l){var u;return(u=r())==null?void 0:u.unobserve(l)}}}(),this.range={startIndex:0,endIndex:0},this.setOptions=function(o){Object.entries(o).forEach(function(r){var i=r[0],l=r[1];typeof l>"u"&&delete o[i]}),t.options=ce({debug:!1,initialOffset:0,overscan:1,paddingStart:0,paddingEnd:0,scrollPaddingStart:0,scrollPaddingEnd:0,horizontal:!1,getItemKey:Ko,rangeExtractor:qo,onChange:function(){},measureElement:er,initialRect:{width:0,height:0},scrollMargin:0,scrollingDelay:150,indexAttribute:"data-index",initialMeasurementsCache:[],lanes:1},o)},this.notify=function(){t.options.onChange==null||t.options.onChange(t)},this.cleanup=function(){t.unsubs.filter(Boolean).forEach(function(o){return o()}),t.unsubs=[],t.scrollElement=null},this._didMount=function(){return t.measureElementCache.forEach(t.observer.observe),function(){t.observer.disconnect(),t.cleanup()}},this._willUpdate=function(){var o=t.options.getScrollElement();t.scrollElement!==o&&(t.cleanup(),t.scrollElement=o,t._scrollToOffset(t.scrollOffset,{adjustments:void 0,behavior:void 0}),t.unsubs.push(t.options.observeElementRect(t,function(r){var i=t.scrollRect;t.scrollRect=r,(t.options.horizontal?r.width!==i.width:r.height!==i.height)&&t.maybeNotify()})),t.unsubs.push(t.options.observeElementOffset(t,function(r){t.scrollAdjustments=0,t.scrollOffset!==r&&(t.isScrollingTimeoutId!==null&&(clearTimeout(t.isScrollingTimeoutId),t.isScrollingTimeoutId=null),t.isScrolling=!0,t.scrollDirection=t.scrollOffset<r?"forward":"backward",t.scrollOffset=r,t.maybeNotify(),t.isScrollingTimeoutId=setTimeout(function(){t.isScrollingTimeoutId=null,t.isScrolling=!1,t.scrollDirection=null,t.maybeNotify()},t.options.scrollingDelay))})))},this.getSize=function(){return t.scrollRect[t.options.horizontal?"width":"height"]},this.memoOptions=Y(function(){return[t.options.count,t.options.paddingStart,t.options.scrollMargin,t.options.getItemKey]},function(o,r,i,l){return t.pendingMeasuredCacheIndexes=[],{count:o,paddingStart:r,scrollMargin:i,getItemKey:l}},{key:!1}),this.getFurthestMeasurement=function(o,r){for(var i=new Map,l=new Map,u=r-1;u>=0;u--){var a=o[u];if(!i.has(a.lane)){var d=l.get(a.lane);if(d==null||a.end>d.end?l.set(a.lane,a):a.end<d.end&&i.set(a.lane,!0),i.size===t.options.lanes)break}}return l.size===t.options.lanes?Array.from(l.values()).sort(function(s,c){return s.end-c.end})[0]:void 0},this.getMeasurements=Y(function(){return[t.memoOptions(),t.itemSizeCache]},function(o,r){var i=o.count,l=o.paddingStart,u=o.scrollMargin,a=o.getItemKey,d=t.pendingMeasuredCacheIndexes.length>0?Math.min.apply(Math,t.pendingMeasuredCacheIndexes):0;t.pendingMeasuredCacheIndexes=[];for(var s=t.measurementsCache.slice(0,d),c=d;c<i;c++){var f=a(c),g=t.options.lanes===1?s[c-1]:t.getFurthestMeasurement(s,c),p=g?g.end:l+u,_=r.get(f),m=typeof _=="number"?_:t.options.estimateSize(c),v=p+m,b=g?g.lane:c%t.options.lanes;s[c]={index:c,start:p,size:m,end:v,key:f,lane:b}}return t.measurementsCache=s,s},{key:!1,debug:function(){return t.options.debug}}),this.calculateRange=Y(function(){return[t.getMeasurements(),t.getSize(),t.scrollOffset]},function(o,r,i){return t.range=tr({measurements:o,outerSize:r,scrollOffset:i})},{key:!1,debug:function(){return t.options.debug}}),this.maybeNotify=Y(function(){var o=t.calculateRange();return[o.startIndex,o.endIndex,t.isScrolling]},function(){t.notify()},{key:!1,debug:function(){return t.options.debug},initialDeps:[this.range.startIndex,this.range.endIndex,this.isScrolling]}),this.getIndexes=Y(function(){return[t.options.rangeExtractor,t.calculateRange(),t.options.overscan,t.options.count]},function(o,r,i,l){return o(ce({},r,{overscan:i,count:l}))},{key:!1,debug:function(){return t.options.debug}}),this.indexFromElement=function(o){var r=t.options.indexAttribute,i=o.getAttribute(r);return i?parseInt(i,10):(console.warn("Missing attribute name '"+r+"={index}' on measured element."),-1)},this._measureElement=function(o,r){var i,l=t.indexFromElement(o),u=t.measurementsCache[l];if(u){var a=t.measureElementCache.get(u.key);if(!o.isConnected){t.observer.unobserve(o),o===a&&t.measureElementCache.delete(u.key);return}a!==o&&(a&&t.observer.unobserve(a),t.observer.observe(o),t.measureElementCache.set(u.key,o));var d=t.options.measureElement(o,r,t),s=(i=t.itemSizeCache.get(u.key))!=null?i:u.size,c=d-s;c!==0&&(u.start<t.scrollOffset&&t._scrollToOffset(t.scrollOffset,{adjustments:t.scrollAdjustments+=c,behavior:void 0}),t.pendingMeasuredCacheIndexes.push(l),t.itemSizeCache=new Map(t.itemSizeCache.set(u.key,d)),t.notify())}},this.measureElement=function(o){o&&t._measureElement(o,void 0)},this.getVirtualItems=Y(function(){return[t.getIndexes(),t.getMeasurements()]},function(o,r){for(var i=[],l=0,u=o.length;l<u;l++){var a=o[l],d=r[a];i.push(d)}return i},{key:!1,debug:function(){return t.options.debug}}),this.getVirtualItemForOffset=function(o){var r=t.getMeasurements();return we(r[Sn(0,r.length-1,function(i){return we(r[i]).start},o)])},this.getOffsetForAlignment=function(o,r){var i=t.getSize();r==="auto"&&(o<=t.scrollOffset?r="start":o>=t.scrollOffset+i?r="end":r="start"),r==="start"?o=o:r==="end"?o=o-i:r==="center"&&(o=o-i/2);var l=t.options.horizontal?"scrollWidth":"scrollHeight",u=t.scrollElement?"document"in t.scrollElement?t.scrollElement.document.documentElement[l]:t.scrollElement[l]:0,a=u-t.getSize();return Math.max(Math.min(a,o),0)},this.getOffsetForIndex=function(o,r){r===void 0&&(r="auto"),o=Math.max(0,Math.min(o,t.options.count-1));var i=we(t.getMeasurements()[o]);if(r==="auto")if(i.end>=t.scrollOffset+t.getSize()-t.options.scrollPaddingEnd)r="end";else if(i.start<=t.scrollOffset+t.options.scrollPaddingStart)r="start";else return[t.scrollOffset,r];var l=r==="end"?i.end+t.options.scrollPaddingEnd:i.start-t.options.scrollPaddingStart;return[t.getOffsetForAlignment(l,r),r]},this.isDynamicMode=function(){return t.measureElementCache.size>0},this.cancelScrollToIndex=function(){t.scrollToIndexTimeoutId!==null&&(clearTimeout(t.scrollToIndexTimeoutId),t.scrollToIndexTimeoutId=null)},this.scrollToOffset=function(o,r){var i=r===void 0?{}:r,l=i.align,u=l===void 0?"start":l,a=i.behavior;t.cancelScrollToIndex(),a==="smooth"&&t.isDynamicMode()&&console.warn("The `smooth` scroll behavior is not fully supported with dynamic size."),t._scrollToOffset(t.getOffsetForAlignment(o,u),{adjustments:void 0,behavior:a})},this.scrollToIndex=function(o,r){var i=r===void 0?{}:r,l=i.align,u=l===void 0?"auto":l,a=i.behavior;o=Math.max(0,Math.min(o,t.options.count-1)),t.cancelScrollToIndex(),a==="smooth"&&t.isDynamicMode()&&console.warn("The `smooth` scroll behavior is not fully supported with dynamic size.");var d=t.getOffsetForIndex(o,u),s=d[0],c=d[1];t._scrollToOffset(s,{adjustments:void 0,behavior:a}),a!=="smooth"&&t.isDynamicMode()&&(t.scrollToIndexTimeoutId=setTimeout(function(){t.scrollToIndexTimeoutId=null;var f=t.measureElementCache.has(t.options.getItemKey(o));if(f){var g=t.getOffsetForIndex(o,c),p=g[0];hn(p,t.scrollOffset)||t.scrollToIndex(o,{align:c,behavior:a})}else t.scrollToIndex(o,{align:c,behavior:a})}))},this.scrollBy=function(o,r){var i=r===void 0?{}:r,l=i.behavior;t.cancelScrollToIndex(),l==="smooth"&&t.isDynamicMode()&&console.warn("The `smooth` scroll behavior is not fully supported with dynamic size."),t._scrollToOffset(t.scrollOffset+o,{adjustments:void 0,behavior:l})},this.getTotalSize=function(){var o;return(((o=t.getMeasurements()[t.options.count-1])==null?void 0:o.end)||t.options.paddingStart)-t.options.scrollMargin+t.options.paddingEnd},this._scrollToOffset=function(o,r){var i=r.adjustments,l=r.behavior;t.options.scrollToFn(o,{behavior:l,adjustments:i},t)},this.measure=function(){t.itemSizeCache=new Map,t.notify()},this.setOptions(n),this.scrollRect=this.options.initialRect,this.scrollOffset=this.options.initialOffset,this.measurementsCache=this.options.initialMeasurementsCache,this.measurementsCache.forEach(function(o){t.itemSizeCache.set(o.key,o.size)}),this.maybeNotify()},Sn=function(n,t,o,r){for(;n<=t;){var i=(n+t)/2|0,l=o(i);if(l<r)n=i+1;else if(l>r)t=i-1;else return i}return n>0?n-1:0};function tr(e){for(var n=e.measurements,t=e.outerSize,o=e.scrollOffset,r=n.length-1,i=function(d){return n[d].start},l=Sn(0,r,i,o),u=l;u<r&&n[u].end<o+t;)u++;return{startIndex:l,endIndex:u}}var nr=typeof document<"u"?z:U;function or(e){var n=ue(function(){return{}},{})[1],t=ge({},e,{onChange:function(l){n(),e.onChange==null||e.onChange(l)}}),o=G(function(){return new yn(t)}),r=o[0];return r.setOptions(t),U(function(){return r._didMount()},[]),nr(function(){return r._willUpdate()}),r}function Rn(e){return or(ge({observeElementRect:vn,observeElementOffset:Cn,scrollToFn:bn},e))}function wn(e){return{render(n){Ne(n,e)},unmount(){He(e)}}}function In(e,n,t,o="selected"){let[r,i]=G(D.empty()),[l,u]=G(null),a=d=>{if(e===0)return;let s=d.currentTarget,c=n(s),f=rr(e,t,r,d,c,l);f&&(i(f.selection),typeof f.anchor<"u"&&u(f.anchor),d.preventDefault())};return{has(d){return r.has(d)},set(d,s){i(s?r.add(d):r.delete(d))},clear(){i(r.clear())},handlers(){return{onMouseDown:a}}}}var D=class{constructor(n){this._set=n}static empty(){return new D(new Set)}has(n){return this._set.has(n)}add(...n){let t=new Set(this._set.keys());for(let o of n)t.add(o);return new D(t)}toggle(n){return this.has(n)?this.delete(n):this.add(n)}delete(n){let t=new Set(this._set.keys());return t.delete(n),new D(t)}clear(){return D.empty()}};function rr(e,n,t,o,r,i){let{shiftKey:l,ctrlKey:u,altKey:a,metaKey:d}=o;if(window.navigator.platform.match(/^Mac/)&&([u,d]=[d,u]),e===3)return{selection:t.toggle(r)};if(e===1)return{selection:D.empty().add(r)};if(e===2){if(u&&!l)return{selection:t.toggle(r),anchor:r};if(l&&!u){if(i!==null&&n){let s=n(i,r);return{selection:D.empty().add(...s)}}}else if(l&&u){let s=n(i,r);return{selection:t.add(...s)}}else return!l&&!u?{selection:D.empty().add(r),anchor:r}:void 0;o.preventDefault()}}var xn={className:"sort-arrow",viewBox:[-1,-1,2,2].map(e=>e*1.4).join(" "),width:"100%",height:"100%",style:{paddingLeft:"3px"}},Fn={stroke:"#333333",strokeWidth:"0.6",fill:"transparent"},En=S.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",...xn},S.createElement("path",{d:"M -1 0.5 L 0 -0.5 L 1 0.5",...Fn,strokeLinecap:"round"})),An=S.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",...xn},S.createElement("path",{d:"M -1 -0.5 L 0 0.5 L 1 -0.5",...Fn,strokeLinecap:"round"}));function Vn(e,n,t,o,r){return B(()=>{let i=e??!0;if(!i)return null;let l=typeof i=="string"?i:"Viewing rows {start} through {end} of {total}";if(!n||t.length===0)return null;let u=n.scrollTop,a=u+n.clientHeight-o.clientHeight,[d,s]=ir(u,a,t,(p,_)=>p.start+p.size/2);if(d===null||s===null)return null;let c=t[d],f=t[s];if(c.index===0&&f.index===r-1)return null;let g=lr(l,c.index+1,f.index+1,r);return S.createElement("div",{className:"shiny-data-grid-summary"},g)},[e,n,t,o,r])}function ir(e,n,t,o){let r=null,i=null;for(let l=0;l<t.length;l++){let u=t[l];if(r===null)o(u,!0)>=e&&(r=l,i=l);else if(o(u,!1)<=n)i=l;else break}return[r,i]}function lr(e,n,t,o){return e.replace(/\{(start|end|total)\}/g,(r,i)=>i==="start"?n+"":i==="end"?t+"":i==="total"?o+"":r)}var sr=e=>{let{data:n,bgcolor:t,width:o,height:r}=e,{columns:i,data:l}=n,u=oe(null),a=oe(null),d=oe(null),s=Rn({count:l.length,getScrollElement:()=>u.current,estimateSize:()=>50});z(()=>{s.scrollToOffset(0)},[n]);let c=s.getTotalSize(),f=s.getVirtualItems(),g=B(()=>i.map((E,T)=>({accessorFn:(I,q)=>I[T],header:E})),[i]),_={data:B(()=>[...l],[l]),columns:g,getCoreRowModel:pn(),getSortedRowModel:_n()},m=mn(_),v=f.length>0&&f?.[0]?.start||0,b=f.length>0?c-(f?.[f.length-1]?.end||0):0,w=Vn(n.options.summary,u?.current,f,a.current,l.length),R=n.options.style??"grid",F=R==="grid"?"shiny-data-grid-grid":"shiny-data-grid-table",k=R==="table"?"table table-sm":null,H=In(2,E=>E.dataset.key,(E,T)=>{let I=m.getSortedRowModel(),q=I.rows.findIndex(Q=>Q.id===E),re=I.rows.findIndex(Q=>Q.id===T);if(q<0||re<0)return[];q>re&&([q,re]=[re,q]);let nt=[];for(let Q=q;Q<=re;Q++)nt.push(I.rows[Q].id);return nt},"selected");U(()=>()=>{m.resetSorting(),H.clear()},[n]);let x=m.getHeaderGroups().length,K=u.current?.scrollHeight>u.current?.clientHeight?"scrolling":"";return S.createElement(S.Fragment,null,S.createElement("div",{className:`shiny-data-grid ${F} ${K}`,ref:u,style:{width:o,maxHeight:r,overflow:"auto"}},S.createElement("table",{className:k,"aria-rowcount":l.length,style:{width:o===null||o==="auto"?null:"100%"}},S.createElement("thead",{ref:a,style:{backgroundColor:t}},m.getHeaderGroups().map((E,T)=>S.createElement("tr",{key:E.id,"aria-rowindex":T+1},E.headers.map(I=>S.createElement("th",{key:I.id,colSpan:I.colSpan,style:{width:I.getSize()},scope:"col"},I.isPlaceholder?null:S.createElement("div",{style:{cursor:I.column.getCanSort()?"pointer":null,userSelect:I.column.getCanSort()?"none":null},onClick:I.column.getToggleSortingHandler()},et(I.column.columnDef.header,I.getContext()),{asc:En,desc:An}[I.column.getIsSorted()]??null)))))),S.createElement("tbody",{ref:d},v>0&&S.createElement("tr",{style:{height:`${v}px`}}),f.map(E=>{let T=m.getRowModel().rows[E.index];return S.createElement("tr",{key:E.key,"data-index":E.index,"aria-rowindex":E.index+x,"data-key":T.id,ref:s.measureElement,className:H.has(T.id)?"selected":void 0,...H.handlers()},T.getVisibleCells().map(I=>S.createElement("td",{key:I.id},et(I.column.columnDef.cell,I.getContext()))))}),b>0&&S.createElement("tr",{style:{height:`${b}px`}})))),w)};if(window.Shiny){class e extends Shiny.OutputBinding{find(t){return $(t).find("shiny-data-grid-output")}renderValue(t,o){t.renderValue(o)}}Shiny.outputBindings.register(new e,"shinyDataGrid")}function Mn(e){if(!e)return null;let n=$n(e,"background-color");if(!n)return n;let t=n.match(/^rgba\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*\)$/);if(n==="transparent"||t&&parseFloat(t[4])===0){let o=$n(e,"background-image");return o&&o!=="none"?null:Mn(e.parentElement)}return n}function $n(e,n){return document?.defaultView?.getComputedStyle(e,null)?.getPropertyValue(n)}var Gn=document.createElement("template");Gn.innerHTML=`<style>${ot}</style>`;var tt=class extends HTMLElement{connectedCallback(){this.attachShadow({mode:"open"}),this.shadowRoot.appendChild(Gn.content.cloneNode(!0));let t=document.createElement("div");this.shadowRoot.appendChild(t),this.reactRoot=wn(t);let o=this.querySelector("script.data");if(o){let r=JSON.parse(o.innerText);this.renderValue(r)}}renderValue(t){let{columns:o,index:r,data:i,options:l,width:u,height:a}=t;t&&this.reactRoot.render(S.createElement(Te,null,S.createElement(sr,{data:t,bgcolor:Mn(this),width:u??"100%",height:a??"500px"})))}};customElements.define("shiny-data-grid-output",tt);})();
+            color: hsl(${Math.max(0, Math.min(120 - 120 * resultFpsPercentage, 120))}deg 100% 31%);`, opts == null ? void 0 : opts.key);
+        }
+      }
+      return result;
+    };
+  }
+  function createColumn(table, columnDef, depth, parent) {
+    var _ref, _resolvedColumnDef$id;
+    const defaultColumn = table._getDefaultColumnDef();
+    const resolvedColumnDef = {
+      ...defaultColumn,
+      ...columnDef
+    };
+    const accessorKey = resolvedColumnDef.accessorKey;
+    let id = (_ref = (_resolvedColumnDef$id = resolvedColumnDef.id) != null ? _resolvedColumnDef$id : accessorKey ? accessorKey.replace(".", "_") : void 0) != null ? _ref : typeof resolvedColumnDef.header === "string" ? resolvedColumnDef.header : void 0;
+    let accessorFn;
+    if (resolvedColumnDef.accessorFn) {
+      accessorFn = resolvedColumnDef.accessorFn;
+    } else if (accessorKey) {
+      if (accessorKey.includes(".")) {
+        accessorFn = (originalRow) => {
+          let result = originalRow;
+          for (const key of accessorKey.split(".")) {
+            var _result;
+            result = (_result = result) == null ? void 0 : _result[key];
+            if (result === void 0) {
+              console.warn(`"${key}" in deeply nested key "${accessorKey}" returned undefined.`);
+            }
+          }
+          return result;
+        };
+      } else {
+        accessorFn = (originalRow) => originalRow[resolvedColumnDef.accessorKey];
+      }
+    }
+    if (!id) {
+      if (true) {
+        throw new Error(resolvedColumnDef.accessorFn ? `Columns require an id when using an accessorFn` : `Columns require an id when using a non-string header`);
+      }
+      throw new Error();
+    }
+    let column = {
+      id: `${String(id)}`,
+      accessorFn,
+      parent,
+      depth,
+      columnDef: resolvedColumnDef,
+      columns: [],
+      getFlatColumns: memo(() => [true], () => {
+        var _column$columns;
+        return [column, ...(_column$columns = column.columns) == null ? void 0 : _column$columns.flatMap((d3) => d3.getFlatColumns())];
+      }, {
+        key: false,
+        debug: () => {
+          var _table$options$debugA;
+          return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugColumns;
+        }
+      }),
+      getLeafColumns: memo(() => [table._getOrderColumnsFn()], (orderColumns2) => {
+        var _column$columns2;
+        if ((_column$columns2 = column.columns) != null && _column$columns2.length) {
+          let leafColumns = column.columns.flatMap((column2) => column2.getLeafColumns());
+          return orderColumns2(leafColumns);
+        }
+        return [column];
+      }, {
+        key: false,
+        debug: () => {
+          var _table$options$debugA2;
+          return (_table$options$debugA2 = table.options.debugAll) != null ? _table$options$debugA2 : table.options.debugColumns;
+        }
+      })
+    };
+    column = table._features.reduce((obj, feature) => {
+      return Object.assign(obj, feature.createColumn == null ? void 0 : feature.createColumn(column, table));
+    }, column);
+    return column;
+  }
+  function createHeader(table, column, options) {
+    var _options$id;
+    const id = (_options$id = options.id) != null ? _options$id : column.id;
+    let header = {
+      id,
+      column,
+      index: options.index,
+      isPlaceholder: !!options.isPlaceholder,
+      placeholderId: options.placeholderId,
+      depth: options.depth,
+      subHeaders: [],
+      colSpan: 0,
+      rowSpan: 0,
+      headerGroup: null,
+      getLeafHeaders: () => {
+        const leafHeaders = [];
+        const recurseHeader = (h3) => {
+          if (h3.subHeaders && h3.subHeaders.length) {
+            h3.subHeaders.map(recurseHeader);
+          }
+          leafHeaders.push(h3);
+        };
+        recurseHeader(header);
+        return leafHeaders;
+      },
+      getContext: () => ({
+        table,
+        header,
+        column
+      })
+    };
+    table._features.forEach((feature) => {
+      Object.assign(header, feature.createHeader == null ? void 0 : feature.createHeader(header, table));
+    });
+    return header;
+  }
+  var Headers = {
+    createTable: (table) => {
+      return {
+        // Header Groups
+        getHeaderGroups: memo(() => [table.getAllColumns(), table.getVisibleLeafColumns(), table.getState().columnPinning.left, table.getState().columnPinning.right], (allColumns, leafColumns, left, right) => {
+          var _left$map$filter, _right$map$filter;
+          const leftColumns = (_left$map$filter = left == null ? void 0 : left.map((columnId) => leafColumns.find((d3) => d3.id === columnId)).filter(Boolean)) != null ? _left$map$filter : [];
+          const rightColumns = (_right$map$filter = right == null ? void 0 : right.map((columnId) => leafColumns.find((d3) => d3.id === columnId)).filter(Boolean)) != null ? _right$map$filter : [];
+          const centerColumns = leafColumns.filter((column) => !(left != null && left.includes(column.id)) && !(right != null && right.includes(column.id)));
+          const headerGroups = buildHeaderGroups(allColumns, [...leftColumns, ...centerColumns, ...rightColumns], table);
+          return headerGroups;
+        }, {
+          key: "getHeaderGroups",
+          debug: () => {
+            var _table$options$debugA;
+            return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugHeaders;
+          }
+        }),
+        getCenterHeaderGroups: memo(() => [table.getAllColumns(), table.getVisibleLeafColumns(), table.getState().columnPinning.left, table.getState().columnPinning.right], (allColumns, leafColumns, left, right) => {
+          leafColumns = leafColumns.filter((column) => !(left != null && left.includes(column.id)) && !(right != null && right.includes(column.id)));
+          return buildHeaderGroups(allColumns, leafColumns, table, "center");
+        }, {
+          key: "getCenterHeaderGroups",
+          debug: () => {
+            var _table$options$debugA2;
+            return (_table$options$debugA2 = table.options.debugAll) != null ? _table$options$debugA2 : table.options.debugHeaders;
+          }
+        }),
+        getLeftHeaderGroups: memo(() => [table.getAllColumns(), table.getVisibleLeafColumns(), table.getState().columnPinning.left], (allColumns, leafColumns, left) => {
+          var _left$map$filter2;
+          const orderedLeafColumns = (_left$map$filter2 = left == null ? void 0 : left.map((columnId) => leafColumns.find((d3) => d3.id === columnId)).filter(Boolean)) != null ? _left$map$filter2 : [];
+          return buildHeaderGroups(allColumns, orderedLeafColumns, table, "left");
+        }, {
+          key: "getLeftHeaderGroups",
+          debug: () => {
+            var _table$options$debugA3;
+            return (_table$options$debugA3 = table.options.debugAll) != null ? _table$options$debugA3 : table.options.debugHeaders;
+          }
+        }),
+        getRightHeaderGroups: memo(() => [table.getAllColumns(), table.getVisibleLeafColumns(), table.getState().columnPinning.right], (allColumns, leafColumns, right) => {
+          var _right$map$filter2;
+          const orderedLeafColumns = (_right$map$filter2 = right == null ? void 0 : right.map((columnId) => leafColumns.find((d3) => d3.id === columnId)).filter(Boolean)) != null ? _right$map$filter2 : [];
+          return buildHeaderGroups(allColumns, orderedLeafColumns, table, "right");
+        }, {
+          key: "getRightHeaderGroups",
+          debug: () => {
+            var _table$options$debugA4;
+            return (_table$options$debugA4 = table.options.debugAll) != null ? _table$options$debugA4 : table.options.debugHeaders;
+          }
+        }),
+        // Footer Groups
+        getFooterGroups: memo(() => [table.getHeaderGroups()], (headerGroups) => {
+          return [...headerGroups].reverse();
+        }, {
+          key: "getFooterGroups",
+          debug: () => {
+            var _table$options$debugA5;
+            return (_table$options$debugA5 = table.options.debugAll) != null ? _table$options$debugA5 : table.options.debugHeaders;
+          }
+        }),
+        getLeftFooterGroups: memo(() => [table.getLeftHeaderGroups()], (headerGroups) => {
+          return [...headerGroups].reverse();
+        }, {
+          key: "getLeftFooterGroups",
+          debug: () => {
+            var _table$options$debugA6;
+            return (_table$options$debugA6 = table.options.debugAll) != null ? _table$options$debugA6 : table.options.debugHeaders;
+          }
+        }),
+        getCenterFooterGroups: memo(() => [table.getCenterHeaderGroups()], (headerGroups) => {
+          return [...headerGroups].reverse();
+        }, {
+          key: "getCenterFooterGroups",
+          debug: () => {
+            var _table$options$debugA7;
+            return (_table$options$debugA7 = table.options.debugAll) != null ? _table$options$debugA7 : table.options.debugHeaders;
+          }
+        }),
+        getRightFooterGroups: memo(() => [table.getRightHeaderGroups()], (headerGroups) => {
+          return [...headerGroups].reverse();
+        }, {
+          key: "getRightFooterGroups",
+          debug: () => {
+            var _table$options$debugA8;
+            return (_table$options$debugA8 = table.options.debugAll) != null ? _table$options$debugA8 : table.options.debugHeaders;
+          }
+        }),
+        // Flat Headers
+        getFlatHeaders: memo(() => [table.getHeaderGroups()], (headerGroups) => {
+          return headerGroups.map((headerGroup) => {
+            return headerGroup.headers;
+          }).flat();
+        }, {
+          key: "getFlatHeaders",
+          debug: () => {
+            var _table$options$debugA9;
+            return (_table$options$debugA9 = table.options.debugAll) != null ? _table$options$debugA9 : table.options.debugHeaders;
+          }
+        }),
+        getLeftFlatHeaders: memo(() => [table.getLeftHeaderGroups()], (left) => {
+          return left.map((headerGroup) => {
+            return headerGroup.headers;
+          }).flat();
+        }, {
+          key: "getLeftFlatHeaders",
+          debug: () => {
+            var _table$options$debugA10;
+            return (_table$options$debugA10 = table.options.debugAll) != null ? _table$options$debugA10 : table.options.debugHeaders;
+          }
+        }),
+        getCenterFlatHeaders: memo(() => [table.getCenterHeaderGroups()], (left) => {
+          return left.map((headerGroup) => {
+            return headerGroup.headers;
+          }).flat();
+        }, {
+          key: "getCenterFlatHeaders",
+          debug: () => {
+            var _table$options$debugA11;
+            return (_table$options$debugA11 = table.options.debugAll) != null ? _table$options$debugA11 : table.options.debugHeaders;
+          }
+        }),
+        getRightFlatHeaders: memo(() => [table.getRightHeaderGroups()], (left) => {
+          return left.map((headerGroup) => {
+            return headerGroup.headers;
+          }).flat();
+        }, {
+          key: "getRightFlatHeaders",
+          debug: () => {
+            var _table$options$debugA12;
+            return (_table$options$debugA12 = table.options.debugAll) != null ? _table$options$debugA12 : table.options.debugHeaders;
+          }
+        }),
+        // Leaf Headers
+        getCenterLeafHeaders: memo(() => [table.getCenterFlatHeaders()], (flatHeaders) => {
+          return flatHeaders.filter((header) => {
+            var _header$subHeaders;
+            return !((_header$subHeaders = header.subHeaders) != null && _header$subHeaders.length);
+          });
+        }, {
+          key: "getCenterLeafHeaders",
+          debug: () => {
+            var _table$options$debugA13;
+            return (_table$options$debugA13 = table.options.debugAll) != null ? _table$options$debugA13 : table.options.debugHeaders;
+          }
+        }),
+        getLeftLeafHeaders: memo(() => [table.getLeftFlatHeaders()], (flatHeaders) => {
+          return flatHeaders.filter((header) => {
+            var _header$subHeaders2;
+            return !((_header$subHeaders2 = header.subHeaders) != null && _header$subHeaders2.length);
+          });
+        }, {
+          key: "getLeftLeafHeaders",
+          debug: () => {
+            var _table$options$debugA14;
+            return (_table$options$debugA14 = table.options.debugAll) != null ? _table$options$debugA14 : table.options.debugHeaders;
+          }
+        }),
+        getRightLeafHeaders: memo(() => [table.getRightFlatHeaders()], (flatHeaders) => {
+          return flatHeaders.filter((header) => {
+            var _header$subHeaders3;
+            return !((_header$subHeaders3 = header.subHeaders) != null && _header$subHeaders3.length);
+          });
+        }, {
+          key: "getRightLeafHeaders",
+          debug: () => {
+            var _table$options$debugA15;
+            return (_table$options$debugA15 = table.options.debugAll) != null ? _table$options$debugA15 : table.options.debugHeaders;
+          }
+        }),
+        getLeafHeaders: memo(() => [table.getLeftHeaderGroups(), table.getCenterHeaderGroups(), table.getRightHeaderGroups()], (left, center, right) => {
+          var _left$0$headers, _left$, _center$0$headers, _center$, _right$0$headers, _right$;
+          return [...(_left$0$headers = (_left$ = left[0]) == null ? void 0 : _left$.headers) != null ? _left$0$headers : [], ...(_center$0$headers = (_center$ = center[0]) == null ? void 0 : _center$.headers) != null ? _center$0$headers : [], ...(_right$0$headers = (_right$ = right[0]) == null ? void 0 : _right$.headers) != null ? _right$0$headers : []].map((header) => {
+            return header.getLeafHeaders();
+          }).flat();
+        }, {
+          key: "getLeafHeaders",
+          debug: () => {
+            var _table$options$debugA16;
+            return (_table$options$debugA16 = table.options.debugAll) != null ? _table$options$debugA16 : table.options.debugHeaders;
+          }
+        })
+      };
+    }
+  };
+  function buildHeaderGroups(allColumns, columnsToGroup, table, headerFamily) {
+    var _headerGroups$0$heade, _headerGroups$;
+    let maxDepth = 0;
+    const findMaxDepth = function(columns, depth) {
+      if (depth === void 0) {
+        depth = 1;
+      }
+      maxDepth = Math.max(maxDepth, depth);
+      columns.filter((column) => column.getIsVisible()).forEach((column) => {
+        var _column$columns;
+        if ((_column$columns = column.columns) != null && _column$columns.length) {
+          findMaxDepth(column.columns, depth + 1);
+        }
+      }, 0);
+    };
+    findMaxDepth(allColumns);
+    let headerGroups = [];
+    const createHeaderGroup = (headersToGroup, depth) => {
+      const headerGroup = {
+        depth,
+        id: [headerFamily, `${depth}`].filter(Boolean).join("_"),
+        headers: []
+      };
+      const pendingParentHeaders = [];
+      headersToGroup.forEach((headerToGroup) => {
+        const latestPendingParentHeader = [...pendingParentHeaders].reverse()[0];
+        const isLeafHeader = headerToGroup.column.depth === headerGroup.depth;
+        let column;
+        let isPlaceholder = false;
+        if (isLeafHeader && headerToGroup.column.parent) {
+          column = headerToGroup.column.parent;
+        } else {
+          column = headerToGroup.column;
+          isPlaceholder = true;
+        }
+        if (latestPendingParentHeader && (latestPendingParentHeader == null ? void 0 : latestPendingParentHeader.column) === column) {
+          latestPendingParentHeader.subHeaders.push(headerToGroup);
+        } else {
+          const header = createHeader(table, column, {
+            id: [headerFamily, depth, column.id, headerToGroup == null ? void 0 : headerToGroup.id].filter(Boolean).join("_"),
+            isPlaceholder,
+            placeholderId: isPlaceholder ? `${pendingParentHeaders.filter((d3) => d3.column === column).length}` : void 0,
+            depth,
+            index: pendingParentHeaders.length
+          });
+          header.subHeaders.push(headerToGroup);
+          pendingParentHeaders.push(header);
+        }
+        headerGroup.headers.push(headerToGroup);
+        headerToGroup.headerGroup = headerGroup;
+      });
+      headerGroups.push(headerGroup);
+      if (depth > 0) {
+        createHeaderGroup(pendingParentHeaders, depth - 1);
+      }
+    };
+    const bottomHeaders = columnsToGroup.map((column, index) => createHeader(table, column, {
+      depth: maxDepth,
+      index
+    }));
+    createHeaderGroup(bottomHeaders, maxDepth - 1);
+    headerGroups.reverse();
+    const recurseHeadersForSpans = (headers) => {
+      const filteredHeaders = headers.filter((header) => header.column.getIsVisible());
+      return filteredHeaders.map((header) => {
+        let colSpan = 0;
+        let rowSpan = 0;
+        let childRowSpans = [0];
+        if (header.subHeaders && header.subHeaders.length) {
+          childRowSpans = [];
+          recurseHeadersForSpans(header.subHeaders).forEach((_ref) => {
+            let {
+              colSpan: childColSpan,
+              rowSpan: childRowSpan
+            } = _ref;
+            colSpan += childColSpan;
+            childRowSpans.push(childRowSpan);
+          });
+        } else {
+          colSpan = 1;
+        }
+        const minChildRowSpan = Math.min(...childRowSpans);
+        rowSpan = rowSpan + minChildRowSpan;
+        header.colSpan = colSpan;
+        header.rowSpan = rowSpan;
+        return {
+          colSpan,
+          rowSpan
+        };
+      });
+    };
+    recurseHeadersForSpans((_headerGroups$0$heade = (_headerGroups$ = headerGroups[0]) == null ? void 0 : _headerGroups$.headers) != null ? _headerGroups$0$heade : []);
+    return headerGroups;
+  }
+  var defaultColumnSizing = {
+    size: 150,
+    minSize: 20,
+    maxSize: Number.MAX_SAFE_INTEGER
+  };
+  var getDefaultColumnSizingInfoState = () => ({
+    startOffset: null,
+    startSize: null,
+    deltaOffset: null,
+    deltaPercentage: null,
+    isResizingColumn: false,
+    columnSizingStart: []
+  });
+  var ColumnSizing = {
+    getDefaultColumnDef: () => {
+      return defaultColumnSizing;
+    },
+    getInitialState: (state) => {
+      return {
+        columnSizing: {},
+        columnSizingInfo: getDefaultColumnSizingInfoState(),
+        ...state
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        columnResizeMode: "onEnd",
+        onColumnSizingChange: makeStateUpdater("columnSizing", table),
+        onColumnSizingInfoChange: makeStateUpdater("columnSizingInfo", table)
+      };
+    },
+    createColumn: (column, table) => {
+      return {
+        getSize: () => {
+          var _column$columnDef$min, _ref, _column$columnDef$max;
+          const columnSize = table.getState().columnSizing[column.id];
+          return Math.min(Math.max((_column$columnDef$min = column.columnDef.minSize) != null ? _column$columnDef$min : defaultColumnSizing.minSize, (_ref = columnSize != null ? columnSize : column.columnDef.size) != null ? _ref : defaultColumnSizing.size), (_column$columnDef$max = column.columnDef.maxSize) != null ? _column$columnDef$max : defaultColumnSizing.maxSize);
+        },
+        getStart: (position) => {
+          const columns = !position ? table.getVisibleLeafColumns() : position === "left" ? table.getLeftVisibleLeafColumns() : table.getRightVisibleLeafColumns();
+          const index = columns.findIndex((d3) => d3.id === column.id);
+          if (index > 0) {
+            const prevSiblingColumn = columns[index - 1];
+            return prevSiblingColumn.getStart(position) + prevSiblingColumn.getSize();
+          }
+          return 0;
+        },
+        resetSize: () => {
+          table.setColumnSizing((_ref2) => {
+            let {
+              [column.id]: _3,
+              ...rest
+            } = _ref2;
+            return rest;
+          });
+        },
+        getCanResize: () => {
+          var _column$columnDef$ena, _table$options$enable;
+          return ((_column$columnDef$ena = column.columnDef.enableResizing) != null ? _column$columnDef$ena : true) && ((_table$options$enable = table.options.enableColumnResizing) != null ? _table$options$enable : true);
+        },
+        getIsResizing: () => {
+          return table.getState().columnSizingInfo.isResizingColumn === column.id;
+        }
+      };
+    },
+    createHeader: (header, table) => {
+      return {
+        getSize: () => {
+          let sum2 = 0;
+          const recurse = (header2) => {
+            if (header2.subHeaders.length) {
+              header2.subHeaders.forEach(recurse);
+            } else {
+              var _header$column$getSiz;
+              sum2 += (_header$column$getSiz = header2.column.getSize()) != null ? _header$column$getSiz : 0;
+            }
+          };
+          recurse(header);
+          return sum2;
+        },
+        getStart: () => {
+          if (header.index > 0) {
+            const prevSiblingHeader = header.headerGroup.headers[header.index - 1];
+            return prevSiblingHeader.getStart() + prevSiblingHeader.getSize();
+          }
+          return 0;
+        },
+        getResizeHandler: () => {
+          const column = table.getColumn(header.column.id);
+          const canResize = column == null ? void 0 : column.getCanResize();
+          return (e3) => {
+            if (!column || !canResize) {
+              return;
+            }
+            e3.persist == null ? void 0 : e3.persist();
+            if (isTouchStartEvent(e3)) {
+              if (e3.touches && e3.touches.length > 1) {
+                return;
+              }
+            }
+            const startSize = header.getSize();
+            const columnSizingStart = header ? header.getLeafHeaders().map((d3) => [d3.column.id, d3.column.getSize()]) : [[column.id, column.getSize()]];
+            const clientX = isTouchStartEvent(e3) ? Math.round(e3.touches[0].clientX) : e3.clientX;
+            const newColumnSizing = {};
+            const updateOffset = (eventType, clientXPos) => {
+              if (typeof clientXPos !== "number") {
+                return;
+              }
+              table.setColumnSizingInfo((old) => {
+                var _old$startOffset, _old$startSize;
+                const deltaOffset = clientXPos - ((_old$startOffset = old == null ? void 0 : old.startOffset) != null ? _old$startOffset : 0);
+                const deltaPercentage = Math.max(deltaOffset / ((_old$startSize = old == null ? void 0 : old.startSize) != null ? _old$startSize : 0), -0.999999);
+                old.columnSizingStart.forEach((_ref3) => {
+                  let [columnId, headerSize] = _ref3;
+                  newColumnSizing[columnId] = Math.round(Math.max(headerSize + headerSize * deltaPercentage, 0) * 100) / 100;
+                });
+                return {
+                  ...old,
+                  deltaOffset,
+                  deltaPercentage
+                };
+              });
+              if (table.options.columnResizeMode === "onChange" || eventType === "end") {
+                table.setColumnSizing((old) => ({
+                  ...old,
+                  ...newColumnSizing
+                }));
+              }
+            };
+            const onMove = (clientXPos) => updateOffset("move", clientXPos);
+            const onEnd = (clientXPos) => {
+              updateOffset("end", clientXPos);
+              table.setColumnSizingInfo((old) => ({
+                ...old,
+                isResizingColumn: false,
+                startOffset: null,
+                startSize: null,
+                deltaOffset: null,
+                deltaPercentage: null,
+                columnSizingStart: []
+              }));
+            };
+            const mouseEvents = {
+              moveHandler: (e4) => onMove(e4.clientX),
+              upHandler: (e4) => {
+                document.removeEventListener("mousemove", mouseEvents.moveHandler);
+                document.removeEventListener("mouseup", mouseEvents.upHandler);
+                onEnd(e4.clientX);
+              }
+            };
+            const touchEvents = {
+              moveHandler: (e4) => {
+                if (e4.cancelable) {
+                  e4.preventDefault();
+                  e4.stopPropagation();
+                }
+                onMove(e4.touches[0].clientX);
+                return false;
+              },
+              upHandler: (e4) => {
+                var _e$touches$;
+                document.removeEventListener("touchmove", touchEvents.moveHandler);
+                document.removeEventListener("touchend", touchEvents.upHandler);
+                if (e4.cancelable) {
+                  e4.preventDefault();
+                  e4.stopPropagation();
+                }
+                onEnd((_e$touches$ = e4.touches[0]) == null ? void 0 : _e$touches$.clientX);
+              }
+            };
+            const passiveIfSupported = passiveEventSupported() ? {
+              passive: false
+            } : false;
+            if (isTouchStartEvent(e3)) {
+              document.addEventListener("touchmove", touchEvents.moveHandler, passiveIfSupported);
+              document.addEventListener("touchend", touchEvents.upHandler, passiveIfSupported);
+            } else {
+              document.addEventListener("mousemove", mouseEvents.moveHandler, passiveIfSupported);
+              document.addEventListener("mouseup", mouseEvents.upHandler, passiveIfSupported);
+            }
+            table.setColumnSizingInfo((old) => ({
+              ...old,
+              startOffset: clientX,
+              startSize,
+              deltaOffset: 0,
+              deltaPercentage: 0,
+              columnSizingStart,
+              isResizingColumn: column.id
+            }));
+          };
+        }
+      };
+    },
+    createTable: (table) => {
+      return {
+        setColumnSizing: (updater) => table.options.onColumnSizingChange == null ? void 0 : table.options.onColumnSizingChange(updater),
+        setColumnSizingInfo: (updater) => table.options.onColumnSizingInfoChange == null ? void 0 : table.options.onColumnSizingInfoChange(updater),
+        resetColumnSizing: (defaultState) => {
+          var _table$initialState$c;
+          table.setColumnSizing(defaultState ? {} : (_table$initialState$c = table.initialState.columnSizing) != null ? _table$initialState$c : {});
+        },
+        resetHeaderSizeInfo: (defaultState) => {
+          var _table$initialState$c2;
+          table.setColumnSizingInfo(defaultState ? getDefaultColumnSizingInfoState() : (_table$initialState$c2 = table.initialState.columnSizingInfo) != null ? _table$initialState$c2 : getDefaultColumnSizingInfoState());
+        },
+        getTotalSize: () => {
+          var _table$getHeaderGroup, _table$getHeaderGroup2;
+          return (_table$getHeaderGroup = (_table$getHeaderGroup2 = table.getHeaderGroups()[0]) == null ? void 0 : _table$getHeaderGroup2.headers.reduce((sum2, header) => {
+            return sum2 + header.getSize();
+          }, 0)) != null ? _table$getHeaderGroup : 0;
+        },
+        getLeftTotalSize: () => {
+          var _table$getLeftHeaderG, _table$getLeftHeaderG2;
+          return (_table$getLeftHeaderG = (_table$getLeftHeaderG2 = table.getLeftHeaderGroups()[0]) == null ? void 0 : _table$getLeftHeaderG2.headers.reduce((sum2, header) => {
+            return sum2 + header.getSize();
+          }, 0)) != null ? _table$getLeftHeaderG : 0;
+        },
+        getCenterTotalSize: () => {
+          var _table$getCenterHeade, _table$getCenterHeade2;
+          return (_table$getCenterHeade = (_table$getCenterHeade2 = table.getCenterHeaderGroups()[0]) == null ? void 0 : _table$getCenterHeade2.headers.reduce((sum2, header) => {
+            return sum2 + header.getSize();
+          }, 0)) != null ? _table$getCenterHeade : 0;
+        },
+        getRightTotalSize: () => {
+          var _table$getRightHeader, _table$getRightHeader2;
+          return (_table$getRightHeader = (_table$getRightHeader2 = table.getRightHeaderGroups()[0]) == null ? void 0 : _table$getRightHeader2.headers.reduce((sum2, header) => {
+            return sum2 + header.getSize();
+          }, 0)) != null ? _table$getRightHeader : 0;
+        }
+      };
+    }
+  };
+  var passiveSupported = null;
+  function passiveEventSupported() {
+    if (typeof passiveSupported === "boolean")
+      return passiveSupported;
+    let supported = false;
+    try {
+      const options = {
+        get passive() {
+          supported = true;
+          return false;
+        }
+      };
+      const noop = () => {
+      };
+      window.addEventListener("test", noop, options);
+      window.removeEventListener("test", noop);
+    } catch (err) {
+      supported = false;
+    }
+    passiveSupported = supported;
+    return passiveSupported;
+  }
+  function isTouchStartEvent(e3) {
+    return e3.type === "touchstart";
+  }
+  var Expanding = {
+    getInitialState: (state) => {
+      return {
+        expanded: {},
+        ...state
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onExpandedChange: makeStateUpdater("expanded", table),
+        paginateExpandedRows: true
+      };
+    },
+    createTable: (table) => {
+      let registered = false;
+      let queued = false;
+      return {
+        _autoResetExpanded: () => {
+          var _ref, _table$options$autoRe;
+          if (!registered) {
+            table._queue(() => {
+              registered = true;
+            });
+            return;
+          }
+          if ((_ref = (_table$options$autoRe = table.options.autoResetAll) != null ? _table$options$autoRe : table.options.autoResetExpanded) != null ? _ref : !table.options.manualExpanding) {
+            if (queued)
+              return;
+            queued = true;
+            table._queue(() => {
+              table.resetExpanded();
+              queued = false;
+            });
+          }
+        },
+        setExpanded: (updater) => table.options.onExpandedChange == null ? void 0 : table.options.onExpandedChange(updater),
+        toggleAllRowsExpanded: (expanded) => {
+          if (expanded != null ? expanded : !table.getIsAllRowsExpanded()) {
+            table.setExpanded(true);
+          } else {
+            table.setExpanded({});
+          }
+        },
+        resetExpanded: (defaultState) => {
+          var _table$initialState$e, _table$initialState;
+          table.setExpanded(defaultState ? {} : (_table$initialState$e = (_table$initialState = table.initialState) == null ? void 0 : _table$initialState.expanded) != null ? _table$initialState$e : {});
+        },
+        getCanSomeRowsExpand: () => {
+          return table.getPrePaginationRowModel().flatRows.some((row) => row.getCanExpand());
+        },
+        getToggleAllRowsExpandedHandler: () => {
+          return (e3) => {
+            e3.persist == null ? void 0 : e3.persist();
+            table.toggleAllRowsExpanded();
+          };
+        },
+        getIsSomeRowsExpanded: () => {
+          const expanded = table.getState().expanded;
+          return expanded === true || Object.values(expanded).some(Boolean);
+        },
+        getIsAllRowsExpanded: () => {
+          const expanded = table.getState().expanded;
+          if (typeof expanded === "boolean") {
+            return expanded === true;
+          }
+          if (!Object.keys(expanded).length) {
+            return false;
+          }
+          if (table.getRowModel().flatRows.some((row) => !row.getIsExpanded())) {
+            return false;
+          }
+          return true;
+        },
+        getExpandedDepth: () => {
+          let maxDepth = 0;
+          const rowIds = table.getState().expanded === true ? Object.keys(table.getRowModel().rowsById) : Object.keys(table.getState().expanded);
+          rowIds.forEach((id) => {
+            const splitId = id.split(".");
+            maxDepth = Math.max(maxDepth, splitId.length);
+          });
+          return maxDepth;
+        },
+        getPreExpandedRowModel: () => table.getSortedRowModel(),
+        getExpandedRowModel: () => {
+          if (!table._getExpandedRowModel && table.options.getExpandedRowModel) {
+            table._getExpandedRowModel = table.options.getExpandedRowModel(table);
+          }
+          if (table.options.manualExpanding || !table._getExpandedRowModel) {
+            return table.getPreExpandedRowModel();
+          }
+          return table._getExpandedRowModel();
+        }
+      };
+    },
+    createRow: (row, table) => {
+      return {
+        toggleExpanded: (expanded) => {
+          table.setExpanded((old) => {
+            var _expanded;
+            const exists = old === true ? true : !!(old != null && old[row.id]);
+            let oldExpanded = {};
+            if (old === true) {
+              Object.keys(table.getRowModel().rowsById).forEach((rowId) => {
+                oldExpanded[rowId] = true;
+              });
+            } else {
+              oldExpanded = old;
+            }
+            expanded = (_expanded = expanded) != null ? _expanded : !exists;
+            if (!exists && expanded) {
+              return {
+                ...oldExpanded,
+                [row.id]: true
+              };
+            }
+            if (exists && !expanded) {
+              const {
+                [row.id]: _3,
+                ...rest
+              } = oldExpanded;
+              return rest;
+            }
+            return old;
+          });
+        },
+        getIsExpanded: () => {
+          var _table$options$getIsR;
+          const expanded = table.getState().expanded;
+          return !!((_table$options$getIsR = table.options.getIsRowExpanded == null ? void 0 : table.options.getIsRowExpanded(row)) != null ? _table$options$getIsR : expanded === true || (expanded == null ? void 0 : expanded[row.id]));
+        },
+        getCanExpand: () => {
+          var _table$options$getRow, _table$options$enable, _row$subRows;
+          return (_table$options$getRow = table.options.getRowCanExpand == null ? void 0 : table.options.getRowCanExpand(row)) != null ? _table$options$getRow : ((_table$options$enable = table.options.enableExpanding) != null ? _table$options$enable : true) && !!((_row$subRows = row.subRows) != null && _row$subRows.length);
+        },
+        getToggleExpandedHandler: () => {
+          const canExpand = row.getCanExpand();
+          return () => {
+            if (!canExpand)
+              return;
+            row.toggleExpanded();
+          };
+        }
+      };
+    }
+  };
+  var includesString = (row, columnId, filterValue) => {
+    var _row$getValue, _row$getValue$toStrin, _row$getValue$toStrin2;
+    const search = filterValue.toLowerCase();
+    return Boolean((_row$getValue = row.getValue(columnId)) == null ? void 0 : (_row$getValue$toStrin = _row$getValue.toString()) == null ? void 0 : (_row$getValue$toStrin2 = _row$getValue$toStrin.toLowerCase()) == null ? void 0 : _row$getValue$toStrin2.includes(search));
+  };
+  includesString.autoRemove = (val) => testFalsey(val);
+  var includesStringSensitive = (row, columnId, filterValue) => {
+    var _row$getValue2, _row$getValue2$toStri;
+    return Boolean((_row$getValue2 = row.getValue(columnId)) == null ? void 0 : (_row$getValue2$toStri = _row$getValue2.toString()) == null ? void 0 : _row$getValue2$toStri.includes(filterValue));
+  };
+  includesStringSensitive.autoRemove = (val) => testFalsey(val);
+  var equalsString = (row, columnId, filterValue) => {
+    var _row$getValue3, _row$getValue3$toStri;
+    return ((_row$getValue3 = row.getValue(columnId)) == null ? void 0 : (_row$getValue3$toStri = _row$getValue3.toString()) == null ? void 0 : _row$getValue3$toStri.toLowerCase()) === (filterValue == null ? void 0 : filterValue.toLowerCase());
+  };
+  equalsString.autoRemove = (val) => testFalsey(val);
+  var arrIncludes = (row, columnId, filterValue) => {
+    var _row$getValue4;
+    return (_row$getValue4 = row.getValue(columnId)) == null ? void 0 : _row$getValue4.includes(filterValue);
+  };
+  arrIncludes.autoRemove = (val) => testFalsey(val) || !(val != null && val.length);
+  var arrIncludesAll = (row, columnId, filterValue) => {
+    return !filterValue.some((val) => {
+      var _row$getValue5;
+      return !((_row$getValue5 = row.getValue(columnId)) != null && _row$getValue5.includes(val));
+    });
+  };
+  arrIncludesAll.autoRemove = (val) => testFalsey(val) || !(val != null && val.length);
+  var arrIncludesSome = (row, columnId, filterValue) => {
+    return filterValue.some((val) => {
+      var _row$getValue6;
+      return (_row$getValue6 = row.getValue(columnId)) == null ? void 0 : _row$getValue6.includes(val);
+    });
+  };
+  arrIncludesSome.autoRemove = (val) => testFalsey(val) || !(val != null && val.length);
+  var equals = (row, columnId, filterValue) => {
+    return row.getValue(columnId) === filterValue;
+  };
+  equals.autoRemove = (val) => testFalsey(val);
+  var weakEquals = (row, columnId, filterValue) => {
+    return row.getValue(columnId) == filterValue;
+  };
+  weakEquals.autoRemove = (val) => testFalsey(val);
+  var inNumberRange = (row, columnId, filterValue) => {
+    let [min2, max2] = filterValue;
+    const rowValue = row.getValue(columnId);
+    return rowValue >= min2 && rowValue <= max2;
+  };
+  inNumberRange.resolveFilterValue = (val) => {
+    let [unsafeMin, unsafeMax] = val;
+    let parsedMin = typeof unsafeMin !== "number" ? parseFloat(unsafeMin) : unsafeMin;
+    let parsedMax = typeof unsafeMax !== "number" ? parseFloat(unsafeMax) : unsafeMax;
+    let min2 = unsafeMin === null || Number.isNaN(parsedMin) ? -Infinity : parsedMin;
+    let max2 = unsafeMax === null || Number.isNaN(parsedMax) ? Infinity : parsedMax;
+    if (min2 > max2) {
+      const temp = min2;
+      min2 = max2;
+      max2 = temp;
+    }
+    return [min2, max2];
+  };
+  inNumberRange.autoRemove = (val) => testFalsey(val) || testFalsey(val[0]) && testFalsey(val[1]);
+  var filterFns = {
+    includesString,
+    includesStringSensitive,
+    equalsString,
+    arrIncludes,
+    arrIncludesAll,
+    arrIncludesSome,
+    equals,
+    weakEquals,
+    inNumberRange
+  };
+  function testFalsey(val) {
+    return val === void 0 || val === null || val === "";
+  }
+  var Filters = {
+    getDefaultColumnDef: () => {
+      return {
+        filterFn: "auto"
+      };
+    },
+    getInitialState: (state) => {
+      return {
+        columnFilters: [],
+        globalFilter: void 0,
+        // filtersProgress: 1,
+        // facetProgress: {},
+        ...state
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onColumnFiltersChange: makeStateUpdater("columnFilters", table),
+        onGlobalFilterChange: makeStateUpdater("globalFilter", table),
+        filterFromLeafRows: false,
+        maxLeafRowFilterDepth: 100,
+        globalFilterFn: "auto",
+        getColumnCanGlobalFilter: (column) => {
+          var _table$getCoreRowMode, _table$getCoreRowMode2;
+          const value = (_table$getCoreRowMode = table.getCoreRowModel().flatRows[0]) == null ? void 0 : (_table$getCoreRowMode2 = _table$getCoreRowMode._getAllCellsByColumnId()[column.id]) == null ? void 0 : _table$getCoreRowMode2.getValue();
+          return typeof value === "string" || typeof value === "number";
+        }
+      };
+    },
+    createColumn: (column, table) => {
+      return {
+        getAutoFilterFn: () => {
+          const firstRow = table.getCoreRowModel().flatRows[0];
+          const value = firstRow == null ? void 0 : firstRow.getValue(column.id);
+          if (typeof value === "string") {
+            return filterFns.includesString;
+          }
+          if (typeof value === "number") {
+            return filterFns.inNumberRange;
+          }
+          if (typeof value === "boolean") {
+            return filterFns.equals;
+          }
+          if (value !== null && typeof value === "object") {
+            return filterFns.equals;
+          }
+          if (Array.isArray(value)) {
+            return filterFns.arrIncludes;
+          }
+          return filterFns.weakEquals;
+        },
+        getFilterFn: () => {
+          var _table$options$filter, _table$options$filter2;
+          return isFunction(column.columnDef.filterFn) ? column.columnDef.filterFn : column.columnDef.filterFn === "auto" ? column.getAutoFilterFn() : (_table$options$filter = (_table$options$filter2 = table.options.filterFns) == null ? void 0 : _table$options$filter2[column.columnDef.filterFn]) != null ? _table$options$filter : filterFns[column.columnDef.filterFn];
+        },
+        getCanFilter: () => {
+          var _column$columnDef$ena, _table$options$enable, _table$options$enable2;
+          return ((_column$columnDef$ena = column.columnDef.enableColumnFilter) != null ? _column$columnDef$ena : true) && ((_table$options$enable = table.options.enableColumnFilters) != null ? _table$options$enable : true) && ((_table$options$enable2 = table.options.enableFilters) != null ? _table$options$enable2 : true) && !!column.accessorFn;
+        },
+        getCanGlobalFilter: () => {
+          var _column$columnDef$ena2, _table$options$enable3, _table$options$enable4, _table$options$getCol;
+          return ((_column$columnDef$ena2 = column.columnDef.enableGlobalFilter) != null ? _column$columnDef$ena2 : true) && ((_table$options$enable3 = table.options.enableGlobalFilter) != null ? _table$options$enable3 : true) && ((_table$options$enable4 = table.options.enableFilters) != null ? _table$options$enable4 : true) && ((_table$options$getCol = table.options.getColumnCanGlobalFilter == null ? void 0 : table.options.getColumnCanGlobalFilter(column)) != null ? _table$options$getCol : true) && !!column.accessorFn;
+        },
+        getIsFiltered: () => column.getFilterIndex() > -1,
+        getFilterValue: () => {
+          var _table$getState$colum, _table$getState$colum2;
+          return (_table$getState$colum = table.getState().columnFilters) == null ? void 0 : (_table$getState$colum2 = _table$getState$colum.find((d3) => d3.id === column.id)) == null ? void 0 : _table$getState$colum2.value;
+        },
+        getFilterIndex: () => {
+          var _table$getState$colum3, _table$getState$colum4;
+          return (_table$getState$colum3 = (_table$getState$colum4 = table.getState().columnFilters) == null ? void 0 : _table$getState$colum4.findIndex((d3) => d3.id === column.id)) != null ? _table$getState$colum3 : -1;
+        },
+        setFilterValue: (value) => {
+          table.setColumnFilters((old) => {
+            const filterFn = column.getFilterFn();
+            const previousfilter = old == null ? void 0 : old.find((d3) => d3.id === column.id);
+            const newFilter = functionalUpdate(value, previousfilter ? previousfilter.value : void 0);
+            if (shouldAutoRemoveFilter(filterFn, newFilter, column)) {
+              var _old$filter;
+              return (_old$filter = old == null ? void 0 : old.filter((d3) => d3.id !== column.id)) != null ? _old$filter : [];
+            }
+            const newFilterObj = {
+              id: column.id,
+              value: newFilter
+            };
+            if (previousfilter) {
+              var _old$map;
+              return (_old$map = old == null ? void 0 : old.map((d3) => {
+                if (d3.id === column.id) {
+                  return newFilterObj;
+                }
+                return d3;
+              })) != null ? _old$map : [];
+            }
+            if (old != null && old.length) {
+              return [...old, newFilterObj];
+            }
+            return [newFilterObj];
+          });
+        },
+        _getFacetedRowModel: table.options.getFacetedRowModel && table.options.getFacetedRowModel(table, column.id),
+        getFacetedRowModel: () => {
+          if (!column._getFacetedRowModel) {
+            return table.getPreFilteredRowModel();
+          }
+          return column._getFacetedRowModel();
+        },
+        _getFacetedUniqueValues: table.options.getFacetedUniqueValues && table.options.getFacetedUniqueValues(table, column.id),
+        getFacetedUniqueValues: () => {
+          if (!column._getFacetedUniqueValues) {
+            return /* @__PURE__ */ new Map();
+          }
+          return column._getFacetedUniqueValues();
+        },
+        _getFacetedMinMaxValues: table.options.getFacetedMinMaxValues && table.options.getFacetedMinMaxValues(table, column.id),
+        getFacetedMinMaxValues: () => {
+          if (!column._getFacetedMinMaxValues) {
+            return void 0;
+          }
+          return column._getFacetedMinMaxValues();
+        }
+        // () => [column.getFacetedRowModel()],
+        // facetedRowModel => getRowModelMinMaxValues(facetedRowModel, column.id),
+      };
+    },
+    createRow: (row, table) => {
+      return {
+        columnFilters: {},
+        columnFiltersMeta: {}
+      };
+    },
+    createTable: (table) => {
+      return {
+        getGlobalAutoFilterFn: () => {
+          return filterFns.includesString;
+        },
+        getGlobalFilterFn: () => {
+          var _table$options$filter3, _table$options$filter4;
+          const {
+            globalFilterFn
+          } = table.options;
+          return isFunction(globalFilterFn) ? globalFilterFn : globalFilterFn === "auto" ? table.getGlobalAutoFilterFn() : (_table$options$filter3 = (_table$options$filter4 = table.options.filterFns) == null ? void 0 : _table$options$filter4[globalFilterFn]) != null ? _table$options$filter3 : filterFns[globalFilterFn];
+        },
+        setColumnFilters: (updater) => {
+          const leafColumns = table.getAllLeafColumns();
+          const updateFn = (old) => {
+            var _functionalUpdate;
+            return (_functionalUpdate = functionalUpdate(updater, old)) == null ? void 0 : _functionalUpdate.filter((filter) => {
+              const column = leafColumns.find((d3) => d3.id === filter.id);
+              if (column) {
+                const filterFn = column.getFilterFn();
+                if (shouldAutoRemoveFilter(filterFn, filter.value, column)) {
+                  return false;
+                }
+              }
+              return true;
+            });
+          };
+          table.options.onColumnFiltersChange == null ? void 0 : table.options.onColumnFiltersChange(updateFn);
+        },
+        setGlobalFilter: (updater) => {
+          table.options.onGlobalFilterChange == null ? void 0 : table.options.onGlobalFilterChange(updater);
+        },
+        resetGlobalFilter: (defaultState) => {
+          table.setGlobalFilter(defaultState ? void 0 : table.initialState.globalFilter);
+        },
+        resetColumnFilters: (defaultState) => {
+          var _table$initialState$c, _table$initialState;
+          table.setColumnFilters(defaultState ? [] : (_table$initialState$c = (_table$initialState = table.initialState) == null ? void 0 : _table$initialState.columnFilters) != null ? _table$initialState$c : []);
+        },
+        getPreFilteredRowModel: () => table.getCoreRowModel(),
+        getFilteredRowModel: () => {
+          if (!table._getFilteredRowModel && table.options.getFilteredRowModel) {
+            table._getFilteredRowModel = table.options.getFilteredRowModel(table);
+          }
+          if (table.options.manualFiltering || !table._getFilteredRowModel) {
+            return table.getPreFilteredRowModel();
+          }
+          return table._getFilteredRowModel();
+        },
+        _getGlobalFacetedRowModel: table.options.getFacetedRowModel && table.options.getFacetedRowModel(table, "__global__"),
+        getGlobalFacetedRowModel: () => {
+          if (table.options.manualFiltering || !table._getGlobalFacetedRowModel) {
+            return table.getPreFilteredRowModel();
+          }
+          return table._getGlobalFacetedRowModel();
+        },
+        _getGlobalFacetedUniqueValues: table.options.getFacetedUniqueValues && table.options.getFacetedUniqueValues(table, "__global__"),
+        getGlobalFacetedUniqueValues: () => {
+          if (!table._getGlobalFacetedUniqueValues) {
+            return /* @__PURE__ */ new Map();
+          }
+          return table._getGlobalFacetedUniqueValues();
+        },
+        _getGlobalFacetedMinMaxValues: table.options.getFacetedMinMaxValues && table.options.getFacetedMinMaxValues(table, "__global__"),
+        getGlobalFacetedMinMaxValues: () => {
+          if (!table._getGlobalFacetedMinMaxValues) {
+            return;
+          }
+          return table._getGlobalFacetedMinMaxValues();
+        }
+      };
+    }
+  };
+  function shouldAutoRemoveFilter(filterFn, value, column) {
+    return (filterFn && filterFn.autoRemove ? filterFn.autoRemove(value, column) : false) || typeof value === "undefined" || typeof value === "string" && !value;
+  }
+  var sum = (columnId, _leafRows, childRows) => {
+    return childRows.reduce((sum2, next) => {
+      const nextValue = next.getValue(columnId);
+      return sum2 + (typeof nextValue === "number" ? nextValue : 0);
+    }, 0);
+  };
+  var min = (columnId, _leafRows, childRows) => {
+    let min2;
+    childRows.forEach((row) => {
+      const value = row.getValue(columnId);
+      if (value != null && (min2 > value || min2 === void 0 && value >= value)) {
+        min2 = value;
+      }
+    });
+    return min2;
+  };
+  var max = (columnId, _leafRows, childRows) => {
+    let max2;
+    childRows.forEach((row) => {
+      const value = row.getValue(columnId);
+      if (value != null && (max2 < value || max2 === void 0 && value >= value)) {
+        max2 = value;
+      }
+    });
+    return max2;
+  };
+  var extent = (columnId, _leafRows, childRows) => {
+    let min2;
+    let max2;
+    childRows.forEach((row) => {
+      const value = row.getValue(columnId);
+      if (value != null) {
+        if (min2 === void 0) {
+          if (value >= value)
+            min2 = max2 = value;
+        } else {
+          if (min2 > value)
+            min2 = value;
+          if (max2 < value)
+            max2 = value;
+        }
+      }
+    });
+    return [min2, max2];
+  };
+  var mean = (columnId, leafRows) => {
+    let count2 = 0;
+    let sum2 = 0;
+    leafRows.forEach((row) => {
+      let value = row.getValue(columnId);
+      if (value != null && (value = +value) >= value) {
+        ++count2, sum2 += value;
+      }
+    });
+    if (count2)
+      return sum2 / count2;
+    return;
+  };
+  var median = (columnId, leafRows) => {
+    if (!leafRows.length) {
+      return;
+    }
+    const values = leafRows.map((row) => row.getValue(columnId));
+    if (!isNumberArray(values)) {
+      return;
+    }
+    if (values.length === 1) {
+      return values[0];
+    }
+    const mid = Math.floor(values.length / 2);
+    const nums = values.sort((a3, b3) => a3 - b3);
+    return values.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
+  };
+  var unique = (columnId, leafRows) => {
+    return Array.from(new Set(leafRows.map((d3) => d3.getValue(columnId))).values());
+  };
+  var uniqueCount = (columnId, leafRows) => {
+    return new Set(leafRows.map((d3) => d3.getValue(columnId))).size;
+  };
+  var count = (_columnId, leafRows) => {
+    return leafRows.length;
+  };
+  var aggregationFns = {
+    sum,
+    min,
+    max,
+    extent,
+    mean,
+    median,
+    unique,
+    uniqueCount,
+    count
+  };
+  var Grouping = {
+    getDefaultColumnDef: () => {
+      return {
+        aggregatedCell: (props) => {
+          var _toString, _props$getValue;
+          return (_toString = (_props$getValue = props.getValue()) == null ? void 0 : _props$getValue.toString == null ? void 0 : _props$getValue.toString()) != null ? _toString : null;
+        },
+        aggregationFn: "auto"
+      };
+    },
+    getInitialState: (state) => {
+      return {
+        grouping: [],
+        ...state
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onGroupingChange: makeStateUpdater("grouping", table),
+        groupedColumnMode: "reorder"
+      };
+    },
+    createColumn: (column, table) => {
+      return {
+        toggleGrouping: () => {
+          table.setGrouping((old) => {
+            if (old != null && old.includes(column.id)) {
+              return old.filter((d3) => d3 !== column.id);
+            }
+            return [...old != null ? old : [], column.id];
+          });
+        },
+        getCanGroup: () => {
+          var _ref, _ref2, _ref3, _column$columnDef$ena;
+          return (_ref = (_ref2 = (_ref3 = (_column$columnDef$ena = column.columnDef.enableGrouping) != null ? _column$columnDef$ena : true) != null ? _ref3 : table.options.enableGrouping) != null ? _ref2 : true) != null ? _ref : !!column.accessorFn;
+        },
+        getIsGrouped: () => {
+          var _table$getState$group;
+          return (_table$getState$group = table.getState().grouping) == null ? void 0 : _table$getState$group.includes(column.id);
+        },
+        getGroupedIndex: () => {
+          var _table$getState$group2;
+          return (_table$getState$group2 = table.getState().grouping) == null ? void 0 : _table$getState$group2.indexOf(column.id);
+        },
+        getToggleGroupingHandler: () => {
+          const canGroup = column.getCanGroup();
+          return () => {
+            if (!canGroup)
+              return;
+            column.toggleGrouping();
+          };
+        },
+        getAutoAggregationFn: () => {
+          const firstRow = table.getCoreRowModel().flatRows[0];
+          const value = firstRow == null ? void 0 : firstRow.getValue(column.id);
+          if (typeof value === "number") {
+            return aggregationFns.sum;
+          }
+          if (Object.prototype.toString.call(value) === "[object Date]") {
+            return aggregationFns.extent;
+          }
+        },
+        getAggregationFn: () => {
+          var _table$options$aggreg, _table$options$aggreg2;
+          if (!column) {
+            throw new Error();
+          }
+          return isFunction(column.columnDef.aggregationFn) ? column.columnDef.aggregationFn : column.columnDef.aggregationFn === "auto" ? column.getAutoAggregationFn() : (_table$options$aggreg = (_table$options$aggreg2 = table.options.aggregationFns) == null ? void 0 : _table$options$aggreg2[column.columnDef.aggregationFn]) != null ? _table$options$aggreg : aggregationFns[column.columnDef.aggregationFn];
+        }
+      };
+    },
+    createTable: (table) => {
+      return {
+        setGrouping: (updater) => table.options.onGroupingChange == null ? void 0 : table.options.onGroupingChange(updater),
+        resetGrouping: (defaultState) => {
+          var _table$initialState$g, _table$initialState;
+          table.setGrouping(defaultState ? [] : (_table$initialState$g = (_table$initialState = table.initialState) == null ? void 0 : _table$initialState.grouping) != null ? _table$initialState$g : []);
+        },
+        getPreGroupedRowModel: () => table.getFilteredRowModel(),
+        getGroupedRowModel: () => {
+          if (!table._getGroupedRowModel && table.options.getGroupedRowModel) {
+            table._getGroupedRowModel = table.options.getGroupedRowModel(table);
+          }
+          if (table.options.manualGrouping || !table._getGroupedRowModel) {
+            return table.getPreGroupedRowModel();
+          }
+          return table._getGroupedRowModel();
+        }
+      };
+    },
+    createRow: (row, table) => {
+      return {
+        getIsGrouped: () => !!row.groupingColumnId,
+        getGroupingValue: (columnId) => {
+          if (row._groupingValuesCache.hasOwnProperty(columnId)) {
+            return row._groupingValuesCache[columnId];
+          }
+          const column = table.getColumn(columnId);
+          if (!(column != null && column.columnDef.getGroupingValue)) {
+            return row.getValue(columnId);
+          }
+          row._groupingValuesCache[columnId] = column.columnDef.getGroupingValue(row.original);
+          return row._groupingValuesCache[columnId];
+        },
+        _groupingValuesCache: {}
+      };
+    },
+    createCell: (cell, column, row, table) => {
+      return {
+        getIsGrouped: () => column.getIsGrouped() && column.id === row.groupingColumnId,
+        getIsPlaceholder: () => !cell.getIsGrouped() && column.getIsGrouped(),
+        getIsAggregated: () => {
+          var _row$subRows;
+          return !cell.getIsGrouped() && !cell.getIsPlaceholder() && !!((_row$subRows = row.subRows) != null && _row$subRows.length);
+        }
+      };
+    }
+  };
+  function orderColumns(leafColumns, grouping, groupedColumnMode) {
+    if (!(grouping != null && grouping.length) || !groupedColumnMode) {
+      return leafColumns;
+    }
+    const nonGroupingColumns = leafColumns.filter((col) => !grouping.includes(col.id));
+    if (groupedColumnMode === "remove") {
+      return nonGroupingColumns;
+    }
+    const groupingColumns = grouping.map((g4) => leafColumns.find((col) => col.id === g4)).filter(Boolean);
+    return [...groupingColumns, ...nonGroupingColumns];
+  }
+  var Ordering = {
+    getInitialState: (state) => {
+      return {
+        columnOrder: [],
+        ...state
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onColumnOrderChange: makeStateUpdater("columnOrder", table)
+      };
+    },
+    createTable: (table) => {
+      return {
+        setColumnOrder: (updater) => table.options.onColumnOrderChange == null ? void 0 : table.options.onColumnOrderChange(updater),
+        resetColumnOrder: (defaultState) => {
+          var _table$initialState$c;
+          table.setColumnOrder(defaultState ? [] : (_table$initialState$c = table.initialState.columnOrder) != null ? _table$initialState$c : []);
+        },
+        _getOrderColumnsFn: memo(() => [table.getState().columnOrder, table.getState().grouping, table.options.groupedColumnMode], (columnOrder, grouping, groupedColumnMode) => (columns) => {
+          let orderedColumns = [];
+          if (!(columnOrder != null && columnOrder.length)) {
+            orderedColumns = columns;
+          } else {
+            const columnOrderCopy = [...columnOrder];
+            const columnsCopy = [...columns];
+            while (columnsCopy.length && columnOrderCopy.length) {
+              const targetColumnId = columnOrderCopy.shift();
+              const foundIndex = columnsCopy.findIndex((d3) => d3.id === targetColumnId);
+              if (foundIndex > -1) {
+                orderedColumns.push(columnsCopy.splice(foundIndex, 1)[0]);
+              }
+            }
+            orderedColumns = [...orderedColumns, ...columnsCopy];
+          }
+          return orderColumns(orderedColumns, grouping, groupedColumnMode);
+        }, {
+          key: "getOrderColumnsFn"
+          // debug: () => table.options.debugAll ?? table.options.debugTable,
+        })
+      };
+    }
+  };
+  var defaultPageIndex = 0;
+  var defaultPageSize = 10;
+  var getDefaultPaginationState = () => ({
+    pageIndex: defaultPageIndex,
+    pageSize: defaultPageSize
+  });
+  var Pagination = {
+    getInitialState: (state) => {
+      return {
+        ...state,
+        pagination: {
+          ...getDefaultPaginationState(),
+          ...state == null ? void 0 : state.pagination
+        }
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onPaginationChange: makeStateUpdater("pagination", table)
+      };
+    },
+    createTable: (table) => {
+      let registered = false;
+      let queued = false;
+      return {
+        _autoResetPageIndex: () => {
+          var _ref, _table$options$autoRe;
+          if (!registered) {
+            table._queue(() => {
+              registered = true;
+            });
+            return;
+          }
+          if ((_ref = (_table$options$autoRe = table.options.autoResetAll) != null ? _table$options$autoRe : table.options.autoResetPageIndex) != null ? _ref : !table.options.manualPagination) {
+            if (queued)
+              return;
+            queued = true;
+            table._queue(() => {
+              table.resetPageIndex();
+              queued = false;
+            });
+          }
+        },
+        setPagination: (updater) => {
+          const safeUpdater = (old) => {
+            let newState = functionalUpdate(updater, old);
+            return newState;
+          };
+          return table.options.onPaginationChange == null ? void 0 : table.options.onPaginationChange(safeUpdater);
+        },
+        resetPagination: (defaultState) => {
+          var _table$initialState$p;
+          table.setPagination(defaultState ? getDefaultPaginationState() : (_table$initialState$p = table.initialState.pagination) != null ? _table$initialState$p : getDefaultPaginationState());
+        },
+        setPageIndex: (updater) => {
+          table.setPagination((old) => {
+            let pageIndex = functionalUpdate(updater, old.pageIndex);
+            const maxPageIndex = typeof table.options.pageCount === "undefined" || table.options.pageCount === -1 ? Number.MAX_SAFE_INTEGER : table.options.pageCount - 1;
+            pageIndex = Math.max(0, Math.min(pageIndex, maxPageIndex));
+            return {
+              ...old,
+              pageIndex
+            };
+          });
+        },
+        resetPageIndex: (defaultState) => {
+          var _table$initialState$p2, _table$initialState, _table$initialState$p3;
+          table.setPageIndex(defaultState ? defaultPageIndex : (_table$initialState$p2 = (_table$initialState = table.initialState) == null ? void 0 : (_table$initialState$p3 = _table$initialState.pagination) == null ? void 0 : _table$initialState$p3.pageIndex) != null ? _table$initialState$p2 : defaultPageIndex);
+        },
+        resetPageSize: (defaultState) => {
+          var _table$initialState$p4, _table$initialState2, _table$initialState2$;
+          table.setPageSize(defaultState ? defaultPageSize : (_table$initialState$p4 = (_table$initialState2 = table.initialState) == null ? void 0 : (_table$initialState2$ = _table$initialState2.pagination) == null ? void 0 : _table$initialState2$.pageSize) != null ? _table$initialState$p4 : defaultPageSize);
+        },
+        setPageSize: (updater) => {
+          table.setPagination((old) => {
+            const pageSize = Math.max(1, functionalUpdate(updater, old.pageSize));
+            const topRowIndex = old.pageSize * old.pageIndex;
+            const pageIndex = Math.floor(topRowIndex / pageSize);
+            return {
+              ...old,
+              pageIndex,
+              pageSize
+            };
+          });
+        },
+        setPageCount: (updater) => table.setPagination((old) => {
+          var _table$options$pageCo;
+          let newPageCount = functionalUpdate(updater, (_table$options$pageCo = table.options.pageCount) != null ? _table$options$pageCo : -1);
+          if (typeof newPageCount === "number") {
+            newPageCount = Math.max(-1, newPageCount);
+          }
+          return {
+            ...old,
+            pageCount: newPageCount
+          };
+        }),
+        getPageOptions: memo(() => [table.getPageCount()], (pageCount) => {
+          let pageOptions = [];
+          if (pageCount && pageCount > 0) {
+            pageOptions = [...new Array(pageCount)].fill(null).map((_3, i3) => i3);
+          }
+          return pageOptions;
+        }, {
+          key: "getPageOptions",
+          debug: () => {
+            var _table$options$debugA;
+            return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugTable;
+          }
+        }),
+        getCanPreviousPage: () => table.getState().pagination.pageIndex > 0,
+        getCanNextPage: () => {
+          const {
+            pageIndex
+          } = table.getState().pagination;
+          const pageCount = table.getPageCount();
+          if (pageCount === -1) {
+            return true;
+          }
+          if (pageCount === 0) {
+            return false;
+          }
+          return pageIndex < pageCount - 1;
+        },
+        previousPage: () => {
+          return table.setPageIndex((old) => old - 1);
+        },
+        nextPage: () => {
+          return table.setPageIndex((old) => {
+            return old + 1;
+          });
+        },
+        getPrePaginationRowModel: () => table.getExpandedRowModel(),
+        getPaginationRowModel: () => {
+          if (!table._getPaginationRowModel && table.options.getPaginationRowModel) {
+            table._getPaginationRowModel = table.options.getPaginationRowModel(table);
+          }
+          if (table.options.manualPagination || !table._getPaginationRowModel) {
+            return table.getPrePaginationRowModel();
+          }
+          return table._getPaginationRowModel();
+        },
+        getPageCount: () => {
+          var _table$options$pageCo2;
+          return (_table$options$pageCo2 = table.options.pageCount) != null ? _table$options$pageCo2 : Math.ceil(table.getPrePaginationRowModel().rows.length / table.getState().pagination.pageSize);
+        }
+      };
+    }
+  };
+  var getDefaultPinningState = () => ({
+    left: [],
+    right: []
+  });
+  var Pinning = {
+    getInitialState: (state) => {
+      return {
+        columnPinning: getDefaultPinningState(),
+        ...state
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onColumnPinningChange: makeStateUpdater("columnPinning", table)
+      };
+    },
+    createColumn: (column, table) => {
+      return {
+        pin: (position) => {
+          const columnIds = column.getLeafColumns().map((d3) => d3.id).filter(Boolean);
+          table.setColumnPinning((old) => {
+            var _old$left3, _old$right3;
+            if (position === "right") {
+              var _old$left, _old$right;
+              return {
+                left: ((_old$left = old == null ? void 0 : old.left) != null ? _old$left : []).filter((d3) => !(columnIds != null && columnIds.includes(d3))),
+                right: [...((_old$right = old == null ? void 0 : old.right) != null ? _old$right : []).filter((d3) => !(columnIds != null && columnIds.includes(d3))), ...columnIds]
+              };
+            }
+            if (position === "left") {
+              var _old$left2, _old$right2;
+              return {
+                left: [...((_old$left2 = old == null ? void 0 : old.left) != null ? _old$left2 : []).filter((d3) => !(columnIds != null && columnIds.includes(d3))), ...columnIds],
+                right: ((_old$right2 = old == null ? void 0 : old.right) != null ? _old$right2 : []).filter((d3) => !(columnIds != null && columnIds.includes(d3)))
+              };
+            }
+            return {
+              left: ((_old$left3 = old == null ? void 0 : old.left) != null ? _old$left3 : []).filter((d3) => !(columnIds != null && columnIds.includes(d3))),
+              right: ((_old$right3 = old == null ? void 0 : old.right) != null ? _old$right3 : []).filter((d3) => !(columnIds != null && columnIds.includes(d3)))
+            };
+          });
+        },
+        getCanPin: () => {
+          const leafColumns = column.getLeafColumns();
+          return leafColumns.some((d3) => {
+            var _d$columnDef$enablePi, _table$options$enable;
+            return ((_d$columnDef$enablePi = d3.columnDef.enablePinning) != null ? _d$columnDef$enablePi : true) && ((_table$options$enable = table.options.enablePinning) != null ? _table$options$enable : true);
+          });
+        },
+        getIsPinned: () => {
+          const leafColumnIds = column.getLeafColumns().map((d3) => d3.id);
+          const {
+            left,
+            right
+          } = table.getState().columnPinning;
+          const isLeft = leafColumnIds.some((d3) => left == null ? void 0 : left.includes(d3));
+          const isRight = leafColumnIds.some((d3) => right == null ? void 0 : right.includes(d3));
+          return isLeft ? "left" : isRight ? "right" : false;
+        },
+        getPinnedIndex: () => {
+          var _table$getState$colum, _table$getState$colum2, _table$getState$colum3;
+          const position = column.getIsPinned();
+          return position ? (_table$getState$colum = (_table$getState$colum2 = table.getState().columnPinning) == null ? void 0 : (_table$getState$colum3 = _table$getState$colum2[position]) == null ? void 0 : _table$getState$colum3.indexOf(column.id)) != null ? _table$getState$colum : -1 : 0;
+        }
+      };
+    },
+    createRow: (row, table) => {
+      return {
+        getCenterVisibleCells: memo(() => [row._getAllVisibleCells(), table.getState().columnPinning.left, table.getState().columnPinning.right], (allCells, left, right) => {
+          const leftAndRight = [...left != null ? left : [], ...right != null ? right : []];
+          return allCells.filter((d3) => !leftAndRight.includes(d3.column.id));
+        }, {
+          key: false,
+          debug: () => {
+            var _table$options$debugA;
+            return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugRows;
+          }
+        }),
+        getLeftVisibleCells: memo(() => [row._getAllVisibleCells(), table.getState().columnPinning.left, ,], (allCells, left) => {
+          const cells = (left != null ? left : []).map((columnId) => allCells.find((cell) => cell.column.id === columnId)).filter(Boolean).map((d3) => ({
+            ...d3,
+            position: "left"
+          }));
+          return cells;
+        }, {
+          key: false,
+          debug: () => {
+            var _table$options$debugA2;
+            return (_table$options$debugA2 = table.options.debugAll) != null ? _table$options$debugA2 : table.options.debugRows;
+          }
+        }),
+        getRightVisibleCells: memo(() => [row._getAllVisibleCells(), table.getState().columnPinning.right], (allCells, right) => {
+          const cells = (right != null ? right : []).map((columnId) => allCells.find((cell) => cell.column.id === columnId)).filter(Boolean).map((d3) => ({
+            ...d3,
+            position: "right"
+          }));
+          return cells;
+        }, {
+          key: false,
+          debug: () => {
+            var _table$options$debugA3;
+            return (_table$options$debugA3 = table.options.debugAll) != null ? _table$options$debugA3 : table.options.debugRows;
+          }
+        })
+      };
+    },
+    createTable: (table) => {
+      return {
+        setColumnPinning: (updater) => table.options.onColumnPinningChange == null ? void 0 : table.options.onColumnPinningChange(updater),
+        resetColumnPinning: (defaultState) => {
+          var _table$initialState$c, _table$initialState;
+          return table.setColumnPinning(defaultState ? getDefaultPinningState() : (_table$initialState$c = (_table$initialState = table.initialState) == null ? void 0 : _table$initialState.columnPinning) != null ? _table$initialState$c : getDefaultPinningState());
+        },
+        getIsSomeColumnsPinned: (position) => {
+          var _pinningState$positio;
+          const pinningState = table.getState().columnPinning;
+          if (!position) {
+            var _pinningState$left, _pinningState$right;
+            return Boolean(((_pinningState$left = pinningState.left) == null ? void 0 : _pinningState$left.length) || ((_pinningState$right = pinningState.right) == null ? void 0 : _pinningState$right.length));
+          }
+          return Boolean((_pinningState$positio = pinningState[position]) == null ? void 0 : _pinningState$positio.length);
+        },
+        getLeftLeafColumns: memo(() => [table.getAllLeafColumns(), table.getState().columnPinning.left], (allColumns, left) => {
+          return (left != null ? left : []).map((columnId) => allColumns.find((column) => column.id === columnId)).filter(Boolean);
+        }, {
+          key: "getLeftLeafColumns",
+          debug: () => {
+            var _table$options$debugA4;
+            return (_table$options$debugA4 = table.options.debugAll) != null ? _table$options$debugA4 : table.options.debugColumns;
+          }
+        }),
+        getRightLeafColumns: memo(() => [table.getAllLeafColumns(), table.getState().columnPinning.right], (allColumns, right) => {
+          return (right != null ? right : []).map((columnId) => allColumns.find((column) => column.id === columnId)).filter(Boolean);
+        }, {
+          key: "getRightLeafColumns",
+          debug: () => {
+            var _table$options$debugA5;
+            return (_table$options$debugA5 = table.options.debugAll) != null ? _table$options$debugA5 : table.options.debugColumns;
+          }
+        }),
+        getCenterLeafColumns: memo(() => [table.getAllLeafColumns(), table.getState().columnPinning.left, table.getState().columnPinning.right], (allColumns, left, right) => {
+          const leftAndRight = [...left != null ? left : [], ...right != null ? right : []];
+          return allColumns.filter((d3) => !leftAndRight.includes(d3.id));
+        }, {
+          key: "getCenterLeafColumns",
+          debug: () => {
+            var _table$options$debugA6;
+            return (_table$options$debugA6 = table.options.debugAll) != null ? _table$options$debugA6 : table.options.debugColumns;
+          }
+        })
+      };
+    }
+  };
+  var RowSelection = {
+    getInitialState: (state) => {
+      return {
+        rowSelection: {},
+        ...state
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onRowSelectionChange: makeStateUpdater("rowSelection", table),
+        enableRowSelection: true,
+        enableMultiRowSelection: true,
+        enableSubRowSelection: true
+        // enableGroupingRowSelection: false,
+        // isAdditiveSelectEvent: (e: unknown) => !!e.metaKey,
+        // isInclusiveSelectEvent: (e: unknown) => !!e.shiftKey,
+      };
+    },
+    createTable: (table) => {
+      return {
+        setRowSelection: (updater) => table.options.onRowSelectionChange == null ? void 0 : table.options.onRowSelectionChange(updater),
+        resetRowSelection: (defaultState) => {
+          var _table$initialState$r;
+          return table.setRowSelection(defaultState ? {} : (_table$initialState$r = table.initialState.rowSelection) != null ? _table$initialState$r : {});
+        },
+        toggleAllRowsSelected: (value) => {
+          table.setRowSelection((old) => {
+            value = typeof value !== "undefined" ? value : !table.getIsAllRowsSelected();
+            const rowSelection = {
+              ...old
+            };
+            const preGroupedFlatRows = table.getPreGroupedRowModel().flatRows;
+            if (value) {
+              preGroupedFlatRows.forEach((row) => {
+                if (!row.getCanSelect()) {
+                  return;
+                }
+                rowSelection[row.id] = true;
+              });
+            } else {
+              preGroupedFlatRows.forEach((row) => {
+                delete rowSelection[row.id];
+              });
+            }
+            return rowSelection;
+          });
+        },
+        toggleAllPageRowsSelected: (value) => table.setRowSelection((old) => {
+          const resolvedValue = typeof value !== "undefined" ? value : !table.getIsAllPageRowsSelected();
+          const rowSelection = {
+            ...old
+          };
+          table.getRowModel().rows.forEach((row) => {
+            mutateRowIsSelected(rowSelection, row.id, resolvedValue, table);
+          });
+          return rowSelection;
+        }),
+        // addRowSelectionRange: rowId => {
+        //   const {
+        //     rows,
+        //     rowsById,
+        //     options: { selectGroupingRows, selectSubRows },
+        //   } = table
+        //   const findSelectedRow = (rows: Row[]) => {
+        //     let found
+        //     rows.find(d => {
+        //       if (d.getIsSelected()) {
+        //         found = d
+        //         return true
+        //       }
+        //       const subFound = findSelectedRow(d.subRows || [])
+        //       if (subFound) {
+        //         found = subFound
+        //         return true
+        //       }
+        //       return false
+        //     })
+        //     return found
+        //   }
+        //   const firstRow = findSelectedRow(rows) || rows[0]
+        //   const lastRow = rowsById[rowId]
+        //   let include = false
+        //   const selectedRowIds = {}
+        //   const addRow = (row: Row) => {
+        //     mutateRowIsSelected(selectedRowIds, row.id, true, {
+        //       rowsById,
+        //       selectGroupingRows: selectGroupingRows!,
+        //       selectSubRows: selectSubRows!,
+        //     })
+        //   }
+        //   table.rows.forEach(row => {
+        //     const isFirstRow = row.id === firstRow.id
+        //     const isLastRow = row.id === lastRow.id
+        //     if (isFirstRow || isLastRow) {
+        //       if (!include) {
+        //         include = true
+        //       } else if (include) {
+        //         addRow(row)
+        //         include = false
+        //       }
+        //     }
+        //     if (include) {
+        //       addRow(row)
+        //     }
+        //   })
+        //   table.setRowSelection(selectedRowIds)
+        // },
+        getPreSelectedRowModel: () => table.getCoreRowModel(),
+        getSelectedRowModel: memo(() => [table.getState().rowSelection, table.getCoreRowModel()], (rowSelection, rowModel) => {
+          if (!Object.keys(rowSelection).length) {
+            return {
+              rows: [],
+              flatRows: [],
+              rowsById: {}
+            };
+          }
+          return selectRowsFn(table, rowModel);
+        }, {
+          key: "getSelectedRowModel",
+          debug: () => {
+            var _table$options$debugA;
+            return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugTable;
+          }
+        }),
+        getFilteredSelectedRowModel: memo(() => [table.getState().rowSelection, table.getFilteredRowModel()], (rowSelection, rowModel) => {
+          if (!Object.keys(rowSelection).length) {
+            return {
+              rows: [],
+              flatRows: [],
+              rowsById: {}
+            };
+          }
+          return selectRowsFn(table, rowModel);
+        }, {
+          key: false,
+          debug: () => {
+            var _table$options$debugA2;
+            return (_table$options$debugA2 = table.options.debugAll) != null ? _table$options$debugA2 : table.options.debugTable;
+          }
+        }),
+        getGroupedSelectedRowModel: memo(() => [table.getState().rowSelection, table.getSortedRowModel()], (rowSelection, rowModel) => {
+          if (!Object.keys(rowSelection).length) {
+            return {
+              rows: [],
+              flatRows: [],
+              rowsById: {}
+            };
+          }
+          return selectRowsFn(table, rowModel);
+        }, {
+          key: false,
+          debug: () => {
+            var _table$options$debugA3;
+            return (_table$options$debugA3 = table.options.debugAll) != null ? _table$options$debugA3 : table.options.debugTable;
+          }
+        }),
+        ///
+        // getGroupingRowCanSelect: rowId => {
+        //   const row = table.getRow(rowId)
+        //   if (!row) {
+        //     throw new Error()
+        //   }
+        //   if (typeof table.options.enableGroupingRowSelection === 'function') {
+        //     return table.options.enableGroupingRowSelection(row)
+        //   }
+        //   return table.options.enableGroupingRowSelection ?? false
+        // },
+        getIsAllRowsSelected: () => {
+          const preGroupedFlatRows = table.getFilteredRowModel().flatRows;
+          const {
+            rowSelection
+          } = table.getState();
+          let isAllRowsSelected = Boolean(preGroupedFlatRows.length && Object.keys(rowSelection).length);
+          if (isAllRowsSelected) {
+            if (preGroupedFlatRows.some((row) => row.getCanSelect() && !rowSelection[row.id])) {
+              isAllRowsSelected = false;
+            }
+          }
+          return isAllRowsSelected;
+        },
+        getIsAllPageRowsSelected: () => {
+          const paginationFlatRows = table.getPaginationRowModel().flatRows.filter((row) => row.getCanSelect());
+          const {
+            rowSelection
+          } = table.getState();
+          let isAllPageRowsSelected = !!paginationFlatRows.length;
+          if (isAllPageRowsSelected && paginationFlatRows.some((row) => !rowSelection[row.id])) {
+            isAllPageRowsSelected = false;
+          }
+          return isAllPageRowsSelected;
+        },
+        getIsSomeRowsSelected: () => {
+          var _table$getState$rowSe;
+          const totalSelected = Object.keys((_table$getState$rowSe = table.getState().rowSelection) != null ? _table$getState$rowSe : {}).length;
+          return totalSelected > 0 && totalSelected < table.getFilteredRowModel().flatRows.length;
+        },
+        getIsSomePageRowsSelected: () => {
+          const paginationFlatRows = table.getPaginationRowModel().flatRows;
+          return table.getIsAllPageRowsSelected() ? false : paginationFlatRows.filter((row) => row.getCanSelect()).some((d3) => d3.getIsSelected() || d3.getIsSomeSelected());
+        },
+        getToggleAllRowsSelectedHandler: () => {
+          return (e3) => {
+            table.toggleAllRowsSelected(e3.target.checked);
+          };
+        },
+        getToggleAllPageRowsSelectedHandler: () => {
+          return (e3) => {
+            table.toggleAllPageRowsSelected(e3.target.checked);
+          };
+        }
+      };
+    },
+    createRow: (row, table) => {
+      return {
+        toggleSelected: (value) => {
+          const isSelected = row.getIsSelected();
+          table.setRowSelection((old) => {
+            value = typeof value !== "undefined" ? value : !isSelected;
+            if (isSelected === value) {
+              return old;
+            }
+            const selectedRowIds = {
+              ...old
+            };
+            mutateRowIsSelected(selectedRowIds, row.id, value, table);
+            return selectedRowIds;
+          });
+        },
+        getIsSelected: () => {
+          const {
+            rowSelection
+          } = table.getState();
+          return isRowSelected(row, rowSelection);
+        },
+        getIsSomeSelected: () => {
+          const {
+            rowSelection
+          } = table.getState();
+          return isSubRowSelected(row, rowSelection) === "some";
+        },
+        getIsAllSubRowsSelected: () => {
+          const {
+            rowSelection
+          } = table.getState();
+          return isSubRowSelected(row, rowSelection) === "all";
+        },
+        getCanSelect: () => {
+          var _table$options$enable;
+          if (typeof table.options.enableRowSelection === "function") {
+            return table.options.enableRowSelection(row);
+          }
+          return (_table$options$enable = table.options.enableRowSelection) != null ? _table$options$enable : true;
+        },
+        getCanSelectSubRows: () => {
+          var _table$options$enable2;
+          if (typeof table.options.enableSubRowSelection === "function") {
+            return table.options.enableSubRowSelection(row);
+          }
+          return (_table$options$enable2 = table.options.enableSubRowSelection) != null ? _table$options$enable2 : true;
+        },
+        getCanMultiSelect: () => {
+          var _table$options$enable3;
+          if (typeof table.options.enableMultiRowSelection === "function") {
+            return table.options.enableMultiRowSelection(row);
+          }
+          return (_table$options$enable3 = table.options.enableMultiRowSelection) != null ? _table$options$enable3 : true;
+        },
+        getToggleSelectedHandler: () => {
+          const canSelect = row.getCanSelect();
+          return (e3) => {
+            var _target;
+            if (!canSelect)
+              return;
+            row.toggleSelected((_target = e3.target) == null ? void 0 : _target.checked);
+          };
+        }
+      };
+    }
+  };
+  var mutateRowIsSelected = (selectedRowIds, id, value, table) => {
+    var _row$subRows;
+    const row = table.getRow(id);
+    if (value) {
+      if (!row.getCanMultiSelect()) {
+        Object.keys(selectedRowIds).forEach((key) => delete selectedRowIds[key]);
+      }
+      if (row.getCanSelect()) {
+        selectedRowIds[id] = true;
+      }
+    } else {
+      delete selectedRowIds[id];
+    }
+    if ((_row$subRows = row.subRows) != null && _row$subRows.length && row.getCanSelectSubRows()) {
+      row.subRows.forEach((row2) => mutateRowIsSelected(selectedRowIds, row2.id, value, table));
+    }
+  };
+  function selectRowsFn(table, rowModel) {
+    const rowSelection = table.getState().rowSelection;
+    const newSelectedFlatRows = [];
+    const newSelectedRowsById = {};
+    const recurseRows = function(rows, depth) {
+      return rows.map((row) => {
+        var _row$subRows2;
+        const isSelected = isRowSelected(row, rowSelection);
+        if (isSelected) {
+          newSelectedFlatRows.push(row);
+          newSelectedRowsById[row.id] = row;
+        }
+        if ((_row$subRows2 = row.subRows) != null && _row$subRows2.length) {
+          row = {
+            ...row,
+            subRows: recurseRows(row.subRows)
+          };
+        }
+        if (isSelected) {
+          return row;
+        }
+      }).filter(Boolean);
+    };
+    return {
+      rows: recurseRows(rowModel.rows),
+      flatRows: newSelectedFlatRows,
+      rowsById: newSelectedRowsById
+    };
+  }
+  function isRowSelected(row, selection) {
+    var _selection$row$id;
+    return (_selection$row$id = selection[row.id]) != null ? _selection$row$id : false;
+  }
+  function isSubRowSelected(row, selection, table) {
+    if (row.subRows && row.subRows.length) {
+      let allChildrenSelected = true;
+      let someSelected = false;
+      row.subRows.forEach((subRow) => {
+        if (someSelected && !allChildrenSelected) {
+          return;
+        }
+        if (isRowSelected(subRow, selection)) {
+          someSelected = true;
+        } else {
+          allChildrenSelected = false;
+        }
+      });
+      return allChildrenSelected ? "all" : someSelected ? "some" : false;
+    }
+    return false;
+  }
+  var reSplitAlphaNumeric = /([0-9]+)/gm;
+  var alphanumeric = (rowA, rowB, columnId) => {
+    return compareAlphanumeric(toString(rowA.getValue(columnId)).toLowerCase(), toString(rowB.getValue(columnId)).toLowerCase());
+  };
+  var alphanumericCaseSensitive = (rowA, rowB, columnId) => {
+    return compareAlphanumeric(toString(rowA.getValue(columnId)), toString(rowB.getValue(columnId)));
+  };
+  var text = (rowA, rowB, columnId) => {
+    return compareBasic(toString(rowA.getValue(columnId)).toLowerCase(), toString(rowB.getValue(columnId)).toLowerCase());
+  };
+  var textCaseSensitive = (rowA, rowB, columnId) => {
+    return compareBasic(toString(rowA.getValue(columnId)), toString(rowB.getValue(columnId)));
+  };
+  var datetime = (rowA, rowB, columnId) => {
+    const a3 = rowA.getValue(columnId);
+    const b3 = rowB.getValue(columnId);
+    return a3 > b3 ? 1 : a3 < b3 ? -1 : 0;
+  };
+  var basic = (rowA, rowB, columnId) => {
+    return compareBasic(rowA.getValue(columnId), rowB.getValue(columnId));
+  };
+  function compareBasic(a3, b3) {
+    return a3 === b3 ? 0 : a3 > b3 ? 1 : -1;
+  }
+  function toString(a3) {
+    if (typeof a3 === "number") {
+      if (isNaN(a3) || a3 === Infinity || a3 === -Infinity) {
+        return "";
+      }
+      return String(a3);
+    }
+    if (typeof a3 === "string") {
+      return a3;
+    }
+    return "";
+  }
+  function compareAlphanumeric(aStr, bStr) {
+    const a3 = aStr.split(reSplitAlphaNumeric).filter(Boolean);
+    const b3 = bStr.split(reSplitAlphaNumeric).filter(Boolean);
+    while (a3.length && b3.length) {
+      const aa = a3.shift();
+      const bb = b3.shift();
+      const an2 = parseInt(aa, 10);
+      const bn2 = parseInt(bb, 10);
+      const combo = [an2, bn2].sort();
+      if (isNaN(combo[0])) {
+        if (aa > bb) {
+          return 1;
+        }
+        if (bb > aa) {
+          return -1;
+        }
+        continue;
+      }
+      if (isNaN(combo[1])) {
+        return isNaN(an2) ? -1 : 1;
+      }
+      if (an2 > bn2) {
+        return 1;
+      }
+      if (bn2 > an2) {
+        return -1;
+      }
+    }
+    return a3.length - b3.length;
+  }
+  var sortingFns = {
+    alphanumeric,
+    alphanumericCaseSensitive,
+    text,
+    textCaseSensitive,
+    datetime,
+    basic
+  };
+  var Sorting = {
+    getInitialState: (state) => {
+      return {
+        sorting: [],
+        ...state
+      };
+    },
+    getDefaultColumnDef: () => {
+      return {
+        sortingFn: "auto"
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onSortingChange: makeStateUpdater("sorting", table),
+        isMultiSortEvent: (e3) => {
+          return e3.shiftKey;
+        }
+      };
+    },
+    createColumn: (column, table) => {
+      return {
+        getAutoSortingFn: () => {
+          const firstRows = table.getFilteredRowModel().flatRows.slice(10);
+          let isString = false;
+          for (const row of firstRows) {
+            const value = row == null ? void 0 : row.getValue(column.id);
+            if (Object.prototype.toString.call(value) === "[object Date]") {
+              return sortingFns.datetime;
+            }
+            if (typeof value === "string") {
+              isString = true;
+              if (value.split(reSplitAlphaNumeric).length > 1) {
+                return sortingFns.alphanumeric;
+              }
+            }
+          }
+          if (isString) {
+            return sortingFns.text;
+          }
+          return sortingFns.basic;
+        },
+        getAutoSortDir: () => {
+          const firstRow = table.getFilteredRowModel().flatRows[0];
+          const value = firstRow == null ? void 0 : firstRow.getValue(column.id);
+          if (typeof value === "string") {
+            return "asc";
+          }
+          return "desc";
+        },
+        getSortingFn: () => {
+          var _table$options$sortin, _table$options$sortin2;
+          if (!column) {
+            throw new Error();
+          }
+          return isFunction(column.columnDef.sortingFn) ? column.columnDef.sortingFn : column.columnDef.sortingFn === "auto" ? column.getAutoSortingFn() : (_table$options$sortin = (_table$options$sortin2 = table.options.sortingFns) == null ? void 0 : _table$options$sortin2[column.columnDef.sortingFn]) != null ? _table$options$sortin : sortingFns[column.columnDef.sortingFn];
+        },
+        toggleSorting: (desc, multi) => {
+          const nextSortingOrder = column.getNextSortingOrder();
+          const hasManualValue = typeof desc !== "undefined" && desc !== null;
+          table.setSorting((old) => {
+            const existingSorting = old == null ? void 0 : old.find((d3) => d3.id === column.id);
+            const existingIndex = old == null ? void 0 : old.findIndex((d3) => d3.id === column.id);
+            let newSorting = [];
+            let sortAction;
+            let nextDesc = hasManualValue ? desc : nextSortingOrder === "desc";
+            if (old != null && old.length && column.getCanMultiSort() && multi) {
+              if (existingSorting) {
+                sortAction = "toggle";
+              } else {
+                sortAction = "add";
+              }
+            } else {
+              if (old != null && old.length && existingIndex !== old.length - 1) {
+                sortAction = "replace";
+              } else if (existingSorting) {
+                sortAction = "toggle";
+              } else {
+                sortAction = "replace";
+              }
+            }
+            if (sortAction === "toggle") {
+              if (!hasManualValue) {
+                if (!nextSortingOrder) {
+                  sortAction = "remove";
+                }
+              }
+            }
+            if (sortAction === "add") {
+              var _table$options$maxMul;
+              newSorting = [...old, {
+                id: column.id,
+                desc: nextDesc
+              }];
+              newSorting.splice(0, newSorting.length - ((_table$options$maxMul = table.options.maxMultiSortColCount) != null ? _table$options$maxMul : Number.MAX_SAFE_INTEGER));
+            } else if (sortAction === "toggle") {
+              newSorting = old.map((d3) => {
+                if (d3.id === column.id) {
+                  return {
+                    ...d3,
+                    desc: nextDesc
+                  };
+                }
+                return d3;
+              });
+            } else if (sortAction === "remove") {
+              newSorting = old.filter((d3) => d3.id !== column.id);
+            } else {
+              newSorting = [{
+                id: column.id,
+                desc: nextDesc
+              }];
+            }
+            return newSorting;
+          });
+        },
+        getFirstSortDir: () => {
+          var _ref, _column$columnDef$sor;
+          const sortDescFirst = (_ref = (_column$columnDef$sor = column.columnDef.sortDescFirst) != null ? _column$columnDef$sor : table.options.sortDescFirst) != null ? _ref : column.getAutoSortDir() === "desc";
+          return sortDescFirst ? "desc" : "asc";
+        },
+        getNextSortingOrder: (multi) => {
+          var _table$options$enable, _table$options$enable2;
+          const firstSortDirection = column.getFirstSortDir();
+          const isSorted = column.getIsSorted();
+          if (!isSorted) {
+            return firstSortDirection;
+          }
+          if (isSorted !== firstSortDirection && ((_table$options$enable = table.options.enableSortingRemoval) != null ? _table$options$enable : true) && // If enableSortRemove, enable in general
+          (multi ? (_table$options$enable2 = table.options.enableMultiRemove) != null ? _table$options$enable2 : true : true)) {
+            return false;
+          }
+          return isSorted === "desc" ? "asc" : "desc";
+        },
+        getCanSort: () => {
+          var _column$columnDef$ena, _table$options$enable3;
+          return ((_column$columnDef$ena = column.columnDef.enableSorting) != null ? _column$columnDef$ena : true) && ((_table$options$enable3 = table.options.enableSorting) != null ? _table$options$enable3 : true) && !!column.accessorFn;
+        },
+        getCanMultiSort: () => {
+          var _ref2, _column$columnDef$ena2;
+          return (_ref2 = (_column$columnDef$ena2 = column.columnDef.enableMultiSort) != null ? _column$columnDef$ena2 : table.options.enableMultiSort) != null ? _ref2 : !!column.accessorFn;
+        },
+        getIsSorted: () => {
+          var _table$getState$sorti;
+          const columnSort = (_table$getState$sorti = table.getState().sorting) == null ? void 0 : _table$getState$sorti.find((d3) => d3.id === column.id);
+          return !columnSort ? false : columnSort.desc ? "desc" : "asc";
+        },
+        getSortIndex: () => {
+          var _table$getState$sorti2, _table$getState$sorti3;
+          return (_table$getState$sorti2 = (_table$getState$sorti3 = table.getState().sorting) == null ? void 0 : _table$getState$sorti3.findIndex((d3) => d3.id === column.id)) != null ? _table$getState$sorti2 : -1;
+        },
+        clearSorting: () => {
+          table.setSorting((old) => old != null && old.length ? old.filter((d3) => d3.id !== column.id) : []);
+        },
+        getToggleSortingHandler: () => {
+          const canSort = column.getCanSort();
+          return (e3) => {
+            if (!canSort)
+              return;
+            e3.persist == null ? void 0 : e3.persist();
+            column.toggleSorting == null ? void 0 : column.toggleSorting(void 0, column.getCanMultiSort() ? table.options.isMultiSortEvent == null ? void 0 : table.options.isMultiSortEvent(e3) : false);
+          };
+        }
+      };
+    },
+    createTable: (table) => {
+      return {
+        setSorting: (updater) => table.options.onSortingChange == null ? void 0 : table.options.onSortingChange(updater),
+        resetSorting: (defaultState) => {
+          var _table$initialState$s, _table$initialState;
+          table.setSorting(defaultState ? [] : (_table$initialState$s = (_table$initialState = table.initialState) == null ? void 0 : _table$initialState.sorting) != null ? _table$initialState$s : []);
+        },
+        getPreSortedRowModel: () => table.getGroupedRowModel(),
+        getSortedRowModel: () => {
+          if (!table._getSortedRowModel && table.options.getSortedRowModel) {
+            table._getSortedRowModel = table.options.getSortedRowModel(table);
+          }
+          if (table.options.manualSorting || !table._getSortedRowModel) {
+            return table.getPreSortedRowModel();
+          }
+          return table._getSortedRowModel();
+        }
+      };
+    }
+  };
+  var Visibility = {
+    getInitialState: (state) => {
+      return {
+        columnVisibility: {},
+        ...state
+      };
+    },
+    getDefaultOptions: (table) => {
+      return {
+        onColumnVisibilityChange: makeStateUpdater("columnVisibility", table)
+      };
+    },
+    createColumn: (column, table) => {
+      return {
+        toggleVisibility: (value) => {
+          if (column.getCanHide()) {
+            table.setColumnVisibility((old) => ({
+              ...old,
+              [column.id]: value != null ? value : !column.getIsVisible()
+            }));
+          }
+        },
+        getIsVisible: () => {
+          var _table$getState$colum, _table$getState$colum2;
+          return (_table$getState$colum = (_table$getState$colum2 = table.getState().columnVisibility) == null ? void 0 : _table$getState$colum2[column.id]) != null ? _table$getState$colum : true;
+        },
+        getCanHide: () => {
+          var _column$columnDef$ena, _table$options$enable;
+          return ((_column$columnDef$ena = column.columnDef.enableHiding) != null ? _column$columnDef$ena : true) && ((_table$options$enable = table.options.enableHiding) != null ? _table$options$enable : true);
+        },
+        getToggleVisibilityHandler: () => {
+          return (e3) => {
+            column.toggleVisibility == null ? void 0 : column.toggleVisibility(e3.target.checked);
+          };
+        }
+      };
+    },
+    createRow: (row, table) => {
+      return {
+        _getAllVisibleCells: memo(() => [row.getAllCells(), table.getState().columnVisibility], (cells) => {
+          return cells.filter((cell) => cell.column.getIsVisible());
+        }, {
+          key: false,
+          debug: () => {
+            var _table$options$debugA;
+            return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugRows;
+          }
+        }),
+        getVisibleCells: memo(() => [row.getLeftVisibleCells(), row.getCenterVisibleCells(), row.getRightVisibleCells()], (left, center, right) => [...left, ...center, ...right], {
+          key: "row.getVisibleCells",
+          debug: () => {
+            var _table$options$debugA2;
+            return (_table$options$debugA2 = table.options.debugAll) != null ? _table$options$debugA2 : table.options.debugRows;
+          }
+        })
+      };
+    },
+    createTable: (table) => {
+      const makeVisibleColumnsMethod = (key, getColumns) => {
+        return memo(() => [getColumns(), getColumns().filter((d3) => d3.getIsVisible()).map((d3) => d3.id).join("_")], (columns) => {
+          return columns.filter((d3) => d3.getIsVisible == null ? void 0 : d3.getIsVisible());
+        }, {
+          key,
+          debug: () => {
+            var _table$options$debugA3;
+            return (_table$options$debugA3 = table.options.debugAll) != null ? _table$options$debugA3 : table.options.debugColumns;
+          }
+        });
+      };
+      return {
+        getVisibleFlatColumns: makeVisibleColumnsMethod("getVisibleFlatColumns", () => table.getAllFlatColumns()),
+        getVisibleLeafColumns: makeVisibleColumnsMethod("getVisibleLeafColumns", () => table.getAllLeafColumns()),
+        getLeftVisibleLeafColumns: makeVisibleColumnsMethod("getLeftVisibleLeafColumns", () => table.getLeftLeafColumns()),
+        getRightVisibleLeafColumns: makeVisibleColumnsMethod("getRightVisibleLeafColumns", () => table.getRightLeafColumns()),
+        getCenterVisibleLeafColumns: makeVisibleColumnsMethod("getCenterVisibleLeafColumns", () => table.getCenterLeafColumns()),
+        setColumnVisibility: (updater) => table.options.onColumnVisibilityChange == null ? void 0 : table.options.onColumnVisibilityChange(updater),
+        resetColumnVisibility: (defaultState) => {
+          var _table$initialState$c;
+          table.setColumnVisibility(defaultState ? {} : (_table$initialState$c = table.initialState.columnVisibility) != null ? _table$initialState$c : {});
+        },
+        toggleAllColumnsVisible: (value) => {
+          var _value;
+          value = (_value = value) != null ? _value : !table.getIsAllColumnsVisible();
+          table.setColumnVisibility(table.getAllLeafColumns().reduce((obj, column) => ({
+            ...obj,
+            [column.id]: !value ? !(column.getCanHide != null && column.getCanHide()) : value
+          }), {}));
+        },
+        getIsAllColumnsVisible: () => !table.getAllLeafColumns().some((column) => !(column.getIsVisible != null && column.getIsVisible())),
+        getIsSomeColumnsVisible: () => table.getAllLeafColumns().some((column) => column.getIsVisible == null ? void 0 : column.getIsVisible()),
+        getToggleAllColumnsVisibilityHandler: () => {
+          return (e3) => {
+            var _target;
+            table.toggleAllColumnsVisible((_target = e3.target) == null ? void 0 : _target.checked);
+          };
+        }
+      };
+    }
+  };
+  var features = [Headers, Visibility, Ordering, Pinning, Filters, Sorting, Grouping, Expanding, Pagination, RowSelection, ColumnSizing];
+  function createTable(options) {
+    var _options$initialState;
+    if (options.debugAll || options.debugTable) {
+      console.info("Creating Table Instance...");
+    }
+    let table = {
+      _features: features
+    };
+    const defaultOptions = table._features.reduce((obj, feature) => {
+      return Object.assign(obj, feature.getDefaultOptions == null ? void 0 : feature.getDefaultOptions(table));
+    }, {});
+    const mergeOptions = (options2) => {
+      if (table.options.mergeOptions) {
+        return table.options.mergeOptions(defaultOptions, options2);
+      }
+      return {
+        ...defaultOptions,
+        ...options2
+      };
+    };
+    const coreInitialState = {};
+    let initialState = {
+      ...coreInitialState,
+      ...(_options$initialState = options.initialState) != null ? _options$initialState : {}
+    };
+    table._features.forEach((feature) => {
+      var _feature$getInitialSt;
+      initialState = (_feature$getInitialSt = feature.getInitialState == null ? void 0 : feature.getInitialState(initialState)) != null ? _feature$getInitialSt : initialState;
+    });
+    const queued = [];
+    let queuedTimeout = false;
+    const coreInstance = {
+      _features: features,
+      options: {
+        ...defaultOptions,
+        ...options
+      },
+      initialState,
+      _queue: (cb) => {
+        queued.push(cb);
+        if (!queuedTimeout) {
+          queuedTimeout = true;
+          Promise.resolve().then(() => {
+            while (queued.length) {
+              queued.shift()();
+            }
+            queuedTimeout = false;
+          }).catch((error) => setTimeout(() => {
+            throw error;
+          }));
+        }
+      },
+      reset: () => {
+        table.setState(table.initialState);
+      },
+      setOptions: (updater) => {
+        const newOptions = functionalUpdate(updater, table.options);
+        table.options = mergeOptions(newOptions);
+      },
+      getState: () => {
+        return table.options.state;
+      },
+      setState: (updater) => {
+        table.options.onStateChange == null ? void 0 : table.options.onStateChange(updater);
+      },
+      _getRowId: (row, index, parent) => {
+        var _table$options$getRow;
+        return (_table$options$getRow = table.options.getRowId == null ? void 0 : table.options.getRowId(row, index, parent)) != null ? _table$options$getRow : `${parent ? [parent.id, index].join(".") : index}`;
+      },
+      getCoreRowModel: () => {
+        if (!table._getCoreRowModel) {
+          table._getCoreRowModel = table.options.getCoreRowModel(table);
+        }
+        return table._getCoreRowModel();
+      },
+      // The final calls start at the bottom of the model,
+      // expanded rows, which then work their way up
+      getRowModel: () => {
+        return table.getPaginationRowModel();
+      },
+      getRow: (id) => {
+        const row = table.getRowModel().rowsById[id];
+        if (!row) {
+          if (true) {
+            throw new Error(`getRow expected an ID, but got ${id}`);
+          }
+          throw new Error();
+        }
+        return row;
+      },
+      _getDefaultColumnDef: memo(() => [table.options.defaultColumn], (defaultColumn) => {
+        var _defaultColumn;
+        defaultColumn = (_defaultColumn = defaultColumn) != null ? _defaultColumn : {};
+        return {
+          header: (props) => {
+            const resolvedColumnDef = props.header.column.columnDef;
+            if (resolvedColumnDef.accessorKey) {
+              return resolvedColumnDef.accessorKey;
+            }
+            if (resolvedColumnDef.accessorFn) {
+              return resolvedColumnDef.id;
+            }
+            return null;
+          },
+          // footer: props => props.header.column.id,
+          cell: (props) => {
+            var _props$renderValue$to, _props$renderValue;
+            return (_props$renderValue$to = (_props$renderValue = props.renderValue()) == null ? void 0 : _props$renderValue.toString == null ? void 0 : _props$renderValue.toString()) != null ? _props$renderValue$to : null;
+          },
+          ...table._features.reduce((obj, feature) => {
+            return Object.assign(obj, feature.getDefaultColumnDef == null ? void 0 : feature.getDefaultColumnDef());
+          }, {}),
+          ...defaultColumn
+        };
+      }, {
+        debug: () => {
+          var _table$options$debugA;
+          return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugColumns;
+        },
+        key: "getDefaultColumnDef"
+      }),
+      _getColumnDefs: () => table.options.columns,
+      getAllColumns: memo(() => [table._getColumnDefs()], (columnDefs) => {
+        const recurseColumns = function(columnDefs2, parent, depth) {
+          if (depth === void 0) {
+            depth = 0;
+          }
+          return columnDefs2.map((columnDef) => {
+            const column = createColumn(table, columnDef, depth, parent);
+            const groupingColumnDef = columnDef;
+            column.columns = groupingColumnDef.columns ? recurseColumns(groupingColumnDef.columns, column, depth + 1) : [];
+            return column;
+          });
+        };
+        return recurseColumns(columnDefs);
+      }, {
+        key: "getAllColumns",
+        debug: () => {
+          var _table$options$debugA2;
+          return (_table$options$debugA2 = table.options.debugAll) != null ? _table$options$debugA2 : table.options.debugColumns;
+        }
+      }),
+      getAllFlatColumns: memo(() => [table.getAllColumns()], (allColumns) => {
+        return allColumns.flatMap((column) => {
+          return column.getFlatColumns();
+        });
+      }, {
+        key: "getAllFlatColumns",
+        debug: () => {
+          var _table$options$debugA3;
+          return (_table$options$debugA3 = table.options.debugAll) != null ? _table$options$debugA3 : table.options.debugColumns;
+        }
+      }),
+      _getAllFlatColumnsById: memo(() => [table.getAllFlatColumns()], (flatColumns) => {
+        return flatColumns.reduce((acc, column) => {
+          acc[column.id] = column;
+          return acc;
+        }, {});
+      }, {
+        key: "getAllFlatColumnsById",
+        debug: () => {
+          var _table$options$debugA4;
+          return (_table$options$debugA4 = table.options.debugAll) != null ? _table$options$debugA4 : table.options.debugColumns;
+        }
+      }),
+      getAllLeafColumns: memo(() => [table.getAllColumns(), table._getOrderColumnsFn()], (allColumns, orderColumns2) => {
+        let leafColumns = allColumns.flatMap((column) => column.getLeafColumns());
+        return orderColumns2(leafColumns);
+      }, {
+        key: "getAllLeafColumns",
+        debug: () => {
+          var _table$options$debugA5;
+          return (_table$options$debugA5 = table.options.debugAll) != null ? _table$options$debugA5 : table.options.debugColumns;
+        }
+      }),
+      getColumn: (columnId) => {
+        const column = table._getAllFlatColumnsById()[columnId];
+        if (!column) {
+          console.error(`[Table] Column with id '${columnId}' does not exist.`);
+        }
+        return column;
+      }
+    };
+    Object.assign(table, coreInstance);
+    table._features.forEach((feature) => {
+      return Object.assign(table, feature.createTable == null ? void 0 : feature.createTable(table));
+    });
+    return table;
+  }
+  function createCell(table, row, column, columnId) {
+    const getRenderValue = () => {
+      var _cell$getValue;
+      return (_cell$getValue = cell.getValue()) != null ? _cell$getValue : table.options.renderFallbackValue;
+    };
+    const cell = {
+      id: `${row.id}_${column.id}`,
+      row,
+      column,
+      getValue: () => row.getValue(columnId),
+      renderValue: getRenderValue,
+      getContext: memo(() => [table, column, row, cell], (table2, column2, row2, cell2) => ({
+        table: table2,
+        column: column2,
+        row: row2,
+        cell: cell2,
+        getValue: cell2.getValue,
+        renderValue: cell2.renderValue
+      }), {
+        key: "cell.getContext",
+        debug: () => table.options.debugAll
+      })
+    };
+    table._features.forEach((feature) => {
+      Object.assign(cell, feature.createCell == null ? void 0 : feature.createCell(cell, column, row, table));
+    }, {});
+    return cell;
+  }
+  var createRow = (table, id, original, rowIndex, depth, subRows, parentId) => {
+    let row = {
+      id,
+      index: rowIndex,
+      original,
+      depth,
+      parentId,
+      _valuesCache: {},
+      _uniqueValuesCache: {},
+      getValue: (columnId) => {
+        if (row._valuesCache.hasOwnProperty(columnId)) {
+          return row._valuesCache[columnId];
+        }
+        const column = table.getColumn(columnId);
+        if (!(column != null && column.accessorFn)) {
+          return void 0;
+        }
+        row._valuesCache[columnId] = column.accessorFn(row.original, rowIndex);
+        return row._valuesCache[columnId];
+      },
+      getUniqueValues: (columnId) => {
+        if (row._uniqueValuesCache.hasOwnProperty(columnId)) {
+          return row._uniqueValuesCache[columnId];
+        }
+        const column = table.getColumn(columnId);
+        if (!(column != null && column.accessorFn)) {
+          return void 0;
+        }
+        if (!column.columnDef.getUniqueValues) {
+          row._uniqueValuesCache[columnId] = [row.getValue(columnId)];
+          return row._uniqueValuesCache[columnId];
+        }
+        row._uniqueValuesCache[columnId] = column.columnDef.getUniqueValues(row.original, rowIndex);
+        return row._uniqueValuesCache[columnId];
+      },
+      renderValue: (columnId) => {
+        var _row$getValue;
+        return (_row$getValue = row.getValue(columnId)) != null ? _row$getValue : table.options.renderFallbackValue;
+      },
+      subRows: subRows != null ? subRows : [],
+      getLeafRows: () => flattenBy(row.subRows, (d3) => d3.subRows),
+      getParentRow: () => row.parentId ? table.getRow(row.parentId) : void 0,
+      getParentRows: () => {
+        let parentRows = [];
+        let currentRow = row;
+        while (true) {
+          const parentRow = currentRow.getParentRow();
+          if (!parentRow)
+            break;
+          parentRows.push(parentRow);
+          currentRow = parentRow;
+        }
+        return parentRows.reverse();
+      },
+      getAllCells: memo(() => [table.getAllLeafColumns()], (leafColumns) => {
+        return leafColumns.map((column) => {
+          return createCell(table, row, column, column.id);
+        });
+      }, {
+        key: "row.getAllCells",
+        debug: () => {
+          var _table$options$debugA;
+          return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugRows;
+        }
+      }),
+      _getAllCellsByColumnId: memo(() => [row.getAllCells()], (allCells) => {
+        return allCells.reduce((acc, cell) => {
+          acc[cell.column.id] = cell;
+          return acc;
+        }, {});
+      }, {
+        key: false,
+        debug: () => {
+          var _table$options$debugA2;
+          return (_table$options$debugA2 = table.options.debugAll) != null ? _table$options$debugA2 : table.options.debugRows;
+        }
+      })
+    };
+    for (let i3 = 0; i3 < table._features.length; i3++) {
+      const feature = table._features[i3];
+      Object.assign(row, feature == null ? void 0 : feature.createRow == null ? void 0 : feature.createRow(row, table));
+    }
+    return row;
+  };
+  function getCoreRowModel() {
+    return (table) => memo(() => [table.options.data], (data) => {
+      const rowModel = {
+        rows: [],
+        flatRows: [],
+        rowsById: {}
+      };
+      const accessRows = function(originalRows, depth, parentRow) {
+        if (depth === void 0) {
+          depth = 0;
+        }
+        const rows = [];
+        for (let i3 = 0; i3 < originalRows.length; i3++) {
+          const row = createRow(table, table._getRowId(originalRows[i3], i3, parentRow), originalRows[i3], i3, depth, void 0, parentRow == null ? void 0 : parentRow.id);
+          rowModel.flatRows.push(row);
+          rowModel.rowsById[row.id] = row;
+          rows.push(row);
+          if (table.options.getSubRows) {
+            var _row$originalSubRows;
+            row.originalSubRows = table.options.getSubRows(originalRows[i3], i3);
+            if ((_row$originalSubRows = row.originalSubRows) != null && _row$originalSubRows.length) {
+              row.subRows = accessRows(row.originalSubRows, depth + 1, row);
+            }
+          }
+        }
+        return rows;
+      };
+      rowModel.rows = accessRows(data);
+      return rowModel;
+    }, {
+      key: "getRowModel",
+      debug: () => {
+        var _table$options$debugA;
+        return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugTable;
+      },
+      onChange: () => {
+        table._autoResetPageIndex();
+      }
+    });
+  }
+  function getSortedRowModel() {
+    return (table) => memo(() => [table.getState().sorting, table.getPreSortedRowModel()], (sorting, rowModel) => {
+      if (!rowModel.rows.length || !(sorting != null && sorting.length)) {
+        return rowModel;
+      }
+      const sortingState = table.getState().sorting;
+      const sortedFlatRows = [];
+      const availableSorting = sortingState.filter((sort) => {
+        var _table$getColumn;
+        return (_table$getColumn = table.getColumn(sort.id)) == null ? void 0 : _table$getColumn.getCanSort();
+      });
+      const columnInfoById = {};
+      availableSorting.forEach((sortEntry) => {
+        const column = table.getColumn(sortEntry.id);
+        if (!column)
+          return;
+        columnInfoById[sortEntry.id] = {
+          sortUndefined: column.columnDef.sortUndefined,
+          invertSorting: column.columnDef.invertSorting,
+          sortingFn: column.getSortingFn()
+        };
+      });
+      const sortData = (rows) => {
+        const sortedData = [...rows];
+        sortedData.sort((rowA, rowB) => {
+          for (let i3 = 0; i3 < availableSorting.length; i3 += 1) {
+            var _sortEntry$desc;
+            const sortEntry = availableSorting[i3];
+            const columnInfo = columnInfoById[sortEntry.id];
+            const isDesc = (_sortEntry$desc = sortEntry == null ? void 0 : sortEntry.desc) != null ? _sortEntry$desc : false;
+            if (columnInfo.sortUndefined) {
+              const aValue = rowA.getValue(sortEntry.id);
+              const bValue = rowB.getValue(sortEntry.id);
+              const aUndefined = typeof aValue === "undefined";
+              const bUndefined = typeof bValue === "undefined";
+              if (aUndefined || bUndefined) {
+                return aUndefined && bUndefined ? 0 : aUndefined ? columnInfo.sortUndefined : -columnInfo.sortUndefined;
+              }
+            }
+            let sortInt = columnInfo.sortingFn(rowA, rowB, sortEntry.id);
+            if (sortInt !== 0) {
+              if (isDesc) {
+                sortInt *= -1;
+              }
+              if (columnInfo.invertSorting) {
+                sortInt *= -1;
+              }
+              return sortInt;
+            }
+          }
+          return rowA.index - rowB.index;
+        });
+        sortedData.forEach((row) => {
+          var _row$subRows;
+          sortedFlatRows.push(row);
+          if ((_row$subRows = row.subRows) != null && _row$subRows.length) {
+            row.subRows = sortData(row.subRows);
+          }
+        });
+        return sortedData;
+      };
+      return {
+        rows: sortData(rowModel.rows),
+        flatRows: sortedFlatRows,
+        rowsById: rowModel.rowsById
+      };
+    }, {
+      key: "getSortedRowModel",
+      debug: () => {
+        var _table$options$debugA;
+        return (_table$options$debugA = table.options.debugAll) != null ? _table$options$debugA : table.options.debugTable;
+      },
+      onChange: () => {
+        table._autoResetPageIndex();
+      }
+    });
+  }
+
+  // node_modules/@tanstack/react-table/build/lib/index.mjs
+  function flexRender(Comp, props) {
+    return !Comp ? null : isReactComponent(Comp) ? /* @__PURE__ */ y(Comp, props) : Comp;
+  }
+  function isReactComponent(component) {
+    return isClassComponent(component) || typeof component === "function" || isExoticComponent(component);
+  }
+  function isClassComponent(component) {
+    return typeof component === "function" && (() => {
+      const proto = Object.getPrototypeOf(component);
+      return proto.prototype && proto.prototype.isReactComponent;
+    })();
+  }
+  function isExoticComponent(component) {
+    return typeof component === "object" && typeof component.$$typeof === "symbol" && ["react.memo", "react.forward_ref"].includes(component.$$typeof.description);
+  }
+  function useReactTable(options) {
+    const resolvedOptions = {
+      state: {},
+      // Dummy state
+      onStateChange: () => {
+      },
+      // noop
+      renderFallbackValue: null,
+      ...options
+    };
+    const [tableRef] = h2(() => ({
+      current: createTable(resolvedOptions)
+    }));
+    const [state, setState] = h2(() => tableRef.current.initialState);
+    tableRef.current.setOptions((prev) => ({
+      ...prev,
+      ...options,
+      state: {
+        ...state,
+        ...options.state
+      },
+      // Similarly, we'll maintain both our internal state and any user-provided
+      // state.
+      onStateChange: (updater) => {
+        setState(updater);
+        options.onStateChange == null ? void 0 : options.onStateChange(updater);
+      }
+    }));
+    return tableRef.current;
+  }
+
+  // node_modules/@tanstack/react-virtual/build/lib/_virtual/_rollupPluginBabelHelpers.mjs
+  function _extends() {
+    _extends = Object.assign ? Object.assign.bind() : function(target) {
+      for (var i3 = 1; i3 < arguments.length; i3++) {
+        var source = arguments[i3];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends.apply(this, arguments);
+  }
+
+  // node_modules/@tanstack/virtual-core/build/lib/_virtual/_rollupPluginBabelHelpers.mjs
+  function _extends2() {
+    _extends2 = Object.assign ? Object.assign.bind() : function(target) {
+      for (var i3 = 1; i3 < arguments.length; i3++) {
+        var source = arguments[i3];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends2.apply(this, arguments);
+  }
+
+  // node_modules/@tanstack/virtual-core/build/lib/utils.mjs
+  function memo2(getDeps, fn2, opts) {
+    var _opts$initialDeps;
+    var deps = (_opts$initialDeps = opts.initialDeps) != null ? _opts$initialDeps : [];
+    var result;
+    return function() {
+      var depTime;
+      if (opts.key && opts.debug != null && opts.debug())
+        depTime = Date.now();
+      var newDeps = getDeps();
+      var depsChanged = newDeps.length !== deps.length || newDeps.some(function(dep, index) {
+        return deps[index] !== dep;
+      });
+      if (!depsChanged) {
+        return result;
+      }
+      deps = newDeps;
+      var resultTime;
+      if (opts.key && opts.debug != null && opts.debug())
+        resultTime = Date.now();
+      result = fn2.apply(void 0, newDeps);
+      if (opts.key && opts.debug != null && opts.debug()) {
+        var depEndTime = Math.round((Date.now() - depTime) * 100) / 100;
+        var resultEndTime = Math.round((Date.now() - resultTime) * 100) / 100;
+        var resultFpsPercentage = resultEndTime / 16;
+        var pad = function pad2(str, num) {
+          str = String(str);
+          while (str.length < num) {
+            str = " " + str;
+          }
+          return str;
+        };
+        console.info("%c\u23F1 " + pad(resultEndTime, 5) + " /" + pad(depEndTime, 5) + " ms", "\n            font-size: .6rem;\n            font-weight: bold;\n            color: hsl(" + Math.max(0, Math.min(120 - 120 * resultFpsPercentage, 120)) + "deg 100% 31%);", opts == null ? void 0 : opts.key);
+      }
+      opts == null ? void 0 : opts.onChange == null ? void 0 : opts.onChange(result);
+      return result;
+    };
+  }
+  function notUndefined(value, msg) {
+    if (value === void 0) {
+      throw new Error("Unexpected undefined" + (msg ? ": " + msg : ""));
+    } else {
+      return value;
+    }
+  }
+  var approxEqual = function approxEqual2(a3, b3) {
+    return Math.abs(a3 - b3) < 1;
+  };
+
+  // node_modules/@tanstack/virtual-core/build/lib/index.mjs
+  var defaultKeyExtractor = function defaultKeyExtractor2(index) {
+    return index;
+  };
+  var defaultRangeExtractor = function defaultRangeExtractor2(range) {
+    var start = Math.max(range.startIndex - range.overscan, 0);
+    var end = Math.min(range.endIndex + range.overscan, range.count - 1);
+    var arr = [];
+    for (var _i = start; _i <= end; _i++) {
+      arr.push(_i);
+    }
+    return arr;
+  };
+  var observeElementRect = function observeElementRect2(instance, cb) {
+    var element = instance.scrollElement;
+    if (!element) {
+      return;
+    }
+    var handler = function handler2(rect) {
+      var width = rect.width, height = rect.height;
+      cb({
+        width: Math.round(width),
+        height: Math.round(height)
+      });
+    };
+    handler(element.getBoundingClientRect());
+    var observer = new ResizeObserver(function(entries) {
+      var entry = entries[0];
+      if (entry != null && entry.borderBoxSize) {
+        var box = entry.borderBoxSize[0];
+        if (box) {
+          handler({
+            width: box.inlineSize,
+            height: box.blockSize
+          });
+          return;
+        }
+      }
+      handler(element.getBoundingClientRect());
+    });
+    observer.observe(element, {
+      box: "border-box"
+    });
+    return function() {
+      observer.unobserve(element);
+    };
+  };
+  var observeElementOffset = function observeElementOffset2(instance, cb) {
+    var element = instance.scrollElement;
+    if (!element) {
+      return;
+    }
+    var handler = function handler2() {
+      cb(element[instance.options.horizontal ? "scrollLeft" : "scrollTop"]);
+    };
+    handler();
+    element.addEventListener("scroll", handler, {
+      passive: true
+    });
+    return function() {
+      element.removeEventListener("scroll", handler);
+    };
+  };
+  var measureElement = function measureElement2(element, entry, instance) {
+    if (entry != null && entry.borderBoxSize) {
+      var box = entry.borderBoxSize[0];
+      if (box) {
+        var size = Math.round(box[instance.options.horizontal ? "inlineSize" : "blockSize"]);
+        return size;
+      }
+    }
+    return Math.round(element.getBoundingClientRect()[instance.options.horizontal ? "width" : "height"]);
+  };
+  var elementScroll = function elementScroll2(offset, _ref2, instance) {
+    var _instance$scrollEleme3, _instance$scrollEleme4;
+    var _ref2$adjustments = _ref2.adjustments, adjustments = _ref2$adjustments === void 0 ? 0 : _ref2$adjustments, behavior = _ref2.behavior;
+    var toOffset = offset + adjustments;
+    (_instance$scrollEleme3 = instance.scrollElement) == null ? void 0 : _instance$scrollEleme3.scrollTo == null ? void 0 : _instance$scrollEleme3.scrollTo((_instance$scrollEleme4 = {}, _instance$scrollEleme4[instance.options.horizontal ? "left" : "top"] = toOffset, _instance$scrollEleme4.behavior = behavior, _instance$scrollEleme4));
+  };
+  var Virtualizer = function Virtualizer2(_opts) {
+    var _this = this;
+    this.unsubs = [];
+    this.scrollElement = null;
+    this.isScrolling = false;
+    this.isScrollingTimeoutId = null;
+    this.scrollToIndexTimeoutId = null;
+    this.measurementsCache = [];
+    this.itemSizeCache = /* @__PURE__ */ new Map();
+    this.pendingMeasuredCacheIndexes = [];
+    this.scrollDirection = null;
+    this.scrollAdjustments = 0;
+    this.measureElementCache = /* @__PURE__ */ new Map();
+    this.observer = function() {
+      var _ro = null;
+      var get = function get2() {
+        if (_ro) {
+          return _ro;
+        } else if (typeof ResizeObserver !== "undefined") {
+          return _ro = new ResizeObserver(function(entries) {
+            entries.forEach(function(entry) {
+              _this._measureElement(entry.target, entry);
+            });
+          });
+        } else {
+          return null;
+        }
+      };
+      return {
+        disconnect: function disconnect() {
+          var _get;
+          return (_get = get()) == null ? void 0 : _get.disconnect();
+        },
+        observe: function observe(target) {
+          var _get2;
+          return (_get2 = get()) == null ? void 0 : _get2.observe(target, {
+            box: "border-box"
+          });
+        },
+        unobserve: function unobserve(target) {
+          var _get3;
+          return (_get3 = get()) == null ? void 0 : _get3.unobserve(target);
+        }
+      };
+    }();
+    this.range = {
+      startIndex: 0,
+      endIndex: 0
+    };
+    this.setOptions = function(opts) {
+      Object.entries(opts).forEach(function(_ref3) {
+        var key = _ref3[0], value = _ref3[1];
+        if (typeof value === "undefined")
+          delete opts[key];
+      });
+      _this.options = _extends2({
+        debug: false,
+        initialOffset: 0,
+        overscan: 1,
+        paddingStart: 0,
+        paddingEnd: 0,
+        scrollPaddingStart: 0,
+        scrollPaddingEnd: 0,
+        horizontal: false,
+        getItemKey: defaultKeyExtractor,
+        rangeExtractor: defaultRangeExtractor,
+        onChange: function onChange() {
+        },
+        measureElement,
+        initialRect: {
+          width: 0,
+          height: 0
+        },
+        scrollMargin: 0,
+        scrollingDelay: 150,
+        indexAttribute: "data-index",
+        initialMeasurementsCache: [],
+        lanes: 1
+      }, opts);
+    };
+    this.notify = function() {
+      _this.options.onChange == null ? void 0 : _this.options.onChange(_this);
+    };
+    this.cleanup = function() {
+      _this.unsubs.filter(Boolean).forEach(function(d3) {
+        return d3();
+      });
+      _this.unsubs = [];
+      _this.scrollElement = null;
+    };
+    this._didMount = function() {
+      _this.measureElementCache.forEach(_this.observer.observe);
+      return function() {
+        _this.observer.disconnect();
+        _this.cleanup();
+      };
+    };
+    this._willUpdate = function() {
+      var scrollElement = _this.options.getScrollElement();
+      if (_this.scrollElement !== scrollElement) {
+        _this.cleanup();
+        _this.scrollElement = scrollElement;
+        _this._scrollToOffset(_this.scrollOffset, {
+          adjustments: void 0,
+          behavior: void 0
+        });
+        _this.unsubs.push(_this.options.observeElementRect(_this, function(rect) {
+          var prev = _this.scrollRect;
+          _this.scrollRect = rect;
+          if (_this.options.horizontal ? rect.width !== prev.width : rect.height !== prev.height) {
+            _this.maybeNotify();
+          }
+        }));
+        _this.unsubs.push(_this.options.observeElementOffset(_this, function(offset) {
+          _this.scrollAdjustments = 0;
+          if (_this.scrollOffset === offset) {
+            return;
+          }
+          if (_this.isScrollingTimeoutId !== null) {
+            clearTimeout(_this.isScrollingTimeoutId);
+            _this.isScrollingTimeoutId = null;
+          }
+          _this.isScrolling = true;
+          _this.scrollDirection = _this.scrollOffset < offset ? "forward" : "backward";
+          _this.scrollOffset = offset;
+          _this.maybeNotify();
+          _this.isScrollingTimeoutId = setTimeout(function() {
+            _this.isScrollingTimeoutId = null;
+            _this.isScrolling = false;
+            _this.scrollDirection = null;
+            _this.maybeNotify();
+          }, _this.options.scrollingDelay);
+        }));
+      }
+    };
+    this.getSize = function() {
+      return _this.scrollRect[_this.options.horizontal ? "width" : "height"];
+    };
+    this.memoOptions = memo2(function() {
+      return [_this.options.count, _this.options.paddingStart, _this.options.scrollMargin, _this.options.getItemKey];
+    }, function(count2, paddingStart, scrollMargin, getItemKey) {
+      _this.pendingMeasuredCacheIndexes = [];
+      return {
+        count: count2,
+        paddingStart,
+        scrollMargin,
+        getItemKey
+      };
+    }, {
+      key: false
+    });
+    this.getFurthestMeasurement = function(measurements, index) {
+      var furthestMeasurementsFound = /* @__PURE__ */ new Map();
+      var furthestMeasurements = /* @__PURE__ */ new Map();
+      for (var m3 = index - 1; m3 >= 0; m3--) {
+        var measurement = measurements[m3];
+        if (furthestMeasurementsFound.has(measurement.lane)) {
+          continue;
+        }
+        var previousFurthestMeasurement = furthestMeasurements.get(measurement.lane);
+        if (previousFurthestMeasurement == null || measurement.end > previousFurthestMeasurement.end) {
+          furthestMeasurements.set(measurement.lane, measurement);
+        } else if (measurement.end < previousFurthestMeasurement.end) {
+          furthestMeasurementsFound.set(measurement.lane, true);
+        }
+        if (furthestMeasurementsFound.size === _this.options.lanes) {
+          break;
+        }
+      }
+      return furthestMeasurements.size === _this.options.lanes ? Array.from(furthestMeasurements.values()).sort(function(a3, b3) {
+        return a3.end - b3.end;
+      })[0] : void 0;
+    };
+    this.getMeasurements = memo2(function() {
+      return [_this.memoOptions(), _this.itemSizeCache];
+    }, function(_ref4, itemSizeCache) {
+      var count2 = _ref4.count, paddingStart = _ref4.paddingStart, scrollMargin = _ref4.scrollMargin, getItemKey = _ref4.getItemKey;
+      var min2 = _this.pendingMeasuredCacheIndexes.length > 0 ? Math.min.apply(Math, _this.pendingMeasuredCacheIndexes) : 0;
+      _this.pendingMeasuredCacheIndexes = [];
+      var measurements = _this.measurementsCache.slice(0, min2);
+      for (var _i2 = min2; _i2 < count2; _i2++) {
+        var key = getItemKey(_i2);
+        var furthestMeasurement = _this.options.lanes === 1 ? measurements[_i2 - 1] : _this.getFurthestMeasurement(measurements, _i2);
+        var start = furthestMeasurement ? furthestMeasurement.end : paddingStart + scrollMargin;
+        var measuredSize = itemSizeCache.get(key);
+        var size = typeof measuredSize === "number" ? measuredSize : _this.options.estimateSize(_i2);
+        var end = start + size;
+        var lane = furthestMeasurement ? furthestMeasurement.lane : _i2 % _this.options.lanes;
+        measurements[_i2] = {
+          index: _i2,
+          start,
+          size,
+          end,
+          key,
+          lane
+        };
+      }
+      _this.measurementsCache = measurements;
+      return measurements;
+    }, {
+      key: "getMeasurements",
+      debug: function debug() {
+        return _this.options.debug;
+      }
+    });
+    this.calculateRange = memo2(function() {
+      return [_this.getMeasurements(), _this.getSize(), _this.scrollOffset];
+    }, function(measurements, outerSize, scrollOffset) {
+      return _this.range = calculateRange({
+        measurements,
+        outerSize,
+        scrollOffset
+      });
+    }, {
+      key: "calculateRange",
+      debug: function debug() {
+        return _this.options.debug;
+      }
+    });
+    this.maybeNotify = memo2(function() {
+      var range = _this.calculateRange();
+      return [range.startIndex, range.endIndex, _this.isScrolling];
+    }, function() {
+      _this.notify();
+    }, {
+      key: "maybeNotify",
+      debug: function debug() {
+        return _this.options.debug;
+      },
+      initialDeps: [this.range.startIndex, this.range.endIndex, this.isScrolling]
+    });
+    this.getIndexes = memo2(function() {
+      return [_this.options.rangeExtractor, _this.calculateRange(), _this.options.overscan, _this.options.count];
+    }, function(rangeExtractor, range, overscan, count2) {
+      return rangeExtractor(_extends2({}, range, {
+        overscan,
+        count: count2
+      }));
+    }, {
+      key: "getIndexes",
+      debug: function debug() {
+        return _this.options.debug;
+      }
+    });
+    this.indexFromElement = function(node) {
+      var attributeName = _this.options.indexAttribute;
+      var indexStr = node.getAttribute(attributeName);
+      if (!indexStr) {
+        console.warn("Missing attribute name '" + attributeName + "={index}' on measured element.");
+        return -1;
+      }
+      return parseInt(indexStr, 10);
+    };
+    this._measureElement = function(node, entry) {
+      var _this$itemSizeCache$g;
+      var index = _this.indexFromElement(node);
+      var item = _this.measurementsCache[index];
+      if (!item) {
+        return;
+      }
+      var prevNode = _this.measureElementCache.get(item.key);
+      if (!node.isConnected) {
+        _this.observer.unobserve(node);
+        if (node === prevNode) {
+          _this.measureElementCache["delete"](item.key);
+        }
+        return;
+      }
+      if (prevNode !== node) {
+        if (prevNode) {
+          _this.observer.unobserve(prevNode);
+        }
+        _this.observer.observe(node);
+        _this.measureElementCache.set(item.key, node);
+      }
+      var measuredItemSize = _this.options.measureElement(node, entry, _this);
+      var itemSize = (_this$itemSizeCache$g = _this.itemSizeCache.get(item.key)) != null ? _this$itemSizeCache$g : item.size;
+      var delta = measuredItemSize - itemSize;
+      if (delta !== 0) {
+        if (item.start < _this.scrollOffset) {
+          if (_this.options.debug) {
+            console.info("correction", delta);
+          }
+          _this._scrollToOffset(_this.scrollOffset, {
+            adjustments: _this.scrollAdjustments += delta,
+            behavior: void 0
+          });
+        }
+        _this.pendingMeasuredCacheIndexes.push(index);
+        _this.itemSizeCache = new Map(_this.itemSizeCache.set(item.key, measuredItemSize));
+        _this.notify();
+      }
+    };
+    this.measureElement = function(node) {
+      if (!node) {
+        return;
+      }
+      _this._measureElement(node, void 0);
+    };
+    this.getVirtualItems = memo2(function() {
+      return [_this.getIndexes(), _this.getMeasurements()];
+    }, function(indexes, measurements) {
+      var virtualItems = [];
+      for (var k4 = 0, len = indexes.length; k4 < len; k4++) {
+        var _i3 = indexes[k4];
+        var measurement = measurements[_i3];
+        virtualItems.push(measurement);
+      }
+      return virtualItems;
+    }, {
+      key: "getIndexes",
+      debug: function debug() {
+        return _this.options.debug;
+      }
+    });
+    this.getVirtualItemForOffset = function(offset) {
+      var measurements = _this.getMeasurements();
+      return notUndefined(measurements[findNearestBinarySearch(0, measurements.length - 1, function(index) {
+        return notUndefined(measurements[index]).start;
+      }, offset)]);
+    };
+    this.getOffsetForAlignment = function(toOffset, align) {
+      var size = _this.getSize();
+      if (align === "auto") {
+        if (toOffset <= _this.scrollOffset) {
+          align = "start";
+        } else if (toOffset >= _this.scrollOffset + size) {
+          align = "end";
+        } else {
+          align = "start";
+        }
+      }
+      if (align === "start") {
+        toOffset = toOffset;
+      } else if (align === "end") {
+        toOffset = toOffset - size;
+      } else if (align === "center") {
+        toOffset = toOffset - size / 2;
+      }
+      var scrollSizeProp = _this.options.horizontal ? "scrollWidth" : "scrollHeight";
+      var scrollSize = _this.scrollElement ? "document" in _this.scrollElement ? _this.scrollElement.document.documentElement[scrollSizeProp] : _this.scrollElement[scrollSizeProp] : 0;
+      var maxOffset = scrollSize - _this.getSize();
+      return Math.max(Math.min(maxOffset, toOffset), 0);
+    };
+    this.getOffsetForIndex = function(index, align) {
+      if (align === void 0) {
+        align = "auto";
+      }
+      index = Math.max(0, Math.min(index, _this.options.count - 1));
+      var measurement = notUndefined(_this.getMeasurements()[index]);
+      if (align === "auto") {
+        if (measurement.end >= _this.scrollOffset + _this.getSize() - _this.options.scrollPaddingEnd) {
+          align = "end";
+        } else if (measurement.start <= _this.scrollOffset + _this.options.scrollPaddingStart) {
+          align = "start";
+        } else {
+          return [_this.scrollOffset, align];
+        }
+      }
+      var toOffset = align === "end" ? measurement.end + _this.options.scrollPaddingEnd : measurement.start - _this.options.scrollPaddingStart;
+      return [_this.getOffsetForAlignment(toOffset, align), align];
+    };
+    this.isDynamicMode = function() {
+      return _this.measureElementCache.size > 0;
+    };
+    this.cancelScrollToIndex = function() {
+      if (_this.scrollToIndexTimeoutId !== null) {
+        clearTimeout(_this.scrollToIndexTimeoutId);
+        _this.scrollToIndexTimeoutId = null;
+      }
+    };
+    this.scrollToOffset = function(toOffset, _temp) {
+      var _ref5 = _temp === void 0 ? {} : _temp, _ref5$align = _ref5.align, align = _ref5$align === void 0 ? "start" : _ref5$align, behavior = _ref5.behavior;
+      _this.cancelScrollToIndex();
+      if (behavior === "smooth" && _this.isDynamicMode()) {
+        console.warn("The `smooth` scroll behavior is not fully supported with dynamic size.");
+      }
+      _this._scrollToOffset(_this.getOffsetForAlignment(toOffset, align), {
+        adjustments: void 0,
+        behavior
+      });
+    };
+    this.scrollToIndex = function(index, _temp2) {
+      var _ref6 = _temp2 === void 0 ? {} : _temp2, _ref6$align = _ref6.align, initialAlign = _ref6$align === void 0 ? "auto" : _ref6$align, behavior = _ref6.behavior;
+      index = Math.max(0, Math.min(index, _this.options.count - 1));
+      _this.cancelScrollToIndex();
+      if (behavior === "smooth" && _this.isDynamicMode()) {
+        console.warn("The `smooth` scroll behavior is not fully supported with dynamic size.");
+      }
+      var _this$getOffsetForInd = _this.getOffsetForIndex(index, initialAlign), toOffset = _this$getOffsetForInd[0], align = _this$getOffsetForInd[1];
+      _this._scrollToOffset(toOffset, {
+        adjustments: void 0,
+        behavior
+      });
+      if (behavior !== "smooth" && _this.isDynamicMode()) {
+        _this.scrollToIndexTimeoutId = setTimeout(function() {
+          _this.scrollToIndexTimeoutId = null;
+          var elementInDOM = _this.measureElementCache.has(_this.options.getItemKey(index));
+          if (elementInDOM) {
+            var _this$getOffsetForInd2 = _this.getOffsetForIndex(index, align), _toOffset = _this$getOffsetForInd2[0];
+            if (!approxEqual(_toOffset, _this.scrollOffset)) {
+              _this.scrollToIndex(index, {
+                align,
+                behavior
+              });
+            }
+          } else {
+            _this.scrollToIndex(index, {
+              align,
+              behavior
+            });
+          }
+        });
+      }
+    };
+    this.scrollBy = function(delta, _temp3) {
+      var _ref7 = _temp3 === void 0 ? {} : _temp3, behavior = _ref7.behavior;
+      _this.cancelScrollToIndex();
+      if (behavior === "smooth" && _this.isDynamicMode()) {
+        console.warn("The `smooth` scroll behavior is not fully supported with dynamic size.");
+      }
+      _this._scrollToOffset(_this.scrollOffset + delta, {
+        adjustments: void 0,
+        behavior
+      });
+    };
+    this.getTotalSize = function() {
+      var _this$getMeasurements;
+      return (((_this$getMeasurements = _this.getMeasurements()[_this.options.count - 1]) == null ? void 0 : _this$getMeasurements.end) || _this.options.paddingStart) - _this.options.scrollMargin + _this.options.paddingEnd;
+    };
+    this._scrollToOffset = function(offset, _ref8) {
+      var adjustments = _ref8.adjustments, behavior = _ref8.behavior;
+      _this.options.scrollToFn(offset, {
+        behavior,
+        adjustments
+      }, _this);
+    };
+    this.measure = function() {
+      _this.itemSizeCache = /* @__PURE__ */ new Map();
+      _this.notify();
+    };
+    this.setOptions(_opts);
+    this.scrollRect = this.options.initialRect;
+    this.scrollOffset = this.options.initialOffset;
+    this.measurementsCache = this.options.initialMeasurementsCache;
+    this.measurementsCache.forEach(function(item) {
+      _this.itemSizeCache.set(item.key, item.size);
+    });
+    this.maybeNotify();
+  };
+  var findNearestBinarySearch = function findNearestBinarySearch2(low, high, getCurrentValue, value) {
+    while (low <= high) {
+      var middle = (low + high) / 2 | 0;
+      var currentValue = getCurrentValue(middle);
+      if (currentValue < value) {
+        low = middle + 1;
+      } else if (currentValue > value) {
+        high = middle - 1;
+      } else {
+        return middle;
+      }
+    }
+    if (low > 0) {
+      return low - 1;
+    } else {
+      return 0;
+    }
+  };
+  function calculateRange(_ref9) {
+    var measurements = _ref9.measurements, outerSize = _ref9.outerSize, scrollOffset = _ref9.scrollOffset;
+    var count2 = measurements.length - 1;
+    var getOffset = function getOffset2(index) {
+      return measurements[index].start;
+    };
+    var startIndex = findNearestBinarySearch(0, count2, getOffset, scrollOffset);
+    var endIndex = startIndex;
+    while (endIndex < count2 && measurements[endIndex].end < scrollOffset + outerSize) {
+      endIndex++;
+    }
+    return {
+      startIndex,
+      endIndex
+    };
+  }
+
+  // node_modules/@tanstack/react-virtual/build/lib/index.mjs
+  var useIsomorphicLayoutEffect = typeof document !== "undefined" ? y2 : p2;
+  function useVirtualizerBase(options) {
+    var rerender = s2(function() {
+      return {};
+    }, {})[1];
+    var resolvedOptions = _extends({}, options, {
+      onChange: function onChange(instance2) {
+        rerender();
+        options.onChange == null ? void 0 : options.onChange(instance2);
+      }
+    });
+    var _React$useState = h2(function() {
+      return new Virtualizer(resolvedOptions);
+    }), instance = _React$useState[0];
+    instance.setOptions(resolvedOptions);
+    p2(function() {
+      return instance._didMount();
+    }, []);
+    useIsomorphicLayoutEffect(function() {
+      return instance._willUpdate();
+    });
+    return instance;
+  }
+  function useVirtualizer(options) {
+    return useVirtualizerBase(_extends({
+      observeElementRect,
+      observeElementOffset,
+      scrollToFn: elementScroll
+    }, options));
+  }
+
+  // node_modules/preact/compat/client.mjs
+  function createRoot(container) {
+    return {
+      render(children) {
+        G2(children, container);
+      },
+      unmount() {
+        hn(container);
+      }
+    };
+  }
+
+  // src/datagrid/selection.tsx
+  function useSelection(mode, keyAccessor, between, selectionClassName = "selected") {
+    const [selectedKeys, setSelectedKeys] = h2(
+      ImmutableSet.empty()
+    );
+    const [anchor, setAnchor] = h2(null);
+    const onMouseDown = (event) => {
+      if (mode === 0 /* None */) {
+        return;
+      }
+      const el = event.currentTarget;
+      const key = keyAccessor(el);
+      const result = performMouseDownAction(
+        mode,
+        between,
+        selectedKeys,
+        event,
+        key,
+        anchor
+      );
+      if (result) {
+        setSelectedKeys(result.selection);
+        if (typeof result.anchor !== "undefined") {
+          setAnchor(result.anchor);
+        }
+        event.preventDefault();
+      }
+    };
+    return {
+      has(key) {
+        return selectedKeys.has(key);
+      },
+      set(key, selected) {
+        if (selected) {
+          setSelectedKeys(selectedKeys.add(key));
+        } else {
+          setSelectedKeys(selectedKeys.delete(key));
+        }
+      },
+      clear() {
+        setSelectedKeys(selectedKeys.clear());
+      },
+      handlers() {
+        return { onMouseDown };
+      }
+    };
+  }
+  var ImmutableSet = class {
+    constructor(set) {
+      this._set = set;
+    }
+    static empty() {
+      return new ImmutableSet(/* @__PURE__ */ new Set());
+    }
+    has(value) {
+      return this._set.has(value);
+    }
+    add(...values) {
+      const newSet = new Set(this._set.keys());
+      for (const value of values) {
+        newSet.add(value);
+      }
+      return new ImmutableSet(newSet);
+    }
+    toggle(value) {
+      if (this.has(value)) {
+        return this.delete(value);
+      } else {
+        return this.add(value);
+      }
+    }
+    delete(value) {
+      const newSet = new Set(this._set.keys());
+      newSet.delete(value);
+      return new ImmutableSet(newSet);
+    }
+    clear() {
+      return ImmutableSet.empty();
+    }
+  };
+  function performMouseDownAction(mode, between, selectedKeys, event, key, anchor) {
+    let { shiftKey, ctrlKey, altKey, metaKey } = event;
+    if (window.navigator.platform.match(/^Mac/)) {
+      [ctrlKey, metaKey] = [metaKey, ctrlKey];
+    }
+    if (mode === 3 /* MultiSet */) {
+      return { selection: selectedKeys.toggle(key) };
+    } else if (mode === 1 /* Single */) {
+      return { selection: ImmutableSet.empty().add(key) };
+    } else if (mode === 2 /* Multi */) {
+      if (ctrlKey && !shiftKey) {
+        return { selection: selectedKeys.toggle(key), anchor: key };
+      } else if (shiftKey && !ctrlKey) {
+        if (anchor !== null && between) {
+          const toSelect = between(anchor, key);
+          return { selection: ImmutableSet.empty().add(...toSelect) };
+        }
+      } else if (shiftKey && ctrlKey) {
+        const toSelect = between(anchor, key);
+        return { selection: selectedKeys.add(...toSelect) };
+      } else if (!shiftKey && !ctrlKey) {
+        return { selection: ImmutableSet.empty().add(key), anchor: key };
+      } else {
+        return;
+      }
+      event.preventDefault();
+    }
+  }
+
+  // src/datagrid/sort-arrows.tsx
+  var sortCommonProps = {
+    className: "sort-arrow",
+    viewBox: [-1, -1, 2, 2].map((x4) => x4 * 1.4).join(" "),
+    width: "100%",
+    height: "100%",
+    style: { paddingLeft: "3px" }
+  };
+  var sortPathCommonProps = {
+    stroke: "#333333",
+    strokeWidth: "0.6",
+    fill: "transparent"
+  };
+  var sortArrowUp = /* @__PURE__ */ Cn.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", ...sortCommonProps }, /* @__PURE__ */ Cn.createElement(
+    "path",
+    {
+      d: "M -1 0.5 L 0 -0.5 L 1 0.5",
+      ...sortPathCommonProps,
+      strokeLinecap: "round"
+    }
+  ));
+  var sortArrowDown = /* @__PURE__ */ Cn.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", ...sortCommonProps }, /* @__PURE__ */ Cn.createElement(
+    "path",
+    {
+      d: "M -1 -0.5 L 0 0.5 L 1 -0.5",
+      ...sortPathCommonProps,
+      strokeLinecap: "round"
+    }
+  ));
+
+  // src/datagrid/table-summary.tsx
+  function useSummary(summaryTemplate, scrollContainer, virtualRows, thead, nrows) {
+    return F2(() => {
+      const summaryOption = summaryTemplate ?? true;
+      if (!summaryOption) {
+        return null;
+      }
+      const template = typeof summaryOption === "string" ? summaryOption : "Viewing rows {start} through {end} of {total}";
+      if (!scrollContainer) {
+        return null;
+      }
+      if (virtualRows.length === 0) {
+        return null;
+      }
+      const top = scrollContainer.scrollTop;
+      const bot = top + scrollContainer.clientHeight - thead.clientHeight;
+      const [firstIndex, lastIndex] = findRangeIndex(
+        top,
+        bot,
+        virtualRows,
+        (vrow, start) => vrow.start + vrow.size / 2
+      );
+      if (firstIndex === null || lastIndex === null) {
+        return null;
+      }
+      const firstRow = virtualRows[firstIndex];
+      const lastRow = virtualRows[lastIndex];
+      if (firstRow.index === 0 && lastRow.index === nrows - 1) {
+        return null;
+      }
+      const summaryMessage = formatSummary(
+        template,
+        firstRow.index + 1,
+        lastRow.index + 1,
+        nrows
+      );
+      return /* @__PURE__ */ Cn.createElement("div", { className: "shiny-data-grid-summary" }, summaryMessage);
+    }, [summaryTemplate, scrollContainer, virtualRows, thead, nrows]);
+  }
+  function findRangeIndex(start, end, items, map) {
+    let first = null;
+    let last = null;
+    for (let i3 = 0; i3 < items.length; i3++) {
+      const item = items[i3];
+      if (first === null) {
+        if (map(item, true) >= start) {
+          first = i3;
+          last = i3;
+        }
+      } else {
+        if (map(item, false) <= end) {
+          last = i3;
+        } else {
+          break;
+        }
+      }
+    }
+    return [first, last];
+  }
+  function formatSummary(template, start, end, total) {
+    return template.replace(/\{(start|end|total)\}/g, (substr, token) => {
+      if (token === "start") {
+        return start + "";
+      } else if (token === "end") {
+        return end + "";
+      } else if (token === "total") {
+        return total + "";
+      } else {
+        return substr;
+      }
+    });
+  }
+
+  // src/datagrid/index.tsx
+  var ShinyDataGrid = (props) => {
+    const { data, bgcolor, width, height } = props;
+    const { columns, data: rowData } = data;
+    const containerRef = _2(null);
+    const theadRef = _2(null);
+    const tbodyRef = _2(null);
+    const rowVirtualizer = useVirtualizer({
+      count: rowData.length,
+      getScrollElement: () => containerRef.current,
+      estimateSize: () => 50
+    });
+    y2(() => {
+      rowVirtualizer.scrollToOffset(0);
+    }, [data]);
+    const totalSize = rowVirtualizer.getTotalSize();
+    const virtualRows = rowVirtualizer.getVirtualItems();
+    const coldefs = F2(
+      () => columns.map((colname, i3) => {
+        return {
+          accessorFn: (row, index) => {
+            return row[i3];
+          },
+          header: colname
+        };
+      }),
+      [columns]
+    );
+    const dataClone = F2(() => [...rowData], [rowData]);
+    const options = {
+      data: dataClone,
+      columns: coldefs,
+      getCoreRowModel: getCoreRowModel(),
+      getSortedRowModel: getSortedRowModel()
+      //debugAll: true,
+    };
+    const table = useReactTable(options);
+    const paddingTop = virtualRows.length > 0 ? virtualRows?.[0]?.start || 0 : 0;
+    const paddingBottom = virtualRows.length > 0 ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0) : 0;
+    const summary = useSummary(
+      data.options.summary,
+      containerRef?.current,
+      virtualRows,
+      theadRef.current,
+      rowData.length
+    );
+    const tableStyle = data.options.style ?? "grid";
+    const containerClass = tableStyle === "grid" ? "shiny-data-grid-grid" : "shiny-data-grid-table";
+    const tableClass = tableStyle === "table" ? "table table-sm" : null;
+    const rowSelection = useSelection(
+      2 /* Multi */,
+      (el) => el.dataset.key,
+      (fromKey, toKey) => {
+        const rowModel = table.getSortedRowModel();
+        let fromIdx = rowModel.rows.findIndex((row) => row.id === fromKey);
+        let toIdx = rowModel.rows.findIndex((row) => row.id === toKey);
+        if (fromIdx < 0 || toIdx < 0) {
+          return [];
+        }
+        if (fromIdx > toIdx) {
+          [fromIdx, toIdx] = [toIdx, fromIdx];
+        }
+        const keys = [];
+        for (let i3 = fromIdx; i3 <= toIdx; i3++) {
+          keys.push(rowModel.rows[i3].id);
+        }
+        return keys;
+      },
+      "selected"
+    );
+    p2(() => {
+      return () => {
+        table.resetSorting();
+        rowSelection.clear();
+      };
+    }, [data]);
+    const headerRowCount = table.getHeaderGroups().length;
+    const scrollingClass = containerRef.current?.scrollHeight > containerRef.current?.clientHeight ? "scrolling" : "";
+    return /* @__PURE__ */ Cn.createElement(Cn.Fragment, null, /* @__PURE__ */ Cn.createElement(
+      "div",
+      {
+        className: `shiny-data-grid ${containerClass} ${scrollingClass}`,
+        ref: containerRef,
+        style: { width, maxHeight: height, overflow: "auto" }
+      },
+      /* @__PURE__ */ Cn.createElement(
+        "table",
+        {
+          className: tableClass,
+          "aria-rowcount": rowData.length,
+          style: { width: width === null || width === "auto" ? null : "100%" }
+        },
+        /* @__PURE__ */ Cn.createElement("thead", { ref: theadRef, style: { backgroundColor: bgcolor } }, table.getHeaderGroups().map((headerGroup, i3) => /* @__PURE__ */ Cn.createElement("tr", { key: headerGroup.id, "aria-rowindex": i3 + 1 }, headerGroup.headers.map((header) => {
+          return /* @__PURE__ */ Cn.createElement(
+            "th",
+            {
+              key: header.id,
+              colSpan: header.colSpan,
+              style: { width: header.getSize() },
+              scope: "col"
+            },
+            header.isPlaceholder ? null : /* @__PURE__ */ Cn.createElement(
+              "div",
+              {
+                style: {
+                  cursor: header.column.getCanSort() ? "pointer" : null,
+                  userSelect: header.column.getCanSort() ? "none" : null
+                },
+                onClick: header.column.getToggleSortingHandler()
+              },
+              flexRender(
+                header.column.columnDef.header,
+                header.getContext()
+              ),
+              {
+                asc: sortArrowUp,
+                desc: sortArrowDown
+              }[header.column.getIsSorted()] ?? null
+            )
+          );
+        })))),
+        /* @__PURE__ */ Cn.createElement("tbody", { ref: tbodyRef }, paddingTop > 0 && /* @__PURE__ */ Cn.createElement("tr", { style: { height: `${paddingTop}px` } }), virtualRows.map((virtualRow) => {
+          const row = table.getRowModel().rows[virtualRow.index];
+          return /* @__PURE__ */ Cn.createElement(
+            "tr",
+            {
+              key: virtualRow.key,
+              "data-index": virtualRow.index,
+              "aria-rowindex": virtualRow.index + headerRowCount,
+              "data-key": row.id,
+              ref: rowVirtualizer.measureElement,
+              className: rowSelection.has(row.id) ? "selected" : void 0,
+              ...rowSelection.handlers()
+            },
+            row.getVisibleCells().map((cell) => {
+              return /* @__PURE__ */ Cn.createElement("td", { key: cell.id }, flexRender(
+                cell.column.columnDef.cell,
+                cell.getContext()
+              ));
+            })
+          );
+        }), paddingBottom > 0 && /* @__PURE__ */ Cn.createElement("tr", { style: { height: `${paddingBottom}px` } }))
+      )
+    ), summary);
+  };
+  if (window.Shiny) {
+    class ShinyDataGridBinding extends Shiny.OutputBinding {
+      find(scope) {
+        return $(scope).find("shiny-data-grid-output");
+      }
+      renderValue(el, data) {
+        el.renderValue(data);
+      }
+    }
+    Shiny.outputBindings.register(new ShinyDataGridBinding(), "shinyDataGrid");
+  }
+  function getComputedBgColor(el) {
+    if (!el) {
+      return null;
+    }
+    const bgColor = getStyle(el, "background-color");
+    if (!bgColor)
+      return bgColor;
+    const m3 = bgColor.match(
+      /^rgba\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*\)$/
+    );
+    if (bgColor === "transparent" || m3 && parseFloat(m3[4]) === 0) {
+      const bgImage = getStyle(el, "background-image");
+      if (bgImage && bgImage !== "none") {
+        return null;
+      } else {
+        return getComputedBgColor(el.parentElement);
+      }
+    }
+    return bgColor;
+  }
+  function getStyle(el, styleProp) {
+    return document?.defaultView?.getComputedStyle(el, null)?.getPropertyValue(styleProp);
+  }
+  var cssTemplate = document.createElement("template");
+  cssTemplate.innerHTML = `<style>${styles_default}</style>`;
+  var ShinyDataGridOutput = class extends HTMLElement {
+    connectedCallback() {
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.appendChild(cssTemplate.content.cloneNode(true));
+      const myDiv = document.createElement("div");
+      this.shadowRoot.appendChild(myDiv);
+      this.reactRoot = createRoot(myDiv);
+      const dataEl = this.querySelector(
+        "script.data"
+      );
+      if (dataEl) {
+        const data = JSON.parse(dataEl.innerText);
+        this.renderValue(data);
+      }
+    }
+    renderValue(data) {
+      const {
+        columns,
+        index,
+        data: rows,
+        options,
+        width,
+        height
+      } = data;
+      if (!data) {
+        return;
+      }
+      this.reactRoot.render(
+        /* @__PURE__ */ Cn.createElement(mn, null, /* @__PURE__ */ Cn.createElement(
+          ShinyDataGrid,
+          {
+            data,
+            bgcolor: getComputedBgColor(this),
+            width: width ?? "100%",
+            height: height ?? "500px"
+          }
+        ))
+      );
+    }
+  };
+  customElements.define("shiny-data-grid-output", ShinyDataGridOutput);
+})();
 /*! Bundled license information:
 
 @tanstack/table-core/build/lib/index.mjs:
