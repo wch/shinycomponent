@@ -1,4 +1,4 @@
-import { MdSlider } from "@material/web/slider/slider.js";
+import { MdSlider } from "@material/web/slider/slider";
 import { make_input_binding } from "../make_input_binding";
 import { make_value_change_emitter } from "../make_value_change_emitter";
 

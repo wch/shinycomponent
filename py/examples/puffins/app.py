@@ -66,11 +66,42 @@ body:has([choice="dark"]) {
 """
 
 app_ui = sc.page(
-    ui.head_content(ui.tags.style(app_css)),
+    ui.head_content(
+        ui.tags.style(app_css),
+        ui.tags.link(
+            rel="stylesheet",
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1",
+        ),
+        ui.tags.link(
+            rel="stylesheet",
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL@20..48,100..700,0..1",
+        ),
+        ui.tags.link(
+            rel="stylesheet",
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL@20..48,100..700,0..1",
+        ),
+        ui.tags.style(
+            "md-icon[filled] { --md-icon-font-variation-settings: 'FILL' 1; }"
+        ),
+    ),
     shinyswatch.theme.pulse(),
     sc.tabset(
         {"id": "tabset1"},
         sc.tab(
+            ui.Tag("md-filled-icon-button", ui.Tag("md-icon", "settings")),
+            ui.Tag("md-filled-icon-button", ui.Tag("md-icon", "settings", filled="")),
+            ui.br(),
+            ui.Tag("md-filled-tonal-icon-button", ui.Tag("md-icon", "settings")),
+            ui.Tag(
+                "md-filled-tonal-icon-button", ui.Tag("md-icon", "settings", filled="")
+            ),
+            ui.br(),
+            ui.Tag("md-outlined-icon-button", ui.Tag("md-icon", "settings")),
+            ui.Tag("md-outlined-icon-button", ui.Tag("md-icon", "settings", filled="")),
+            ui.br(),
+            ui.Tag("m3-standard-icon-button", ui.Tag("md-icon", "settings")),
+            ui.Tag("m3-standard-icon-button", ui.Tag("md-icon", "settings", filled="")),
+            ui.br(),
             sc.simple_number_input(id="num_in", min=0, max=100),
             ui.output_text_verbatim("num_out", placeholder=True),
             Tag("material-slider", id="num_in2", value="20", withLabel=""),

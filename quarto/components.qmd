@@ -32,13 +32,13 @@ The number is `r general_output("number_static", watch="number")`.
 ### Sliders
 
 ```{r echo=FALSE}
-tag("material-slider", list(id="slider_in_static", value="20", withLabel=""))
+m3_slider(id="slider_in_static", value="20", withLabel="")
 ```
 
 The slider is `r general_output("slider_static", watch="slider_in_static")`.
 
 
-<material-slider id="slider_in_static2" value="20" withlabel=""></material-slider>
+<m3-slider id="slider_in_static2" value="20" withlabel=""></m3-slider>
 
 The next slider is <general-output id="slider_static2" watch="slider_in_static2"></general-output>.
 
