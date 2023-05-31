@@ -114,20 +114,32 @@ app_ui = sc.page(
     sc.tabset(
         {"id": "tabset1"},
         sc.tab(
-            ui.Tag("md-filled-icon-button", ui.Tag("md-icon", "settings")),
-            ui.Tag("md-filled-icon-button", ui.Tag("md-icon", "settings", filled="")),
-            ui.br(),
-            ui.Tag("md-filled-tonal-icon-button", ui.Tag("md-icon", "settings")),
-            ui.Tag(
-                "md-filled-tonal-icon-button", ui.Tag("md-icon", "settings", filled="")
+            sc.grid(
+                sc.grid_item(
+                    Tag("star-rating", id="foo"),
+                    Tag("star-rating", id="foo1"),
+                ),
+                ui.output_text_verbatim("txt"),
+                sc.grid_item(
+                    Tag(
+                        "shiny-collapsible",
+                        ui.output_ui("value_boxes"),
+                        dir="to_top",
+                        label="Fun Facts",
+                    ),
+                    height=4,
+                ),
+                sc.grid_item(
+                    x.ui.output_plot("scatter", fill=True),
+                    width=2,
+                    height=3,
+                ),
+                nRows=4,
+                nCols=3,
             ),
-            ui.br(),
-            ui.Tag("md-outlined-icon-button", ui.Tag("md-icon", "settings")),
-            ui.Tag("md-outlined-icon-button", ui.Tag("md-icon", "settings", filled="")),
-            ui.br(),
-            ui.Tag("m3-standard-icon-button", ui.Tag("md-icon", "settings")),
-            ui.Tag("m3-standard-icon-button", ui.Tag("md-icon", "settings", filled="")),
-            ui.br(),
+            name="Plot",
+        ),
+        sc.tab(
             sc.simple_number_input(id="num_in", min=0, max=100),
             ui.output_text_verbatim("num_out", placeholder=True),
             Tag("material-slider", id="num_in2", value="20", withLabel=""),

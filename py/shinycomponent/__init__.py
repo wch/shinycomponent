@@ -3,6 +3,8 @@ __version__ = "0.0.1"
 from . import forge
 from ._components import (
     greeting_card,
+    grid,
+    grid_item,
     sidebar,
     simple_number_input,
     tab,
@@ -27,4 +29,6 @@ __all__ = (
     "static_data_grid",
     "m3_slider",
     "data_grid",
+    "grid",
+    "grid_item",
 )
