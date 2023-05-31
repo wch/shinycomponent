@@ -91,12 +91,41 @@ body:has([choice="dark"]) {
 
 """
 
+simple_styles = """
+--number-input-padding-inline: var(--size-2);
+--number-input-border-radius: var(--radius-1);
+--number-input-font-size: var(--font-size-0);
+"""
+
+purple_styles = """
+--number-input-bg-image: var(--gradient-11);
+--number-input-text-color: white;
+--number-input-padding-inline: var(--size-5);
+--number-input-border-radius: 50%;
+"""
+
+
+w95_styles = """
+--number-input-bg-color: var(--gray-3);
+--number-input-padding-inline: var(--size-2);
+--number-input-border-radius: 0;
+--number-input-font-size: var(--font-size-0);
+--number-input-plusminus-border: 1px solid black;
+"""
+
 
 def tall_item(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
 ) -> Tag:
     # return sc.grid_item(sc.grid(*args, nRows=3, nCols=1, **kwargs), height=4)
     return sc.grid_item(*args, height=4, **kwargs)
+
+
+def show_theme(theme_text: str):
+    return ui.pre(
+        ui.code(theme_text),
+        style="font-size: var(--font-size-0); padding: 0; flex:2;",
+    )
 
 
 app_ui = sc.page(
@@ -125,10 +154,43 @@ app_ui = sc.page(
         sc.tab(
             sc.grid(
                 sc.grid_item(
-                    # Tag("star-rating", id="foo"),
+                    ui.h3("Base"),
+                    ui.p(
+                        "The following are the number input each with a different set of css variables applied to the parent component to change the style."
+                    ),
                     sc.simple_number_input(id="num_in", min=0, max=100),
                 ),
-                ui.output_text_verbatim("txt"),
+                sc.grid_item(
+                    ui.h3("Simple"),
+                    show_theme(simple_styles),
+                    sc.simple_number_input(id="simple_num_in", min=0, max=100),
+                    style=simple_styles,
+                ),
+                sc.grid_item(
+                    ui.h3("Purple"),
+                    show_theme(purple_styles),
+                    sc.simple_number_input(id="purple_num_in", min=0, max=100),
+                    style=purple_styles,
+                ),
+                sc.grid_item(
+                    ui.h3("Windows 95"),
+                    show_theme(w95_styles),
+                    sc.simple_number_input(id="purple_num_in", min=0, max=100),
+                    style=w95_styles,
+                ),
+                nRows=2,
+                nCols=2,
+            ),
+            name="Number Input",
+        ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    ui.p(
+                        "Sure, penguins are charismatic with their tuxedo-patterned outfits, but have you ever considered puffins? Penguins may monopolize the spotlight in nature documentaries, but it's high time the humble puffin received some love. While penguins waddle aimlessly on ice, puffins zip through the air at up to 55 mph and dive underwater in pursuit of dinner."
+                    ),
+                    width=2,
+                ),
                 ui.output_ui("value_boxes", container=tall_item),
                 sc.grid_item(
                     x.ui.output_plot("scatter", fill=True),

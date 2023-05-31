@@ -30,6 +30,8 @@ export class SimpleNumberInput extends LitElement {
         --number-input-color-invalid,
         var(--sl-color-warning-600)
       );
+
+      --_font-size: var(--number-input-font-size, var(--sl-font-size-large));
     }
     .wrapper {
       display: inline-flex;
@@ -37,6 +39,8 @@ export class SimpleNumberInput extends LitElement {
         --number-input-bg-color,
         var(--sl-input-background-color)
       );
+      background-image: var(--number-input-bg-image);
+      color: var(--number-input-text-color, var(--sl-input-color));
       border: none;
       border-radius: var(
         --number-input-border-radius,
@@ -52,10 +56,11 @@ export class SimpleNumberInput extends LitElement {
     }
 
     input {
+      font-size: var(--_font-size);
       border: none;
       background-color: transparent;
+      color: inherit;
       outline-width: 0;
-      font-size: var(--font-body);
       text-align: center;
     }
     input:focus-visible {
@@ -75,9 +80,10 @@ export class SimpleNumberInput extends LitElement {
     }
 
     .plusminus {
-      font-size: var(--font-body);
-      border: none;
+      font-size: var(--_font-size);
+      border: var(--number-input-plusminus-border, none);
       background-color: transparent;
+      color: inherit;
     }
     .plusminus:hover {
       cursor: pointer;
