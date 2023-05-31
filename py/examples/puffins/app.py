@@ -10,7 +10,7 @@ import seaborn as sns
 import shiny.experimental as x
 import shinyswatch
 from colors import bg_palette, palette
-from htmltools import Tag
+from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 from shiny import App, Inputs, Outputs, Session, reactive, render, req, ui
 
 import shinycomponent as sc
@@ -91,6 +91,14 @@ body:has([choice="dark"]) {
 
 """
 
+
+def tall_item(
+    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> Tag:
+    # return sc.grid_item(sc.grid(*args, nRows=3, nCols=1, **kwargs), height=4)
+    return sc.grid_item(*args, height=4, **kwargs)
+
+
 app_ui = sc.page(
     ui.head_content(
         ui.tags.style(app_css),
@@ -111,7 +119,8 @@ app_ui = sc.page(
         ),
     ),
     shinyswatch.theme.pulse(),
-    sc.tabset(
+    Tag(
+        "shiny-sl-tabset",
         {"id": "tabset1"},
         sc.tab(
             sc.grid(
@@ -120,15 +129,7 @@ app_ui = sc.page(
                     Tag("star-rating", id="foo1"),
                 ),
                 ui.output_text_verbatim("txt"),
-                sc.grid_item(
-                    Tag(
-                        "shiny-collapsible",
-                        ui.output_ui("value_boxes"),
-                        dir="to_top",
-                        label="Fun Facts",
-                    ),
-                    height=4,
-                ),
+                ui.output_ui("value_boxes", container=tall_item),
                 sc.grid_item(
                     x.ui.output_plot("scatter", fill=True),
                     width=2,
@@ -431,7 +432,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             if name in input.species()
         ]
 
-        return x.ui.layout_column_wrap(1 / len(value_boxes), *value_boxes)
+        return value_boxes
 
 
 app = App(

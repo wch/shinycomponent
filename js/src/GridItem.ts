@@ -19,10 +19,12 @@ export class GridItem extends LitElement {
       flex-direction: column;
 
       /* background-color: pink; */
-      background-color: var(--item-bg-color, var(--sl-color-neutral-200));
+      background-color: var(--item-bg-color, var(--sl-panel-background-color));
+      border: var(--sl-panel-border-width) solid var(--sl-panel-border-color);
       border-radius: var(--item-radius, var(--sl-border-radius-medium));
-      box-shadow: var(--item-shadow, var(--sl-shadow-medium));
+      /* box-shadow: var(--item-shadow, var(--sl-shadow-medium)); */
       padding: var(--item-padding, var(--sl-spacing-small));
+      gap: var(--item-padding, var(--sl-spacing-small));
     }
 
     ::slotted(*) {
