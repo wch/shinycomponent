@@ -1,6 +1,10 @@
-import { build } from "esbuild";
+import { build, context } from "esbuild";
 import { sassPlugin } from "esbuild-sass-plugin";
 import * as fs from "node:fs";
+
+// Set a boolean value of watch to true if the flag --watch is provided when the file is run from the command line.
+// E.g. node js/scripts/build.ts --watch
+const watch: boolean = process.argv.includes("--watch");
 
 async function bundle() {
   try {
@@ -19,6 +23,13 @@ async function bundle() {
       ],
       metafile: true,
     };
+
+    if (watch) {
+      console.log("Watching files for changes...");
+      const ctx = await context(options);
+      ctx.watch();
+      return;
+    }
 
     const result = await build(options);
     console.log("Build completed successfully!");
