@@ -19642,6 +19642,17 @@
   SlBadge = __decorateClass([
     e5("sl-badge")
   ], SlBadge);
+
+  // src/forge/split-panel.ts
+  var ForgeSplitPanel = class extends SlSplitPanel {
+    constructor() {
+      super();
+      this.addEventListener("sl-reposition", (event) => {
+        window.dispatchEvent(new Event("resize"));
+      });
+    }
+  };
+  customElements.define("forge-split-panel", ForgeSplitPanel);
 })();
 /*! Bundled license information:
 
