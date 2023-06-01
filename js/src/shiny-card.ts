@@ -1,15 +1,13 @@
 import { LitElement, css, html } from "lit";
 import { theme_primatives } from "./styles/op-classes";
 
-export class GridItem extends LitElement {
-  width: Number = 1;
-  height: Number = 1;
+export class ShinyCard extends LitElement {
   shadowed: Boolean = false;
+  centercontent: Boolean = false;
 
   static properties = {
-    width: { type: Number },
-    height: { type: Number },
     shadowed: { type: Boolean },
+    centercontent: { type: Boolean },
   };
 
   // Styles are scoped to this element: they won't conflict with styles
@@ -45,6 +43,11 @@ export class GridItem extends LitElement {
         0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
     }
 
+    :host([centercontent]) {
+      display: grid;
+      place-content: center;
+    }
+
     ::slotted(*) {
       flex: 1;
     }
@@ -53,17 +56,8 @@ export class GridItem extends LitElement {
     }
   `;
 
-  connectedCallback() {
-    super.connectedCallback();
-
-    this.style.setProperty(
-      "grid-area",
-      `span ${this.height} / span ${this.width}`
-    );
-  }
-
   render() {
     return html`<slot></slot>`;
   }
 }
-customElements.define("shiny-grid-item", GridItem);
+customElements.define("shiny-card", ShinyCard);

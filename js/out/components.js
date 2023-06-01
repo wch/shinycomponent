@@ -5588,100 +5588,6 @@
   null == n4 || n4({ LitElement: s4 });
   (null !== (o4 = globalThis.litElementVersions) && void 0 !== o4 ? o4 : globalThis.litElementVersions = []).push("3.3.2");
 
-  // src/styles/op-classes.ts
-  var surface_1 = i`
-  background-color: var(--surface-1);
-  color: var(--text-2);
-`;
-  var theme_primatives = {
-    brand: i`
-    color: var(--brand);
-    background-color: var(--brand);
-  `,
-    surface_1: i`
-    background-color: var(--surface-1);
-    color: var(--text-2);
-  `,
-    surface_2: i`
-    background-color: var(--surface-2);
-    color: var(--text-2);
-  `,
-    surface_3: i`
-    background-color: var(--surface-3);
-    color: var(--text-1);
-  `,
-    surface_4: i`
-    background-color: var(--surface-4);
-    color: var(--text-1);
-  `
-  };
-
-  // src/GridItem.ts
-  var GridItem = class extends s4 {
-    constructor() {
-      super(...arguments);
-      this.width = 1;
-      this.height = 1;
-      this.shadowed = false;
-    }
-    connectedCallback() {
-      super.connectedCallback();
-      this.style.setProperty(
-        "grid-area",
-        `span ${this.height} / span ${this.width}`
-      );
-    }
-    render() {
-      return x`<slot></slot>`;
-    }
-  };
-  GridItem.properties = {
-    width: { type: Number },
-    height: { type: Number },
-    shadowed: { type: Boolean }
-  };
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
-  GridItem.styles = i`
-    :host {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-
-      ${theme_primatives.surface_1}
-
-      border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
-
-      border-radius: var(--item-radius, var(--radius-3));
-      padding: var(--item-padding, var(--size-3));
-      gap: var(--item-padding, var(--size-3));
-    }
-
-    :host([shadowed]) {
-      box-shadow: 0 1rem 0.5rem -0.5rem;
-      box-shadow: 0 2.8px 2.2px
-          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
-        0 6.7px 5.3px
-          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
-        0 12.5px 10px
-          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
-        0 22.3px 17.9px
-          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
-        0 41.8px 33.4px
-          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
-        0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
-    }
-
-    ::slotted(*) {
-      flex: 1;
-    }
-    * {
-      box-sizing: border-box;
-    }
-  `;
-  customElements.define("shiny-grid-item", GridItem);
-
   // src/collapsible.ts
   var dir_to_icon = {
     to_right: "\u25BA",
@@ -18327,7 +18233,6 @@
       grid-template-columns: repeat(var(--nCols), 1fr);
       grid-template-rows: repeat(var(--nRows), 1fr);
       gap: var(--grid-gap, var(--size-fluid-2));
-      padding: var(--grid-padding, var(--size-fluid-2));
       height: 100%;
     }
     * {
@@ -18340,6 +18245,119 @@
     }
   `;
   customElements.define("shiny-grid", Grid);
+
+  // src/styles/op-classes.ts
+  var surface_1 = i`
+  background-color: var(--surface-1);
+  color: var(--text-2);
+`;
+  var theme_primatives = {
+    brand: i`
+    color: var(--brand);
+    background-color: var(--brand);
+  `,
+    surface_1: i`
+    background-color: var(--surface-1);
+    color: var(--text-2);
+  `,
+    surface_2: i`
+    background-color: var(--surface-2);
+    color: var(--text-2);
+  `,
+    surface_3: i`
+    background-color: var(--surface-3);
+    color: var(--text-1);
+  `,
+    surface_4: i`
+    background-color: var(--surface-4);
+    color: var(--text-1);
+  `
+  };
+
+  // src/shiny-card.ts
+  var ShinyCard = class extends s4 {
+    constructor() {
+      super(...arguments);
+      this.shadowed = false;
+      this.centercontent = false;
+    }
+    render() {
+      return x`<slot></slot>`;
+    }
+  };
+  ShinyCard.properties = {
+    shadowed: { type: Boolean },
+    centercontent: { type: Boolean }
+  };
+  // Styles are scoped to this element: they won't conflict with styles
+  // on the main page or in other components. Styling API can be exposed
+  // via CSS custom properties.
+  ShinyCard.styles = i`
+    :host {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      ${theme_primatives.surface_1}
+
+      border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+
+      border-radius: var(--item-radius, var(--radius-3));
+      padding: var(--item-padding, var(--size-3));
+      gap: var(--item-padding, var(--size-3));
+    }
+
+    :host([shadowed]) {
+      box-shadow: 0 1rem 0.5rem -0.5rem;
+      box-shadow: 0 2.8px 2.2px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+        0 6.7px 5.3px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
+        0 12.5px 10px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+        0 22.3px 17.9px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+        0 41.8px 33.4px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+        0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+    }
+
+    :host([centercontent]) {
+      display: grid;
+      place-content: center;
+    }
+
+    ::slotted(*) {
+      flex: 1;
+    }
+    * {
+      box-sizing: border-box;
+    }
+  `;
+  customElements.define("shiny-card", ShinyCard);
+
+  // src/grid-item.ts
+  var GridItem = class extends ShinyCard {
+    constructor() {
+      super(...arguments);
+      this.width = 1;
+      this.height = 1;
+    }
+    connectedCallback() {
+      super.connectedCallback();
+      this.style.setProperty(
+        "grid-area",
+        `span ${this.height} / span ${this.width}`
+      );
+    }
+  };
+  GridItem.properties = {
+    width: { type: Number },
+    height: { type: Number },
+    shadowed: { type: Boolean },
+    centercontent: { type: Boolean }
+  };
+  customElements.define("shiny-grid-item", GridItem);
 
   // src/tabset.ts
   var Tabset = class extends s4 {
@@ -18634,15 +18652,7 @@
         doesn't cascade down to other elements
       */
 
-      --_tab-spacing: var(--tab-spacing, var(--size-fluid-1));
-      --_tab-selection-thickness: var(--tab-selection-thickness, var(--size-2));
-      --_tab_radius: var(--tab-radius, var(--radius-3));
-
-      --_header-padding-inline: var(
-        --header-padding-inline,
-        var(--size-fluid-3)
-      );
-      --_header-padding-block: var(--header-padding-block, var(--size-fluid-3));
+      --padding: var(--size-fluid-3);
 
       display: block;
       height: 100%;
@@ -18685,7 +18695,7 @@
       margin: 0;
       display: flex;
       align-items: center;
-      gap: var(--_header-padding-inline);
+      gap: var(--padding);
     }
 
     .header {
@@ -18694,20 +18704,21 @@
       font-weight: var(--_header-font-weight);
       margin: 0;
       position: relative;
-      padding-inline: var(--_header-padding-inline);
-      padding-block-start: var(--_header-padding-block);
+      padding: var(--padding);
+      padding-block-end: 0;
     }
 
     .tabs {
       --container-radius: var(--radius-4);
       --container-pad: var(--size-1);
+      /* Subtract padding from radius of tabs so they fit like they've shrunk down */
       --child-radius: calc(var(--container-radius) - var(--container-pad));
+
       border-radius: var(--container-radius);
       padding: var(--container-pad);
 
       display: flex;
       align-items: center;
-      height: var(--size-7);
       flex-wrap: wrap;
       ${theme_primatives.surface_4}
     }
@@ -18715,7 +18726,7 @@
     .tab {
       cursor: pointer;
       position: relative;
-      padding-block: var(--size-1);
+      padding-block: var(--size-0);
       padding-inline: var(--size-5);
       border-radius: var(--child-radius);
       color: var(--text-2);
@@ -18734,6 +18745,7 @@
     .main {
       grid-area: content;
       overflow: scroll;
+      padding: var(--padding);
     }
 
     .footer {
@@ -18741,8 +18753,8 @@
     }
 
     .footer > ::slotted(*) {
-      padding-block-end: var(--_header-padding-block);
-      padding-inline: var(--_header-padding-inline);
+      padding: var(--padding);
+      padding-block-start: 0;
     }
 
     .header > ::slotted(div) {

@@ -20,15 +20,7 @@ export class OpTabset extends Tabset {
         doesn't cascade down to other elements
       */
 
-      --_tab-spacing: var(--tab-spacing, var(--size-fluid-1));
-      --_tab-selection-thickness: var(--tab-selection-thickness, var(--size-2));
-      --_tab_radius: var(--tab-radius, var(--radius-3));
-
-      --_header-padding-inline: var(
-        --header-padding-inline,
-        var(--size-fluid-3)
-      );
-      --_header-padding-block: var(--header-padding-block, var(--size-fluid-3));
+      --padding: var(--size-fluid-3);
 
       display: block;
       height: 100%;
@@ -71,7 +63,7 @@ export class OpTabset extends Tabset {
       margin: 0;
       display: flex;
       align-items: center;
-      gap: var(--_header-padding-inline);
+      gap: var(--padding);
     }
 
     .header {
@@ -80,20 +72,21 @@ export class OpTabset extends Tabset {
       font-weight: var(--_header-font-weight);
       margin: 0;
       position: relative;
-      padding-inline: var(--_header-padding-inline);
-      padding-block-start: var(--_header-padding-block);
+      padding: var(--padding);
+      padding-block-end: 0;
     }
 
     .tabs {
       --container-radius: var(--radius-4);
       --container-pad: var(--size-1);
+      /* Subtract padding from radius of tabs so they fit like they've shrunk down */
       --child-radius: calc(var(--container-radius) - var(--container-pad));
+
       border-radius: var(--container-radius);
       padding: var(--container-pad);
 
       display: flex;
       align-items: center;
-      height: var(--size-7);
       flex-wrap: wrap;
       ${theme_primatives.surface_4}
     }
@@ -101,7 +94,7 @@ export class OpTabset extends Tabset {
     .tab {
       cursor: pointer;
       position: relative;
-      padding-block: var(--size-1);
+      padding-block: var(--size-0);
       padding-inline: var(--size-5);
       border-radius: var(--child-radius);
       color: var(--text-2);
@@ -120,6 +113,7 @@ export class OpTabset extends Tabset {
     .main {
       grid-area: content;
       overflow: scroll;
+      padding: var(--padding);
     }
 
     .footer {
@@ -127,8 +121,8 @@ export class OpTabset extends Tabset {
     }
 
     .footer > ::slotted(*) {
-      padding-block-end: var(--_header-padding-block);
-      padding-inline: var(--_header-padding-inline);
+      padding: var(--padding);
+      padding-block-start: 0;
     }
 
     .header > ::slotted(div) {

@@ -135,7 +135,7 @@ app_ui = sc.page(
             # Make a grid with 4 rows and 3 columns
             sc.grid(
                 # Blurb takes up 2 of 3 columns
-                sc.grid_item(ui.p(about_puffins_blurb), width=2),
+                sc.grid_item(ui.p(about_puffins_blurb), width=2, centerContent=True),
                 # Value boxes are 4 rows tall
                 ui.output_ui("value_boxes", container=tall_item),
                 # Scatter plot is 3 rows tall and 2 columns wide
