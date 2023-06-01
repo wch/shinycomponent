@@ -1,7 +1,7 @@
 import { LitElement, css, html } from "lit";
 import { make_input_binding } from "./make_input_binding";
 
-const themes = ["default", "purple", "green", "wild", "dark"] as const;
+const themes = ["default", "light", "dark", "dim", "grape"] as const;
 type Theme = (typeof themes)[number];
 export class ThemeChooser extends LitElement {
   choice: Theme = themes[0];

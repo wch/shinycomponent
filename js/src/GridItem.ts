@@ -19,12 +19,25 @@ export class GridItem extends LitElement {
       flex-direction: column;
 
       /* background-color: pink; */
-      background-color: var(--item-bg-color, var(--sl-panel-background-color));
-      border: var(--sl-panel-border-width) solid var(--sl-panel-border-color);
-      border-radius: var(--item-radius, var(--sl-border-radius-medium));
-      /* box-shadow: var(--item-shadow, var(--sl-shadow-medium)); */
-      padding: var(--item-padding, var(--sl-spacing-small));
-      gap: var(--item-padding, var(--sl-spacing-small));
+      background-color: var(--item-bg-color, var(--surface-2));
+
+      border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+      box-shadow: 0 1rem 0.5rem -0.5rem;
+      box-shadow: 0 2.8px 2.2px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+        0 6.7px 5.3px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
+        0 12.5px 10px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+        0 22.3px 17.9px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+        0 41.8px 33.4px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+        0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+
+      border-radius: var(--item-radius, var(--radius-3));
+      padding: var(--item-padding, var(--size-3));
+      gap: var(--item-padding, var(--size-3));
     }
 
     ::slotted(*) {

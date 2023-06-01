@@ -5620,12 +5620,25 @@
       flex-direction: column;
 
       /* background-color: pink; */
-      background-color: var(--item-bg-color, var(--sl-panel-background-color));
-      border: var(--sl-panel-border-width) solid var(--sl-panel-border-color);
-      border-radius: var(--item-radius, var(--sl-border-radius-medium));
-      /* box-shadow: var(--item-shadow, var(--sl-shadow-medium)); */
-      padding: var(--item-padding, var(--sl-spacing-small));
-      gap: var(--item-padding, var(--sl-spacing-small));
+      background-color: var(--item-bg-color, var(--surface-2));
+
+      border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+      box-shadow: 0 1rem 0.5rem -0.5rem;
+      box-shadow: 0 2.8px 2.2px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+        0 6.7px 5.3px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
+        0 12.5px 10px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+        0 22.3px 17.9px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+        0 41.8px 33.4px
+          hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+        0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+
+      border-radius: var(--item-radius, var(--radius-3));
+      padding: var(--item-padding, var(--size-3));
+      gap: var(--item-padding, var(--size-3));
     }
 
     ::slotted(*) {
@@ -18281,7 +18294,7 @@
       display: grid;
       grid-template-columns: repeat(var(--nCols), 1fr);
       grid-template-rows: repeat(var(--nRows), 1fr);
-      gap: var(--grid-gap, var(--sl-spacing-medium));
+      gap: var(--grid-gap, var(--size-3));
       height: 100%;
     }
     * {
@@ -18294,6 +18307,429 @@
     }
   `;
   customElements.define("shiny-grid", Grid);
+
+  // src/tabset.ts
+  var Tabset = class extends s4 {
+    constructor() {
+      super();
+      this.tabs = [];
+      this.onChangeCallback = (x5) => {
+      };
+      this.selected_tab_index = 0;
+    }
+    handleSlotchange(e6) {
+      const slot = e6.target;
+      if (!slot)
+        return;
+      const nodes_in_slot = slot.assignedNodes({ flatten: true });
+      this.tabs = nodes_in_slot.reduce((all, node) => {
+        if (node instanceof HTMLElement && node.tagName.toLowerCase() === "shiny-tab") {
+          const tab_name = node.attributes.getNamedItem("name")?.value;
+          if (!tab_name) {
+            return all;
+          }
+          all.push({ name: tab_name, el: node });
+        }
+        return all;
+      }, []);
+      this.select_tab();
+    }
+    select_tab(tab_index = this.selected_tab_index) {
+      this.selected_tab_index = tab_index;
+      this.tabs.forEach((tab, i5) => {
+        const is_selected = i5 === tab_index;
+        const currently_hidden = tab.el.style.display === "none";
+        const hiding_tab = !currently_hidden && !is_selected;
+        if (hiding_tab) {
+          $(tab.el).trigger("hidden");
+          tab.el.inert = true;
+          tab.el.style.display = "none";
+        }
+        const showing_tab = currently_hidden && is_selected;
+        if (showing_tab) {
+          $(tab.el).trigger("shown");
+          tab.el.inert = false;
+          tab.el.style.display = "block";
+        }
+      });
+      this.onChangeCallback(true);
+    }
+    current_tab_name() {
+      return this.tabs[this.selected_tab_index].name;
+    }
+    render() {
+      return x`
+      <div class="tabset">
+        <div class="header">
+          <slot name="header"></slot>
+          <div class="divider"></div>
+          <div class="tabs">
+            ${this.tabs.map(
+        (tab, i5) => x`<div
+                  class="tab ${i5 === this.selected_tab_index ? "selected-tab" : ""}"
+                  @click=${() => this.select_tab(i5)}
+                >
+                  ${tab.name}
+                </div>`
+      )}
+          </div>
+        </div>
+        <div class="sidebar">
+          <slot name="sidebar"></slot>
+        </div>
+        <div class="main">
+          <slot @slotchange=${this.handleSlotchange}></slot>
+        </div>
+        <div class="footer">
+          <slot name="footer"></slot>
+        </div>
+      </div>
+    `;
+    }
+  };
+  Tabset.properties = {
+    tabs: {},
+    selected_tab_index: { type: Number }
+  };
+  // Styles are scoped to this element: they won't conflict with styles
+  // on the main page or in other components. Styling API can be exposed
+  // via CSS custom properties.
+  Tabset.styles = i`
+    :host {
+      /* This is where all the variables are defined. If the user wants to
+        update something they just have to replace the main variable and it
+        doesn't cascade down to other elements
+      */
+      --_font: var(--font-family, sans-serif);
+      --_main-bg: var(--main-bg, var(--color-bg));
+      --_main-color: var(--main-color, var(--color-text));
+
+      --_sidebar-bg: var(--sidebar-bg, var(--color-bg-1));
+      --_sidebar-color: var(--sidebar-color, var(--color-text-1));
+      --_sidebar-border: var(--sidebar-border, var(--border-small));
+
+      --_tab-spacing: var(--tab-spacing, var(--size-2));
+      --_tab-selection-thickness: var(
+        --tab-selection-thickness,
+        var(--border-medium)
+      );
+      --_tab_radius: var(--tab-radius, var(--radius-small));
+
+      --_header-bg-color: var(--header-bg-color, var(--color-bg-2));
+      --_header-bg-image: var(--header-bg-image);
+      --_header-color: var(--header-color);
+      --_header-font: var(--header-font, var(--font-sans));
+      --_header-font-weight: var(--header-font-weight, var(--font-weight-3));
+      --_header-font-size: var(--header-font-size, var(--font-size-fluid-1));
+      --_header-padding: var(--header-padding, var(--size-fluid-1));
+
+      display: block;
+      font-family: var(--_font);
+      height: 100%;
+      background-color: var(--_main-bg);
+      color: var(--_main-color);
+      box-sizing: border-box;
+    }
+
+    .tabset {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "header  header"
+        "sidebar content"
+        "footer  footer";
+      isolation: isolate;
+    }
+
+    .tabset > * {
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .header,
+    .footer,
+    .sidebar {
+      z-index: 2;
+    }
+
+    .main {
+      z-index: 1;
+    }
+
+    .header,
+    .footer {
+      background-color: var(--_header-bg-color);
+      /* Use background image if passed */
+      background-image: var(--_header-bg-image);
+      color: var(--_header-color);
+      margin: 0;
+      padding-inline: var(--_header-padding);
+      display: flex;
+      align-items: center;
+      gap: var(--_header-padding);
+    }
+
+    .header {
+      grid-area: header;
+      font-family: var(--_header-font);
+      font-weight: var(--_header-font-weight);
+      padding-block: var(--_header-padding);
+      margin: 0;
+    }
+
+    .selected-tab::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: var(--_tab-spacing);
+      right: var(--_tab-spacing);
+      height: var(--_tab-selection-thickness);
+      border-radius: var(--_tab_radius);
+      background-color: var(--color-primary);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: var(--font-size-fluid-1);
+    }
+
+    .tab {
+      padding: var(--_tab-spacing);
+      cursor: pointer;
+      position: relative;
+    }
+
+    ::slotted([slot="header"]) {
+      font-size: var(--_header-font-size);
+      padding: var(--_tab-spacing);
+    }
+
+    .divider {
+      background-color: var(--_header-color, var(--color-text-2));
+      width: var(--border-small);
+      height: 100%;
+    }
+
+    .sidebar {
+      padding: 0;
+      grid-area: sidebar;
+      background-color: var(--_sidebar-bg);
+      color: var(--_sidebar-color);
+    }
+
+    .main {
+      grid-area: content;
+      overflow: scroll;
+    }
+
+    .footer {
+      grid-area: footer;
+    }
+
+    .footer > ::slotted(*) {
+      padding-block: var(--_header-padding);
+    }
+  `;
+  customElements.define("shiny-tabset", Tabset);
+  (() => {
+    if (!Shiny2) {
+      return;
+    }
+    class TabsetInputBinding extends Shiny2.InputBinding {
+      constructor() {
+        super();
+      }
+      find(scope) {
+        return $(scope).find("shiny-tabset");
+      }
+      getValue(el) {
+        return el.current_tab_name();
+      }
+      subscribe(el, callback) {
+        el.onChangeCallback = callback;
+      }
+      unsubscribe(el) {
+        el.onChangeCallback = (x5) => {
+        };
+      }
+    }
+    Shiny2.inputBindings.register(new TabsetInputBinding(), "TabsetInputBinding");
+  })();
+
+  // src/op-tabset.ts
+  var OpTabset = class extends Tabset {
+  };
+  // Styles are scoped to this element: they won't conflict with styles
+  // on the main page or in other components. Styling API can be exposed
+  // via CSS custom properties.
+  OpTabset.styles = i`
+    :host {
+      /* This is where all the variables are defined. If the user wants to
+        update something they just have to replace the main variable and it
+        doesn't cascade down to other elements
+      */
+      --_main-bg: var(--main-bg, var(--surface-1));
+      --_main-color: var(--main-color, var(--text-1));
+
+      --_sidebar-bg: var(--sidebar-bg, var(--surface-3));
+      --_sidebar-color: var(--sidebar-color, var(--_main-color));
+      --_sidebar-border: var(--sidebar-border);
+
+      --_tab-spacing: var(--tab-spacing, var(--size-fluid-1));
+      --_tab-selection-thickness: var(--tab-selection-thickness, var(--size-2));
+      --_tab_radius: var(--tab-radius, var(--radius-3));
+
+      --_header-bg-image: var(--header-bg-image);
+      --_header-bg-color: var(--header-bg-color, var(--surface-3));
+      --_header-color: var(--header-color, var(--_main-color));
+      --_header-font-weight: var(--header-font-weight, var(--font-weight-3));
+      --_header-font-size: var(--header-font-size, var(--font-size-fluid-2));
+      --_header-padding-inline: var(
+        --header-padding-inline,
+        var(--size-fluid-1)
+      );
+      --_header-padding-block: var(--header-padding-block, var(--size-2));
+
+      display: block;
+      height: 100%;
+      background-color: var(--_main-bg);
+      color: var(--_main-color);
+      box-sizing: border-box;
+    }
+
+    .tabset {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "header  header"
+        "sidebar content"
+        "footer  footer";
+      isolation: isolate;
+    }
+
+    .tabset > * {
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .header,
+    .footer,
+    .sidebar {
+      z-index: 2;
+    }
+
+    .main {
+      z-index: 1;
+    }
+
+    .header,
+    .footer {
+      background-color: var(--_header-bg-color);
+      /* Use background image if passed */
+      background-image: var(--_header-bg-image);
+      color: var(--_header-color);
+      margin: 0;
+      /* padding-inline: var(--_header-padding-inline); */
+      display: flex;
+      align-items: center;
+      gap: var(--_header-padding-inline);
+    }
+
+    .header {
+      grid-area: header;
+      font-family: var(--_header-font);
+      font-weight: var(--_header-font-weight);
+      /* padding-block: var(--_header-padding-block); */
+      margin: 0;
+    }
+
+    .selected-tab::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: var(--_tab-spacing);
+      right: var(--_tab-spacing);
+      height: var(--_tab-selection-thickness);
+      border-radius: var(--_tab_radius);
+      background-color: var(--color-primary);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: var(--font-size-fluid-1);
+    }
+
+    .tab {
+      padding: var(--_tab-spacing);
+      cursor: pointer;
+      position: relative;
+    }
+
+    ::slotted([slot="header"]) {
+      font-size: var(--_header-font-size);
+      padding: var(--_tab-spacing);
+    }
+
+    .divider {
+      background-color: var(--_header-color, var(--color-text-2));
+      width: var(--border-small);
+      height: 100%;
+    }
+
+    .sidebar {
+      padding: 0;
+      grid-area: sidebar;
+      background-color: var(--_sidebar-bg);
+      color: var(--_sidebar-color);
+    }
+
+    .main {
+      grid-area: content;
+      overflow: scroll;
+    }
+
+    .footer {
+      grid-area: footer;
+    }
+
+    .footer > ::slotted(*) {
+      padding-block: var(--_header-padding-block);
+      padding-inline: var(--_header-padding-inline);
+    }
+  `;
+  customElements.define("shiny-op-tabset", OpTabset);
+  (() => {
+    if (!Shiny2) {
+      return;
+    }
+    class TabsetInputBinding extends Shiny2.InputBinding {
+      constructor() {
+        super();
+      }
+      find(scope) {
+        return $(scope).find("shiny-op-tabset");
+      }
+      getValue(el) {
+        return el.current_tab_name();
+      }
+      subscribe(el, callback) {
+        el.onChangeCallback = callback;
+      }
+      unsubscribe(el) {
+        el.onChangeCallback = (x5) => {
+        };
+      }
+    }
+    Shiny2.inputBindings.register(new TabsetInputBinding(), "TabsetInputBinding");
+  })();
 
   // src/sidebar.ts
   var Sidebar = class extends s4 {
@@ -18654,258 +19090,6 @@
     }
   `;
   customElements.define("simple-number-output", SimpleNumberOutput);
-
-  // src/tabset.ts
-  var Tabset = class extends s4 {
-    constructor() {
-      super();
-      this.tabs = [];
-      this.onChangeCallback = (x5) => {
-      };
-      this.selected_tab_index = 0;
-    }
-    handleSlotchange(e6) {
-      const slot = e6.target;
-      if (!slot)
-        return;
-      const nodes_in_slot = slot.assignedNodes({ flatten: true });
-      this.tabs = nodes_in_slot.reduce((all, node) => {
-        if (node instanceof HTMLElement && node.tagName.toLowerCase() === "shiny-tab") {
-          const tab_name = node.attributes.getNamedItem("name")?.value;
-          if (!tab_name) {
-            return all;
-          }
-          all.push({ name: tab_name, el: node });
-        }
-        return all;
-      }, []);
-      this.select_tab();
-    }
-    select_tab(tab_index = this.selected_tab_index) {
-      this.selected_tab_index = tab_index;
-      this.tabs.forEach((tab, i5) => {
-        const is_selected = i5 === tab_index;
-        const currently_hidden = tab.el.style.display === "none";
-        const hiding_tab = !currently_hidden && !is_selected;
-        if (hiding_tab) {
-          $(tab.el).trigger("hidden");
-          tab.el.inert = true;
-          tab.el.style.display = "none";
-        }
-        const showing_tab = currently_hidden && is_selected;
-        if (showing_tab) {
-          $(tab.el).trigger("shown");
-          tab.el.inert = false;
-          tab.el.style.display = "block";
-        }
-      });
-      this.onChangeCallback(true);
-    }
-    current_tab_name() {
-      return this.tabs[this.selected_tab_index].name;
-    }
-    render() {
-      return x`
-      <div class="tabset">
-        <div class="header">
-          <slot name="header"></slot>
-          <div class="divider"></div>
-          <div class="tabs">
-            ${this.tabs.map(
-        (tab, i5) => x`<div
-                  class="tab ${i5 === this.selected_tab_index ? "selected-tab" : ""}"
-                  @click=${() => this.select_tab(i5)}
-                >
-                  ${tab.name}
-                </div>`
-      )}
-          </div>
-        </div>
-        <div class="sidebar">
-          <slot name="sidebar"></slot>
-        </div>
-        <div class="main">
-          <slot @slotchange=${this.handleSlotchange}></slot>
-        </div>
-        <div class="footer">
-          <slot name="footer"></slot>
-        </div>
-      </div>
-    `;
-    }
-  };
-  Tabset.properties = {
-    tabs: {},
-    selected_tab_index: { type: Number }
-  };
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
-  Tabset.styles = i`
-    :host {
-      /* This is where all the variables are defined. If the user wants to
-        update something they just have to replace the main variable and it
-        doesn't cascade down to other elements
-      */
-      --_font: var(--font-family, sans-serif);
-      --_main-bg: var(--main-bg, var(--color-bg));
-      --_main-color: var(--main-color, var(--color-text));
-
-      --_sidebar-bg: var(--sidebar-bg, var(--color-bg-1));
-      --_sidebar-color: var(--sidebar-color, var(--color-text-1));
-      --_sidebar-border: var(--sidebar-border, var(--border-small));
-
-      --_tab-spacing: var(--tab-spacing, var(--size-2));
-      --_tab-selection-thickness: var(
-        --tab-selection-thickness,
-        var(--border-medium)
-      );
-      --_tab_radius: var(--tab-radius, var(--radius-small));
-
-      --_header-bg-color: var(--header-bg-color, var(--color-bg-2));
-      --_header-bg-image: var(--header-bg-image);
-      --_header-color: var(--header-color);
-      --_header-font: var(--header-font, var(--font-sans));
-      --_header-font-weight: var(--header-font-weight, var(--font-weight-3));
-      --_header-font-size: var(--header-font-size, var(--font-size-fluid-1));
-      --_header-padding: var(--header-padding, var(--size-fluid-1));
-
-      display: block;
-      font-family: var(--_font);
-      height: 100%;
-      background-color: var(--_main-bg);
-      color: var(--_main-color);
-      box-sizing: border-box;
-    }
-
-    .tabset {
-      height: 100%;
-      width: 100%;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      grid-template-rows: auto 1fr auto;
-      grid-template-areas:
-        "header  header"
-        "sidebar content"
-        "footer  footer";
-      isolation: isolate;
-    }
-
-    .tabset > * {
-      min-width: 0;
-      min-height: 0;
-    }
-
-    .header,
-    .footer,
-    .sidebar {
-      z-index: 2;
-    }
-
-    .main {
-      z-index: 1;
-    }
-
-    .header,
-    .footer {
-      background-color: var(--_header-bg-color);
-      /* Use background image if passed */
-      background-image: var(--_header-bg-image);
-      color: var(--_header-color);
-      margin: 0;
-      padding-inline: var(--_header-padding);
-      display: flex;
-      align-items: center;
-      gap: var(--_header-padding);
-    }
-
-    .header {
-      grid-area: header;
-      font-family: var(--_header-font);
-      font-weight: var(--_header-font-weight);
-      padding-block: var(--_header-padding);
-      margin: 0;
-    }
-
-    .selected-tab::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: var(--_tab-spacing);
-      right: var(--_tab-spacing);
-      height: var(--_tab-selection-thickness);
-      border-radius: var(--_tab_radius);
-      background-color: var(--color-primary);
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      font-size: var(--font-size-fluid-1);
-    }
-
-    .tab {
-      padding: var(--_tab-spacing);
-      cursor: pointer;
-      position: relative;
-    }
-
-    ::slotted([slot="header"]) {
-      font-size: var(--_header-font-size);
-      padding: var(--_tab-spacing);
-    }
-
-    .divider {
-      background-color: var(--_header-color, var(--color-text-2));
-      width: var(--border-small);
-      height: 100%;
-    }
-
-    .sidebar {
-      padding: 0;
-      grid-area: sidebar;
-      background-color: var(--_sidebar-bg);
-      color: var(--_sidebar-color);
-    }
-
-    .main {
-      grid-area: content;
-      overflow: scroll;
-    }
-
-    .footer {
-      grid-area: footer;
-    }
-
-    .footer > ::slotted(*) {
-      padding-block: var(--_header-padding);
-    }
-  `;
-  customElements.define("shiny-tabset", Tabset);
-  (() => {
-    if (!Shiny2) {
-      return;
-    }
-    class TabsetInputBinding extends Shiny2.InputBinding {
-      constructor() {
-        super();
-      }
-      find(scope) {
-        return $(scope).find("shiny-tabset");
-      }
-      getValue(el) {
-        return el.current_tab_name();
-      }
-      subscribe(el, callback) {
-        el.onChangeCallback = callback;
-      }
-      unsubscribe(el) {
-        el.onChangeCallback = (x5) => {
-        };
-      }
-    }
-    Shiny2.inputBindings.register(new TabsetInputBinding(), "TabsetInputBinding");
-  })();
 
   // src/sl-tabset.ts
   var SlTabset = class extends Tabset {
@@ -19533,7 +19717,7 @@
   customElements.define("tanstack-table", TanstackTable);
 
   // src/theme-chooser.ts
-  var themes = ["default", "purple", "green", "wild", "dark"];
+  var themes = ["default", "light", "dark", "dim", "grape"];
   var ThemeChooser = class extends s4 {
     constructor() {
       super(...arguments);
