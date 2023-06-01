@@ -186,6 +186,7 @@ export class SimpleNumberInput extends LitElement {
     return html`
       <div class="wrapper ${this.invalid ? "invalid" : null}">
         <button
+          part="minus-button"
           class="plusminus left"
           @mousedown=${this.handle_minus}
           @keydown=${(e: KeyboardEvent) => {
@@ -194,12 +195,14 @@ export class SimpleNumberInput extends LitElement {
         >
           −</button
         ><input
+          part="input"
           value=${this.value}
           min=${this.min}
           max=${this.max}
           @input=${this.handle_change}
           type="number"
         /><button
+          part="plus-button"
           class="plusminus right"
           @mousedown=${this.handle_plus}
           @keydown=${(e: KeyboardEvent) => {

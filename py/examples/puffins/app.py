@@ -26,6 +26,27 @@ species.sort()
 
 app_css = """
 :not(:defined) { visibility: hidden;}
+.parts-styled-input {
+    --number-input-border-width: 0;
+}
+.parts-styled-input::part(input) {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-blob-3);
+}
+.parts-styled-input::part(input),
+.parts-styled-input::part(plus-button),
+.parts-styled-input::part(minus-button) {
+    background-color: var(--color-primary);
+    color: var(--gray-1);
+    box-shadow: var(--shadow-4);
+    border: none;
+}
+.parts-styled-input::part(plus-button) {
+    border-radius: var(--radius-blob-1);
+}
+.parts-styled-input::part(minus-button) {
+    border-radius: var(--radius-blob-2);
+}
 
 body:has([choice="purple"]) {
    --color-bg: var(--purple-1);
@@ -105,12 +126,36 @@ purple_styles = """
 """
 
 
-w95_styles = """
---number-input-bg-color: var(--gray-3);
---number-input-padding-inline: var(--size-2);
---number-input-border-radius: 0;
---number-input-font-size: var(--font-size-0);
---number-input-plusminus-border: 1px solid black;
+parts_styled_style = """
+.parts-styled-input {
+    --number-input-border-width: 0;
+}
+.parts-styled-input::part(input) {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-blob-3);
+}
+.parts-styled-input::part(input),
+.parts-styled-input::part(plus-button),
+.parts-styled-input::part(minus-button) {
+    background-color: var(--color-primary);
+    color: var(--gray-1);
+    box-shadow: var(--shadow-4);
+    border: none;
+}
+.parts-styled-input::part(plus-button) {
+    border-radius: var(--radius-blob-1);
+}
+.parts-styled-input::part(minus-button) {
+    border-radius: var(--radius-blob-2);
+}
+"""
+
+about_puffins_blurb = """
+Sure, penguins are charismatic with their tuxedo-patterned outfits, but have you ever
+considered puffins? Penguins may monopolize the spotlight in nature documentaries, but
+it's high time the humble puffin received some love. While penguins waddle aimlessly on
+ice, puffins zip through the air at up to 55 mph and dive underwater in pursuit of
+dinner.
 """
 
 
@@ -174,9 +219,10 @@ app_ui = sc.page(
                 ),
                 sc.grid_item(
                     ui.h3("Windows 95"),
-                    show_theme(w95_styles),
-                    sc.simple_number_input(id="purple_num_in", min=0, max=100),
-                    style=w95_styles,
+                    show_theme(parts_styled_style),
+                    sc.simple_number_input(
+                        id="purple_num_in", min=0, max=100, class_="parts-styled-input"
+                    ),
                 ),
                 nRows=2,
                 nCols=2,
@@ -184,14 +230,13 @@ app_ui = sc.page(
             name="Number Input",
         ),
         sc.tab(
+            # Make a grid with 4 rows and 3 columns
             sc.grid(
-                sc.grid_item(
-                    ui.p(
-                        "Sure, penguins are charismatic with their tuxedo-patterned outfits, but have you ever considered puffins? Penguins may monopolize the spotlight in nature documentaries, but it's high time the humble puffin received some love. While penguins waddle aimlessly on ice, puffins zip through the air at up to 55 mph and dive underwater in pursuit of dinner."
-                    ),
-                    width=2,
-                ),
+                # Blurb takes up 2 of 3 columns
+                sc.grid_item(ui.p(about_puffins_blurb), width=2),
+                # Value boxes are 4 rows tall
                 ui.output_ui("value_boxes", container=tall_item),
+                # Scatter plot is 3 rows tall and 2 columns wide
                 sc.grid_item(
                     x.ui.output_plot("scatter", fill=True),
                     width=2,

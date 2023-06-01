@@ -20428,6 +20428,7 @@
 =======
 >>>>>>> Update simple number input to use shoelace tokens and have a simpler dom structure
         <button
+          part="minus-button"
           class="plusminus left"
           @mousedown=${this.handle_minus}
           @keydown=${(e6) => {
@@ -20437,12 +20438,14 @@
         >
           −</button
         ><input
+          part="input"
           value=${this.value}
           min=${this.min}
           max=${this.max}
           @input=${this.handle_change}
           type="number"
         /><button
+          part="plus-button"
           class="plusminus right"
           @mousedown=${this.handle_plus}
           @keydown=${(e6) => {
