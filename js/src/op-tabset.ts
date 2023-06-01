@@ -1,4 +1,4 @@
-import { css } from "lit";
+import { css, html } from "lit";
 import { Shiny } from "./OptionalShiny";
 import { theme_primatives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
@@ -26,14 +26,14 @@ export class OpTabset extends Tabset {
 
       --_header-padding-inline: var(
         --header-padding-inline,
-        var(--size-fluid-1)
+        var(--size-fluid-3)
       );
-      --_header-padding-block: var(--header-padding-block, var(--size-2));
+      --_header-padding-block: var(--header-padding-block, var(--size-fluid-3));
 
       display: block;
       height: 100%;
       box-sizing: border-box;
-      ${theme_primatives.surface_1}
+      ${theme_primatives.surface_3}
     }
 
     .tabset {
@@ -43,9 +43,9 @@ export class OpTabset extends Tabset {
       grid-template-columns: auto 1fr;
       grid-template-rows: auto 1fr auto;
       grid-template-areas:
-        "header  header"
+        "sidebar header"
         "sidebar content"
-        "footer  footer";
+        "sidebar footer";
       isolation: isolate;
     }
 
@@ -66,7 +66,6 @@ export class OpTabset extends Tabset {
 
     .header,
     .footer {
-      ${theme_primatives.surface_3}
       /* Use background image if passed */
       background-image: var(--header-bg-image);
       margin: 0;
@@ -80,46 +79,42 @@ export class OpTabset extends Tabset {
       font-family: var(--_header-font);
       font-weight: var(--_header-font-weight);
       margin: 0;
-    }
-
-    .selected-tab::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: var(--_tab-spacing);
-      right: var(--_tab-spacing);
-      height: var(--_tab-selection-thickness);
-      border-radius: var(--_tab_radius);
-      background-color: var(--brand);
+      position: relative;
+      padding-inline: var(--_header-padding-inline);
+      padding-block-start: var(--_header-padding-block);
     }
 
     .tabs {
+      --container-radius: var(--radius-4);
+      --container-pad: var(--size-1);
+      --child-radius: calc(var(--container-radius) - var(--container-pad));
+      border-radius: var(--container-radius);
+      padding: var(--container-pad);
+
       display: flex;
+      align-items: center;
+      height: var(--size-7);
       flex-wrap: wrap;
-      font-size: var(--font-size-fluid-1);
+      ${theme_primatives.surface_4}
     }
 
     .tab {
-      padding: var(--_tab-spacing);
       cursor: pointer;
       position: relative;
+      padding-block: var(--size-1);
+      padding-inline: var(--size-5);
+      border-radius: var(--child-radius);
+      color: var(--text-2);
     }
 
-    ::slotted([slot="header"]) {
-      font-size: var(--header-font-size, var(--font-size-fluid-2));
-      padding: var(--_tab-spacing);
-    }
-
-    .divider {
-      background-color: var(--divider-color, var(--text-2));
-      width: var(--border-small);
-      height: 100%;
+    .selected-tab {
+      ${theme_primatives.surface_1}
     }
 
     .sidebar {
       padding: 0;
       grid-area: sidebar;
-      ${theme_primatives.surface_2}
+      ${theme_primatives.surface_1}
     }
 
     .main {
@@ -132,10 +127,49 @@ export class OpTabset extends Tabset {
     }
 
     .footer > ::slotted(*) {
-      padding-block: var(--_header-padding-block);
+      padding-block-end: var(--_header-padding-block);
       padding-inline: var(--_header-padding-inline);
     }
+
+    .header > ::slotted(div) {
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-7);
+      margin: 0;
+      padding: 0;
+    }
   `;
+
+  render() {
+    return html`
+      <div class="tabset">
+        <div class="header">
+          <slot name="header"></slot>
+          <div class="tabs">
+            ${this.tabs.map(
+              (tab, i) =>
+                html`<div
+                  class="tab ${i === this.selected_tab_index
+                    ? "selected-tab"
+                    : ""}"
+                  @click=${() => this.select_tab(i)}
+                >
+                  ${tab.name}
+                </div>`
+            )}
+          </div>
+        </div>
+        <div class="sidebar">
+          <slot name="sidebar"></slot>
+        </div>
+        <div class="main">
+          <slot @slotchange=${this.handleSlotchange}></slot>
+        </div>
+        <div class="footer">
+          <slot name="footer"></slot>
+        </div>
+      </div>
+    `;
+  }
 }
 
 customElements.define("shiny-op-tabset", OpTabset);

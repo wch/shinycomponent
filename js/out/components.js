@@ -5588,12 +5588,41 @@
   null == n4 || n4({ LitElement: s4 });
   (null !== (o4 = globalThis.litElementVersions) && void 0 !== o4 ? o4 : globalThis.litElementVersions = []).push("3.3.2");
 
+  // src/styles/op-classes.ts
+  var surface_1 = i`
+  background-color: var(--surface-1);
+  color: var(--text-2);
+`;
+  var theme_primatives = {
+    brand: i`
+    color: var(--brand);
+    background-color: var(--brand);
+  `,
+    surface_1: i`
+    background-color: var(--surface-1);
+    color: var(--text-2);
+  `,
+    surface_2: i`
+    background-color: var(--surface-2);
+    color: var(--text-2);
+  `,
+    surface_3: i`
+    background-color: var(--surface-3);
+    color: var(--text-1);
+  `,
+    surface_4: i`
+    background-color: var(--surface-4);
+    color: var(--text-1);
+  `
+  };
+
   // src/GridItem.ts
   var GridItem = class extends s4 {
     constructor() {
       super(...arguments);
       this.width = 1;
       this.height = 1;
+      this.shadowed = false;
     }
     connectedCallback() {
       super.connectedCallback();
@@ -5608,7 +5637,8 @@
   };
   GridItem.properties = {
     width: { type: Number },
-    height: { type: Number }
+    height: { type: Number },
+    shadowed: { type: Boolean }
   };
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -5619,10 +5649,16 @@
       display: flex;
       flex-direction: column;
 
-      /* background-color: pink; */
-      background-color: var(--item-bg-color, var(--surface-2));
+      ${theme_primatives.surface_1}
 
       border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+
+      border-radius: var(--item-radius, var(--radius-3));
+      padding: var(--item-padding, var(--size-3));
+      gap: var(--item-padding, var(--size-3));
+    }
+
+    :host([shadowed]) {
       box-shadow: 0 1rem 0.5rem -0.5rem;
       box-shadow: 0 2.8px 2.2px
           hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
@@ -5635,10 +5671,6 @@
         0 41.8px 33.4px
           hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
         0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
-
-      border-radius: var(--item-radius, var(--radius-3));
-      padding: var(--item-padding, var(--size-3));
-      gap: var(--item-padding, var(--size-3));
     }
 
     ::slotted(*) {
@@ -18294,7 +18326,8 @@
       display: grid;
       grid-template-columns: repeat(var(--nCols), 1fr);
       grid-template-rows: repeat(var(--nRows), 1fr);
-      gap: var(--grid-gap, var(--size-3));
+      gap: var(--grid-gap, var(--size-fluid-2));
+      padding: var(--grid-padding, var(--size-fluid-2));
       height: 100%;
     }
     * {
@@ -18307,34 +18340,6 @@
     }
   `;
   customElements.define("shiny-grid", Grid);
-
-  // src/styles/op-classes.ts
-  var surface_1 = i`
-  background-color: var(--surface-1);
-  color: var(--text-2);
-`;
-  var theme_primatives = {
-    brand: i`
-    color: var(--brand);
-    background-color: var(--brand);
-  `,
-    surface_1: i`
-    background-color: var(--surface-1);
-    color: var(--text-2);
-  `,
-    surface_2: i`
-    background-color: var(--surface-2);
-    color: var(--text-2);
-  `,
-    surface_3: i`
-    background-color: var(--surface-3);
-    color: var(--text-1);
-  `,
-    surface_4: i`
-    background-color: var(--surface-4);
-    color: var(--text-1);
-  `
-  };
 
   // src/tabset.ts
   var Tabset = class extends s4 {
@@ -18590,6 +18595,34 @@
 
   // src/op-tabset.ts
   var OpTabset = class extends Tabset {
+    render() {
+      return x`
+      <div class="tabset">
+        <div class="header">
+          <slot name="header"></slot>
+          <div class="tabs">
+            ${this.tabs.map(
+        (tab, i5) => x`<div
+                  class="tab ${i5 === this.selected_tab_index ? "selected-tab" : ""}"
+                  @click=${() => this.select_tab(i5)}
+                >
+                  ${tab.name}
+                </div>`
+      )}
+          </div>
+        </div>
+        <div class="sidebar">
+          <slot name="sidebar"></slot>
+        </div>
+        <div class="main">
+          <slot @slotchange=${this.handleSlotchange}></slot>
+        </div>
+        <div class="footer">
+          <slot name="footer"></slot>
+        </div>
+      </div>
+    `;
+    }
   };
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -18607,14 +18640,14 @@
 
       --_header-padding-inline: var(
         --header-padding-inline,
-        var(--size-fluid-1)
+        var(--size-fluid-3)
       );
-      --_header-padding-block: var(--header-padding-block, var(--size-2));
+      --_header-padding-block: var(--header-padding-block, var(--size-fluid-3));
 
       display: block;
       height: 100%;
       box-sizing: border-box;
-      ${theme_primatives.surface_1}
+      ${theme_primatives.surface_3}
     }
 
     .tabset {
@@ -18624,9 +18657,9 @@
       grid-template-columns: auto 1fr;
       grid-template-rows: auto 1fr auto;
       grid-template-areas:
-        "header  header"
+        "sidebar header"
         "sidebar content"
-        "footer  footer";
+        "sidebar footer";
       isolation: isolate;
     }
 
@@ -18647,7 +18680,6 @@
 
     .header,
     .footer {
-      ${theme_primatives.surface_3}
       /* Use background image if passed */
       background-image: var(--header-bg-image);
       margin: 0;
@@ -18661,46 +18693,42 @@
       font-family: var(--_header-font);
       font-weight: var(--_header-font-weight);
       margin: 0;
-    }
-
-    .selected-tab::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: var(--_tab-spacing);
-      right: var(--_tab-spacing);
-      height: var(--_tab-selection-thickness);
-      border-radius: var(--_tab_radius);
-      background-color: var(--brand);
+      position: relative;
+      padding-inline: var(--_header-padding-inline);
+      padding-block-start: var(--_header-padding-block);
     }
 
     .tabs {
+      --container-radius: var(--radius-4);
+      --container-pad: var(--size-1);
+      --child-radius: calc(var(--container-radius) - var(--container-pad));
+      border-radius: var(--container-radius);
+      padding: var(--container-pad);
+
       display: flex;
+      align-items: center;
+      height: var(--size-7);
       flex-wrap: wrap;
-      font-size: var(--font-size-fluid-1);
+      ${theme_primatives.surface_4}
     }
 
     .tab {
-      padding: var(--_tab-spacing);
       cursor: pointer;
       position: relative;
+      padding-block: var(--size-1);
+      padding-inline: var(--size-5);
+      border-radius: var(--child-radius);
+      color: var(--text-2);
     }
 
-    ::slotted([slot="header"]) {
-      font-size: var(--header-font-size, var(--font-size-fluid-2));
-      padding: var(--_tab-spacing);
-    }
-
-    .divider {
-      background-color: var(--divider-color, var(--text-2));
-      width: var(--border-small);
-      height: 100%;
+    .selected-tab {
+      ${theme_primatives.surface_1}
     }
 
     .sidebar {
       padding: 0;
       grid-area: sidebar;
-      ${theme_primatives.surface_2}
+      ${theme_primatives.surface_1}
     }
 
     .main {
@@ -18713,8 +18741,15 @@
     }
 
     .footer > ::slotted(*) {
-      padding-block: var(--_header-padding-block);
+      padding-block-end: var(--_header-padding-block);
       padding-inline: var(--_header-padding-inline);
+    }
+
+    .header > ::slotted(div) {
+      font-size: var(--font-size-fluid-1);
+      font-weight: var(--font-weight-7);
+      margin: 0;
+      padding: 0;
     }
   `;
   customElements.define("shiny-op-tabset", OpTabset);
@@ -18743,45 +18778,137 @@
     Shiny2.inputBindings.register(new TabsetInputBinding(), "TabsetInputBinding");
   })();
 
+  // src/posit-logo.ts
+  var PositLogo = class extends s4 {
+    constructor() {
+      super(...arguments);
+      this.width = 150;
+      this.height = 40;
+    }
+    render() {
+      return x`
+      <svg
+        width="${this.width}"
+        height="${this.height}"
+        viewBox="0 0 159 41"
+        fill="none"
+      >
+        <path
+          d="m10.043 24.362 1.855.83 8.577-3.625-1.909-.808-8.523 3.603Z"
+          fill="#447099"
+        ></path>
+        <path
+          d="m12.034 16.384-1.874.821 8.404 3.555 1.909-.808-8.44-3.568Z"
+          fill="#447099"
+        ></path>
+        <path
+          d="m32.67 16.41-1.873-.824-8.474-3.719-1.85-.812L0 2.074v10.836l8.278 3.5 1.873-.822-8.657-3.66V4.353l17.13 7.515 1.849.814 8.44 3.703 1.873.821 5.973 2.622v1.944l-5.882 2.58-1.873.823-8.662 3.8-1.836.808-17.012 7.464v-7.655l8.53-3.607-1.854-.828L0 28.61v10.916L20.337 30.6l1.836-.805 8.716-3.826 1.873-.821 5.491-2.41v-3.88l-5.582-2.45Z"
+          fill="#447099"
+        ></path>
+        <path
+          d="m22.38 20.76 8.404-3.555-1.874-.82-8.44 3.567-1.907.807 1.908.808L29 25.174l1.874-.823-8.496-3.591ZM39.45 29.591v7.94l-17.278-7.737-1.836.807 20.611 9.227V28.61l-8.186-3.461-1.874.821 8.564 3.622ZM40.948 2.073l-20.475 8.983 1.85.811 17.129-7.515v7.576l-8.655 3.658 1.873.824 8.278-3.5V2.072Z"
+          fill="#ED642F"
+        ></path>
+        <path
+          d="m10.04 24.362-5.852-2.59v-1.945l5.97-2.622 1.874-.82 8.44-3.706-1.85-.812-8.473 3.72-1.875.823-5.583 2.449v3.88l5.478 2.416 1.854.83 8.482 3.797 1.835-.807-8.446-3.782-1.854-.83Z"
+          fill="#ED642F"
+        ></path>
+        <path
+          d="m10.043 24.362 1.855.83 8.577-3.625-1.909-.808-8.523 3.603Z"
+          fill="#447099"
+        ></path>
+        <path
+          d="m12.034 16.384-1.874.821 8.404 3.555 1.909-.808-8.44-3.568Z"
+          fill="#447099"
+        ></path>
+        <path
+          d="m32.67 16.41-1.873-.824-8.474-3.719-1.85-.812L0 2.074v10.836l8.278 3.5 1.873-.822-8.657-3.66V4.353l17.13 7.515 1.849.814 8.44 3.703 1.873.821 5.973 2.622v1.944l-5.882 2.58-1.873.823-8.662 3.8-1.836.808-17.012 7.464v-7.655l8.53-3.607-1.854-.828L0 28.61v10.916L20.337 30.6l1.836-.805 8.716-3.826 1.873-.821 5.491-2.41v-3.88l-5.582-2.45Z"
+          fill="#447099"
+        ></path>
+        <path
+          d="m22.38 20.76 8.404-3.555-1.874-.82-8.44 3.567-1.907.807 1.908.808L29 25.174l1.874-.823-8.496-3.591ZM39.45 29.591v7.94l-17.278-7.737-1.836.807 20.611 9.227V28.61l-8.186-3.461-1.874.821 8.564 3.622ZM40.948 2.073l-20.475 8.983 1.85.811 17.129-7.515v7.576l-8.655 3.658 1.873.824 8.278-3.5V2.072Z"
+          fill="#ED642F"
+        ></path>
+        <path
+          d="m10.04 24.362-5.852-2.59v-1.945l5.97-2.622 1.874-.82 8.44-3.706-1.85-.812-8.473 3.72-1.875.823-5.583 2.449v3.88l5.478 2.416 1.854.83 8.482 3.797 1.835-.807-8.446-3.782-1.854-.83Z"
+          fill="#ED642F"
+        ></path>
+        <path
+          class="masked-path"
+          d="M87.818 9.225c7.25 0 12.361 4.903 12.361 11.713S95.069 32.61 87.818 32.61c-7.252 0-12.275-4.903-12.275-11.672 0-6.768 5.023-11.713 12.275-11.713Zm0 17.528c3.451 0 5.81-2.17 5.81-5.815 0-3.644-2.62-5.856-5.81-5.856-3.19 0-5.723 2.125-5.723 5.856 0 3.299 2.316 5.815 5.723 5.815ZM128.042 0c2.053 0 3.538 1.46 3.538 3.389 0 2.026-1.485 3.484-3.538 3.484-2.227 0-3.583-1.458-3.583-3.484S125.944 0 128.042 0Zm-3.19 9.65h6.335v22.563h-6.335V9.65ZM134.045 9.65h4.325V4.4h6.334v5.25h6.845v5.857h-6.845v7.332c0 2.733.611 3.775 2.316 3.775 1.485 0 2.665-.52 3.887-1.475l3.227 3.973c-1.574 1.65-4.625 3.359-7.725 3.359-4.761 0-8.037-2.561-8.037-7.767v-9.199h-4.325V9.648l-.002.003ZM155.519 11.998h-.504v-1.942h-.644v-.417h1.791v.417h-.643v1.942ZM157.466 11.998l-.572-1.85h-.014c.021.377.031.629.031.754v1.096h-.45V9.639h.686l.562 1.803h.009l.595-1.803h.686v2.359h-.468V10.88c0-.053 0-.114.002-.181 0-.07.01-.251.021-.55h-.014l-.611 1.848h-.463ZM121.573 12.41c-1.553-1.48-4.773-3.392-9.346-3.392-6.512 0-10.343 2.675-10.343 7.062 0 6.808 10.917 6.973 13.495 8.476.466.258.742.618.576 1.142-.485 1.51-6.603 2.247-11.116-2.087l-3.681 4.36c1.639 2.155 5.255 4.686 11.121 4.686 5.449 0 10.16-2.193 10.16-7.192 0-4.482-4.203-6.285-7.94-7.34-1.064-.291-2.092-.531-2.981-.768-1.473-.375-3.447-.796-3.131-1.889.574-1.986 7.142-.742 9.439 1.347l3.754-4.403-.007-.003ZM50.88 9.704h6.344v1.175c1.18-1.087 3.326-1.652 5.077-1.652 6.913 0 11.203 4.738 11.203 11.432S69.04 32.654 62.125 32.654c-2.187 0-4.2-.346-4.9-1.13V41H50.88V9.704Zm6.344 7.955v7.215c.7 1.042 2.232 1.912 4.026 1.912 3.545 0 5.688-2.217 5.688-5.65 0-3.998-2.012-6.04-5.34-6.04-2.1 0-3.542 1.041-4.374 2.563Z"
+          fill="#404041"
+        ></path>
+      </svg>
+    `;
+    }
+  };
+  PositLogo.properties = {
+    width: { type: Number },
+    height: { type: Number }
+  };
+  PositLogo.styles = i`
+    input {
+      border-radius: var(--radius-1);
+    }
+  `;
+  customElements.define("posit-logo", PositLogo);
+
   // src/sidebar.ts
   var Sidebar = class extends s4 {
     constructor() {
       super();
       this.is_open = true;
+      this.set_open();
       set_el_attr(this, "slot", "sidebar");
     }
     render() {
+      const open_class = this.is_open ? "open" : "closed";
       return x`
-      <div class="sidebar ${this.is_open ? "open" : "closed"}">
+      <div class="sidebar ${open_class}">
         <slot></slot>
       </div>
       <div
         @click=${this.toggle_open}
         title=${this.is_open ? "Close sidebar" : "Open sidebar"}
-        class="open-toggle"
+        class="open-toggle ${open_class}"
       >
-        ◀︎
+        <div class="toggle-icon">❮</div>
       </div>
     `;
     }
+    set_open() {
+      this.is_open = true;
+      this.classList.add("open");
+    }
+    set_closed() {
+      this.is_open = false;
+      this.classList.remove("open");
+    }
     toggle_open() {
-      this.is_open = !this.is_open;
+      if (this.is_open) {
+        this.set_closed();
+      } else {
+        this.set_open();
+      }
     }
   };
   Sidebar.properties = {
-    is_open: {}
+    is_open: { type: Boolean, reflect: true }
   };
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
   // via CSS custom properties.
   Sidebar.styles = i`
     :host {
-      display: block;
       font-family: var(--font-family, sans-serif);
-      --transition: 0.4s var(--ease-3);
-      --toggle-w: var(--size-3);
+      --transition: 0.3s var(--ease-3);
+      --padding: var(--size-4);
+
+      --w: var(--sidebar-width, 250px);
       height: 100%;
       position: relative;
+      display: grid;
+      grid-template-columns: auto auto;
     }
 
     * {
@@ -18791,19 +18918,21 @@
     .sidebar {
       height: 100%;
       overflow: scroll;
-      padding: var(--size-fluid-1);
-      --w: var(--sidebar-width, 250px);
       margin: 0;
       transition: width var(--transition), padding var(--transition);
+
+      padding-block: var(--size-fluid-1);
+      padding-inline-start: var(--padding);
+      /* This is given by the open-toggle div */
+      padding-inline-end: 0;
     }
 
     .sidebar.open {
       width: var(--w);
     }
-
-    .sidebar.closed {
+    .sidebar:not(.open) {
       width: 0;
-      padding: 0;
+      padding-inline-start: 0;
     }
 
     .sidebar.closed ::slotted(*) {
@@ -18814,22 +18943,29 @@
       min-width: 0;
     }
 
-    .sidebar.closed + .open-toggle {
-      transform: translateX(var(--toggle-w)) scaleX(-1);
+    .open-toggle .toggle-icon {
       transition: transform var(--transition);
     }
 
+    .open-toggle.closed .toggle-icon {
+      transform: scaleX(1);
+    }
+
+    .open-toggle.open .toggle-icon {
+      transform: scaleX(-1);
+    }
+
     .open-toggle {
-      position: absolute;
-      top: var(--size-1);
+      /* background-color: var(--surface-4); */
       font-size: var(--font-size-3);
-      border-radius: var(--radius-2) 0 0 var(--radius-2);
-      right: 0;
-      width: var(--toggle-w);
-      height: auto;
-      display: grid;
+      width: var(--padding);
+      height: 100%;
       cursor: pointer;
       color: var(--brand, var(--color-action));
+    }
+
+    .toggle-icon {
+      text-align: center;
     }
   `;
   customElements.define("shiny-sidebar", Sidebar);
@@ -19440,7 +19576,7 @@
       min-height: 0;
       width: 100%;
       min-width: 0;
-      padding: var(--size-fluid-1);
+      padding: var(--tab-padding);
     }
   `;
   customElements.define("shiny-tab", Tab);

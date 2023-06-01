@@ -1,12 +1,15 @@
 import { LitElement, css, html } from "lit";
+import { theme_primatives } from "./styles/op-classes";
 
 export class GridItem extends LitElement {
   width: Number = 1;
   height: Number = 1;
+  shadowed: Boolean = false;
 
   static properties = {
     width: { type: Number },
     height: { type: Number },
+    shadowed: { type: Boolean },
   };
 
   // Styles are scoped to this element: they won't conflict with styles
@@ -18,10 +21,16 @@ export class GridItem extends LitElement {
       display: flex;
       flex-direction: column;
 
-      /* background-color: pink; */
-      background-color: var(--item-bg-color, var(--surface-2));
+      ${theme_primatives.surface_1}
 
       border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+
+      border-radius: var(--item-radius, var(--radius-3));
+      padding: var(--item-padding, var(--size-3));
+      gap: var(--item-padding, var(--size-3));
+    }
+
+    :host([shadowed]) {
       box-shadow: 0 1rem 0.5rem -0.5rem;
       box-shadow: 0 2.8px 2.2px
           hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
@@ -34,10 +43,6 @@ export class GridItem extends LitElement {
         0 41.8px 33.4px
           hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
         0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
-
-      border-radius: var(--item-radius, var(--radius-3));
-      padding: var(--item-padding, var(--size-3));
-      gap: var(--item-padding, var(--size-3));
     }
 
     ::slotted(*) {

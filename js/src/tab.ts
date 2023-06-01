@@ -18,7 +18,7 @@ export class Tab extends LitElement {
       min-height: 0;
       width: 100%;
       min-width: 0;
-      padding: var(--size-fluid-1);
+      padding: var(--tab-padding);
     }
   `;
 

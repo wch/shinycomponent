@@ -28,6 +28,7 @@ app_css = """
 :not(:defined) { visibility: hidden;}
 .parts-styled-input {
     --number-input-border-width: 0;
+    --number-input-bg-color: transparent;
 }
 .parts-styled-input::part(input) {
     border: 1px solid var(--color-primary);

@@ -2,10 +2,10 @@ import { LitElement, css, html } from "lit";
 import { set_el_attr } from "./set_el_attr";
 
 export class Sidebar extends LitElement {
-  is_open: boolean;
+  is_open: boolean = true;
 
   static properties = {
-    is_open: {},
+    is_open: { type: Boolean, reflect: true },
   };
 
   // Styles are scoped to this element: they won't conflict with styles
@@ -13,12 +13,15 @@ export class Sidebar extends LitElement {
   // via CSS custom properties.
   static styles = css`
     :host {
-      display: block;
       font-family: var(--font-family, sans-serif);
-      --transition: 0.4s var(--ease-3);
-      --toggle-w: var(--size-3);
+      --transition: 0.3s var(--ease-3);
+      --padding: var(--size-4);
+
+      --w: var(--sidebar-width, 250px);
       height: 100%;
       position: relative;
+      display: grid;
+      grid-template-columns: auto auto;
     }
 
     * {
@@ -28,19 +31,21 @@ export class Sidebar extends LitElement {
     .sidebar {
       height: 100%;
       overflow: scroll;
-      padding: var(--size-fluid-1);
-      --w: var(--sidebar-width, 250px);
       margin: 0;
       transition: width var(--transition), padding var(--transition);
+
+      padding-block: var(--size-fluid-1);
+      padding-inline-start: var(--padding);
+      /* This is given by the open-toggle div */
+      padding-inline-end: 0;
     }
 
     .sidebar.open {
       width: var(--w);
     }
-
-    .sidebar.closed {
+    .sidebar:not(.open) {
       width: 0;
-      padding: 0;
+      padding-inline-start: 0;
     }
 
     .sidebar.closed ::slotted(*) {
@@ -51,22 +56,29 @@ export class Sidebar extends LitElement {
       min-width: 0;
     }
 
-    .sidebar.closed + .open-toggle {
-      transform: translateX(var(--toggle-w)) scaleX(-1);
+    .open-toggle .toggle-icon {
       transition: transform var(--transition);
     }
 
+    .open-toggle.closed .toggle-icon {
+      transform: scaleX(1);
+    }
+
+    .open-toggle.open .toggle-icon {
+      transform: scaleX(-1);
+    }
+
     .open-toggle {
-      position: absolute;
-      top: var(--size-1);
+      /* background-color: var(--surface-4); */
       font-size: var(--font-size-3);
-      border-radius: var(--radius-2) 0 0 var(--radius-2);
-      right: 0;
-      width: var(--toggle-w);
-      height: auto;
-      display: grid;
+      width: var(--padding);
+      height: 100%;
       cursor: pointer;
       color: var(--brand, var(--color-action));
+    }
+
+    .toggle-icon {
+      text-align: center;
     }
   `;
 
@@ -77,27 +89,42 @@ export class Sidebar extends LitElement {
 
     // By making is_open a property we allow the user to set its initial state or toggle
     // from outside the component
-    this.is_open = true;
+    // this.is_open = true;
+    this.set_open();
     set_el_attr(this, "slot", "sidebar");
   }
 
   render() {
+    const open_class = this.is_open ? "open" : "closed";
     return html`
-      <div class="sidebar ${this.is_open ? "open" : "closed"}">
+      <div class="sidebar ${open_class}">
         <slot></slot>
       </div>
       <div
         @click=${this.toggle_open}
         title=${this.is_open ? "Close sidebar" : "Open sidebar"}
-        class="open-toggle"
+        class="open-toggle ${open_class}"
       >
-        ◀︎
+        <div class="toggle-icon">❮</div>
       </div>
     `;
   }
 
+  set_open() {
+    this.is_open = true;
+    this.classList.add("open");
+  }
+  set_closed() {
+    this.is_open = false;
+    this.classList.remove("open");
+  }
+
   toggle_open() {
-    this.is_open = !this.is_open;
+    if (this.is_open) {
+      this.set_closed();
+    } else {
+      this.set_open();
+    }
   }
 }
 

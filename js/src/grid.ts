@@ -18,7 +18,8 @@ export class Grid extends LitElement {
       display: grid;
       grid-template-columns: repeat(var(--nCols), 1fr);
       grid-template-rows: repeat(var(--nRows), 1fr);
-      gap: var(--grid-gap, var(--size-3));
+      gap: var(--grid-gap, var(--size-fluid-2));
+      padding: var(--grid-padding, var(--size-fluid-2));
       height: 100%;
     }
     * {
