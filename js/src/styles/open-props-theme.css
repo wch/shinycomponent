@@ -235,8 +235,8 @@ h1 {
 }
 
 p {
-  max-inline-size: var(--size-content-1);
-  font-size: var(--font-size-4);
+  /* max-inline-size: var(--size-content-1); */
+  /* font-size: var(--font-size-4); */
   line-height: var(--font-lineheight-3);
 }
 

@@ -1,5 +1,6 @@
-import { LitElement, css, html } from "lit";
+import { css } from "lit";
 import { Shiny } from "./OptionalShiny";
+import { theme_primatives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
 
 import "./styles/open-props-theme.css";
@@ -18,22 +19,11 @@ export class OpTabset extends Tabset {
         update something they just have to replace the main variable and it
         doesn't cascade down to other elements
       */
-      --_main-bg: var(--main-bg, var(--surface-1));
-      --_main-color: var(--main-color, var(--text-1));
-
-      --_sidebar-bg: var(--sidebar-bg, var(--surface-3));
-      --_sidebar-color: var(--sidebar-color, var(--_main-color));
-      --_sidebar-border: var(--sidebar-border);
 
       --_tab-spacing: var(--tab-spacing, var(--size-fluid-1));
       --_tab-selection-thickness: var(--tab-selection-thickness, var(--size-2));
       --_tab_radius: var(--tab-radius, var(--radius-3));
 
-      --_header-bg-image: var(--header-bg-image);
-      --_header-bg-color: var(--header-bg-color, var(--surface-3));
-      --_header-color: var(--header-color, var(--_main-color));
-      --_header-font-weight: var(--header-font-weight, var(--font-weight-3));
-      --_header-font-size: var(--header-font-size, var(--font-size-fluid-2));
       --_header-padding-inline: var(
         --header-padding-inline,
         var(--size-fluid-1)
@@ -42,9 +32,8 @@ export class OpTabset extends Tabset {
 
       display: block;
       height: 100%;
-      background-color: var(--_main-bg);
-      color: var(--_main-color);
       box-sizing: border-box;
+      ${theme_primatives.surface_1}
     }
 
     .tabset {
@@ -77,12 +66,10 @@ export class OpTabset extends Tabset {
 
     .header,
     .footer {
-      background-color: var(--_header-bg-color);
+      ${theme_primatives.surface_3}
       /* Use background image if passed */
-      background-image: var(--_header-bg-image);
-      color: var(--_header-color);
+      background-image: var(--header-bg-image);
       margin: 0;
-      /* padding-inline: var(--_header-padding-inline); */
       display: flex;
       align-items: center;
       gap: var(--_header-padding-inline);
@@ -92,7 +79,6 @@ export class OpTabset extends Tabset {
       grid-area: header;
       font-family: var(--_header-font);
       font-weight: var(--_header-font-weight);
-      /* padding-block: var(--_header-padding-block); */
       margin: 0;
     }
 
@@ -104,7 +90,7 @@ export class OpTabset extends Tabset {
       right: var(--_tab-spacing);
       height: var(--_tab-selection-thickness);
       border-radius: var(--_tab_radius);
-      background-color: var(--color-primary);
+      background-color: var(--brand);
     }
 
     .tabs {
@@ -120,12 +106,12 @@ export class OpTabset extends Tabset {
     }
 
     ::slotted([slot="header"]) {
-      font-size: var(--_header-font-size);
+      font-size: var(--header-font-size, var(--font-size-fluid-2));
       padding: var(--_tab-spacing);
     }
 
     .divider {
-      background-color: var(--_header-color, var(--color-text-2));
+      background-color: var(--divider-color, var(--text-2));
       width: var(--border-small);
       height: 100%;
     }
@@ -133,8 +119,7 @@ export class OpTabset extends Tabset {
     .sidebar {
       padding: 0;
       grid-area: sidebar;
-      background-color: var(--_sidebar-bg);
-      color: var(--_sidebar-color);
+      ${theme_primatives.surface_2}
     }
 
     .main {

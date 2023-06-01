@@ -16,7 +16,7 @@ export class Sidebar extends LitElement {
       display: block;
       font-family: var(--font-family, sans-serif);
       --transition: 0.4s var(--ease-3);
-      --toggle-w: var(--space-small);
+      --toggle-w: var(--size-3);
       height: 100%;
       position: relative;
     }
@@ -64,10 +64,9 @@ export class Sidebar extends LitElement {
       right: 0;
       width: var(--toggle-w);
       height: auto;
-      color: var(--white);
       display: grid;
       cursor: pointer;
-      color: var(--color-action);
+      color: var(--brand, var(--color-action));
     }
   `;
 
