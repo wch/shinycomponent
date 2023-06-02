@@ -18,8 +18,6 @@ export class Sidebar extends LitElement {
       --sidebar-content-columns: auto 1fr;
       --sidebar-content-height: auto;
       --sidebar-content-gap: var(--size-3);
-      --sidebar-content-overflow: auto;
-      /* --sidebar-content-width: calc(100% - var(--sidebar-icon-width)); */
 
       height: 100%;
       position: relative;
@@ -29,7 +27,6 @@ export class Sidebar extends LitElement {
     }
 
     :host([closed]) {
-      /* --sidebar-content-width: 0px; */
       --sidebar-content-columns: auto 0px;
       --sidebar-content-height: var(--size-fluid-6);
       --sidebar-content-gap: 0;
@@ -51,17 +48,13 @@ export class Sidebar extends LitElement {
       overflow: scroll;
       margin: 0;
 
-      /* These are the styles when closed */
-      /* padding-block: var(--size-fluid-1); */
       padding-inline: var(--padding);
-      /* opacity: 0; */
       width: var(--sidebar-width, 100px);
 
       transition: width var(--transition), padding var(--transition);
 
       display: flex;
       flex-direction: column;
-      /* gap: var(--padding); */
     }
 
     .content > ::slotted(hr) {
@@ -76,14 +69,16 @@ export class Sidebar extends LitElement {
     }
 
     .toggle-icon {
-      transition: transform var(--transition);
-      transform: scale(1);
       text-align: center;
     }
 
     :host([closed]) .toggle-icon {
-      transform: scale(0);
-      /* opacity: 0; */
+      transform: scaleX(0);
+    }
+
+    :host([open]) .toggle-icon {
+      transition: transform var(--transition);
+      transform: scaleX(1);
     }
 
     .open-toggle {
