@@ -8,6 +8,8 @@ export class ForgeInputNumber extends ForgeInputText {
 
   static properties = {
     min: { type: Number },
+    max: { type: Number },
+    invalid: { type: Boolean },
     ...ForgeInputText.properties,
   };
 
