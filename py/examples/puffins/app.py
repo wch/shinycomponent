@@ -138,7 +138,7 @@ app_ui = sc.page(
                 label=ui.span(
                     "This is an ",
                     ui.strong("accessible"),
-                    " label for the text input",
+                    " label. The input updates on Enter or loss of focus.",
                 ),
                 placeholder="This is a placeholder",
                 wait_for_enter=True,
@@ -152,15 +152,22 @@ app_ui = sc.page(
             ),
             ui.br(),
             sc.forge.input_number(
-                "forgenum", "Number:", min=1, max=100, value=10, class_="label-on-left"
+                "forgenum",
+                "Number:",
+                min=1,
+                max=100,
+                value=5,
+                help_text="min=1, max=100",
+                class_="label-on-left",
             ),
             sc.forge.input_number(
                 "forgenum2",
                 "Number 2:",
                 min=1,
                 max=100,
-                value=10,
+                value=4,
                 wait_for_enter=True,
+                help_text="Updates on Enter/blur",
                 class_="label-on-left",
             ),
             ui.br(),

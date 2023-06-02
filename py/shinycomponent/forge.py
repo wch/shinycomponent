@@ -23,7 +23,7 @@ def input_text(
     **kwargs: TagAttrValue,
 ) -> Tag:
     return Tag(
-        "forge-text-input",
+        "forge-input-text",
         forge_dep(),
         tags.div(label, slot="label") if (label is not None) else None,
         *args,
@@ -41,7 +41,7 @@ def input_number(
     **kwargs: TagAttrValue,
 ) -> Tag:
     return Tag(
-        "forge-number-input",
+        "forge-input-number",
         forge_dep(),
         tags.div(label, slot="label") if (label is not None) else None,
         *args,

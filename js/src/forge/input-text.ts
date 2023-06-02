@@ -3,7 +3,7 @@ import debounce from "just-debounce-it";
 import { make_input_binding } from "../make_input_binding";
 import { make_value_change_emitter } from "../make_value_change_emitter";
 
-export class ForgeTextInput extends SlInput {
+export class ForgeInputText extends SlInput {
   onChangeCallback: (x: boolean) => void;
   "wait-for-enter": boolean = false;
   debounce: number = 250;
@@ -17,26 +17,25 @@ export class ForgeTextInput extends SlInput {
 
   constructor() {
     super();
-    const handleChangeDebounced = debounce(() => {
-      this.handleChange1();
+    const notifyChangeDebounced = debounce(() => {
+      this.notifyChange();
     }, this.debounce);
 
     this.onChangeCallback = (x: boolean) => {};
     this.addEventListener("input", () => {
       if (this["wait-for-enter"]) return;
-      handleChangeDebounced();
+      notifyChangeDebounced();
     });
     this.addEventListener("keydown", (e) => {
       if (!this["wait-for-enter"]) return;
 
       if (e.code === "Enter") {
-        this.handleChange1();
+        this.notifyChange();
       }
     });
-  }
-
-  handleChange1() {
-    this.notifyChange();
+    this.addEventListener("blur", (e) => {
+      this.notifyChange();
+    });
   }
 
   notifyChange(): void {
@@ -45,6 +44,6 @@ export class ForgeTextInput extends SlInput {
   }
 }
 
-customElements.define("forge-text-input", ForgeTextInput);
+customElements.define("forge-input-text", ForgeInputText);
 
-make_input_binding("forge-text-input");
+make_input_binding("forge-input-text");

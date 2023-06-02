@@ -20321,93 +20321,97 @@
     return debounceWrapper;
   }
 
-  // src/forge/text-input.ts
-  var ForgeTextInput = class extends SlInput {
+  // src/forge/input-text.ts
+  var ForgeInputText = class extends SlInput {
     constructor() {
       super();
       this["wait-for-enter"] = false;
       this.debounce = 250;
       this.on_value_change = make_value_change_emitter(this, this.id);
-      const handleChangeDebounced = functionDebounce(() => {
-        this.handleChange1();
+      const notifyChangeDebounced = functionDebounce(() => {
+        this.notifyChange();
       }, this.debounce);
       this.onChangeCallback = (x4) => {
       };
       this.addEventListener("input", () => {
         if (this["wait-for-enter"])
           return;
-        handleChangeDebounced();
+        notifyChangeDebounced();
       });
       this.addEventListener("keydown", (e8) => {
         if (!this["wait-for-enter"])
           return;
         if (e8.code === "Enter") {
-          this.handleChange1();
+          this.notifyChange();
         }
       });
-    }
-    handleChange1() {
-      this.notifyChange();
+      this.addEventListener("blur", (e8) => {
+        this.notifyChange();
+      });
     }
     notifyChange() {
       this.onChangeCallback(true);
       this.on_value_change({ type: "string", value: this.value });
     }
   };
-  ForgeTextInput.properties = {
+  ForgeInputText.properties = {
     "wait-for-enter": { type: Boolean },
     debounce: { type: Number }
   };
-  customElements.define("forge-text-input", ForgeTextInput);
-  make_input_binding("forge-text-input");
+  customElements.define("forge-input-text", ForgeInputText);
+  make_input_binding("forge-input-text");
 
-  // src/forge/number-input.ts
-  var ForgeNumberInput = class extends ForgeTextInput {
+  // src/forge/input-number.ts
+  var ForgeInputNumber = class extends ForgeInputText {
     constructor() {
       super();
       this.on_value_change = make_value_change_emitter(this, this.id);
       this.min = -Infinity;
       this.max = Infinity;
+      this.invalid = false;
+      this.addEventListener("input", () => {
+        const inputValue = this.shadowRoot.querySelector("input").valueAsNumber;
+        const clampedValue = clamp2(inputValue, this.min, this.max);
+        if (clampedValue === inputValue) {
+          this.value = String(clampedValue);
+          this.invalid = false;
+        } else {
+          this.invalid = true;
+        }
+        this.updateInvalidClass();
+      });
       this.type = "number";
     }
-    setInvalidClass(invalid) {
+    updateInvalidClass() {
       const wrapper = this.shadowRoot?.querySelector("div.input");
-      if (invalid) {
+      if (this.invalid) {
         wrapper?.classList.add("invalid");
       } else {
         wrapper?.classList.remove("invalid");
       }
     }
-    handleChange1() {
-      const inputValue = this.shadowRoot.querySelector("input").valueAsNumber;
-      const clampedValue = clamp2(inputValue, this.min, this.max);
-      if (clampedValue === inputValue) {
-        this.value = String(clampedValue);
-        this.setInvalidClass(false);
-        this.notifyChange();
-      } else {
-        this.setInvalidClass(true);
-      }
-    }
     notifyChange() {
+      if (this.invalid) {
+        return;
+      }
       this.onChangeCallback(true);
       this.on_value_change({ type: "string", value: this.value });
     }
   };
-  ForgeNumberInput.properties = {
+  ForgeInputNumber.properties = {
     min: { type: Number },
-    ...ForgeTextInput.properties
+    ...ForgeInputText.properties
   };
-  ForgeNumberInput.styles = [
+  ForgeInputNumber.styles = [
     i`
       div.invalid {
         outline: 3px solid var(--color-error);
       }
     `,
-    ForgeTextInput.styles
+    ForgeInputText.styles
   ];
-  customElements.define("forge-number-input", ForgeNumberInput);
-  make_input_binding("forge-number-input");
+  customElements.define("forge-input-number", ForgeInputNumber);
+  make_input_binding("forge-input-number");
   function clamp2(x4, min, max) {
     return Math.max(Math.min(x4, max), min);
   }
