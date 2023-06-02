@@ -20435,6 +20435,24 @@
     return Math.max(Math.min(x4, max), min);
   }
 
+  // src/forge/input-switch.ts
+  var ForgeInputSwitch = class extends SlSwitch {
+    constructor() {
+      super(...arguments);
+      this.onChangeCallback = (x4) => {
+      };
+      this.on_value_change = make_value_change_emitter(this, this.id);
+    }
+    updated(changedProperties) {
+      if (changedProperties.has("checked")) {
+        this.onChangeCallback(true);
+        this.on_value_change({ type: "boolean", value: this.checked });
+      }
+    }
+  };
+  customElements.define("forge-input-switch", ForgeInputSwitch);
+  make_input_binding("forge-input-switch", "checked");
+
   // src/forge/split-panel.ts
   var ForgeSplitPanel = class extends SlSplitPanel {
     constructor() {

@@ -172,6 +172,7 @@ app_ui = sc.page(
                 class_="label-on-left",
             ),
             sc.forge.input_checkbox(id="forgecheckbox", label="Checkbox"),
+            sc.forge.input_switch(id="forgeswitch", label="Switch"),
             ui.br(),
             ui.output_text_verbatim("forgetext_out", placeholder=True),
             name="Number Input",
@@ -315,7 +316,7 @@ def server(input: Inputs, output: Outputs, session: Session):
         return (
             f"{input.forgetext()}\n{input.forgetext2()}\n{input.date1()}"
             + f"\n{input.forgenum()}\n{input.forgenum2()}"
-            + f"\n{input.forgecheckbox()}"
+            + f"\n{input.forgecheckbox()}\n{input.forgeswitch()}"
         )
 
     @reactive.Calc

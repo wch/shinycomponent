@@ -38,6 +38,24 @@ def input_checkbox(
     )
 
 
+def input_switch(
+    id: str,
+    label: TagChild,
+    *args: TagChild | TagAttrs,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-switch",
+        forge_dep(),
+        label if (label is not None) else None,
+        *args,
+        id=id,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
+
+
 def input_text(
     id: str,
     label: TagChild,
