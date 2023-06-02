@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-__all__ = ("split_panel",)
+__all__ = (
+    "input_checkbox",
+    "input_number",
+    "input_text",
+    "split_panel",
+)
 
 from pathlib import PurePath
 
@@ -13,6 +18,24 @@ def split_panel(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
 ) -> Tag:
     return Tag("forge-split-panel", forge_dep(), *args, _add_ws=_add_ws, **kwargs)
+
+
+def input_checkbox(
+    id: str,
+    label: TagChild,
+    *args: TagChild | TagAttrs,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-checkbox",
+        forge_dep(),
+        label if (label is not None) else None,
+        *args,
+        id=id,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
 
 
 def input_text(

@@ -14,6 +14,10 @@ type DataPassingEventPayload =
       value: number;
     }
   | {
+      type: "boolean";
+      value: boolean;
+    }
+  | {
       type: "other";
       value: unknown;
     };
@@ -37,6 +41,8 @@ function is_data_passing_payload(x: unknown): x is DataPassingEventPayload {
       return typeof x.value === "string";
     case "number":
       return typeof x.value === "number";
+    case "boolean":
+      return typeof x.value === "boolean";
     default:
       return true;
   }

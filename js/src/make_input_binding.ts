@@ -7,11 +7,14 @@ import { SimpleNumberInput } from "./simple-number-input";
  * @param tag_name Name of the tag that corresponds to the input binding
  * @returns Nothing
  */
-export function make_input_binding(tag_name: string) {
+export function make_input_binding(
+  tag_name: string,
+  value_field: string = "value"
+) {
   if (!Shiny) {
     return;
   }
-  class NewNumberBinding extends Shiny.InputBinding {
+  class NewCustomBinding extends Shiny.InputBinding {
     constructor() {
       super();
     }
@@ -25,7 +28,7 @@ export function make_input_binding(tag_name: string) {
     }
 
     getValue(el: SimpleNumberInput) {
-      return el.value;
+      return el[value_field];
     }
 
     subscribe(el: SimpleNumberInput, callback: (x: boolean) => void): void {
@@ -37,5 +40,5 @@ export function make_input_binding(tag_name: string) {
     }
   }
 
-  Shiny.inputBindings.register(new NewNumberBinding(), `${tag_name}-Binding`);
+  Shiny.inputBindings.register(new NewCustomBinding(), `${tag_name}-Binding`);
 }

@@ -1702,11 +1702,11 @@
   var Shiny = window.Shiny;
 
   // src/make_input_binding.ts
-  function make_input_binding(tag_name) {
+  function make_input_binding(tag_name, value_field = "value") {
     if (!Shiny) {
       return;
     }
-    class NewNumberBinding extends Shiny.InputBinding {
+    class NewCustomBinding extends Shiny.InputBinding {
       constructor() {
         super();
       }
@@ -1717,7 +1717,7 @@
         return el.id;
       }
       getValue(el) {
-        return el.value;
+        return el[value_field];
       }
       subscribe(el, callback) {
         el.onChangeCallback = callback;
@@ -1727,7 +1727,7 @@
         };
       }
     }
-    Shiny.inputBindings.register(new NewNumberBinding(), `${tag_name}-Binding`);
+    Shiny.inputBindings.register(new NewCustomBinding(), `${tag_name}-Binding`);
   }
 
   // src/make_value_change_emitter.ts

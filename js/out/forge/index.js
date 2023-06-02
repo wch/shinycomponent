@@ -1,653 +1,22 @@
 "use strict";
 (() => {
-  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@lit/reactive-element/css-tag.js
+  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DUT32TWM.js
   var t = window;
   var e = t.ShadowRoot && (void 0 === t.ShadyCSS || t.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype;
   var s = Symbol();
   var n = /* @__PURE__ */ new WeakMap();
   var o = class {
-    constructor(t7, e8, n10) {
-      if (this._$cssResult$ = true, n10 !== s)
-        throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
-      this.cssText = t7, this.t = e8;
-    }
-    get styleSheet() {
-      let t7 = this.o;
-      const s9 = this.t;
-      if (e && void 0 === t7) {
-        const e8 = void 0 !== s9 && 1 === s9.length;
-        e8 && (t7 = n.get(s9)), void 0 === t7 && ((this.o = t7 = new CSSStyleSheet()).replaceSync(this.cssText), e8 && n.set(s9, t7));
-      }
-      return t7;
-    }
-    toString() {
-      return this.cssText;
-    }
-  };
-  var r = (t7) => new o("string" == typeof t7 ? t7 : t7 + "", void 0, s);
-  var i = (t7, ...e8) => {
-    const n10 = 1 === t7.length ? t7[0] : e8.reduce((e9, s9, n11) => e9 + ((t8) => {
-      if (true === t8._$cssResult$)
-        return t8.cssText;
-      if ("number" == typeof t8)
-        return t8;
-      throw Error("Value passed to 'css' function must be a 'css' function result: " + t8 + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
-    })(s9) + t7[n11 + 1], t7[0]);
-    return new o(n10, t7, s);
-  };
-  var S = (s9, n10) => {
-    e ? s9.adoptedStyleSheets = n10.map((t7) => t7 instanceof CSSStyleSheet ? t7 : t7.styleSheet) : n10.forEach((e8) => {
-      const n11 = document.createElement("style"), o8 = t.litNonce;
-      void 0 !== o8 && n11.setAttribute("nonce", o8), n11.textContent = e8.cssText, s9.appendChild(n11);
-    });
-  };
-  var c = e ? (t7) => t7 : (t7) => t7 instanceof CSSStyleSheet ? ((t8) => {
-    let e8 = "";
-    for (const s9 of t8.cssRules)
-      e8 += s9.cssText;
-    return r(e8);
-  })(t7) : t7;
-
-  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@lit/reactive-element/reactive-element.js
-  var s2;
-  var e2 = window;
-  var r2 = e2.trustedTypes;
-  var h = r2 ? r2.emptyScript : "";
-  var o2 = e2.reactiveElementPolyfillSupport;
-  var n2 = { toAttribute(t7, i7) {
-    switch (i7) {
-      case Boolean:
-        t7 = t7 ? h : null;
-        break;
-      case Object:
-      case Array:
-        t7 = null == t7 ? t7 : JSON.stringify(t7);
-    }
-    return t7;
-  }, fromAttribute(t7, i7) {
-    let s9 = t7;
-    switch (i7) {
-      case Boolean:
-        s9 = null !== t7;
-        break;
-      case Number:
-        s9 = null === t7 ? null : Number(t7);
-        break;
-      case Object:
-      case Array:
-        try {
-          s9 = JSON.parse(t7);
-        } catch (t8) {
-          s9 = null;
-        }
-    }
-    return s9;
-  } };
-  var a = (t7, i7) => i7 !== t7 && (i7 == i7 || t7 == t7);
-  var l = { attribute: true, type: String, converter: n2, reflect: false, hasChanged: a };
-  var d = class extends HTMLElement {
-    constructor() {
-      super(), this._$Ei = /* @__PURE__ */ new Map(), this.isUpdatePending = false, this.hasUpdated = false, this._$El = null, this.u();
-    }
-    static addInitializer(t7) {
-      var i7;
-      this.finalize(), (null !== (i7 = this.h) && void 0 !== i7 ? i7 : this.h = []).push(t7);
-    }
-    static get observedAttributes() {
-      this.finalize();
-      const t7 = [];
-      return this.elementProperties.forEach((i7, s9) => {
-        const e8 = this._$Ep(s9, i7);
-        void 0 !== e8 && (this._$Ev.set(e8, s9), t7.push(e8));
-      }), t7;
-    }
-    static createProperty(t7, i7 = l) {
-      if (i7.state && (i7.attribute = false), this.finalize(), this.elementProperties.set(t7, i7), !i7.noAccessor && !this.prototype.hasOwnProperty(t7)) {
-        const s9 = "symbol" == typeof t7 ? Symbol() : "__" + t7, e8 = this.getPropertyDescriptor(t7, s9, i7);
-        void 0 !== e8 && Object.defineProperty(this.prototype, t7, e8);
-      }
-    }
-    static getPropertyDescriptor(t7, i7, s9) {
-      return { get() {
-        return this[i7];
-      }, set(e8) {
-        const r6 = this[t7];
-        this[i7] = e8, this.requestUpdate(t7, r6, s9);
-      }, configurable: true, enumerable: true };
-    }
-    static getPropertyOptions(t7) {
-      return this.elementProperties.get(t7) || l;
-    }
-    static finalize() {
-      if (this.hasOwnProperty("finalized"))
-        return false;
-      this.finalized = true;
-      const t7 = Object.getPrototypeOf(this);
-      if (t7.finalize(), void 0 !== t7.h && (this.h = [...t7.h]), this.elementProperties = new Map(t7.elementProperties), this._$Ev = /* @__PURE__ */ new Map(), this.hasOwnProperty("properties")) {
-        const t8 = this.properties, i7 = [...Object.getOwnPropertyNames(t8), ...Object.getOwnPropertySymbols(t8)];
-        for (const s9 of i7)
-          this.createProperty(s9, t8[s9]);
-      }
-      return this.elementStyles = this.finalizeStyles(this.styles), true;
-    }
-    static finalizeStyles(i7) {
-      const s9 = [];
-      if (Array.isArray(i7)) {
-        const e8 = new Set(i7.flat(1 / 0).reverse());
-        for (const i8 of e8)
-          s9.unshift(c(i8));
-      } else
-        void 0 !== i7 && s9.push(c(i7));
-      return s9;
-    }
-    static _$Ep(t7, i7) {
-      const s9 = i7.attribute;
-      return false === s9 ? void 0 : "string" == typeof s9 ? s9 : "string" == typeof t7 ? t7.toLowerCase() : void 0;
-    }
-    u() {
-      var t7;
-      this._$E_ = new Promise((t8) => this.enableUpdating = t8), this._$AL = /* @__PURE__ */ new Map(), this._$Eg(), this.requestUpdate(), null === (t7 = this.constructor.h) || void 0 === t7 || t7.forEach((t8) => t8(this));
-    }
-    addController(t7) {
-      var i7, s9;
-      (null !== (i7 = this._$ES) && void 0 !== i7 ? i7 : this._$ES = []).push(t7), void 0 !== this.renderRoot && this.isConnected && (null === (s9 = t7.hostConnected) || void 0 === s9 || s9.call(t7));
-    }
-    removeController(t7) {
-      var i7;
-      null === (i7 = this._$ES) || void 0 === i7 || i7.splice(this._$ES.indexOf(t7) >>> 0, 1);
-    }
-    _$Eg() {
-      this.constructor.elementProperties.forEach((t7, i7) => {
-        this.hasOwnProperty(i7) && (this._$Ei.set(i7, this[i7]), delete this[i7]);
-      });
-    }
-    createRenderRoot() {
-      var t7;
-      const s9 = null !== (t7 = this.shadowRoot) && void 0 !== t7 ? t7 : this.attachShadow(this.constructor.shadowRootOptions);
-      return S(s9, this.constructor.elementStyles), s9;
-    }
-    connectedCallback() {
-      var t7;
-      void 0 === this.renderRoot && (this.renderRoot = this.createRenderRoot()), this.enableUpdating(true), null === (t7 = this._$ES) || void 0 === t7 || t7.forEach((t8) => {
-        var i7;
-        return null === (i7 = t8.hostConnected) || void 0 === i7 ? void 0 : i7.call(t8);
-      });
-    }
-    enableUpdating(t7) {
-    }
-    disconnectedCallback() {
-      var t7;
-      null === (t7 = this._$ES) || void 0 === t7 || t7.forEach((t8) => {
-        var i7;
-        return null === (i7 = t8.hostDisconnected) || void 0 === i7 ? void 0 : i7.call(t8);
-      });
-    }
-    attributeChangedCallback(t7, i7, s9) {
-      this._$AK(t7, s9);
-    }
-    _$EO(t7, i7, s9 = l) {
-      var e8;
-      const r6 = this.constructor._$Ep(t7, s9);
-      if (void 0 !== r6 && true === s9.reflect) {
-        const h5 = (void 0 !== (null === (e8 = s9.converter) || void 0 === e8 ? void 0 : e8.toAttribute) ? s9.converter : n2).toAttribute(i7, s9.type);
-        this._$El = t7, null == h5 ? this.removeAttribute(r6) : this.setAttribute(r6, h5), this._$El = null;
-      }
-    }
-    _$AK(t7, i7) {
-      var s9;
-      const e8 = this.constructor, r6 = e8._$Ev.get(t7);
-      if (void 0 !== r6 && this._$El !== r6) {
-        const t8 = e8.getPropertyOptions(r6), h5 = "function" == typeof t8.converter ? { fromAttribute: t8.converter } : void 0 !== (null === (s9 = t8.converter) || void 0 === s9 ? void 0 : s9.fromAttribute) ? t8.converter : n2;
-        this._$El = r6, this[r6] = h5.fromAttribute(i7, t8.type), this._$El = null;
-      }
-    }
-    requestUpdate(t7, i7, s9) {
-      let e8 = true;
-      void 0 !== t7 && (((s9 = s9 || this.constructor.getPropertyOptions(t7)).hasChanged || a)(this[t7], i7) ? (this._$AL.has(t7) || this._$AL.set(t7, i7), true === s9.reflect && this._$El !== t7 && (void 0 === this._$EC && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(t7, s9))) : e8 = false), !this.isUpdatePending && e8 && (this._$E_ = this._$Ej());
-    }
-    async _$Ej() {
-      this.isUpdatePending = true;
-      try {
-        await this._$E_;
-      } catch (t8) {
-        Promise.reject(t8);
-      }
-      const t7 = this.scheduleUpdate();
-      return null != t7 && await t7, !this.isUpdatePending;
-    }
-    scheduleUpdate() {
-      return this.performUpdate();
-    }
-    performUpdate() {
-      var t7;
-      if (!this.isUpdatePending)
-        return;
-      this.hasUpdated, this._$Ei && (this._$Ei.forEach((t8, i8) => this[i8] = t8), this._$Ei = void 0);
-      let i7 = false;
-      const s9 = this._$AL;
-      try {
-        i7 = this.shouldUpdate(s9), i7 ? (this.willUpdate(s9), null === (t7 = this._$ES) || void 0 === t7 || t7.forEach((t8) => {
-          var i8;
-          return null === (i8 = t8.hostUpdate) || void 0 === i8 ? void 0 : i8.call(t8);
-        }), this.update(s9)) : this._$Ek();
-      } catch (t8) {
-        throw i7 = false, this._$Ek(), t8;
-      }
-      i7 && this._$AE(s9);
-    }
-    willUpdate(t7) {
-    }
-    _$AE(t7) {
-      var i7;
-      null === (i7 = this._$ES) || void 0 === i7 || i7.forEach((t8) => {
-        var i8;
-        return null === (i8 = t8.hostUpdated) || void 0 === i8 ? void 0 : i8.call(t8);
-      }), this.hasUpdated || (this.hasUpdated = true, this.firstUpdated(t7)), this.updated(t7);
-    }
-    _$Ek() {
-      this._$AL = /* @__PURE__ */ new Map(), this.isUpdatePending = false;
-    }
-    get updateComplete() {
-      return this.getUpdateComplete();
-    }
-    getUpdateComplete() {
-      return this._$E_;
-    }
-    shouldUpdate(t7) {
-      return true;
-    }
-    update(t7) {
-      void 0 !== this._$EC && (this._$EC.forEach((t8, i7) => this._$EO(i7, this[i7], t8)), this._$EC = void 0), this._$Ek();
-    }
-    updated(t7) {
-    }
-    firstUpdated(t7) {
-    }
-  };
-  d.finalized = true, d.elementProperties = /* @__PURE__ */ new Map(), d.elementStyles = [], d.shadowRootOptions = { mode: "open" }, null == o2 || o2({ ReactiveElement: d }), (null !== (s2 = e2.reactiveElementVersions) && void 0 !== s2 ? s2 : e2.reactiveElementVersions = []).push("1.6.1");
-
-  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/lit-html/lit-html.js
-  var t2;
-  var i2 = window;
-  var s3 = i2.trustedTypes;
-  var e3 = s3 ? s3.createPolicy("lit-html", { createHTML: (t7) => t7 }) : void 0;
-  var o3 = "$lit$";
-  var n3 = `lit$${(Math.random() + "").slice(9)}$`;
-  var l2 = "?" + n3;
-  var h2 = `<${l2}>`;
-  var r3 = document;
-  var d2 = () => r3.createComment("");
-  var u = (t7) => null === t7 || "object" != typeof t7 && "function" != typeof t7;
-  var c2 = Array.isArray;
-  var v = (t7) => c2(t7) || "function" == typeof (null == t7 ? void 0 : t7[Symbol.iterator]);
-  var a2 = "[ 	\n\f\r]";
-  var f = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g;
-  var _ = /-->/g;
-  var m = />/g;
-  var p = RegExp(`>|${a2}(?:([^\\s"'>=/]+)(${a2}*=${a2}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g");
-  var g = /'/g;
-  var $2 = /"/g;
-  var y = /^(?:script|style|textarea|title)$/i;
-  var w = (t7) => (i7, ...s9) => ({ _$litType$: t7, strings: i7, values: s9 });
-  var x = w(1);
-  var b = w(2);
-  var T = Symbol.for("lit-noChange");
-  var A = Symbol.for("lit-nothing");
-  var E = /* @__PURE__ */ new WeakMap();
-  var C = r3.createTreeWalker(r3, 129, null, false);
-  var P = (t7, i7) => {
-    const s9 = t7.length - 1, l9 = [];
-    let r6, d5 = 2 === i7 ? "<svg>" : "", u5 = f;
-    for (let i8 = 0; i8 < s9; i8++) {
-      const s10 = t7[i8];
-      let e8, c6, v3 = -1, a6 = 0;
-      for (; a6 < s10.length && (u5.lastIndex = a6, c6 = u5.exec(s10), null !== c6); )
-        a6 = u5.lastIndex, u5 === f ? "!--" === c6[1] ? u5 = _ : void 0 !== c6[1] ? u5 = m : void 0 !== c6[2] ? (y.test(c6[2]) && (r6 = RegExp("</" + c6[2], "g")), u5 = p) : void 0 !== c6[3] && (u5 = p) : u5 === p ? ">" === c6[0] ? (u5 = null != r6 ? r6 : f, v3 = -1) : void 0 === c6[1] ? v3 = -2 : (v3 = u5.lastIndex - c6[2].length, e8 = c6[1], u5 = void 0 === c6[3] ? p : '"' === c6[3] ? $2 : g) : u5 === $2 || u5 === g ? u5 = p : u5 === _ || u5 === m ? u5 = f : (u5 = p, r6 = void 0);
-      const w4 = u5 === p && t7[i8 + 1].startsWith("/>") ? " " : "";
-      d5 += u5 === f ? s10 + h2 : v3 >= 0 ? (l9.push(e8), s10.slice(0, v3) + o3 + s10.slice(v3) + n3 + w4) : s10 + n3 + (-2 === v3 ? (l9.push(void 0), i8) : w4);
-    }
-    const c5 = d5 + (t7[s9] || "<?>") + (2 === i7 ? "</svg>" : "");
-    if (!Array.isArray(t7) || !t7.hasOwnProperty("raw"))
-      throw Error("invalid template strings array");
-    return [void 0 !== e3 ? e3.createHTML(c5) : c5, l9];
-  };
-  var V = class {
-    constructor({ strings: t7, _$litType$: i7 }, e8) {
-      let h5;
-      this.parts = [];
-      let r6 = 0, u5 = 0;
-      const c5 = t7.length - 1, v3 = this.parts, [a6, f5] = P(t7, i7);
-      if (this.el = V.createElement(a6, e8), C.currentNode = this.el.content, 2 === i7) {
-        const t8 = this.el.content, i8 = t8.firstChild;
-        i8.remove(), t8.append(...i8.childNodes);
-      }
-      for (; null !== (h5 = C.nextNode()) && v3.length < c5; ) {
-        if (1 === h5.nodeType) {
-          if (h5.hasAttributes()) {
-            const t8 = [];
-            for (const i8 of h5.getAttributeNames())
-              if (i8.endsWith(o3) || i8.startsWith(n3)) {
-                const s9 = f5[u5++];
-                if (t8.push(i8), void 0 !== s9) {
-                  const t9 = h5.getAttribute(s9.toLowerCase() + o3).split(n3), i9 = /([.?@])?(.*)/.exec(s9);
-                  v3.push({ type: 1, index: r6, name: i9[2], strings: t9, ctor: "." === i9[1] ? k : "?" === i9[1] ? I : "@" === i9[1] ? L : R });
-                } else
-                  v3.push({ type: 6, index: r6 });
-              }
-            for (const i8 of t8)
-              h5.removeAttribute(i8);
-          }
-          if (y.test(h5.tagName)) {
-            const t8 = h5.textContent.split(n3), i8 = t8.length - 1;
-            if (i8 > 0) {
-              h5.textContent = s3 ? s3.emptyScript : "";
-              for (let s9 = 0; s9 < i8; s9++)
-                h5.append(t8[s9], d2()), C.nextNode(), v3.push({ type: 2, index: ++r6 });
-              h5.append(t8[i8], d2());
-            }
-          }
-        } else if (8 === h5.nodeType)
-          if (h5.data === l2)
-            v3.push({ type: 2, index: r6 });
-          else {
-            let t8 = -1;
-            for (; -1 !== (t8 = h5.data.indexOf(n3, t8 + 1)); )
-              v3.push({ type: 7, index: r6 }), t8 += n3.length - 1;
-          }
-        r6++;
-      }
-    }
-    static createElement(t7, i7) {
-      const s9 = r3.createElement("template");
-      return s9.innerHTML = t7, s9;
-    }
-  };
-  function N(t7, i7, s9 = t7, e8) {
-    var o8, n10, l9, h5;
-    if (i7 === T)
-      return i7;
-    let r6 = void 0 !== e8 ? null === (o8 = s9._$Co) || void 0 === o8 ? void 0 : o8[e8] : s9._$Cl;
-    const d5 = u(i7) ? void 0 : i7._$litDirective$;
-    return (null == r6 ? void 0 : r6.constructor) !== d5 && (null === (n10 = null == r6 ? void 0 : r6._$AO) || void 0 === n10 || n10.call(r6, false), void 0 === d5 ? r6 = void 0 : (r6 = new d5(t7), r6._$AT(t7, s9, e8)), void 0 !== e8 ? (null !== (l9 = (h5 = s9)._$Co) && void 0 !== l9 ? l9 : h5._$Co = [])[e8] = r6 : s9._$Cl = r6), void 0 !== r6 && (i7 = N(t7, r6._$AS(t7, i7.values), r6, e8)), i7;
-  }
-  var S2 = class {
-    constructor(t7, i7) {
-      this._$AV = [], this._$AN = void 0, this._$AD = t7, this._$AM = i7;
-    }
-    get parentNode() {
-      return this._$AM.parentNode;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    u(t7) {
-      var i7;
-      const { el: { content: s9 }, parts: e8 } = this._$AD, o8 = (null !== (i7 = null == t7 ? void 0 : t7.creationScope) && void 0 !== i7 ? i7 : r3).importNode(s9, true);
-      C.currentNode = o8;
-      let n10 = C.nextNode(), l9 = 0, h5 = 0, d5 = e8[0];
-      for (; void 0 !== d5; ) {
-        if (l9 === d5.index) {
-          let i8;
-          2 === d5.type ? i8 = new M(n10, n10.nextSibling, this, t7) : 1 === d5.type ? i8 = new d5.ctor(n10, d5.name, d5.strings, this, t7) : 6 === d5.type && (i8 = new z(n10, this, t7)), this._$AV.push(i8), d5 = e8[++h5];
-        }
-        l9 !== (null == d5 ? void 0 : d5.index) && (n10 = C.nextNode(), l9++);
-      }
-      return C.currentNode = r3, o8;
-    }
-    v(t7) {
-      let i7 = 0;
-      for (const s9 of this._$AV)
-        void 0 !== s9 && (void 0 !== s9.strings ? (s9._$AI(t7, s9, i7), i7 += s9.strings.length - 2) : s9._$AI(t7[i7])), i7++;
-    }
-  };
-  var M = class {
-    constructor(t7, i7, s9, e8) {
-      var o8;
-      this.type = 2, this._$AH = A, this._$AN = void 0, this._$AA = t7, this._$AB = i7, this._$AM = s9, this.options = e8, this._$Cp = null === (o8 = null == e8 ? void 0 : e8.isConnected) || void 0 === o8 || o8;
-    }
-    get _$AU() {
-      var t7, i7;
-      return null !== (i7 = null === (t7 = this._$AM) || void 0 === t7 ? void 0 : t7._$AU) && void 0 !== i7 ? i7 : this._$Cp;
-    }
-    get parentNode() {
-      let t7 = this._$AA.parentNode;
-      const i7 = this._$AM;
-      return void 0 !== i7 && 11 === (null == t7 ? void 0 : t7.nodeType) && (t7 = i7.parentNode), t7;
-    }
-    get startNode() {
-      return this._$AA;
-    }
-    get endNode() {
-      return this._$AB;
-    }
-    _$AI(t7, i7 = this) {
-      t7 = N(this, t7, i7), u(t7) ? t7 === A || null == t7 || "" === t7 ? (this._$AH !== A && this._$AR(), this._$AH = A) : t7 !== this._$AH && t7 !== T && this._(t7) : void 0 !== t7._$litType$ ? this.g(t7) : void 0 !== t7.nodeType ? this.$(t7) : v(t7) ? this.T(t7) : this._(t7);
-    }
-    k(t7) {
-      return this._$AA.parentNode.insertBefore(t7, this._$AB);
-    }
-    $(t7) {
-      this._$AH !== t7 && (this._$AR(), this._$AH = this.k(t7));
-    }
-    _(t7) {
-      this._$AH !== A && u(this._$AH) ? this._$AA.nextSibling.data = t7 : this.$(r3.createTextNode(t7)), this._$AH = t7;
-    }
-    g(t7) {
-      var i7;
-      const { values: s9, _$litType$: e8 } = t7, o8 = "number" == typeof e8 ? this._$AC(t7) : (void 0 === e8.el && (e8.el = V.createElement(e8.h, this.options)), e8);
-      if ((null === (i7 = this._$AH) || void 0 === i7 ? void 0 : i7._$AD) === o8)
-        this._$AH.v(s9);
-      else {
-        const t8 = new S2(o8, this), i8 = t8.u(this.options);
-        t8.v(s9), this.$(i8), this._$AH = t8;
-      }
-    }
-    _$AC(t7) {
-      let i7 = E.get(t7.strings);
-      return void 0 === i7 && E.set(t7.strings, i7 = new V(t7)), i7;
-    }
-    T(t7) {
-      c2(this._$AH) || (this._$AH = [], this._$AR());
-      const i7 = this._$AH;
-      let s9, e8 = 0;
-      for (const o8 of t7)
-        e8 === i7.length ? i7.push(s9 = new M(this.k(d2()), this.k(d2()), this, this.options)) : s9 = i7[e8], s9._$AI(o8), e8++;
-      e8 < i7.length && (this._$AR(s9 && s9._$AB.nextSibling, e8), i7.length = e8);
-    }
-    _$AR(t7 = this._$AA.nextSibling, i7) {
-      var s9;
-      for (null === (s9 = this._$AP) || void 0 === s9 || s9.call(this, false, true, i7); t7 && t7 !== this._$AB; ) {
-        const i8 = t7.nextSibling;
-        t7.remove(), t7 = i8;
-      }
-    }
-    setConnected(t7) {
-      var i7;
-      void 0 === this._$AM && (this._$Cp = t7, null === (i7 = this._$AP) || void 0 === i7 || i7.call(this, t7));
-    }
-  };
-  var R = class {
-    constructor(t7, i7, s9, e8, o8) {
-      this.type = 1, this._$AH = A, this._$AN = void 0, this.element = t7, this.name = i7, this._$AM = e8, this.options = o8, s9.length > 2 || "" !== s9[0] || "" !== s9[1] ? (this._$AH = Array(s9.length - 1).fill(new String()), this.strings = s9) : this._$AH = A;
-    }
-    get tagName() {
-      return this.element.tagName;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    _$AI(t7, i7 = this, s9, e8) {
-      const o8 = this.strings;
-      let n10 = false;
-      if (void 0 === o8)
-        t7 = N(this, t7, i7, 0), n10 = !u(t7) || t7 !== this._$AH && t7 !== T, n10 && (this._$AH = t7);
-      else {
-        const e9 = t7;
-        let l9, h5;
-        for (t7 = o8[0], l9 = 0; l9 < o8.length - 1; l9++)
-          h5 = N(this, e9[s9 + l9], i7, l9), h5 === T && (h5 = this._$AH[l9]), n10 || (n10 = !u(h5) || h5 !== this._$AH[l9]), h5 === A ? t7 = A : t7 !== A && (t7 += (null != h5 ? h5 : "") + o8[l9 + 1]), this._$AH[l9] = h5;
-      }
-      n10 && !e8 && this.j(t7);
-    }
-    j(t7) {
-      t7 === A ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, null != t7 ? t7 : "");
-    }
-  };
-  var k = class extends R {
-    constructor() {
-      super(...arguments), this.type = 3;
-    }
-    j(t7) {
-      this.element[this.name] = t7 === A ? void 0 : t7;
-    }
-  };
-  var H = s3 ? s3.emptyScript : "";
-  var I = class extends R {
-    constructor() {
-      super(...arguments), this.type = 4;
-    }
-    j(t7) {
-      t7 && t7 !== A ? this.element.setAttribute(this.name, H) : this.element.removeAttribute(this.name);
-    }
-  };
-  var L = class extends R {
-    constructor(t7, i7, s9, e8, o8) {
-      super(t7, i7, s9, e8, o8), this.type = 5;
-    }
-    _$AI(t7, i7 = this) {
-      var s9;
-      if ((t7 = null !== (s9 = N(this, t7, i7, 0)) && void 0 !== s9 ? s9 : A) === T)
-        return;
-      const e8 = this._$AH, o8 = t7 === A && e8 !== A || t7.capture !== e8.capture || t7.once !== e8.once || t7.passive !== e8.passive, n10 = t7 !== A && (e8 === A || o8);
-      o8 && this.element.removeEventListener(this.name, this, e8), n10 && this.element.addEventListener(this.name, this, t7), this._$AH = t7;
-    }
-    handleEvent(t7) {
-      var i7, s9;
-      "function" == typeof this._$AH ? this._$AH.call(null !== (s9 = null === (i7 = this.options) || void 0 === i7 ? void 0 : i7.host) && void 0 !== s9 ? s9 : this.element, t7) : this._$AH.handleEvent(t7);
-    }
-  };
-  var z = class {
-    constructor(t7, i7, s9) {
-      this.element = t7, this.type = 6, this._$AN = void 0, this._$AM = i7, this.options = s9;
-    }
-    get _$AU() {
-      return this._$AM._$AU;
-    }
-    _$AI(t7) {
-      N(this, t7);
-    }
-  };
-  var j = i2.litHtmlPolyfillSupport;
-  null == j || j(V, M), (null !== (t2 = i2.litHtmlVersions) && void 0 !== t2 ? t2 : i2.litHtmlVersions = []).push("2.7.4");
-  var B = (t7, i7, s9) => {
-    var e8, o8;
-    const n10 = null !== (e8 = null == s9 ? void 0 : s9.renderBefore) && void 0 !== e8 ? e8 : i7;
-    let l9 = n10._$litPart$;
-    if (void 0 === l9) {
-      const t8 = null !== (o8 = null == s9 ? void 0 : s9.renderBefore) && void 0 !== o8 ? o8 : null;
-      n10._$litPart$ = l9 = new M(i7.insertBefore(d2(), t8), t8, void 0, null != s9 ? s9 : {});
-    }
-    return l9._$AI(t7), l9;
-  };
-
-  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/lit-element/lit-element.js
-  var l3;
-  var o4;
-  var s4 = class extends d {
-    constructor() {
-      super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
-    }
-    createRenderRoot() {
-      var t7, e8;
-      const i7 = super.createRenderRoot();
-      return null !== (t7 = (e8 = this.renderOptions).renderBefore) && void 0 !== t7 || (e8.renderBefore = i7.firstChild), i7;
-    }
-    update(t7) {
-      const i7 = this.render();
-      this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t7), this._$Do = B(i7, this.renderRoot, this.renderOptions);
-    }
-    connectedCallback() {
-      var t7;
-      super.connectedCallback(), null === (t7 = this._$Do) || void 0 === t7 || t7.setConnected(true);
-    }
-    disconnectedCallback() {
-      var t7;
-      super.disconnectedCallback(), null === (t7 = this._$Do) || void 0 === t7 || t7.setConnected(false);
-    }
-    render() {
-      return T;
-    }
-  };
-  s4.finalized = true, s4._$litElement$ = true, null === (l3 = globalThis.litElementHydrateSupport) || void 0 === l3 || l3.call(globalThis, { LitElement: s4 });
-  var n4 = globalThis.litElementPolyfillSupport;
-  null == n4 || n4({ LitElement: s4 });
-  (null !== (o4 = globalThis.litElementVersions) && void 0 !== o4 ? o4 : globalThis.litElementVersions = []).push("3.3.2");
-
-  // src/OptionalShiny.ts
-  var Shiny = window.Shiny;
-
-  // src/make_input_binding.ts
-  function make_input_binding(tag_name) {
-    if (!Shiny) {
-      return;
-    }
-    class NewNumberBinding extends Shiny.InputBinding {
-      constructor() {
-        super();
-      }
-      find(scope) {
-        return $(scope).find(tag_name);
-      }
-      getId(el) {
-        return el.id;
-      }
-      getValue(el) {
-        return el.value;
-      }
-      subscribe(el, callback) {
-        el.onChangeCallback = callback;
-      }
-      unsubscribe(el) {
-        el.onChangeCallback = (x4) => {
-        };
-      }
-    }
-    Shiny.inputBindings.register(new NewNumberBinding(), `${tag_name}-Binding`);
-  }
-
-  // src/make_value_change_emitter.ts
-  var Data_Passing_Event_ID = "shiny-data-passing-event";
-  function make_data_passing_payload(id3, msg) {
-    return { ...msg, id: id3 };
-  }
-  function make_value_change_emitter(el, id3) {
-    return (payload) => {
-      const event = new CustomEvent(Data_Passing_Event_ID, {
-        detail: make_data_passing_payload(id3, payload),
-        bubbles: true
-      });
-      el.dispatchEvent(event);
-    };
-  }
-
-  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DUT32TWM.js
-  var t3 = window;
-  var e4 = t3.ShadowRoot && (void 0 === t3.ShadyCSS || t3.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype;
-  var s5 = Symbol();
-  var n5 = /* @__PURE__ */ new WeakMap();
-  var o5 = class {
     constructor(t32, e43, n52) {
-      if (this._$cssResult$ = true, n52 !== s5)
+      if (this._$cssResult$ = true, n52 !== s)
         throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
       this.cssText = t32, this.t = e43;
     }
     get styleSheet() {
       let t32 = this.o;
       const s52 = this.t;
-      if (e4 && void 0 === t32) {
+      if (e && void 0 === t32) {
         const e43 = void 0 !== s52 && 1 === s52.length;
-        e43 && (t32 = n5.get(s52)), void 0 === t32 && ((this.o = t32 = new CSSStyleSheet()).replaceSync(this.cssText), e43 && n5.set(s52, t32));
+        e43 && (t32 = n.get(s52)), void 0 === t32 && ((this.o = t32 = new CSSStyleSheet()).replaceSync(this.cssText), e43 && n.set(s52, t32));
       }
       return t32;
     }
@@ -655,8 +24,8 @@
       return this.cssText;
     }
   };
-  var r4 = (t32) => new o5("string" == typeof t32 ? t32 : t32 + "", void 0, s5);
-  var i3 = (t32, ...e43) => {
+  var r = (t32) => new o("string" == typeof t32 ? t32 : t32 + "", void 0, s);
+  var i = (t32, ...e43) => {
     const n52 = 1 === t32.length ? t32[0] : e43.reduce((e54, s52, n62) => e54 + ((t42) => {
       if (true === t42._$cssResult$)
         return t42.cssText;
@@ -664,29 +33,29 @@
         return t42;
       throw Error("Value passed to 'css' function must be a 'css' function result: " + t42 + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
     })(s52) + t32[n62 + 1], t32[0]);
-    return new o5(n52, t32, s5);
+    return new o(n52, t32, s);
   };
-  var S3 = (s52, n52) => {
-    e4 ? s52.adoptedStyleSheets = n52.map((t32) => t32 instanceof CSSStyleSheet ? t32 : t32.styleSheet) : n52.forEach((e43) => {
-      const n62 = document.createElement("style"), o52 = t3.litNonce;
+  var S = (s52, n52) => {
+    e ? s52.adoptedStyleSheets = n52.map((t32) => t32 instanceof CSSStyleSheet ? t32 : t32.styleSheet) : n52.forEach((e43) => {
+      const n62 = document.createElement("style"), o52 = t.litNonce;
       void 0 !== o52 && n62.setAttribute("nonce", o52), n62.textContent = e43.cssText, s52.appendChild(n62);
     });
   };
-  var c3 = e4 ? (t32) => t32 : (t32) => t32 instanceof CSSStyleSheet ? ((t42) => {
+  var c = e ? (t32) => t32 : (t32) => t32 instanceof CSSStyleSheet ? ((t42) => {
     let e43 = "";
     for (const s52 of t42.cssRules)
       e43 += s52.cssText;
-    return r4(e43);
+    return r(e43);
   })(t32) : t32;
-  var s22;
-  var e22 = window;
-  var r22 = e22.trustedTypes;
-  var h3 = r22 ? r22.emptyScript : "";
-  var o22 = e22.reactiveElementPolyfillSupport;
-  var n22 = { toAttribute(t32, i33) {
+  var s2;
+  var e2 = window;
+  var r2 = e2.trustedTypes;
+  var h = r2 ? r2.emptyScript : "";
+  var o2 = e2.reactiveElementPolyfillSupport;
+  var n2 = { toAttribute(t32, i33) {
     switch (i33) {
       case Boolean:
-        t32 = t32 ? h3 : null;
+        t32 = t32 ? h : null;
         break;
       case Object:
       case Array:
@@ -712,9 +81,9 @@
     }
     return s52;
   } };
-  var a3 = (t32, i33) => i33 !== t32 && (i33 == i33 || t32 == t32);
-  var l4 = { attribute: true, type: String, converter: n22, reflect: false, hasChanged: a3 };
-  var d3 = class extends HTMLElement {
+  var a = (t32, i33) => i33 !== t32 && (i33 == i33 || t32 == t32);
+  var l = { attribute: true, type: String, converter: n2, reflect: false, hasChanged: a };
+  var d = class extends HTMLElement {
     constructor() {
       super(), this._$Ei = /* @__PURE__ */ new Map(), this.isUpdatePending = false, this.hasUpdated = false, this._$El = null, this.u();
     }
@@ -730,7 +99,7 @@
         void 0 !== e43 && (this._$Ev.set(e43, s52), t32.push(e43));
       }), t32;
     }
-    static createProperty(t32, i33 = l4) {
+    static createProperty(t32, i33 = l) {
       if (i33.state && (i33.attribute = false), this.finalize(), this.elementProperties.set(t32, i33), !i33.noAccessor && !this.prototype.hasOwnProperty(t32)) {
         const s52 = "symbol" == typeof t32 ? Symbol() : "__" + t32, e43 = this.getPropertyDescriptor(t32, s52, i33);
         void 0 !== e43 && Object.defineProperty(this.prototype, t32, e43);
@@ -745,7 +114,7 @@
       }, configurable: true, enumerable: true };
     }
     static getPropertyOptions(t32) {
-      return this.elementProperties.get(t32) || l4;
+      return this.elementProperties.get(t32) || l;
     }
     static finalize() {
       if (this.hasOwnProperty("finalized"))
@@ -764,9 +133,9 @@
       if (Array.isArray(i33)) {
         const e43 = new Set(i33.flat(1 / 0).reverse());
         for (const i42 of e43)
-          s52.unshift(c3(i42));
+          s52.unshift(c(i42));
       } else
-        void 0 !== i33 && s52.push(c3(i33));
+        void 0 !== i33 && s52.push(c(i33));
       return s52;
     }
     static _$Ep(t32, i33) {
@@ -793,7 +162,7 @@
     createRenderRoot() {
       var t32;
       const s52 = null !== (t32 = this.shadowRoot) && void 0 !== t32 ? t32 : this.attachShadow(this.constructor.shadowRootOptions);
-      return S3(s52, this.constructor.elementStyles), s52;
+      return S(s52, this.constructor.elementStyles), s52;
     }
     connectedCallback() {
       var t32;
@@ -814,11 +183,11 @@
     attributeChangedCallback(t32, i33, s52) {
       this._$AK(t32, s52);
     }
-    _$EO(t32, i33, s52 = l4) {
+    _$EO(t32, i33, s52 = l) {
       var e43;
       const r42 = this.constructor._$Ep(t32, s52);
       if (void 0 !== r42 && true === s52.reflect) {
-        const h32 = (void 0 !== (null === (e43 = s52.converter) || void 0 === e43 ? void 0 : e43.toAttribute) ? s52.converter : n22).toAttribute(i33, s52.type);
+        const h32 = (void 0 !== (null === (e43 = s52.converter) || void 0 === e43 ? void 0 : e43.toAttribute) ? s52.converter : n2).toAttribute(i33, s52.type);
         this._$El = t32, null == h32 ? this.removeAttribute(r42) : this.setAttribute(r42, h32), this._$El = null;
       }
     }
@@ -826,13 +195,13 @@
       var s52;
       const e43 = this.constructor, r42 = e43._$Ev.get(t32);
       if (void 0 !== r42 && this._$El !== r42) {
-        const t42 = e43.getPropertyOptions(r42), h32 = "function" == typeof t42.converter ? { fromAttribute: t42.converter } : void 0 !== (null === (s52 = t42.converter) || void 0 === s52 ? void 0 : s52.fromAttribute) ? t42.converter : n22;
+        const t42 = e43.getPropertyOptions(r42), h32 = "function" == typeof t42.converter ? { fromAttribute: t42.converter } : void 0 !== (null === (s52 = t42.converter) || void 0 === s52 ? void 0 : s52.fromAttribute) ? t42.converter : n2;
         this._$El = r42, this[r42] = h32.fromAttribute(i33, t42.type), this._$El = null;
       }
     }
     requestUpdate(t32, i33, s52) {
       let e43 = true;
-      void 0 !== t32 && (((s52 = s52 || this.constructor.getPropertyOptions(t32)).hasChanged || a3)(this[t32], i33) ? (this._$AL.has(t32) || this._$AL.set(t32, i33), true === s52.reflect && this._$El !== t32 && (void 0 === this._$EC && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(t32, s52))) : e43 = false), !this.isUpdatePending && e43 && (this._$E_ = this._$Ej());
+      void 0 !== t32 && (((s52 = s52 || this.constructor.getPropertyOptions(t32)).hasChanged || a)(this[t32], i33) ? (this._$AL.has(t32) || this._$AL.set(t32, i33), true === s52.reflect && this._$El !== t32 && (void 0 === this._$EC && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(t32, s52))) : e43 = false), !this.isUpdatePending && e43 && (this._$E_ = this._$Ej());
     }
     async _$Ej() {
       this.isUpdatePending = true;
@@ -893,113 +262,113 @@
     firstUpdated(t32) {
     }
   };
-  d3.finalized = true, d3.elementProperties = /* @__PURE__ */ new Map(), d3.elementStyles = [], d3.shadowRootOptions = { mode: "open" }, null == o22 || o22({ ReactiveElement: d3 }), (null !== (s22 = e22.reactiveElementVersions) && void 0 !== s22 ? s22 : e22.reactiveElementVersions = []).push("1.6.1");
-  var t22;
-  var i22 = window;
-  var s32 = i22.trustedTypes;
-  var e32 = s32 ? s32.createPolicy("lit-html", { createHTML: (t32) => t32 }) : void 0;
-  var o32 = `lit$${(Math.random() + "").slice(9)}$`;
-  var n32 = "?" + o32;
-  var l22 = `<${n32}>`;
-  var h22 = document;
-  var r32 = (t32 = "") => h22.createComment(t32);
-  var d22 = (t32) => null === t32 || "object" != typeof t32 && "function" != typeof t32;
-  var u2 = Array.isArray;
-  var c22 = (t32) => u2(t32) || "function" == typeof (null == t32 ? void 0 : t32[Symbol.iterator]);
-  var v2 = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g;
-  var a22 = /-->/g;
-  var f2 = />/g;
-  var _2 = RegExp(`>|[ 	
+  d.finalized = true, d.elementProperties = /* @__PURE__ */ new Map(), d.elementStyles = [], d.shadowRootOptions = { mode: "open" }, null == o2 || o2({ ReactiveElement: d }), (null !== (s2 = e2.reactiveElementVersions) && void 0 !== s2 ? s2 : e2.reactiveElementVersions = []).push("1.6.1");
+  var t2;
+  var i2 = window;
+  var s3 = i2.trustedTypes;
+  var e3 = s3 ? s3.createPolicy("lit-html", { createHTML: (t32) => t32 }) : void 0;
+  var o3 = `lit$${(Math.random() + "").slice(9)}$`;
+  var n3 = "?" + o3;
+  var l2 = `<${n3}>`;
+  var h2 = document;
+  var r3 = (t32 = "") => h2.createComment(t32);
+  var d2 = (t32) => null === t32 || "object" != typeof t32 && "function" != typeof t32;
+  var u = Array.isArray;
+  var c2 = (t32) => u(t32) || "function" == typeof (null == t32 ? void 0 : t32[Symbol.iterator]);
+  var v = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g;
+  var a2 = /-->/g;
+  var f = />/g;
+  var _ = RegExp(`>|[ 	
 \f\r](?:([^\\s"'>=/]+)([ 	
 \f\r]*=[ 	
 \f\r]*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g");
-  var m2 = /'/g;
-  var p2 = /"/g;
-  var $3 = /^(?:script|style|textarea|title)$/i;
-  var g2 = (t32) => (i33, ...s52) => ({ _$litType$: t32, strings: i33, values: s52 });
-  var y2 = g2(1);
-  var w2 = g2(2);
-  var x2 = Symbol.for("lit-noChange");
-  var b2 = Symbol.for("lit-nothing");
-  var T2 = /* @__PURE__ */ new WeakMap();
-  var A2 = h22.createTreeWalker(h22, 129, null, false);
-  var E2 = (t32, i33) => {
+  var m = /'/g;
+  var p = /"/g;
+  var $2 = /^(?:script|style|textarea|title)$/i;
+  var g = (t32) => (i33, ...s52) => ({ _$litType$: t32, strings: i33, values: s52 });
+  var y = g(1);
+  var w = g(2);
+  var x = Symbol.for("lit-noChange");
+  var b = Symbol.for("lit-nothing");
+  var T = /* @__PURE__ */ new WeakMap();
+  var A = h2.createTreeWalker(h2, 129, null, false);
+  var E = (t32, i33) => {
     const s52 = t32.length - 1, n52 = [];
-    let h32, r42 = 2 === i33 ? "<svg>" : "", d32 = v2;
+    let h32, r42 = 2 === i33 ? "<svg>" : "", d32 = v;
     for (let i42 = 0; i42 < s52; i42++) {
       const s62 = t32[i42];
       let e43, u32, c32 = -1, g23 = 0;
       for (; g23 < s62.length && (d32.lastIndex = g23, u32 = d32.exec(s62), null !== u32); )
-        g23 = d32.lastIndex, d32 === v2 ? "!--" === u32[1] ? d32 = a22 : void 0 !== u32[1] ? d32 = f2 : void 0 !== u32[2] ? ($3.test(u32[2]) && (h32 = RegExp("</" + u32[2], "g")), d32 = _2) : void 0 !== u32[3] && (d32 = _2) : d32 === _2 ? ">" === u32[0] ? (d32 = null != h32 ? h32 : v2, c32 = -1) : void 0 === u32[1] ? c32 = -2 : (c32 = d32.lastIndex - u32[2].length, e43 = u32[1], d32 = void 0 === u32[3] ? _2 : '"' === u32[3] ? p2 : m2) : d32 === p2 || d32 === m2 ? d32 = _2 : d32 === a22 || d32 === f2 ? d32 = v2 : (d32 = _2, h32 = void 0);
-      const y23 = d32 === _2 && t32[i42 + 1].startsWith("/>") ? " " : "";
-      r42 += d32 === v2 ? s62 + l22 : c32 >= 0 ? (n52.push(e43), s62.slice(0, c32) + "$lit$" + s62.slice(c32) + o32 + y23) : s62 + o32 + (-2 === c32 ? (n52.push(void 0), i42) : y23);
+        g23 = d32.lastIndex, d32 === v ? "!--" === u32[1] ? d32 = a2 : void 0 !== u32[1] ? d32 = f : void 0 !== u32[2] ? ($2.test(u32[2]) && (h32 = RegExp("</" + u32[2], "g")), d32 = _) : void 0 !== u32[3] && (d32 = _) : d32 === _ ? ">" === u32[0] ? (d32 = null != h32 ? h32 : v, c32 = -1) : void 0 === u32[1] ? c32 = -2 : (c32 = d32.lastIndex - u32[2].length, e43 = u32[1], d32 = void 0 === u32[3] ? _ : '"' === u32[3] ? p : m) : d32 === p || d32 === m ? d32 = _ : d32 === a2 || d32 === f ? d32 = v : (d32 = _, h32 = void 0);
+      const y22 = d32 === _ && t32[i42 + 1].startsWith("/>") ? " " : "";
+      r42 += d32 === v ? s62 + l2 : c32 >= 0 ? (n52.push(e43), s62.slice(0, c32) + "$lit$" + s62.slice(c32) + o3 + y22) : s62 + o3 + (-2 === c32 ? (n52.push(void 0), i42) : y22);
     }
     const u23 = r42 + (t32[s52] || "<?>") + (2 === i33 ? "</svg>" : "");
     if (!Array.isArray(t32) || !t32.hasOwnProperty("raw"))
       throw Error("invalid template strings array");
-    return [void 0 !== e32 ? e32.createHTML(u23) : u23, n52];
+    return [void 0 !== e3 ? e3.createHTML(u23) : u23, n52];
   };
-  var C2 = class {
+  var C = class {
     constructor({ strings: t32, _$litType$: i33 }, e43) {
       let l42;
       this.parts = [];
       let h32 = 0, d32 = 0;
-      const u23 = t32.length - 1, c32 = this.parts, [v23, a32] = E2(t32, i33);
-      if (this.el = C2.createElement(v23, e43), A2.currentNode = this.el.content, 2 === i33) {
+      const u23 = t32.length - 1, c32 = this.parts, [v22, a32] = E(t32, i33);
+      if (this.el = C.createElement(v22, e43), A.currentNode = this.el.content, 2 === i33) {
         const t42 = this.el.content, i42 = t42.firstChild;
         i42.remove(), t42.append(...i42.childNodes);
       }
-      for (; null !== (l42 = A2.nextNode()) && c32.length < u23; ) {
+      for (; null !== (l42 = A.nextNode()) && c32.length < u23; ) {
         if (1 === l42.nodeType) {
           if (l42.hasAttributes()) {
             const t42 = [];
             for (const i42 of l42.getAttributeNames())
-              if (i42.endsWith("$lit$") || i42.startsWith(o32)) {
+              if (i42.endsWith("$lit$") || i42.startsWith(o3)) {
                 const s52 = a32[d32++];
                 if (t42.push(i42), void 0 !== s52) {
-                  const t52 = l42.getAttribute(s52.toLowerCase() + "$lit$").split(o32), i52 = /([.?@])?(.*)/.exec(s52);
-                  c32.push({ type: 1, index: h32, name: i52[2], strings: t52, ctor: "." === i52[1] ? M2 : "?" === i52[1] ? k2 : "@" === i52[1] ? H2 : S22 });
+                  const t52 = l42.getAttribute(s52.toLowerCase() + "$lit$").split(o3), i52 = /([.?@])?(.*)/.exec(s52);
+                  c32.push({ type: 1, index: h32, name: i52[2], strings: t52, ctor: "." === i52[1] ? M : "?" === i52[1] ? k : "@" === i52[1] ? H : S2 });
                 } else
                   c32.push({ type: 6, index: h32 });
               }
             for (const i42 of t42)
               l42.removeAttribute(i42);
           }
-          if ($3.test(l42.tagName)) {
-            const t42 = l42.textContent.split(o32), i42 = t42.length - 1;
+          if ($2.test(l42.tagName)) {
+            const t42 = l42.textContent.split(o3), i42 = t42.length - 1;
             if (i42 > 0) {
-              l42.textContent = s32 ? s32.emptyScript : "";
+              l42.textContent = s3 ? s3.emptyScript : "";
               for (let s52 = 0; s52 < i42; s52++)
-                l42.append(t42[s52], r32()), A2.nextNode(), c32.push({ type: 2, index: ++h32 });
-              l42.append(t42[i42], r32());
+                l42.append(t42[s52], r3()), A.nextNode(), c32.push({ type: 2, index: ++h32 });
+              l42.append(t42[i42], r3());
             }
           }
         } else if (8 === l42.nodeType)
-          if (l42.data === n32)
+          if (l42.data === n3)
             c32.push({ type: 2, index: h32 });
           else {
             let t42 = -1;
-            for (; -1 !== (t42 = l42.data.indexOf(o32, t42 + 1)); )
-              c32.push({ type: 7, index: h32 }), t42 += o32.length - 1;
+            for (; -1 !== (t42 = l42.data.indexOf(o3, t42 + 1)); )
+              c32.push({ type: 7, index: h32 }), t42 += o3.length - 1;
           }
         h32++;
       }
     }
     static createElement(t32, i33) {
-      const s52 = h22.createElement("template");
+      const s52 = h2.createElement("template");
       return s52.innerHTML = t32, s52;
     }
   };
-  function P2(t32, i33, s52 = t32, e43) {
+  function P(t32, i33, s52 = t32, e43) {
     var o52, n52, l42, h32;
-    if (i33 === x2)
+    if (i33 === x)
       return i33;
     let r42 = void 0 !== e43 ? null === (o52 = s52._$Co) || void 0 === o52 ? void 0 : o52[e43] : s52._$Cl;
-    const u23 = d22(i33) ? void 0 : i33._$litDirective$;
-    return (null == r42 ? void 0 : r42.constructor) !== u23 && (null === (n52 = null == r42 ? void 0 : r42._$AO) || void 0 === n52 || n52.call(r42, false), void 0 === u23 ? r42 = void 0 : (r42 = new u23(t32), r42._$AT(t32, s52, e43)), void 0 !== e43 ? (null !== (l42 = (h32 = s52)._$Co) && void 0 !== l42 ? l42 : h32._$Co = [])[e43] = r42 : s52._$Cl = r42), void 0 !== r42 && (i33 = P2(t32, r42._$AS(t32, i33.values), r42, e43)), i33;
+    const u23 = d2(i33) ? void 0 : i33._$litDirective$;
+    return (null == r42 ? void 0 : r42.constructor) !== u23 && (null === (n52 = null == r42 ? void 0 : r42._$AO) || void 0 === n52 || n52.call(r42, false), void 0 === u23 ? r42 = void 0 : (r42 = new u23(t32), r42._$AT(t32, s52, e43)), void 0 !== e43 ? (null !== (l42 = (h32 = s52)._$Co) && void 0 !== l42 ? l42 : h32._$Co = [])[e43] = r42 : s52._$Cl = r42), void 0 !== r42 && (i33 = P(t32, r42._$AS(t32, i33.values), r42, e43)), i33;
   }
-  var V2 = class {
+  var V = class {
     constructor(t32, i33) {
       this.u = [], this._$AN = void 0, this._$AD = t32, this._$AM = i33;
     }
@@ -1011,15 +380,15 @@
     }
     v(t32) {
       var i33;
-      const { el: { content: s52 }, parts: e43 } = this._$AD, o52 = (null !== (i33 = null == t32 ? void 0 : t32.creationScope) && void 0 !== i33 ? i33 : h22).importNode(s52, true);
-      A2.currentNode = o52;
-      let n52 = A2.nextNode(), l42 = 0, r42 = 0, d32 = e43[0];
+      const { el: { content: s52 }, parts: e43 } = this._$AD, o52 = (null !== (i33 = null == t32 ? void 0 : t32.creationScope) && void 0 !== i33 ? i33 : h2).importNode(s52, true);
+      A.currentNode = o52;
+      let n52 = A.nextNode(), l42 = 0, r42 = 0, d32 = e43[0];
       for (; void 0 !== d32; ) {
         if (l42 === d32.index) {
           let i42;
-          2 === d32.type ? i42 = new N2(n52, n52.nextSibling, this, t32) : 1 === d32.type ? i42 = new d32.ctor(n52, d32.name, d32.strings, this, t32) : 6 === d32.type && (i42 = new I2(n52, this, t32)), this.u.push(i42), d32 = e43[++r42];
+          2 === d32.type ? i42 = new N(n52, n52.nextSibling, this, t32) : 1 === d32.type ? i42 = new d32.ctor(n52, d32.name, d32.strings, this, t32) : 6 === d32.type && (i42 = new I(n52, this, t32)), this.u.push(i42), d32 = e43[++r42];
         }
-        l42 !== (null == d32 ? void 0 : d32.index) && (n52 = A2.nextNode(), l42++);
+        l42 !== (null == d32 ? void 0 : d32.index) && (n52 = A.nextNode(), l42++);
       }
       return o52;
     }
@@ -1029,10 +398,10 @@
         void 0 !== s52 && (void 0 !== s52.strings ? (s52._$AI(t32, s52, i33), i33 += s52.strings.length - 2) : s52._$AI(t32[i33])), i33++;
     }
   };
-  var N2 = class {
+  var N = class {
     constructor(t32, i33, s52, e43) {
       var o52;
-      this.type = 2, this._$AH = b2, this._$AN = void 0, this._$AA = t32, this._$AB = i33, this._$AM = s52, this.options = e43, this._$Cm = null === (o52 = null == e43 ? void 0 : e43.isConnected) || void 0 === o52 || o52;
+      this.type = 2, this._$AH = b, this._$AN = void 0, this._$AA = t32, this._$AB = i33, this._$AM = s52, this.options = e43, this._$Cm = null === (o52 = null == e43 ? void 0 : e43.isConnected) || void 0 === o52 || o52;
     }
     get _$AU() {
       var t32, i33;
@@ -1050,7 +419,7 @@
       return this._$AB;
     }
     _$AI(t32, i33 = this) {
-      t32 = P2(this, t32, i33), d22(t32) ? t32 === b2 || null == t32 || "" === t32 ? (this._$AH !== b2 && this._$AR(), this._$AH = b2) : t32 !== this._$AH && t32 !== x2 && this.g(t32) : void 0 !== t32._$litType$ ? this.$(t32) : void 0 !== t32.nodeType ? this.T(t32) : c22(t32) ? this.k(t32) : this.g(t32);
+      t32 = P(this, t32, i33), d2(t32) ? t32 === b || null == t32 || "" === t32 ? (this._$AH !== b && this._$AR(), this._$AH = b) : t32 !== this._$AH && t32 !== x && this.g(t32) : void 0 !== t32._$litType$ ? this.$(t32) : void 0 !== t32.nodeType ? this.T(t32) : c2(t32) ? this.k(t32) : this.g(t32);
     }
     O(t32, i33 = this._$AB) {
       return this._$AA.parentNode.insertBefore(t32, i33);
@@ -1059,28 +428,28 @@
       this._$AH !== t32 && (this._$AR(), this._$AH = this.O(t32));
     }
     g(t32) {
-      this._$AH !== b2 && d22(this._$AH) ? this._$AA.nextSibling.data = t32 : this.T(h22.createTextNode(t32)), this._$AH = t32;
+      this._$AH !== b && d2(this._$AH) ? this._$AA.nextSibling.data = t32 : this.T(h2.createTextNode(t32)), this._$AH = t32;
     }
     $(t32) {
       var i33;
-      const { values: s52, _$litType$: e43 } = t32, o52 = "number" == typeof e43 ? this._$AC(t32) : (void 0 === e43.el && (e43.el = C2.createElement(e43.h, this.options)), e43);
+      const { values: s52, _$litType$: e43 } = t32, o52 = "number" == typeof e43 ? this._$AC(t32) : (void 0 === e43.el && (e43.el = C.createElement(e43.h, this.options)), e43);
       if ((null === (i33 = this._$AH) || void 0 === i33 ? void 0 : i33._$AD) === o52)
         this._$AH.p(s52);
       else {
-        const t42 = new V2(o52, this), i42 = t42.v(this.options);
+        const t42 = new V(o52, this), i42 = t42.v(this.options);
         t42.p(s52), this.T(i42), this._$AH = t42;
       }
     }
     _$AC(t32) {
-      let i33 = T2.get(t32.strings);
-      return void 0 === i33 && T2.set(t32.strings, i33 = new C2(t32)), i33;
+      let i33 = T.get(t32.strings);
+      return void 0 === i33 && T.set(t32.strings, i33 = new C(t32)), i33;
     }
     k(t32) {
-      u2(this._$AH) || (this._$AH = [], this._$AR());
+      u(this._$AH) || (this._$AH = [], this._$AR());
       const i33 = this._$AH;
       let s52, e43 = 0;
       for (const o52 of t32)
-        e43 === i33.length ? i33.push(s52 = new N2(this.O(r32()), this.O(r32()), this, this.options)) : s52 = i33[e43], s52._$AI(o52), e43++;
+        e43 === i33.length ? i33.push(s52 = new N(this.O(r3()), this.O(r3()), this, this.options)) : s52 = i33[e43], s52._$AI(o52), e43++;
       e43 < i33.length && (this._$AR(s52 && s52._$AB.nextSibling, e43), i33.length = e43);
     }
     _$AR(t32 = this._$AA.nextSibling, i33) {
@@ -1095,9 +464,9 @@
       void 0 === this._$AM && (this._$Cm = t32, null === (i33 = this._$AP) || void 0 === i33 || i33.call(this, t32));
     }
   };
-  var S22 = class {
+  var S2 = class {
     constructor(t32, i33, s52, e43, o52) {
-      this.type = 1, this._$AH = b2, this._$AN = void 0, this.element = t32, this.name = i33, this._$AM = e43, this.options = o52, s52.length > 2 || "" !== s52[0] || "" !== s52[1] ? (this._$AH = Array(s52.length - 1).fill(new String()), this.strings = s52) : this._$AH = b2;
+      this.type = 1, this._$AH = b, this._$AN = void 0, this.element = t32, this.name = i33, this._$AM = e43, this.options = o52, s52.length > 2 || "" !== s52[0] || "" !== s52[1] ? (this._$AH = Array(s52.length - 1).fill(new String()), this.strings = s52) : this._$AH = b;
     }
     get tagName() {
       return this.element.tagName;
@@ -1109,45 +478,45 @@
       const o52 = this.strings;
       let n52 = false;
       if (void 0 === o52)
-        t32 = P2(this, t32, i33, 0), n52 = !d22(t32) || t32 !== this._$AH && t32 !== x2, n52 && (this._$AH = t32);
+        t32 = P(this, t32, i33, 0), n52 = !d2(t32) || t32 !== this._$AH && t32 !== x, n52 && (this._$AH = t32);
       else {
         const e54 = t32;
         let l42, h32;
         for (t32 = o52[0], l42 = 0; l42 < o52.length - 1; l42++)
-          h32 = P2(this, e54[s52 + l42], i33, l42), h32 === x2 && (h32 = this._$AH[l42]), n52 || (n52 = !d22(h32) || h32 !== this._$AH[l42]), h32 === b2 ? t32 = b2 : t32 !== b2 && (t32 += (null != h32 ? h32 : "") + o52[l42 + 1]), this._$AH[l42] = h32;
+          h32 = P(this, e54[s52 + l42], i33, l42), h32 === x && (h32 = this._$AH[l42]), n52 || (n52 = !d2(h32) || h32 !== this._$AH[l42]), h32 === b ? t32 = b : t32 !== b && (t32 += (null != h32 ? h32 : "") + o52[l42 + 1]), this._$AH[l42] = h32;
       }
       n52 && !e43 && this.j(t32);
     }
     j(t32) {
-      t32 === b2 ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, null != t32 ? t32 : "");
+      t32 === b ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, null != t32 ? t32 : "");
     }
   };
-  var M2 = class extends S22 {
+  var M = class extends S2 {
     constructor() {
       super(...arguments), this.type = 3;
     }
     j(t32) {
-      this.element[this.name] = t32 === b2 ? void 0 : t32;
+      this.element[this.name] = t32 === b ? void 0 : t32;
     }
   };
-  var R2 = s32 ? s32.emptyScript : "";
-  var k2 = class extends S22 {
+  var R = s3 ? s3.emptyScript : "";
+  var k = class extends S2 {
     constructor() {
       super(...arguments), this.type = 4;
     }
     j(t32) {
-      t32 && t32 !== b2 ? this.element.setAttribute(this.name, R2) : this.element.removeAttribute(this.name);
+      t32 && t32 !== b ? this.element.setAttribute(this.name, R) : this.element.removeAttribute(this.name);
     }
   };
-  var H2 = class extends S22 {
+  var H = class extends S2 {
     constructor(t32, i33, s52, e43, o52) {
       super(t32, i33, s52, e43, o52), this.type = 5;
     }
     _$AI(t32, i33 = this) {
       var s52;
-      if ((t32 = null !== (s52 = P2(this, t32, i33, 0)) && void 0 !== s52 ? s52 : b2) === x2)
+      if ((t32 = null !== (s52 = P(this, t32, i33, 0)) && void 0 !== s52 ? s52 : b) === x)
         return;
-      const e43 = this._$AH, o52 = t32 === b2 && e43 !== b2 || t32.capture !== e43.capture || t32.once !== e43.once || t32.passive !== e43.passive, n52 = t32 !== b2 && (e43 === b2 || o52);
+      const e43 = this._$AH, o52 = t32 === b && e43 !== b || t32.capture !== e43.capture || t32.once !== e43.once || t32.passive !== e43.passive, n52 = t32 !== b && (e43 === b || o52);
       o52 && this.element.removeEventListener(this.name, this, e43), n52 && this.element.addEventListener(this.name, this, t32), this._$AH = t32;
     }
     handleEvent(t32) {
@@ -1155,7 +524,7 @@
       "function" == typeof this._$AH ? this._$AH.call(null !== (s52 = null === (i33 = this.options) || void 0 === i33 ? void 0 : i33.host) && void 0 !== s52 ? s52 : this.element, t32) : this._$AH.handleEvent(t32);
     }
   };
-  var I2 = class {
+  var I = class {
     constructor(t32, i33, s52) {
       this.element = t32, this.type = 6, this._$AN = void 0, this._$AM = i33, this.options = s52;
     }
@@ -1163,25 +532,25 @@
       return this._$AM._$AU;
     }
     _$AI(t32) {
-      P2(this, t32);
+      P(this, t32);
     }
   };
-  var L2 = { P: "$lit$", A: o32, M: n32, C: 1, L: E2, R: V2, D: c22, V: P2, I: N2, H: S22, N: k2, U: H2, B: M2, F: I2 };
-  var z2 = i22.litHtmlPolyfillSupport;
-  null == z2 || z2(C2, N2), (null !== (t22 = i22.litHtmlVersions) && void 0 !== t22 ? t22 : i22.litHtmlVersions = []).push("2.6.1");
+  var L = { P: "$lit$", A: o3, M: n3, C: 1, L: E, R: V, D: c2, V: P, I: N, H: S2, N: k, U: H, B: M, F: I };
+  var z = i2.litHtmlPolyfillSupport;
+  null == z || z(C, N), (null !== (t2 = i2.litHtmlVersions) && void 0 !== t2 ? t2 : i2.litHtmlVersions = []).push("2.6.1");
   var Z = (t32, i33, s52) => {
     var e43, o52;
     const n52 = null !== (e43 = null == s52 ? void 0 : s52.renderBefore) && void 0 !== e43 ? e43 : i33;
     let l42 = n52._$litPart$;
     if (void 0 === l42) {
       const t42 = null !== (o52 = null == s52 ? void 0 : s52.renderBefore) && void 0 !== o52 ? o52 : null;
-      n52._$litPart$ = l42 = new N2(i33.insertBefore(r32(), t42), t42, void 0, null != s52 ? s52 : {});
+      n52._$litPart$ = l42 = new N(i33.insertBefore(r3(), t42), t42, void 0, null != s52 ? s52 : {});
     }
     return l42._$AI(t32), l42;
   };
-  var l32;
-  var o42;
-  var s42 = class extends d3 {
+  var l3;
+  var o4;
+  var s4 = class extends d {
     constructor() {
       super(...arguments), this.renderOptions = { host: this }, this._$Dt = void 0;
     }
@@ -1203,16 +572,16 @@
       super.disconnectedCallback(), null === (t32 = this._$Dt) || void 0 === t32 || t32.setConnected(false);
     }
     render() {
-      return x2;
+      return x;
     }
   };
-  s42.finalized = true, s42._$litElement$ = true, null === (l32 = globalThis.litElementHydrateSupport) || void 0 === l32 || l32.call(globalThis, { LitElement: s42 });
-  var n42 = globalThis.litElementPolyfillSupport;
-  null == n42 || n42({ LitElement: s42 });
-  (null !== (o42 = globalThis.litElementVersions) && void 0 !== o42 ? o42 : globalThis.litElementVersions = []).push("3.2.0");
+  s4.finalized = true, s4._$litElement$ = true, null === (l3 = globalThis.litElementHydrateSupport) || void 0 === l3 || l3.call(globalThis, { LitElement: s4 });
+  var n4 = globalThis.litElementPolyfillSupport;
+  null == n4 || n4({ LitElement: s4 });
+  (null !== (o4 = globalThis.litElementVersions) && void 0 !== o4 ? o4 : globalThis.litElementVersions = []).push("3.2.0");
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.BCEYT3RT.js
-  var component_styles_default = i3`
+  var component_styles_default = i`
   :host {
     box-sizing: border-box;
   }
@@ -1229,7 +598,7 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.KKKZTCZ5.js
-  var tooltip_styles_default = i3`
+  var tooltip_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -1291,18 +660,18 @@
   var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __propIsEnum = Object.prototype.propertyIsEnumerable;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues = (a6, b4) => {
+  var __spreadValues = (a7, b4) => {
     for (var prop in b4 || (b4 = {}))
       if (__hasOwnProp.call(b4, prop))
-        __defNormalProp(a6, prop, b4[prop]);
+        __defNormalProp(a7, prop, b4[prop]);
     if (__getOwnPropSymbols)
       for (var prop of __getOwnPropSymbols(b4)) {
         if (__propIsEnum.call(b4, prop))
-          __defNormalProp(a6, prop, b4[prop]);
+          __defNormalProp(a7, prop, b4[prop]);
       }
-    return a6;
+    return a7;
   };
-  var __spreadProps = (a6, b4) => __defProps(a6, __getOwnPropDescs(b4));
+  var __spreadProps = (a7, b4) => __defProps(a7, __getOwnPropDescs(b4));
   var __objRest = (source, exclude) => {
     var target = {};
     for (var prop in source)
@@ -1321,8 +690,8 @@
   };
   var __decorateClass = (decorators, target, key, kind) => {
     var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
-    for (var i7 = decorators.length - 1, decorator; i7 >= 0; i7--)
-      if (decorator = decorators[i7])
+    for (var i8 = decorators.length - 1, decorator; i8 >= 0; i8--)
+      if (decorator = decorators[i8])
         result = (kind ? decorator(target, key, result) : decorator(result)) || result;
     if (kind && result)
       __defProp(target, key, result);
@@ -1432,15 +801,15 @@
     attributeFilter: ["dir", "lang"]
   });
   function registerTranslation(...translation2) {
-    translation2.map((t7) => {
-      const code = t7.$code.toLowerCase();
+    translation2.map((t8) => {
+      const code = t8.$code.toLowerCase();
       if (translations.has(code)) {
-        translations.set(code, Object.assign(Object.assign({}, translations.get(code)), t7));
+        translations.set(code, Object.assign(Object.assign({}, translations.get(code)), t8));
       } else {
-        translations.set(code, t7);
+        translations.set(code, t8);
       }
       if (!fallback) {
-        fallback = t7;
+        fallback = t8;
       }
     });
     update();
@@ -1583,120 +952,120 @@
   }
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UP75L23G.js
-  var t4 = { ATTRIBUTE: 1, CHILD: 2, PROPERTY: 3, BOOLEAN_ATTRIBUTE: 4, EVENT: 5, ELEMENT: 6 };
-  var e5 = (t24) => (...e25) => ({ _$litDirective$: t24, values: e25 });
-  var i4 = class {
-    constructor(t24) {
+  var t3 = { ATTRIBUTE: 1, CHILD: 2, PROPERTY: 3, BOOLEAN_ATTRIBUTE: 4, EVENT: 5, ELEMENT: 6 };
+  var e4 = (t23) => (...e24) => ({ _$litDirective$: t23, values: e24 });
+  var i3 = class {
+    constructor(t23) {
     }
     get _$AU() {
       return this._$AM._$AU;
     }
-    _$AT(t24, e25, i26) {
-      this._$Ct = t24, this._$AM = e25, this._$Ci = i26;
+    _$AT(t23, e24, i25) {
+      this._$Ct = t23, this._$AM = e24, this._$Ci = i25;
     }
-    _$AS(t24, e25) {
-      return this.update(t24, e25);
+    _$AS(t23, e24) {
+      return this.update(t23, e24);
     }
-    update(t24, e25) {
-      return this.render(...e25);
+    update(t23, e24) {
+      return this.render(...e24);
     }
   };
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ORW72H2K.js
-  var o6 = e5(class extends i4 {
-    constructor(t24) {
-      var i26;
-      if (super(t24), t24.type !== t4.ATTRIBUTE || "class" !== t24.name || (null === (i26 = t24.strings) || void 0 === i26 ? void 0 : i26.length) > 2)
+  var o5 = e4(class extends i3 {
+    constructor(t23) {
+      var i25;
+      if (super(t23), t23.type !== t3.ATTRIBUTE || "class" !== t23.name || (null === (i25 = t23.strings) || void 0 === i25 ? void 0 : i25.length) > 2)
         throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.");
     }
-    render(t24) {
-      return " " + Object.keys(t24).filter((i26) => t24[i26]).join(" ") + " ";
+    render(t23) {
+      return " " + Object.keys(t23).filter((i25) => t23[i25]).join(" ") + " ";
     }
-    update(i26, [s9]) {
-      var r6, o26;
+    update(i25, [s12]) {
+      var r8, o25;
       if (void 0 === this.nt) {
-        this.nt = /* @__PURE__ */ new Set(), void 0 !== i26.strings && (this.st = new Set(i26.strings.join(" ").split(/\s/).filter((t24) => "" !== t24)));
-        for (const t24 in s9)
-          s9[t24] && !(null === (r6 = this.st) || void 0 === r6 ? void 0 : r6.has(t24)) && this.nt.add(t24);
-        return this.render(s9);
+        this.nt = /* @__PURE__ */ new Set(), void 0 !== i25.strings && (this.st = new Set(i25.strings.join(" ").split(/\s/).filter((t23) => "" !== t23)));
+        for (const t23 in s12)
+          s12[t23] && !(null === (r8 = this.st) || void 0 === r8 ? void 0 : r8.has(t23)) && this.nt.add(t23);
+        return this.render(s12);
       }
-      const e25 = i26.element.classList;
-      this.nt.forEach((t24) => {
-        t24 in s9 || (e25.remove(t24), this.nt.delete(t24));
+      const e24 = i25.element.classList;
+      this.nt.forEach((t23) => {
+        t23 in s12 || (e24.remove(t23), this.nt.delete(t23));
       });
-      for (const t24 in s9) {
-        const i33 = !!s9[t24];
-        i33 === this.nt.has(t24) || (null === (o26 = this.st) || void 0 === o26 ? void 0 : o26.has(t24)) || (i33 ? (e25.add(t24), this.nt.add(t24)) : (e25.remove(t24), this.nt.delete(t24)));
+      for (const t23 in s12) {
+        const i33 = !!s12[t23];
+        i33 === this.nt.has(t23) || (null === (o25 = this.st) || void 0 === o25 ? void 0 : o25.has(t23)) || (i33 ? (e24.add(t23), this.nt.add(t23)) : (e24.remove(t23), this.nt.delete(t23)));
       }
-      return x2;
+      return x;
     }
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ROLL4627.js
-  var e6 = (e62) => (n24) => "function" == typeof n24 ? ((e72, n33) => (customElements.define(e72, n33), n33))(e62, n24) : ((e72, n33) => {
-    const { kind: t24, elements: s24 } = n33;
-    return { kind: t24, elements: s24, finisher(n43) {
-      customElements.define(e72, n43);
+  var e5 = (e62) => (n23) => "function" == typeof n23 ? ((e72, n32) => (customElements.define(e72, n32), n32))(e62, n23) : ((e72, n32) => {
+    const { kind: t23, elements: s23 } = n32;
+    return { kind: t23, elements: s23, finisher(n42) {
+      customElements.define(e72, n42);
     } };
-  })(e62, n24);
-  var i5 = (i33, e62) => "method" === e62.kind && e62.descriptor && !("value" in e62.descriptor) ? __spreadProps(__spreadValues({}, e62), { finisher(n24) {
-    n24.createProperty(e62.key, i33);
+  })(e62, n23);
+  var i4 = (i33, e62) => "method" === e62.kind && e62.descriptor && !("value" in e62.descriptor) ? __spreadProps(__spreadValues({}, e62), { finisher(n23) {
+    n23.createProperty(e62.key, i33);
   } }) : { kind: "field", key: Symbol(), placement: "own", descriptor: {}, originalKey: e62.key, initializer() {
     "function" == typeof e62.initializer && (this[e62.key] = e62.initializer.call(this));
-  }, finisher(n24) {
-    n24.createProperty(e62.key, i33);
+  }, finisher(n23) {
+    n23.createProperty(e62.key, i33);
   } };
-  function e23(e62) {
-    return (n24, t24) => void 0 !== t24 ? ((i33, e72, n33) => {
-      e72.constructor.createProperty(n33, i33);
-    })(e62, n24, t24) : i5(e62, n24);
+  function e22(e62) {
+    return (n23, t23) => void 0 !== t23 ? ((i33, e72, n32) => {
+      e72.constructor.createProperty(n32, i33);
+    })(e62, n23, t23) : i4(e62, n23);
   }
-  function t5(t24) {
-    return e23(__spreadProps(__spreadValues({}, t24), { state: true }));
+  function t4(t23) {
+    return e22(__spreadProps(__spreadValues({}, t23), { state: true }));
   }
-  var o7 = ({ finisher: e62, descriptor: t24 }) => (o26, n24) => {
-    var r6;
-    if (void 0 === n24) {
-      const n33 = null !== (r6 = o26.originalKey) && void 0 !== r6 ? r6 : o26.key, i33 = null != t24 ? { kind: "method", placement: "prototype", key: n33, descriptor: t24(o26.key) } : __spreadProps(__spreadValues({}, o26), { key: n33 });
+  var o6 = ({ finisher: e62, descriptor: t23 }) => (o25, n23) => {
+    var r8;
+    if (void 0 === n23) {
+      const n32 = null !== (r8 = o25.originalKey) && void 0 !== r8 ? r8 : o25.key, i33 = null != t23 ? { kind: "method", placement: "prototype", key: n32, descriptor: t23(o25.key) } : __spreadProps(__spreadValues({}, o25), { key: n32 });
       return null != e62 && (i33.finisher = function(t32) {
-        e62(t32, n33);
+        e62(t32, n32);
       }), i33;
     }
     {
-      const r24 = o26.constructor;
-      void 0 !== t24 && Object.defineProperty(o26, n24, t24(n24)), null == e62 || e62(r24, n24);
+      const r23 = o25.constructor;
+      void 0 !== t23 && Object.defineProperty(o25, n23, t23(n23)), null == e62 || e62(r23, n23);
     }
   };
-  function e33(e62) {
-    return o7({ finisher: (r6, t24) => {
-      Object.assign(r6.prototype[t24], e62);
+  function e32(e62) {
+    return o6({ finisher: (r8, t23) => {
+      Object.assign(r8.prototype[t23], e62);
     } });
   }
-  function i23(i33, n24) {
-    return o7({ descriptor: (o26) => {
-      const t24 = { get() {
-        var o35, n33;
-        return null !== (n33 = null === (o35 = this.renderRoot) || void 0 === o35 ? void 0 : o35.querySelector(i33)) && void 0 !== n33 ? n33 : null;
+  function i22(i33, n23) {
+    return o6({ descriptor: (o25) => {
+      const t23 = { get() {
+        var o34, n32;
+        return null !== (n32 = null === (o34 = this.renderRoot) || void 0 === o34 ? void 0 : o34.querySelector(i33)) && void 0 !== n32 ? n32 : null;
       }, enumerable: true, configurable: true };
-      if (n24) {
-        const n33 = "symbol" == typeof o26 ? Symbol() : "__" + o26;
-        t24.get = function() {
-          var o35, t32;
-          return void 0 === this[n33] && (this[n33] = null !== (t32 = null === (o35 = this.renderRoot) || void 0 === o35 ? void 0 : o35.querySelector(i33)) && void 0 !== t32 ? t32 : null), this[n33];
+      if (n23) {
+        const n32 = "symbol" == typeof o25 ? Symbol() : "__" + o25;
+        t23.get = function() {
+          var o34, t32;
+          return void 0 === this[n32] && (this[n32] = null !== (t32 = null === (o34 = this.renderRoot) || void 0 === o34 ? void 0 : o34.querySelector(i33)) && void 0 !== t32 ? t32 : null), this[n32];
         };
       }
-      return t24;
+      return t23;
     } });
   }
   function e42(e62) {
-    return o7({ descriptor: (r6) => ({ async get() {
-      var r24;
-      return await this.updateComplete, null === (r24 = this.renderRoot) || void 0 === r24 ? void 0 : r24.querySelector(e62);
+    return o6({ descriptor: (r8) => ({ async get() {
+      var r23;
+      return await this.updateComplete, null === (r23 = this.renderRoot) || void 0 === r23 ? void 0 : r23.querySelector(e62);
     }, enumerable: true, configurable: true }) });
   }
-  var n6;
-  var e52 = null != (null === (n6 = window.HTMLSlotElement) || void 0 === n6 ? void 0 : n6.prototype.assignedElements) ? (o26, n24) => o26.assignedElements(n24) : (o26, n24) => o26.assignedNodes(n24).filter((o35) => o35.nodeType === Node.ELEMENT_NODE);
-  var ShoelaceElement = class extends s42 {
+  var n5;
+  var e52 = null != (null === (n5 = window.HTMLSlotElement) || void 0 === n5 ? void 0 : n5.prototype.assignedElements) ? (o25, n23) => o25.assignedElements(n23) : (o25, n23) => o25.assignedNodes(n23).filter((o34) => o34.nodeType === Node.ELEMENT_NODE);
+  var ShoelaceElement = class extends s4 {
     emit(name, options) {
       const event = new CustomEvent(name, __spreadValues({
         bubbles: true,
@@ -1709,10 +1078,10 @@
     }
   };
   __decorateClass([
-    e23()
+    e22()
   ], ShoelaceElement.prototype, "dir", 2);
   __decorateClass([
-    e23()
+    e22()
   ], ShoelaceElement.prototype, "lang", 2);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LJX6BXHL.js
@@ -1855,14 +1224,14 @@
       return waitForEvent(this, "sl-after-hide");
     }
     render() {
-      return y2`
+      return y`
       <sl-popup
         part="base"
         exportparts="
           popup:base__popup,
           arrow:base__arrow
         "
-        class=${o6({
+        class=${o5({
         tooltip: true,
         "tooltip--open": this.open
       })}
@@ -1892,37 +1261,37 @@
   };
   SlTooltip.styles = tooltip_styles_default;
   __decorateClass([
-    i23("slot:not([name])")
+    i22("slot:not([name])")
   ], SlTooltip.prototype, "defaultSlot", 2);
   __decorateClass([
-    i23(".tooltip__body")
+    i22(".tooltip__body")
   ], SlTooltip.prototype, "body", 2);
   __decorateClass([
-    i23("sl-popup")
+    i22("sl-popup")
   ], SlTooltip.prototype, "popup", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTooltip.prototype, "content", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTooltip.prototype, "placement", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTooltip.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlTooltip.prototype, "distance", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTooltip.prototype, "open", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlTooltip.prototype, "skidding", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTooltip.prototype, "trigger", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlTooltip.prototype, "hoist", 2);
   __decorateClass([
     watch("open", { waitUntilFirstUpdate: true })
@@ -1934,7 +1303,7 @@
     watch("disabled")
   ], SlTooltip.prototype, "handleDisabledChange", 1);
   SlTooltip = __decorateClass([
-    e6("sl-tooltip")
+    e5("sl-tooltip")
   ], SlTooltip);
   setDefaultAnimation("tooltip.show", {
     keyframes: [
@@ -1952,7 +1321,7 @@
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.PXIR4IUJ.js
-  var tree_styles_default = i3`
+  var tree_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -1978,7 +1347,7 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UXWQUABA.js
-  var tree_item_styles_default = i3`
+  var tree_item_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -2134,39 +1503,39 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OXFFPZHD.js
-  var { I: l5 } = L2;
-  var e24 = (o8) => void 0 === o8.strings;
-  var f3 = {};
-  var s6 = (o8, l33 = f3) => o8._$AH = l33;
-  var l23 = e5(class extends i4 {
-    constructor(r6) {
-      if (super(r6), r6.type !== t4.PROPERTY && r6.type !== t4.ATTRIBUTE && r6.type !== t4.BOOLEAN_ATTRIBUTE)
+  var { I: l4 } = L;
+  var e23 = (o11) => void 0 === o11.strings;
+  var f2 = {};
+  var s5 = (o11, l32 = f2) => o11._$AH = l32;
+  var l22 = e4(class extends i3 {
+    constructor(r8) {
+      if (super(r8), r8.type !== t3.PROPERTY && r8.type !== t3.ATTRIBUTE && r8.type !== t3.BOOLEAN_ATTRIBUTE)
         throw Error("The `live` directive is not allowed on child or event bindings");
-      if (!e24(r6))
+      if (!e23(r8))
         throw Error("`live` bindings can only contain a single expression");
     }
-    render(r6) {
-      return r6;
+    render(r8) {
+      return r8;
     }
-    update(i26, [t24]) {
-      if (t24 === x2 || t24 === b2)
-        return t24;
-      const o8 = i26.element, l33 = i26.name;
-      if (i26.type === t4.PROPERTY) {
-        if (t24 === o8[l33])
-          return x2;
-      } else if (i26.type === t4.BOOLEAN_ATTRIBUTE) {
-        if (!!t24 === o8.hasAttribute(l33))
-          return x2;
-      } else if (i26.type === t4.ATTRIBUTE && o8.getAttribute(l33) === t24 + "")
-        return x2;
-      return s6(i26), t24;
+    update(i25, [t23]) {
+      if (t23 === x || t23 === b)
+        return t23;
+      const o11 = i25.element, l32 = i25.name;
+      if (i25.type === t3.PROPERTY) {
+        if (t23 === o11[l32])
+          return x;
+      } else if (i25.type === t3.BOOLEAN_ATTRIBUTE) {
+        if (!!t23 === o11.hasAttribute(l32))
+          return x;
+      } else if (i25.type === t3.ATTRIBUTE && o11.getAttribute(l32) === t23 + "")
+        return x;
+      return s5(i25), t23;
     }
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.GUC2ARHT.js
-  function n7(n24, o26, r6) {
-    return n24 ? o26() : null == r6 ? void 0 : r6();
+  function n6(n23, o25, r8) {
+    return n23 ? o25() : null == r8 ? void 0 : r8();
   }
   var SlTreeItem = class extends ShoelaceElement {
     constructor() {
@@ -2280,10 +1649,10 @@
     render() {
       const isRtl = this.localize.dir() === "rtl";
       const showExpandButton = !this.loading && (!this.isLeaf || this.lazy);
-      return y2`
+      return y`
       <div
         part="base"
-        class="${o6({
+        class="${o5({
         "tree-item": true,
         "tree-item--expanded": this.expanded,
         "tree-item--selected": this.selected,
@@ -2307,13 +1676,13 @@
 
           <div
             part="expand-button"
-            class=${o6({
+            class=${o5({
         "tree-item__expand-button": true,
         "tree-item__expand-button--visible": showExpandButton
       })}
             aria-hidden="true"
           >
-            ${n7(this.loading, () => y2` <sl-spinner></sl-spinner> `)}
+            ${n6(this.loading, () => y` <sl-spinner></sl-spinner> `)}
             <slot class="tree-item__expand-icon-slot" name="expand-icon">
               <sl-icon library="system" name=${isRtl ? "chevron-left" : "chevron-right"}></sl-icon>
             </slot>
@@ -2322,14 +1691,14 @@
             </slot>
           </div>
 
-          ${n7(
+          ${n6(
         this.selectable,
-        () => y2`
+        () => y`
                 <sl-checkbox
                   tabindex="-1"
                   class="tree-item__checkbox"
                   ?disabled="${this.disabled}"
-                  ?checked="${l23(this.selected)}"
+                  ?checked="${l22(this.selected)}"
                   ?indeterminate="${this.indeterminate}"
                 ></sl-checkbox>
               `
@@ -2351,43 +1720,43 @@
   };
   SlTreeItem.styles = tree_item_styles_default;
   __decorateClass([
-    t5()
+    t4()
   ], SlTreeItem.prototype, "indeterminate", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlTreeItem.prototype, "isLeaf", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlTreeItem.prototype, "loading", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlTreeItem.prototype, "selectable", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTreeItem.prototype, "expanded", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTreeItem.prototype, "selected", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTreeItem.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTreeItem.prototype, "lazy", 2);
   __decorateClass([
-    i23("slot:not([name])")
+    i22("slot:not([name])")
   ], SlTreeItem.prototype, "defaultSlot", 2);
   __decorateClass([
-    i23("slot[name=children]")
+    i22("slot[name=children]")
   ], SlTreeItem.prototype, "childrenSlot", 2);
   __decorateClass([
-    i23(".tree-item__item")
+    i22(".tree-item__item")
   ], SlTreeItem.prototype, "itemElement", 2);
   __decorateClass([
-    i23(".tree-item__children")
+    i22(".tree-item__children")
   ], SlTreeItem.prototype, "childrenContainer", 2);
   __decorateClass([
-    i23(".tree-item__expand-button slot")
+    i22(".tree-item__expand-button slot")
   ], SlTreeItem.prototype, "expandButtonSlot", 2);
   __decorateClass([
     watch("loading", { waitUntilFirstUpdate: true })
@@ -2408,7 +1777,7 @@
     watch("lazy", { waitUntilFirstUpdate: true })
   ], SlTreeItem.prototype, "handleLazyChange", 1);
   SlTreeItem = __decorateClass([
-    e6("sl-tree-item")
+    e5("sl-tree-item")
   ], SlTreeItem);
   setDefaultAnimation("tree-item.expand", {
     keyframes: [
@@ -2427,7 +1796,7 @@
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.HF7GESMZ.js
   function clamp(value, min, max) {
-    const noNegativeZero = (n10) => Object.is(n10, -0) ? 0 : n10;
+    const noNegativeZero = (n13) => Object.is(n13, -0) ? 0 : n13;
     if (value < min) {
       return noNegativeZero(min);
     }
@@ -2694,7 +2063,7 @@
       });
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
         class="tree"
@@ -2711,26 +2080,26 @@
   };
   SlTree.styles = tree_styles_default;
   __decorateClass([
-    i23("slot:not([name])")
+    i22("slot:not([name])")
   ], SlTree.prototype, "defaultSlot", 2);
   __decorateClass([
-    i23("slot[name=expand-icon]")
+    i22("slot[name=expand-icon]")
   ], SlTree.prototype, "expandedIconSlot", 2);
   __decorateClass([
-    i23("slot[name=collapse-icon]")
+    i22("slot[name=collapse-icon]")
   ], SlTree.prototype, "collapsedIconSlot", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTree.prototype, "selection", 2);
   __decorateClass([
     watch("selection")
   ], SlTree.prototype, "handleSelectionChange", 1);
   SlTree = __decorateClass([
-    e6("sl-tree")
+    e5("sl-tree")
   ], SlTree);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.SXHKHWVK.js
-  var tab_group_styles_default = i3`
+  var tab_group_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -3100,7 +2469,7 @@
         }
       }
       if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) {
-        const activeEl = this.tabs.find((t24) => t24.matches(":focus"));
+        const activeEl = this.tabs.find((t23) => t23.matches(":focus"));
         const isRtl = this.localize.dir() === "rtl";
         if ((activeEl == null ? void 0 : activeEl.tagName.toLowerCase()) === "sl-tab") {
           let index = this.tabs.indexOf(activeEl);
@@ -3240,10 +2609,10 @@
     }
     render() {
       const isRtl = this.localize.dir() === "rtl";
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         "tab-group": true,
         "tab-group--top": this.placement === "top",
         "tab-group--bottom": this.placement === "bottom",
@@ -3256,7 +2625,7 @@
         @keydown=${this.handleKeyDown}
       >
         <div class="tab-group__nav-container" part="nav">
-          ${this.hasScrollControls ? y2`
+          ${this.hasScrollControls ? y`
                 <sl-icon-button
                   part="scroll-button scroll-button--start"
                   exportparts="base:scroll-button__base"
@@ -3275,7 +2644,7 @@
             </div>
           </div>
 
-          ${this.hasScrollControls ? y2`
+          ${this.hasScrollControls ? y`
                 <sl-icon-button
                   part="scroll-button scroll-button--end"
                   exportparts="base:scroll-button__base"
@@ -3295,28 +2664,28 @@
   };
   SlTabGroup.styles = tab_group_styles_default;
   __decorateClass([
-    i23(".tab-group")
+    i22(".tab-group")
   ], SlTabGroup.prototype, "tabGroup", 2);
   __decorateClass([
-    i23(".tab-group__body")
+    i22(".tab-group__body")
   ], SlTabGroup.prototype, "body", 2);
   __decorateClass([
-    i23(".tab-group__nav")
+    i22(".tab-group__nav")
   ], SlTabGroup.prototype, "nav", 2);
   __decorateClass([
-    i23(".tab-group__indicator")
+    i22(".tab-group__indicator")
   ], SlTabGroup.prototype, "indicator", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlTabGroup.prototype, "hasScrollControls", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTabGroup.prototype, "placement", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTabGroup.prototype, "activation", 2);
   __decorateClass([
-    e23({ attribute: "no-scroll-controls", type: Boolean })
+    e22({ attribute: "no-scroll-controls", type: Boolean })
   ], SlTabGroup.prototype, "noScrollControls", 2);
   __decorateClass([
     watch("noScrollControls", { waitUntilFirstUpdate: true })
@@ -3325,11 +2694,11 @@
     watch("placement", { waitUntilFirstUpdate: true })
   ], SlTabGroup.prototype, "syncIndicator", 1);
   SlTabGroup = __decorateClass([
-    e6("sl-tab-group")
+    e5("sl-tab-group")
   ], SlTabGroup);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.F6XS2O2X.js
-  var tab_panel_styles_default = i3`
+  var tab_panel_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -3367,10 +2736,10 @@
       this.setAttribute("aria-hidden", this.active ? "false" : "true");
     }
     render() {
-      return y2`
+      return y`
       <slot
         part="base"
-        class=${o6({
+        class=${o5({
         "tab-panel": true,
         "tab-panel--active": this.active
       })}
@@ -3380,20 +2749,20 @@
   };
   SlTabPanel.styles = tab_panel_styles_default;
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlTabPanel.prototype, "name", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTabPanel.prototype, "active", 2);
   __decorateClass([
     watch("active")
   ], SlTabPanel.prototype, "handleActiveChange", 1);
   SlTabPanel = __decorateClass([
-    e6("sl-tab-panel")
+    e5("sl-tab-panel")
   ], SlTabPanel);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.HP6S5QOV.js
-  var form_control_styles_default = i3`
+  var form_control_styles_default = i`
   .form-control .form-control__label {
     display: none;
   }
@@ -3452,7 +2821,7 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.572XDSW6.js
-  var textarea_styles_default = i3`
+  var textarea_styles_default = i`
   ${component_styles_default}
   ${form_control_styles_default}
 
@@ -3627,8 +2996,8 @@
       const options = ctor.getPropertyOptions(propertyName);
       const attributeName = typeof options.attribute === "string" ? options.attribute : propertyName;
       if (name === attributeName) {
-        const converter = options.converter || n22;
-        const fromAttribute = typeof converter === "function" ? converter : (_a = converter == null ? void 0 : converter.fromAttribute) != null ? _a : n22.fromAttribute;
+        const converter = options.converter || n2;
+        const fromAttribute = typeof converter === "function" ? converter : (_a = converter == null ? void 0 : converter.fromAttribute) != null ? _a : n2.fromAttribute;
         const newValue = fromAttribute(value, options.type);
         if (this[propertyName] !== newValue) {
           this[key] = newValue;
@@ -3906,7 +3275,7 @@
   }));
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.V47DPYLL.js
-  var l6 = (l25) => null != l25 ? l25 : b2;
+  var l5 = (l24) => null != l24 ? l24 : b;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.3IYPB6RR.js
   var HasSlotController = class {
@@ -4119,10 +3488,10 @@
       const hasHelpTextSlot = this.hasSlotController.test("help-text");
       const hasLabel = this.label ? true : !!hasLabelSlot;
       const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
-      return y2`
+      return y`
       <div
         part="form-control"
-        class=${o6({
+        class=${o5({
         "form-control": true,
         "form-control--small": this.size === "small",
         "form-control--medium": this.size === "medium",
@@ -4143,7 +3512,7 @@
         <div part="form-control-input" class="form-control-input">
           <div
             part="base"
-            class=${o6({
+            class=${o5({
         textarea: true,
         "textarea--small": this.size === "small",
         "textarea--medium": this.size === "medium",
@@ -4163,21 +3532,21 @@
               id="input"
               class="textarea__control"
               title=${this.title}
-              name=${l6(this.name)}
-              .value=${l23(this.value)}
+              name=${l5(this.name)}
+              .value=${l22(this.value)}
               ?disabled=${this.disabled}
               ?readonly=${this.readonly}
               ?required=${this.required}
-              placeholder=${l6(this.placeholder)}
-              rows=${l6(this.rows)}
-              minlength=${l6(this.minlength)}
-              maxlength=${l6(this.maxlength)}
-              autocapitalize=${l6(this.autocapitalize)}
-              autocorrect=${l6(this.autocorrect)}
+              placeholder=${l5(this.placeholder)}
+              rows=${l5(this.rows)}
+              minlength=${l5(this.minlength)}
+              maxlength=${l5(this.maxlength)}
+              autocapitalize=${l5(this.autocapitalize)}
+              autocorrect=${l5(this.autocorrect)}
               ?autofocus=${this.autofocus}
-              spellcheck=${l6(this.spellcheck)}
-              enterkeyhint=${l6(this.enterkeyhint)}
-              inputmode=${l6(this.inputmode)}
+              spellcheck=${l5(this.spellcheck)}
+              enterkeyhint=${l5(this.enterkeyhint)}
+              inputmode=${l5(this.inputmode)}
               aria-describedby="help-text"
               @change=${this.handleChange}
               @input=${this.handleInput}
@@ -4203,76 +3572,76 @@
   };
   SlTextarea.styles = textarea_styles_default;
   __decorateClass([
-    i23(".textarea__control")
+    i22(".textarea__control")
   ], SlTextarea.prototype, "input", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlTextarea.prototype, "hasFocus", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "title", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "name", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "value", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlTextarea.prototype, "size", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTextarea.prototype, "filled", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "label", 2);
   __decorateClass([
-    e23({ attribute: "help-text" })
+    e22({ attribute: "help-text" })
   ], SlTextarea.prototype, "helpText", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "placeholder", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlTextarea.prototype, "rows", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "resize", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTextarea.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTextarea.prototype, "readonly", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlTextarea.prototype, "form", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTextarea.prototype, "required", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlTextarea.prototype, "minlength", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlTextarea.prototype, "maxlength", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "autocapitalize", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "autocorrect", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "autocomplete", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlTextarea.prototype, "autofocus", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "enterkeyhint", 2);
   __decorateClass([
-    e23({
+    e22({
       type: Boolean,
       converter: {
         // Allow "true|false" attribute values but keep the property boolean
@@ -4282,7 +3651,7 @@
     })
   ], SlTextarea.prototype, "spellcheck", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlTextarea.prototype, "inputmode", 2);
   __decorateClass([
     defaultValue()
@@ -4297,11 +3666,11 @@
     watch("value", { waitUntilFirstUpdate: true })
   ], SlTextarea.prototype, "handleValueChange", 1);
   SlTextarea = __decorateClass([
-    e6("sl-textarea")
+    e5("sl-textarea")
   ], SlTextarea);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.F33LDBWT.js
-  var split_panel_styles_default = i3`
+  var split_panel_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -4388,9 +3757,9 @@
       const offsetX = dims.left + defaultView.pageXOffset;
       const offsetY = dims.top + defaultView.pageYOffset;
       const x4 = pointerEvent.pageX - offsetX;
-      const y4 = pointerEvent.pageY - offsetY;
+      const y5 = pointerEvent.pageY - offsetY;
       if (options == null ? void 0 : options.onMove) {
-        options.onMove(x4, y4);
+        options.onMove(x4, y5);
       }
     }
     function stop() {
@@ -4447,8 +3816,8 @@
         event.preventDefault();
       }
       drag(this, {
-        onMove: (x4, y23) => {
-          let newPositionInPixels = this.vertical ? y23 : x4;
+        onMove: (x4, y22) => {
+          let newPositionInPixels = this.vertical ? y22 : x4;
           if (this.primary === "end") {
             newPositionInPixels = this.size - newPositionInPixels;
           }
@@ -4545,13 +3914,13 @@
         }
       }
       this.style[gridTemplateAlt] = "";
-      return y2`
+      return y`
       <slot name="start" part="panel start" class="start"></slot>
 
       <div
         part="divider"
         class="divider"
-        tabindex=${l6(this.disabled ? void 0 : "0")}
+        tabindex=${l5(this.disabled ? void 0 : "0")}
         role="separator"
         aria-valuenow=${this.position}
         aria-valuemin="0"
@@ -4570,28 +3939,28 @@
   };
   SlSplitPanel.styles = split_panel_styles_default;
   __decorateClass([
-    i23(".divider")
+    i22(".divider")
   ], SlSplitPanel.prototype, "divider", 2);
   __decorateClass([
-    e23({ type: Number, reflect: true })
+    e22({ type: Number, reflect: true })
   ], SlSplitPanel.prototype, "position", 2);
   __decorateClass([
-    e23({ attribute: "position-in-pixels", type: Number })
+    e22({ attribute: "position-in-pixels", type: Number })
   ], SlSplitPanel.prototype, "positionInPixels", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSplitPanel.prototype, "vertical", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSplitPanel.prototype, "disabled", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSplitPanel.prototype, "primary", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSplitPanel.prototype, "snap", 2);
   __decorateClass([
-    e23({ type: Number, attribute: "snap-threshold" })
+    e22({ type: Number, attribute: "snap-threshold" })
   ], SlSplitPanel.prototype, "snapThreshold", 2);
   __decorateClass([
     watch("position")
@@ -4603,11 +3972,11 @@
     watch("vertical")
   ], SlSplitPanel.prototype, "handleVerticalChange", 1);
   SlSplitPanel = __decorateClass([
-    e6("sl-split-panel")
+    e5("sl-split-panel")
   ], SlSplitPanel);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.BLAV73MP.js
-  var switch_styles_default = i3`
+  var switch_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -4869,10 +4238,10 @@
       this.formControlController.updateValidity();
     }
     render() {
-      return y2`
+      return y`
       <label
         part="base"
-        class=${o6({
+        class=${o5({
         switch: true,
         "switch--checked": this.checked,
         "switch--disabled": this.disabled,
@@ -4887,8 +4256,8 @@
           type="checkbox"
           title=${this.title}
           name=${this.name}
-          value=${l6(this.value)}
-          .checked=${l23(this.checked)}
+          value=${l5(this.value)}
+          .checked=${l22(this.checked)}
           .disabled=${this.disabled}
           .required=${this.required}
           role="switch"
@@ -4912,37 +4281,37 @@
   };
   SlSwitch.styles = switch_styles_default;
   __decorateClass([
-    i23('input[type="checkbox"]')
+    i22('input[type="checkbox"]')
   ], SlSwitch.prototype, "input", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlSwitch.prototype, "hasFocus", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSwitch.prototype, "title", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSwitch.prototype, "name", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSwitch.prototype, "value", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlSwitch.prototype, "size", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSwitch.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSwitch.prototype, "checked", 2);
   __decorateClass([
     defaultValue("checked")
   ], SlSwitch.prototype, "defaultChecked", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlSwitch.prototype, "form", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSwitch.prototype, "required", 2);
   __decorateClass([
     watch("checked", { waitUntilFirstUpdate: true })
@@ -4951,11 +4320,11 @@
     watch("disabled", { waitUntilFirstUpdate: true })
   ], SlSwitch.prototype, "handleDisabledChange", 1);
   SlSwitch = __decorateClass([
-    e6("sl-switch")
+    e5("sl-switch")
   ], SlSwitch);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.QLX5PFTF.js
-  var tab_styles_default = i3`
+  var tab_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -5061,10 +4430,10 @@
     }
     render() {
       this.id = this.id.length > 0 ? this.id : this.componentId;
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         tab: true,
         "tab--active": this.active,
         "tab--closable": this.closable,
@@ -5073,7 +4442,7 @@
         tabindex=${this.disabled ? "-1" : "0"}
       >
         <slot></slot>
-        ${this.closable ? y2`
+        ${this.closable ? y`
               <sl-icon-button
                 part="close-button"
                 exportparts="base:close-button__base"
@@ -5091,19 +4460,19 @@
   };
   SlTab.styles = tab_styles_default;
   __decorateClass([
-    i23(".tab")
+    i22(".tab")
   ], SlTab.prototype, "tab", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlTab.prototype, "panel", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTab.prototype, "active", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlTab.prototype, "closable", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTab.prototype, "disabled", 2);
   __decorateClass([
     watch("active")
@@ -5112,7 +4481,7 @@
     watch("disabled")
   ], SlTab.prototype, "handleDisabledChange", 1);
   SlTab = __decorateClass([
-    e6("sl-tab")
+    e5("sl-tab")
   ], SlTab);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.WVPHE5WS.js
@@ -5182,32 +4551,32 @@
         }
         this.updateTimeout = window.setTimeout(() => this.requestUpdate(), nextInterval);
       }
-      return y2` <time datetime=${this.isoTime} title=${this.titleTime}>${this.relativeTime}</time> `;
+      return y` <time datetime=${this.isoTime} title=${this.titleTime}>${this.relativeTime}</time> `;
     }
   };
   __decorateClass([
-    t5()
+    t4()
   ], SlRelativeTime.prototype, "isoTime", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRelativeTime.prototype, "relativeTime", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRelativeTime.prototype, "titleTime", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRelativeTime.prototype, "date", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRelativeTime.prototype, "format", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRelativeTime.prototype, "numeric", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlRelativeTime.prototype, "sync", 2);
   SlRelativeTime = __decorateClass([
-    e6("sl-relative-time")
+    e5("sl-relative-time")
   ], SlRelativeTime);
   function getTimeUntilNextUnit(unit) {
     const units = { second: 1e3, minute: 6e4, hour: 36e5, day: 864e5 };
@@ -5216,7 +4585,7 @@
   }
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.FHB26C7K.js
-  var resize_observer_styles_default = i3`
+  var resize_observer_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -5272,22 +4641,22 @@
       }
     }
     render() {
-      return y2` <slot @slotchange=${this.handleSlotChange}></slot> `;
+      return y` <slot @slotchange=${this.handleSlotChange}></slot> `;
     }
   };
   SlResizeObserver.styles = resize_observer_styles_default;
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlResizeObserver.prototype, "disabled", 2);
   __decorateClass([
     watch("disabled", { waitUntilFirstUpdate: true })
   ], SlResizeObserver.prototype, "handleDisabledChange", 1);
   SlResizeObserver = __decorateClass([
-    e6("sl-resize-observer")
+    e5("sl-resize-observer")
   ], SlResizeObserver);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.I5LF5K7G.js
-  var select_styles_default = i3`
+  var select_styles_default = i`
   ${component_styles_default}
   ${form_control_styles_default}
 
@@ -6011,10 +5380,10 @@
       const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
       const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
       const isPlaceholderVisible = this.placeholder && this.value.length === 0;
-      return y2`
+      return y`
       <div
         part="form-control"
-        class=${o6({
+        class=${o5({
         "form-control": true,
         "form-control--small": this.size === "small",
         "form-control--medium": this.size === "medium",
@@ -6035,7 +5404,7 @@
 
         <div part="form-control-input" class="form-control-input">
           <sl-popup
-            class=${o6({
+            class=${o5({
         select: true,
         "select--standard": true,
         "select--filled": this.filled,
@@ -6091,11 +5460,11 @@
                 @blur=${this.handleBlur}
               />
 
-              ${this.multiple ? y2`
+              ${this.multiple ? y`
                     <div part="tags" class="select__tags">
                       ${this.selectedOptions.map((option, index) => {
         if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-          return y2`
+          return y`
                             <sl-tag
                               part="tag"
                               exportparts="
@@ -6113,7 +5482,7 @@
                             </sl-tag>
                           `;
         } else if (index === this.maxOptionsVisible) {
-          return y2` <sl-tag size=${this.size}> +${this.selectedOptions.length - index} </sl-tag> `;
+          return y` <sl-tag size=${this.size}> +${this.selectedOptions.length - index} </sl-tag> `;
         } else {
           return null;
         }
@@ -6133,7 +5502,7 @@
                 @invalid=${this.handleInvalid}
               />
 
-              ${hasClearIcon ? y2`
+              ${hasClearIcon ? y`
                     <button
                       part="clear-button"
                       class="select__clear"
@@ -6186,37 +5555,37 @@
   };
   SlSelect.styles = select_styles_default;
   __decorateClass([
-    i23(".select")
+    i22(".select")
   ], SlSelect.prototype, "popup", 2);
   __decorateClass([
-    i23(".select__combobox")
+    i22(".select__combobox")
   ], SlSelect.prototype, "combobox", 2);
   __decorateClass([
-    i23(".select__display-input")
+    i22(".select__display-input")
   ], SlSelect.prototype, "displayInput", 2);
   __decorateClass([
-    i23(".select__value-input")
+    i22(".select__value-input")
   ], SlSelect.prototype, "valueInput", 2);
   __decorateClass([
-    i23(".select__listbox")
+    i22(".select__listbox")
   ], SlSelect.prototype, "listbox", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlSelect.prototype, "hasFocus", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlSelect.prototype, "displayLabel", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlSelect.prototype, "currentOption", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlSelect.prototype, "selectedOptions", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSelect.prototype, "name", 2);
   __decorateClass([
-    e23({
+    e22({
       converter: {
         fromAttribute: (value) => value.split(" "),
         toAttribute: (value) => value.join(" ")
@@ -6227,49 +5596,49 @@
     defaultValue()
   ], SlSelect.prototype, "defaultValue", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSelect.prototype, "size", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSelect.prototype, "placeholder", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSelect.prototype, "multiple", 2);
   __decorateClass([
-    e23({ attribute: "max-options-visible", type: Number })
+    e22({ attribute: "max-options-visible", type: Number })
   ], SlSelect.prototype, "maxOptionsVisible", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSelect.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlSelect.prototype, "clearable", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSelect.prototype, "open", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlSelect.prototype, "hoist", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSelect.prototype, "filled", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSelect.prototype, "pill", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlSelect.prototype, "label", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlSelect.prototype, "placement", 2);
   __decorateClass([
-    e23({ attribute: "help-text" })
+    e22({ attribute: "help-text" })
   ], SlSelect.prototype, "helpText", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlSelect.prototype, "form", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlSelect.prototype, "required", 2);
   __decorateClass([
     watch("disabled", { waitUntilFirstUpdate: true })
@@ -6281,7 +5650,7 @@
     watch("open", { waitUntilFirstUpdate: true })
   ], SlSelect.prototype, "handleOpenChange", 1);
   SlSelect = __decorateClass([
-    e6("sl-select")
+    e5("sl-select")
   ], SlSelect);
   setDefaultAnimation("select.show", {
     keyframes: [
@@ -6299,7 +5668,7 @@
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.4RNZLG33.js
-  var tag_styles_default = i3`
+  var tag_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -6429,10 +5798,10 @@
       this.emit("sl-remove");
     }
     render() {
-      return y2`
+      return y`
       <span
         part="base"
-        class=${o6({
+        class=${o5({
         tag: true,
         // Types
         "tag--primary": this.variant === "primary",
@@ -6452,7 +5821,7 @@
       >
         <slot part="content" class="tag__content"></slot>
 
-        ${this.removable ? y2`
+        ${this.removable ? y`
               <sl-icon-button
                 part="remove-button"
                 exportparts="base:remove-button__base"
@@ -6470,23 +5839,23 @@
   };
   SlTag.styles = tag_styles_default;
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlTag.prototype, "variant", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlTag.prototype, "size", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlTag.prototype, "pill", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlTag.prototype, "removable", 2);
   SlTag = __decorateClass([
-    e6("sl-tag")
+    e5("sl-tag")
   ], SlTag);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MQ7QFCHP.js
-  var skeleton_styles_default = i3`
+  var skeleton_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -6558,10 +5927,10 @@
       this.effect = "none";
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         skeleton: true,
         "skeleton--pulse": this.effect === "pulse",
         "skeleton--sheen": this.effect === "sheen"
@@ -6574,14 +5943,14 @@
   };
   SlSkeleton.styles = skeleton_styles_default;
   __decorateClass([
-    e23()
+    e22()
   ], SlSkeleton.prototype, "effect", 2);
   SlSkeleton = __decorateClass([
-    e6("sl-skeleton")
+    e5("sl-skeleton")
   ], SlSkeleton);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NKWPNUXM.js
-  var button_styles_default = i3`
+  var button_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -7172,7 +6541,7 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OZOVPH7C.js
-  var radio_button_styles_default = i3`
+  var radio_button_styles_default = i`
   ${button_styles_default}
 
   .button__prefix,
@@ -7199,36 +6568,36 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.IJY6XTKC.js
-  var e7 = Symbol.for("");
-  var l7 = (t7) => {
-    if ((null == t7 ? void 0 : t7.r) === e7)
-      return null == t7 ? void 0 : t7._$litStatic$;
+  var e6 = Symbol.for("");
+  var l6 = (t8) => {
+    if ((null == t8 ? void 0 : t8.r) === e6)
+      return null == t8 ? void 0 : t8._$litStatic$;
   };
-  var i6 = (t7, ...r6) => ({ _$litStatic$: r6.reduce((r24, e25, l25) => r24 + ((t24) => {
-    if (void 0 !== t24._$litStatic$)
-      return t24._$litStatic$;
-    throw Error(`Value passed to 'literal' function must be a 'literal' result: ${t24}. Use 'unsafeStatic' to pass non-literal values, but
+  var i5 = (t8, ...r8) => ({ _$litStatic$: r8.reduce((r23, e24, l24) => r23 + ((t23) => {
+    if (void 0 !== t23._$litStatic$)
+      return t23._$litStatic$;
+    throw Error(`Value passed to 'literal' function must be a 'literal' result: ${t23}. Use 'unsafeStatic' to pass non-literal values, but
             take care to ensure page security.`);
-  })(e25) + t7[l25 + 1], t7[0]), r: e7 });
-  var s7 = /* @__PURE__ */ new Map();
-  var a4 = (t7) => (r6, ...e25) => {
-    const o8 = e25.length;
-    let i26, a24;
-    const n24 = [], u23 = [];
-    let c5, $4 = 0, f5 = false;
-    for (; $4 < o8; ) {
-      for (c5 = r6[$4]; $4 < o8 && void 0 !== (a24 = e25[$4], i26 = l7(a24)); )
-        c5 += i26 + r6[++$4], f5 = true;
-      u23.push(a24), n24.push(c5), $4++;
+  })(e24) + t8[l24 + 1], t8[0]), r: e6 });
+  var s6 = /* @__PURE__ */ new Map();
+  var a3 = (t8) => (r8, ...e24) => {
+    const o11 = e24.length;
+    let i25, a23;
+    const n23 = [], u23 = [];
+    let c6, $4 = 0, f5 = false;
+    for (; $4 < o11; ) {
+      for (c6 = r8[$4]; $4 < o11 && void 0 !== (a23 = e24[$4], i25 = l6(a23)); )
+        c6 += i25 + r8[++$4], f5 = true;
+      u23.push(a23), n23.push(c6), $4++;
     }
-    if ($4 === o8 && n24.push(r6[o8]), f5) {
-      const t24 = n24.join("$$lit$$");
-      void 0 === (r6 = s7.get(t24)) && (n24.raw = n24, s7.set(t24, r6 = n24)), e25 = u23;
+    if ($4 === o11 && n23.push(r8[o11]), f5) {
+      const t23 = n23.join("$$lit$$");
+      void 0 === (r8 = s6.get(t23)) && (n23.raw = n23, s6.set(t23, r8 = n23)), e24 = u23;
     }
-    return t7(r6, ...e25);
+    return t8(r8, ...e24);
   };
-  var n8 = a4(y2);
-  var u3 = a4(w2);
+  var n7 = a3(y);
+  var u2 = a3(w);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.3RSJJPLG.js
   var SlRadioButton = class extends ShoelaceElement {
@@ -7249,10 +6618,10 @@
       this.hasFocus = false;
       this.emit("sl-blur");
     }
-    handleClick(e35) {
+    handleClick(e34) {
       if (this.disabled) {
-        e35.preventDefault();
-        e35.stopPropagation();
+        e34.preventDefault();
+        e34.stopPropagation();
         return;
       }
       this.checked = true;
@@ -7273,13 +6642,13 @@
       this.input.blur();
     }
     render() {
-      return n8`
+      return n7`
       <div part="base" role="presentation">
         <button
           part="${`button${this.checked ? " button--checked" : ""}`}"
           role="radio"
           aria-checked="${this.checked}"
-          class=${o6({
+          class=${o5({
         button: true,
         "button--default": true,
         "button--small": this.size === "small",
@@ -7296,7 +6665,7 @@
       })}
           aria-disabled=${this.disabled}
           type="button"
-          value=${l6(this.value)}
+          value=${l5(this.value)}
           tabindex="${this.checked ? "0" : "-1"}"
           @blur=${this.handleBlur}
           @focus=${this.handleFocus}
@@ -7312,38 +6681,38 @@
   };
   SlRadioButton.styles = radio_button_styles_default;
   __decorateClass([
-    i23(".button")
+    i22(".button")
   ], SlRadioButton.prototype, "input", 2);
   __decorateClass([
-    i23(".hidden-input")
+    i22(".hidden-input")
   ], SlRadioButton.prototype, "hiddenInput", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRadioButton.prototype, "hasFocus", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlRadioButton.prototype, "checked", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRadioButton.prototype, "value", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlRadioButton.prototype, "disabled", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlRadioButton.prototype, "size", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlRadioButton.prototype, "pill", 2);
   __decorateClass([
     watch("disabled", { waitUntilFirstUpdate: true })
   ], SlRadioButton.prototype, "handleDisabledChange", 1);
   SlRadioButton = __decorateClass([
-    e6("sl-radio-button")
+    e5("sl-radio-button")
   ], SlRadioButton);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.4XIP3LXS.js
-  var radio_group_styles_default = i3`
+  var radio_group_styles_default = i`
   ${component_styles_default}
   ${form_control_styles_default}
 
@@ -7571,7 +6940,7 @@
       const hasHelpTextSlot = this.hasSlotController.test("help-text");
       const hasLabel = this.label ? true : !!hasLabelSlot;
       const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
-      const defaultSlot = y2`
+      const defaultSlot = y`
       <slot
         @click=${this.handleRadioClick}
         @keydown=${this.handleKeyDown}
@@ -7579,10 +6948,10 @@
         role="presentation"
       ></slot>
     `;
-      return y2`
+      return y`
       <fieldset
         part="form-control"
-        class=${o6({
+        class=${o5({
         "form-control": true,
         "form-control--small": this.size === "small",
         "form-control--medium": this.size === "medium",
@@ -7621,7 +6990,7 @@
             </label>
           </div>
 
-          ${this.hasButtonGroup ? y2`
+          ${this.hasButtonGroup ? y`
                 <sl-button-group part="button-group" exportparts="base:button-group__base">
                   ${defaultSlot}
                 </sl-button-group>
@@ -7643,50 +7012,50 @@
   };
   SlRadioGroup.styles = radio_group_styles_default;
   __decorateClass([
-    i23("slot:not([name])")
+    i22("slot:not([name])")
   ], SlRadioGroup.prototype, "defaultSlot", 2);
   __decorateClass([
-    i23(".radio-group__validation-input")
+    i22(".radio-group__validation-input")
   ], SlRadioGroup.prototype, "validationInput", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRadioGroup.prototype, "hasButtonGroup", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRadioGroup.prototype, "errorMessage", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRadioGroup.prototype, "defaultValue", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRadioGroup.prototype, "label", 2);
   __decorateClass([
-    e23({ attribute: "help-text" })
+    e22({ attribute: "help-text" })
   ], SlRadioGroup.prototype, "helpText", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRadioGroup.prototype, "name", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlRadioGroup.prototype, "value", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlRadioGroup.prototype, "size", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlRadioGroup.prototype, "form", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlRadioGroup.prototype, "required", 2);
   __decorateClass([
     watch("value")
   ], SlRadioGroup.prototype, "handleValueChange", 1);
   SlRadioGroup = __decorateClass([
-    e6("sl-radio-group")
+    e5("sl-radio-group")
   ], SlRadioGroup);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.BRRNDEKR.js
-  var range_styles_default = i3`
+  var range_styles_default = i`
   ${component_styles_default}
   ${form_control_styles_default}
 
@@ -8070,10 +7439,10 @@
       const hasHelpTextSlot = this.hasSlotController.test("help-text");
       const hasLabel = this.label ? true : !!hasLabelSlot;
       const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
-      return y2`
+      return y`
       <div
         part="form-control"
-        class=${o6({
+        class=${o5({
         "form-control": true,
         "form-control--medium": true,
         // range only has one size
@@ -8093,7 +7462,7 @@
         <div part="form-control-input" class="form-control-input">
           <div
             part="base"
-            class=${o6({
+            class=${o5({
         range: true,
         "range--disabled": this.disabled,
         "range--focused": this.hasFocus,
@@ -8113,12 +7482,12 @@
               class="range__control"
               title=${this.title}
               type="range"
-              name=${l6(this.name)}
+              name=${l5(this.name)}
               ?disabled=${this.disabled}
-              min=${l6(this.min)}
-              max=${l6(this.max)}
-              step=${l6(this.step)}
-              .value=${l23(this.value.toString())}
+              min=${l5(this.min)}
+              max=${l5(this.max)}
+              step=${l5(this.step)}
+              .value=${l22(this.value.toString())}
               aria-describedby="help-text"
               @change=${this.handleChange}
               @focus=${this.handleFocus}
@@ -8126,7 +7495,7 @@
               @invalid=${this.handleInvalid}
               @blur=${this.handleBlur}
             />
-            ${this.tooltip !== "none" && !this.disabled ? y2`
+            ${this.tooltip !== "none" && !this.disabled ? y`
                   <output part="tooltip" class="range__tooltip">
                     ${typeof this.tooltipFormatter === "function" ? this.tooltipFormatter(this.value) : this.value}
                   </output>
@@ -8149,58 +7518,58 @@
   };
   SlRange.styles = range_styles_default;
   __decorateClass([
-    i23(".range__control")
+    i22(".range__control")
   ], SlRange.prototype, "input", 2);
   __decorateClass([
-    i23(".range__tooltip")
+    i22(".range__tooltip")
   ], SlRange.prototype, "output", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRange.prototype, "hasFocus", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRange.prototype, "hasTooltip", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRange.prototype, "title", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRange.prototype, "name", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlRange.prototype, "value", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRange.prototype, "label", 2);
   __decorateClass([
-    e23({ attribute: "help-text" })
+    e22({ attribute: "help-text" })
   ], SlRange.prototype, "helpText", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlRange.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlRange.prototype, "min", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlRange.prototype, "max", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlRange.prototype, "step", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRange.prototype, "tooltip", 2);
   __decorateClass([
-    e23({ attribute: false })
+    e22({ attribute: false })
   ], SlRange.prototype, "tooltipFormatter", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlRange.prototype, "form", 2);
   __decorateClass([
     defaultValue()
   ], SlRange.prototype, "defaultValue", 2);
   __decorateClass([
-    e33({ passive: true })
+    e32({ passive: true })
   ], SlRange.prototype, "handleThumbDragStart", 1);
   __decorateClass([
     watch("value", { waitUntilFirstUpdate: true })
@@ -8212,11 +7581,11 @@
     watch("hasTooltip", { waitUntilFirstUpdate: true })
   ], SlRange.prototype, "syncRange", 1);
   SlRange = __decorateClass([
-    e6("sl-range")
+    e5("sl-range")
   ], SlRange);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.2P5TE3VD.js
-  var rating_styles_default = i3`
+  var rating_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -8301,59 +7670,59 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.B6IYY6FB.js
-  var i24 = e5(class extends i4 {
-    constructor(t24) {
-      var e25;
-      if (super(t24), t24.type !== t4.ATTRIBUTE || "style" !== t24.name || (null === (e25 = t24.strings) || void 0 === e25 ? void 0 : e25.length) > 2)
+  var i23 = e4(class extends i3 {
+    constructor(t23) {
+      var e24;
+      if (super(t23), t23.type !== t3.ATTRIBUTE || "style" !== t23.name || (null === (e24 = t23.strings) || void 0 === e24 ? void 0 : e24.length) > 2)
         throw Error("The `styleMap` directive must be used in the `style` attribute and must be the only part in the attribute.");
     }
-    render(t24) {
-      return Object.keys(t24).reduce((e25, r6) => {
-        const s9 = t24[r6];
-        return null == s9 ? e25 : e25 + `${r6 = r6.replace(/(?:^(webkit|moz|ms|o)|)(?=[A-Z])/g, "-$&").toLowerCase()}:${s9};`;
+    render(t23) {
+      return Object.keys(t23).reduce((e24, r8) => {
+        const s12 = t23[r8];
+        return null == s12 ? e24 : e24 + `${r8 = r8.replace(/(?:^(webkit|moz|ms|o)|)(?=[A-Z])/g, "-$&").toLowerCase()}:${s12};`;
       }, "");
     }
-    update(e25, [r6]) {
-      const { style: s9 } = e25.element;
+    update(e24, [r8]) {
+      const { style: s12 } = e24.element;
       if (void 0 === this.vt) {
         this.vt = /* @__PURE__ */ new Set();
-        for (const t24 in r6)
-          this.vt.add(t24);
-        return this.render(r6);
+        for (const t23 in r8)
+          this.vt.add(t23);
+        return this.render(r8);
       }
-      this.vt.forEach((t24) => {
-        null == r6[t24] && (this.vt.delete(t24), t24.includes("-") ? s9.removeProperty(t24) : s9[t24] = "");
+      this.vt.forEach((t23) => {
+        null == r8[t23] && (this.vt.delete(t23), t23.includes("-") ? s12.removeProperty(t23) : s12[t23] = "");
       });
-      for (const t24 in r6) {
-        const e35 = r6[t24];
-        null != e35 && (this.vt.add(t24), t24.includes("-") ? s9.setProperty(t24, e35) : s9[t24] = e35);
+      for (const t23 in r8) {
+        const e34 = r8[t23];
+        null != e34 && (this.vt.add(t23), t23.includes("-") ? s12.setProperty(t23, e34) : s12[t23] = e34);
       }
-      return x2;
+      return x;
     }
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.QVU3QRJ4.js
-  var e53 = class extends i4 {
+  var e53 = class extends i3 {
     constructor(i42) {
-      if (super(i42), this.it = b2, i42.type !== t4.CHILD)
+      if (super(i42), this.it = b, i42.type !== t3.CHILD)
         throw Error(this.constructor.directiveName + "() can only be used in child bindings");
     }
-    render(r6) {
-      if (r6 === b2 || null == r6)
-        return this._t = void 0, this.it = r6;
-      if (r6 === x2)
-        return r6;
-      if ("string" != typeof r6)
+    render(r8) {
+      if (r8 === b || null == r8)
+        return this._t = void 0, this.it = r8;
+      if (r8 === x)
+        return r8;
+      if ("string" != typeof r8)
         throw Error(this.constructor.directiveName + "() called with a non-string value");
-      if (r6 === this.it)
+      if (r8 === this.it)
         return this._t;
-      this.it = r6;
-      const s9 = [r6];
-      return s9.raw = s9, this._t = { _$litType$: this.constructor.resultType, strings: s9, values: [] };
+      this.it = r8;
+      const s12 = [r8];
+      return s12.raw = s12, this._t = { _$litType$: this.constructor.resultType, strings: s12, values: [] };
     }
   };
   e53.directiveName = "unsafeHTML", e53.resultType = 1;
-  var o23 = e5(e53);
+  var o22 = e4(e53);
   var SlRating = class extends ShoelaceElement {
     constructor() {
       super(...arguments);
@@ -8484,10 +7853,10 @@
       } else {
         displayValue = this.isHovering ? this.hoverValue : this.value;
       }
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         rating: true,
         "rating--readonly": this.readonly,
         "rating--disabled": this.disabled,
@@ -8512,16 +7881,16 @@
       >
         <span class="rating__symbols rating__symbols--inactive">
           ${counter.map((index) => {
-        return y2`
+        return y`
               <span
-                class=${o6({
+                class=${o5({
           rating__symbol: true,
           "rating__symbol--hover": this.isHovering && Math.ceil(displayValue) === index + 1
         })}
                 role="presentation"
                 @mouseenter=${this.handleMouseEnter}
               >
-                ${o23(this.getSymbol(index + 1))}
+                ${o22(this.getSymbol(index + 1))}
               </span>
             `;
       })}
@@ -8529,18 +7898,18 @@
 
         <span class="rating__symbols rating__symbols--indicator">
           ${counter.map((index) => {
-        return y2`
+        return y`
               <span
-                class=${o6({
+                class=${o5({
           rating__symbol: true,
           "rating__symbol--hover": this.isHovering && Math.ceil(displayValue) === index + 1
         })}
-                style=${i24({
+                style=${i23({
           clipPath: displayValue > index + 1 ? "none" : isRtl ? `inset(0 0 0 ${100 - (displayValue - index) / 1 * 100}%)` : `inset(0 ${100 - (displayValue - index) / 1 * 100}% 0 0)`
         })}
                 role="presentation"
               >
-                ${o23(this.getSymbol(index + 1))}
+                ${o22(this.getSymbol(index + 1))}
               </span>
             `;
       })}
@@ -8551,37 +7920,37 @@
   };
   SlRating.styles = rating_styles_default;
   __decorateClass([
-    i23(".rating")
+    i22(".rating")
   ], SlRating.prototype, "rating", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRating.prototype, "hoverValue", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRating.prototype, "isHovering", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRating.prototype, "label", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlRating.prototype, "value", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlRating.prototype, "max", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlRating.prototype, "precision", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlRating.prototype, "readonly", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlRating.prototype, "disabled", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRating.prototype, "getSymbol", 2);
   __decorateClass([
-    e33({ passive: true })
+    e32({ passive: true })
   ], SlRating.prototype, "handleTouchMove", 1);
   __decorateClass([
     watch("hoverValue")
@@ -8590,11 +7959,11 @@
     watch("isHovering")
   ], SlRating.prototype, "handleIsHoveringChange", 1);
   SlRating = __decorateClass([
-    e6("sl-rating")
+    e5("sl-rating")
   ], SlRating);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.BFEUKTUO.js
-  var progress_bar_styles_default = i3`
+  var progress_bar_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -8687,23 +8056,23 @@
       this.label = "";
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         "progress-bar": true,
         "progress-bar--indeterminate": this.indeterminate,
         "progress-bar--rtl": this.localize.dir() === "rtl"
       })}
         role="progressbar"
-        title=${l6(this.title)}
+        title=${l5(this.title)}
         aria-label=${this.label.length > 0 ? this.label : this.localize.term("progress")}
         aria-valuemin="0"
         aria-valuemax="100"
         aria-valuenow=${this.indeterminate ? 0 : this.value}
       >
-        <div part="indicator" class="progress-bar__indicator" style=${i24({ width: `${this.value}%` })}>
-          ${!this.indeterminate ? y2` <slot part="label" class="progress-bar__label"></slot> ` : ""}
+        <div part="indicator" class="progress-bar__indicator" style=${i23({ width: `${this.value}%` })}>
+          ${!this.indeterminate ? y` <slot part="label" class="progress-bar__label"></slot> ` : ""}
         </div>
       </div>
     `;
@@ -8711,20 +8080,20 @@
   };
   SlProgressBar.styles = progress_bar_styles_default;
   __decorateClass([
-    e23({ type: Number, reflect: true })
+    e22({ type: Number, reflect: true })
   ], SlProgressBar.prototype, "value", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlProgressBar.prototype, "indeterminate", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlProgressBar.prototype, "label", 2);
   SlProgressBar = __decorateClass([
-    e6("sl-progress-bar")
+    e5("sl-progress-bar")
   ], SlProgressBar);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DMXST7MK.js
-  var progress_ring_styles_default = i3`
+  var progress_ring_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -8810,7 +8179,7 @@
       }
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
         class="progress-ring"
@@ -8834,23 +8203,23 @@
   };
   SlProgressRing.styles = progress_ring_styles_default;
   __decorateClass([
-    i23(".progress-ring__indicator")
+    i22(".progress-ring__indicator")
   ], SlProgressRing.prototype, "indicator", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlProgressRing.prototype, "indicatorOffset", 2);
   __decorateClass([
-    e23({ type: Number, reflect: true })
+    e22({ type: Number, reflect: true })
   ], SlProgressRing.prototype, "value", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlProgressRing.prototype, "label", 2);
   SlProgressRing = __decorateClass([
-    e6("sl-progress-ring")
+    e5("sl-progress-ring")
   ], SlProgressRing);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.Q3GGNRQA.js
-  var qr_code_styles_default = i3`
+  var qr_code_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -8860,221 +8229,221 @@
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.QE2CTSPX.js
   var G = null;
-  var H3 = class {
+  var H2 = class {
   };
-  H3.render = function(w4, B2) {
+  H2.render = function(w4, B2) {
     G(w4, B2);
   };
-  self.QrCreator = H3;
+  self.QrCreator = H2;
   (function(w4) {
-    function B2(t7, c5, a6, e35) {
-      var b4 = {}, h5 = w4(a6, c5);
-      h5.u(t7);
-      h5.J();
-      e35 = e35 || 0;
-      var r6 = h5.h(), d5 = h5.h() + 2 * e35;
-      b4.text = t7;
-      b4.level = c5;
-      b4.version = a6;
-      b4.O = d5;
-      b4.a = function(b23, a24) {
-        b23 -= e35;
-        a24 -= e35;
-        return 0 > b23 || b23 >= r6 || 0 > a24 || a24 >= r6 ? false : h5.a(b23, a24);
+    function B2(t8, c6, a7, e34) {
+      var b4 = {}, h6 = w4(a7, c6);
+      h6.u(t8);
+      h6.J();
+      e34 = e34 || 0;
+      var r8 = h6.h(), d6 = h6.h() + 2 * e34;
+      b4.text = t8;
+      b4.level = c6;
+      b4.version = a7;
+      b4.O = d6;
+      b4.a = function(b23, a23) {
+        b23 -= e34;
+        a23 -= e34;
+        return 0 > b23 || b23 >= r8 || 0 > a23 || a23 >= r8 ? false : h6.a(b23, a23);
       };
       return b4;
     }
-    function C4(t7, c5, a6, e35, b4, h5, r6, d5, g4, x4) {
-      function u5(b23, a24, f5, c24, d24, r24, g23) {
-        b23 ? (t7.lineTo(a24 + r24, f5 + g23), t7.arcTo(a24, f5, c24, d24, h5)) : t7.lineTo(a24, f5);
+    function C4(t8, c6, a7, e34, b4, h6, r8, d6, g4, x4) {
+      function u5(b23, a23, f5, c23, d23, r23, g23) {
+        b23 ? (t8.lineTo(a23 + r23, f5 + g23), t8.arcTo(a23, f5, c23, d23, h6)) : t8.lineTo(a23, f5);
       }
-      r6 ? t7.moveTo(c5 + h5, a6) : t7.moveTo(c5, a6);
-      u5(d5, e35, a6, e35, b4, -h5, 0);
-      u5(g4, e35, b4, c5, b4, 0, -h5);
-      u5(x4, c5, b4, c5, a6, h5, 0);
-      u5(r6, c5, a6, e35, a6, 0, h5);
+      r8 ? t8.moveTo(c6 + h6, a7) : t8.moveTo(c6, a7);
+      u5(d6, e34, a7, e34, b4, -h6, 0);
+      u5(g4, e34, b4, c6, b4, 0, -h6);
+      u5(x4, c6, b4, c6, a7, h6, 0);
+      u5(r8, c6, a7, e34, a7, 0, h6);
     }
-    function z4(t7, c5, a6, e35, b4, h5, r6, d5, g4, x4) {
-      function u5(b23, a24, c24, d24) {
-        t7.moveTo(b23 + c24, a24);
-        t7.lineTo(
+    function z4(t8, c6, a7, e34, b4, h6, r8, d6, g4, x4) {
+      function u5(b23, a23, c23, d23) {
+        t8.moveTo(b23 + c23, a23);
+        t8.lineTo(
           b23,
-          a24
+          a23
         );
-        t7.lineTo(b23, a24 + d24);
-        t7.arcTo(b23, a24, b23 + c24, a24, h5);
+        t8.lineTo(b23, a23 + d23);
+        t8.arcTo(b23, a23, b23 + c23, a23, h6);
       }
-      r6 && u5(c5, a6, h5, h5);
-      d5 && u5(e35, a6, -h5, h5);
-      g4 && u5(e35, b4, -h5, -h5);
-      x4 && u5(c5, b4, h5, -h5);
+      r8 && u5(c6, a7, h6, h6);
+      d6 && u5(e34, a7, -h6, h6);
+      g4 && u5(e34, b4, -h6, -h6);
+      x4 && u5(c6, b4, h6, -h6);
     }
-    function A4(t7, c5) {
-      var a6 = c5.fill;
-      if ("string" === typeof a6)
-        t7.fillStyle = a6;
+    function A4(t8, c6) {
+      var a7 = c6.fill;
+      if ("string" === typeof a7)
+        t8.fillStyle = a7;
       else {
-        var e35 = a6.type, b4 = a6.colorStops;
-        a6 = a6.position.map((b23) => Math.round(b23 * c5.size));
-        if ("linear-gradient" === e35)
-          var h5 = t7.createLinearGradient.apply(t7, a6);
-        else if ("radial-gradient" === e35)
-          h5 = t7.createRadialGradient.apply(t7, a6);
+        var e34 = a7.type, b4 = a7.colorStops;
+        a7 = a7.position.map((b23) => Math.round(b23 * c6.size));
+        if ("linear-gradient" === e34)
+          var h6 = t8.createLinearGradient.apply(t8, a7);
+        else if ("radial-gradient" === e34)
+          h6 = t8.createRadialGradient.apply(t8, a7);
         else
           throw Error("Unsupported fill");
-        b4.forEach(([b23, a24]) => {
-          h5.addColorStop(b23, a24);
+        b4.forEach(([b23, a23]) => {
+          h6.addColorStop(b23, a23);
         });
-        t7.fillStyle = h5;
+        t8.fillStyle = h6;
       }
     }
-    function y23(t7, c5) {
+    function y22(t8, c6) {
       a: {
-        var a6 = c5.text, e35 = c5.v, b4 = c5.N, h5 = c5.K, r6 = c5.P;
+        var a7 = c6.text, e34 = c6.v, b4 = c6.N, h6 = c6.K, r8 = c6.P;
         b4 = Math.max(1, b4 || 1);
-        for (h5 = Math.min(40, h5 || 40); b4 <= h5; b4 += 1)
+        for (h6 = Math.min(40, h6 || 40); b4 <= h6; b4 += 1)
           try {
-            var d5 = B2(a6, e35, b4, r6);
+            var d6 = B2(a7, e34, b4, r8);
             break a;
           } catch (J) {
           }
-        d5 = void 0;
+        d6 = void 0;
       }
-      if (!d5)
+      if (!d6)
         return null;
-      a6 = t7.getContext("2d");
-      c5.background && (a6.fillStyle = c5.background, a6.fillRect(c5.left, c5.top, c5.size, c5.size));
-      e35 = d5.O;
-      h5 = c5.size / e35;
-      a6.beginPath();
-      for (r6 = 0; r6 < e35; r6 += 1)
-        for (b4 = 0; b4 < e35; b4 += 1) {
-          var g4 = a6, x4 = c5.left + b4 * h5, u5 = c5.top + r6 * h5, p4 = r6, q = b4, f5 = d5.a, k4 = x4 + h5, m4 = u5 + h5, D3 = p4 - 1, E4 = p4 + 1, n10 = q - 1, l9 = q + 1, y32 = Math.floor(Math.min(0.5, Math.max(0, c5.R)) * h5), v23 = f5(p4, q), I3 = f5(D3, n10), w23 = f5(D3, q);
-          D3 = f5(D3, l9);
-          var F2 = f5(p4, l9);
-          l9 = f5(E4, l9);
+      a7 = t8.getContext("2d");
+      c6.background && (a7.fillStyle = c6.background, a7.fillRect(c6.left, c6.top, c6.size, c6.size));
+      e34 = d6.O;
+      h6 = c6.size / e34;
+      a7.beginPath();
+      for (r8 = 0; r8 < e34; r8 += 1)
+        for (b4 = 0; b4 < e34; b4 += 1) {
+          var g4 = a7, x4 = c6.left + b4 * h6, u5 = c6.top + r8 * h6, p4 = r8, q = b4, f5 = d6.a, k4 = x4 + h6, m4 = u5 + h6, D3 = p4 - 1, E4 = p4 + 1, n13 = q - 1, l11 = q + 1, y32 = Math.floor(Math.min(0.5, Math.max(0, c6.R)) * h6), v22 = f5(p4, q), I3 = f5(D3, n13), w23 = f5(D3, q);
+          D3 = f5(D3, l11);
+          var F2 = f5(p4, l11);
+          l11 = f5(E4, l11);
           q = f5(
             E4,
             q
           );
-          E4 = f5(E4, n10);
-          p4 = f5(p4, n10);
+          E4 = f5(E4, n13);
+          p4 = f5(p4, n13);
           x4 = Math.round(x4);
           u5 = Math.round(u5);
           k4 = Math.round(k4);
           m4 = Math.round(m4);
-          v23 ? C4(g4, x4, u5, k4, m4, y32, !w23 && !p4, !w23 && !F2, !q && !F2, !q && !p4) : z4(g4, x4, u5, k4, m4, y32, w23 && p4 && I3, w23 && F2 && D3, q && F2 && l9, q && p4 && E4);
+          v22 ? C4(g4, x4, u5, k4, m4, y32, !w23 && !p4, !w23 && !F2, !q && !F2, !q && !p4) : z4(g4, x4, u5, k4, m4, y32, w23 && p4 && I3, w23 && F2 && D3, q && F2 && l11, q && p4 && E4);
         }
-      A4(a6, c5);
-      a6.fill();
-      return t7;
+      A4(a7, c6);
+      a7.fill();
+      return t8;
     }
-    var v3 = { minVersion: 1, maxVersion: 40, ecLevel: "L", left: 0, top: 0, size: 200, fill: "#000", background: null, text: "no text", radius: 0.5, quiet: 0 };
-    G = function(t7, c5) {
-      var a6 = {};
-      Object.assign(a6, v3, t7);
-      a6.N = a6.minVersion;
-      a6.K = a6.maxVersion;
-      a6.v = a6.ecLevel;
-      a6.left = a6.left;
-      a6.top = a6.top;
-      a6.size = a6.size;
-      a6.fill = a6.fill;
-      a6.background = a6.background;
-      a6.text = a6.text;
-      a6.R = a6.radius;
-      a6.P = a6.quiet;
-      if (c5 instanceof HTMLCanvasElement) {
-        if (c5.width !== a6.size || c5.height !== a6.size)
-          c5.width = a6.size, c5.height = a6.size;
-        c5.getContext("2d").clearRect(0, 0, c5.width, c5.height);
-        y23(c5, a6);
+    var v4 = { minVersion: 1, maxVersion: 40, ecLevel: "L", left: 0, top: 0, size: 200, fill: "#000", background: null, text: "no text", radius: 0.5, quiet: 0 };
+    G = function(t8, c6) {
+      var a7 = {};
+      Object.assign(a7, v4, t8);
+      a7.N = a7.minVersion;
+      a7.K = a7.maxVersion;
+      a7.v = a7.ecLevel;
+      a7.left = a7.left;
+      a7.top = a7.top;
+      a7.size = a7.size;
+      a7.fill = a7.fill;
+      a7.background = a7.background;
+      a7.text = a7.text;
+      a7.R = a7.radius;
+      a7.P = a7.quiet;
+      if (c6 instanceof HTMLCanvasElement) {
+        if (c6.width !== a7.size || c6.height !== a7.size)
+          c6.width = a7.size, c6.height = a7.size;
+        c6.getContext("2d").clearRect(0, 0, c6.width, c6.height);
+        y22(c6, a7);
       } else
-        t7 = document.createElement("canvas"), t7.width = a6.size, t7.height = a6.size, a6 = y23(t7, a6), c5.appendChild(a6);
+        t8 = document.createElement("canvas"), t8.width = a7.size, t8.height = a7.size, a7 = y22(t8, a7), c6.appendChild(a7);
     };
   })(function() {
-    function w4(c5) {
-      var a6 = C4.s(c5);
+    function w4(c6) {
+      var a7 = C4.s(c6);
       return { S: function() {
         return 4;
       }, b: function() {
-        return a6.length;
-      }, write: function(c24) {
-        for (var b4 = 0; b4 < a6.length; b4 += 1)
-          c24.put(a6[b4], 8);
+        return a7.length;
+      }, write: function(c23) {
+        for (var b4 = 0; b4 < a7.length; b4 += 1)
+          c23.put(a7[b4], 8);
       } };
     }
     function B2() {
-      var c5 = [], a6 = 0, e35 = {
+      var c6 = [], a7 = 0, e34 = {
         B: function() {
-          return c5;
+          return c6;
         },
         c: function(b4) {
-          return 1 == (c5[Math.floor(b4 / 8)] >>> 7 - b4 % 8 & 1);
+          return 1 == (c6[Math.floor(b4 / 8)] >>> 7 - b4 % 8 & 1);
         },
-        put: function(b4, h5) {
-          for (var a24 = 0; a24 < h5; a24 += 1)
-            e35.m(1 == (b4 >>> h5 - a24 - 1 & 1));
+        put: function(b4, h6) {
+          for (var a23 = 0; a23 < h6; a23 += 1)
+            e34.m(1 == (b4 >>> h6 - a23 - 1 & 1));
         },
         f: function() {
-          return a6;
+          return a7;
         },
         m: function(b4) {
-          var h5 = Math.floor(a6 / 8);
-          c5.length <= h5 && c5.push(0);
-          b4 && (c5[h5] |= 128 >>> a6 % 8);
-          a6 += 1;
+          var h6 = Math.floor(a7 / 8);
+          c6.length <= h6 && c6.push(0);
+          b4 && (c6[h6] |= 128 >>> a7 % 8);
+          a7 += 1;
         }
       };
-      return e35;
+      return e34;
     }
-    function C4(c5, a6) {
-      function e35(b23, h24) {
-        for (var a24 = -1; 7 >= a24; a24 += 1)
-          if (!(-1 >= b23 + a24 || d5 <= b23 + a24))
-            for (var c24 = -1; 7 >= c24; c24 += 1)
-              -1 >= h24 + c24 || d5 <= h24 + c24 || (r6[b23 + a24][h24 + c24] = 0 <= a24 && 6 >= a24 && (0 == c24 || 6 == c24) || 0 <= c24 && 6 >= c24 && (0 == a24 || 6 == a24) || 2 <= a24 && 4 >= a24 && 2 <= c24 && 4 >= c24 ? true : false);
+    function C4(c6, a7) {
+      function e34(b23, h23) {
+        for (var a23 = -1; 7 >= a23; a23 += 1)
+          if (!(-1 >= b23 + a23 || d6 <= b23 + a23))
+            for (var c23 = -1; 7 >= c23; c23 += 1)
+              -1 >= h23 + c23 || d6 <= h23 + c23 || (r8[b23 + a23][h23 + c23] = 0 <= a23 && 6 >= a23 && (0 == c23 || 6 == c23) || 0 <= c23 && 6 >= c23 && (0 == a23 || 6 == a23) || 2 <= a23 && 4 >= a23 && 2 <= c23 && 4 >= c23 ? true : false);
       }
-      function b4(b23, a24) {
-        for (var f5 = d5 = 4 * c5 + 17, k4 = Array(f5), m4 = 0; m4 < f5; m4 += 1) {
+      function b4(b23, a23) {
+        for (var f5 = d6 = 4 * c6 + 17, k4 = Array(f5), m4 = 0; m4 < f5; m4 += 1) {
           k4[m4] = Array(f5);
           for (var p4 = 0; p4 < f5; p4 += 1)
             k4[m4][p4] = null;
         }
-        r6 = k4;
-        e35(0, 0);
-        e35(d5 - 7, 0);
-        e35(0, d5 - 7);
-        f5 = y23.G(c5);
+        r8 = k4;
+        e34(0, 0);
+        e34(d6 - 7, 0);
+        e34(0, d6 - 7);
+        f5 = y22.G(c6);
         for (k4 = 0; k4 < f5.length; k4 += 1)
           for (m4 = 0; m4 < f5.length; m4 += 1) {
             p4 = f5[k4];
             var q = f5[m4];
-            if (null == r6[p4][q])
-              for (var n10 = -2; 2 >= n10; n10 += 1)
-                for (var l9 = -2; 2 >= l9; l9 += 1)
-                  r6[p4 + n10][q + l9] = -2 == n10 || 2 == n10 || -2 == l9 || 2 == l9 || 0 == n10 && 0 == l9;
+            if (null == r8[p4][q])
+              for (var n13 = -2; 2 >= n13; n13 += 1)
+                for (var l11 = -2; 2 >= l11; l11 += 1)
+                  r8[p4 + n13][q + l11] = -2 == n13 || 2 == n13 || -2 == l11 || 2 == l11 || 0 == n13 && 0 == l11;
           }
-        for (f5 = 8; f5 < d5 - 8; f5 += 1)
-          null == r6[f5][6] && (r6[f5][6] = 0 == f5 % 2);
-        for (f5 = 8; f5 < d5 - 8; f5 += 1)
-          null == r6[6][f5] && (r6[6][f5] = 0 == f5 % 2);
-        f5 = y23.w(h5 << 3 | a24);
+        for (f5 = 8; f5 < d6 - 8; f5 += 1)
+          null == r8[f5][6] && (r8[f5][6] = 0 == f5 % 2);
+        for (f5 = 8; f5 < d6 - 8; f5 += 1)
+          null == r8[6][f5] && (r8[6][f5] = 0 == f5 % 2);
+        f5 = y22.w(h6 << 3 | a23);
         for (k4 = 0; 15 > k4; k4 += 1)
-          m4 = !b23 && 1 == (f5 >> k4 & 1), r6[6 > k4 ? k4 : 8 > k4 ? k4 + 1 : d5 - 15 + k4][8] = m4, r6[8][8 > k4 ? d5 - k4 - 1 : 9 > k4 ? 15 - k4 : 14 - k4] = m4;
-        r6[d5 - 8][8] = !b23;
-        if (7 <= c5) {
-          f5 = y23.A(c5);
+          m4 = !b23 && 1 == (f5 >> k4 & 1), r8[6 > k4 ? k4 : 8 > k4 ? k4 + 1 : d6 - 15 + k4][8] = m4, r8[8][8 > k4 ? d6 - k4 - 1 : 9 > k4 ? 15 - k4 : 14 - k4] = m4;
+        r8[d6 - 8][8] = !b23;
+        if (7 <= c6) {
+          f5 = y22.A(c6);
           for (k4 = 0; 18 > k4; k4 += 1)
-            m4 = !b23 && 1 == (f5 >> k4 & 1), r6[Math.floor(k4 / 3)][k4 % 3 + d5 - 8 - 3] = m4;
+            m4 = !b23 && 1 == (f5 >> k4 & 1), r8[Math.floor(k4 / 3)][k4 % 3 + d6 - 8 - 3] = m4;
           for (k4 = 0; 18 > k4; k4 += 1)
-            m4 = !b23 && 1 == (f5 >> k4 & 1), r6[k4 % 3 + d5 - 8 - 3][Math.floor(k4 / 3)] = m4;
+            m4 = !b23 && 1 == (f5 >> k4 & 1), r8[k4 % 3 + d6 - 8 - 3][Math.floor(k4 / 3)] = m4;
         }
         if (null == g4) {
-          b23 = t7.I(c5, h5);
+          b23 = t8.I(c6, h6);
           f5 = B2();
           for (k4 = 0; k4 < x4.length; k4 += 1)
-            m4 = x4[k4], f5.put(4, 4), f5.put(m4.b(), y23.f(4, c5)), m4.write(f5);
+            m4 = x4[k4], f5.put(4, 4), f5.put(m4.b(), y22.f(4, c6)), m4.write(f5);
           for (k4 = m4 = 0; k4 < b23.length; k4 += 1)
             m4 += b23[k4].j;
           if (f5.f() > 8 * m4)
@@ -9091,113 +8460,113 @@
           m4 = k4 = 0;
           p4 = Array(b23.length);
           q = Array(b23.length);
-          for (n10 = 0; n10 < b23.length; n10 += 1) {
-            var v23 = b23[n10].j, w23 = b23[n10].o - v23;
-            k4 = Math.max(k4, v23);
+          for (n13 = 0; n13 < b23.length; n13 += 1) {
+            var v22 = b23[n13].j, w23 = b23[n13].o - v22;
+            k4 = Math.max(k4, v22);
             m4 = Math.max(m4, w23);
-            p4[n10] = Array(v23);
-            for (l9 = 0; l9 < p4[n10].length; l9 += 1)
-              p4[n10][l9] = 255 & f5.B()[l9 + u23];
-            u23 += v23;
-            l9 = y23.C(w23);
-            v23 = z4(p4[n10], l9.b() - 1).l(l9);
-            q[n10] = Array(l9.b() - 1);
-            for (l9 = 0; l9 < q[n10].length; l9 += 1)
-              w23 = l9 + v23.b() - q[n10].length, q[n10][l9] = 0 <= w23 ? v23.c(w23) : 0;
+            p4[n13] = Array(v22);
+            for (l11 = 0; l11 < p4[n13].length; l11 += 1)
+              p4[n13][l11] = 255 & f5.B()[l11 + u23];
+            u23 += v22;
+            l11 = y22.C(w23);
+            v22 = z4(p4[n13], l11.b() - 1).l(l11);
+            q[n13] = Array(l11.b() - 1);
+            for (l11 = 0; l11 < q[n13].length; l11 += 1)
+              w23 = l11 + v22.b() - q[n13].length, q[n13][l11] = 0 <= w23 ? v22.c(w23) : 0;
           }
-          for (l9 = f5 = 0; l9 < b23.length; l9 += 1)
-            f5 += b23[l9].o;
+          for (l11 = f5 = 0; l11 < b23.length; l11 += 1)
+            f5 += b23[l11].o;
           f5 = Array(f5);
-          for (l9 = u23 = 0; l9 < k4; l9 += 1)
-            for (n10 = 0; n10 < b23.length; n10 += 1)
-              l9 < p4[n10].length && (f5[u23] = p4[n10][l9], u23 += 1);
-          for (l9 = 0; l9 < m4; l9 += 1)
-            for (n10 = 0; n10 < b23.length; n10 += 1)
-              l9 < q[n10].length && (f5[u23] = q[n10][l9], u23 += 1);
+          for (l11 = u23 = 0; l11 < k4; l11 += 1)
+            for (n13 = 0; n13 < b23.length; n13 += 1)
+              l11 < p4[n13].length && (f5[u23] = p4[n13][l11], u23 += 1);
+          for (l11 = 0; l11 < m4; l11 += 1)
+            for (n13 = 0; n13 < b23.length; n13 += 1)
+              l11 < q[n13].length && (f5[u23] = q[n13][l11], u23 += 1);
           g4 = f5;
         }
         b23 = g4;
         f5 = -1;
-        k4 = d5 - 1;
+        k4 = d6 - 1;
         m4 = 7;
         p4 = 0;
-        a24 = y23.F(a24);
-        for (q = d5 - 1; 0 < q; q -= 2)
+        a23 = y22.F(a23);
+        for (q = d6 - 1; 0 < q; q -= 2)
           for (6 == q && --q; ; ) {
-            for (n10 = 0; 2 > n10; n10 += 1)
-              null == r6[k4][q - n10] && (l9 = false, p4 < b23.length && (l9 = 1 == (b23[p4] >>> m4 & 1)), a24(k4, q - n10) && (l9 = !l9), r6[k4][q - n10] = l9, --m4, -1 == m4 && (p4 += 1, m4 = 7));
+            for (n13 = 0; 2 > n13; n13 += 1)
+              null == r8[k4][q - n13] && (l11 = false, p4 < b23.length && (l11 = 1 == (b23[p4] >>> m4 & 1)), a23(k4, q - n13) && (l11 = !l11), r8[k4][q - n13] = l11, --m4, -1 == m4 && (p4 += 1, m4 = 7));
             k4 += f5;
-            if (0 > k4 || d5 <= k4) {
+            if (0 > k4 || d6 <= k4) {
               k4 -= f5;
               f5 = -f5;
               break;
             }
           }
       }
-      var h5 = A4[a6], r6 = null, d5 = 0, g4 = null, x4 = [], u5 = { u: function(b23) {
+      var h6 = A4[a7], r8 = null, d6 = 0, g4 = null, x4 = [], u5 = { u: function(b23) {
         b23 = w4(b23);
         x4.push(b23);
         g4 = null;
-      }, a: function(b23, a24) {
-        if (0 > b23 || d5 <= b23 || 0 > a24 || d5 <= a24)
-          throw Error(b23 + "," + a24);
-        return r6[b23][a24];
+      }, a: function(b23, a23) {
+        if (0 > b23 || d6 <= b23 || 0 > a23 || d6 <= a23)
+          throw Error(b23 + "," + a23);
+        return r8[b23][a23];
       }, h: function() {
-        return d5;
+        return d6;
       }, J: function() {
-        for (var a24 = 0, h24 = 0, c24 = 0; 8 > c24; c24 += 1) {
-          b4(true, c24);
-          var d24 = y23.D(u5);
-          if (0 == c24 || a24 > d24)
-            a24 = d24, h24 = c24;
+        for (var a23 = 0, h23 = 0, c23 = 0; 8 > c23; c23 += 1) {
+          b4(true, c23);
+          var d23 = y22.D(u5);
+          if (0 == c23 || a23 > d23)
+            a23 = d23, h23 = c23;
         }
-        b4(false, h24);
+        b4(false, h23);
       } };
       return u5;
     }
-    function z4(c5, a6) {
-      if ("undefined" == typeof c5.length)
-        throw Error(c5.length + "/" + a6);
-      var e35 = function() {
-        for (var b23 = 0; b23 < c5.length && 0 == c5[b23]; )
+    function z4(c6, a7) {
+      if ("undefined" == typeof c6.length)
+        throw Error(c6.length + "/" + a7);
+      var e34 = function() {
+        for (var b23 = 0; b23 < c6.length && 0 == c6[b23]; )
           b23 += 1;
-        for (var r6 = Array(c5.length - b23 + a6), d5 = 0; d5 < c5.length - b23; d5 += 1)
-          r6[d5] = c5[d5 + b23];
-        return r6;
+        for (var r8 = Array(c6.length - b23 + a7), d6 = 0; d6 < c6.length - b23; d6 += 1)
+          r8[d6] = c6[d6 + b23];
+        return r8;
       }(), b4 = { c: function(b23) {
-        return e35[b23];
+        return e34[b23];
       }, b: function() {
-        return e35.length;
-      }, multiply: function(a24) {
-        for (var h5 = Array(b4.b() + a24.b() - 1), c24 = 0; c24 < b4.b(); c24 += 1)
-          for (var g4 = 0; g4 < a24.b(); g4 += 1)
-            h5[c24 + g4] ^= v3.i(v3.g(b4.c(c24)) + v3.g(a24.c(g4)));
-        return z4(h5, 0);
-      }, l: function(a24) {
-        if (0 > b4.b() - a24.b())
+        return e34.length;
+      }, multiply: function(a23) {
+        for (var h6 = Array(b4.b() + a23.b() - 1), c23 = 0; c23 < b4.b(); c23 += 1)
+          for (var g4 = 0; g4 < a23.b(); g4 += 1)
+            h6[c23 + g4] ^= v4.i(v4.g(b4.c(c23)) + v4.g(a23.c(g4)));
+        return z4(h6, 0);
+      }, l: function(a23) {
+        if (0 > b4.b() - a23.b())
           return b4;
-        for (var c24 = v3.g(b4.c(0)) - v3.g(a24.c(0)), h5 = Array(b4.b()), g4 = 0; g4 < b4.b(); g4 += 1)
-          h5[g4] = b4.c(g4);
-        for (g4 = 0; g4 < a24.b(); g4 += 1)
-          h5[g4] ^= v3.i(v3.g(a24.c(g4)) + c24);
-        return z4(h5, 0).l(a24);
+        for (var c23 = v4.g(b4.c(0)) - v4.g(a23.c(0)), h6 = Array(b4.b()), g4 = 0; g4 < b4.b(); g4 += 1)
+          h6[g4] = b4.c(g4);
+        for (g4 = 0; g4 < a23.b(); g4 += 1)
+          h6[g4] ^= v4.i(v4.g(a23.c(g4)) + c23);
+        return z4(h6, 0).l(a23);
       } };
       return b4;
     }
-    C4.s = function(c5) {
-      for (var a6 = [], e35 = 0; e35 < c5.length; e35++) {
-        var b4 = c5.charCodeAt(e35);
-        128 > b4 ? a6.push(b4) : 2048 > b4 ? a6.push(192 | b4 >> 6, 128 | b4 & 63) : 55296 > b4 || 57344 <= b4 ? a6.push(224 | b4 >> 12, 128 | b4 >> 6 & 63, 128 | b4 & 63) : (e35++, b4 = 65536 + ((b4 & 1023) << 10 | c5.charCodeAt(e35) & 1023), a6.push(240 | b4 >> 18, 128 | b4 >> 12 & 63, 128 | b4 >> 6 & 63, 128 | b4 & 63));
+    C4.s = function(c6) {
+      for (var a7 = [], e34 = 0; e34 < c6.length; e34++) {
+        var b4 = c6.charCodeAt(e34);
+        128 > b4 ? a7.push(b4) : 2048 > b4 ? a7.push(192 | b4 >> 6, 128 | b4 & 63) : 55296 > b4 || 57344 <= b4 ? a7.push(224 | b4 >> 12, 128 | b4 >> 6 & 63, 128 | b4 & 63) : (e34++, b4 = 65536 + ((b4 & 1023) << 10 | c6.charCodeAt(e34) & 1023), a7.push(240 | b4 >> 18, 128 | b4 >> 12 & 63, 128 | b4 >> 6 & 63, 128 | b4 & 63));
       }
-      return a6;
+      return a7;
     };
-    var A4 = { L: 1, M: 0, Q: 3, H: 2 }, y23 = function() {
-      function c5(b4) {
-        for (var a24 = 0; 0 != b4; )
-          a24 += 1, b4 >>>= 1;
-        return a24;
+    var A4 = { L: 1, M: 0, Q: 3, H: 2 }, y22 = function() {
+      function c6(b4) {
+        for (var a23 = 0; 0 != b4; )
+          a23 += 1, b4 >>>= 1;
+        return a23;
       }
-      var a6 = [
+      var a7 = [
         [],
         [6, 18],
         [6, 22],
@@ -9238,118 +8607,118 @@
         [6, 32, 58, 84, 110, 136, 162],
         [6, 26, 54, 82, 110, 138, 166],
         [6, 30, 58, 86, 114, 142, 170]
-      ], e35 = { w: function(b4) {
-        for (var a24 = b4 << 10; 0 <= c5(a24) - c5(1335); )
-          a24 ^= 1335 << c5(a24) - c5(1335);
-        return (b4 << 10 | a24) ^ 21522;
+      ], e34 = { w: function(b4) {
+        for (var a23 = b4 << 10; 0 <= c6(a23) - c6(1335); )
+          a23 ^= 1335 << c6(a23) - c6(1335);
+        return (b4 << 10 | a23) ^ 21522;
       }, A: function(b4) {
-        for (var a24 = b4 << 12; 0 <= c5(a24) - c5(7973); )
-          a24 ^= 7973 << c5(a24) - c5(7973);
-        return b4 << 12 | a24;
+        for (var a23 = b4 << 12; 0 <= c6(a23) - c6(7973); )
+          a23 ^= 7973 << c6(a23) - c6(7973);
+        return b4 << 12 | a23;
       }, G: function(b4) {
-        return a6[b4 - 1];
+        return a7[b4 - 1];
       }, F: function(b4) {
         switch (b4) {
           case 0:
-            return function(b23, a24) {
-              return 0 == (b23 + a24) % 2;
+            return function(b23, a23) {
+              return 0 == (b23 + a23) % 2;
             };
           case 1:
             return function(b23) {
               return 0 == b23 % 2;
             };
           case 2:
-            return function(b23, a24) {
-              return 0 == a24 % 3;
+            return function(b23, a23) {
+              return 0 == a23 % 3;
             };
           case 3:
-            return function(b23, a24) {
-              return 0 == (b23 + a24) % 3;
+            return function(b23, a23) {
+              return 0 == (b23 + a23) % 3;
             };
           case 4:
-            return function(b23, a24) {
-              return 0 == (Math.floor(b23 / 2) + Math.floor(a24 / 3)) % 2;
+            return function(b23, a23) {
+              return 0 == (Math.floor(b23 / 2) + Math.floor(a23 / 3)) % 2;
             };
           case 5:
-            return function(b23, a24) {
-              return 0 == b23 * a24 % 2 + b23 * a24 % 3;
+            return function(b23, a23) {
+              return 0 == b23 * a23 % 2 + b23 * a23 % 3;
             };
           case 6:
-            return function(b23, a24) {
-              return 0 == (b23 * a24 % 2 + b23 * a24 % 3) % 2;
+            return function(b23, a23) {
+              return 0 == (b23 * a23 % 2 + b23 * a23 % 3) % 2;
             };
           case 7:
-            return function(b23, a24) {
-              return 0 == (b23 * a24 % 3 + (b23 + a24) % 2) % 2;
+            return function(b23, a23) {
+              return 0 == (b23 * a23 % 3 + (b23 + a23) % 2) % 2;
             };
           default:
             throw Error("bad maskPattern:" + b4);
         }
       }, C: function(b4) {
-        for (var a24 = z4([1], 0), c24 = 0; c24 < b4; c24 += 1)
-          a24 = a24.multiply(z4([1, v3.i(c24)], 0));
-        return a24;
-      }, f: function(b4, a24) {
-        if (4 != b4 || 1 > a24 || 40 < a24)
-          throw Error("mode: " + b4 + "; type: " + a24);
-        return 10 > a24 ? 8 : 16;
+        for (var a23 = z4([1], 0), c23 = 0; c23 < b4; c23 += 1)
+          a23 = a23.multiply(z4([1, v4.i(c23)], 0));
+        return a23;
+      }, f: function(b4, a23) {
+        if (4 != b4 || 1 > a23 || 40 < a23)
+          throw Error("mode: " + b4 + "; type: " + a23);
+        return 10 > a23 ? 8 : 16;
       }, D: function(b4) {
-        for (var a24 = b4.h(), c24 = 0, d5 = 0; d5 < a24; d5 += 1)
-          for (var g4 = 0; g4 < a24; g4 += 1) {
-            for (var e43 = 0, t24 = b4.a(d5, g4), p4 = -1; 1 >= p4; p4 += 1)
-              if (!(0 > d5 + p4 || a24 <= d5 + p4))
+        for (var a23 = b4.h(), c23 = 0, d6 = 0; d6 < a23; d6 += 1)
+          for (var g4 = 0; g4 < a23; g4 += 1) {
+            for (var e43 = 0, t23 = b4.a(d6, g4), p4 = -1; 1 >= p4; p4 += 1)
+              if (!(0 > d6 + p4 || a23 <= d6 + p4))
                 for (var q = -1; 1 >= q; q += 1)
-                  0 > g4 + q || a24 <= g4 + q || (0 != p4 || 0 != q) && t24 == b4.a(d5 + p4, g4 + q) && (e43 += 1);
-            5 < e43 && (c24 += 3 + e43 - 5);
+                  0 > g4 + q || a23 <= g4 + q || (0 != p4 || 0 != q) && t23 == b4.a(d6 + p4, g4 + q) && (e43 += 1);
+            5 < e43 && (c23 += 3 + e43 - 5);
           }
-        for (d5 = 0; d5 < a24 - 1; d5 += 1)
-          for (g4 = 0; g4 < a24 - 1; g4 += 1)
-            if (e43 = 0, b4.a(d5, g4) && (e43 += 1), b4.a(d5 + 1, g4) && (e43 += 1), b4.a(d5, g4 + 1) && (e43 += 1), b4.a(d5 + 1, g4 + 1) && (e43 += 1), 0 == e43 || 4 == e43)
-              c24 += 3;
-        for (d5 = 0; d5 < a24; d5 += 1)
-          for (g4 = 0; g4 < a24 - 6; g4 += 1)
-            b4.a(d5, g4) && !b4.a(d5, g4 + 1) && b4.a(d5, g4 + 2) && b4.a(d5, g4 + 3) && b4.a(d5, g4 + 4) && !b4.a(d5, g4 + 5) && b4.a(d5, g4 + 6) && (c24 += 40);
-        for (g4 = 0; g4 < a24; g4 += 1)
-          for (d5 = 0; d5 < a24 - 6; d5 += 1)
-            b4.a(d5, g4) && !b4.a(d5 + 1, g4) && b4.a(d5 + 2, g4) && b4.a(d5 + 3, g4) && b4.a(d5 + 4, g4) && !b4.a(d5 + 5, g4) && b4.a(d5 + 6, g4) && (c24 += 40);
-        for (g4 = e43 = 0; g4 < a24; g4 += 1)
-          for (d5 = 0; d5 < a24; d5 += 1)
-            b4.a(d5, g4) && (e43 += 1);
-        return c24 += Math.abs(100 * e43 / a24 / a24 - 50) / 5 * 10;
+        for (d6 = 0; d6 < a23 - 1; d6 += 1)
+          for (g4 = 0; g4 < a23 - 1; g4 += 1)
+            if (e43 = 0, b4.a(d6, g4) && (e43 += 1), b4.a(d6 + 1, g4) && (e43 += 1), b4.a(d6, g4 + 1) && (e43 += 1), b4.a(d6 + 1, g4 + 1) && (e43 += 1), 0 == e43 || 4 == e43)
+              c23 += 3;
+        for (d6 = 0; d6 < a23; d6 += 1)
+          for (g4 = 0; g4 < a23 - 6; g4 += 1)
+            b4.a(d6, g4) && !b4.a(d6, g4 + 1) && b4.a(d6, g4 + 2) && b4.a(d6, g4 + 3) && b4.a(d6, g4 + 4) && !b4.a(d6, g4 + 5) && b4.a(d6, g4 + 6) && (c23 += 40);
+        for (g4 = 0; g4 < a23; g4 += 1)
+          for (d6 = 0; d6 < a23 - 6; d6 += 1)
+            b4.a(d6, g4) && !b4.a(d6 + 1, g4) && b4.a(d6 + 2, g4) && b4.a(d6 + 3, g4) && b4.a(d6 + 4, g4) && !b4.a(d6 + 5, g4) && b4.a(d6 + 6, g4) && (c23 += 40);
+        for (g4 = e43 = 0; g4 < a23; g4 += 1)
+          for (d6 = 0; d6 < a23; d6 += 1)
+            b4.a(d6, g4) && (e43 += 1);
+        return c23 += Math.abs(100 * e43 / a23 / a23 - 50) / 5 * 10;
       } };
-      return e35;
-    }(), v3 = function() {
-      for (var c5 = Array(256), a6 = Array(256), e35 = 0; 8 > e35; e35 += 1)
-        c5[e35] = 1 << e35;
-      for (e35 = 8; 256 > e35; e35 += 1)
-        c5[e35] = c5[e35 - 4] ^ c5[e35 - 5] ^ c5[e35 - 6] ^ c5[e35 - 8];
-      for (e35 = 0; 255 > e35; e35 += 1)
-        a6[c5[e35]] = e35;
+      return e34;
+    }(), v4 = function() {
+      for (var c6 = Array(256), a7 = Array(256), e34 = 0; 8 > e34; e34 += 1)
+        c6[e34] = 1 << e34;
+      for (e34 = 8; 256 > e34; e34 += 1)
+        c6[e34] = c6[e34 - 4] ^ c6[e34 - 5] ^ c6[e34 - 6] ^ c6[e34 - 8];
+      for (e34 = 0; 255 > e34; e34 += 1)
+        a7[c6[e34]] = e34;
       return { g: function(b4) {
         if (1 > b4)
           throw Error("glog(" + b4 + ")");
-        return a6[b4];
+        return a7[b4];
       }, i: function(b4) {
         for (; 0 > b4; )
           b4 += 255;
         for (; 256 <= b4; )
           b4 -= 255;
-        return c5[b4];
+        return c6[b4];
       } };
-    }(), t7 = function() {
-      function c5(b4, c24) {
-        switch (c24) {
+    }(), t8 = function() {
+      function c6(b4, c23) {
+        switch (c23) {
           case A4.L:
-            return a6[4 * (b4 - 1)];
+            return a7[4 * (b4 - 1)];
           case A4.M:
-            return a6[4 * (b4 - 1) + 1];
+            return a7[4 * (b4 - 1) + 1];
           case A4.Q:
-            return a6[4 * (b4 - 1) + 2];
+            return a7[4 * (b4 - 1) + 2];
           case A4.H:
-            return a6[4 * (b4 - 1) + 3];
+            return a7[4 * (b4 - 1) + 3];
         }
       }
-      var a6 = [
+      var a7 = [
         [1, 26, 19],
         [1, 26, 16],
         [1, 26, 13],
@@ -9531,22 +8900,22 @@
         [18, 75, 47, 31, 76, 48],
         [34, 54, 24, 34, 55, 25],
         [20, 45, 15, 61, 46, 16]
-      ], e35 = { I: function(b4, a24) {
-        var e43 = c5(b4, a24);
+      ], e34 = { I: function(b4, a23) {
+        var e43 = c6(b4, a23);
         if ("undefined" == typeof e43)
-          throw Error("bad rs block @ typeNumber:" + b4 + "/errorCorrectLevel:" + a24);
+          throw Error("bad rs block @ typeNumber:" + b4 + "/errorCorrectLevel:" + a23);
         b4 = e43.length / 3;
-        a24 = [];
-        for (var d5 = 0; d5 < b4; d5 += 1)
-          for (var g4 = e43[3 * d5], h5 = e43[3 * d5 + 1], t24 = e43[3 * d5 + 2], p4 = 0; p4 < g4; p4 += 1) {
-            var q = t24, f5 = {};
-            f5.o = h5;
+        a23 = [];
+        for (var d6 = 0; d6 < b4; d6 += 1)
+          for (var g4 = e43[3 * d6], h6 = e43[3 * d6 + 1], t23 = e43[3 * d6 + 2], p4 = 0; p4 < g4; p4 += 1) {
+            var q = t23, f5 = {};
+            f5.o = h6;
             f5.j = q;
-            a24.push(f5);
+            a23.push(f5);
           }
-        return a24;
+        return a23;
       } };
-      return e35;
+      return e34;
     }();
     return C4;
   }());
@@ -9584,13 +8953,13 @@
     }
     render() {
       var _a;
-      return y2`
+      return y`
       <canvas
         part="base"
         class="qr-code"
         role="img"
         aria-label=${((_a = this.label) == null ? void 0 : _a.length) > 0 ? this.label : this.value}
-        style=${i24({
+        style=${i23({
         width: `${this.size}px`,
         height: `${this.size}px`
       })}
@@ -9600,38 +8969,38 @@
   };
   SlQrCode.styles = qr_code_styles_default;
   __decorateClass([
-    i23("canvas")
+    i22("canvas")
   ], SlQrCode.prototype, "canvas", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlQrCode.prototype, "value", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlQrCode.prototype, "label", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlQrCode.prototype, "size", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlQrCode.prototype, "fill", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlQrCode.prototype, "background", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlQrCode.prototype, "radius", 2);
   __decorateClass([
-    e23({ attribute: "error-correction" })
+    e22({ attribute: "error-correction" })
   ], SlQrCode.prototype, "errorCorrection", 2);
   __decorateClass([
     watch(["background", "errorCorrection", "fill", "radius", "size", "value"])
   ], SlQrCode.prototype, "generate", 1);
   SlQrCode = __decorateClass([
-    e6("sl-qr-code")
+    e5("sl-qr-code")
   ], SlQrCode);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.S4VARFZB.js
-  var radio_styles_default = i3`
+  var radio_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -9799,10 +9168,10 @@
       this.setAttribute("aria-disabled", this.disabled ? "true" : "false");
     }
     render() {
-      return y2`
+      return y`
       <span
         part="base"
-        class=${o6({
+        class=${o5({
         radio: true,
         "radio--checked": this.checked,
         "radio--disabled": this.disabled,
@@ -9813,7 +9182,7 @@
       })}
       >
         <span part="${`control${this.checked ? " control--checked" : ""}`}" class="radio__control">
-          ${this.checked ? y2` <sl-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></sl-icon> ` : ""}
+          ${this.checked ? y` <sl-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></sl-icon> ` : ""}
         </span>
 
         <slot part="label" class="radio__label"></slot>
@@ -9823,19 +9192,19 @@
   };
   SlRadio.styles = radio_styles_default;
   __decorateClass([
-    t5()
+    t4()
   ], SlRadio.prototype, "checked", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlRadio.prototype, "hasFocus", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlRadio.prototype, "value", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlRadio.prototype, "size", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlRadio.prototype, "disabled", 2);
   __decorateClass([
     watch("checked")
@@ -9844,11 +9213,11 @@
     watch("disabled", { waitUntilFirstUpdate: true })
   ], SlRadio.prototype, "handleDisabledChange", 1);
   SlRadio = __decorateClass([
-    e6("sl-radio")
+    e5("sl-radio")
   ], SlRadio);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DYDPLPGK.js
-  var menu_label_styles_default = i3`
+  var menu_label_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -9871,16 +9240,16 @@
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MVBG6NLY.js
   var SlMenuLabel = class extends ShoelaceElement {
     render() {
-      return y2` <slot part="base" class="menu-label"></slot> `;
+      return y` <slot part="base" class="menu-label"></slot> `;
     }
   };
   SlMenuLabel.styles = menu_label_styles_default;
   SlMenuLabel = __decorateClass([
-    e6("sl-menu-label")
+    e5("sl-menu-label")
   ], SlMenuLabel);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ONM7523W.js
-  var mutation_observer_styles_default = i3`
+  var mutation_observer_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -9927,7 +9296,7 @@
           characterData: this.charData,
           characterDataOldValue: this.charDataOldValue
         });
-      } catch (e35) {
+      } catch (e34) {
       }
     }
     stopObserver() {
@@ -9945,27 +9314,27 @@
       this.startObserver();
     }
     render() {
-      return y2` <slot></slot> `;
+      return y` <slot></slot> `;
     }
   };
   SlMutationObserver.styles = mutation_observer_styles_default;
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlMutationObserver.prototype, "attr", 2);
   __decorateClass([
-    e23({ attribute: "attr-old-value", type: Boolean, reflect: true })
+    e22({ attribute: "attr-old-value", type: Boolean, reflect: true })
   ], SlMutationObserver.prototype, "attrOldValue", 2);
   __decorateClass([
-    e23({ attribute: "char-data", type: Boolean, reflect: true })
+    e22({ attribute: "char-data", type: Boolean, reflect: true })
   ], SlMutationObserver.prototype, "charData", 2);
   __decorateClass([
-    e23({ attribute: "char-data-old-value", type: Boolean, reflect: true })
+    e22({ attribute: "char-data-old-value", type: Boolean, reflect: true })
   ], SlMutationObserver.prototype, "charDataOldValue", 2);
   __decorateClass([
-    e23({ attribute: "child-list", type: Boolean, reflect: true })
+    e22({ attribute: "child-list", type: Boolean, reflect: true })
   ], SlMutationObserver.prototype, "childList", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlMutationObserver.prototype, "disabled", 2);
   __decorateClass([
     watch("disabled")
@@ -9978,11 +9347,11 @@
     watch("childList", { waitUntilFirstUpdate: true })
   ], SlMutationObserver.prototype, "handleChange", 1);
   SlMutationObserver = __decorateClass([
-    e6("sl-mutation-observer")
+    e5("sl-mutation-observer")
   ], SlMutationObserver);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.QAMGQNN2.js
-  var option_styles_default = i3`
+  var option_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -10123,10 +9492,10 @@
       return ((_a = this.textContent) != null ? _a : "").trim();
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         option: true,
         "option--current": this.current,
         "option--disabled": this.disabled,
@@ -10146,22 +9515,22 @@
   };
   SlOption.styles = option_styles_default;
   __decorateClass([
-    i23(".option__label")
+    i22(".option__label")
   ], SlOption.prototype, "defaultSlot", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlOption.prototype, "current", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlOption.prototype, "selected", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlOption.prototype, "hasHover", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlOption.prototype, "value", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlOption.prototype, "disabled", 2);
   __decorateClass([
     watch("disabled")
@@ -10173,7 +9542,7 @@
     watch("value")
   ], SlOption.prototype, "handleValueChange", 1);
   SlOption = __decorateClass([
-    e6("sl-option")
+    e5("sl-option")
   ], SlOption);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.XNEONNEJ.js
@@ -10197,7 +9566,7 @@
   }
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.AG3WFFW2.js
-  var include_styles_default = i3`
+  var include_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -10234,33 +9603,33 @@
           [...this.querySelectorAll("script")].forEach((script) => this.executeScript(script));
         }
         this.emit("sl-load");
-      } catch (e35) {
+      } catch (e34) {
         this.emit("sl-error", { detail: { status: -1 } });
       }
     }
     render() {
-      return y2`<slot></slot>`;
+      return y`<slot></slot>`;
     }
   };
   SlInclude.styles = include_styles_default;
   __decorateClass([
-    e23()
+    e22()
   ], SlInclude.prototype, "src", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInclude.prototype, "mode", 2);
   __decorateClass([
-    e23({ attribute: "allow-scripts", type: Boolean })
+    e22({ attribute: "allow-scripts", type: Boolean })
   ], SlInclude.prototype, "allowScripts", 2);
   __decorateClass([
     watch("src")
   ], SlInclude.prototype, "handleSrcChange", 1);
   SlInclude = __decorateClass([
-    e6("sl-include")
+    e5("sl-include")
   ], SlInclude);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.WGZQDQP2.js
-  var menu_styles_default = i3`
+  var menu_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -10361,7 +9730,7 @@
      * The menu item may or may not have focus, but for keyboard interaction purposes it's considered the "active" item.
      */
     getCurrentItem() {
-      return this.getAllItems().find((i26) => i26.getAttribute("tabindex") === "0");
+      return this.getAllItems().find((i25) => i25.getAttribute("tabindex") === "0");
     }
     /**
      * @internal Sets the current menu item to the specified element. This sets `tabindex="0"` on the target element and
@@ -10369,12 +9738,12 @@
      */
     setCurrentItem(item) {
       const items = this.getAllItems();
-      items.forEach((i26) => {
-        i26.setAttribute("tabindex", i26 === item ? "0" : "-1");
+      items.forEach((i25) => {
+        i25.setAttribute("tabindex", i25 === item ? "0" : "-1");
       });
     }
     render() {
-      return y2`
+      return y`
       <slot
         @slotchange=${this.handleSlotChange}
         @click=${this.handleClick}
@@ -10386,14 +9755,14 @@
   };
   SlMenu.styles = menu_styles_default;
   __decorateClass([
-    i23("slot")
+    i22("slot")
   ], SlMenu.prototype, "defaultSlot", 2);
   SlMenu = __decorateClass([
-    e6("sl-menu")
+    e5("sl-menu")
   ], SlMenu);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OJYA6EKC.js
-  var menu_item_styles_default = i3`
+  var menu_item_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -10556,10 +9925,10 @@
       return getTextContent(this.defaultSlot);
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         "menu-item": true,
         "menu-item--checked": this.checked,
         "menu-item--disabled": this.disabled,
@@ -10586,22 +9955,22 @@
   };
   SlMenuItem.styles = menu_item_styles_default;
   __decorateClass([
-    i23("slot:not([name])")
+    i22("slot:not([name])")
   ], SlMenuItem.prototype, "defaultSlot", 2);
   __decorateClass([
-    i23(".menu-item")
+    i22(".menu-item")
   ], SlMenuItem.prototype, "menuItem", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlMenuItem.prototype, "type", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlMenuItem.prototype, "checked", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlMenuItem.prototype, "value", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlMenuItem.prototype, "disabled", 2);
   __decorateClass([
     watch("checked")
@@ -10613,11 +9982,11 @@
     watch("type")
   ], SlMenuItem.prototype, "handleTypeChange", 1);
   SlMenuItem = __decorateClass([
-    e6("sl-menu-item")
+    e5("sl-menu-item")
   ], SlMenuItem);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NQHM4ASC.js
-  var image_comparer_styles_default = i3`
+  var image_comparer_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -10740,11 +10109,11 @@
     }
     render() {
       const isRtl = this.localize.dir() === "rtl";
-      return y2`
+      return y`
       <div
         part="base"
         id="image-comparer"
-        class=${o6({
+        class=${o5({
         "image-comparer": true,
         "image-comparer--rtl": isRtl
       })}
@@ -10757,7 +10126,7 @@
             name="after"
             part="after"
             class="image-comparer__after"
-            style=${i24({
+            style=${i23({
         clipPath: isRtl ? `inset(0 0 0 ${100 - this.position}%)` : `inset(0 ${100 - this.position}% 0 0)`
       })}
           ></slot>
@@ -10766,7 +10135,7 @@
         <div
           part="divider"
           class="image-comparer__divider"
-          style=${i24({
+          style=${i23({
         left: isRtl ? `${100 - this.position}%` : `${this.position}%`
       })}
           @mousedown=${this.handleDrag}
@@ -10792,19 +10161,19 @@
   };
   SlImageComparer.styles = image_comparer_styles_default;
   __decorateClass([
-    i23(".image-comparer")
+    i22(".image-comparer")
   ], SlImageComparer.prototype, "base", 2);
   __decorateClass([
-    i23(".image-comparer__handle")
+    i22(".image-comparer__handle")
   ], SlImageComparer.prototype, "handle", 2);
   __decorateClass([
-    e23({ type: Number, reflect: true })
+    e22({ type: Number, reflect: true })
   ], SlImageComparer.prototype, "position", 2);
   __decorateClass([
     watch("position", { waitUntilFirstUpdate: true })
   ], SlImageComparer.prototype, "handlePositionChange", 1);
   SlImageComparer = __decorateClass([
-    e6("sl-image-comparer")
+    e5("sl-image-comparer")
   ], SlImageComparer);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.G7G6UAKI.js
@@ -10849,7 +10218,7 @@
           walk(el.shadowRoot);
         }
       }
-      [...el.children].forEach((e8) => walk(e8));
+      [...el.children].forEach((e10) => walk(e10));
     }
     walk(root);
     const start = (_a = allElements.find((el) => isTabbable(el))) != null ? _a : null;
@@ -10908,7 +10277,7 @@
   };
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.RPVFXRDH.js
-  var drawer_styles_default = i3`
+  var drawer_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -11217,10 +10586,10 @@
       return waitForEvent(this, "sl-after-hide");
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         drawer: true,
         "drawer--open": this.open,
         "drawer--top": this.placement === "top",
@@ -11241,11 +10610,11 @@
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? "false" : "true"}
-          aria-label=${l6(this.noHeader ? this.label : void 0)}
-          aria-labelledby=${l6(!this.noHeader ? "title" : void 0)}
+          aria-label=${l5(this.noHeader ? this.label : void 0)}
+          aria-labelledby=${l5(!this.noHeader ? "title" : void 0)}
           tabindex="0"
         >
-          ${!this.noHeader ? y2`
+          ${!this.noHeader ? y`
                 <header part="header" class="drawer__header">
                   <h2 part="title" class="drawer__title" id="title">
                     <!-- If there's no label, use an invisible character to prevent the header from collapsing -->
@@ -11278,28 +10647,28 @@
   };
   SlDrawer.styles = drawer_styles_default;
   __decorateClass([
-    i23(".drawer")
+    i22(".drawer")
   ], SlDrawer.prototype, "drawer", 2);
   __decorateClass([
-    i23(".drawer__panel")
+    i22(".drawer__panel")
   ], SlDrawer.prototype, "panel", 2);
   __decorateClass([
-    i23(".drawer__overlay")
+    i22(".drawer__overlay")
   ], SlDrawer.prototype, "overlay", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlDrawer.prototype, "open", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlDrawer.prototype, "label", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlDrawer.prototype, "placement", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlDrawer.prototype, "contained", 2);
   __decorateClass([
-    e23({ attribute: "no-header", type: Boolean, reflect: true })
+    e22({ attribute: "no-header", type: Boolean, reflect: true })
   ], SlDrawer.prototype, "noHeader", 2);
   __decorateClass([
     watch("open", { waitUntilFirstUpdate: true })
@@ -11308,7 +10677,7 @@
     watch("contained", { waitUntilFirstUpdate: true })
   ], SlDrawer.prototype, "handleNoModalChange", 1);
   SlDrawer = __decorateClass([
-    e6("sl-drawer")
+    e5("sl-drawer")
   ], SlDrawer);
   setDefaultAnimation("drawer.showTop", {
     keyframes: [
@@ -11422,16 +10791,16 @@
     }
   };
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlFormatBytes.prototype, "value", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatBytes.prototype, "unit", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatBytes.prototype, "display", 2);
   SlFormatBytes = __decorateClass([
-    e6("sl-format-bytes")
+    e5("sl-format-bytes")
   ], SlFormatBytes);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.P2IPLWW7.js
@@ -11448,7 +10817,7 @@
       if (isNaN(date.getMilliseconds())) {
         return void 0;
       }
-      return y2`
+      return y`
       <time datetime=${date.toISOString()}>
         ${this.localize.date(date, {
         weekday: this.weekday,
@@ -11468,43 +10837,43 @@
     }
   };
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "date", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "weekday", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "era", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "year", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "month", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "day", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "hour", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "minute", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatDate.prototype, "second", 2);
   __decorateClass([
-    e23({ attribute: "time-zone-name" })
+    e22({ attribute: "time-zone-name" })
   ], SlFormatDate.prototype, "timeZoneName", 2);
   __decorateClass([
-    e23({ attribute: "time-zone" })
+    e22({ attribute: "time-zone" })
   ], SlFormatDate.prototype, "timeZone", 2);
   __decorateClass([
-    e23({ attribute: "hour-format" })
+    e22({ attribute: "hour-format" })
   ], SlFormatDate.prototype, "hourFormat", 2);
   SlFormatDate = __decorateClass([
-    e6("sl-format-date")
+    e5("sl-format-date")
   ], SlFormatDate);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.4WPEOKQ7.js
@@ -11536,41 +10905,41 @@
     }
   };
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlFormatNumber.prototype, "value", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatNumber.prototype, "type", 2);
   __decorateClass([
-    e23({ attribute: "no-grouping", type: Boolean })
+    e22({ attribute: "no-grouping", type: Boolean })
   ], SlFormatNumber.prototype, "noGrouping", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlFormatNumber.prototype, "currency", 2);
   __decorateClass([
-    e23({ attribute: "currency-display" })
+    e22({ attribute: "currency-display" })
   ], SlFormatNumber.prototype, "currencyDisplay", 2);
   __decorateClass([
-    e23({ attribute: "minimum-integer-digits", type: Number })
+    e22({ attribute: "minimum-integer-digits", type: Number })
   ], SlFormatNumber.prototype, "minimumIntegerDigits", 2);
   __decorateClass([
-    e23({ attribute: "minimum-fraction-digits", type: Number })
+    e22({ attribute: "minimum-fraction-digits", type: Number })
   ], SlFormatNumber.prototype, "minimumFractionDigits", 2);
   __decorateClass([
-    e23({ attribute: "maximum-fraction-digits", type: Number })
+    e22({ attribute: "maximum-fraction-digits", type: Number })
   ], SlFormatNumber.prototype, "maximumFractionDigits", 2);
   __decorateClass([
-    e23({ attribute: "minimum-significant-digits", type: Number })
+    e22({ attribute: "minimum-significant-digits", type: Number })
   ], SlFormatNumber.prototype, "minimumSignificantDigits", 2);
   __decorateClass([
-    e23({ attribute: "maximum-significant-digits", type: Number })
+    e22({ attribute: "maximum-significant-digits", type: Number })
   ], SlFormatNumber.prototype, "maximumSignificantDigits", 2);
   SlFormatNumber = __decorateClass([
-    e6("sl-format-number")
+    e5("sl-format-number")
   ], SlFormatNumber);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ETPBSV6E.js
-  var color_picker_styles_default = i3`
+  var color_picker_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -11903,175 +11272,175 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NAZTXC75.js
-  function bound01(n10, max) {
-    if (isOnePointZero(n10)) {
-      n10 = "100%";
+  function bound01(n13, max) {
+    if (isOnePointZero(n13)) {
+      n13 = "100%";
     }
-    var isPercent = isPercentage(n10);
-    n10 = max === 360 ? n10 : Math.min(max, Math.max(0, parseFloat(n10)));
+    var isPercent = isPercentage(n13);
+    n13 = max === 360 ? n13 : Math.min(max, Math.max(0, parseFloat(n13)));
     if (isPercent) {
-      n10 = parseInt(String(n10 * max), 10) / 100;
+      n13 = parseInt(String(n13 * max), 10) / 100;
     }
-    if (Math.abs(n10 - max) < 1e-6) {
+    if (Math.abs(n13 - max) < 1e-6) {
       return 1;
     }
     if (max === 360) {
-      n10 = (n10 < 0 ? n10 % max + max : n10 % max) / parseFloat(String(max));
+      n13 = (n13 < 0 ? n13 % max + max : n13 % max) / parseFloat(String(max));
     } else {
-      n10 = n10 % max / parseFloat(String(max));
+      n13 = n13 % max / parseFloat(String(max));
     }
-    return n10;
+    return n13;
   }
   function clamp01(val) {
     return Math.min(1, Math.max(0, val));
   }
-  function isOnePointZero(n10) {
-    return typeof n10 === "string" && n10.indexOf(".") !== -1 && parseFloat(n10) === 1;
+  function isOnePointZero(n13) {
+    return typeof n13 === "string" && n13.indexOf(".") !== -1 && parseFloat(n13) === 1;
   }
-  function isPercentage(n10) {
-    return typeof n10 === "string" && n10.indexOf("%") !== -1;
+  function isPercentage(n13) {
+    return typeof n13 === "string" && n13.indexOf("%") !== -1;
   }
-  function boundAlpha(a6) {
-    a6 = parseFloat(a6);
-    if (isNaN(a6) || a6 < 0 || a6 > 1) {
-      a6 = 1;
+  function boundAlpha(a7) {
+    a7 = parseFloat(a7);
+    if (isNaN(a7) || a7 < 0 || a7 > 1) {
+      a7 = 1;
     }
-    return a6;
+    return a7;
   }
-  function convertToPercentage(n10) {
-    if (n10 <= 1) {
-      return "".concat(Number(n10) * 100, "%");
+  function convertToPercentage(n13) {
+    if (n13 <= 1) {
+      return "".concat(Number(n13) * 100, "%");
     }
-    return n10;
+    return n13;
   }
-  function pad2(c5) {
-    return c5.length === 1 ? "0" + c5 : String(c5);
+  function pad2(c6) {
+    return c6.length === 1 ? "0" + c6 : String(c6);
   }
-  function rgbToRgb(r6, g4, b4) {
+  function rgbToRgb(r8, g4, b4) {
     return {
-      r: bound01(r6, 255) * 255,
+      r: bound01(r8, 255) * 255,
       g: bound01(g4, 255) * 255,
       b: bound01(b4, 255) * 255
     };
   }
-  function rgbToHsl(r6, g4, b4) {
-    r6 = bound01(r6, 255);
+  function rgbToHsl(r8, g4, b4) {
+    r8 = bound01(r8, 255);
     g4 = bound01(g4, 255);
     b4 = bound01(b4, 255);
-    var max = Math.max(r6, g4, b4);
-    var min = Math.min(r6, g4, b4);
-    var h5 = 0;
-    var s9 = 0;
-    var l25 = (max + min) / 2;
+    var max = Math.max(r8, g4, b4);
+    var min = Math.min(r8, g4, b4);
+    var h6 = 0;
+    var s12 = 0;
+    var l24 = (max + min) / 2;
     if (max === min) {
-      s9 = 0;
-      h5 = 0;
+      s12 = 0;
+      h6 = 0;
     } else {
-      var d5 = max - min;
-      s9 = l25 > 0.5 ? d5 / (2 - max - min) : d5 / (max + min);
+      var d6 = max - min;
+      s12 = l24 > 0.5 ? d6 / (2 - max - min) : d6 / (max + min);
       switch (max) {
-        case r6:
-          h5 = (g4 - b4) / d5 + (g4 < b4 ? 6 : 0);
+        case r8:
+          h6 = (g4 - b4) / d6 + (g4 < b4 ? 6 : 0);
           break;
         case g4:
-          h5 = (b4 - r6) / d5 + 2;
+          h6 = (b4 - r8) / d6 + 2;
           break;
         case b4:
-          h5 = (r6 - g4) / d5 + 4;
+          h6 = (r8 - g4) / d6 + 4;
           break;
         default:
           break;
       }
-      h5 /= 6;
+      h6 /= 6;
     }
-    return { h: h5, s: s9, l: l25 };
+    return { h: h6, s: s12, l: l24 };
   }
-  function hue2rgb(p4, q, t24) {
-    if (t24 < 0) {
-      t24 += 1;
+  function hue2rgb(p4, q, t23) {
+    if (t23 < 0) {
+      t23 += 1;
     }
-    if (t24 > 1) {
-      t24 -= 1;
+    if (t23 > 1) {
+      t23 -= 1;
     }
-    if (t24 < 1 / 6) {
-      return p4 + (q - p4) * (6 * t24);
+    if (t23 < 1 / 6) {
+      return p4 + (q - p4) * (6 * t23);
     }
-    if (t24 < 1 / 2) {
+    if (t23 < 1 / 2) {
       return q;
     }
-    if (t24 < 2 / 3) {
-      return p4 + (q - p4) * (2 / 3 - t24) * 6;
+    if (t23 < 2 / 3) {
+      return p4 + (q - p4) * (2 / 3 - t23) * 6;
     }
     return p4;
   }
-  function hslToRgb(h5, s9, l25) {
-    var r6;
+  function hslToRgb(h6, s12, l24) {
+    var r8;
     var g4;
     var b4;
-    h5 = bound01(h5, 360);
-    s9 = bound01(s9, 100);
-    l25 = bound01(l25, 100);
-    if (s9 === 0) {
-      g4 = l25;
-      b4 = l25;
-      r6 = l25;
+    h6 = bound01(h6, 360);
+    s12 = bound01(s12, 100);
+    l24 = bound01(l24, 100);
+    if (s12 === 0) {
+      g4 = l24;
+      b4 = l24;
+      r8 = l24;
     } else {
-      var q = l25 < 0.5 ? l25 * (1 + s9) : l25 + s9 - l25 * s9;
-      var p4 = 2 * l25 - q;
-      r6 = hue2rgb(p4, q, h5 + 1 / 3);
-      g4 = hue2rgb(p4, q, h5);
-      b4 = hue2rgb(p4, q, h5 - 1 / 3);
+      var q = l24 < 0.5 ? l24 * (1 + s12) : l24 + s12 - l24 * s12;
+      var p4 = 2 * l24 - q;
+      r8 = hue2rgb(p4, q, h6 + 1 / 3);
+      g4 = hue2rgb(p4, q, h6);
+      b4 = hue2rgb(p4, q, h6 - 1 / 3);
     }
-    return { r: r6 * 255, g: g4 * 255, b: b4 * 255 };
+    return { r: r8 * 255, g: g4 * 255, b: b4 * 255 };
   }
-  function rgbToHsv(r6, g4, b4) {
-    r6 = bound01(r6, 255);
+  function rgbToHsv(r8, g4, b4) {
+    r8 = bound01(r8, 255);
     g4 = bound01(g4, 255);
     b4 = bound01(b4, 255);
-    var max = Math.max(r6, g4, b4);
-    var min = Math.min(r6, g4, b4);
-    var h5 = 0;
-    var v3 = max;
-    var d5 = max - min;
-    var s9 = max === 0 ? 0 : d5 / max;
+    var max = Math.max(r8, g4, b4);
+    var min = Math.min(r8, g4, b4);
+    var h6 = 0;
+    var v4 = max;
+    var d6 = max - min;
+    var s12 = max === 0 ? 0 : d6 / max;
     if (max === min) {
-      h5 = 0;
+      h6 = 0;
     } else {
       switch (max) {
-        case r6:
-          h5 = (g4 - b4) / d5 + (g4 < b4 ? 6 : 0);
+        case r8:
+          h6 = (g4 - b4) / d6 + (g4 < b4 ? 6 : 0);
           break;
         case g4:
-          h5 = (b4 - r6) / d5 + 2;
+          h6 = (b4 - r8) / d6 + 2;
           break;
         case b4:
-          h5 = (r6 - g4) / d5 + 4;
+          h6 = (r8 - g4) / d6 + 4;
           break;
         default:
           break;
       }
-      h5 /= 6;
+      h6 /= 6;
     }
-    return { h: h5, s: s9, v: v3 };
+    return { h: h6, s: s12, v: v4 };
   }
-  function hsvToRgb(h5, s9, v3) {
-    h5 = bound01(h5, 360) * 6;
-    s9 = bound01(s9, 100);
-    v3 = bound01(v3, 100);
-    var i33 = Math.floor(h5);
-    var f5 = h5 - i33;
-    var p4 = v3 * (1 - s9);
-    var q = v3 * (1 - f5 * s9);
-    var t24 = v3 * (1 - (1 - f5) * s9);
+  function hsvToRgb(h6, s12, v4) {
+    h6 = bound01(h6, 360) * 6;
+    s12 = bound01(s12, 100);
+    v4 = bound01(v4, 100);
+    var i33 = Math.floor(h6);
+    var f5 = h6 - i33;
+    var p4 = v4 * (1 - s12);
+    var q = v4 * (1 - f5 * s12);
+    var t23 = v4 * (1 - (1 - f5) * s12);
     var mod = i33 % 6;
-    var r6 = [v3, q, p4, p4, t24, v3][mod];
-    var g4 = [t24, v3, v3, q, p4, p4][mod];
-    var b4 = [p4, p4, t24, v3, v3, q][mod];
-    return { r: r6 * 255, g: g4 * 255, b: b4 * 255 };
+    var r8 = [v4, q, p4, p4, t23, v4][mod];
+    var g4 = [t23, v4, v4, q, p4, p4][mod];
+    var b4 = [p4, p4, t23, v4, v4, q][mod];
+    return { r: r8 * 255, g: g4 * 255, b: b4 * 255 };
   }
-  function rgbToHex(r6, g4, b4, allow3Char) {
+  function rgbToHex(r8, g4, b4, allow3Char) {
     var hex = [
-      pad2(Math.round(r6).toString(16)),
+      pad2(Math.round(r8).toString(16)),
       pad2(Math.round(g4).toString(16)),
       pad2(Math.round(b4).toString(16))
     ];
@@ -12080,23 +11449,23 @@
     }
     return hex.join("");
   }
-  function rgbaToHex(r6, g4, b4, a6, allow4Char) {
+  function rgbaToHex(r8, g4, b4, a7, allow4Char) {
     var hex = [
-      pad2(Math.round(r6).toString(16)),
+      pad2(Math.round(r8).toString(16)),
       pad2(Math.round(g4).toString(16)),
       pad2(Math.round(b4).toString(16)),
-      pad2(convertDecimalToHex(a6))
+      pad2(convertDecimalToHex(a7))
     ];
     if (allow4Char && hex[0].startsWith(hex[0].charAt(1)) && hex[1].startsWith(hex[1].charAt(1)) && hex[2].startsWith(hex[2].charAt(1)) && hex[3].startsWith(hex[3].charAt(1))) {
       return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0) + hex[3].charAt(0);
     }
     return hex.join("");
   }
-  function convertDecimalToHex(d5) {
-    return Math.round(parseFloat(d5) * 255).toString(16);
+  function convertDecimalToHex(d6) {
+    return Math.round(parseFloat(d6) * 255).toString(16);
   }
-  function convertHexToDecimal(h5) {
-    return parseIntFromHex(h5) / 255;
+  function convertHexToDecimal(h6) {
+    return parseIntFromHex(h6) / 255;
   }
   function parseIntFromHex(val) {
     return parseInt(val, 16);
@@ -12260,10 +11629,10 @@
   };
   function inputToRGB(color) {
     var rgb = { r: 0, g: 0, b: 0 };
-    var a6 = 1;
-    var s9 = null;
-    var v3 = null;
-    var l25 = null;
+    var a7 = 1;
+    var s12 = null;
+    var v4 = null;
+    var l24 = null;
     var ok = false;
     var format = false;
     if (typeof color === "string") {
@@ -12275,30 +11644,30 @@
         ok = true;
         format = String(color.r).substr(-1) === "%" ? "prgb" : "rgb";
       } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
-        s9 = convertToPercentage(color.s);
-        v3 = convertToPercentage(color.v);
-        rgb = hsvToRgb(color.h, s9, v3);
+        s12 = convertToPercentage(color.s);
+        v4 = convertToPercentage(color.v);
+        rgb = hsvToRgb(color.h, s12, v4);
         ok = true;
         format = "hsv";
       } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
-        s9 = convertToPercentage(color.s);
-        l25 = convertToPercentage(color.l);
-        rgb = hslToRgb(color.h, s9, l25);
+        s12 = convertToPercentage(color.s);
+        l24 = convertToPercentage(color.l);
+        rgb = hslToRgb(color.h, s12, l24);
         ok = true;
         format = "hsl";
       }
       if (Object.prototype.hasOwnProperty.call(color, "a")) {
-        a6 = color.a;
+        a7 = color.a;
       }
     }
-    a6 = boundAlpha(a6);
+    a7 = boundAlpha(a7);
     return {
       ok,
       format: color.format || format,
       r: Math.min(255, Math.max(rgb.r, 0)),
       g: Math.min(255, Math.max(rgb.g, 0)),
       b: Math.min(255, Math.max(rgb.b, 0)),
-      a: a6
+      a: a7
     };
   }
   var CSS_INTEGER = "[-\\+]?\\d+%?";
@@ -12480,8 +11849,8 @@
         return this;
       };
       TinyColor2.prototype.isMonochrome = function() {
-        var s9 = this.toHsl().s;
-        return s9 === 0;
+        var s12 = this.toHsl().s;
+        return s12 === 0;
       };
       TinyColor2.prototype.toHsv = function() {
         var hsv = rgbToHsv(this.r, this.g, this.b);
@@ -12489,10 +11858,10 @@
       };
       TinyColor2.prototype.toHsvString = function() {
         var hsv = rgbToHsv(this.r, this.g, this.b);
-        var h5 = Math.round(hsv.h * 360);
-        var s9 = Math.round(hsv.s * 100);
-        var v3 = Math.round(hsv.v * 100);
-        return this.a === 1 ? "hsv(".concat(h5, ", ").concat(s9, "%, ").concat(v3, "%)") : "hsva(".concat(h5, ", ").concat(s9, "%, ").concat(v3, "%, ").concat(this.roundA, ")");
+        var h6 = Math.round(hsv.h * 360);
+        var s12 = Math.round(hsv.s * 100);
+        var v4 = Math.round(hsv.v * 100);
+        return this.a === 1 ? "hsv(".concat(h6, ", ").concat(s12, "%, ").concat(v4, "%)") : "hsva(".concat(h6, ", ").concat(s12, "%, ").concat(v4, "%, ").concat(this.roundA, ")");
       };
       TinyColor2.prototype.toHsl = function() {
         var hsl = rgbToHsl(this.r, this.g, this.b);
@@ -12500,10 +11869,10 @@
       };
       TinyColor2.prototype.toHslString = function() {
         var hsl = rgbToHsl(this.r, this.g, this.b);
-        var h5 = Math.round(hsl.h * 360);
-        var s9 = Math.round(hsl.s * 100);
-        var l25 = Math.round(hsl.l * 100);
-        return this.a === 1 ? "hsl(".concat(h5, ", ").concat(s9, "%, ").concat(l25, "%)") : "hsla(".concat(h5, ", ").concat(s9, "%, ").concat(l25, "%, ").concat(this.roundA, ")");
+        var h6 = Math.round(hsl.h * 360);
+        var s12 = Math.round(hsl.s * 100);
+        var l24 = Math.round(hsl.l * 100);
+        return this.a === 1 ? "hsl(".concat(h6, ", ").concat(s12, "%, ").concat(l24, "%)") : "hsla(".concat(h6, ", ").concat(s12, "%, ").concat(l24, "%, ").concat(this.roundA, ")");
       };
       TinyColor2.prototype.toHex = function(allow3Char) {
         if (allow3Char === void 0) {
@@ -12538,10 +11907,10 @@
         };
       };
       TinyColor2.prototype.toRgbString = function() {
-        var r6 = Math.round(this.r);
+        var r8 = Math.round(this.r);
         var g4 = Math.round(this.g);
         var b4 = Math.round(this.b);
-        return this.a === 1 ? "rgb(".concat(r6, ", ").concat(g4, ", ").concat(b4, ")") : "rgba(".concat(r6, ", ").concat(g4, ", ").concat(b4, ", ").concat(this.roundA, ")");
+        return this.a === 1 ? "rgb(".concat(r8, ", ").concat(g4, ", ").concat(b4, ")") : "rgba(".concat(r8, ", ").concat(g4, ", ").concat(b4, ", ").concat(this.roundA, ")");
       };
       TinyColor2.prototype.toPercentageRgb = function() {
         var fmt = function(x4) {
@@ -12731,24 +12100,24 @@
           results = 6;
         }
         var hsv = this.toHsv();
-        var h5 = hsv.h;
-        var s9 = hsv.s;
-        var v3 = hsv.v;
+        var h6 = hsv.h;
+        var s12 = hsv.s;
+        var v4 = hsv.v;
         var res = [];
         var modification = 1 / results;
         while (results--) {
-          res.push(new TinyColor2({ h: h5, s: s9, v: v3 }));
-          v3 = (v3 + modification) % 1;
+          res.push(new TinyColor2({ h: h6, s: s12, v: v4 }));
+          v4 = (v4 + modification) % 1;
         }
         return res;
       };
       TinyColor2.prototype.splitcomplement = function() {
         var hsl = this.toHsl();
-        var h5 = hsl.h;
+        var h6 = hsl.h;
         return [
           this,
-          new TinyColor2({ h: (h5 + 72) % 360, s: hsl.s, l: hsl.l }),
-          new TinyColor2({ h: (h5 + 216) % 360, s: hsl.s, l: hsl.l })
+          new TinyColor2({ h: (h6 + 72) % 360, s: hsl.s, l: hsl.l }),
+          new TinyColor2({ h: (h6 + 216) % 360, s: hsl.s, l: hsl.l })
         ];
       };
       TinyColor2.prototype.onBackground = function(background) {
@@ -12766,13 +12135,13 @@
       TinyColor2.prototype.tetrad = function() {
         return this.polyad(4);
       };
-      TinyColor2.prototype.polyad = function(n10) {
+      TinyColor2.prototype.polyad = function(n13) {
         var hsl = this.toHsl();
-        var h5 = hsl.h;
+        var h6 = hsl.h;
         var result = [this];
-        var increment = 360 / n10;
-        for (var i33 = 1; i33 < n10; i33++) {
-          result.push(new TinyColor2({ h: (h5 + i33 * increment) % 360, s: hsl.s, l: hsl.l }));
+        var increment = 360 / n13;
+        for (var i33 = 1; i33 < n13; i33++) {
+          result.push(new TinyColor2({ h: (h6 + i33 * increment) % 360, s: hsl.s, l: hsl.l }));
         }
         return result;
       };
@@ -12912,9 +12281,9 @@
       event.preventDefault();
       this.isDraggingGridHandle = true;
       drag(grid, {
-        onMove: (x4, y23) => {
+        onMove: (x4, y22) => {
           this.saturation = clamp(x4 / width * 100, 0, 100);
-          this.brightness = clamp(100 - y23 / height * 100, 0, 100);
+          this.brightness = clamp(100 - y22 / height * 100, 0, 100);
           this.syncValues();
           if (this.value !== oldValue) {
             oldValue = this.value;
@@ -13309,10 +12678,10 @@
       const gridHandleX = this.saturation;
       const gridHandleY = 100 - this.brightness;
       const swatches = Array.isArray(this.swatches) ? this.swatches : this.swatches.split(";").filter((color) => color.trim() !== "");
-      const colorPicker = y2`
+      const colorPicker = y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         "color-picker": true,
         "color-picker--inline": this.inline,
         "color-picker--disabled": this.disabled,
@@ -13322,7 +12691,7 @@
         aria-labelledby="label"
         tabindex=${this.inline ? "0" : "-1"}
       >
-        ${this.inline ? y2`
+        ${this.inline ? y`
               <sl-visually-hidden id="label">
                 <slot name="label">${this.label}</slot>
               </sl-visually-hidden>
@@ -13331,24 +12700,24 @@
         <div
           part="grid"
           class="color-picker__grid"
-          style=${i24({ backgroundColor: this.getHexString(this.hue, 100, 100) })}
+          style=${i23({ backgroundColor: this.getHexString(this.hue, 100, 100) })}
           @pointerdown=${this.handleGridDrag}
           @touchmove=${this.handleTouchMove}
         >
           <span
             part="grid-handle"
-            class=${o6({
+            class=${o5({
         "color-picker__grid-handle": true,
         "color-picker__grid-handle--dragging": this.isDraggingGridHandle
       })}
-            style=${i24({
+            style=${i23({
         top: `${gridHandleY}%`,
         left: `${gridHandleX}%`,
         backgroundColor: this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
       })}
             role="application"
             aria-label="HSV"
-            tabindex=${l6(this.disabled ? void 0 : "0")}
+            tabindex=${l5(this.disabled ? void 0 : "0")}
             @keydown=${this.handleGridKeyDown}
           ></span>
         </div>
@@ -13364,7 +12733,7 @@
               <span
                 part="slider-handle hue-slider-handle"
                 class="color-picker__slider-handle"
-                style=${i24({
+                style=${i23({
         left: `${this.hue === 0 ? 0 : 100 / (360 / this.hue)}%`
       })}
                 role="slider"
@@ -13373,12 +12742,12 @@
                 aria-valuemin="0"
                 aria-valuemax="360"
                 aria-valuenow=${`${Math.round(this.hue)}`}
-                tabindex=${l6(this.disabled ? void 0 : "0")}
+                tabindex=${l5(this.disabled ? void 0 : "0")}
                 @keydown=${this.handleHueKeyDown}
               ></span>
             </div>
 
-            ${this.opacity ? y2`
+            ${this.opacity ? y`
                   <div
                     part="slider opacity-slider"
                     class="color-picker__alpha color-picker__slider color-picker__transparent-bg"
@@ -13387,7 +12756,7 @@
                   >
                     <div
                       class="color-picker__alpha-gradient"
-                      style=${i24({
+                      style=${i23({
         backgroundImage: `linear-gradient(
                           to right,
                           ${this.getHexString(this.hue, this.saturation, this.brightness, 0)} 0%
@@ -13398,7 +12767,7 @@
                     <span
                       part="slider-handle opacity-slider-handle"
                       class="color-picker__slider-handle"
-                      style=${i24({
+                      style=${i23({
         left: `${this.alpha}%`
       })}
                       role="slider"
@@ -13407,7 +12776,7 @@
                       aria-valuemin="0"
                       aria-valuemax="100"
                       aria-valuenow=${Math.round(this.alpha)}
-                      tabindex=${l6(this.disabled ? void 0 : "0")}
+                      tabindex=${l5(this.disabled ? void 0 : "0")}
                       @keydown=${this.handleAlphaKeyDown}
                     ></span>
                   </div>
@@ -13419,7 +12788,7 @@
             part="preview"
             class="color-picker__preview color-picker__transparent-bg"
             aria-label=${this.localize.term("copy")}
-            style=${i24({
+            style=${i23({
         "--preview-color": this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
       })}
             @click=${this.handleCopy}
@@ -13448,7 +12817,7 @@
           ></sl-input>
 
           <sl-button-group>
-            ${!this.noFormatToggle ? y2`
+            ${!this.noFormatToggle ? y`
                   <sl-button
                     part="format-button"
                     aria-label=${this.localize.term("toggleColorFormat")}
@@ -13466,7 +12835,7 @@
                     ${this.setLetterCase(this.format)}
                   </sl-button>
                 ` : ""}
-            ${hasEyeDropper ? y2`
+            ${hasEyeDropper ? y`
                   <sl-button
                     part="eye-dropper-button"
                     exportparts="
@@ -13490,7 +12859,7 @@
           </sl-button-group>
         </div>
 
-        ${swatches.length > 0 ? y2`
+        ${swatches.length > 0 ? y`
               <div part="swatches" class="color-picker__swatches">
                 ${swatches.map((swatch) => {
         const parsedColor = this.parseColor(swatch);
@@ -13498,11 +12867,11 @@
           console.error(`Unable to parse swatch color: "${swatch}"`, this);
           return "";
         }
-        return y2`
+        return y`
                     <div
                       part="swatch"
                       class="color-picker__swatch color-picker__transparent-bg"
-                      tabindex=${l6(this.disabled ? void 0 : "0")}
+                      tabindex=${l5(this.disabled ? void 0 : "0")}
                       role="button"
                       aria-label=${swatch}
                       @click=${() => this.selectSwatch(swatch)}
@@ -13510,7 +12879,7 @@
                     >
                       <div
                         class="color-picker__swatch-color"
-                        style=${i24({ backgroundColor: parsedColor.hexa })}
+                        style=${i23({ backgroundColor: parsedColor.hexa })}
                       ></div>
                     </div>
                   `;
@@ -13522,7 +12891,7 @@
       if (this.inline) {
         return colorPicker;
       }
-      return y2`
+      return y`
       <sl-dropdown
         class="color-dropdown"
         aria-disabled=${this.disabled ? "true" : "false"}
@@ -13534,7 +12903,7 @@
         <button
           part="trigger"
           slot="trigger"
-          class=${o6({
+          class=${o5({
         "color-dropdown__trigger": true,
         "color-dropdown__trigger--disabled": this.disabled,
         "color-dropdown__trigger--small": this.size === "small",
@@ -13544,7 +12913,7 @@
         "color-dropdown__trigger--focused": this.hasFocus,
         "color-picker__transparent-bg": true
       })}
-          style=${i24({
+          style=${i23({
         color: this.getHexString(this.hue, this.saturation, this.brightness, this.alpha)
       })}
           type="button"
@@ -13560,88 +12929,88 @@
   };
   SlColorPicker.styles = color_picker_styles_default;
   __decorateClass([
-    i23('[part~="base"]')
+    i22('[part~="base"]')
   ], SlColorPicker.prototype, "base", 2);
   __decorateClass([
-    i23('[part~="input"]')
+    i22('[part~="input"]')
   ], SlColorPicker.prototype, "input", 2);
   __decorateClass([
-    i23(".color-dropdown")
+    i22(".color-dropdown")
   ], SlColorPicker.prototype, "dropdown", 2);
   __decorateClass([
-    i23('[part~="preview"]')
+    i22('[part~="preview"]')
   ], SlColorPicker.prototype, "previewButton", 2);
   __decorateClass([
-    i23('[part~="trigger"]')
+    i22('[part~="trigger"]')
   ], SlColorPicker.prototype, "trigger", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlColorPicker.prototype, "hasFocus", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlColorPicker.prototype, "isDraggingGridHandle", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlColorPicker.prototype, "isEmpty", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlColorPicker.prototype, "inputValue", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlColorPicker.prototype, "hue", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlColorPicker.prototype, "saturation", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlColorPicker.prototype, "brightness", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlColorPicker.prototype, "alpha", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlColorPicker.prototype, "value", 2);
   __decorateClass([
     defaultValue()
   ], SlColorPicker.prototype, "defaultValue", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlColorPicker.prototype, "label", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlColorPicker.prototype, "format", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlColorPicker.prototype, "inline", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlColorPicker.prototype, "size", 2);
   __decorateClass([
-    e23({ attribute: "no-format-toggle", type: Boolean })
+    e22({ attribute: "no-format-toggle", type: Boolean })
   ], SlColorPicker.prototype, "noFormatToggle", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlColorPicker.prototype, "name", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlColorPicker.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlColorPicker.prototype, "hoist", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlColorPicker.prototype, "opacity", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlColorPicker.prototype, "uppercase", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlColorPicker.prototype, "swatches", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlColorPicker.prototype, "form", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlColorPicker.prototype, "required", 2);
   __decorateClass([
     watch("format", { waitUntilFirstUpdate: true })
@@ -13653,11 +13022,11 @@
     watch("value")
   ], SlColorPicker.prototype, "handleValueChange", 1);
   SlColorPicker = __decorateClass([
-    e6("sl-color-picker")
+    e5("sl-color-picker")
   ], SlColorPicker);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UFTP7SAL.js
-  var visually_hidden_styles_default = i3`
+  var visually_hidden_styles_default = i`
   ${component_styles_default}
 
   :host(:not(:focus-within)) {
@@ -13676,16 +13045,16 @@
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.VEZFXLS5.js
   var SlVisuallyHidden = class extends ShoelaceElement {
     render() {
-      return y2` <slot></slot> `;
+      return y` <slot></slot> `;
     }
   };
   SlVisuallyHidden.styles = visually_hidden_styles_default;
   SlVisuallyHidden = __decorateClass([
-    e6("sl-visually-hidden")
+    e5("sl-visually-hidden")
   ], SlVisuallyHidden);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ZTDRT4JJ.js
-  var input_styles_default = i3`
+  var input_styles_default = i`
   ${component_styles_default}
   ${form_control_styles_default}
 
@@ -14167,10 +13536,10 @@
       const hasLabel = this.label ? true : !!hasLabelSlot;
       const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
       const hasClearIcon = this.clearable && !this.disabled && !this.readonly && (typeof this.value === "number" || this.value.length > 0);
-      return y2`
+      return y`
       <div
         part="form-control"
-        class=${o6({
+        class=${o5({
         "form-control": true,
         "form-control--small": this.size === "small",
         "form-control--medium": this.size === "medium",
@@ -14191,7 +13560,7 @@
         <div part="form-control-input" class="form-control-input">
           <div
             part="base"
-            class=${o6({
+            class=${o5({
         input: true,
         // Sizes
         "input--small": this.size === "small",
@@ -14214,25 +13583,25 @@
               class="input__control"
               type=${this.type === "password" && this.passwordVisible ? "text" : this.type}
               title=${this.title}
-              name=${l6(this.name)}
+              name=${l5(this.name)}
               ?disabled=${this.disabled}
               ?readonly=${this.readonly}
               ?required=${this.required}
-              placeholder=${l6(this.placeholder)}
-              minlength=${l6(this.minlength)}
-              maxlength=${l6(this.maxlength)}
-              min=${l6(this.min)}
-              max=${l6(this.max)}
-              step=${l6(this.step)}
-              .value=${l23(this.value)}
-              autocapitalize=${l6(this.autocapitalize)}
-              autocomplete=${l6(this.autocomplete)}
-              autocorrect=${l6(this.autocorrect)}
+              placeholder=${l5(this.placeholder)}
+              minlength=${l5(this.minlength)}
+              maxlength=${l5(this.maxlength)}
+              min=${l5(this.min)}
+              max=${l5(this.max)}
+              step=${l5(this.step)}
+              .value=${l22(this.value)}
+              autocapitalize=${l5(this.autocapitalize)}
+              autocomplete=${l5(this.autocomplete)}
+              autocorrect=${l5(this.autocorrect)}
               ?autofocus=${this.autofocus}
               spellcheck=${this.spellcheck}
-              pattern=${l6(this.pattern)}
-              enterkeyhint=${l6(this.enterkeyhint)}
-              inputmode=${l6(this.inputmode)}
+              pattern=${l5(this.pattern)}
+              enterkeyhint=${l5(this.enterkeyhint)}
+              inputmode=${l5(this.inputmode)}
               aria-describedby="help-text"
               @change=${this.handleChange}
               @input=${this.handleInput}
@@ -14242,7 +13611,7 @@
               @blur=${this.handleBlur}
             />
 
-            ${hasClearIcon ? y2`
+            ${hasClearIcon ? y`
                     <button
                       part="clear-button"
                       class="input__clear"
@@ -14256,7 +13625,7 @@
                       </slot>
                     </button>
                   ` : ""}
-            ${this.passwordToggle && !this.disabled ? y2`
+            ${this.passwordToggle && !this.disabled ? y`
                     <button
                       part="password-toggle-button"
                       class="input__password-toggle"
@@ -14265,11 +13634,11 @@
                       @click=${this.handlePasswordToggle}
                       tabindex="-1"
                     >
-                      ${this.passwordVisible ? y2`
+                      ${this.passwordVisible ? y`
                             <slot name="show-password-icon">
                               <sl-icon name="eye-slash" library="system"></sl-icon>
                             </slot>
-                          ` : y2`
+                          ` : y`
                             <slot name="hide-password-icon">
                               <sl-icon name="eye" library="system"></sl-icon>
                             </slot>
@@ -14297,103 +13666,103 @@
   };
   SlInput.styles = input_styles_default;
   __decorateClass([
-    i23(".input__control")
+    i22(".input__control")
   ], SlInput.prototype, "input", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlInput.prototype, "hasFocus", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "title", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlInput.prototype, "type", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "name", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "value", 2);
   __decorateClass([
     defaultValue()
   ], SlInput.prototype, "defaultValue", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlInput.prototype, "size", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlInput.prototype, "filled", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlInput.prototype, "pill", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "label", 2);
   __decorateClass([
-    e23({ attribute: "help-text" })
+    e22({ attribute: "help-text" })
   ], SlInput.prototype, "helpText", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlInput.prototype, "clearable", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlInput.prototype, "disabled", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "placeholder", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlInput.prototype, "readonly", 2);
   __decorateClass([
-    e23({ attribute: "password-toggle", type: Boolean })
+    e22({ attribute: "password-toggle", type: Boolean })
   ], SlInput.prototype, "passwordToggle", 2);
   __decorateClass([
-    e23({ attribute: "password-visible", type: Boolean })
+    e22({ attribute: "password-visible", type: Boolean })
   ], SlInput.prototype, "passwordVisible", 2);
   __decorateClass([
-    e23({ attribute: "no-spin-buttons", type: Boolean })
+    e22({ attribute: "no-spin-buttons", type: Boolean })
   ], SlInput.prototype, "noSpinButtons", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlInput.prototype, "form", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlInput.prototype, "required", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "pattern", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlInput.prototype, "minlength", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlInput.prototype, "maxlength", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "min", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "max", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "step", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "autocapitalize", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "autocorrect", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "autocomplete", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlInput.prototype, "autofocus", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "enterkeyhint", 2);
   __decorateClass([
-    e23({
+    e22({
       type: Boolean,
       converter: {
         // Allow "true|false" attribute values but keep the property boolean
@@ -14403,7 +13772,7 @@
     })
   ], SlInput.prototype, "spellcheck", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlInput.prototype, "inputmode", 2);
   __decorateClass([
     watch("disabled", { waitUntilFirstUpdate: true })
@@ -14415,11 +13784,11 @@
     watch("value", { waitUntilFirstUpdate: true })
   ], SlInput.prototype, "handleValueChange", 1);
   SlInput = __decorateClass([
-    e6("sl-input")
+    e5("sl-input")
   ], SlInput);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.2EORC5ML.js
-  var dropdown_styles_default = i3`
+  var dropdown_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -14697,7 +14066,7 @@
       }
     }
     render() {
-      return y2`
+      return y`
       <sl-popup
         part="base"
         id="dropdown"
@@ -14709,7 +14078,7 @@
         shift
         auto-size="vertical"
         auto-size-padding="10"
-        class=${o6({
+        class=${o5({
         dropdown: true,
         "dropdown--open": this.open
       })}
@@ -14737,43 +14106,43 @@
   };
   SlDropdown.styles = dropdown_styles_default;
   __decorateClass([
-    i23(".dropdown")
+    i22(".dropdown")
   ], SlDropdown.prototype, "popup", 2);
   __decorateClass([
-    i23(".dropdown__trigger")
+    i22(".dropdown__trigger")
   ], SlDropdown.prototype, "trigger", 2);
   __decorateClass([
-    i23(".dropdown__panel")
+    i22(".dropdown__panel")
   ], SlDropdown.prototype, "panel", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlDropdown.prototype, "open", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlDropdown.prototype, "placement", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlDropdown.prototype, "disabled", 2);
   __decorateClass([
-    e23({ attribute: "stay-open-on-select", type: Boolean, reflect: true })
+    e22({ attribute: "stay-open-on-select", type: Boolean, reflect: true })
   ], SlDropdown.prototype, "stayOpenOnSelect", 2);
   __decorateClass([
-    e23({ attribute: false })
+    e22({ attribute: false })
   ], SlDropdown.prototype, "containingElement", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlDropdown.prototype, "distance", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlDropdown.prototype, "skidding", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlDropdown.prototype, "hoist", 2);
   __decorateClass([
     watch("open", { waitUntilFirstUpdate: true })
   ], SlDropdown.prototype, "handleOpenChange", 1);
   SlDropdown = __decorateClass([
-    e6("sl-dropdown")
+    e5("sl-dropdown")
   ], SlDropdown);
   setDefaultAnimation("dropdown.show", {
     keyframes: [
@@ -14791,7 +14160,7 @@
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.Z7MHAEL3.js
-  var popup_styles_default = i3`
+  var popup_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -14834,39 +14203,39 @@
 `;
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.QWGZ4US6.js
-  function t6(t32) {
+  function t5(t32) {
     return t32.split("-")[1];
   }
-  function e34(t32) {
+  function e33(t32) {
     return "y" === t32 ? "height" : "width";
   }
-  function n9(t32) {
+  function n8(t32) {
     return t32.split("-")[0];
   }
-  function o24(t32) {
-    return ["top", "bottom"].includes(n9(t32)) ? "x" : "y";
+  function o23(t32) {
+    return ["top", "bottom"].includes(n8(t32)) ? "x" : "y";
   }
-  function r5(r42, i42, a32) {
-    let { reference: l33, floating: s33 } = r42;
-    const c32 = l33.x + l33.width / 2 - s33.width / 2, f32 = l33.y + l33.height / 2 - s33.height / 2, u32 = o24(i42), m32 = e34(u32), g32 = l33[m32] / 2 - s33[m32] / 2, d32 = "x" === u32;
+  function r4(r42, i42, a32) {
+    let { reference: l32, floating: s32 } = r42;
+    const c32 = l32.x + l32.width / 2 - s32.width / 2, f32 = l32.y + l32.height / 2 - s32.height / 2, u32 = o23(i42), m32 = e33(u32), g32 = l32[m32] / 2 - s32[m32] / 2, d32 = "x" === u32;
     let p32;
-    switch (n9(i42)) {
+    switch (n8(i42)) {
       case "top":
-        p32 = { x: c32, y: l33.y - s33.height };
+        p32 = { x: c32, y: l32.y - s32.height };
         break;
       case "bottom":
-        p32 = { x: c32, y: l33.y + l33.height };
+        p32 = { x: c32, y: l32.y + l32.height };
         break;
       case "right":
-        p32 = { x: l33.x + l33.width, y: f32 };
+        p32 = { x: l32.x + l32.width, y: f32 };
         break;
       case "left":
-        p32 = { x: l33.x - s33.width, y: f32 };
+        p32 = { x: l32.x - s32.width, y: f32 };
         break;
       default:
-        p32 = { x: l33.x, y: l33.y };
+        p32 = { x: l32.x, y: l32.y };
     }
-    switch (t6(i42)) {
+    switch (t5(i42)) {
       case "start":
         p32[u32] -= g32 * (a32 && d32 ? -1 : 1);
         break;
@@ -14875,180 +14244,180 @@
     }
     return p32;
   }
-  var i25 = async (t32, e43, n33) => {
-    const { placement: o52 = "bottom", strategy: i42 = "absolute", middleware: a32 = [], platform: l33 } = n33, s33 = a32.filter(Boolean), c32 = await (null == l33.isRTL ? void 0 : l33.isRTL(e43));
-    let f32 = await l33.getElementRects({ reference: t32, floating: e43, strategy: i42 }), { x: u32, y: m32 } = r5(f32, o52, c32), g32 = o52, d32 = {}, p32 = 0;
-    for (let n43 = 0; n43 < s33.length; n43++) {
-      const { name: a42, fn: h32 } = s33[n43], { x: y4, y: x32, data: w32, reset: v3 } = await h32({ x: u32, y: m32, initialPlacement: o52, placement: g32, strategy: i42, middlewareData: d32, rects: f32, platform: l33, elements: { reference: t32, floating: e43 } });
-      u32 = null != y4 ? y4 : u32, m32 = null != x32 ? x32 : m32, d32 = __spreadProps(__spreadValues({}, d32), { [a42]: __spreadValues(__spreadValues({}, d32[a42]), w32) }), v3 && p32 <= 50 && (p32++, "object" == typeof v3 && (v3.placement && (g32 = v3.placement), v3.rects && (f32 = true === v3.rects ? await l33.getElementRects({ reference: t32, floating: e43, strategy: i42 }) : v3.rects), { x: u32, y: m32 } = r5(f32, g32, c32)), n43 = -1);
+  var i24 = async (t32, e43, n32) => {
+    const { placement: o52 = "bottom", strategy: i42 = "absolute", middleware: a32 = [], platform: l32 } = n32, s32 = a32.filter(Boolean), c32 = await (null == l32.isRTL ? void 0 : l32.isRTL(e43));
+    let f32 = await l32.getElementRects({ reference: t32, floating: e43, strategy: i42 }), { x: u32, y: m32 } = r4(f32, o52, c32), g32 = o52, d32 = {}, p32 = 0;
+    for (let n42 = 0; n42 < s32.length; n42++) {
+      const { name: a42, fn: h32 } = s32[n42], { x: y42, y: x32, data: w32, reset: v32 } = await h32({ x: u32, y: m32, initialPlacement: o52, placement: g32, strategy: i42, middlewareData: d32, rects: f32, platform: l32, elements: { reference: t32, floating: e43 } });
+      u32 = null != y42 ? y42 : u32, m32 = null != x32 ? x32 : m32, d32 = __spreadProps(__spreadValues({}, d32), { [a42]: __spreadValues(__spreadValues({}, d32[a42]), w32) }), v32 && p32 <= 50 && (p32++, "object" == typeof v32 && (v32.placement && (g32 = v32.placement), v32.rects && (f32 = true === v32.rects ? await l32.getElementRects({ reference: t32, floating: e43, strategy: i42 }) : v32.rects), { x: u32, y: m32 } = r4(f32, g32, c32)), n42 = -1);
     }
     return { x: u32, y: m32, placement: g32, strategy: i42, middlewareData: d32 };
   };
-  function a5(t32) {
+  function a4(t32) {
     return "number" != typeof t32 ? function(t42) {
       return __spreadValues({ top: 0, right: 0, bottom: 0, left: 0 }, t42);
     }(t32) : { top: t32, right: t32, bottom: t32, left: t32 };
   }
-  function l8(t32) {
+  function l7(t32) {
     return __spreadProps(__spreadValues({}, t32), { top: t32.y, left: t32.x, right: t32.x + t32.width, bottom: t32.y + t32.height });
   }
-  async function s8(t32, e43) {
-    var n33;
+  async function s7(t32, e43) {
+    var n32;
     void 0 === e43 && (e43 = {});
-    const { x: o52, y: r42, platform: i42, rects: s33, elements: c32, strategy: f32 } = t32, { boundary: u32 = "clippingAncestors", rootBoundary: m32 = "viewport", elementContext: g32 = "floating", altBoundary: d32 = false, padding: p32 = 0 } = e43, h32 = a5(p32), y4 = c32[d32 ? "floating" === g32 ? "reference" : "floating" : g32], x32 = l8(await i42.getClippingRect({ element: null == (n33 = await (null == i42.isElement ? void 0 : i42.isElement(y4))) || n33 ? y4 : y4.contextElement || await (null == i42.getDocumentElement ? void 0 : i42.getDocumentElement(c32.floating)), boundary: u32, rootBoundary: m32, strategy: f32 })), w32 = "floating" === g32 ? __spreadProps(__spreadValues({}, s33.floating), { x: o52, y: r42 }) : s33.reference, v3 = await (null == i42.getOffsetParent ? void 0 : i42.getOffsetParent(c32.floating)), b32 = await (null == i42.isElement ? void 0 : i42.isElement(v3)) && await (null == i42.getScale ? void 0 : i42.getScale(v3)) || { x: 1, y: 1 }, R22 = l8(i42.convertOffsetParentRelativeRectToViewportRelativeRect ? await i42.convertOffsetParentRelativeRectToViewportRelativeRect({ rect: w32, offsetParent: v3, strategy: f32 }) : w32);
+    const { x: o52, y: r42, platform: i42, rects: s32, elements: c32, strategy: f32 } = t32, { boundary: u32 = "clippingAncestors", rootBoundary: m32 = "viewport", elementContext: g32 = "floating", altBoundary: d32 = false, padding: p32 = 0 } = e43, h32 = a4(p32), y42 = c32[d32 ? "floating" === g32 ? "reference" : "floating" : g32], x32 = l7(await i42.getClippingRect({ element: null == (n32 = await (null == i42.isElement ? void 0 : i42.isElement(y42))) || n32 ? y42 : y42.contextElement || await (null == i42.getDocumentElement ? void 0 : i42.getDocumentElement(c32.floating)), boundary: u32, rootBoundary: m32, strategy: f32 })), w32 = "floating" === g32 ? __spreadProps(__spreadValues({}, s32.floating), { x: o52, y: r42 }) : s32.reference, v32 = await (null == i42.getOffsetParent ? void 0 : i42.getOffsetParent(c32.floating)), b32 = await (null == i42.isElement ? void 0 : i42.isElement(v32)) && await (null == i42.getScale ? void 0 : i42.getScale(v32)) || { x: 1, y: 1 }, R22 = l7(i42.convertOffsetParentRelativeRectToViewportRelativeRect ? await i42.convertOffsetParentRelativeRectToViewportRelativeRect({ rect: w32, offsetParent: v32, strategy: f32 }) : w32);
     return { top: (x32.top - R22.top + h32.top) / b32.y, bottom: (R22.bottom - x32.bottom + h32.bottom) / b32.y, left: (x32.left - R22.left + h32.left) / b32.x, right: (R22.right - x32.right + h32.right) / b32.x };
   }
-  var c4 = Math.min;
-  var f4 = Math.max;
-  function u4(t32, e43, n33) {
-    return f4(t32, c4(e43, n33));
+  var c3 = Math.min;
+  var f3 = Math.max;
+  function u3(t32, e43, n32) {
+    return f3(t32, c3(e43, n32));
   }
-  var m3 = (n33) => ({ name: "arrow", options: n33, async fn(r42) {
-    const { element: i42, padding: l33 = 0 } = n33 || {}, { x: s33, y: c32, placement: f32, rects: m32, platform: g32 } = r42;
+  var m2 = (n32) => ({ name: "arrow", options: n32, async fn(r42) {
+    const { element: i42, padding: l32 = 0 } = n32 || {}, { x: s32, y: c32, placement: f32, rects: m32, platform: g32 } = r42;
     if (null == i42)
       return {};
-    const d32 = a5(l33), p32 = { x: s33, y: c32 }, h32 = o24(f32), y4 = e34(h32), x32 = await g32.getDimensions(i42), w32 = "y" === h32 ? "top" : "left", v3 = "y" === h32 ? "bottom" : "right", b32 = m32.reference[y4] + m32.reference[h32] - p32[h32] - m32.floating[y4], R22 = p32[h32] - m32.reference[h32], A22 = await (null == g32.getOffsetParent ? void 0 : g32.getOffsetParent(i42));
-    let P3 = A22 ? "y" === h32 ? A22.clientHeight || 0 : A22.clientWidth || 0 : 0;
-    0 === P3 && (P3 = m32.floating[y4]);
-    const T3 = b32 / 2 - R22 / 2, O3 = d32[w32], D3 = P3 - x32[y4] - d32[v3], E32 = P3 / 2 - x32[y4] / 2 + T3, L3 = u4(O3, E32, D3), k22 = null != t6(f32) && E32 != L3 && m32.reference[y4] / 2 - (E32 < O3 ? d32[w32] : d32[v3]) - x32[y4] / 2 < 0;
-    return { [h32]: p32[h32] - (k22 ? E32 < O3 ? O3 - E32 : D3 - E32 : 0), data: { [h32]: L3, centerOffset: E32 - L3 } };
+    const d32 = a4(l32), p32 = { x: s32, y: c32 }, h32 = o23(f32), y42 = e33(h32), x32 = await g32.getDimensions(i42), w32 = "y" === h32 ? "top" : "left", v32 = "y" === h32 ? "bottom" : "right", b32 = m32.reference[y42] + m32.reference[h32] - p32[h32] - m32.floating[y42], R22 = p32[h32] - m32.reference[h32], A22 = await (null == g32.getOffsetParent ? void 0 : g32.getOffsetParent(i42));
+    let P32 = A22 ? "y" === h32 ? A22.clientHeight || 0 : A22.clientWidth || 0 : 0;
+    0 === P32 && (P32 = m32.floating[y42]);
+    const T32 = b32 / 2 - R22 / 2, O3 = d32[w32], D3 = P32 - x32[y42] - d32[v32], E32 = P32 / 2 - x32[y42] / 2 + T32, L32 = u3(O3, E32, D3), k22 = null != t5(f32) && E32 != L32 && m32.reference[y42] / 2 - (E32 < O3 ? d32[w32] : d32[v32]) - x32[y42] / 2 < 0;
+    return { [h32]: p32[h32] - (k22 ? E32 < O3 ? O3 - E32 : D3 - E32 : 0), data: { [h32]: L32, centerOffset: E32 - L32 } };
   } });
-  var g3 = ["top", "right", "bottom", "left"];
-  var d4 = g3.reduce((t32, e43) => t32.concat(e43, e43 + "-start", e43 + "-end"), []);
-  var p3 = { left: "right", right: "left", bottom: "top", top: "bottom" };
-  function h4(t32) {
-    return t32.replace(/left|right|bottom|top/g, (t42) => p3[t42]);
+  var g2 = ["top", "right", "bottom", "left"];
+  var d3 = g2.reduce((t32, e43) => t32.concat(e43, e43 + "-start", e43 + "-end"), []);
+  var p2 = { left: "right", right: "left", bottom: "top", top: "bottom" };
+  function h3(t32) {
+    return t32.replace(/left|right|bottom|top/g, (t42) => p2[t42]);
   }
-  function y22(n33, r42, i42) {
+  function y2(n32, r42, i42) {
     void 0 === i42 && (i42 = false);
-    const a32 = t6(n33), l33 = o24(n33), s33 = e34(l33);
-    let c32 = "x" === l33 ? a32 === (i42 ? "end" : "start") ? "right" : "left" : "start" === a32 ? "bottom" : "top";
-    return r42.reference[s33] > r42.floating[s33] && (c32 = h4(c32)), { main: c32, cross: h4(c32) };
+    const a32 = t5(n32), l32 = o23(n32), s32 = e33(l32);
+    let c32 = "x" === l32 ? a32 === (i42 ? "end" : "start") ? "right" : "left" : "start" === a32 ? "bottom" : "top";
+    return r42.reference[s32] > r42.floating[s32] && (c32 = h3(c32)), { main: c32, cross: h3(c32) };
   }
-  var x3 = { start: "end", end: "start" };
-  function w3(t32) {
-    return t32.replace(/start|end/g, (t42) => x3[t42]);
+  var x2 = { start: "end", end: "start" };
+  function w2(t32) {
+    return t32.replace(/start|end/g, (t42) => x2[t42]);
   }
-  var b3 = function(e43) {
+  var b2 = function(e43) {
     return void 0 === e43 && (e43 = {}), { name: "flip", options: e43, async fn(o52) {
       var r42;
-      const { placement: i42, middlewareData: a32, rects: l33, initialPlacement: c32, platform: f32, elements: u32 } = o52, _a = e43, { mainAxis: m32 = true, crossAxis: g32 = true, fallbackPlacements: d32, fallbackStrategy: p32 = "bestFit", fallbackAxisSideDirection: x32 = "none", flipAlignment: v3 = true } = _a, b32 = __objRest(_a, ["mainAxis", "crossAxis", "fallbackPlacements", "fallbackStrategy", "fallbackAxisSideDirection", "flipAlignment"]), R22 = n9(i42), A22 = n9(c32) === c32, P3 = await (null == f32.isRTL ? void 0 : f32.isRTL(u32.floating)), T3 = d32 || (A22 || !v3 ? [h4(c32)] : function(t32) {
-        const e54 = h4(t32);
-        return [w3(t32), e54, w3(e54)];
+      const { placement: i42, middlewareData: a32, rects: l32, initialPlacement: c32, platform: f32, elements: u32 } = o52, _a = e43, { mainAxis: m32 = true, crossAxis: g32 = true, fallbackPlacements: d32, fallbackStrategy: p32 = "bestFit", fallbackAxisSideDirection: x32 = "none", flipAlignment: v32 = true } = _a, b32 = __objRest(_a, ["mainAxis", "crossAxis", "fallbackPlacements", "fallbackStrategy", "fallbackAxisSideDirection", "flipAlignment"]), R22 = n8(i42), A22 = n8(c32) === c32, P32 = await (null == f32.isRTL ? void 0 : f32.isRTL(u32.floating)), T32 = d32 || (A22 || !v32 ? [h3(c32)] : function(t32) {
+        const e54 = h3(t32);
+        return [w2(t32), e54, w2(e54)];
       }(c32));
-      d32 || "none" === x32 || T3.push(...function(e54, o62, r52, i52) {
-        const a42 = t6(e54);
-        let l42 = function(t32, e62, n33) {
-          const o72 = ["left", "right"], r6 = ["right", "left"], i62 = ["top", "bottom"], a52 = ["bottom", "top"];
+      d32 || "none" === x32 || T32.push(...function(e54, o62, r52, i52) {
+        const a42 = t5(e54);
+        let l42 = function(t32, e62, n32) {
+          const o72 = ["left", "right"], r62 = ["right", "left"], i62 = ["top", "bottom"], a52 = ["bottom", "top"];
           switch (t32) {
             case "top":
             case "bottom":
-              return n33 ? e62 ? r6 : o72 : e62 ? o72 : r6;
+              return n32 ? e62 ? r62 : o72 : e62 ? o72 : r62;
             case "left":
             case "right":
               return e62 ? i62 : a52;
             default:
               return [];
           }
-        }(n9(e54), "start" === r52, i52);
-        return a42 && (l42 = l42.map((t32) => t32 + "-" + a42), o62 && (l42 = l42.concat(l42.map(w3)))), l42;
-      }(c32, v3, x32, P3));
-      const O3 = [c32, ...T3], D3 = await s8(o52, b32), E32 = [];
-      let L3 = (null == (r42 = a32.flip) ? void 0 : r42.overflows) || [];
+        }(n8(e54), "start" === r52, i52);
+        return a42 && (l42 = l42.map((t32) => t32 + "-" + a42), o62 && (l42 = l42.concat(l42.map(w2)))), l42;
+      }(c32, v32, x32, P32));
+      const O3 = [c32, ...T32], D3 = await s7(o52, b32), E32 = [];
+      let L32 = (null == (r42 = a32.flip) ? void 0 : r42.overflows) || [];
       if (m32 && E32.push(D3[R22]), g32) {
-        const { main: t32, cross: e54 } = y22(i42, l33, P3);
+        const { main: t32, cross: e54 } = y2(i42, l32, P32);
         E32.push(D3[t32], D3[e54]);
       }
-      if (L3 = [...L3, { placement: i42, overflows: E32 }], !E32.every((t32) => t32 <= 0)) {
+      if (L32 = [...L32, { placement: i42, overflows: E32 }], !E32.every((t32) => t32 <= 0)) {
         var k22, B2;
         const t32 = ((null == (k22 = a32.flip) ? void 0 : k22.index) || 0) + 1, e54 = O3[t32];
         if (e54)
-          return { data: { index: t32, overflows: L3 }, reset: { placement: e54 } };
-        let n33 = null == (B2 = L3.filter((t42) => t42.overflows[0] <= 0).sort((t42, e62) => t42.overflows[1] - e62.overflows[1])[0]) ? void 0 : B2.placement;
-        if (!n33)
+          return { data: { index: t32, overflows: L32 }, reset: { placement: e54 } };
+        let n32 = null == (B2 = L32.filter((t42) => t42.overflows[0] <= 0).sort((t42, e62) => t42.overflows[1] - e62.overflows[1])[0]) ? void 0 : B2.placement;
+        if (!n32)
           switch (p32) {
             case "bestFit": {
               var C22;
-              const t42 = null == (C22 = L3.map((t52) => [t52.placement, t52.overflows.filter((t62) => t62 > 0).reduce((t62, e62) => t62 + e62, 0)]).sort((t52, e62) => t52[1] - e62[1])[0]) ? void 0 : C22[0];
-              t42 && (n33 = t42);
+              const t42 = null == (C22 = L32.map((t52) => [t52.placement, t52.overflows.filter((t62) => t62 > 0).reduce((t62, e62) => t62 + e62, 0)]).sort((t52, e62) => t52[1] - e62[1])[0]) ? void 0 : C22[0];
+              t42 && (n32 = t42);
               break;
             }
             case "initialPlacement":
-              n33 = c32;
+              n32 = c32;
           }
-        if (i42 !== n33)
-          return { reset: { placement: n33 } };
+        if (i42 !== n32)
+          return { reset: { placement: n32 } };
       }
       return {};
     } };
   };
   var O = function(e43) {
     return void 0 === e43 && (e43 = 0), { name: "offset", options: e43, async fn(r42) {
-      const { x: i42, y: a32 } = r42, l33 = await async function(e54, r52) {
-        const { placement: i52, platform: a42, elements: l42 } = e54, s33 = await (null == a42.isRTL ? void 0 : a42.isRTL(l42.floating)), c32 = n9(i52), f32 = t6(i52), u32 = "x" === o24(i52), m32 = ["left", "top"].includes(c32) ? -1 : 1, g32 = s33 && u32 ? -1 : 1, d32 = "function" == typeof r52 ? r52(e54) : r52;
-        let { mainAxis: p32, crossAxis: h32, alignmentAxis: y4 } = "number" == typeof d32 ? { mainAxis: d32, crossAxis: 0, alignmentAxis: null } : __spreadValues({ mainAxis: 0, crossAxis: 0, alignmentAxis: null }, d32);
-        return f32 && "number" == typeof y4 && (h32 = "end" === f32 ? -1 * y4 : y4), u32 ? { x: h32 * g32, y: p32 * m32 } : { x: p32 * m32, y: h32 * g32 };
+      const { x: i42, y: a32 } = r42, l32 = await async function(e54, r52) {
+        const { placement: i52, platform: a42, elements: l42 } = e54, s32 = await (null == a42.isRTL ? void 0 : a42.isRTL(l42.floating)), c32 = n8(i52), f32 = t5(i52), u32 = "x" === o23(i52), m32 = ["left", "top"].includes(c32) ? -1 : 1, g32 = s32 && u32 ? -1 : 1, d32 = "function" == typeof r52 ? r52(e54) : r52;
+        let { mainAxis: p32, crossAxis: h32, alignmentAxis: y42 } = "number" == typeof d32 ? { mainAxis: d32, crossAxis: 0, alignmentAxis: null } : __spreadValues({ mainAxis: 0, crossAxis: 0, alignmentAxis: null }, d32);
+        return f32 && "number" == typeof y42 && (h32 = "end" === f32 ? -1 * y42 : y42), u32 ? { x: h32 * g32, y: p32 * m32 } : { x: p32 * m32, y: h32 * g32 };
       }(r42, e43);
-      return { x: i42 + l33.x, y: a32 + l33.y, data: l33 };
+      return { x: i42 + l32.x, y: a32 + l32.y, data: l32 };
     } };
   };
   function D(t32) {
     return "x" === t32 ? "y" : "x";
   }
-  var E3 = function(t32) {
+  var E2 = function(t32) {
     return void 0 === t32 && (t32 = {}), { name: "shift", options: t32, async fn(e43) {
-      const { x: r42, y: i42, placement: a32 } = e43, _a = t32, { mainAxis: l33 = true, crossAxis: c32 = false, limiter: f32 = { fn: (t42) => {
-        let { x: e54, y: n33 } = t42;
-        return { x: e54, y: n33 };
-      } } } = _a, m32 = __objRest(_a, ["mainAxis", "crossAxis", "limiter"]), g32 = { x: r42, y: i42 }, d32 = await s8(e43, m32), p32 = o24(n9(a32)), h32 = D(p32);
-      let y4 = g32[p32], x32 = g32[h32];
-      if (l33) {
+      const { x: r42, y: i42, placement: a32 } = e43, _a = t32, { mainAxis: l32 = true, crossAxis: c32 = false, limiter: f32 = { fn: (t42) => {
+        let { x: e54, y: n32 } = t42;
+        return { x: e54, y: n32 };
+      } } } = _a, m32 = __objRest(_a, ["mainAxis", "crossAxis", "limiter"]), g32 = { x: r42, y: i42 }, d32 = await s7(e43, m32), p32 = o23(n8(a32)), h32 = D(p32);
+      let y42 = g32[p32], x32 = g32[h32];
+      if (l32) {
         const t42 = "y" === p32 ? "bottom" : "right";
-        y4 = u4(y4 + d32["y" === p32 ? "top" : "left"], y4, y4 - d32[t42]);
+        y42 = u3(y42 + d32["y" === p32 ? "top" : "left"], y42, y42 - d32[t42]);
       }
       if (c32) {
         const t42 = "y" === h32 ? "bottom" : "right";
-        x32 = u4(x32 + d32["y" === h32 ? "top" : "left"], x32, x32 - d32[t42]);
+        x32 = u3(x32 + d32["y" === h32 ? "top" : "left"], x32, x32 - d32[t42]);
       }
-      const w32 = f32.fn(__spreadProps(__spreadValues({}, e43), { [p32]: y4, [h32]: x32 }));
+      const w32 = f32.fn(__spreadProps(__spreadValues({}, e43), { [p32]: y42, [h32]: x32 }));
       return __spreadProps(__spreadValues({}, w32), { data: { x: w32.x - r42, y: w32.y - i42 } });
     } };
   };
-  var k3 = function(e43) {
+  var k2 = function(e43) {
     return void 0 === e43 && (e43 = {}), { name: "size", options: e43, async fn(r42) {
-      const { placement: i42, rects: a32, platform: l33, elements: u32 } = r42, _a = e43, { apply: m32 = () => {
-      } } = _a, g32 = __objRest(_a, ["apply"]), d32 = await s8(r42, g32), p32 = n9(i42), h32 = t6(i42), y4 = "x" === o24(i42), { width: x32, height: w32 } = a32.floating;
-      let v3, b32;
-      "top" === p32 || "bottom" === p32 ? (v3 = p32, b32 = h32 === (await (null == l33.isRTL ? void 0 : l33.isRTL(u32.floating)) ? "start" : "end") ? "left" : "right") : (b32 = p32, v3 = "end" === h32 ? "top" : "bottom");
-      const R22 = w32 - d32[v3], A22 = x32 - d32[b32];
-      let P3 = R22, T3 = A22;
-      if (y4 ? T3 = c4(x32 - d32.right - d32.left, A22) : P3 = c4(w32 - d32.bottom - d32.top, R22), !r42.middlewareData.shift && !h32) {
-        const t32 = f4(d32.left, 0), e54 = f4(d32.right, 0), n33 = f4(d32.top, 0), o52 = f4(d32.bottom, 0);
-        y4 ? T3 = x32 - 2 * (0 !== t32 || 0 !== e54 ? t32 + e54 : f4(d32.left, d32.right)) : P3 = w32 - 2 * (0 !== n33 || 0 !== o52 ? n33 + o52 : f4(d32.top, d32.bottom));
+      const { placement: i42, rects: a32, platform: l32, elements: u32 } = r42, _a = e43, { apply: m32 = () => {
+      } } = _a, g32 = __objRest(_a, ["apply"]), d32 = await s7(r42, g32), p32 = n8(i42), h32 = t5(i42), y42 = "x" === o23(i42), { width: x32, height: w32 } = a32.floating;
+      let v32, b32;
+      "top" === p32 || "bottom" === p32 ? (v32 = p32, b32 = h32 === (await (null == l32.isRTL ? void 0 : l32.isRTL(u32.floating)) ? "start" : "end") ? "left" : "right") : (b32 = p32, v32 = "end" === h32 ? "top" : "bottom");
+      const R22 = w32 - d32[v32], A22 = x32 - d32[b32];
+      let P32 = R22, T32 = A22;
+      if (y42 ? T32 = c3(x32 - d32.right - d32.left, A22) : P32 = c3(w32 - d32.bottom - d32.top, R22), !r42.middlewareData.shift && !h32) {
+        const t32 = f3(d32.left, 0), e54 = f3(d32.right, 0), n32 = f3(d32.top, 0), o52 = f3(d32.bottom, 0);
+        y42 ? T32 = x32 - 2 * (0 !== t32 || 0 !== e54 ? t32 + e54 : f3(d32.left, d32.right)) : P32 = w32 - 2 * (0 !== n32 || 0 !== o52 ? n32 + o52 : f3(d32.top, d32.bottom));
       }
-      await m32(__spreadProps(__spreadValues({}, r42), { availableWidth: T3, availableHeight: P3 }));
-      const O3 = await l33.getDimensions(u32.floating);
+      await m32(__spreadProps(__spreadValues({}, r42), { availableWidth: T32, availableHeight: P32 }));
+      const O3 = await l32.getDimensions(u32.floating);
       return x32 !== O3.width || w32 !== O3.height ? { reset: { rects: true } } : {};
     } };
   };
-  function n23(t32) {
+  function n22(t32) {
     var e43;
     return (null == (e43 = t32.ownerDocument) ? void 0 : e43.defaultView) || window;
   }
-  function o33(t32) {
-    return n23(t32).getComputedStyle(t32);
+  function o32(t32) {
+    return n22(t32).getComputedStyle(t32);
   }
   var i32 = Math.min;
-  var r23 = Math.max;
-  var l24 = Math.round;
-  function c23(t32) {
-    const e43 = o33(t32);
-    let n33 = parseFloat(e43.width), i42 = parseFloat(e43.height);
-    const r42 = t32.offsetWidth, c32 = t32.offsetHeight, s33 = l24(n33) !== r42 || l24(i42) !== c32;
-    return s33 && (n33 = r42, i42 = c32), { width: n33, height: i42, fallback: s33 };
+  var r22 = Math.max;
+  var l23 = Math.round;
+  function c22(t32) {
+    const e43 = o32(t32);
+    let n32 = parseFloat(e43.width), i42 = parseFloat(e43.height);
+    const r42 = t32.offsetWidth, c32 = t32.offsetHeight, s32 = l23(n32) !== r42 || l23(i42) !== c32;
+    return s32 && (n32 = r42, i42 = c32), { width: n32, height: i42, fallback: s32 };
   }
-  function s23(t32) {
-    return h23(t32) ? (t32.nodeName || "").toLowerCase() : "";
+  function s22(t32) {
+    return h22(t32) ? (t32.nodeName || "").toLowerCase() : "";
   }
   var f22;
   function u22() {
@@ -15057,31 +14426,31 @@
     const t32 = navigator.userAgentData;
     return t32 && Array.isArray(t32.brands) ? (f22 = t32.brands.map((t42) => t42.brand + "/" + t42.version).join(" "), f22) : navigator.userAgent;
   }
-  function a23(t32) {
-    return t32 instanceof n23(t32).HTMLElement;
+  function a22(t32) {
+    return t32 instanceof n22(t32).HTMLElement;
   }
-  function d23(t32) {
-    return t32 instanceof n23(t32).Element;
+  function d22(t32) {
+    return t32 instanceof n22(t32).Element;
   }
-  function h23(t32) {
-    return t32 instanceof n23(t32).Node;
+  function h22(t32) {
+    return t32 instanceof n22(t32).Node;
   }
   function p22(t32) {
     if ("undefined" == typeof ShadowRoot)
       return false;
-    return t32 instanceof n23(t32).ShadowRoot || t32 instanceof ShadowRoot;
+    return t32 instanceof n22(t32).ShadowRoot || t32 instanceof ShadowRoot;
   }
   function g22(t32) {
-    const { overflow: e43, overflowX: n33, overflowY: i42, display: r42 } = o33(t32);
-    return /auto|scroll|overlay|hidden|clip/.test(e43 + i42 + n33) && !["inline", "contents"].includes(r42);
+    const { overflow: e43, overflowX: n32, overflowY: i42, display: r42 } = o32(t32);
+    return /auto|scroll|overlay|hidden|clip/.test(e43 + i42 + n32) && !["inline", "contents"].includes(r42);
   }
   function m22(t32) {
-    return ["table", "td", "th"].includes(s23(t32));
+    return ["table", "td", "th"].includes(s22(t32));
   }
   function y3(t32) {
-    const e43 = /firefox/i.test(u22()), n33 = o33(t32), i42 = n33.backdropFilter || n33.WebkitBackdropFilter;
-    return "none" !== n33.transform || "none" !== n33.perspective || !!i42 && "none" !== i42 || e43 && "filter" === n33.willChange || e43 && !!n33.filter && "none" !== n33.filter || ["transform", "perspective"].some((t42) => n33.willChange.includes(t42)) || ["paint", "layout", "strict", "content"].some((t42) => {
-      const e54 = n33.contain;
+    const e43 = /firefox/i.test(u22()), n32 = o32(t32), i42 = n32.backdropFilter || n32.WebkitBackdropFilter;
+    return "none" !== n32.transform || "none" !== n32.perspective || !!i42 && "none" !== i42 || e43 && "filter" === n32.willChange || e43 && !!n32.filter && "none" !== n32.filter || ["transform", "perspective"].some((t42) => n32.willChange.includes(t42)) || ["paint", "layout", "strict", "content"].some((t42) => {
+      const e54 = n32.contain;
       return null != e54 && e54.includes(t42);
     });
   }
@@ -15089,110 +14458,110 @@
     return /^((?!chrome|android).)*safari/i.test(u22());
   }
   function w22(t32) {
-    return ["html", "body", "#document"].includes(s23(t32));
+    return ["html", "body", "#document"].includes(s22(t32));
   }
-  function v22(t32) {
-    return d23(t32) ? t32 : t32.contextElement;
+  function v2(t32) {
+    return d22(t32) ? t32 : t32.contextElement;
   }
   var b22 = { x: 1, y: 1 };
-  function L22(t32) {
-    const e43 = v22(t32);
-    if (!a23(e43))
+  function L2(t32) {
+    const e43 = v2(t32);
+    if (!a22(e43))
       return b22;
-    const n33 = e43.getBoundingClientRect(), { width: o52, height: i42, fallback: r42 } = c23(e43);
-    let s33 = (r42 ? l24(n33.width) : n33.width) / o52, f32 = (r42 ? l24(n33.height) : n33.height) / i42;
-    return s33 && Number.isFinite(s33) || (s33 = 1), f32 && Number.isFinite(f32) || (f32 = 1), { x: s33, y: f32 };
+    const n32 = e43.getBoundingClientRect(), { width: o52, height: i42, fallback: r42 } = c22(e43);
+    let s32 = (r42 ? l23(n32.width) : n32.width) / o52, f32 = (r42 ? l23(n32.height) : n32.height) / i42;
+    return s32 && Number.isFinite(s32) || (s32 = 1), f32 && Number.isFinite(f32) || (f32 = 1), { x: s32, y: f32 };
   }
   function E22(t32, e43, o52, i42) {
-    var r42, l33;
+    var r42, l32;
     void 0 === e43 && (e43 = false), void 0 === o52 && (o52 = false);
-    const c32 = t32.getBoundingClientRect(), s33 = v22(t32);
+    const c32 = t32.getBoundingClientRect(), s32 = v2(t32);
     let f32 = b22;
-    e43 && (i42 ? d23(i42) && (f32 = L22(i42)) : f32 = L22(t32));
-    const u32 = s33 ? n23(s33) : window, a32 = x22() && o52;
-    let h32 = (c32.left + (a32 && (null == (r42 = u32.visualViewport) ? void 0 : r42.offsetLeft) || 0)) / f32.x, p32 = (c32.top + (a32 && (null == (l33 = u32.visualViewport) ? void 0 : l33.offsetTop) || 0)) / f32.y, g32 = c32.width / f32.x, m32 = c32.height / f32.y;
-    if (s33) {
-      const t42 = n23(s33), e54 = i42 && d23(i42) ? n23(i42) : i42;
+    e43 && (i42 ? d22(i42) && (f32 = L2(i42)) : f32 = L2(t32));
+    const u32 = s32 ? n22(s32) : window, a32 = x22() && o52;
+    let h32 = (c32.left + (a32 && (null == (r42 = u32.visualViewport) ? void 0 : r42.offsetLeft) || 0)) / f32.x, p32 = (c32.top + (a32 && (null == (l32 = u32.visualViewport) ? void 0 : l32.offsetTop) || 0)) / f32.y, g32 = c32.width / f32.x, m32 = c32.height / f32.y;
+    if (s32) {
+      const t42 = n22(s32), e54 = i42 && d22(i42) ? n22(i42) : i42;
       let o62 = t42.frameElement;
       for (; o62 && i42 && e54 !== t42; ) {
-        const t52 = L22(o62), e62 = o62.getBoundingClientRect(), i52 = getComputedStyle(o62);
-        e62.x += (o62.clientLeft + parseFloat(i52.paddingLeft)) * t52.x, e62.y += (o62.clientTop + parseFloat(i52.paddingTop)) * t52.y, h32 *= t52.x, p32 *= t52.y, g32 *= t52.x, m32 *= t52.y, h32 += e62.x, p32 += e62.y, o62 = n23(o62).frameElement;
+        const t52 = L2(o62), e62 = o62.getBoundingClientRect(), i52 = getComputedStyle(o62);
+        e62.x += (o62.clientLeft + parseFloat(i52.paddingLeft)) * t52.x, e62.y += (o62.clientTop + parseFloat(i52.paddingTop)) * t52.y, h32 *= t52.x, p32 *= t52.y, g32 *= t52.x, m32 *= t52.y, h32 += e62.x, p32 += e62.y, o62 = n22(o62).frameElement;
       }
     }
     return { width: g32, height: m32, top: p32, right: h32 + g32, bottom: p32 + m32, left: h32, x: h32, y: p32 };
   }
-  function R3(t32) {
-    return ((h23(t32) ? t32.ownerDocument : t32.document) || window.document).documentElement;
+  function R2(t32) {
+    return ((h22(t32) ? t32.ownerDocument : t32.document) || window.document).documentElement;
   }
-  function T22(t32) {
-    return d23(t32) ? { scrollLeft: t32.scrollLeft, scrollTop: t32.scrollTop } : { scrollLeft: t32.pageXOffset, scrollTop: t32.pageYOffset };
+  function T2(t32) {
+    return d22(t32) ? { scrollLeft: t32.scrollLeft, scrollTop: t32.scrollTop } : { scrollLeft: t32.pageXOffset, scrollTop: t32.pageYOffset };
   }
-  function C3(t32) {
-    return E22(R3(t32)).left + T22(t32).scrollLeft;
+  function C2(t32) {
+    return E22(R2(t32)).left + T2(t32).scrollLeft;
   }
   function F(t32) {
-    if ("html" === s23(t32))
+    if ("html" === s22(t32))
       return t32;
-    const e43 = t32.assignedSlot || t32.parentNode || p22(t32) && t32.host || R3(t32);
+    const e43 = t32.assignedSlot || t32.parentNode || p22(t32) && t32.host || R2(t32);
     return p22(e43) ? e43.host : e43;
   }
   function W(t32) {
     const e43 = F(t32);
-    return w22(e43) ? e43.ownerDocument.body : a23(e43) && g22(e43) ? e43 : W(e43);
+    return w22(e43) ? e43.ownerDocument.body : a22(e43) && g22(e43) ? e43 : W(e43);
   }
   function D2(t32, e43) {
     var o52;
     void 0 === e43 && (e43 = []);
-    const i42 = W(t32), r42 = i42 === (null == (o52 = t32.ownerDocument) ? void 0 : o52.body), l33 = n23(i42);
-    return r42 ? e43.concat(l33, l33.visualViewport || [], g22(i42) ? i42 : []) : e43.concat(i42, D2(i42));
+    const i42 = W(t32), r42 = i42 === (null == (o52 = t32.ownerDocument) ? void 0 : o52.body), l32 = n22(i42);
+    return r42 ? e43.concat(l32, l32.visualViewport || [], g22(i42) ? i42 : []) : e43.concat(i42, D2(i42));
   }
-  function S4(e43, i42, l33) {
+  function S3(e43, i42, l32) {
     let c32;
     if ("viewport" === i42)
       c32 = function(t32, e54) {
-        const o52 = n23(t32), i52 = R3(t32), r42 = o52.visualViewport;
-        let l42 = i52.clientWidth, c42 = i52.clientHeight, s43 = 0, f42 = 0;
+        const o52 = n22(t32), i52 = R2(t32), r42 = o52.visualViewport;
+        let l42 = i52.clientWidth, c42 = i52.clientHeight, s42 = 0, f42 = 0;
         if (r42) {
           l42 = r42.width, c42 = r42.height;
           const t42 = x22();
-          (!t42 || t42 && "fixed" === e54) && (s43 = r42.offsetLeft, f42 = r42.offsetTop);
+          (!t42 || t42 && "fixed" === e54) && (s42 = r42.offsetLeft, f42 = r42.offsetTop);
         }
-        return { width: l42, height: c42, x: s43, y: f42 };
-      }(e43, l33);
+        return { width: l42, height: c42, x: s42, y: f42 };
+      }(e43, l32);
     else if ("document" === i42)
       c32 = function(t32) {
-        const e54 = R3(t32), n33 = T22(t32), i52 = t32.ownerDocument.body, l42 = r23(e54.scrollWidth, e54.clientWidth, i52.scrollWidth, i52.clientWidth), c42 = r23(e54.scrollHeight, e54.clientHeight, i52.scrollHeight, i52.clientHeight);
-        let s43 = -n33.scrollLeft + C3(t32);
-        const f42 = -n33.scrollTop;
-        return "rtl" === o33(i52).direction && (s43 += r23(e54.clientWidth, i52.clientWidth) - l42), { width: l42, height: c42, x: s43, y: f42 };
-      }(R3(e43));
-    else if (d23(i42))
+        const e54 = R2(t32), n32 = T2(t32), i52 = t32.ownerDocument.body, l42 = r22(e54.scrollWidth, e54.clientWidth, i52.scrollWidth, i52.clientWidth), c42 = r22(e54.scrollHeight, e54.clientHeight, i52.scrollHeight, i52.clientHeight);
+        let s42 = -n32.scrollLeft + C2(t32);
+        const f42 = -n32.scrollTop;
+        return "rtl" === o32(i52).direction && (s42 += r22(e54.clientWidth, i52.clientWidth) - l42), { width: l42, height: c42, x: s42, y: f42 };
+      }(R2(e43));
+    else if (d22(i42))
       c32 = function(t32, e54) {
-        const n33 = E22(t32, true, "fixed" === e54), o52 = n33.top + t32.clientTop, i52 = n33.left + t32.clientLeft, r42 = a23(t32) ? L22(t32) : { x: 1, y: 1 };
+        const n32 = E22(t32, true, "fixed" === e54), o52 = n32.top + t32.clientTop, i52 = n32.left + t32.clientLeft, r42 = a22(t32) ? L2(t32) : { x: 1, y: 1 };
         return { width: t32.clientWidth * r42.x, height: t32.clientHeight * r42.y, x: i52 * r42.x, y: o52 * r42.y };
-      }(i42, l33);
+      }(i42, l32);
     else {
       const t32 = __spreadValues({}, i42);
       if (x22()) {
-        var s33, f32;
-        const o52 = n23(e43);
-        t32.x -= (null == (s33 = o52.visualViewport) ? void 0 : s33.offsetLeft) || 0, t32.y -= (null == (f32 = o52.visualViewport) ? void 0 : f32.offsetTop) || 0;
+        var s32, f32;
+        const o52 = n22(e43);
+        t32.x -= (null == (s32 = o52.visualViewport) ? void 0 : s32.offsetLeft) || 0, t32.y -= (null == (f32 = o52.visualViewport) ? void 0 : f32.offsetTop) || 0;
       }
       c32 = t32;
     }
-    return l8(c32);
+    return l7(c32);
   }
-  function A3(t32, e43) {
-    return a23(t32) && "fixed" !== o33(t32).position ? e43 ? e43(t32) : t32.offsetParent : null;
+  function A2(t32, e43) {
+    return a22(t32) && "fixed" !== o32(t32).position ? e43 ? e43(t32) : t32.offsetParent : null;
   }
-  function H4(t32, e43) {
-    const i42 = n23(t32);
-    let r42 = A3(t32, e43);
-    for (; r42 && m22(r42) && "static" === o33(r42).position; )
-      r42 = A3(r42, e43);
-    return r42 && ("html" === s23(r42) || "body" === s23(r42) && "static" === o33(r42).position && !y3(r42)) ? i42 : r42 || function(t42) {
+  function H3(t32, e43) {
+    const i42 = n22(t32);
+    let r42 = A2(t32, e43);
+    for (; r42 && m22(r42) && "static" === o32(r42).position; )
+      r42 = A2(r42, e43);
+    return r42 && ("html" === s22(r42) || "body" === s22(r42) && "static" === o32(r42).position && !y3(r42)) ? i42 : r42 || function(t42) {
       let e54 = F(t42);
-      for (; a23(e54) && !w22(e54); ) {
+      for (; a22(e54) && !w22(e54); ) {
         if (y3(e54))
           return e54;
         e54 = F(e54);
@@ -15200,96 +14569,96 @@
       return null;
     }(t32) || i42;
   }
-  function V3(t32, e43, n33) {
-    const o52 = a23(e43), i42 = R3(e43), r42 = E22(t32, true, "fixed" === n33, e43);
-    let l33 = { scrollLeft: 0, scrollTop: 0 };
+  function V2(t32, e43, n32) {
+    const o52 = a22(e43), i42 = R2(e43), r42 = E22(t32, true, "fixed" === n32, e43);
+    let l32 = { scrollLeft: 0, scrollTop: 0 };
     const c32 = { x: 0, y: 0 };
-    if (o52 || !o52 && "fixed" !== n33)
-      if (("body" !== s23(e43) || g22(i42)) && (l33 = T22(e43)), a23(e43)) {
+    if (o52 || !o52 && "fixed" !== n32)
+      if (("body" !== s22(e43) || g22(i42)) && (l32 = T2(e43)), a22(e43)) {
         const t42 = E22(e43, true);
         c32.x = t42.x + e43.clientLeft, c32.y = t42.y + e43.clientTop;
       } else
-        i42 && (c32.x = C3(i42));
-    return { x: r42.left + l33.scrollLeft - c32.x, y: r42.top + l33.scrollTop - c32.y, width: r42.width, height: r42.height };
+        i42 && (c32.x = C2(i42));
+    return { x: r42.left + l32.scrollLeft - c32.x, y: r42.top + l32.scrollTop - c32.y, width: r42.width, height: r42.height };
   }
   var O2 = { getClippingRect: function(t32) {
-    let { element: e43, boundary: n33, rootBoundary: l33, strategy: c32 } = t32;
-    const f32 = "clippingAncestors" === n33 ? function(t42, e54) {
-      const n43 = e54.get(t42);
-      if (n43)
-        return n43;
-      let i42 = D2(t42).filter((t52) => d23(t52) && "body" !== s23(t52)), r42 = null;
-      const l42 = "fixed" === o33(t42).position;
+    let { element: e43, boundary: n32, rootBoundary: l32, strategy: c32 } = t32;
+    const f32 = "clippingAncestors" === n32 ? function(t42, e54) {
+      const n42 = e54.get(t42);
+      if (n42)
+        return n42;
+      let i42 = D2(t42).filter((t52) => d22(t52) && "body" !== s22(t52)), r42 = null;
+      const l42 = "fixed" === o32(t42).position;
       let c42 = l42 ? F(t42) : t42;
-      for (; d23(c42) && !w22(c42); ) {
-        const t52 = o33(c42), e62 = y3(c42);
+      for (; d22(c42) && !w22(c42); ) {
+        const t52 = o32(c42), e62 = y3(c42);
         "fixed" === t52.position ? r42 = null : (l42 ? e62 || r42 : e62 || "static" !== t52.position || !r42 || !["absolute", "fixed"].includes(r42.position)) ? r42 = t52 : i42 = i42.filter((t62) => t62 !== c42), c42 = F(c42);
       }
       return e54.set(t42, i42), i42;
-    }(e43, this._c) : [].concat(n33), u32 = [...f32, l33], a32 = u32[0], h32 = u32.reduce((t42, n43) => {
-      const o52 = S4(e43, n43, c32);
-      return t42.top = r23(o52.top, t42.top), t42.right = i32(o52.right, t42.right), t42.bottom = i32(o52.bottom, t42.bottom), t42.left = r23(o52.left, t42.left), t42;
-    }, S4(e43, a32, c32));
+    }(e43, this._c) : [].concat(n32), u32 = [...f32, l32], a32 = u32[0], h32 = u32.reduce((t42, n42) => {
+      const o52 = S3(e43, n42, c32);
+      return t42.top = r22(o52.top, t42.top), t42.right = i32(o52.right, t42.right), t42.bottom = i32(o52.bottom, t42.bottom), t42.left = r22(o52.left, t42.left), t42;
+    }, S3(e43, a32, c32));
     return { width: h32.right - h32.left, height: h32.bottom - h32.top, x: h32.left, y: h32.top };
   }, convertOffsetParentRelativeRectToViewportRelativeRect: function(t32) {
-    let { rect: e43, offsetParent: n33, strategy: o52 } = t32;
-    const i42 = a23(n33), r42 = R3(n33);
-    if (n33 === r42)
+    let { rect: e43, offsetParent: n32, strategy: o52 } = t32;
+    const i42 = a22(n32), r42 = R2(n32);
+    if (n32 === r42)
       return e43;
-    let l33 = { scrollLeft: 0, scrollTop: 0 }, c32 = { x: 1, y: 1 };
+    let l32 = { scrollLeft: 0, scrollTop: 0 }, c32 = { x: 1, y: 1 };
     const f32 = { x: 0, y: 0 };
-    if ((i42 || !i42 && "fixed" !== o52) && (("body" !== s23(n33) || g22(r42)) && (l33 = T22(n33)), a23(n33))) {
-      const t42 = E22(n33);
-      c32 = L22(n33), f32.x = t42.x + n33.clientLeft, f32.y = t42.y + n33.clientTop;
+    if ((i42 || !i42 && "fixed" !== o52) && (("body" !== s22(n32) || g22(r42)) && (l32 = T2(n32)), a22(n32))) {
+      const t42 = E22(n32);
+      c32 = L2(n32), f32.x = t42.x + n32.clientLeft, f32.y = t42.y + n32.clientTop;
     }
-    return { width: e43.width * c32.x, height: e43.height * c32.y, x: e43.x * c32.x - l33.scrollLeft * c32.x + f32.x, y: e43.y * c32.y - l33.scrollTop * c32.y + f32.y };
-  }, isElement: d23, getDimensions: function(t32) {
-    return a23(t32) ? c23(t32) : t32.getBoundingClientRect();
-  }, getOffsetParent: H4, getDocumentElement: R3, getScale: L22, async getElementRects(t32) {
-    let { reference: e43, floating: n33, strategy: o52 } = t32;
-    const i42 = this.getOffsetParent || H4, r42 = this.getDimensions;
-    return { reference: V3(e43, await i42(n33), o52), floating: __spreadValues({ x: 0, y: 0 }, await r42(n33)) };
-  }, getClientRects: (t32) => Array.from(t32.getClientRects()), isRTL: (t32) => "rtl" === o33(t32).direction };
-  function P22(t32, e43, n33, o52) {
+    return { width: e43.width * c32.x, height: e43.height * c32.y, x: e43.x * c32.x - l32.scrollLeft * c32.x + f32.x, y: e43.y * c32.y - l32.scrollTop * c32.y + f32.y };
+  }, isElement: d22, getDimensions: function(t32) {
+    return a22(t32) ? c22(t32) : t32.getBoundingClientRect();
+  }, getOffsetParent: H3, getDocumentElement: R2, getScale: L2, async getElementRects(t32) {
+    let { reference: e43, floating: n32, strategy: o52 } = t32;
+    const i42 = this.getOffsetParent || H3, r42 = this.getDimensions;
+    return { reference: V2(e43, await i42(n32), o52), floating: __spreadValues({ x: 0, y: 0 }, await r42(n32)) };
+  }, getClientRects: (t32) => Array.from(t32.getClientRects()), isRTL: (t32) => "rtl" === o32(t32).direction };
+  function P2(t32, e43, n32, o52) {
     void 0 === o52 && (o52 = {});
-    const { ancestorScroll: i42 = true, ancestorResize: r42 = true, elementResize: l33 = true, animationFrame: c32 = false } = o52, s33 = i42 && !c32, f32 = s33 || r42 ? [...d23(t32) ? D2(t32) : t32.contextElement ? D2(t32.contextElement) : [], ...D2(e43)] : [];
+    const { ancestorScroll: i42 = true, ancestorResize: r42 = true, elementResize: l32 = true, animationFrame: c32 = false } = o52, s32 = i42 && !c32, f32 = s32 || r42 ? [...d22(t32) ? D2(t32) : t32.contextElement ? D2(t32.contextElement) : [], ...D2(e43)] : [];
     f32.forEach((t42) => {
-      s33 && t42.addEventListener("scroll", n33, { passive: true }), r42 && t42.addEventListener("resize", n33);
+      s32 && t42.addEventListener("scroll", n32, { passive: true }), r42 && t42.addEventListener("resize", n32);
     });
     let u32, a32 = null;
-    if (l33) {
+    if (l32) {
       let o62 = true;
       a32 = new ResizeObserver(() => {
-        o62 || n33(), o62 = false;
-      }), d23(t32) && !c32 && a32.observe(t32), d23(t32) || !t32.contextElement || c32 || a32.observe(t32.contextElement), a32.observe(e43);
+        o62 || n32(), o62 = false;
+      }), d22(t32) && !c32 && a32.observe(t32), d22(t32) || !t32.contextElement || c32 || a32.observe(t32.contextElement), a32.observe(e43);
     }
     let h32 = c32 ? E22(t32) : null;
     return c32 && function e54() {
       const o62 = E22(t32);
-      !h32 || o62.x === h32.x && o62.y === h32.y && o62.width === h32.width && o62.height === h32.height || n33();
+      !h32 || o62.x === h32.x && o62.y === h32.y && o62.width === h32.width && o62.height === h32.height || n32();
       h32 = o62, u32 = requestAnimationFrame(e54);
-    }(), n33(), () => {
+    }(), n32(), () => {
       var t42;
       f32.forEach((t52) => {
-        s33 && t52.removeEventListener("scroll", n33), r42 && t52.removeEventListener("resize", n33);
+        s32 && t52.removeEventListener("scroll", n32), r42 && t52.removeEventListener("resize", n32);
       }), null == (t42 = a32) || t42.disconnect(), a32 = null, c32 && cancelAnimationFrame(u32);
     };
   }
-  var z3 = (t32, n33, o52) => {
-    const i42 = /* @__PURE__ */ new Map(), r42 = __spreadValues({ platform: O2 }, o52), l33 = __spreadProps(__spreadValues({}, r42.platform), { _c: i42 });
-    return i25(t32, n33, __spreadProps(__spreadValues({}, r42), { platform: l33 }));
+  var z2 = (t32, n32, o52) => {
+    const i42 = /* @__PURE__ */ new Map(), r42 = __spreadValues({ platform: O2 }, o52), l32 = __spreadProps(__spreadValues({}, r42.platform), { _c: i42 });
+    return i24(t32, n32, __spreadProps(__spreadValues({}, r42), { platform: l32 }));
   };
-  function t23(t32) {
-    return r33(t32);
+  function t22(t32) {
+    return r32(t32);
   }
-  function o43(t32) {
+  function o42(t32) {
     return t32.assignedSlot ? t32.assignedSlot : t32.parentNode instanceof ShadowRoot ? t32.parentNode.host : t32.parentNode;
   }
-  function r33(t32) {
-    for (let e43 = t32; e43; e43 = o43(e43))
+  function r32(t32) {
+    for (let e43 = t32; e43; e43 = o42(e43))
       if (e43 instanceof Element && "none" === getComputedStyle(e43).display)
         return null;
-    for (let e43 = o43(t32); e43; e43 = o43(e43)) {
+    for (let e43 = o42(t32); e43; e43 = o42(e43)) {
       if (!(e43 instanceof Element))
         continue;
       const t42 = getComputedStyle(e43);
@@ -15370,7 +14739,7 @@
       if (!this.anchorEl) {
         return;
       }
-      this.cleanup = P22(this.anchorEl, this.popup, () => {
+      this.cleanup = P2(this.anchorEl, this.popup, () => {
         this.reposition();
       });
     }
@@ -15399,7 +14768,7 @@
       ];
       if (this.sync) {
         middleware.push(
-          k3({
+          k2({
             apply: ({ rects }) => {
               const syncWidth = this.sync === "width" || this.sync === "both";
               const syncHeight = this.sync === "height" || this.sync === "both";
@@ -15414,7 +14783,7 @@
       }
       if (this.flip) {
         middleware.push(
-          b3({
+          b2({
             boundary: this.flipBoundary,
             // @ts-expect-error - We're converting a string attribute to an array here
             fallbackPlacements: this.flipFallbackPlacements,
@@ -15425,7 +14794,7 @@
       }
       if (this.shift) {
         middleware.push(
-          E3({
+          E2({
             boundary: this.shiftBoundary,
             padding: this.shiftPadding
           })
@@ -15433,7 +14802,7 @@
       }
       if (this.autoSize) {
         middleware.push(
-          k3({
+          k2({
             boundary: this.autoSizeBoundary,
             padding: this.autoSizePadding,
             apply: ({ availableWidth, availableHeight }) => {
@@ -15456,27 +14825,27 @@
       }
       if (this.arrow) {
         middleware.push(
-          m3({
+          m2({
             element: this.arrowEl,
             padding: this.arrowPadding
           })
         );
       }
-      const getOffsetParent = this.strategy === "absolute" ? (element) => O2.getOffsetParent(element, t23) : O2.getOffsetParent;
-      z3(this.anchorEl, this.popup, {
+      const getOffsetParent = this.strategy === "absolute" ? (element) => O2.getOffsetParent(element, t22) : O2.getOffsetParent;
+      z2(this.anchorEl, this.popup, {
         placement: this.placement,
         middleware,
         strategy: this.strategy,
         platform: __spreadProps(__spreadValues({}, O2), {
           getOffsetParent
         })
-      }).then(({ x: x32, y: y4, middlewareData, placement }) => {
+      }).then(({ x: x32, y: y42, middlewareData, placement }) => {
         const isRtl = getComputedStyle(this).direction === "rtl";
         const staticSide = { top: "bottom", right: "left", bottom: "top", left: "right" }[placement.split("-")[0]];
         this.setAttribute("data-current-placement", placement);
         Object.assign(this.popup.style, {
           left: `${x32}px`,
-          top: `${y4}px`
+          top: `${y42}px`
         });
         if (this.arrow) {
           const arrowX = middlewareData.arrow.x;
@@ -15514,12 +14883,12 @@
       this.emit("sl-reposition");
     }
     render() {
-      return y2`
+      return y`
       <slot name="anchor" @slotchange=${this.handleAnchorChange}></slot>
 
       <div
         part="popup"
-        class=${o6({
+        class=${o5({
         popup: true,
         "popup--active": this.active,
         "popup--fixed": this.strategy === "fixed",
@@ -15527,50 +14896,50 @@
       })}
       >
         <slot></slot>
-        ${this.arrow ? y2`<div part="arrow" class="popup__arrow" role="presentation"></div>` : ""}
+        ${this.arrow ? y`<div part="arrow" class="popup__arrow" role="presentation"></div>` : ""}
       </div>
     `;
     }
   };
   SlPopup.styles = popup_styles_default;
   __decorateClass([
-    i23(".popup")
+    i22(".popup")
   ], SlPopup.prototype, "popup", 2);
   __decorateClass([
-    i23(".popup__arrow")
+    i22(".popup__arrow")
   ], SlPopup.prototype, "arrowEl", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlPopup.prototype, "anchor", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlPopup.prototype, "active", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlPopup.prototype, "placement", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlPopup.prototype, "strategy", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlPopup.prototype, "distance", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlPopup.prototype, "skidding", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlPopup.prototype, "arrow", 2);
   __decorateClass([
-    e23({ attribute: "arrow-placement" })
+    e22({ attribute: "arrow-placement" })
   ], SlPopup.prototype, "arrowPlacement", 2);
   __decorateClass([
-    e23({ attribute: "arrow-padding", type: Number })
+    e22({ attribute: "arrow-padding", type: Number })
   ], SlPopup.prototype, "arrowPadding", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlPopup.prototype, "flip", 2);
   __decorateClass([
-    e23({
+    e22({
       attribute: "flip-fallback-placements",
       converter: {
         fromAttribute: (value) => {
@@ -15583,41 +14952,41 @@
     })
   ], SlPopup.prototype, "flipFallbackPlacements", 2);
   __decorateClass([
-    e23({ attribute: "flip-fallback-strategy" })
+    e22({ attribute: "flip-fallback-strategy" })
   ], SlPopup.prototype, "flipFallbackStrategy", 2);
   __decorateClass([
-    e23({ type: Object })
+    e22({ type: Object })
   ], SlPopup.prototype, "flipBoundary", 2);
   __decorateClass([
-    e23({ attribute: "flip-padding", type: Number })
+    e22({ attribute: "flip-padding", type: Number })
   ], SlPopup.prototype, "flipPadding", 2);
   __decorateClass([
-    e23({ type: Boolean })
+    e22({ type: Boolean })
   ], SlPopup.prototype, "shift", 2);
   __decorateClass([
-    e23({ type: Object })
+    e22({ type: Object })
   ], SlPopup.prototype, "shiftBoundary", 2);
   __decorateClass([
-    e23({ attribute: "shift-padding", type: Number })
+    e22({ attribute: "shift-padding", type: Number })
   ], SlPopup.prototype, "shiftPadding", 2);
   __decorateClass([
-    e23({ attribute: "auto-size" })
+    e22({ attribute: "auto-size" })
   ], SlPopup.prototype, "autoSize", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlPopup.prototype, "sync", 2);
   __decorateClass([
-    e23({ type: Object })
+    e22({ type: Object })
   ], SlPopup.prototype, "autoSizeBoundary", 2);
   __decorateClass([
-    e23({ attribute: "auto-size-padding", type: Number })
+    e22({ attribute: "auto-size-padding", type: Number })
   ], SlPopup.prototype, "autoSizePadding", 2);
   SlPopup = __decorateClass([
-    e6("sl-popup")
+    e5("sl-popup")
   ], SlPopup);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.SGEYQ7UT.js
-  var details_styles_default = i3`
+  var details_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -15783,10 +15152,10 @@
     }
     render() {
       const isRtl = this.localize.dir() === "rtl";
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         details: true,
         "details--open": this.open,
         "details--disabled": this.disabled,
@@ -15826,31 +15195,31 @@
   };
   SlDetails.styles = details_styles_default;
   __decorateClass([
-    i23(".details")
+    i22(".details")
   ], SlDetails.prototype, "details", 2);
   __decorateClass([
-    i23(".details__header")
+    i22(".details__header")
   ], SlDetails.prototype, "header", 2);
   __decorateClass([
-    i23(".details__body")
+    i22(".details__body")
   ], SlDetails.prototype, "body", 2);
   __decorateClass([
-    i23(".details__expand-icon-slot")
+    i22(".details__expand-icon-slot")
   ], SlDetails.prototype, "expandIconSlot", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlDetails.prototype, "open", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlDetails.prototype, "summary", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlDetails.prototype, "disabled", 2);
   __decorateClass([
     watch("open", { waitUntilFirstUpdate: true })
   ], SlDetails.prototype, "handleOpenChange", 1);
   SlDetails = __decorateClass([
-    e6("sl-details")
+    e5("sl-details")
   ], SlDetails);
   setDefaultAnimation("details.show", {
     keyframes: [
@@ -15868,7 +15237,7 @@
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ERACEVGU.js
-  var dialog_styles_default = i3`
+  var dialog_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -16116,10 +15485,10 @@
       return waitForEvent(this, "sl-after-hide");
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         dialog: true,
         "dialog--open": this.open,
         "dialog--has-footer": this.hasSlotController.test("footer")
@@ -16133,11 +15502,11 @@
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? "false" : "true"}
-          aria-label=${l6(this.noHeader ? this.label : void 0)}
-          aria-labelledby=${l6(!this.noHeader ? "title" : void 0)}
+          aria-label=${l5(this.noHeader ? this.label : void 0)}
+          aria-labelledby=${l5(!this.noHeader ? "title" : void 0)}
           tabindex="0"
         >
-          ${!this.noHeader ? y2`
+          ${!this.noHeader ? y`
                 <header part="header" class="dialog__header">
                   <h2 part="title" class="dialog__title" id="title">
                     <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
@@ -16169,28 +15538,28 @@
   };
   SlDialog.styles = dialog_styles_default;
   __decorateClass([
-    i23(".dialog")
+    i22(".dialog")
   ], SlDialog.prototype, "dialog", 2);
   __decorateClass([
-    i23(".dialog__panel")
+    i22(".dialog__panel")
   ], SlDialog.prototype, "panel", 2);
   __decorateClass([
-    i23(".dialog__overlay")
+    i22(".dialog__overlay")
   ], SlDialog.prototype, "overlay", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlDialog.prototype, "open", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlDialog.prototype, "label", 2);
   __decorateClass([
-    e23({ attribute: "no-header", type: Boolean, reflect: true })
+    e22({ attribute: "no-header", type: Boolean, reflect: true })
   ], SlDialog.prototype, "noHeader", 2);
   __decorateClass([
     watch("open", { waitUntilFirstUpdate: true })
   ], SlDialog.prototype, "handleOpenChange", 1);
   SlDialog = __decorateClass([
-    e6("sl-dialog")
+    e5("sl-dialog")
   ], SlDialog);
   setDefaultAnimation("dialog.show", {
     keyframes: [
@@ -16220,7 +15589,7 @@
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.Q7VOXEWK.js
-  var divider_styles_default = i3`
+  var divider_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -16259,17 +15628,17 @@
   };
   SlDivider.styles = divider_styles_default;
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlDivider.prototype, "vertical", 2);
   __decorateClass([
     watch("vertical")
   ], SlDivider.prototype, "handleVerticalChange", 1);
   SlDivider = __decorateClass([
-    e6("sl-divider")
+    e5("sl-divider")
   ], SlDivider);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.PNOB3JXQ.js
-  var carousel_styles_default = i3`
+  var carousel_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -16573,7 +15942,7 @@
   ], ScrollController.prototype, "handleScrollEnd", 1);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NNN7KQVN.js
-  var carousel_item_styles_default = i3`
+  var carousel_item_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -16607,12 +15976,12 @@
       this.setAttribute("role", "group");
     }
     render() {
-      return y2` <slot></slot> `;
+      return y` <slot></slot> `;
     }
   };
   SlCarouselItem.styles = carousel_item_styles_default;
   SlCarouselItem = __decorateClass([
-    e6("sl-carousel-item")
+    e5("sl-carousel-item")
   ], SlCarouselItem);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.F4VGSDIW.js
@@ -16672,17 +16041,17 @@
   };
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.TDXYRAD2.js
-  function* o25(o44, f5) {
-    if (void 0 !== o44) {
-      let i26 = 0;
-      for (const t24 of o44)
-        yield f5(t24, i26++);
+  function* o24(o43, f5) {
+    if (void 0 !== o43) {
+      let i25 = 0;
+      for (const t23 of o43)
+        yield f5(t23, i25++);
     }
   }
-  function* o34(o44, l9, n10 = 1) {
-    const t24 = void 0 === l9 ? 0 : o44;
-    null != l9 || (l9 = o44);
-    for (let o52 = t24; n10 > 0 ? o52 < l9 : l9 < o52; o52 += n10)
+  function* o33(o43, l11, n13 = 1) {
+    const t23 = void 0 === l11 ? 0 : o43;
+    null != l11 || (l11 = o43);
+    for (let o52 = t23; n13 > 0 ? o52 < l11 : l11 < o52; o52 += n13)
       yield o52;
   }
   var SlCarousel = class extends ShoelaceElement {
@@ -16821,14 +16190,14 @@
         const slidesPerPage = this.slidesPerPage;
         const lastSlides = slides.slice(-slidesPerPage);
         const firstSlides = slides.slice(0, slidesPerPage);
-        lastSlides.reverse().forEach((slide, i26) => {
+        lastSlides.reverse().forEach((slide, i25) => {
           const clone = slide.cloneNode(true);
-          clone.setAttribute("data-clone", String(slides.length - i26 - 1));
+          clone.setAttribute("data-clone", String(slides.length - i25 - 1));
           this.prepend(clone);
         });
-        firstSlides.forEach((slide, i26) => {
+        firstSlides.forEach((slide, i25) => {
           const clone = slide.cloneNode(true);
-          clone.setAttribute("data-clone", String(i26));
+          clone.setAttribute("data-clone", String(i25));
           this.append(clone);
         });
       }
@@ -16839,8 +16208,8 @@
     }
     handelSlideChange() {
       const slides = this.getSlides();
-      slides.forEach((slide, i26) => {
-        slide.classList.toggle("--is-active", i26 === this.activeSlide);
+      slides.forEach((slide, i25) => {
+        slide.classList.toggle("--is-active", i25 === this.activeSlide);
       });
       if (this.hasUpdated) {
         this.emit("sl-slide-change", {
@@ -16854,8 +16223,8 @@
     handleSlidesPerMoveChange() {
       const slides = this.getSlides({ excludeClones: false });
       const slidesPerMove = this.slidesPerMove;
-      slides.forEach((slide, i26) => {
-        const shouldSnap = Math.abs(i26 - slidesPerMove) % slidesPerMove === 0;
+      slides.forEach((slide, i25) => {
+        const shouldSnap = Math.abs(i25 - slidesPerMove) % slidesPerMove === 0;
         if (shouldSnap) {
           slide.style.removeProperty("scroll-snap-align");
         } else {
@@ -16917,12 +16286,12 @@
       const prevEnabled = this.loop || currentPage > 0;
       const nextEnabled = this.loop || currentPage < pagesCount - 1;
       const isLtr = this.localize.dir() === "ltr";
-      return y2`
+      return y`
       <div part="base" class="carousel">
         <div
           id="scroll-container"
           part="scroll-container"
-          class="${o6({
+          class="${o5({
         carousel__slides: true,
         "carousel__slides--horizontal": this.orientation === "horizontal",
         "carousel__slides--vertical": this.orientation === "vertical"
@@ -16937,11 +16306,11 @@
           <slot></slot>
         </div>
 
-        ${this.navigation ? y2`
+        ${this.navigation ? y`
               <div part="navigation" class="carousel__navigation">
                 <button
                   part="navigation-button navigation-button--previous"
-                  class="${o6({
+                  class="${o5({
         "carousel__navigation-button": true,
         "carousel__navigation-button--previous": true,
         "carousel__navigation-button--disabled": !prevEnabled
@@ -16958,7 +16327,7 @@
 
                 <button
                   part="navigation-button navigation-button--next"
-                  class=${o6({
+                  class=${o5({
         "carousel__navigation-button": true,
         "carousel__navigation-button--next": true,
         "carousel__navigation-button--disabled": !nextEnabled
@@ -16974,14 +16343,14 @@
                 </button>
               </div>
             ` : ""}
-        ${this.pagination ? y2`
+        ${this.pagination ? y`
               <div part="pagination" role="tablist" class="carousel__pagination" aria-controls="scroll-container">
-                ${o25(o34(pagesCount), (index) => {
+                ${o24(o33(pagesCount), (index) => {
         const isActive = index === currentPage;
-        return y2`
+        return y`
                     <button
                       part="pagination-item ${isActive ? "pagination-item--active" : ""}"
-                      class="${o6({
+                      class="${o5({
           "carousel__pagination-item": true,
           "carousel__pagination-item--active": isActive
         })}"
@@ -17002,43 +16371,43 @@
   };
   SlCarousel.styles = carousel_styles_default;
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlCarousel.prototype, "loop", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlCarousel.prototype, "navigation", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlCarousel.prototype, "pagination", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlCarousel.prototype, "autoplay", 2);
   __decorateClass([
-    e23({ type: Number, attribute: "autoplay-interval" })
+    e22({ type: Number, attribute: "autoplay-interval" })
   ], SlCarousel.prototype, "autoplayInterval", 2);
   __decorateClass([
-    e23({ type: Number, attribute: "slides-per-page" })
+    e22({ type: Number, attribute: "slides-per-page" })
   ], SlCarousel.prototype, "slidesPerPage", 2);
   __decorateClass([
-    e23({ type: Number, attribute: "slides-per-move" })
+    e22({ type: Number, attribute: "slides-per-move" })
   ], SlCarousel.prototype, "slidesPerMove", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlCarousel.prototype, "orientation", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true, attribute: "mouse-dragging" })
+    e22({ type: Boolean, reflect: true, attribute: "mouse-dragging" })
   ], SlCarousel.prototype, "mouseDragging", 2);
   __decorateClass([
-    i23("slot:not([name])")
+    i22("slot:not([name])")
   ], SlCarousel.prototype, "defaultSlot", 2);
   __decorateClass([
-    i23(".carousel__slides")
+    i22(".carousel__slides")
   ], SlCarousel.prototype, "scrollContainer", 2);
   __decorateClass([
-    i23(".carousel__pagination")
+    i22(".carousel__pagination")
   ], SlCarousel.prototype, "paginationContainer", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlCarousel.prototype, "activeSlide", 2);
   __decorateClass([
     watch("loop", { waitUntilFirstUpdate: true }),
@@ -17057,11 +16426,11 @@
     watch("mouseDragging")
   ], SlCarousel.prototype, "handleMouseDraggingChange", 1);
   SlCarousel = __decorateClass([
-    e6("sl-carousel")
+    e5("sl-carousel")
   ], SlCarousel);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OLABFFKC.js
-  var checkbox_styles_default = i3`
+  var checkbox_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -17270,10 +16639,10 @@
       this.formControlController.updateValidity();
     }
     render() {
-      return y2`
+      return y`
       <label
         part="base"
-        class=${o6({
+        class=${o5({
         checkbox: true,
         "checkbox--checked": this.checked,
         "checkbox--disabled": this.disabled,
@@ -17289,9 +16658,9 @@
           type="checkbox"
           title=${this.title}
           name=${this.name}
-          value=${l6(this.value)}
-          .indeterminate=${l23(this.indeterminate)}
-          .checked=${l23(this.checked)}
+          value=${l5(this.value)}
+          .indeterminate=${l22(this.indeterminate)}
+          .checked=${l22(this.checked)}
           .disabled=${this.disabled}
           .required=${this.required}
           aria-checked=${this.checked ? "true" : "false"}
@@ -17306,10 +16675,10 @@
           part="control${this.checked ? " control--checked" : ""}${this.indeterminate ? " control--indeterminate" : ""}"
           class="checkbox__control"
         >
-          ${this.checked ? y2`
+          ${this.checked ? y`
                 <sl-icon part="checked-icon" class="checkbox__checked-icon" library="system" name="check"></sl-icon>
               ` : ""}
-          ${!this.checked && this.indeterminate ? y2`
+          ${!this.checked && this.indeterminate ? y`
                 <sl-icon
                   part="indeterminate-icon"
                   class="checkbox__indeterminate-icon"
@@ -17328,40 +16697,40 @@
   };
   SlCheckbox.styles = checkbox_styles_default;
   __decorateClass([
-    i23('input[type="checkbox"]')
+    i22('input[type="checkbox"]')
   ], SlCheckbox.prototype, "input", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlCheckbox.prototype, "hasFocus", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlCheckbox.prototype, "title", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlCheckbox.prototype, "name", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlCheckbox.prototype, "value", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlCheckbox.prototype, "size", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlCheckbox.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlCheckbox.prototype, "checked", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlCheckbox.prototype, "indeterminate", 2);
   __decorateClass([
     defaultValue("checked")
   ], SlCheckbox.prototype, "defaultChecked", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlCheckbox.prototype, "form", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlCheckbox.prototype, "required", 2);
   __decorateClass([
     watch("disabled", { waitUntilFirstUpdate: true })
@@ -17370,11 +16739,11 @@
     watch(["checked", "indeterminate"], { waitUntilFirstUpdate: true })
   ], SlCheckbox.prototype, "handleStateChange", 1);
   SlCheckbox = __decorateClass([
-    e6("sl-checkbox")
+    e5("sl-checkbox")
   ], SlCheckbox);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UDIREUTM.js
-  var breadcrumb_item_styles_default = i3`
+  var breadcrumb_item_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -17469,10 +16838,10 @@
     }
     render() {
       const isLink = this.href ? true : false;
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         "breadcrumb-item": true,
         "breadcrumb-item--has-prefix": this.hasSlotController.test("prefix"),
         "breadcrumb-item--has-suffix": this.hasSlotController.test("suffix")
@@ -17480,17 +16849,17 @@
       >
         <slot name="prefix" part="prefix" class="breadcrumb-item__prefix"></slot>
 
-        ${isLink ? y2`
+        ${isLink ? y`
               <a
                 part="label"
                 class="breadcrumb-item__label breadcrumb-item__label--link"
                 href="${this.href}"
-                target="${l6(this.target ? this.target : void 0)}"
-                rel=${l6(this.target ? this.rel : void 0)}
+                target="${l5(this.target ? this.target : void 0)}"
+                rel=${l5(this.target ? this.rel : void 0)}
               >
                 <slot></slot>
               </a>
-            ` : y2`
+            ` : y`
               <button part="label" type="button" class="breadcrumb-item__label breadcrumb-item__label--button">
                 <slot></slot>
               </button>
@@ -17505,16 +16874,16 @@
   };
   SlBreadcrumbItem.styles = breadcrumb_item_styles_default;
   __decorateClass([
-    e23()
+    e22()
   ], SlBreadcrumbItem.prototype, "href", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlBreadcrumbItem.prototype, "target", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlBreadcrumbItem.prototype, "rel", 2);
   SlBreadcrumbItem = __decorateClass([
-    e6("sl-breadcrumb-item")
+    e5("sl-breadcrumb-item")
   ], SlBreadcrumbItem);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.AXWTNUN6.js
@@ -17655,11 +17024,11 @@
     }
     render() {
       const isLink = this.isLink();
-      const tag = isLink ? i6`a` : i6`button`;
-      return n8`
+      const tag = isLink ? i5`a` : i5`button`;
+      return n7`
       <${tag}
         part="base"
-        class=${o6({
+        class=${o5({
         button: true,
         "button--default": this.variant === "default",
         "button--primary": this.variant === "primary",
@@ -17684,16 +17053,16 @@
         "button--has-prefix": this.hasSlotController.test("prefix"),
         "button--has-suffix": this.hasSlotController.test("suffix")
       })}
-        ?disabled=${l6(isLink ? void 0 : this.disabled)}
-        type=${l6(isLink ? void 0 : this.type)}
+        ?disabled=${l5(isLink ? void 0 : this.disabled)}
+        type=${l5(isLink ? void 0 : this.type)}
         title=${this.title}
-        name=${l6(isLink ? void 0 : this.name)}
-        value=${l6(isLink ? void 0 : this.value)}
-        href=${l6(isLink ? this.href : void 0)}
-        target=${l6(isLink ? this.target : void 0)}
-        download=${l6(isLink ? this.download : void 0)}
-        rel=${l6(isLink ? this.rel : void 0)}
-        role=${l6(isLink ? void 0 : "button")}
+        name=${l5(isLink ? void 0 : this.name)}
+        value=${l5(isLink ? void 0 : this.value)}
+        href=${l5(isLink ? this.href : void 0)}
+        target=${l5(isLink ? this.target : void 0)}
+        download=${l5(isLink ? this.download : void 0)}
+        rel=${l5(isLink ? this.rel : void 0)}
+        role=${l5(isLink ? void 0 : "button")}
         aria-disabled=${this.disabled ? "true" : "false"}
         tabindex=${this.disabled ? "-1" : "0"}
         @blur=${this.handleBlur}
@@ -17704,97 +17073,97 @@
         <slot name="prefix" part="prefix" class="button__prefix"></slot>
         <slot part="label" class="button__label"></slot>
         <slot name="suffix" part="suffix" class="button__suffix"></slot>
-        ${this.caret ? n8` <sl-icon part="caret" class="button__caret" library="system" name="caret"></sl-icon> ` : ""}
-        ${this.loading ? n8`<sl-spinner></sl-spinner>` : ""}
+        ${this.caret ? n7` <sl-icon part="caret" class="button__caret" library="system" name="caret"></sl-icon> ` : ""}
+        ${this.loading ? n7`<sl-spinner></sl-spinner>` : ""}
       </${tag}>
     `;
     }
   };
   SlButton.styles = button_styles_default;
   __decorateClass([
-    i23(".button")
+    i22(".button")
   ], SlButton.prototype, "button", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlButton.prototype, "hasFocus", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlButton.prototype, "invalid", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "title", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlButton.prototype, "variant", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlButton.prototype, "size", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlButton.prototype, "caret", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlButton.prototype, "disabled", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlButton.prototype, "loading", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlButton.prototype, "outline", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlButton.prototype, "pill", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlButton.prototype, "circle", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "type", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "name", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "value", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "href", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "target", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "rel", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "download", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButton.prototype, "form", 2);
   __decorateClass([
-    e23({ attribute: "formaction" })
+    e22({ attribute: "formaction" })
   ], SlButton.prototype, "formAction", 2);
   __decorateClass([
-    e23({ attribute: "formenctype" })
+    e22({ attribute: "formenctype" })
   ], SlButton.prototype, "formEnctype", 2);
   __decorateClass([
-    e23({ attribute: "formmethod" })
+    e22({ attribute: "formmethod" })
   ], SlButton.prototype, "formMethod", 2);
   __decorateClass([
-    e23({ attribute: "formnovalidate", type: Boolean })
+    e22({ attribute: "formnovalidate", type: Boolean })
   ], SlButton.prototype, "formNoValidate", 2);
   __decorateClass([
-    e23({ attribute: "formtarget" })
+    e22({ attribute: "formtarget" })
   ], SlButton.prototype, "formTarget", 2);
   __decorateClass([
     watch("disabled", { waitUntilFirstUpdate: true })
   ], SlButton.prototype, "handleDisabledChange", 1);
   SlButton = __decorateClass([
-    e6("sl-button")
+    e5("sl-button")
   ], SlButton);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.TA75SLJE.js
-  var spinner_styles_default = i3`
+  var spinner_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -17861,7 +17230,7 @@
       this.localize = new LocalizeController2(this);
     }
     render() {
-      return y2`
+      return y`
       <svg part="base" class="spinner" role="progressbar" aria-valuetext=${this.localize.term("loading")}>
         <circle class="spinner__track"></circle>
         <circle class="spinner__indicator"></circle>
@@ -17871,11 +17240,11 @@
   };
   SlSpinner.styles = spinner_styles_default;
   SlSpinner = __decorateClass([
-    e6("sl-spinner")
+    e5("sl-spinner")
   ], SlSpinner);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.XNCVUHYK.js
-  var button_group_styles_default = i3`
+  var button_group_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -17926,7 +17295,7 @@
       });
     }
     render() {
-      return y2`
+      return y`
       <slot
         part="base"
         class="button-group"
@@ -17943,16 +17312,16 @@
   };
   SlButtonGroup.styles = button_group_styles_default;
   __decorateClass([
-    i23("slot")
+    i22("slot")
   ], SlButtonGroup.prototype, "defaultSlot", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlButtonGroup.prototype, "disableRole", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlButtonGroup.prototype, "label", 2);
   SlButtonGroup = __decorateClass([
-    e6("sl-button-group")
+    e5("sl-button-group")
   ], SlButtonGroup);
   function findButton(el) {
     var _a;
@@ -17961,7 +17330,7 @@
   }
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.BZVXMWBD.js
-  var card_styles_default = i3`
+  var card_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -18037,10 +17406,10 @@
       this.hasSlotController = new HasSlotController(this, "footer", "header", "image");
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         card: true,
         "card--has-footer": this.hasSlotController.test("footer"),
         "card--has-image": this.hasSlotController.test("image"),
@@ -18057,11 +17426,11 @@
   };
   SlCard.styles = card_styles_default;
   SlCard = __decorateClass([
-    e6("sl-card")
+    e5("sl-card")
   ], SlCard);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.H7DIVJJK.js
-  var animation_styles_default = i3`
+  var animation_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -18960,7 +18329,7 @@
       (_a = this.animation) == null ? void 0 : _a.finish();
     }
     render() {
-      return y2` <slot @slotchange=${this.handleSlotChange}></slot> `;
+      return y` <slot @slotchange=${this.handleSlotChange}></slot> `;
     }
   };
   SlAnimation.styles = animation_styles_default;
@@ -18968,40 +18337,40 @@
     e42("slot")
   ], SlAnimation.prototype, "defaultSlot", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAnimation.prototype, "name", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlAnimation.prototype, "play", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlAnimation.prototype, "delay", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAnimation.prototype, "direction", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlAnimation.prototype, "duration", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAnimation.prototype, "easing", 2);
   __decorateClass([
-    e23({ attribute: "end-delay", type: Number })
+    e22({ attribute: "end-delay", type: Number })
   ], SlAnimation.prototype, "endDelay", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAnimation.prototype, "fill", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlAnimation.prototype, "iterations", 2);
   __decorateClass([
-    e23({ attribute: "iteration-start", type: Number })
+    e22({ attribute: "iteration-start", type: Number })
   ], SlAnimation.prototype, "iterationStart", 2);
   __decorateClass([
-    e23({ attribute: false })
+    e22({ attribute: false })
   ], SlAnimation.prototype, "keyframes", 2);
   __decorateClass([
-    e23({ attribute: "playback-rate", type: Number })
+    e22({ attribute: "playback-rate", type: Number })
   ], SlAnimation.prototype, "playbackRate", 2);
   __decorateClass([
     watch([
@@ -19024,11 +18393,11 @@
     watch("playbackRate")
   ], SlAnimation.prototype, "handlePlaybackRateChange", 1);
   SlAnimation = __decorateClass([
-    e6("sl-animation")
+    e5("sl-animation")
   ], SlAnimation);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.6HVAZWJZ.js
-  var breadcrumb_styles_default = i3`
+  var breadcrumb_styles_default = i`
   ${component_styles_default}
 
   .breadcrumb {
@@ -19079,7 +18448,7 @@
         this.separatorDir = this.localize.dir();
         this.updateComplete.then(() => this.handleSlotChange());
       }
-      return y2`
+      return y`
       <nav part="base" class="breadcrumb" aria-label=${this.label}>
         <slot @slotchange=${this.handleSlotChange}></slot>
       </nav>
@@ -19092,20 +18461,20 @@
   };
   SlBreadcrumb.styles = breadcrumb_styles_default;
   __decorateClass([
-    i23("slot")
+    i22("slot")
   ], SlBreadcrumb.prototype, "defaultSlot", 2);
   __decorateClass([
-    i23('slot[name="separator"]')
+    i22('slot[name="separator"]')
   ], SlBreadcrumb.prototype, "separatorSlot", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlBreadcrumb.prototype, "label", 2);
   SlBreadcrumb = __decorateClass([
-    e6("sl-breadcrumb")
+    e5("sl-breadcrumb")
   ], SlBreadcrumb);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LBFGJPTQ.js
-  var avatar_styles_default = i3`
+  var avatar_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -19186,7 +18555,7 @@
       this.hasError = false;
     }
     render() {
-      const avatarWithImage = y2`
+      const avatarWithImage = y`
       <img
         part="image"
         class="avatar__image"
@@ -19196,20 +18565,20 @@
         @error="${() => this.hasError = true}"
       />
     `;
-      let avatarWithoutImage = y2``;
+      let avatarWithoutImage = y``;
       if (this.initials) {
-        avatarWithoutImage = y2`<div part="initials" class="avatar__initials">${this.initials}</div>`;
+        avatarWithoutImage = y`<div part="initials" class="avatar__initials">${this.initials}</div>`;
       } else {
-        avatarWithoutImage = y2`
+        avatarWithoutImage = y`
         <slot name="icon" part="icon" class="avatar__icon" aria-hidden="true">
           <sl-icon name="person-fill" library="system"></sl-icon>
         </slot>
       `;
       }
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         avatar: true,
         "avatar--circle": this.shape === "circle",
         "avatar--rounded": this.shape === "rounded",
@@ -19225,32 +18594,32 @@
   };
   SlAvatar.styles = avatar_styles_default;
   __decorateClass([
-    t5()
+    t4()
   ], SlAvatar.prototype, "hasError", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAvatar.prototype, "image", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAvatar.prototype, "label", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAvatar.prototype, "initials", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAvatar.prototype, "loading", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlAvatar.prototype, "shape", 2);
   __decorateClass([
     watch("image")
   ], SlAvatar.prototype, "handleImageChange", 1);
   SlAvatar = __decorateClass([
-    e6("sl-avatar")
+    e5("sl-avatar")
   ], SlAvatar);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.P63W3WLW.js
-  var animated_image_styles_default = i3`
+  var animated_image_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -19339,7 +18708,7 @@
       this.isLoaded = false;
     }
     render() {
-      return y2`
+      return y`
       <div class="animated-image">
         <img
           class="animated-image__animated"
@@ -19352,7 +18721,7 @@
           @error=${this.handleError}
         />
 
-        ${this.isLoaded ? y2`
+        ${this.isLoaded ? y`
               <img
                 class="animated-image__frozen"
                 src=${this.frozenFrame}
@@ -19372,22 +18741,22 @@
   };
   SlAnimatedImage.styles = animated_image_styles_default;
   __decorateClass([
-    i23(".animated-image__animated")
+    i22(".animated-image__animated")
   ], SlAnimatedImage.prototype, "animatedImage", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlAnimatedImage.prototype, "frozenFrame", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlAnimatedImage.prototype, "isLoaded", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAnimatedImage.prototype, "src", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlAnimatedImage.prototype, "alt", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlAnimatedImage.prototype, "play", 2);
   __decorateClass([
     watch("play", { waitUntilFirstUpdate: true })
@@ -19396,11 +18765,11 @@
     watch("src")
   ], SlAnimatedImage.prototype, "handleSrcChange", 1);
   SlAnimatedImage = __decorateClass([
-    e6("sl-animated-image")
+    e5("sl-animated-image")
   ], SlAnimatedImage);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UTZKJDOX.js
-  var alert_styles_default = i3`
+  var alert_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -19591,10 +18960,10 @@
       });
     }
     render() {
-      return y2`
+      return y`
       <div
         part="base"
-        class=${o6({
+        class=${o5({
         alert: true,
         "alert--open": this.open,
         "alert--closable": this.closable,
@@ -19613,7 +18982,7 @@
 
         <slot part="message" class="alert__message" aria-live="polite"></slot>
 
-        ${this.closable ? y2`
+        ${this.closable ? y`
               <sl-icon-button
                 part="close-button"
                 exportparts="base:close-button__base"
@@ -19630,19 +18999,19 @@
   };
   SlAlert.styles = alert_styles_default;
   __decorateClass([
-    i23('[part~="base"]')
+    i22('[part~="base"]')
   ], SlAlert.prototype, "base", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlAlert.prototype, "open", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlAlert.prototype, "closable", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlAlert.prototype, "variant", 2);
   __decorateClass([
-    e23({ type: Number })
+    e22({ type: Number })
   ], SlAlert.prototype, "duration", 2);
   __decorateClass([
     watch("open", { waitUntilFirstUpdate: true })
@@ -19651,7 +19020,7 @@
     watch("duration")
   ], SlAlert.prototype, "handleDurationChange", 1);
   SlAlert = __decorateClass([
-    e6("sl-alert")
+    e5("sl-alert")
   ], SlAlert);
   setDefaultAnimation("alert.show", {
     keyframes: [
@@ -19669,7 +19038,7 @@
   });
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UL4X2GHI.js
-  var icon_button_styles_default = i3`
+  var icon_button_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -19756,22 +19125,22 @@
     }
     render() {
       const isLink = this.href ? true : false;
-      const tag = isLink ? i6`a` : i6`button`;
-      return n8`
+      const tag = isLink ? i5`a` : i5`button`;
+      return n7`
       <${tag}
         part="base"
-        class=${o6({
+        class=${o5({
         "icon-button": true,
         "icon-button--disabled": !isLink && this.disabled,
         "icon-button--focused": this.hasFocus
       })}
-        ?disabled=${l6(isLink ? void 0 : this.disabled)}
-        type=${l6(isLink ? void 0 : "button")}
-        href=${l6(isLink ? this.href : void 0)}
-        target=${l6(isLink ? this.target : void 0)}
-        download=${l6(isLink ? this.download : void 0)}
-        rel=${l6(isLink && this.target ? "noreferrer noopener" : void 0)}
-        role=${l6(isLink ? void 0 : "button")}
+        ?disabled=${l5(isLink ? void 0 : this.disabled)}
+        type=${l5(isLink ? void 0 : "button")}
+        href=${l5(isLink ? this.href : void 0)}
+        target=${l5(isLink ? this.target : void 0)}
+        download=${l5(isLink ? this.download : void 0)}
+        rel=${l5(isLink && this.target ? "noreferrer noopener" : void 0)}
+        role=${l5(isLink ? void 0 : "button")}
         aria-disabled=${this.disabled ? "true" : "false"}
         aria-label="${this.label}"
         tabindex=${this.disabled ? "-1" : "0"}
@@ -19781,9 +19150,9 @@
       >
         <sl-icon
           class="icon-button__icon"
-          name=${l6(this.name)}
-          library=${l6(this.library)}
-          src=${l6(this.src)}
+          name=${l5(this.name)}
+          library=${l5(this.library)}
+          src=${l5(this.src)}
           aria-hidden="true"
         ></sl-icon>
       </${tag}>
@@ -19792,37 +19161,37 @@
   };
   SlIconButton.styles = icon_button_styles_default;
   __decorateClass([
-    i23(".icon-button")
+    i22(".icon-button")
   ], SlIconButton.prototype, "button", 2);
   __decorateClass([
-    t5()
+    t4()
   ], SlIconButton.prototype, "hasFocus", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIconButton.prototype, "name", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIconButton.prototype, "library", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIconButton.prototype, "src", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIconButton.prototype, "href", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIconButton.prototype, "target", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIconButton.prototype, "download", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIconButton.prototype, "label", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlIconButton.prototype, "disabled", 2);
   SlIconButton = __decorateClass([
-    e6("sl-icon-button")
+    e5("sl-icon-button")
   ], SlIconButton);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.3Y6SB6QS.js
@@ -19837,8 +19206,8 @@
       if (configScript) {
         setBasePath(configScript.getAttribute("data-shoelace"));
       } else {
-        const fallbackScript = scripts.find((s9) => {
-          return /shoelace(\.min)?\.js($|\?)/.test(s9.src) || /shoelace-autoloader(\.min)?\.js($|\?)/.test(s9.src);
+        const fallbackScript = scripts.find((s12) => {
+          return /shoelace(\.min)?\.js($|\?)/.test(s12.src) || /shoelace-autoloader(\.min)?\.js($|\?)/.test(s12.src);
         });
         let path = "";
         if (fallbackScript) {
@@ -19990,7 +19359,7 @@
   }
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DAGT3MMF.js
-  var icon_styles_default = i3`
+  var icon_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -20027,7 +19396,7 @@
         fileData = await fetch(url, { mode: "cors" });
         if (!fileData.ok)
           return fileData.status === 410 ? CACHEABLE_ERROR : RETRYABLE_ERROR;
-      } catch (e35) {
+      } catch (e34) {
         return RETRYABLE_ERROR;
       }
       try {
@@ -20044,7 +19413,7 @@
           return CACHEABLE_ERROR;
         svgEl.part.add("svg");
         return document.adoptNode(svgEl);
-      } catch (e35) {
+      } catch (e34) {
         return CACHEABLE_ERROR;
       }
     }
@@ -20116,19 +19485,19 @@
   };
   SlIcon.styles = icon_styles_default;
   __decorateClass([
-    t5()
+    t4()
   ], SlIcon.prototype, "svg", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlIcon.prototype, "name", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIcon.prototype, "src", 2);
   __decorateClass([
-    e23()
+    e22()
   ], SlIcon.prototype, "label", 2);
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlIcon.prototype, "library", 2);
   __decorateClass([
     watch("label")
@@ -20137,11 +19506,11 @@
     watch(["name", "src", "library"])
   ], SlIcon.prototype, "setIcon", 1);
   SlIcon = __decorateClass([
-    e6("sl-icon")
+    e5("sl-icon")
   ], SlIcon);
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.W3ITKVRU.js
-  var badge_styles_default = i3`
+  var badge_styles_default = i`
   ${component_styles_default}
 
   :host {
@@ -20242,10 +19611,10 @@
       this.pulse = false;
     }
     render() {
-      return y2`
+      return y`
       <slot
         part="base"
-        class=${o6({
+        class=${o5({
         badge: true,
         "badge--primary": this.variant === "primary",
         "badge--success": this.variant === "success",
@@ -20262,17 +19631,666 @@
   };
   SlBadge.styles = badge_styles_default;
   __decorateClass([
-    e23({ reflect: true })
+    e22({ reflect: true })
   ], SlBadge.prototype, "variant", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlBadge.prototype, "pill", 2);
   __decorateClass([
-    e23({ type: Boolean, reflect: true })
+    e22({ type: Boolean, reflect: true })
   ], SlBadge.prototype, "pulse", 2);
   SlBadge = __decorateClass([
-    e6("sl-badge")
+    e5("sl-badge")
   ], SlBadge);
+
+  // src/OptionalShiny.ts
+  var Shiny = window.Shiny;
+
+  // src/make_input_binding.ts
+  function make_input_binding(tag_name, value_field = "value") {
+    if (!Shiny) {
+      return;
+    }
+    class NewCustomBinding extends Shiny.InputBinding {
+      constructor() {
+        super();
+      }
+      find(scope) {
+        return $(scope).find(tag_name);
+      }
+      getId(el) {
+        return el.id;
+      }
+      getValue(el) {
+        return el[value_field];
+      }
+      subscribe(el, callback) {
+        el.onChangeCallback = callback;
+      }
+      unsubscribe(el) {
+        el.onChangeCallback = (x4) => {
+        };
+      }
+    }
+    Shiny.inputBindings.register(new NewCustomBinding(), `${tag_name}-Binding`);
+  }
+
+  // src/make_value_change_emitter.ts
+  var Data_Passing_Event_ID = "shiny-data-passing-event";
+  function make_data_passing_payload(id3, msg) {
+    return { ...msg, id: id3 };
+  }
+  function make_value_change_emitter(el, id3) {
+    return (payload) => {
+      const event = new CustomEvent(Data_Passing_Event_ID, {
+        detail: make_data_passing_payload(id3, payload),
+        bubbles: true
+      });
+      el.dispatchEvent(event);
+    };
+  }
+
+  // src/forge/input-checkbox.ts
+  var ForgeInputCheckbox = class extends SlCheckbox {
+    constructor() {
+      super(...arguments);
+      this.onChangeCallback = (x4) => {
+      };
+      this.on_value_change = make_value_change_emitter(this, this.id);
+    }
+    updated(changedProperties) {
+      if (changedProperties.has("checked")) {
+        this.onChangeCallback(true);
+        this.on_value_change({ type: "boolean", value: this.checked });
+      }
+    }
+  };
+  customElements.define("forge-input-checkbox", ForgeInputCheckbox);
+  make_input_binding("forge-input-checkbox", "checked");
+
+  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@lit/reactive-element/css-tag.js
+  var t6 = window;
+  var e7 = t6.ShadowRoot && (void 0 === t6.ShadyCSS || t6.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype;
+  var s8 = Symbol();
+  var n9 = /* @__PURE__ */ new WeakMap();
+  var o7 = class {
+    constructor(t8, e10, n13) {
+      if (this._$cssResult$ = true, n13 !== s8)
+        throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
+      this.cssText = t8, this.t = e10;
+    }
+    get styleSheet() {
+      let t8 = this.o;
+      const s12 = this.t;
+      if (e7 && void 0 === t8) {
+        const e10 = void 0 !== s12 && 1 === s12.length;
+        e10 && (t8 = n9.get(s12)), void 0 === t8 && ((this.o = t8 = new CSSStyleSheet()).replaceSync(this.cssText), e10 && n9.set(s12, t8));
+      }
+      return t8;
+    }
+    toString() {
+      return this.cssText;
+    }
+  };
+  var r5 = (t8) => new o7("string" == typeof t8 ? t8 : t8 + "", void 0, s8);
+  var i6 = (t8, ...e10) => {
+    const n13 = 1 === t8.length ? t8[0] : e10.reduce((e11, s12, n14) => e11 + ((t9) => {
+      if (true === t9._$cssResult$)
+        return t9.cssText;
+      if ("number" == typeof t9)
+        return t9;
+      throw Error("Value passed to 'css' function must be a 'css' function result: " + t9 + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
+    })(s12) + t8[n14 + 1], t8[0]);
+    return new o7(n13, t8, s8);
+  };
+  var S4 = (s12, n13) => {
+    e7 ? s12.adoptedStyleSheets = n13.map((t8) => t8 instanceof CSSStyleSheet ? t8 : t8.styleSheet) : n13.forEach((e10) => {
+      const n14 = document.createElement("style"), o11 = t6.litNonce;
+      void 0 !== o11 && n14.setAttribute("nonce", o11), n14.textContent = e10.cssText, s12.appendChild(n14);
+    });
+  };
+  var c4 = e7 ? (t8) => t8 : (t8) => t8 instanceof CSSStyleSheet ? ((t9) => {
+    let e10 = "";
+    for (const s12 of t9.cssRules)
+      e10 += s12.cssText;
+    return r5(e10);
+  })(t8) : t8;
+
+  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/@lit/reactive-element/reactive-element.js
+  var s9;
+  var e8 = window;
+  var r6 = e8.trustedTypes;
+  var h4 = r6 ? r6.emptyScript : "";
+  var o8 = e8.reactiveElementPolyfillSupport;
+  var n10 = { toAttribute(t8, i8) {
+    switch (i8) {
+      case Boolean:
+        t8 = t8 ? h4 : null;
+        break;
+      case Object:
+      case Array:
+        t8 = null == t8 ? t8 : JSON.stringify(t8);
+    }
+    return t8;
+  }, fromAttribute(t8, i8) {
+    let s12 = t8;
+    switch (i8) {
+      case Boolean:
+        s12 = null !== t8;
+        break;
+      case Number:
+        s12 = null === t8 ? null : Number(t8);
+        break;
+      case Object:
+      case Array:
+        try {
+          s12 = JSON.parse(t8);
+        } catch (t9) {
+          s12 = null;
+        }
+    }
+    return s12;
+  } };
+  var a5 = (t8, i8) => i8 !== t8 && (i8 == i8 || t8 == t8);
+  var l8 = { attribute: true, type: String, converter: n10, reflect: false, hasChanged: a5 };
+  var d4 = class extends HTMLElement {
+    constructor() {
+      super(), this._$Ei = /* @__PURE__ */ new Map(), this.isUpdatePending = false, this.hasUpdated = false, this._$El = null, this.u();
+    }
+    static addInitializer(t8) {
+      var i8;
+      this.finalize(), (null !== (i8 = this.h) && void 0 !== i8 ? i8 : this.h = []).push(t8);
+    }
+    static get observedAttributes() {
+      this.finalize();
+      const t8 = [];
+      return this.elementProperties.forEach((i8, s12) => {
+        const e10 = this._$Ep(s12, i8);
+        void 0 !== e10 && (this._$Ev.set(e10, s12), t8.push(e10));
+      }), t8;
+    }
+    static createProperty(t8, i8 = l8) {
+      if (i8.state && (i8.attribute = false), this.finalize(), this.elementProperties.set(t8, i8), !i8.noAccessor && !this.prototype.hasOwnProperty(t8)) {
+        const s12 = "symbol" == typeof t8 ? Symbol() : "__" + t8, e10 = this.getPropertyDescriptor(t8, s12, i8);
+        void 0 !== e10 && Object.defineProperty(this.prototype, t8, e10);
+      }
+    }
+    static getPropertyDescriptor(t8, i8, s12) {
+      return { get() {
+        return this[i8];
+      }, set(e10) {
+        const r8 = this[t8];
+        this[i8] = e10, this.requestUpdate(t8, r8, s12);
+      }, configurable: true, enumerable: true };
+    }
+    static getPropertyOptions(t8) {
+      return this.elementProperties.get(t8) || l8;
+    }
+    static finalize() {
+      if (this.hasOwnProperty("finalized"))
+        return false;
+      this.finalized = true;
+      const t8 = Object.getPrototypeOf(this);
+      if (t8.finalize(), void 0 !== t8.h && (this.h = [...t8.h]), this.elementProperties = new Map(t8.elementProperties), this._$Ev = /* @__PURE__ */ new Map(), this.hasOwnProperty("properties")) {
+        const t9 = this.properties, i8 = [...Object.getOwnPropertyNames(t9), ...Object.getOwnPropertySymbols(t9)];
+        for (const s12 of i8)
+          this.createProperty(s12, t9[s12]);
+      }
+      return this.elementStyles = this.finalizeStyles(this.styles), true;
+    }
+    static finalizeStyles(i8) {
+      const s12 = [];
+      if (Array.isArray(i8)) {
+        const e10 = new Set(i8.flat(1 / 0).reverse());
+        for (const i9 of e10)
+          s12.unshift(c4(i9));
+      } else
+        void 0 !== i8 && s12.push(c4(i8));
+      return s12;
+    }
+    static _$Ep(t8, i8) {
+      const s12 = i8.attribute;
+      return false === s12 ? void 0 : "string" == typeof s12 ? s12 : "string" == typeof t8 ? t8.toLowerCase() : void 0;
+    }
+    u() {
+      var t8;
+      this._$E_ = new Promise((t9) => this.enableUpdating = t9), this._$AL = /* @__PURE__ */ new Map(), this._$Eg(), this.requestUpdate(), null === (t8 = this.constructor.h) || void 0 === t8 || t8.forEach((t9) => t9(this));
+    }
+    addController(t8) {
+      var i8, s12;
+      (null !== (i8 = this._$ES) && void 0 !== i8 ? i8 : this._$ES = []).push(t8), void 0 !== this.renderRoot && this.isConnected && (null === (s12 = t8.hostConnected) || void 0 === s12 || s12.call(t8));
+    }
+    removeController(t8) {
+      var i8;
+      null === (i8 = this._$ES) || void 0 === i8 || i8.splice(this._$ES.indexOf(t8) >>> 0, 1);
+    }
+    _$Eg() {
+      this.constructor.elementProperties.forEach((t8, i8) => {
+        this.hasOwnProperty(i8) && (this._$Ei.set(i8, this[i8]), delete this[i8]);
+      });
+    }
+    createRenderRoot() {
+      var t8;
+      const s12 = null !== (t8 = this.shadowRoot) && void 0 !== t8 ? t8 : this.attachShadow(this.constructor.shadowRootOptions);
+      return S4(s12, this.constructor.elementStyles), s12;
+    }
+    connectedCallback() {
+      var t8;
+      void 0 === this.renderRoot && (this.renderRoot = this.createRenderRoot()), this.enableUpdating(true), null === (t8 = this._$ES) || void 0 === t8 || t8.forEach((t9) => {
+        var i8;
+        return null === (i8 = t9.hostConnected) || void 0 === i8 ? void 0 : i8.call(t9);
+      });
+    }
+    enableUpdating(t8) {
+    }
+    disconnectedCallback() {
+      var t8;
+      null === (t8 = this._$ES) || void 0 === t8 || t8.forEach((t9) => {
+        var i8;
+        return null === (i8 = t9.hostDisconnected) || void 0 === i8 ? void 0 : i8.call(t9);
+      });
+    }
+    attributeChangedCallback(t8, i8, s12) {
+      this._$AK(t8, s12);
+    }
+    _$EO(t8, i8, s12 = l8) {
+      var e10;
+      const r8 = this.constructor._$Ep(t8, s12);
+      if (void 0 !== r8 && true === s12.reflect) {
+        const h6 = (void 0 !== (null === (e10 = s12.converter) || void 0 === e10 ? void 0 : e10.toAttribute) ? s12.converter : n10).toAttribute(i8, s12.type);
+        this._$El = t8, null == h6 ? this.removeAttribute(r8) : this.setAttribute(r8, h6), this._$El = null;
+      }
+    }
+    _$AK(t8, i8) {
+      var s12;
+      const e10 = this.constructor, r8 = e10._$Ev.get(t8);
+      if (void 0 !== r8 && this._$El !== r8) {
+        const t9 = e10.getPropertyOptions(r8), h6 = "function" == typeof t9.converter ? { fromAttribute: t9.converter } : void 0 !== (null === (s12 = t9.converter) || void 0 === s12 ? void 0 : s12.fromAttribute) ? t9.converter : n10;
+        this._$El = r8, this[r8] = h6.fromAttribute(i8, t9.type), this._$El = null;
+      }
+    }
+    requestUpdate(t8, i8, s12) {
+      let e10 = true;
+      void 0 !== t8 && (((s12 = s12 || this.constructor.getPropertyOptions(t8)).hasChanged || a5)(this[t8], i8) ? (this._$AL.has(t8) || this._$AL.set(t8, i8), true === s12.reflect && this._$El !== t8 && (void 0 === this._$EC && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(t8, s12))) : e10 = false), !this.isUpdatePending && e10 && (this._$E_ = this._$Ej());
+    }
+    async _$Ej() {
+      this.isUpdatePending = true;
+      try {
+        await this._$E_;
+      } catch (t9) {
+        Promise.reject(t9);
+      }
+      const t8 = this.scheduleUpdate();
+      return null != t8 && await t8, !this.isUpdatePending;
+    }
+    scheduleUpdate() {
+      return this.performUpdate();
+    }
+    performUpdate() {
+      var t8;
+      if (!this.isUpdatePending)
+        return;
+      this.hasUpdated, this._$Ei && (this._$Ei.forEach((t9, i9) => this[i9] = t9), this._$Ei = void 0);
+      let i8 = false;
+      const s12 = this._$AL;
+      try {
+        i8 = this.shouldUpdate(s12), i8 ? (this.willUpdate(s12), null === (t8 = this._$ES) || void 0 === t8 || t8.forEach((t9) => {
+          var i9;
+          return null === (i9 = t9.hostUpdate) || void 0 === i9 ? void 0 : i9.call(t9);
+        }), this.update(s12)) : this._$Ek();
+      } catch (t9) {
+        throw i8 = false, this._$Ek(), t9;
+      }
+      i8 && this._$AE(s12);
+    }
+    willUpdate(t8) {
+    }
+    _$AE(t8) {
+      var i8;
+      null === (i8 = this._$ES) || void 0 === i8 || i8.forEach((t9) => {
+        var i9;
+        return null === (i9 = t9.hostUpdated) || void 0 === i9 ? void 0 : i9.call(t9);
+      }), this.hasUpdated || (this.hasUpdated = true, this.firstUpdated(t8)), this.updated(t8);
+    }
+    _$Ek() {
+      this._$AL = /* @__PURE__ */ new Map(), this.isUpdatePending = false;
+    }
+    get updateComplete() {
+      return this.getUpdateComplete();
+    }
+    getUpdateComplete() {
+      return this._$E_;
+    }
+    shouldUpdate(t8) {
+      return true;
+    }
+    update(t8) {
+      void 0 !== this._$EC && (this._$EC.forEach((t9, i8) => this._$EO(i8, this[i8], t9)), this._$EC = void 0), this._$Ek();
+    }
+    updated(t8) {
+    }
+    firstUpdated(t8) {
+    }
+  };
+  d4.finalized = true, d4.elementProperties = /* @__PURE__ */ new Map(), d4.elementStyles = [], d4.shadowRootOptions = { mode: "open" }, null == o8 || o8({ ReactiveElement: d4 }), (null !== (s9 = e8.reactiveElementVersions) && void 0 !== s9 ? s9 : e8.reactiveElementVersions = []).push("1.6.1");
+
+  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/lit-html/lit-html.js
+  var t7;
+  var i7 = window;
+  var s10 = i7.trustedTypes;
+  var e9 = s10 ? s10.createPolicy("lit-html", { createHTML: (t8) => t8 }) : void 0;
+  var o9 = "$lit$";
+  var n11 = `lit$${(Math.random() + "").slice(9)}$`;
+  var l9 = "?" + n11;
+  var h5 = `<${l9}>`;
+  var r7 = document;
+  var d5 = () => r7.createComment("");
+  var u4 = (t8) => null === t8 || "object" != typeof t8 && "function" != typeof t8;
+  var c5 = Array.isArray;
+  var v3 = (t8) => c5(t8) || "function" == typeof (null == t8 ? void 0 : t8[Symbol.iterator]);
+  var a6 = "[ 	\n\f\r]";
+  var f4 = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g;
+  var _2 = /-->/g;
+  var m3 = />/g;
+  var p3 = RegExp(`>|${a6}(?:([^\\s"'>=/]+)(${a6}*=${a6}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g");
+  var g3 = /'/g;
+  var $3 = /"/g;
+  var y4 = /^(?:script|style|textarea|title)$/i;
+  var w3 = (t8) => (i8, ...s12) => ({ _$litType$: t8, strings: i8, values: s12 });
+  var x3 = w3(1);
+  var b3 = w3(2);
+  var T3 = Symbol.for("lit-noChange");
+  var A3 = Symbol.for("lit-nothing");
+  var E3 = /* @__PURE__ */ new WeakMap();
+  var C3 = r7.createTreeWalker(r7, 129, null, false);
+  var P3 = (t8, i8) => {
+    const s12 = t8.length - 1, l11 = [];
+    let r8, d6 = 2 === i8 ? "<svg>" : "", u5 = f4;
+    for (let i9 = 0; i9 < s12; i9++) {
+      const s13 = t8[i9];
+      let e10, c7, v4 = -1, a7 = 0;
+      for (; a7 < s13.length && (u5.lastIndex = a7, c7 = u5.exec(s13), null !== c7); )
+        a7 = u5.lastIndex, u5 === f4 ? "!--" === c7[1] ? u5 = _2 : void 0 !== c7[1] ? u5 = m3 : void 0 !== c7[2] ? (y4.test(c7[2]) && (r8 = RegExp("</" + c7[2], "g")), u5 = p3) : void 0 !== c7[3] && (u5 = p3) : u5 === p3 ? ">" === c7[0] ? (u5 = null != r8 ? r8 : f4, v4 = -1) : void 0 === c7[1] ? v4 = -2 : (v4 = u5.lastIndex - c7[2].length, e10 = c7[1], u5 = void 0 === c7[3] ? p3 : '"' === c7[3] ? $3 : g3) : u5 === $3 || u5 === g3 ? u5 = p3 : u5 === _2 || u5 === m3 ? u5 = f4 : (u5 = p3, r8 = void 0);
+      const w4 = u5 === p3 && t8[i9 + 1].startsWith("/>") ? " " : "";
+      d6 += u5 === f4 ? s13 + h5 : v4 >= 0 ? (l11.push(e10), s13.slice(0, v4) + o9 + s13.slice(v4) + n11 + w4) : s13 + n11 + (-2 === v4 ? (l11.push(void 0), i9) : w4);
+    }
+    const c6 = d6 + (t8[s12] || "<?>") + (2 === i8 ? "</svg>" : "");
+    if (!Array.isArray(t8) || !t8.hasOwnProperty("raw"))
+      throw Error("invalid template strings array");
+    return [void 0 !== e9 ? e9.createHTML(c6) : c6, l11];
+  };
+  var V3 = class {
+    constructor({ strings: t8, _$litType$: i8 }, e10) {
+      let h6;
+      this.parts = [];
+      let r8 = 0, u5 = 0;
+      const c6 = t8.length - 1, v4 = this.parts, [a7, f5] = P3(t8, i8);
+      if (this.el = V3.createElement(a7, e10), C3.currentNode = this.el.content, 2 === i8) {
+        const t9 = this.el.content, i9 = t9.firstChild;
+        i9.remove(), t9.append(...i9.childNodes);
+      }
+      for (; null !== (h6 = C3.nextNode()) && v4.length < c6; ) {
+        if (1 === h6.nodeType) {
+          if (h6.hasAttributes()) {
+            const t9 = [];
+            for (const i9 of h6.getAttributeNames())
+              if (i9.endsWith(o9) || i9.startsWith(n11)) {
+                const s12 = f5[u5++];
+                if (t9.push(i9), void 0 !== s12) {
+                  const t10 = h6.getAttribute(s12.toLowerCase() + o9).split(n11), i10 = /([.?@])?(.*)/.exec(s12);
+                  v4.push({ type: 1, index: r8, name: i10[2], strings: t10, ctor: "." === i10[1] ? k3 : "?" === i10[1] ? I2 : "@" === i10[1] ? L3 : R3 });
+                } else
+                  v4.push({ type: 6, index: r8 });
+              }
+            for (const i9 of t9)
+              h6.removeAttribute(i9);
+          }
+          if (y4.test(h6.tagName)) {
+            const t9 = h6.textContent.split(n11), i9 = t9.length - 1;
+            if (i9 > 0) {
+              h6.textContent = s10 ? s10.emptyScript : "";
+              for (let s12 = 0; s12 < i9; s12++)
+                h6.append(t9[s12], d5()), C3.nextNode(), v4.push({ type: 2, index: ++r8 });
+              h6.append(t9[i9], d5());
+            }
+          }
+        } else if (8 === h6.nodeType)
+          if (h6.data === l9)
+            v4.push({ type: 2, index: r8 });
+          else {
+            let t9 = -1;
+            for (; -1 !== (t9 = h6.data.indexOf(n11, t9 + 1)); )
+              v4.push({ type: 7, index: r8 }), t9 += n11.length - 1;
+          }
+        r8++;
+      }
+    }
+    static createElement(t8, i8) {
+      const s12 = r7.createElement("template");
+      return s12.innerHTML = t8, s12;
+    }
+  };
+  function N2(t8, i8, s12 = t8, e10) {
+    var o11, n13, l11, h6;
+    if (i8 === T3)
+      return i8;
+    let r8 = void 0 !== e10 ? null === (o11 = s12._$Co) || void 0 === o11 ? void 0 : o11[e10] : s12._$Cl;
+    const d6 = u4(i8) ? void 0 : i8._$litDirective$;
+    return (null == r8 ? void 0 : r8.constructor) !== d6 && (null === (n13 = null == r8 ? void 0 : r8._$AO) || void 0 === n13 || n13.call(r8, false), void 0 === d6 ? r8 = void 0 : (r8 = new d6(t8), r8._$AT(t8, s12, e10)), void 0 !== e10 ? (null !== (l11 = (h6 = s12)._$Co) && void 0 !== l11 ? l11 : h6._$Co = [])[e10] = r8 : s12._$Cl = r8), void 0 !== r8 && (i8 = N2(t8, r8._$AS(t8, i8.values), r8, e10)), i8;
+  }
+  var S5 = class {
+    constructor(t8, i8) {
+      this._$AV = [], this._$AN = void 0, this._$AD = t8, this._$AM = i8;
+    }
+    get parentNode() {
+      return this._$AM.parentNode;
+    }
+    get _$AU() {
+      return this._$AM._$AU;
+    }
+    u(t8) {
+      var i8;
+      const { el: { content: s12 }, parts: e10 } = this._$AD, o11 = (null !== (i8 = null == t8 ? void 0 : t8.creationScope) && void 0 !== i8 ? i8 : r7).importNode(s12, true);
+      C3.currentNode = o11;
+      let n13 = C3.nextNode(), l11 = 0, h6 = 0, d6 = e10[0];
+      for (; void 0 !== d6; ) {
+        if (l11 === d6.index) {
+          let i9;
+          2 === d6.type ? i9 = new M2(n13, n13.nextSibling, this, t8) : 1 === d6.type ? i9 = new d6.ctor(n13, d6.name, d6.strings, this, t8) : 6 === d6.type && (i9 = new z3(n13, this, t8)), this._$AV.push(i9), d6 = e10[++h6];
+        }
+        l11 !== (null == d6 ? void 0 : d6.index) && (n13 = C3.nextNode(), l11++);
+      }
+      return C3.currentNode = r7, o11;
+    }
+    v(t8) {
+      let i8 = 0;
+      for (const s12 of this._$AV)
+        void 0 !== s12 && (void 0 !== s12.strings ? (s12._$AI(t8, s12, i8), i8 += s12.strings.length - 2) : s12._$AI(t8[i8])), i8++;
+    }
+  };
+  var M2 = class {
+    constructor(t8, i8, s12, e10) {
+      var o11;
+      this.type = 2, this._$AH = A3, this._$AN = void 0, this._$AA = t8, this._$AB = i8, this._$AM = s12, this.options = e10, this._$Cp = null === (o11 = null == e10 ? void 0 : e10.isConnected) || void 0 === o11 || o11;
+    }
+    get _$AU() {
+      var t8, i8;
+      return null !== (i8 = null === (t8 = this._$AM) || void 0 === t8 ? void 0 : t8._$AU) && void 0 !== i8 ? i8 : this._$Cp;
+    }
+    get parentNode() {
+      let t8 = this._$AA.parentNode;
+      const i8 = this._$AM;
+      return void 0 !== i8 && 11 === (null == t8 ? void 0 : t8.nodeType) && (t8 = i8.parentNode), t8;
+    }
+    get startNode() {
+      return this._$AA;
+    }
+    get endNode() {
+      return this._$AB;
+    }
+    _$AI(t8, i8 = this) {
+      t8 = N2(this, t8, i8), u4(t8) ? t8 === A3 || null == t8 || "" === t8 ? (this._$AH !== A3 && this._$AR(), this._$AH = A3) : t8 !== this._$AH && t8 !== T3 && this._(t8) : void 0 !== t8._$litType$ ? this.g(t8) : void 0 !== t8.nodeType ? this.$(t8) : v3(t8) ? this.T(t8) : this._(t8);
+    }
+    k(t8) {
+      return this._$AA.parentNode.insertBefore(t8, this._$AB);
+    }
+    $(t8) {
+      this._$AH !== t8 && (this._$AR(), this._$AH = this.k(t8));
+    }
+    _(t8) {
+      this._$AH !== A3 && u4(this._$AH) ? this._$AA.nextSibling.data = t8 : this.$(r7.createTextNode(t8)), this._$AH = t8;
+    }
+    g(t8) {
+      var i8;
+      const { values: s12, _$litType$: e10 } = t8, o11 = "number" == typeof e10 ? this._$AC(t8) : (void 0 === e10.el && (e10.el = V3.createElement(e10.h, this.options)), e10);
+      if ((null === (i8 = this._$AH) || void 0 === i8 ? void 0 : i8._$AD) === o11)
+        this._$AH.v(s12);
+      else {
+        const t9 = new S5(o11, this), i9 = t9.u(this.options);
+        t9.v(s12), this.$(i9), this._$AH = t9;
+      }
+    }
+    _$AC(t8) {
+      let i8 = E3.get(t8.strings);
+      return void 0 === i8 && E3.set(t8.strings, i8 = new V3(t8)), i8;
+    }
+    T(t8) {
+      c5(this._$AH) || (this._$AH = [], this._$AR());
+      const i8 = this._$AH;
+      let s12, e10 = 0;
+      for (const o11 of t8)
+        e10 === i8.length ? i8.push(s12 = new M2(this.k(d5()), this.k(d5()), this, this.options)) : s12 = i8[e10], s12._$AI(o11), e10++;
+      e10 < i8.length && (this._$AR(s12 && s12._$AB.nextSibling, e10), i8.length = e10);
+    }
+    _$AR(t8 = this._$AA.nextSibling, i8) {
+      var s12;
+      for (null === (s12 = this._$AP) || void 0 === s12 || s12.call(this, false, true, i8); t8 && t8 !== this._$AB; ) {
+        const i9 = t8.nextSibling;
+        t8.remove(), t8 = i9;
+      }
+    }
+    setConnected(t8) {
+      var i8;
+      void 0 === this._$AM && (this._$Cp = t8, null === (i8 = this._$AP) || void 0 === i8 || i8.call(this, t8));
+    }
+  };
+  var R3 = class {
+    constructor(t8, i8, s12, e10, o11) {
+      this.type = 1, this._$AH = A3, this._$AN = void 0, this.element = t8, this.name = i8, this._$AM = e10, this.options = o11, s12.length > 2 || "" !== s12[0] || "" !== s12[1] ? (this._$AH = Array(s12.length - 1).fill(new String()), this.strings = s12) : this._$AH = A3;
+    }
+    get tagName() {
+      return this.element.tagName;
+    }
+    get _$AU() {
+      return this._$AM._$AU;
+    }
+    _$AI(t8, i8 = this, s12, e10) {
+      const o11 = this.strings;
+      let n13 = false;
+      if (void 0 === o11)
+        t8 = N2(this, t8, i8, 0), n13 = !u4(t8) || t8 !== this._$AH && t8 !== T3, n13 && (this._$AH = t8);
+      else {
+        const e11 = t8;
+        let l11, h6;
+        for (t8 = o11[0], l11 = 0; l11 < o11.length - 1; l11++)
+          h6 = N2(this, e11[s12 + l11], i8, l11), h6 === T3 && (h6 = this._$AH[l11]), n13 || (n13 = !u4(h6) || h6 !== this._$AH[l11]), h6 === A3 ? t8 = A3 : t8 !== A3 && (t8 += (null != h6 ? h6 : "") + o11[l11 + 1]), this._$AH[l11] = h6;
+      }
+      n13 && !e10 && this.j(t8);
+    }
+    j(t8) {
+      t8 === A3 ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, null != t8 ? t8 : "");
+    }
+  };
+  var k3 = class extends R3 {
+    constructor() {
+      super(...arguments), this.type = 3;
+    }
+    j(t8) {
+      this.element[this.name] = t8 === A3 ? void 0 : t8;
+    }
+  };
+  var H4 = s10 ? s10.emptyScript : "";
+  var I2 = class extends R3 {
+    constructor() {
+      super(...arguments), this.type = 4;
+    }
+    j(t8) {
+      t8 && t8 !== A3 ? this.element.setAttribute(this.name, H4) : this.element.removeAttribute(this.name);
+    }
+  };
+  var L3 = class extends R3 {
+    constructor(t8, i8, s12, e10, o11) {
+      super(t8, i8, s12, e10, o11), this.type = 5;
+    }
+    _$AI(t8, i8 = this) {
+      var s12;
+      if ((t8 = null !== (s12 = N2(this, t8, i8, 0)) && void 0 !== s12 ? s12 : A3) === T3)
+        return;
+      const e10 = this._$AH, o11 = t8 === A3 && e10 !== A3 || t8.capture !== e10.capture || t8.once !== e10.once || t8.passive !== e10.passive, n13 = t8 !== A3 && (e10 === A3 || o11);
+      o11 && this.element.removeEventListener(this.name, this, e10), n13 && this.element.addEventListener(this.name, this, t8), this._$AH = t8;
+    }
+    handleEvent(t8) {
+      var i8, s12;
+      "function" == typeof this._$AH ? this._$AH.call(null !== (s12 = null === (i8 = this.options) || void 0 === i8 ? void 0 : i8.host) && void 0 !== s12 ? s12 : this.element, t8) : this._$AH.handleEvent(t8);
+    }
+  };
+  var z3 = class {
+    constructor(t8, i8, s12) {
+      this.element = t8, this.type = 6, this._$AN = void 0, this._$AM = i8, this.options = s12;
+    }
+    get _$AU() {
+      return this._$AM._$AU;
+    }
+    _$AI(t8) {
+      N2(this, t8);
+    }
+  };
+  var j = i7.litHtmlPolyfillSupport;
+  null == j || j(V3, M2), (null !== (t7 = i7.litHtmlVersions) && void 0 !== t7 ? t7 : i7.litHtmlVersions = []).push("2.7.4");
+  var B = (t8, i8, s12) => {
+    var e10, o11;
+    const n13 = null !== (e10 = null == s12 ? void 0 : s12.renderBefore) && void 0 !== e10 ? e10 : i8;
+    let l11 = n13._$litPart$;
+    if (void 0 === l11) {
+      const t9 = null !== (o11 = null == s12 ? void 0 : s12.renderBefore) && void 0 !== o11 ? o11 : null;
+      n13._$litPart$ = l11 = new M2(i8.insertBefore(d5(), t9), t9, void 0, null != s12 ? s12 : {});
+    }
+    return l11._$AI(t8), l11;
+  };
+
+  // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/lit-element/lit-element.js
+  var l10;
+  var o10;
+  var s11 = class extends d4 {
+    constructor() {
+      super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
+    }
+    createRenderRoot() {
+      var t8, e10;
+      const i8 = super.createRenderRoot();
+      return null !== (t8 = (e10 = this.renderOptions).renderBefore) && void 0 !== t8 || (e10.renderBefore = i8.firstChild), i8;
+    }
+    update(t8) {
+      const i8 = this.render();
+      this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t8), this._$Do = B(i8, this.renderRoot, this.renderOptions);
+    }
+    connectedCallback() {
+      var t8;
+      super.connectedCallback(), null === (t8 = this._$Do) || void 0 === t8 || t8.setConnected(true);
+    }
+    disconnectedCallback() {
+      var t8;
+      super.disconnectedCallback(), null === (t8 = this._$Do) || void 0 === t8 || t8.setConnected(false);
+    }
+    render() {
+      return T3;
+    }
+  };
+  s11.finalized = true, s11._$litElement$ = true, null === (l10 = globalThis.litElementHydrateSupport) || void 0 === l10 || l10.call(globalThis, { LitElement: s11 });
+  var n12 = globalThis.litElementPolyfillSupport;
+  null == n12 || n12({ LitElement: s11 });
+  (null !== (o10 = globalThis.litElementVersions) && void 0 !== o10 ? o10 : globalThis.litElementVersions = []).push("3.3.2");
 
   // ../../../../nobackup/dropbox-nosync/shinycomponent/js/node_modules/just-debounce-it/index.mjs
   var functionDebounce = debounce2;
@@ -20324,30 +20342,31 @@
   // src/forge/input-text.ts
   var ForgeInputText = class extends SlInput {
     constructor() {
-      super();
+      super(...arguments);
+      this.onChangeCallback = (x4) => {
+      };
       this["wait-for-enter"] = false;
       this.debounce = 250;
       this.on_value_change = make_value_change_emitter(this, this.id);
+    }
+    connectedCallback() {
+      super.connectedCallback();
       const notifyChangeDebounced = functionDebounce(() => {
         this.notifyChange();
       }, this.debounce);
-      this.onChangeCallback = (x4) => {
-      };
       this.addEventListener("input", () => {
         if (this["wait-for-enter"])
           return;
         notifyChangeDebounced();
       });
-      this.addEventListener("keydown", (e8) => {
+      this.addEventListener("keydown", (e10) => {
         if (!this["wait-for-enter"])
           return;
-        if (e8.code === "Enter") {
+        if (e10.code === "Enter") {
           this.notifyChange();
         }
       });
-      this.addEventListener("blur", (e8) => {
-        this.notifyChange();
-      });
+      this.addEventListener("blur", (e10) => this.notifyChange());
     }
     notifyChange() {
       this.onChangeCallback(true);
@@ -20403,7 +20422,7 @@
     ...ForgeInputText.properties
   };
   ForgeInputNumber.styles = [
-    i`
+    i6`
       div.invalid {
         outline: 3px solid var(--color-error);
       }
@@ -20428,41 +20447,6 @@
   customElements.define("forge-split-panel", ForgeSplitPanel);
 })();
 /*! Bundled license information:
-
-@lit/reactive-element/css-tag.js:
-  (**
-   * @license
-   * Copyright 2019 Google LLC
-   * SPDX-License-Identifier: BSD-3-Clause
-   *)
-
-@lit/reactive-element/reactive-element.js:
-  (**
-   * @license
-   * Copyright 2017 Google LLC
-   * SPDX-License-Identifier: BSD-3-Clause
-   *)
-
-lit-html/lit-html.js:
-  (**
-   * @license
-   * Copyright 2017 Google LLC
-   * SPDX-License-Identifier: BSD-3-Clause
-   *)
-
-lit-element/lit-element.js:
-  (**
-   * @license
-   * Copyright 2017 Google LLC
-   * SPDX-License-Identifier: BSD-3-Clause
-   *)
-
-lit-html/is-server.js:
-  (**
-   * @license
-   * Copyright 2022 Google LLC
-   * SPDX-License-Identifier: BSD-3-Clause
-   *)
 
 @shoelace-style/shoelace/dist/chunks/chunk.DUT32TWM.js:
   (*! Bundled license information:
@@ -20689,5 +20673,40 @@ lit-html/is-server.js:
      * SPDX-License-Identifier: BSD-3-Clause
      *)
   *)
+
+@lit/reactive-element/css-tag.js:
+  (**
+   * @license
+   * Copyright 2019 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+@lit/reactive-element/reactive-element.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+lit-html/lit-html.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+lit-element/lit-element.js:
+  (**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
+
+lit-html/is-server.js:
+  (**
+   * @license
+   * Copyright 2022 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   *)
 */
 //# sourceMappingURL=index.js.map

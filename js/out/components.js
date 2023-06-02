@@ -13462,6 +13462,8 @@
         return typeof x5.value === "string";
       case "number":
         return typeof x5.value === "number";
+      case "boolean":
+        return typeof x5.value === "boolean";
       default:
         return true;
     }
@@ -18296,11 +18298,11 @@
   customElements.define("shiny-sidebar", Sidebar);
 
   // src/make_input_binding.ts
-  function make_input_binding(tag_name) {
+  function make_input_binding(tag_name, value_field = "value") {
     if (!Shiny2) {
       return;
     }
-    class NewNumberBinding extends Shiny2.InputBinding {
+    class NewCustomBinding extends Shiny2.InputBinding {
       constructor() {
         super();
       }
@@ -18311,7 +18313,7 @@
         return el.id;
       }
       getValue(el) {
-        return el.value;
+        return el[value_field];
       }
       subscribe(el, callback) {
         el.onChangeCallback = callback;
@@ -18321,7 +18323,7 @@
         };
       }
     }
-    Shiny2.inputBindings.register(new NewNumberBinding(), `${tag_name}-Binding`);
+    Shiny2.inputBindings.register(new NewCustomBinding(), `${tag_name}-Binding`);
   }
 
   // src/simple-number-input.ts

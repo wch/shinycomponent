@@ -155,21 +155,23 @@ app_ui = sc.page(
                 "forgenum",
                 "Number:",
                 min=1,
-                max=100,
+                max=1000,
                 value=5,
-                help_text="min=1, max=100",
+                debounce=50,
+                help_text="min=1, max=1000, debounce=50",
                 class_="label-on-left",
             ),
             sc.forge.input_number(
                 "forgenum2",
                 "Number 2:",
                 min=1,
-                max=100,
+                max=1000,
                 value=4,
                 wait_for_enter=True,
                 help_text="Updates on Enter/blur",
                 class_="label-on-left",
             ),
+            sc.forge.input_checkbox(id="forgecheckbox", label="Checkbox"),
             ui.br(),
             ui.output_text_verbatim("forgetext_out", placeholder=True),
             name="Number Input",
@@ -313,6 +315,7 @@ def server(input: Inputs, output: Outputs, session: Session):
         return (
             f"{input.forgetext()}\n{input.forgetext2()}\n{input.date1()}"
             + f"\n{input.forgenum()}\n{input.forgenum2()}"
+            + f"\n{input.forgecheckbox()}"
         )
 
     @reactive.Calc
