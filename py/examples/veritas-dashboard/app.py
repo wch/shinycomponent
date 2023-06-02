@@ -6,7 +6,6 @@ from typing import List
 import pandas as pd
 import seaborn as sns
 import shiny.experimental as x
-import shinyswatch
 from colors import bg_palette, palette
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 from shiny import App, Inputs, Outputs, Session, reactive, render, req, ui
@@ -155,24 +154,36 @@ app_ui = sc.page(
         ),
         sc.sidebar(
             Tag("posit-logo"),
-            ui.input_selectize(
-                "xvar",
-                "X variable",
-                numeric_cols,
-                selected="Bill Length (mm)",
+            Tag(
+                "shiny-section",
+                ui.input_selectize(
+                    "xvar",
+                    "X variable",
+                    numeric_cols,
+                    selected="Bill Length (mm)",
+                ),
+                ui.input_selectize(
+                    "yvar",
+                    "Y variable",
+                    numeric_cols,
+                    selected="Bill Depth (mm)",
+                ),
+                icon="👔",
             ),
-            ui.input_selectize(
-                "yvar",
-                "Y variable",
-                numeric_cols,
-                selected="Bill Depth (mm)",
-            ),
-            ui.input_checkbox_group(
-                "species", "Filter by species", species, selected=species
+            Tag(
+                "shiny-section",
+                ui.input_checkbox_group(
+                    "species", "Filter by species", species, selected=species
+                ),
+                icon="🐧",
             ),
             ui.hr(),
-            ui.input_switch("by_species", "Show species", value=True),
-            ui.input_switch("show_margins", "Show marginal plots", value=True),
+            Tag(
+                "shiny-section",
+                ui.input_switch("by_species", "Show species", value=True),
+                ui.input_switch("show_margins", "Show marginal plots", value=True),
+                icon="📊",
+            ),
         ),
         Tag(
             "shiny-footer",

@@ -1,11 +1,13 @@
 import { LitElement, css, html } from "lit";
+import { customElement, property } from "lit/decorators";
 import { make_input_binding } from "./make_input_binding";
 
 const themes = ["default", "light", "dark", "dim", "grape"] as const;
 type Theme = (typeof themes)[number];
+
+@customElement("theme-chooser")
 export class ThemeChooser extends LitElement {
-  choice: Theme = themes[0];
-  static properties = { choice: { reflect: true } };
+  @property({ reflect: true }) choice: Theme = themes[0];
 
   static styles = css`
     input {
@@ -35,6 +37,3 @@ export class ThemeChooser extends LitElement {
     `;
   }
 }
-
-// Register both the custom element and the input bindings
-customElements.define("theme-chooser", ThemeChooser);

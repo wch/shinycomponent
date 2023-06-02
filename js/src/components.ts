@@ -8,6 +8,8 @@ import { Grid } from "./grid";
 import { GridItem } from "./grid-item";
 import { OpTabset } from "./op-tabset";
 import { PositLogo } from "./posit-logo";
+import { ShinyCard } from "./shiny-card";
+import { Section } from "./shiny-section";
 import { Sidebar } from "./sidebar";
 import { SimpleNumberInput } from "./simple-number-input";
 import { SimpleNumberOutput } from "./simple-number-output";
@@ -19,7 +21,6 @@ import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
 
 import "./design-tokens.css";
-import { ShinyCard } from "./shiny-card";
 
 // Prevent esbuild from tree-shaking these components away.
 Collapsible;
@@ -42,3 +43,4 @@ Grid;
 GridItem;
 PositLogo;
 ShinyCard;
+Section;

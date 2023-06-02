@@ -18,6 +18,7 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "useDefineForClassFields": false,
+    "experimentalDecorators": true,
     "plugins": [
       {
         "name": "typescript-lit-html-plugin",
