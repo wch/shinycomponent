@@ -63,6 +63,32 @@ body:has([choice="dark"]) {
   --color-text-2: var(--stone-2);
    --color-primary: var(--red-11);
 }
+
+
+  .label-on-left {
+    --label-width: 7rem;
+    --gap-width: 1rem;
+  }
+
+  .label-on-left + .label-on-left {
+    margin-top: var(--sl-spacing-medium);
+  }
+
+  .label-on-left::part(form-control) {
+    display: grid;
+    grid: auto / var(--label-width) 1fr;
+    gap: var(--sl-spacing-3x-small) var(--gap-width);
+    align-items: center;
+  }
+
+  .label-on-left::part(form-control-label) {
+    text-align: right;
+  }
+
+  .label-on-left::part(form-control-help-text) {
+    grid-column-start: 2;
+  }
+
 """
 
 app_ui = sc.page(
@@ -106,6 +132,39 @@ app_ui = sc.page(
             ui.output_text_verbatim("num_out", placeholder=True),
             Tag("material-slider", id="num_in2", value="20", withLabel=""),
             ui.output_text_verbatim("num_out2", placeholder=True),
+            sc.forge.input_text("forgetext", None, wait_for_enter=False),
+            sc.forge.input_text(
+                "forgetext2",
+                label=ui.span(
+                    "This is an ",
+                    ui.strong("accessible"),
+                    " label for the text input",
+                ),
+                placeholder="This is a placeholder",
+                wait_for_enter=True,
+                clearable=True,
+                size="small",
+                pill=True,
+            ),
+            ui.br(),
+            sc.forge.input_text(
+                "date1", "Label on left:", class_="label-on-left", type="date"
+            ),
+            ui.br(),
+            sc.forge.input_number(
+                "forgenum", "Number:", min=1, max=100, value=10, class_="label-on-left"
+            ),
+            sc.forge.input_number(
+                "forgenum2",
+                "Number 2:",
+                min=1,
+                max=100,
+                value=10,
+                wait_for_enter=True,
+                class_="label-on-left",
+            ),
+            ui.br(),
+            ui.output_text_verbatim("forgetext_out", placeholder=True),
             name="Number Input",
         ),
         sc.tab(
@@ -210,6 +269,15 @@ def server(input: Inputs, output: Outputs, session: Session):
     @render.text
     def current_tab():
         return f"Current tab: {input.tabset1()}"
+
+    @output
+    @render.text
+    def forgetext_out():
+        print(input.forgetext())
+        return (
+            f"{input.forgetext()}\n{input.forgetext2()}\n{input.date1()}"
+            + f"\n{input.forgenum()}\n{input.forgenum2()}"
+        )
 
     @reactive.Calc
     def filtered_df() -> pd.DataFrame:
