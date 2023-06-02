@@ -153,7 +153,11 @@ app_ui = sc.page(
             name="Table",
         ),
         sc.sidebar(
-            Tag("posit-logo"),
+            Tag(
+                "shiny-section",
+                Tag("posit-logo", withName=True, slot="icon"),
+                ui.h2("Shiny"),
+            ),
             Tag(
                 "shiny-section",
                 ui.input_selectize(
@@ -177,7 +181,6 @@ app_ui = sc.page(
                 ),
                 icon="🐧",
             ),
-            ui.hr(),
             Tag(
                 "shiny-section",
                 ui.input_switch("by_species", "Show species", value=True),

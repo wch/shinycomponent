@@ -46,6 +46,7 @@ export class ShinyCard extends LitElement {
     :host([centercontent]) {
       display: grid;
       place-content: center;
+      overflow: auto;
     }
 
     ::slotted(*) {

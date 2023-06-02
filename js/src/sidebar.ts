@@ -1,13 +1,11 @@
 import { LitElement, css, html } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import { set_el_attr } from "./set_el_attr";
 
+@customElement("shiny-sidebar")
 export class Sidebar extends LitElement {
-  open: boolean = true;
-  openWidthPx: number = 250;
-  static properties = {
-    openWidthPx: { type: Number },
-    open: { type: Boolean, reflect: true },
-  };
+  @property({ type: Boolean, reflect: true }) closed: boolean = false;
+  @property({ type: Number }) openWidthPx: number = 300;
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -16,12 +14,30 @@ export class Sidebar extends LitElement {
     :host {
       --transition: 0.3s var(--ease-3);
       --padding: var(--size-fluid-2);
-      --sidebar-icon-width: var(--size-6);
+
+      --sidebar-content-columns: auto 1fr;
+      --sidebar-content-height: auto;
+      --sidebar-content-gap: var(--size-3);
+      --sidebar-content-overflow: auto;
+      /* --sidebar-content-width: calc(100% - var(--sidebar-icon-width)); */
 
       height: 100%;
       position: relative;
-      display: grid;
-      grid-template-columns: auto auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--padding);
+    }
+
+    :host([closed]) {
+      /* --sidebar-content-width: 0px; */
+      --sidebar-content-columns: auto 0px;
+      --sidebar-content-height: var(--size-fluid-6);
+      --sidebar-content-gap: 0;
+      --sidebar-content-overflow: hidden;
+    }
+
+    :host([closed]) .content {
+      width: fit-content;
     }
 
     * {
@@ -34,21 +50,27 @@ export class Sidebar extends LitElement {
       margin: 0;
 
       /* These are the styles when closed */
-      padding-block: var(--size-fluid-1);
-      padding-inline: 0;
+      /* padding-block: var(--size-fluid-1); */
+      padding-inline: var(--padding);
       /* opacity: 0; */
-      width: var(--sidebar-icon-width);
+      width: var(--sidebar-width, 100px);
 
       transition: width var(--transition), padding var(--transition);
 
       display: flex;
       flex-direction: column;
+      /* gap: var(--padding); */
     }
 
-    :host([open]) .content {
-      opacity: 1;
-      padding-inline-start: var(--padding);
-      width: var(--sidebar-width, 100px);
+    .content > ::slotted(hr) {
+      margin: 0 !important;
+    }
+
+    .content > ::slotted(shiny-section) {
+      border-bottom: 1px solid var(--surface-4);
+    }
+    .content > ::slotted(shiny-section:last-child) {
+      border-bottom: none;
     }
 
     .toggle-icon {
@@ -57,14 +79,17 @@ export class Sidebar extends LitElement {
       text-align: center;
     }
 
-    :host([open]) .toggle-icon {
+    :host([closed]) .toggle-icon {
       transform: scaleX(-1);
     }
 
     .open-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
       font-size: var(--font-size-3);
       width: var(--padding);
-      height: 100%;
+      height: fit-content;
       cursor: pointer;
       color: var(--brand, var(--color-action));
     }
@@ -76,24 +101,21 @@ export class Sidebar extends LitElement {
     set_el_attr(this, "slot", "sidebar");
   }
 
+  toggle_closed() {
+    this.closed = !this.closed;
+  }
   render() {
     return html`
       <div class="content" style="--sidebar-width: ${this.openWidthPx}px;">
         <slot></slot>
       </div>
       <div
-        @click=${this.toggle_open}
-        title=${this.open ? "Close sidebar" : "Open sidebar"}
+        @click=${this.toggle_closed}
+        title=${this.closed ? "Open sidebar" : "Close sidebar"}
         class="open-toggle"
       >
         <div class="toggle-icon">❮</div>
       </div>
     `;
   }
-
-  toggle_open() {
-    this.open = !this.open;
-  }
 }
-
-customElements.define("shiny-sidebar", Sidebar);
