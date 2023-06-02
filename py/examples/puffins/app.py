@@ -171,8 +171,17 @@ app_ui = sc.page(
                 help_text="Updates on Enter/blur",
                 class_="label-on-left",
             ),
-            sc.forge.input_checkbox(id="forgecheckbox", label="Checkbox"),
-            sc.forge.input_switch(id="forgeswitch", label="Switch"),
+            ui.div(
+                sc.forge.input_checkbox(id="forgecheckbox", label="Checkbox"),
+            ),
+            ui.div(
+                sc.forge.input_switch(id="forgeswitch", label="Switch", value=False),
+            ),
+            ui.div(
+                sc.forge.input_switch(
+                    id="forgeswitch2", label="switch2", size="large", value=True
+                ),
+            ),
             ui.br(),
             ui.output_text_verbatim("forgetext_out", placeholder=True),
             name="Number Input",
@@ -293,8 +302,8 @@ app_ui = sc.page(
                 "species", "Filter by species", species, selected=species
             ),
             ui.hr(),
-            ui.input_switch("by_species", "Show species", value=True),
-            ui.input_switch("show_margins", "Show marginal plots", value=True),
+            sc.forge.input_switch("by_species", "Show species", value=True),
+            sc.forge.input_switch("show_margins", "Show marginal plots", value=True),
         ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
         ui.tags.div("Puffins are cool", {"slot": "header"}),
@@ -316,7 +325,7 @@ def server(input: Inputs, output: Outputs, session: Session):
         return (
             f"{input.forgetext()}\n{input.forgetext2()}\n{input.date1()}"
             + f"\n{input.forgenum()}\n{input.forgenum2()}"
-            + f"\n{input.forgecheckbox()}\n{input.forgeswitch()}"
+            + f"\n{input.forgecheckbox()}\n{input.forgeswitch()}\n{input.forgeswitch2()}"
         )
 
     @reactive.Calc

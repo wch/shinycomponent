@@ -19694,9 +19694,19 @@
   var ForgeInputCheckbox = class extends SlCheckbox {
     constructor() {
       super(...arguments);
+      this.inline = false;
       this.onChangeCallback = (x4) => {
       };
       this.on_value_change = make_value_change_emitter(this, this.id);
+    }
+    connectedCallback() {
+      super.connectedCallback();
+      if (this.value !== void 0) {
+        this.checked = true;
+      }
+      if (!this.inline) {
+        this.style.display = "block";
+      }
     }
     updated(changedProperties) {
       if (changedProperties.has("checked")) {
@@ -20439,9 +20449,19 @@
   var ForgeInputSwitch = class extends SlSwitch {
     constructor() {
       super(...arguments);
+      this.inline = false;
       this.onChangeCallback = (x4) => {
       };
       this.on_value_change = make_value_change_emitter(this, this.id);
+    }
+    connectedCallback() {
+      super.connectedCallback();
+      if (this.value !== void 0) {
+        this.checked = true;
+      }
+      if (!this.inline) {
+        this.style.display = "block";
+      }
     }
     updated(changedProperties) {
       if (changedProperties.has("checked")) {
@@ -20450,6 +20470,21 @@
       }
     }
   };
+  // Make slider the same size as the "slot".
+  ForgeInputSwitch.styles = [
+    SlSwitch.styles,
+    i6`
+      :host([size="small"]) {
+        --thumb-size: var(--sl-toggle-size-small);
+      }
+      :host([size="medium"]) {
+        --thumb-size: var(--sl-toggle-size-medium);
+      }
+      :host([size="large"]) {
+        --thumb-size: var(--sl-toggle-size-large);
+      }
+    `
+  ];
   customElements.define("forge-input-switch", ForgeInputSwitch);
   make_input_binding("forge-input-switch", "checked");
 
