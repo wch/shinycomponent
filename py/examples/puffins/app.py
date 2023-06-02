@@ -214,7 +214,7 @@ app_ui = sc.page(
                     sc.forge.split_panel(
                         {
                             "vertical": "",
-                            "style": "height: 100%;",
+                            "style": "width: 100%;",
                         },
                         ui.div(
                             Tag("star-rating", id="foo"),
@@ -321,7 +321,6 @@ def server(input: Inputs, output: Outputs, session: Session):
     @output
     @render.text
     def forgetext_out():
-        print(input.forgetext())
         return (
             f"{input.forgetext()}\n{input.forgetext2()}\n{input.date1()}"
             + f"\n{input.forgenum()}\n{input.forgenum2()}"
