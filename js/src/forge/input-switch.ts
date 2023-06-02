@@ -11,13 +11,13 @@ export class ForgeInputSwitch extends SlSwitch {
     SlSwitch.styles,
     css`
       :host([size="small"]) {
-        --thumb-size: var(--sl-toggle-size-small);
+        --thumb-size: calc(var(--sl-toggle-size-small)- 4px);
       }
       :host([size="medium"]) {
-        --thumb-size: var(--sl-toggle-size-medium);
+        --thumb-size: calc(var(--sl-toggle-size-medium) - 4px);
       }
       :host([size="large"]) {
-        --thumb-size: var(--sl-toggle-size-large);
+        --thumb-size: calc(var(--sl-toggle-size-large) - 4px);
       }
     `,
   ];
