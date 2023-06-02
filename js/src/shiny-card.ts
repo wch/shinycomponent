@@ -26,6 +26,7 @@ export class ShinyCard extends LitElement {
       border-radius: var(--item-radius, var(--radius-3));
       padding: var(--item-padding, var(--size-3));
       gap: var(--item-padding, var(--size-3));
+      overflow: auto;
     }
 
     :host([shadowed]) {

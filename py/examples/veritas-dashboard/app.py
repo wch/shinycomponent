@@ -134,7 +134,7 @@ app_ui = sc.page(
             # Make a grid with 4 rows and 3 columns
             sc.grid(
                 # Blurb takes up 2 of 3 columns
-                sc.grid_item(ui.p(about_puffins_blurb), width=2, centerContent=True),
+                sc.grid_item(ui.p(about_puffins_blurb), width=2),
                 # Value boxes are 4 rows tall
                 ui.output_ui("value_boxes", container=tall_item),
                 # Scatter plot is 3 rows tall and 2 columns wide
@@ -149,7 +149,10 @@ app_ui = sc.page(
             name="Plot",
         ),
         sc.tab(
-            sc.static_data_grid(df),
+            Tag(
+                "shiny-card",
+                sc.static_data_grid(df, height="100%"),
+            ),
             name="Table",
         ),
         sc.sidebar(
@@ -157,6 +160,15 @@ app_ui = sc.page(
                 "shiny-section",
                 Tag("posit-logo", withName=True, slot="icon"),
                 ui.h2("Shiny"),
+            ),
+            Tag(
+                "shiny-section",
+                ui.tags.small(
+                    ui.em(
+                        "Below are some inputs that control the app content. Use them and explore the inferior world of penguins!"
+                    )
+                ),
+                icon="ℹ️",
             ),
             Tag(
                 "shiny-section",

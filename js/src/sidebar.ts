@@ -34,6 +34,8 @@ export class Sidebar extends LitElement {
       --sidebar-content-height: var(--size-fluid-6);
       --sidebar-content-gap: 0;
       --sidebar-content-overflow: hidden;
+
+      cursor: e-resize;
     }
 
     :host([closed]) .content {
@@ -75,12 +77,13 @@ export class Sidebar extends LitElement {
 
     .toggle-icon {
       transition: transform var(--transition);
-      transform: scaleX(1);
+      transform: scale(1);
       text-align: center;
     }
 
     :host([closed]) .toggle-icon {
-      transform: scaleX(-1);
+      transform: scale(0);
+      /* opacity: 0; */
     }
 
     .open-toggle {
@@ -91,26 +94,39 @@ export class Sidebar extends LitElement {
       width: var(--padding);
       height: fit-content;
       cursor: pointer;
-      color: var(--brand, var(--color-action));
+      color: var(--text-2);
     }
   `;
 
   constructor() {
     super();
-
     set_el_attr(this, "slot", "sidebar");
+
+    this.addEventListener("click", (e) => {
+      if (!this.closed) {
+        return;
+      }
+
+      this.toggle_closed();
+    });
   }
 
   toggle_closed() {
     this.closed = !this.closed;
   }
+
+  handle_toggle_btn_click(e: MouseEvent) {
+    e.stopPropagation();
+    this.toggle_closed();
+  }
+
   render() {
     return html`
       <div class="content" style="--sidebar-width: ${this.openWidthPx}px;">
         <slot></slot>
       </div>
       <div
-        @click=${this.toggle_closed}
+        @click=${this.handle_toggle_btn_click}
         title=${this.closed ? "Open sidebar" : "Close sidebar"}
         class="open-toggle"
       >
