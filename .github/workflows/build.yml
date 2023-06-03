@@ -41,6 +41,11 @@ jobs:
           pip install -e .[dev]
           make dist
 
+      # Even though pip can install from a git repository, we build a Python
+      # wheel here so that it can be easily installed from Pyodide. In Pyodide,
+      # pip is not available; it has micropip, which can't install from a git
+      # repository, but can install a wheel.
+
       # =====================================================
       # Commit to main-build branch
       # =====================================================
