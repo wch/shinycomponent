@@ -13,6 +13,7 @@ from typing import Optional
 from htmltools import HTMLDependency, Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from . import __version__
+from ._htmldeps import open_props_dep
 from ._utils import attr_to_escaped_json
 
 
@@ -138,17 +139,24 @@ def input_select(
     )
 
 
-ex_www_path = PurePath(__file__).parent / "www" / "forge"
+ex_www_path = PurePath(__file__).parent / "www"
 
 
-def forge_dep() -> HTMLDependency:
-    return HTMLDependency(
-        name="forge",
-        version=__version__,
-        source={
-            "package": "shinycomponent",
-            "subdir": str(ex_www_path),
-        },
-        stylesheet={"href": "index.css"},
-        script={"src": "index.js", "type": "module"},
-    )
+def forge_dep() -> list[HTMLDependency]:
+    return [
+        HTMLDependency(
+            name="forge",
+            version=__version__,
+            source={
+                "package": "shinycomponent",
+                "subdir": str(ex_www_path),
+            },
+            stylesheet=[
+                {"href": "forge/index.css"},
+                # TODO: Fix props so that this won't duplicate the CSS from page_deps().
+                {"href": "components.css"},
+            ],
+            script={"src": "forge/index.js", "type": "module"},
+        ),
+        open_props_dep(),
+    ]
