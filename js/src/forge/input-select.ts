@@ -48,7 +48,7 @@ export class ForgeInputSelect extends SlSelect {
 
 customElements.define("forge-input-select", ForgeInputSelect);
 
-make_input_binding("forge-input-select", "value_unescaped");
+make_input_binding("forge-input-select", { value_field: "value_unescaped" });
 
 declare global {
   interface HTMLElementTagNameMap {

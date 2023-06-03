@@ -19,7 +19,7 @@ export function make_input_binding(
   }: {
     value_field?: string;
     type?: string | null;
-  }
+  } = {}
 ) {
   if (!Shiny) {
     return;

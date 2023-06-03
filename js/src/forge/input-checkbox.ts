@@ -42,7 +42,7 @@ export class ForgeInputCheckbox extends SlCheckbox {
 
 customElements.define("forge-input-checkbox", ForgeInputCheckbox);
 
-make_input_binding("forge-input-checkbox", "checked");
+make_input_binding("forge-input-checkbox", { value_field: "checked" });
 
 declare global {
   interface HTMLElementTagNameMap {
