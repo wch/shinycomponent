@@ -312,48 +312,6 @@ app_ui = sc.page(
             name="Design",
         ),
         sc.tab(
-            sc.forge.split_panel(
-                {"style": "height: 100%;"},
-                ui.div(
-                    {
-                        "slot": "start",
-                        "style": " display: flex; align-items: center; justify-content: center;",
-                    },
-                    x.ui.output_plot("scatter"),
-                ),
-                ui.div(
-                    {
-                        "style": "display: flex; flex-direction: column; align-items: center; justify-content: center;",
-                        "slot": "end",
-                    },
-                    Tag(
-                        "shiny-collapsible",
-                        ui.output_ui("value_boxes"),
-                        dir="to_top",
-                        label="Fun Facts",
-                    ),
-                    sc.forge.split_panel(
-                        {
-                            "vertical": "",
-                            "style": "width: 100%;",
-                        },
-                        ui.div(
-                            Tag("star-rating", id="foo"),
-                            slot="start",
-                            style="display: flex; align-items: center; justify-content: center;",
-                        ),
-                        ui.div(
-                            Tag("star-rating", id="foo1"),
-                            ui.output_text_verbatim("txt"),
-                            slot="end",
-                            style="display: flex; flex-direction: column; align-items: center; justify-content: center;",
-                        ),
-                    ),
-                ),
-            ),
-            name="Plot",
-        ),
-        sc.tab(
             Tag("color-picker", id="color"),
             ui.div(
                 {"style": "max-width: 400px; margin-top: 15px;"},
