@@ -10,7 +10,7 @@ import seaborn as sns
 import shiny.experimental as x
 import shinyswatch
 from colors import bg_palette, palette
-from htmltools import Tag
+from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 from shiny import App, Inputs, Outputs, Session, reactive, render, req, ui
 
 import shinycomponent as sc
@@ -26,6 +26,28 @@ species.sort()
 
 app_css = """
 :not(:defined) { visibility: hidden;}
+.parts-styled-input {
+    --number-input-border-width: 0;
+    --number-input-bg-color: transparent;
+}
+.parts-styled-input::part(input) {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-blob-3);
+}
+.parts-styled-input::part(input),
+.parts-styled-input::part(plus-button),
+.parts-styled-input::part(minus-button) {
+    background-color: var(--color-primary);
+    color: var(--gray-1);
+    box-shadow: var(--shadow-4);
+    border: none;
+}
+.parts-styled-input::part(plus-button) {
+    border-radius: var(--radius-blob-1);
+}
+.parts-styled-input::part(minus-button) {
+    border-radius: var(--radius-blob-2);
+}
 
 body:has([choice="purple"]) {
    --color-bg: var(--purple-1);
@@ -91,6 +113,67 @@ body:has([choice="dark"]) {
 
 """
 
+simple_styles = """
+--number-input-padding-inline: var(--size-2);
+--number-input-border-radius: var(--radius-1);
+--number-input-font-size: var(--font-size-0);
+"""
+
+purple_styles = """
+--number-input-bg-image: var(--gradient-11);
+--number-input-text-color: white;
+--number-input-padding-inline: var(--size-5);
+--number-input-border-radius: 50%;
+"""
+
+
+parts_styled_style = """
+.parts-styled-input {
+    --number-input-border-width: 0;
+}
+.parts-styled-input::part(input) {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-blob-3);
+}
+.parts-styled-input::part(input),
+.parts-styled-input::part(plus-button),
+.parts-styled-input::part(minus-button) {
+    background-color: var(--color-primary);
+    color: var(--gray-1);
+    box-shadow: var(--shadow-4);
+    border: none;
+}
+.parts-styled-input::part(plus-button) {
+    border-radius: var(--radius-blob-1);
+}
+.parts-styled-input::part(minus-button) {
+    border-radius: var(--radius-blob-2);
+}
+"""
+
+about_puffins_blurb = """
+Sure, penguins are charismatic with their tuxedo-patterned outfits, but have you ever
+considered puffins? Penguins may monopolize the spotlight in nature documentaries, but
+it's high time the humble puffin received some love. While penguins waddle aimlessly on
+ice, puffins zip through the air at up to 55 mph and dive underwater in pursuit of
+dinner.
+"""
+
+
+def tall_item(
+    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> Tag:
+    # return sc.grid_item(sc.grid(*args, nRows=3, nCols=1, **kwargs), height=4)
+    return sc.grid_item(*args, height=4, **kwargs)
+
+
+def show_theme(theme_text: str):
+    return ui.pre(
+        ui.code(theme_text),
+        style="font-size: var(--font-size-0); padding: 0; flex:2;",
+    )
+
+
 app_ui = sc.page(
     ui.head_content(
         ui.tags.style(app_css),
@@ -111,23 +194,61 @@ app_ui = sc.page(
         ),
     ),
     shinyswatch.theme.pulse(),
-    sc.tabset(
+    Tag(
+        "shiny-op-tabset",
         {"id": "tabset1"},
         sc.tab(
-            ui.Tag("md-filled-icon-button", ui.Tag("md-icon", "settings")),
-            ui.Tag("md-filled-icon-button", ui.Tag("md-icon", "settings", filled="")),
-            ui.br(),
-            ui.Tag("md-filled-tonal-icon-button", ui.Tag("md-icon", "settings")),
-            ui.Tag(
-                "md-filled-tonal-icon-button", ui.Tag("md-icon", "settings", filled="")
+            sc.grid(
+                sc.grid_item(
+                    ui.h3("Base"),
+                    ui.p(
+                        "The following are the number input each with a different set of css variables applied to the parent component to change the style."
+                    ),
+                    sc.simple_number_input(id="num_in", min=0, max=100),
+                ),
+                sc.grid_item(
+                    ui.h3("Simple"),
+                    show_theme(simple_styles),
+                    sc.simple_number_input(id="simple_num_in", min=0, max=100),
+                    style=simple_styles,
+                ),
+                sc.grid_item(
+                    ui.h3("Purple"),
+                    show_theme(purple_styles),
+                    sc.simple_number_input(id="purple_num_in", min=0, max=100),
+                    style=purple_styles,
+                ),
+                sc.grid_item(
+                    ui.h3("Windows 95"),
+                    show_theme(parts_styled_style),
+                    sc.simple_number_input(
+                        id="purple_num_in", min=0, max=100, class_="parts-styled-input"
+                    ),
+                ),
+                nRows=2,
+                nCols=2,
             ),
-            ui.br(),
-            ui.Tag("md-outlined-icon-button", ui.Tag("md-icon", "settings")),
-            ui.Tag("md-outlined-icon-button", ui.Tag("md-icon", "settings", filled="")),
-            ui.br(),
-            ui.Tag("m3-standard-icon-button", ui.Tag("md-icon", "settings")),
-            ui.Tag("m3-standard-icon-button", ui.Tag("md-icon", "settings", filled="")),
-            ui.br(),
+            name="Number Input",
+        ),
+        sc.tab(
+            # Make a grid with 4 rows and 3 columns
+            sc.grid(
+                # Blurb takes up 2 of 3 columns
+                sc.grid_item(ui.p(about_puffins_blurb), width=2),
+                # Value boxes are 4 rows tall
+                ui.output_ui("value_boxes", container=tall_item),
+                # Scatter plot is 3 rows tall and 2 columns wide
+                sc.grid_item(
+                    x.ui.output_plot("scatter", fill=True),
+                    width=2,
+                    height=3,
+                ),
+                nRows=4,
+                nCols=3,
+            ),
+            name="Plot",
+        ),
+        sc.tab(
             sc.simple_number_input(id="num_in", min=0, max=100),
             ui.output_text_verbatim("num_out", placeholder=True),
             Tag("material-slider", id="num_in2", value="20", withLabel=""),
@@ -307,7 +428,7 @@ app_ui = sc.page(
         ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
         ui.tags.div("Puffins are cool", {"slot": "header"}),
-        selected_tab_index=1,
+        selected_tab_index=2,
     ),
 )
 
@@ -419,7 +540,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             if name in input.species()
         ]
 
-        return x.ui.layout_column_wrap(1 / len(value_boxes), *value_boxes)
+        return value_boxes
 
 
 app = App(

@@ -1,9 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { make_input_binding } from "./make_input_binding";
-import {
-  make_input_event_id,
-  make_value_change_emitter,
-} from "./make_value_change_emitter";
+import { make_value_change_emitter } from "./make_value_change_emitter";
 
 export class SimpleNumberInput extends LitElement {
   min: number = 0;
@@ -22,27 +19,49 @@ export class SimpleNumberInput extends LitElement {
   };
 
   static styles = css`
+    :host {
+      --_number-input-padding-inline: var(
+        --number-input-padding-inline,
+        var(--sl-input-spacing-small)
+      );
+      --_number-input-padding-block: var(--number-input-padding-block, 0);
+
+      --_warning-color: var(
+        --number-input-color-invalid,
+        var(--sl-color-warning-600)
+      );
+
+      --_font-size: var(--number-input-font-size, var(--sl-font-size-large));
+    }
     .wrapper {
-      display: inline-block;
-      background-color: #fff;
+      display: inline-flex;
+      background-color: var(
+        --number-input-bg-color,
+        var(--sl-input-background-color)
+      );
+      background-image: var(--number-input-bg-image);
+      color: var(--number-input-text-color, var(--sl-input-color));
       border: none;
-      border-radius: 999px;
-      outline: var(--border-small) solid var(--color-border-2);
+      border-radius: var(
+        --number-input-border-radius,
+        var(--sl-border-radius-pill)
+      );
+      outline: var(--number-input-border-width, var(--sl-input-border-width))
+        solid var(--number-input-border-color, var(--sl-input-border-color));
+      padding: var(--_number-input-padding-inline)
+        var(--_number-input-padding-block);
     }
     .wrapper.invalid {
-      outline: var(--border-small) solid var(--color-error);
+      outline-color: var(--_warning-color);
     }
 
     input {
-      background-color: #fff;
-      padding: var(--space-x-small) 0;
+      font-size: var(--_font-size);
       border: none;
-      border-radius: 0;
+      background-color: transparent;
+      color: inherit;
       outline-width: 0;
-      font-size: var(--font-body);
       text-align: center;
-      /* max-width: 100%;
-      width: 300px; */
     }
     input:focus-visible {
       outline-width: 0;
@@ -60,36 +79,36 @@ export class SimpleNumberInput extends LitElement {
       -moz-appearance: textfield;
     }
 
-    button {
-      display: inline-block;
-      padding-top: var(--space-small);
-      padding-bottom: var(--space-small);
-      font-size: var(--font-body);
-      border: none;
-      background-color: rgba(0, 0, 0, 0);
+    .plusminus {
+      font-size: var(--_font-size);
+      border: var(--number-input-plusminus-border, none);
+      background-color: transparent;
+      color: inherit;
     }
-    button:hover {
+    .plusminus:hover {
       cursor: pointer;
     }
-    button.left {
-      padding-right: var(--space-x-small);
-      padding-left: var(--space-small);
+    .plusminus.left {
+      padding-inline-start: var(--_number-input-padding-inline);
     }
-    button.right {
-      padding-right: var(--space-small);
-      padding-left: var(--space-x-small);
+    .plusminus.right {
+      padding-inline-end: var(--_number-input-padding-inline);
     }
 
     span {
       display: inline-block;
-      margin-left: var(--space-x-small);
-      font-size: var(--font-body);
-      color: var(--color-error);
+      /* margin-left: var(--space-x-small); */
+      font-size: var(
+        --number-input-warning-font-size,
+        var(--sl-font-size-x-small)
+      );
+      color: var(--_warning-color);
       transform: scaleX(0);
-      transition: transform 0.3s var(--ease-squish-2);
+      transition: transform var(--sl-transition-fast) var(--ease-squish-2);
       transform-origin: left;
     }
-    input:invalid + span {
+
+    .wrapper.invalid + span {
       transform: scaleX(1);
     }
   `;
@@ -167,6 +186,7 @@ export class SimpleNumberInput extends LitElement {
     return html`
       <div class="wrapper ${this.invalid ? "invalid" : null}">
         <button
+          part="minus-button"
           class="plusminus left"
           @mousedown=${this.handle_minus}
           @keydown=${(e: KeyboardEvent) => {
@@ -175,12 +195,14 @@ export class SimpleNumberInput extends LitElement {
         >
           −</button
         ><input
+          part="input"
           value=${this.value}
           min=${this.min}
           max=${this.max}
           @input=${this.handle_change}
           type="number"
         /><button
+          part="plus-button"
           class="plusminus right"
           @mousedown=${this.handle_plus}
           @keydown=${(e: KeyboardEvent) => {

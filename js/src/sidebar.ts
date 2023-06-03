@@ -1,105 +1,132 @@
 import { LitElement, css, html } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import { set_el_attr } from "./set_el_attr";
 
+@customElement("shiny-sidebar")
 export class Sidebar extends LitElement {
-  is_open: boolean;
-
-  static properties = {
-    is_open: {},
-  };
+  @property({ type: Boolean, reflect: true }) closed: boolean = false;
+  @property({ type: Number }) openWidthPx: number = 300;
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
   // via CSS custom properties.
   static styles = css`
     :host {
-      display: block;
-      font-family: var(--font-family, sans-serif);
-      --transition: 0.4s var(--ease-3);
-      --toggle-w: var(--space-small);
+      --transition: 0.3s var(--ease-3);
+      --padding: var(--size-fluid-2);
+
+      --sidebar-content-columns: auto 1fr;
+      --sidebar-content-height: auto;
+      --sidebar-content-gap: var(--size-3);
+
       height: 100%;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--padding);
+    }
+
+    :host([closed]) {
+      --sidebar-content-columns: auto 0px;
+      --sidebar-content-height: var(--size-fluid-6);
+      --sidebar-content-gap: 0;
+      --sidebar-content-overflow: hidden;
+
+      cursor: e-resize;
+    }
+
+    :host([closed]) .content {
+      width: fit-content;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    .sidebar {
+    .content {
       height: 100%;
       overflow: scroll;
-      padding: var(--size-fluid-1);
-      --w: var(--sidebar-width, 250px);
       margin: 0;
+
+      padding-inline: var(--padding);
+      width: var(--sidebar-width, 100px);
+
       transition: width var(--transition), padding var(--transition);
+
+      display: flex;
+      flex-direction: column;
     }
 
-    .sidebar.open {
-      width: var(--w);
+    .content > ::slotted(hr) {
+      margin: 0 !important;
     }
 
-    .sidebar.closed {
-      width: 0;
-      padding: 0;
+    .content > ::slotted(shiny-section) {
+      border-bottom: 1px solid var(--surface-4);
+    }
+    .content > ::slotted(shiny-section:last-child) {
+      border-bottom: none;
     }
 
-    .sidebar.closed ::slotted(*) {
-      opacity: 0;
+    .toggle-icon {
+      text-align: center;
     }
 
-    .sidebar > * {
-      min-width: 0;
+    :host([closed]) .toggle-icon {
+      transform: scaleX(0);
     }
 
-    .sidebar.closed + .open-toggle {
-      transform: translateX(var(--toggle-w)) scaleX(-1);
+    :host([open]) .toggle-icon {
       transition: transform var(--transition);
+      transform: scaleX(1);
     }
 
     .open-toggle {
       position: absolute;
-      top: var(--size-1);
-      font-size: var(--font-size-3);
-      border-radius: var(--radius-2) 0 0 var(--radius-2);
+      top: 0;
       right: 0;
-      width: var(--toggle-w);
-      height: auto;
-      color: var(--white);
-      display: grid;
+      font-size: var(--font-size-3);
+      width: var(--padding);
+      height: fit-content;
       cursor: pointer;
-      color: var(--color-action);
+      color: var(--text-2);
     }
   `;
 
   constructor() {
     super();
-    // Define reactive properties--updating a reactive property causes
-    // the component to update.
-
-    // By making is_open a property we allow the user to set its initial state or toggle
-    // from outside the component
-    this.is_open = true;
     set_el_attr(this, "slot", "sidebar");
+
+    this.addEventListener("click", (e) => {
+      if (!this.closed) {
+        return;
+      }
+
+      this.toggle_closed();
+    });
+  }
+
+  toggle_closed() {
+    this.closed = !this.closed;
+  }
+
+  handle_toggle_btn_click(e: MouseEvent) {
+    e.stopPropagation();
+    this.toggle_closed();
   }
 
   render() {
     return html`
-      <div class="sidebar ${this.is_open ? "open" : "closed"}">
+      <div class="content" style="--sidebar-width: ${this.openWidthPx}px;">
         <slot></slot>
       </div>
       <div
-        @click=${this.toggle_open}
-        title=${this.is_open ? "Close sidebar" : "Open sidebar"}
+        @click=${this.handle_toggle_btn_click}
+        title=${this.closed ? "Open sidebar" : "Close sidebar"}
         class="open-toggle"
       >
-        ◀︎
+        <div class="toggle-icon">❮</div>
       </div>
     `;
   }
-
-  toggle_open() {
-    this.is_open = !this.is_open;
-  }
 }
-
-customElements.define("shiny-sidebar", Sidebar);
