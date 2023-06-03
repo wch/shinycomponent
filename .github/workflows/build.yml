@@ -35,6 +35,12 @@ jobs:
           yarn
           yarn build
 
+      - name: Build Python package
+        run: |
+          cd py
+          pip install -e .[dev]
+          make dist
+
       # =====================================================
       # Commit to main-build branch
       # =====================================================
@@ -44,13 +50,14 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
-      - name: Push to main-build branch
+      - name: Commit built files and push to main-build branch
         # if: github.ref == 'refs/heads/main'
         shell: bash
         run: |
           export SHA_SHORT=$(git rev-parse --short HEAD)
           git checkout -B main-build
           git add -f js/out/
+          git add -f py/dist/*.whl
           git commit -m"Build js/css for $SHA_SHORT"
 
           git log -n 4 --pretty=oneline --simplify-by-decoration
