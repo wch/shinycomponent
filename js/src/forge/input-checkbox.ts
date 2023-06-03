@@ -1,13 +1,18 @@
 import { SlCheckbox } from "@shoelace-style/shoelace";
-import { html } from "lit";
 import { make_input_binding } from "../make_input_binding";
-import { make_value_change_emitter } from "../make_value_change_emitter";
+import {
+  ValueChangeEmitter,
+  make_value_change_emitter,
+} from "../make_value_change_emitter";
+
+// TODO: Figure out clearner way to deal with `value` attribute not containing
+// the checked value.
 
 export class ForgeInputCheckbox extends SlCheckbox {
   inline: boolean = false;
 
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
-  on_value_change = make_value_change_emitter(this, this.id);
+  on_value_change: ValueChangeEmitter = () => {};
 
   connectedCallback() {
     super.connectedCallback();
@@ -17,6 +22,13 @@ export class ForgeInputCheckbox extends SlCheckbox {
     }
     if (!this.inline) {
       this.style.display = "block";
+    }
+  }
+
+  constructor() {
+    super();
+    if (this.id) {
+      this.on_value_change = make_value_change_emitter(this, this.id);
     }
   }
 
@@ -31,3 +43,9 @@ export class ForgeInputCheckbox extends SlCheckbox {
 customElements.define("forge-input-checkbox", ForgeInputCheckbox);
 
 make_input_binding("forge-input-checkbox", "checked");
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "forge-input-checkbox": ForgeInputCheckbox;
+  }
+}

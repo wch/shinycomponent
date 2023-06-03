@@ -18,9 +18,15 @@ type DataPassingEventPayload =
       value: boolean;
     }
   | {
+      type: "string[]";
+      value: string[];
+    }
+  | {
       type: "other";
       value: unknown;
     };
+
+export type ValueChangeEmitter = (payload: DataPassingEventPayload) => void;
 
 function is_data_passing_payload(x: unknown): x is DataPassingEventPayload {
   if (typeof x !== "object") {
@@ -43,6 +49,10 @@ function is_data_passing_payload(x: unknown): x is DataPassingEventPayload {
       return typeof x.value === "number";
     case "boolean":
       return typeof x.value === "boolean";
+    case "string[]":
+      return (
+        Array.isArray(x.value) && x.value.every((x) => typeof x === "string")
+      );
     default:
       return true;
   }
@@ -84,7 +94,10 @@ export function get_data_passing_event_value(
   return payload;
 }
 
-export function make_value_change_emitter<T>(el: HTMLElement, id: string) {
+export function make_value_change_emitter(
+  el: HTMLElement,
+  id: string
+): ValueChangeEmitter {
   return (payload: DataPassingEventPayload) => {
     const event = new CustomEvent(Data_Passing_Event_ID, {
       detail: make_data_passing_payload(id, payload),

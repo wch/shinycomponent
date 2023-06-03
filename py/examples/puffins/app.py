@@ -298,7 +298,7 @@ app_ui = sc.page(
                 numeric_cols,
                 selected="Bill Depth (mm)",
             ),
-            ui.input_checkbox_group(
+            sc.forge.input_checkbox_group(
                 "species", "Filter by species", species, selected=species
             ),
             ui.hr(),

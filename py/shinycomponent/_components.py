@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-import json
 from typing import TYPE_CHECKING
 
-from htmltools import HTML, Tag, TagAttrs, TagAttrValue, TagChild, html_escape, tags
+from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from ._htmldeps import page_dep
 
@@ -174,9 +173,3 @@ def tanstack_table(
         _add_ws=_add_ws,
         **kwargs,
     )
-
-
-def attr_to_escaped_json(x: object) -> str:
-    res = json.dumps(x)
-    res = html_escape(res, attr=True)
-    return HTML(res)

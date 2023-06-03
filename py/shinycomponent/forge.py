@@ -8,10 +8,12 @@ __all__ = (
 )
 
 from pathlib import PurePath
+from typing import Optional
 
 from htmltools import HTMLDependency, Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from . import __version__
+from ._utils import attr_to_escaped_json
 
 
 def split_panel(
@@ -33,6 +35,28 @@ def input_checkbox(
         label if (label is not None) else None,
         *args,
         id=id,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
+
+
+def input_checkbox_group(
+    id: str,
+    label: TagChild,
+    choices: list[str],
+    *args: TagChild | TagAttrs,
+    selected: Optional[str | list[str]] = None,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-checkbox-group",
+        forge_dep(),
+        label if (label is not None) else None,
+        *args,
+        id=id,
+        choices=attr_to_escaped_json(choices),
+        selected=attr_to_escaped_json(selected) if (selected is not None) else None,
         _add_ws=_add_ws,
         **kwargs,
     )
