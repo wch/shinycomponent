@@ -48,3 +48,9 @@ export class ForgeInputSwitch extends SlSwitch {
 customElements.define("forge-input-switch", ForgeInputSwitch);
 
 make_input_binding("forge-input-switch", "checked");
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "forge-input-switch": ForgeInputSwitch;
+  }
+}

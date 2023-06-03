@@ -11,3 +11,9 @@ export class ForgeSplitPanel extends SlSplitPanel {
 }
 
 customElements.define("forge-split-panel", ForgeSplitPanel);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "forge-split-panel": ForgeSplitPanel;
+  }
+}

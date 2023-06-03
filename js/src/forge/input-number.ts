@@ -68,3 +68,9 @@ make_input_binding("forge-input-number");
 function clamp(x: number, min: number, max: number): number {
   return Math.max(Math.min(x, max), min);
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "forge-input-number": ForgeInputNumber;
+  }
+}

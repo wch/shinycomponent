@@ -1,6 +1,10 @@
 import { Shiny } from "./OptionalShiny";
 import { SimpleNumberInput } from "./simple-number-input";
 
+// TODO:
+// - This needs a lot of cleanup with the typing.
+// - It would be nice to not need `value_field`.
+
 /**
  * Given a tag name for a custom element that extends SimpleNumberInput, this will hook
  * up the proper input binding and register it with Shiny.

@@ -1,7 +1,6 @@
 import { LitElement, html } from "lit";
 import { make_input_binding } from "../make_input_binding";
 import { make_value_change_emitter } from "../make_value_change_emitter";
-import { ForgeInputCheckbox } from "./input-checkbox";
 
 // TODO:
 // - Accept choices as object, not just string[]

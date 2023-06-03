@@ -46,3 +46,9 @@ export class ForgeInputText extends SlInput {
 customElements.define("forge-input-text", ForgeInputText);
 
 make_input_binding("forge-input-text");
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "forge-input-text": ForgeInputText;
+  }
+}
