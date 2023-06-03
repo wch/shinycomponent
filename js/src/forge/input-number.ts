@@ -63,7 +63,7 @@ export class ForgeInputNumber extends ForgeInputText {
 
 customElements.define("forge-input-number", ForgeInputNumber);
 
-make_input_binding("forge-input-number");
+make_input_binding("forge-input-number", { type: "shiny:number" });
 
 function clamp(x: number, min: number, max: number): number {
   return Math.max(Math.min(x, max), min);

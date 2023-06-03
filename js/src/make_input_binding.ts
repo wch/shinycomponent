@@ -13,7 +13,13 @@ import { SimpleNumberInput } from "./simple-number-input";
  */
 export function make_input_binding(
   tag_name: string,
-  value_field: string = "value"
+  {
+    value_field = "value",
+    type = null,
+  }: {
+    value_field?: string;
+    type?: string | null;
+  }
 ) {
   if (!Shiny) {
     return;
@@ -33,6 +39,10 @@ export function make_input_binding(
 
     getValue(el: SimpleNumberInput) {
       return el[value_field];
+    }
+
+    getType(el: SimpleNumberInput): string | null {
+      return type;
     }
 
     subscribe(el: SimpleNumberInput, callback: (x: boolean) => void): void {
