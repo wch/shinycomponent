@@ -116,6 +116,28 @@ def input_number(
     )
 
 
+def input_select(
+    id: str,
+    label: str | None,
+    choices: list[str],
+    *args: TagChild | TagAttrs,
+    selected: Optional[str | list[str]] = None,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-select",
+        forge_dep(),
+        label=label,
+        *args,
+        id=id,
+        choices=attr_to_escaped_json(choices),
+        selected=selected,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
+
+
 ex_www_path = PurePath(__file__).parent / "www" / "forge"
 
 

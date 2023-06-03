@@ -407,13 +407,13 @@ app_ui = sc.page(
             ui.tags.img(
                 src="palmerpenguins.png", width="80%", class_="mt-0 mb-2 mx-auto"
             ),
-            ui.input_selectize(
+            sc.forge.input_select(
                 "xvar",
                 "X variable",
                 numeric_cols,
                 selected="Bill Length (mm)",
             ),
-            ui.input_selectize(
+            sc.forge.input_select(
                 "yvar",
                 "Y variable",
                 numeric_cols,
