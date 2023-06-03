@@ -34,3 +34,25 @@ jobs:
           cd js
           yarn
           yarn build
+
+      # =====================================================
+      # Commit to main-build branch
+      # =====================================================
+      # Name and email are needed to push.
+      - name: Configure git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Push to main-build branch
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          export SHA_SHORT=$(git rev-parse --short HEAD)
+          git checkout -B main-build
+          git add -f main-build
+          git commit -m"Build js/css for $SHA_SHORT"
+
+          git log -n 4 --pretty=oneline --simplify-by-decoration
+
+          git push -f origin main-build:main-build
