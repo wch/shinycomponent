@@ -50,7 +50,7 @@ jobs:
         run: |
           export SHA_SHORT=$(git rev-parse --short HEAD)
           git checkout -B main-build
-          git add -f main-build
+          git add -f js/out/
           git commit -m"Build js/css for $SHA_SHORT"
 
           git log -n 4 --pretty=oneline --simplify-by-decoration
