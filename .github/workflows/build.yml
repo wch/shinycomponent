@@ -3,9 +3,8 @@ name: Build packages on build branch
 on:
   push:
     branches: [main]
-  pull_request:
-    # This is just temporary for testing
-    branches: [main]
+  # pull_request:
+  #   branches: [main]
 
 jobs:
   build:
@@ -56,7 +55,7 @@ jobs:
           git config user.email "actions@github.com"
 
       - name: Commit built files and push to main-build branch
-        # if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         shell: bash
         run: |
           export SHA_SHORT=$(git rev-parse --short HEAD)
