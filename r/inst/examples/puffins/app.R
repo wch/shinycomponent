@@ -111,7 +111,7 @@ ui <- page(
     ),
     tab(
       name = "Table",
-      tanstack_table(penguins)
+      static_data_grid(penguins, height="500px")
     ),
     tab(
       name = "Collapser",
