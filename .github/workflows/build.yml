@@ -1,0 +1,69 @@
+name: Build packages on build branch
+
+on:
+  push:
+    branches: [main]
+  # pull_request:
+  #   branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      # =====================================================
+      # Build
+      # =====================================================
+      - name: Build JS and CSS resources
+        run: |
+          cd js
+          yarn
+          yarn build
+
+      - name: Build Python package
+        run: |
+          cd py
+          pip install -e .[dev]
+          make dist
+
+      # Even though pip can install from a git repository, we build a Python
+      # wheel here so that it can be easily installed from Pyodide. In Pyodide,
+      # pip is not available; it has micropip, which can't install from a git
+      # repository, but can install a wheel.
+
+      # =====================================================
+      # Commit to main-build branch
+      # =====================================================
+      # Name and email are needed to push.
+      - name: Configure git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Commit built files and push to main-build branch
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          export SHA_SHORT=$(git rev-parse --short HEAD)
+          git checkout -B main-build
+          git add -f js/out/
+          git add -f py/dist/*.whl
+          git commit -m"Build js/css for $SHA_SHORT"
+
+          git log -n 4 --pretty=oneline --simplify-by-decoration
+
+          git push -f origin main-build:main-build
