@@ -26,18 +26,18 @@ export class SimpleNumberInput
 
   static styles = css`
     :host {
-      --_number-input-padding-inline: var(
+      --_number-input-padding-block: var(
         --number-input-padding-inline,
-        var(--sl-input-spacing-small)
+        var(--size-2)
       );
-      --_number-input-padding-block: var(--number-input-padding-block, 0);
-
-      --_warning-color: var(
-        --number-input-color-invalid,
-        var(--sl-color-warning-600)
+      --_number-input-padding-inline: var(
+        --number-input-padding-block,
+        var(--size-1)
       );
 
-      --_font-size: var(--number-input-font-size, var(--sl-font-size-large));
+      --_warning-color: var(--number-input-color-invalid, var(--warning));
+
+      --_font-size: var(--number-input-font-size, var(--font-size-3));
 
       position: relative;
       width: var(--number-input-width, fit-content);
