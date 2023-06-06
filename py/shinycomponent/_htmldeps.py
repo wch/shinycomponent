@@ -18,7 +18,7 @@ def page_dep() -> list[HTMLDependency]:
                 "package": "shinycomponent",
                 "subdir": str(ex_www_path),
             },
-            stylesheet=[{"href": "open-props.min.css"}, {"href": "components.css"}],
+            stylesheet=[{"href": "components.css"}],
             script=[
                 {"src": "components.js", "type": "module"},
             ],
