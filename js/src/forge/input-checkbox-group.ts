@@ -1,12 +1,18 @@
 import { LitElement, html } from "lit";
-import { make_input_binding } from "../make_input_binding";
+import {
+  CustomElementInputValue,
+  make_input_binding,
+} from "../make_input_binding";
 import { make_value_change_emitter } from "../make_value_change_emitter";
 
 // TODO:
 // - Accept choices as object, not just string[]
 // - Is 'name' the right attribute name?
 
-export class ForgeInputCheckboxGroup extends LitElement {
+export class ForgeInputCheckboxGroup
+  extends LitElement
+  implements CustomElementInputValue<string[]>
+{
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
   on_value_change = make_value_change_emitter(this, this.id);
@@ -17,7 +23,7 @@ export class ForgeInputCheckboxGroup extends LitElement {
     value: { type: Array },
   };
   choices?: string[];
-  selected?: string[];
+  selected?: string[] = [];
   value: string[] = [];
 
   connectedCallback(): void {
@@ -64,7 +70,6 @@ export class ForgeInputCheckboxGroup extends LitElement {
 }
 
 customElements.define("forge-input-checkbox-group", ForgeInputCheckboxGroup);
-
 make_input_binding("forge-input-checkbox-group");
 
 declare global {

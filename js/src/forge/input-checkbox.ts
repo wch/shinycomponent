@@ -1,5 +1,8 @@
 import { SlCheckbox } from "@shoelace-style/shoelace";
-import { make_input_binding } from "../make_input_binding";
+import {
+  CustomElementInputGetValue,
+  make_input_binding,
+} from "../make_input_binding";
 import {
   ValueChangeEmitter,
   make_value_change_emitter,
@@ -8,7 +11,10 @@ import {
 // TODO: Figure out clearner way to deal with `value` attribute not containing
 // the checked value.
 
-export class ForgeInputCheckbox extends SlCheckbox {
+export class ForgeInputCheckbox
+  extends SlCheckbox
+  implements CustomElementInputGetValue<boolean>
+{
   inline: boolean = false;
 
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
@@ -32,6 +38,10 @@ export class ForgeInputCheckbox extends SlCheckbox {
     }
   }
 
+  getValue(): boolean {
+    return this.checked;
+  }
+
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has("checked")) {
       this.onChangeCallback(true);
@@ -42,7 +52,7 @@ export class ForgeInputCheckbox extends SlCheckbox {
 
 customElements.define("forge-input-checkbox", ForgeInputCheckbox);
 
-make_input_binding("forge-input-checkbox", { value_field: "checked" });
+make_input_binding("forge-input-checkbox");
 
 declare global {
   interface HTMLElementTagNameMap {

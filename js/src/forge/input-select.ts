@@ -1,8 +1,12 @@
 import { SlSelect } from "@shoelace-style/shoelace";
 import { html, render } from "lit";
 import { property } from "lit/decorators.js";
-import { make_input_binding } from "../make_input_binding";
+import {
+  CustomElementInputGetValue,
+  make_input_binding,
+} from "../make_input_binding";
 import { make_value_change_emitter } from "../make_value_change_emitter";
+import { escapeSpaces, unescapeSpaces } from "./utils";
 
 // TODO:
 // - Multiple select
@@ -10,13 +14,15 @@ import { make_value_change_emitter } from "../make_value_change_emitter";
 //   checked value.
 // - Accept choices as object, not just string[]
 
-export class ForgeInputSelect extends SlSelect {
+export class ForgeInputSelect
+  extends SlSelect
+  implements CustomElementInputGetValue<string>
+{
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
   on_value_change = make_value_change_emitter(this, this.id);
 
   @property({ type: Array }) choices: string[] = [];
   @property({ type: String }) selected: string = "";
-  @property({ type: String }) value_unescaped: string = "";
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -36,55 +42,25 @@ export class ForgeInputSelect extends SlSelect {
 
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has("value")) {
-      this.value_unescaped = unescapeSpaces(this.value as string);
       this.onChangeCallback(true);
       this.on_value_change({
         type: "string",
-        value: this.value_unescaped as string,
+        value: this.getValue(),
       });
     }
+  }
+
+  getValue(): string {
+    return unescapeSpaces(this.value as string);
   }
 }
 
 customElements.define("forge-input-select", ForgeInputSelect);
 
-make_input_binding("forge-input-select", { value_field: "value_unescaped" });
+make_input_binding("forge-input-select");
 
 declare global {
   interface HTMLElementTagNameMap {
     "forge-input-select": ForgeInputSelect;
   }
-}
-
-function escapeSpaces(str: string): string {
-  return str.replace(/_/g, "__").replace(/ /g, "_-");
-}
-
-function unescapeSpaces(str: string): string {
-  let unescaped = "";
-  let state: "normal" | "escaping" = "normal";
-
-  for (const char of str) {
-    switch (state) {
-      case "normal":
-        if (char === "_") {
-          state = "escaping";
-        } else {
-          unescaped += char;
-        }
-        break;
-      case "escaping":
-        if (char === "-") {
-          unescaped += " ";
-        } else if (char === "_") {
-          unescaped += "_";
-        } else {
-          unescaped += "_" + char;
-        }
-        state = "normal";
-        break;
-    }
-  }
-
-  return unescaped;
 }

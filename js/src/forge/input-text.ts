@@ -1,9 +1,15 @@
 import { SlInput } from "@shoelace-style/shoelace";
 import debounce from "just-debounce-it";
-import { make_input_binding } from "../make_input_binding";
+import {
+  CustomElementInputValue,
+  make_input_binding,
+} from "../make_input_binding";
 import { make_value_change_emitter } from "../make_value_change_emitter";
 
-export class ForgeInputText extends SlInput {
+export class ForgeInputText
+  extends SlInput
+  implements CustomElementInputValue<string>
+{
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
   "wait-for-enter": boolean = false;
   debounce: number = 250;

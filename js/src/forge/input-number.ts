@@ -1,15 +1,20 @@
 import { CSSResultGroup, css } from "lit";
 import { property } from "lit/decorators.js";
-import { make_input_binding } from "../make_input_binding";
+import {
+  CustomElementInputGetValue,
+  make_input_binding,
+} from "../make_input_binding";
 import { make_value_change_emitter } from "../make_value_change_emitter";
 import { ForgeInputText } from "./input-text";
 
-export class ForgeInputNumber extends ForgeInputText {
+export class ForgeInputNumber
+  extends ForgeInputText
+  implements CustomElementInputGetValue<number>
+{
   on_value_change = make_value_change_emitter(this, this.id);
 
   @property({ type: Number }) min: number = -Infinity;
   @property({ type: Number }) max: number = Infinity;
-  @property({ type: Number }) value_num: number = Infinity;
   @property({ type: Boolean }) invalid: boolean = false;
 
   static styles: CSSResultGroup = [
@@ -28,7 +33,6 @@ export class ForgeInputNumber extends ForgeInputText {
       const clampedValue = clamp(inputValue, this.min, this.max);
 
       if (clampedValue === inputValue) {
-        this.value_num = clampedValue;
         this.value = String(clampedValue);
         this.invalid = false;
       } else {
@@ -39,9 +43,12 @@ export class ForgeInputNumber extends ForgeInputText {
     this.type = "number";
   }
 
+  getValue(): number {
+    return Number(this.value);
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
-    this.value_num = clamp(Number(this.value), this.min, this.max);
   }
 
   updateInvalidClass() {
@@ -58,18 +65,12 @@ export class ForgeInputNumber extends ForgeInputText {
       return;
     }
     this.onChangeCallback(true);
-    this.on_value_change({ type: "number", value: this.value_num });
+    this.on_value_change({ type: "number", value: this.getValue() });
   }
 }
 
 customElements.define("forge-input-number", ForgeInputNumber);
-
-make_input_binding("forge-input-number", {
-  // TODO: Implement an accessor instead of value_field? That would also allow
-  // us to avoid setting this.value_num in connectedCallback.
-  value_field: "value_num",
-  type: "shiny.number",
-});
+make_input_binding("forge-input-number", { type: "shiny.number" });
 
 function clamp(x: number, min: number, max: number): number {
   return Math.max(Math.min(x, max), min);

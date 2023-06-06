@@ -23,3 +23,9 @@ export class M3StandardIconButton extends MdStandardIconButton {
 customElements.define("m3-standard-icon-button", M3StandardIconButton);
 
 make_input_binding("m3-standard-icon-button");
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "m3-standard-icon-button": M3StandardIconButton;
+  }
+}

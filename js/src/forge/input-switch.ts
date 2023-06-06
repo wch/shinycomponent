@@ -1,9 +1,15 @@
 import { SlSwitch } from "@shoelace-style/shoelace";
 import { CSSResultGroup, css } from "lit";
-import { make_input_binding } from "../make_input_binding";
+import {
+  CustomElementInputGetValue,
+  make_input_binding,
+} from "../make_input_binding";
 import { make_value_change_emitter } from "../make_value_change_emitter";
 
-export class ForgeInputSwitch extends SlSwitch {
+export class ForgeInputSwitch
+  extends SlSwitch
+  implements CustomElementInputGetValue<boolean>
+{
   inline: boolean = false;
 
   // Make slider the same size as the "slot".
@@ -37,6 +43,10 @@ export class ForgeInputSwitch extends SlSwitch {
     }
   }
 
+  getValue(): boolean {
+    return this.checked;
+  }
+
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has("checked")) {
       this.onChangeCallback(true);
@@ -47,7 +57,7 @@ export class ForgeInputSwitch extends SlSwitch {
 
 customElements.define("forge-input-switch", ForgeInputSwitch);
 
-make_input_binding("forge-input-switch", { value_field: "checked" });
+make_input_binding("forge-input-switch");
 
 declare global {
   interface HTMLElementTagNameMap {

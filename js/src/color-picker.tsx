@@ -2,7 +2,10 @@ import React from "react";
 import type { ColorResult } from "react-color";
 import { SketchPicker } from "react-color";
 import { createRoot } from "react-dom/client";
-import { Shiny } from "./OptionalShiny";
+import {
+  CustomElementInputValue,
+  make_input_binding,
+} from "./make_input_binding";
 import { make_value_change_emitter } from "./make_value_change_emitter";
 
 // Color Picker React component
@@ -22,7 +25,10 @@ function ColorPickerReact({
 }
 
 // Color Picker WebComponent
-export class ColorPicker extends HTMLElement {
+export class ColorPicker
+  extends HTMLElement
+  implements CustomElementInputValue<string>
+{
   value: string;
   onChangeCallback: (x: boolean) => void;
   on_value_change = make_value_change_emitter(this, this.id);
@@ -61,34 +67,10 @@ export class ColorPicker extends HTMLElement {
 
 customElements.define("color-picker", ColorPicker);
 
-(() => {
-  if (!Shiny) {
-    return;
+make_input_binding("color-picker");
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "color-picker": ColorPicker;
   }
-  class ColorPickerInputBinding extends Shiny.InputBinding {
-    constructor() {
-      super();
-    }
-
-    find(scope: HTMLElement): JQuery<HTMLElement> {
-      return $(scope).find("color-picker");
-    }
-
-    getValue(el: ColorPicker) {
-      return el.value;
-    }
-
-    subscribe(el: ColorPicker, callback: (x: boolean) => void): void {
-      el.onChangeCallback = callback;
-    }
-
-    unsubscribe(el: ColorPicker): void {
-      el.onChangeCallback = (x: boolean) => {};
-    }
-  }
-
-  Shiny.inputBindings.register(
-    new ColorPickerInputBinding(),
-    "ColorPickerInputBinding"
-  );
-})();
+}

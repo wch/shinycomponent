@@ -1,8 +1,14 @@
 import { LitElement, css, html } from "lit";
-import { make_input_binding } from "./make_input_binding";
+import {
+  CustomElementInputValue,
+  make_input_binding,
+} from "./make_input_binding";
 import { make_value_change_emitter } from "./make_value_change_emitter";
 
-export class SimpleNumberInput extends LitElement {
+export class SimpleNumberInput
+  extends LitElement
+  implements CustomElementInputValue<number>
+{
   min: number = 0;
   max: number = 10;
   value: number = (this.min + this.max) / 2;

@@ -1,5 +1,9 @@
 import { LitElement, css, html } from "lit";
 import { Shiny } from "./OptionalShiny";
+import {
+  CustomElementInputValue,
+  make_input_binding,
+} from "./make_input_binding";
 import { Tabset } from "./tabset";
 
 type TabElements = { name: string; el: HTMLElement }[];
@@ -162,31 +166,10 @@ export class SlTabset extends Tabset {
 
 customElements.define("shiny-sl-tabset", SlTabset);
 
-(() => {
-  if (!Shiny) {
-    return;
+make_input_binding("shiny-sl-tabset");
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "shiny-sl-tabset": SlTabset;
   }
-  class TabsetInputBinding extends Shiny.InputBinding {
-    constructor() {
-      super();
-    }
-
-    find(scope: HTMLElement): JQuery<HTMLElement> {
-      return $(scope).find("shiny-sl-tabset");
-    }
-
-    getValue(el: SlTabset) {
-      return el.current_tab_name();
-    }
-
-    subscribe(el: SlTabset, callback: (x: boolean) => void): void {
-      el.onChangeCallback = callback;
-    }
-
-    unsubscribe(el: SlTabset): void {
-      el.onChangeCallback = (x: boolean) => {};
-    }
-  }
-
-  Shiny.inputBindings.register(new TabsetInputBinding(), "TabsetInputBinding");
-})();
+}

@@ -3,6 +3,7 @@ import { Shiny } from "./OptionalShiny";
 import { theme_primatives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
 
+import { make_input_binding } from "./make_input_binding";
 import "./styles/open-props-theme.css";
 type TabElements = { name: string; el: HTMLElement }[];
 /**
@@ -168,31 +169,10 @@ export class OpTabset extends Tabset {
 
 customElements.define("shiny-op-tabset", OpTabset);
 
-(() => {
-  if (!Shiny) {
-    return;
+make_input_binding("shiny-op-tabset");
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "shiny-op-tabset": OpTabset;
   }
-  class TabsetInputBinding extends Shiny.InputBinding {
-    constructor() {
-      super();
-    }
-
-    find(scope: HTMLElement): JQuery<HTMLElement> {
-      return $(scope).find("shiny-op-tabset");
-    }
-
-    getValue(el: OpTabset) {
-      return el.current_tab_name();
-    }
-
-    subscribe(el: OpTabset, callback: (x: boolean) => void): void {
-      el.onChangeCallback = callback;
-    }
-
-    unsubscribe(el: OpTabset): void {
-      el.onChangeCallback = (x: boolean) => {};
-    }
-  }
-
-  Shiny.inputBindings.register(new TabsetInputBinding(), "TabsetInputBinding");
-})();
+}
