@@ -22,8 +22,10 @@ export class ForgeInputRadioButtons
 
   @property({ type: Array }) choices: string[] = [];
   @property({ type: String }) selected: string = "";
+  @property({ type: String }) size: "small" | "medium" | "large" = "medium";
   @property({ type: Boolean }) inline: boolean = false;
   @property({ type: Boolean }) button: boolean = false;
+  @property({ type: Boolean }) pill: boolean = false;
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -39,6 +41,8 @@ export class ForgeInputRadioButtons
           return html`<sl-radio-button
             style=${this.inline ? "display: inline;" : null}
             value=${escapeSpaces(choice)}
+            size=${this.size}
+            pill=${this.pill}
             >${choice}</sl-radio-button
           >`;
         } else {

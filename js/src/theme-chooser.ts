@@ -30,8 +30,10 @@ export class ThemeChooser extends LitElement {
       <forge-input-radio-buttons
         choices=${JSON.stringify(themes)}
         selected="default"
+        size="small"
         inline
         button
+        pill
       >
       </forge-input-radio-buttons>
     `;
