@@ -1,6 +1,6 @@
 import { css, html } from "lit";
 import { Shiny } from "./OptionalShiny";
-import { theme_primatives } from "./styles/op-classes";
+import { theme_primitives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
 
 import { make_input_binding } from "./make_input_binding";
@@ -27,7 +27,7 @@ export class OpTabset extends Tabset {
       display: block;
       height: 100%;
       box-sizing: border-box;
-      ${theme_primatives.surface_3}
+      ${theme_primitives.surface_3}
     }
 
     .tabset {
@@ -90,7 +90,7 @@ export class OpTabset extends Tabset {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      ${theme_primatives.surface_4}
+      ${theme_primitives.surface_4}
     }
 
     .tab {
@@ -103,13 +103,13 @@ export class OpTabset extends Tabset {
     }
 
     .selected-tab {
-      ${theme_primatives.surface_1}
+      ${theme_primitives.surface_1}
     }
 
     .sidebar {
       padding: 0;
       grid-area: sidebar;
-      ${theme_primatives.surface_1}
+      ${theme_primitives.surface_1}
     }
 
     .main {

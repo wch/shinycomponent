@@ -9,7 +9,7 @@ export const surface_1 = css`
  * A series of psuedo classes that can be unfolded into a css declaration to
  * apply more than a single style in one go
  */
-export const theme_primatives = {
+export const theme_primitives = {
   brand: css`
     color: var(--brand);
     background-color: var(--brand);
