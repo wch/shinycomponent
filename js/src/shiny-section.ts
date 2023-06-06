@@ -51,7 +51,10 @@ export class Section extends LitElement {
   `;
 
   render() {
-    return html`<div class="icon">${this.icon}<slot name="icon"></slot></div>
+    return html`<div class="icon">
+        ${this.icon && html`<sl-icon name=${this.icon}></sl-icon>`}
+        <slot name="icon"></slot>
+      </div>
       <div class="content"><slot></slot></div>`;
   }
 }
