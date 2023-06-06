@@ -1,14 +1,17 @@
 # Inspired by https://dribbble.com/shots/20836166-Veritas-Admin-Dashboard-Analytics-UX
-
+import os
 from pathlib import Path
 from typing import List
 
+import ipyleaflet as L
 import pandas as pd
 import seaborn as sns
 import shiny.experimental as x
-from colors import bg_palette, palette
-from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
-from shiny import App, Inputs, Outputs, Session, reactive, render, req, ui
+from ebird.api import get_nearby_observations, get_nearby_species, get_taxonomy
+from htmltools import Tag
+from ipywidgets import Layout
+from shiny import App, Inputs, Outputs, Session, reactive, render, ui
+from shinywidgets import output_widget, register_widget
 
 import shinycomponent as sc
 
@@ -21,140 +24,32 @@ numeric_cols: List[str] = df.select_dtypes(include=["float64"]).columns.tolist()
 species: List[str] = df["Species"].unique().tolist()
 species.sort()
 
-app_css = """
-:not(:defined) { visibility: hidden;}
-.parts-styled-input {
-    --number-input-border-width: 0;
-    --number-input-bg-color: transparent;
-}
-.parts-styled-input::part(input) {
-    border: 1px solid var(--color-primary);
-    border-radius: var(--radius-blob-3);
-}
-.parts-styled-input::part(input),
-.parts-styled-input::part(plus-button),
-.parts-styled-input::part(minus-button) {
-    background-color: var(--color-primary);
-    color: var(--gray-1);
-    box-shadow: var(--shadow-4);
-    border: none;
-}
-.parts-styled-input::part(plus-button) {
-    border-radius: var(--radius-blob-1);
-}
-.parts-styled-input::part(minus-button) {
-    border-radius: var(--radius-blob-2);
-}
-"""
 
-simple_styles = """
---number-input-padding-inline: var(--size-2);
---number-input-border-radius: var(--radius-1);
---number-input-font-size: var(--font-size-0);
-"""
+api_key = os.environ["EBIRD_API_KEY"]
 
-purple_styles = """
---number-input-bg-image: var(--gradient-11);
---number-input-text-color: white;
---number-input-padding-inline: var(--size-5);
---number-input-border-radius: 50%;
-"""
+species_to_id = {
+    "Eastern Wood-Pewee": "eawpew",
+    "Wood Duck": "wooduc",
+}
+
+ann_arbor_lat_lon = [42.273991, -83.754550]
 
 
-parts_styled_style = """
-.parts-styled-input {
-    --number-input-border-width: 0;
-}
-.parts-styled-input::part(input) {
-    border: 1px solid var(--color-primary);
-    border-radius: var(--radius-blob-3);
-}
-.parts-styled-input::part(input),
-.parts-styled-input::part(plus-button),
-.parts-styled-input::part(minus-button) {
-    background-color: var(--color-primary);
-    color: var(--gray-1);
-    box-shadow: var(--shadow-4);
-    border: none;
-}
-.parts-styled-input::part(plus-button) {
-    border-radius: var(--radius-blob-1);
-}
-.parts-styled-input::part(minus-button) {
-    border-radius: var(--radius-blob-2);
-}
-"""
-
-about_puffins_blurb = """
-Sure, penguins are charismatic with their tuxedo-patterned outfits, but have you ever
-considered puffins? Penguins may monopolize the spotlight in nature documentaries, but
-it's high time the humble puffin received some love. While penguins waddle aimlessly on
-ice, puffins zip through the air at up to 55 mph and dive underwater in pursuit of
-dinner.
-"""
-
-
-def tall_item(
-    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> Tag:
-    # return sc.grid_item(sc.grid(*args, nRows=3, nCols=1, **kwargs), height=4)
-    return sc.grid_item(*args, height=4, **kwargs)
-
-
-def show_theme(theme_text: str):
-    return ui.pre(
-        ui.code(theme_text),
-        style="font-size: var(--font-size-0); padding: 0; flex:2;",
+def info_box(title: str, output_id: str, icon: str, color: str):
+    return x.ui.value_box(
+        title,
+        ui.output_text(output_id, container=ui.h3),
+        showcase=ui.h2(icon),
+        theme_color=None,
+        style=f"background-color: {color};",
+        height="90px",
+        full_screen=True,
     )
 
 
 app_ui = sc.page(
-    ui.head_content(
-        ui.tags.style(app_css),
-        ui.tags.link(
-            rel="stylesheet",
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1",
-        ),
-        ui.tags.link(
-            rel="stylesheet",
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL@20..48,100..700,0..1",
-        ),
-        ui.tags.link(
-            rel="stylesheet",
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL@20..48,100..700,0..1",
-        ),
-        ui.tags.style(
-            "md-icon[filled] { --md-icon-font-variation-settings: 'FILL' 1; }"
-        ),
-    ),
     Tag(
         "shiny-op-tabset",
-        {"id": "tabset1"},
-        sc.tab(
-            # Make a grid with 4 rows and 3 columns
-            sc.grid(
-                # Blurb takes up 2 of 3 columns
-                sc.grid_item(ui.p(about_puffins_blurb), width=2),
-                # Value boxes are 4 rows tall
-                ui.output_ui("value_boxes", container=tall_item),
-                # Scatter plot is 3 rows tall and 2 columns wide
-                sc.grid_item(
-                    x.ui.output_plot("scatter", fill=True),
-                    width=2,
-                    height=3,
-                ),
-                nRows=4,
-                nCols=3,
-            ),
-            name="Plot",
-        ),
-        sc.tab(
-            Tag(
-                "shiny-card",
-                sc.static_data_grid(df, height="100%"),
-            ),
-            name="Table",
-        ),
         sc.sidebar(
             Tag(
                 "shiny-section",
@@ -165,7 +60,7 @@ app_ui = sc.page(
                 "shiny-section",
                 ui.tags.small(
                     ui.em(
-                        "Below are some inputs that control the app content. Use them and explore the inferior world of penguins!"
+                        "Below are some inputs that control the app content. Use them and explore the birds of Ann Arbor!"
                     )
                 ),
                 icon="bi:info-circle",
@@ -173,151 +68,232 @@ app_ui = sc.page(
             Tag(
                 "shiny-section",
                 sc.forge.input_select(
-                    "xvar",
-                    "X variable",
-                    numeric_cols,
-                    selected="Bill Length (mm)",
-                ),
-                sc.forge.input_select(
-                    "yvar",
-                    "Y variable",
-                    numeric_cols,
-                    selected="Bill Depth (mm)",
+                    id="species",
+                    label="Species",
+                    choices=["Eastern Wood-Pewee", "Wood Duck"],
+                    selected="Eastern Wood-Pewee",
                 ),
                 icon="bi:sliders2",
             ),
             Tag(
                 "shiny-section",
-                sc.forge.input_checkbox_group(
-                    "species", "Filter by species", species, selected=species
+                "Distance from Ann Arbor",
+                sc.simple_number_input(
+                    "radius",
+                    value=10,
+                    min=1,
+                    max=100,
+                ),
+                "Days back to look",
+                sc.simple_number_input(
+                    "days_back",
+                    value=3,
+                    min=1,
+                    max=100,
                 ),
                 icon="bi:funnel",
             ),
-            Tag(
-                "shiny-section",
-                sc.forge.input_switch("by_species", "Show species", value=True),
-                sc.forge.input_switch(
-                    "show_margins", "Show marginal plots", value=True
+        ),
+        sc.tab(
+            # Make a grid with 4 rows and 3 columns
+            sc.grid(
+                # Blurb takes up 2 of 3 columns
+                sc.grid_item(
+                    output_widget("map", width="100%", height="100%"),
+                    width=2,
+                    height=2,
+                    shadowed=True,
                 ),
-                icon="bi:eye",
+                sc.grid_item(
+                    ui.output_text("common_name", container=ui.h2),
+                    width=1,
+                    height=1,
+                    shadowed=True,
+                    centercontent=True,
+                ),
+                sc.grid_item(
+                    ui.output_text("results_blurb"),
+                    width=1,
+                    height=1,
+                    shadowed=True,
+                    centercontent=True,
+                ),
+                sc.grid_item(
+                    info_box(
+                        title="Scientific Name",
+                        output_id="species_scientific_name",
+                        icon="🥼",
+                        color="var(--orange-4)",
+                    ),
+                    info_box(
+                        title="Family",
+                        output_id="species_family",
+                        icon="👨‍👩‍👧‍👦",
+                        color="var(--blue-4)",
+                    ),
+                    info_box(
+                        title="Order",
+                        output_id="species_order",
+                        icon="📦",
+                        color="var(--green-4)",
+                    ),
+                    width=1,
+                    height=3,
+                    shadowed=True,
+                ),
+                # Value boxes are 4 rows tall
+                # sc.grid_item(ui.output_text("results_blurb")),
+                sc.grid_item(
+                    sc.output_data_grid("results_table"),
+                    width=2,
+                    height=3,
+                    shadowed=True,
+                ),
+                nRows=5,
+                nCols=3,
             ),
+            name="Main",
+        ),
+        sc.tab(
+            # Make a grid with 4 rows and 3 columns
+            sc.grid(
+                # Blurb takes up 2 of 3 columns
+                sc.grid_item(
+                    ui.p("These are the notable birds seen recently"), width=2
+                ),
+                sc.grid_item(sc.output_data_grid("nearby_table"), width=2, height=3),
+                nRows=4,
+                nCols=2,
+            ),
+            name="Nearby",
         ),
         Tag(
-            "shiny-footer",
-            ui.tags.span(
-                "Inspired by ",
-                ui.tags.a(
-                    "Veritas Admin Dashboard",
-                    href="https://dribbble.com/shots/20836166-Veritas-Admin-Dashboard-Analytics-UX",
-                ),
-            ),
-            Tag("theme-chooser"),
+            "shiny-section",
+            Tag("posit-logo", withName=True, slot="icon"),
+            ui.h2("EBird!"),
+            slot="title",
         ),
-        ui.tags.div("Puffins are cool", {"slot": "header"}),
-        selected_tab_index=2,
     ),
 )
 
 
 def server(input: Inputs, output: Outputs, session: Session):
-    @output
-    @render.text
-    def current_tab():
-        return f"Current tab: {input.tabset1()}"
+    # Initialize and display when the session starts (1)
+    map = L.Map(
+        center=ann_arbor_lat_lon,
+        zoom=11,
+        scroll_wheel_zoom=True,
+        basemap=L.basemaps.Esri.WorldTopoMap,
+        layout=Layout(width="100%", height="100%"),
+    )
+    # Add a distance scale
+    map.add_control(L.leaflet.ScaleControl(position="bottomleft"))
+    bird_markers = L.LayerGroup()
+    map.add_layer(bird_markers)
+    register_widget("map", map)
 
     @reactive.Calc
-    def filtered_df() -> pd.DataFrame:
+    def ebird_results() -> pd.DataFrame:
         """Returns a Pandas data frame that includes only the desired rows"""
 
-        # This calculation "req"uires that at least one species is selected
-        req(len(input.species()) > 0)
+        if input.species() is None:
+            return pd.DataFrame()
 
-        # Filter the rows so we only include the desired species
-        return df[df["Species"].isin(input.species())]
-
-    @output
-    @render.plot
-    def scatter():
-        """Generates a plot for Shiny to display to the user"""
-
-        # The plotting function to use depends on whether margins are desired
-        plotfunc = sns.jointplot if input.show_margins() else sns.scatterplot
-
-        plotfunc(
-            data=filtered_df(),
-            x=input.xvar(),
-            y=input.yvar(),
-            palette=palette,
-            hue="Species" if input.by_species() else None,
-            hue_order=species,
-            legend=False,
+        bird = species_to_id[input.species()]
+        # Get nearby records for the past 3 days
+        records = get_nearby_species(
+            api_key,
+            bird,
+            *ann_arbor_lat_lon,
+            dist=input.radius(),
+            back=input.days_back(),
         )
 
-    @output
-    @render.text
-    def txt():
-        return str(input.foo()) + ":" + str(input.foo1())
+        return pd.DataFrame.from_records(records)
+
+    @reactive.Effect
+    def update_map():
+        records = ebird_results()
+
+        markers_for_records = []
+        for record_index in range(len(records)):
+            center = (records["lat"][record_index], records["lng"][record_index])
+            location = records["locName"][record_index]
+            print("Adding marker to leaflet map", location)
+            marker = L.Marker(location=center, draggable=False, title=location)
+            markers_for_records.append(marker)
+
+        bird_markers.clear_layers()
+        bird_marker_cluster = L.MarkerCluster(markers=markers_for_records)
+        bird_markers.add_layer(bird_marker_cluster)
+
+    @reactive.Calc
+    def species_info():
+        species = species_to_id[input.species()]
+        bird_info = get_taxonomy(api_key, species=species)
+        return bird_info[0]
 
     @output
     @render.text
-    def num_out():
-        return str(input.num_in())
+    def species_scientific_name():
+        return species_info()["sciName"]
 
     @output
     @render.text
-    def num_out2():
-        return str(input.num_in2())
+    def species_order():
+        return species_info()["order"]
 
     @output
     @render.text
-    def current_color():
-        return (
-            f"{input.color()}\n{input.slider1()}\n{input.slider2()}\n{input.slider3()}"
+    def species_family():
+        return species_info()["familyComName"]
+
+    @output
+    @render.text
+    def common_name():
+        return input.species()
+
+    @reactive.Calc
+    def ebird_nearby() -> pd.DataFrame:
+        """Returns a Pandas data frame that includes only the desired rows"""
+        # Get nearby records for the past 3 days
+        records = get_nearby_observations(
+            api_key, *ann_arbor_lat_lon, dist=input.radius(), back=input.days_back()
         )
 
+        return pd.DataFrame.from_records(records)
+
     @output
-    @render.ui
-    def value_boxes():
-        df = filtered_df()
+    @sc.data_grid(height="500px", row_selection=True)
+    def results_table():
+        return ebird_results()
 
-        def penguin_value_box(title: str, count: int, bgcol: str, showcase_img: str):
-            return x.ui.value_box(
-                title,
-                count,
-                {"class_": "pt-1 pb-0"},
-                showcase=x.ui.bind_fill_role(
-                    ui.tags.img({"style": "object-fit:contain;"}, src=showcase_img),
-                    item=True,
-                ),
-                theme_color=None,
-                style=f"background-color: {bgcol};",
-                height="90px",
-                full_screen=True,
-            )
+    @output
+    @sc.data_grid(height="500px", row_selection=True)
+    def nearby_table():
+        return ebird_nearby()
 
-        if not input.by_species():
-            return penguin_value_box(
-                "Penguins",
-                len(df.index),
-                bg_palette["default"],
-                # Artwork by @allison_horst
-                showcase_img="penguins.png",
-            )
+    @output
+    @render.text
+    def results_blurb():
+        num_results = len(ebird_results())
+        species = input.species()
+        radius = input.radius()
 
-        value_boxes = [
-            penguin_value_box(
-                name,
-                len(df[df["Species"] == name]),
-                bg_palette[name],
-                # Artwork by @allison_horst
-                showcase_img=f"{name}.png",
-            )
-            for name in species
-            # Only include boxes for _selected_ species
-            if name in input.species()
-        ]
+        num_results_text = (
+            "There have been no observations"
+            if num_results == 0
+            else "There has been one observation"
+            if num_results == 1
+            else f"There have been {num_results} observations"
+        )
+        location_text = f"within {radius} miles of Ann Arbor"
+        days_back_text = f"in the past {'day' if input.days_back() == 1 else f'{input.days_back()} days'}"
 
-        return value_boxes
+        if num_results == 0:
+            return f"There have been no observations of {species}s {location_text} {days_back_text}"
+
+        return f"{num_results_text} of {species} {location_text} {days_back_text}"
 
 
 app = App(
