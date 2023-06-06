@@ -23,6 +23,7 @@ export class ForgeInputRadioButtons
   @property({ type: Array }) choices: string[] = [];
   @property({ type: String }) selected: string = "";
   @property({ type: Boolean }) inline: boolean = false;
+  @property({ type: Boolean }) button: boolean = false;
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -33,12 +34,21 @@ export class ForgeInputRadioButtons
     // Insert the <sl-radio> elements at this time, before the first update
     // cycle.
     const children = html`
-      ${this.choices?.map(
-        (choice) =>
-          html`<sl-radio style=${
-            this.inline ? "display: inline;" : null
-          } value=${escapeSpaces(choice)}>${choice}</sl-option>`
-      )}
+      ${this.choices?.map((choice) => {
+        if (this.button) {
+          return html`<sl-radio-button
+            style=${this.inline ? "display: inline;" : null}
+            value=${escapeSpaces(choice)}
+            >${choice}</sl-radio-button
+          >`;
+        } else {
+          return html`<sl-radio
+            style=${this.inline ? "display: inline;" : null}
+            value=${escapeSpaces(choice)}
+            >${choice}</sl-radio
+          >`;
+        }
+      })}
     `;
 
     render(children, this);
