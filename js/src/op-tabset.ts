@@ -114,7 +114,7 @@ export class OpTabset extends Tabset {
 
     .main {
       grid-area: content;
-      overflow: scroll;
+      overflow: auto;
       padding: var(--padding);
     }
 

@@ -150,7 +150,7 @@ export class Tabset
 
     .main {
       grid-area: content;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .footer {

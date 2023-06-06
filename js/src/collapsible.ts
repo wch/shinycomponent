@@ -149,7 +149,7 @@ export class Collapsible extends LitElement {
       }
 
       .content {
-        overflow: scroll;
+        overflow: auto;
         transition: transform var(--transition);
         padding: var(--size-fluid-1);
       }

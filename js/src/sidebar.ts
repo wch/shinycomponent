@@ -45,7 +45,7 @@ export class Sidebar extends LitElement {
 
     .content {
       height: 100%;
-      overflow: scroll;
+      overflow: auto;
       margin: 0;
 
       padding-inline: var(--padding);

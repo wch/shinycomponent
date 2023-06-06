@@ -43,7 +43,7 @@ export class DesignPreview extends LitElement {
     :host {
       display: block;
       height: 100%;
-      overflow: scroll;
+      overflow: auto;
       position: relative;
       padding: var(--space-medium);
       color: var(--color-text);
