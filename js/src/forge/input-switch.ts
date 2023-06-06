@@ -17,13 +17,13 @@ export class ForgeInputSwitch
     SlSwitch.styles,
     css`
       :host([size="small"]) {
-        --thumb-size: calc(var(--sl-toggle-size-small)- 4px);
+        --thumb-size: calc(var(--sl-toggle-size-small) * 0.85);
       }
       :host([size="medium"]) {
-        --thumb-size: calc(var(--sl-toggle-size-medium) - 4px);
+        --thumb-size: calc(var(--sl-toggle-size-medium) * 0.85);
       }
       :host([size="large"]) {
-        --thumb-size: calc(var(--sl-toggle-size-large) - 4px);
+        --thumb-size: calc(var(--sl-toggle-size-large) * 0.85);
       }
     `,
   ];
