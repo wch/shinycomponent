@@ -100,16 +100,16 @@ automatically match the current open-props theme */
    * Spacings
    */
 
-  --sl-spacing-3x-small: var(--size-1); /* 2px */
-  --sl-spacing-2x-small: var(--size-2); /* 4px */
-  --sl-spacing-x-small: var(--size-3); /* 8px */
-  --sl-spacing-small: var(--size-4); /* 12px */
-  --sl-spacing-medium: var(--size-5); /* 16px */
-  --sl-spacing-large: var(--size-6); /* 20px */
-  --sl-spacing-x-large: var(--size-7); /* 28px */
-  --sl-spacing-2x-large: var(--size-8); /* 36px */
-  --sl-spacing-3x-large: var(--size-9); /* 48px */
-  --sl-spacing-4x-large: var(--size-11); /* 72px */
+  --sl-spacing-3x-small: calc(var(--size-1) / 2); /* 2px */
+  --sl-spacing-2x-small: var(--size-1); /* 4px */
+  --sl-spacing-x-small: var(--size-2); /* 8px */
+  --sl-spacing-small: var(--size-3); /* 12px */
+  --sl-spacing-medium: var(--size-4); /* 16px */
+  --sl-spacing-large: var(--size-5); /* 20px */
+  --sl-spacing-x-large: var(--size-6); /* 28px */
+  --sl-spacing-2x-large: var(--size-7); /* 36px */
+  --sl-spacing-3x-large: var(--size-8); /* 48px */
+  --sl-spacing-4x-large: var(--size-10); /* 72px */
 
   /*`
    * Transitions
@@ -164,7 +164,7 @@ automatically match the current open-props theme */
   /* Focus rings */
   --sl-focus-ring-color: var(--sl-color-primary-600);
   --sl-focus-ring-style: solid;
-  --sl-focus-ring-width: var(--border-size-3);
+  --sl-focus-ring-width: var(--border-size-2);
   --sl-focus-ring: var(--sl-focus-ring-style) var(--sl-focus-ring-width)
     var(--sl-focus-ring-color);
   --sl-focus-ring-offset: 1px;
