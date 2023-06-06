@@ -139,6 +139,28 @@ def input_select(
     )
 
 
+def input_radio_buttons(
+    id: str,
+    label: TagChild,
+    choices: list[str],
+    *args: TagChild | TagAttrs,
+    selected: Optional[str] = None,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-radio-buttons",
+        forge_dep(),
+        label if (label is not None) else None,
+        *args,
+        id=id,
+        choices=attr_to_escaped_json(choices),
+        selected=selected,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
+
+
 ex_www_path = PurePath(__file__).parent / "www"
 
 

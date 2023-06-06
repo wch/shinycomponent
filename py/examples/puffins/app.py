@@ -292,16 +292,16 @@ app_ui = sc.page(
                 help_text="Updates on Enter/blur",
                 class_="label-on-left",
             ),
-            ui.div(
-                sc.forge.input_checkbox(id="forgecheckbox", label="Checkbox"),
+            sc.forge.input_checkbox(id="forgecheckbox", label="Checkbox"),
+            sc.forge.input_switch(id="forgeswitch", label="Switch", value=False),
+            sc.forge.input_switch(
+                id="forgeswitch2", label="switch2", size="large", value=True
             ),
-            ui.div(
-                sc.forge.input_switch(id="forgeswitch", label="Switch", value=False),
-            ),
-            ui.div(
-                sc.forge.input_switch(
-                    id="forgeswitch2", label="switch2", size="large", value=True
-                ),
+            sc.forge.input_radio_buttons(
+                id="forgeradio",
+                label="Radio",
+                choices=["Alpha 1", "Beta 2", "Gamma 3"],
+                selected="Beta 2",
             ),
             ui.br(),
             ui.output_text_verbatim("forgetext_out", placeholder=True),
@@ -404,6 +404,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             f"{input.forgetext()}\n{input.forgetext2()}\n{input.date1()}"
             + f"\n{input.forgenum()}\n{input.forgenum2()}"
             + f"\n{input.forgecheckbox()}\n{input.forgeswitch()}\n{input.forgeswitch2()}"
+            + f"\n{input.forgeradio()}"
         )
 
     @reactive.Calc
