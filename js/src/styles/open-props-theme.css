@@ -112,6 +112,10 @@ html {
   --surface-shadow: var(--surface-shadow-light);
   --shadow-strength: var(--shadow-strength-light);
 
+  --success: var(--green-4);
+  --warning: var(--orange-8);
+  --danger: var(--red-8);
+
   --radius-pill: 9999px;
 }
 

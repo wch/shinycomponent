@@ -1,0 +1,293 @@
+/* This file takes a shoelace theme and hooks it up to the openprops variables
+we have. When this file is included, any shoelace components should
+automatically match the current open-props theme */
+:root,
+:host,
+.sl-theme-light {
+  /*
+   * Theme Tokens
+   */
+
+  /* Primary */
+  --sl-color-primary-50: var(--brand);
+  --sl-color-primary-100: var(--brand);
+  --sl-color-primary-200: var(--brand);
+  --sl-color-primary-300: var(--brand);
+  --sl-color-primary-400: var(--brand);
+  --sl-color-primary-500: var(--brand);
+  --sl-color-primary-600: var(--brand);
+  --sl-color-primary-700: var(--brand);
+  --sl-color-primary-800: var(--brand);
+  --sl-color-primary-900: var(--brand);
+  --sl-color-primary-950: var(--brand);
+
+  /* Success */
+  --sl-color-success-50: var(--success);
+  --sl-color-success-100: var(--success);
+  --sl-color-success-200: var(--success);
+  --sl-color-success-300: var(--success);
+  --sl-color-success-400: var(--success);
+  --sl-color-success-500: var(--success);
+  --sl-color-success-600: var(--success);
+  --sl-color-success-700: var(--success);
+  --sl-color-success-800: var(--success);
+  --sl-color-success-900: var(--success);
+  --sl-color-success-950: var(--success);
+
+  /* Warning */
+  --sl-color-warning-50: var(--warning);
+  --sl-color-warning-100: var(--warning);
+  --sl-color-warning-200: var(--warning);
+  --sl-color-warning-300: var(--warning);
+  --sl-color-warning-400: var(--warning);
+  --sl-color-warning-500: var(--warning);
+  --sl-color-warning-600: var(--warning);
+  --sl-color-warning-700: var(--warning);
+  --sl-color-warning-800: var(--warning);
+  --sl-color-warning-900: var(--warning);
+  --sl-color-warning-950: var(--warning);
+
+  /* Danger */
+  --sl-color-danger-50: var(--danger);
+  --sl-color-danger-100: var(--danger);
+  --sl-color-danger-200: var(--danger);
+  --sl-color-danger-300: var(--danger);
+  --sl-color-danger-400: var(--danger);
+  --sl-color-danger-500: var(--danger);
+  --sl-color-danger-600: var(--danger);
+  --sl-color-danger-700: var(--danger);
+  --sl-color-danger-800: var(--danger);
+  --sl-color-danger-900: var(--danger);
+  --sl-color-danger-950: var(--danger);
+
+  /* Neutral */
+  --sl-color-neutral-50: var(--text-2);
+  --sl-color-neutral-100: var(--text-2);
+  --sl-color-neutral-200: var(--text-2);
+  --sl-color-neutral-300: var(--text-2);
+  --sl-color-neutral-400: var(--text-2);
+  --sl-color-neutral-500: var(--text-2);
+  --sl-color-neutral-600: var(--text-1);
+  --sl-color-neutral-700: var(--text-1);
+  --sl-color-neutral-800: var(--text-1);
+  --sl-color-neutral-900: var(--text-1);
+  --sl-color-neutral-950: var(--text-1);
+
+  /* Neutral one-offs */
+  --sl-color-neutral-0: hsl(0, 0%, 100%);
+  --sl-color-neutral-1000: hsl(0, 0%, 0%);
+
+  /*
+   * Border radii
+   */
+  --sl-border-radius-small: var(--border-2);
+  --sl-border-radius-medium: var(--border-3);
+  --sl-border-radius-large: var(--border-4);
+  --sl-border-radius-x-large: var(--border-5);
+
+  --sl-border-radius-circle: 50%;
+  --sl-border-radius-pill: 9999px;
+
+  /*
+   * Elevations
+   */
+
+  --sl-shadow-x-small: var(--shadow-1);
+  --sl-shadow-small: var(--shadow-2);
+  --sl-shadow-medium: var(--shadow-3);
+  --sl-shadow-large: var(--shadow-5);
+  --sl-shadow-x-large: var(--shadow-6);
+
+  /*
+   * Spacings
+   */
+
+  --sl-spacing-3x-small: var(--size-1); /* 2px */
+  --sl-spacing-2x-small: var(--size-2); /* 4px */
+  --sl-spacing-x-small: var(--size-3); /* 8px */
+  --sl-spacing-small: var(--size-4); /* 12px */
+  --sl-spacing-medium: var(--size-5); /* 16px */
+  --sl-spacing-large: var(--size-6); /* 20px */
+  --sl-spacing-x-large: var(--size-7); /* 28px */
+  --sl-spacing-2x-large: var(--size-8); /* 36px */
+  --sl-spacing-3x-large: var(--size-9); /* 48px */
+  --sl-spacing-4x-large: var(--size-11); /* 72px */
+
+  /*`
+   * Transitions
+   */
+
+  --sl-transition-x-slow: 1000ms;
+  --sl-transition-slow: 500ms;
+  --sl-transition-medium: 250ms;
+  --sl-transition-fast: 150ms;
+  --sl-transition-x-fast: 50ms;
+
+  /*
+   * Typography
+   */
+
+  /* Fonts */
+  --sl-font-mono: var(--font-mono);
+  --sl-font-sans: var(--font-sans);
+  --sl-font-serif: var(--font-serif);
+
+  /* Font sizes */
+  --sl-font-size-2x-small: var(--font-size-00); /* 10px */
+  --sl-font-size-x-small: var(--font-size-0); /* 12px */
+  --sl-font-size-small: var(--font-size-1); /* 14px */
+  --sl-font-size-medium: var(--font-size-2); /* 16px */
+  --sl-font-size-large: var(--font-size-3); /* 20px */
+  --sl-font-size-x-large: var(--font-size-4); /* 24px */
+  --sl-font-size-2x-large: var(--font-size-6); /* 36px */
+  --sl-font-size-3x-large: var(--font-size-7); /* 48px */
+  --sl-font-size-4x-large: var(--font-size-8); /* 72px */
+
+  /* Font weights */
+  --sl-font-weight-light: var(--font-weight-2);
+  --sl-font-weight-normal: var(--font-weight-4);
+  --sl-font-weight-semibold: var(--font-weight-5);
+  --sl-font-weight-bold: var(--font-weight-7);
+
+  /* Letter spacings */
+  --sl-letter-spacing-denser: var(--font-letterspacing-0);
+  --sl-letter-spacing-dense: calc(-1 * var(--font-letterspacing-1));
+  --sl-letter-spacing-normal: normal;
+  --sl-letter-spacing-loose: var(--font-letterspacing-3);
+  --sl-letter-spacing-looser: var(--font-letterspacing-4);
+
+  /* Line heights */
+  --sl-line-height-denser: var(--font-lineheight-00);
+  --sl-line-height-dense: var(--font-lineheight-0);
+  --sl-line-height-normal: var(--font-lineheight-1);
+  --sl-line-height-loose: var(--font-lineheight-3);
+  --sl-line-height-looser: var(--font-lineheight-4);
+
+  /* Focus rings */
+  --sl-focus-ring-color: var(--sl-color-primary-600);
+  --sl-focus-ring-style: solid;
+  --sl-focus-ring-width: var(--border-size-3);
+  --sl-focus-ring: var(--sl-focus-ring-style) var(--sl-focus-ring-width)
+    var(--sl-focus-ring-color);
+  --sl-focus-ring-offset: 1px;
+
+  /*
+   * Forms
+   */
+
+  /* Buttons */
+  --sl-button-font-size-small: var(--sl-font-size-x-small);
+  --sl-button-font-size-medium: var(--sl-font-size-small);
+  --sl-button-font-size-large: var(--sl-font-size-medium);
+
+  /* Inputs */
+  --sl-input-height-small: var(--size-6); /* 30px */
+  --sl-input-height-medium: var(--size-7); /* 40px */
+  --sl-input-height-large: var(--size-8); /* 50px */
+
+  --sl-input-background-color: var(--sl-color-neutral-0);
+  --sl-input-background-color-hover: var(--sl-input-background-color);
+  --sl-input-background-color-focus: var(--sl-input-background-color);
+  --sl-input-background-color-disabled: var(--sl-color-neutral-100);
+  --sl-input-border-color: var(--sl-color-neutral-300);
+  --sl-input-border-color-hover: var(--sl-color-neutral-400);
+  --sl-input-border-color-focus: var(--sl-color-primary-500);
+  --sl-input-border-color-disabled: var(--sl-color-neutral-300);
+  --sl-input-border-width: var(--border-size-1);
+  --sl-input-required-content: "*";
+  --sl-input-required-content-offset: -2px;
+  --sl-input-required-content-color: var(--sl-input-label-color);
+
+  --sl-input-border-radius-small: var(--sl-border-radius-medium);
+  --sl-input-border-radius-medium: var(--sl-border-radius-medium);
+  --sl-input-border-radius-large: var(--sl-border-radius-medium);
+
+  --sl-input-font-family: var(--sl-font-sans);
+  --sl-input-font-weight: var(--sl-font-weight-normal);
+  --sl-input-font-size-small: var(--sl-font-size-small);
+  --sl-input-font-size-medium: var(--sl-font-size-medium);
+  --sl-input-font-size-large: var(--sl-font-size-large);
+  --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
+
+  --sl-input-color: var(--sl-color-neutral-700);
+  --sl-input-color-hover: var(--sl-color-neutral-700);
+  --sl-input-color-focus: var(--sl-color-neutral-700);
+  --sl-input-color-disabled: var(--sl-color-neutral-900);
+  --sl-input-icon-color: var(--sl-color-neutral-500);
+  --sl-input-icon-color-hover: var(--sl-color-neutral-600);
+  --sl-input-icon-color-focus: var(--sl-color-neutral-600);
+  --sl-input-placeholder-color: var(--sl-color-neutral-500);
+  --sl-input-placeholder-color-disabled: var(--sl-color-neutral-600);
+  --sl-input-spacing-small: var(--sl-spacing-small);
+  --sl-input-spacing-medium: var(--sl-spacing-medium);
+  --sl-input-spacing-large: var(--sl-spacing-large);
+
+  --sl-input-focus-ring-color: var(--brand);
+  --sl-input-focus-ring-offset: 0;
+
+  --sl-input-filled-background-color: var(--sl-color-neutral-100);
+  --sl-input-filled-background-color-hover: var(--sl-color-neutral-100);
+  --sl-input-filled-background-color-focus: var(--sl-color-neutral-100);
+  --sl-input-filled-background-color-disabled: var(--sl-color-neutral-100);
+  --sl-input-filled-color: var(--sl-color-neutral-800);
+  --sl-input-filled-color-hover: var(--sl-color-neutral-800);
+  --sl-input-filled-color-focus: var(--sl-color-neutral-700);
+  --sl-input-filled-color-disabled: var(--sl-color-neutral-800);
+
+  /* Labels */
+  --sl-input-label-font-size-small: var(--sl-font-size-small);
+  --sl-input-label-font-size-medium: var(--sl-font-size-medium);
+  --sl-input-label-font-size-large: var(--sl-font-size-large);
+  --sl-input-label-color: inherit;
+
+  /* Help text */
+  --sl-input-help-text-font-size-small: var(--sl-font-size-x-small);
+  --sl-input-help-text-font-size-medium: var(--sl-font-size-small);
+  --sl-input-help-text-font-size-large: var(--sl-font-size-medium);
+  --sl-input-help-text-color: var(--sl-color-neutral-500);
+
+  /* Toggles (checkboxes, radios, switches) */
+  --sl-toggle-size-small: var(--size-3); /* 14px */
+  --sl-toggle-size-medium: var(--size-4); /* 18px */
+  --sl-toggle-size-large: var(--size-5); /* 22px */
+
+  /*
+   * Overlays
+   */
+
+  --sl-overlay-background-color: var(--brand);
+
+  /*
+   * Panels
+   */
+
+  --sl-panel-background-color: var(--sl-color-neutral-0);
+  --sl-panel-border-color: var(--sl-color-neutral-200);
+  --sl-panel-border-width: var(--border-size-1);
+
+  /*
+   * Tooltips
+   */
+
+  --sl-tooltip-border-radius: var(--sl-border-radius-medium);
+  --sl-tooltip-background-color: var(--sl-color-neutral-800);
+  --sl-tooltip-color: var(--sl-color-neutral-0);
+  --sl-tooltip-font-family: var(--sl-font-sans);
+  --sl-tooltip-font-weight: var(--sl-font-weight-normal);
+  --sl-tooltip-font-size: var(--sl-font-size-small);
+  --sl-tooltip-line-height: var(--sl-line-height-dense);
+  --sl-tooltip-padding: var(--sl-spacing-2x-small) var(--sl-spacing-x-small);
+  --sl-tooltip-arrow-size: var(--size-2);
+
+  /*
+   * Z-indexes
+   */
+
+  --sl-z-index-drawer: 700;
+  --sl-z-index-dialog: 800;
+  --sl-z-index-dropdown: 900;
+  --sl-z-index-toast: 950;
+  --sl-z-index-tooltip: 1000;
+}
+
+/* _utility.css */

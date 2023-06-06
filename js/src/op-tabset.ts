@@ -5,6 +5,7 @@ import { Tabset } from "./tabset";
 
 import { make_input_binding } from "./make_input_binding";
 import "./styles/open-props-theme.css";
+import "./styles/shoelace-theme-adapter.css";
 type TabElements = { name: string; el: HTMLElement }[];
 /**
  * Special version of the tabset that's styled using open-props instead of our custom tokens

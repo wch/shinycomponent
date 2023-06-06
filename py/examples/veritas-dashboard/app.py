@@ -188,7 +188,7 @@ app_ui = sc.page(
             ),
             Tag(
                 "shiny-section",
-                ui.input_checkbox_group(
+                sc.forge.input_checkbox_group(
                     "species", "Filter by species", species, selected=species
                 ),
                 icon="funnel",
