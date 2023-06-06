@@ -21,6 +21,7 @@ import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
 
 import "./design-tokens.css";
+import { TabsetLogip } from "./tabset-logip";
 
 // Prevent esbuild from tree-shaking these components away.
 Collapsible;
@@ -44,3 +45,4 @@ GridItem;
 PositLogo;
 ShinyCard;
 Section;
+TabsetLogip;

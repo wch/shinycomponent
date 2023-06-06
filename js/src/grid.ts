@@ -1,13 +1,11 @@
 import { LitElement, css, html } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
+@customElement("shiny-grid")
 export class Grid extends LitElement {
-  nRows: Number = 2;
-  nCols: Number = 2;
-
-  static properties = {
-    nRows: { type: Number },
-    nCols: { type: Number },
-  };
+  @property({ type: Number }) nRows: Number = 2;
+  @property({ type: Number }) nCols: Number = 2;
+  @property({ type: String }) alignItems: string = "stretch";
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -19,6 +17,7 @@ export class Grid extends LitElement {
       grid-template-columns: repeat(var(--nCols), 1fr);
       grid-template-rows: repeat(var(--nRows), 1fr);
       gap: var(--grid-gap, var(--size-fluid-2));
+      align-items: var(--align-items);
       height: 100%;
     }
     * {
@@ -36,11 +35,10 @@ export class Grid extends LitElement {
 
     this.style.setProperty("--nRows", this.nRows.toString());
     this.style.setProperty("--nCols", this.nCols.toString());
+    this.style.setProperty("--align-items", this.alignItems);
   }
 
   render() {
     return html`<slot></slot>`;
   }
 }
-
-customElements.define("shiny-grid", Grid);

@@ -6,18 +6,17 @@ from pathlib import Path
 
 import pandas as pd
 import seaborn as sns
+import shiny.experimental as x
 from ebird.api import get_nearby_observations, get_nearby_species, get_taxonomy
 from htmltools import Tag
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 
 import shinycomponent as sc
-import shiny.experimental as x
 
 sns.set_theme()
 
 
 www_dir = Path(__file__).parent.resolve() / "www"
-
 
 species_to_id = {
     "Eastern Wood-Pewee": "eawpew",
@@ -33,6 +32,7 @@ days_back = 3
 # Eastern Wood-Pewee
 bird = "eawpew"
 
+
 def info_box(title: str, output_id: str, icon: str, color: str):
     return x.ui.value_box(
         title,
@@ -47,37 +47,83 @@ def info_box(title: str, output_id: str, icon: str, color: str):
 
 app_ui = sc.page(
     Tag(
-        "shiny-op-tabset",
+        "shiny-logip-tabset",
         sc.tab(
             # Make a grid with 4 rows and 3 columns
             sc.grid(
                 # Blurb takes up 2 of 3 columns
-                sc.grid_item(ui.output_text("results_blurb"), width=2),
+                sc.grid_item(
+                    sc.grid(
+                        sc.forge.input_select(
+                            id="species",
+                            label="Species",
+                            choices=["Eastern Wood-Pewee", "Wood Duck"],
+                            selected="Eastern Wood-Pewee",
+                        ),
+                        ui.div(
+                            "Days back to look",
+                            sc.simple_number_input(
+                                "days_back",
+                                value=3,
+                                min=1,
+                                max=100,
+                            ),
+                            style="display: grid;place-content: center;padding-block:var(--size-2);",
+                        ),
+                        ui.div(
+                            "Distance from Ann Arbor",
+                            sc.simple_number_input(
+                                "radius",
+                                value=10,
+                                min=1,
+                                max=100,
+                            ),
+                            style="display: grid;place-content: center;",
+                        ),
+                        nRows=1,
+                        nCols=3,
+                        alignItems="center",
+                    ),
+                    width=2,
+                    shadowed=True,
+                ),
+                sc.grid_item(
+                    ui.output_text("results_blurb"),
+                    width=1,
+                    shadowed=True,
+                    centercontent=True,
+                ),
                 sc.grid_item(
                     info_box(
                         title="Scientific Name",
                         output_id="species_scientific_name",
                         icon="🥼",
-                        color="var(--orange-4)"
+                        color="var(--orange-4)",
                     ),
                     info_box(
                         title="Family",
                         output_id="species_family",
                         icon="👨‍👩‍👧‍👦",
-                        color="var(--blue-4)"
+                        color="var(--blue-4)",
                     ),
                     info_box(
                         title="Order",
                         output_id="species_order",
                         icon="📦",
-                        color="var(--green-4)"
+                        color="var(--green-4)",
                     ),
                     width=1,
-                    height=4
+                    height=3,
+                    shadowed=True,
                 ),
                 # Value boxes are 4 rows tall
                 # sc.grid_item(ui.output_text("results_blurb")),
-                sc.grid_item(sc.output_data_grid("results_table"), width=2, height=3),
+                sc.grid_item(
+                    sc.output_data_grid("results_table"),
+                    width=2,
+                    height=3,
+                    shadowed=True,
+                ),
                 nRows=4,
                 nCols=3,
             ),
@@ -90,75 +136,21 @@ app_ui = sc.page(
                 sc.grid_item(
                     ui.p("These are the notable birds seen recently"), width=2
                 ),
-
                 sc.grid_item(sc.output_data_grid("nearby_table"), width=3, height=3),
                 nRows=4,
                 nCols=3,
             ),
             name="Notable",
         ),
-        sc.sidebar(
-            Tag(
-                "shiny-section",
-                Tag("posit-logo", withName=True, slot="icon"),
-                ui.h2("EBird!"),
-            ),
-            Tag(
-                "shiny-section",
-                ui.tags.small(
-                    ui.em(
-                        "Below are some inputs that control the app content."
-                    )
-                ),
-                icon="ℹ️",
-            ),
-            Tag(
-                "shiny-section",
-                "Select your species of interest",
-                ui.input_select(
-                    "species",
-                    "Species",
-                    ["Eastern Wood-Pewee", "Wood Duck"],
-                ),
-                icon="🐧",
-            ),
-            Tag(
-                "shiny-section",
-                "Days back to look",
-                sc.simple_number_input(
-                    "days_back",
-                    value=3,
-                    min=1,
-                    max=100,
-                ),
-                icon="📅",
-            ),
-            Tag(
-                "shiny-section",
-                "Distance from Ann Arbor (mi)",
-                sc.simple_number_input(
-                    "radius",
-                    value=10,
-                    min=1,
-                    max=100,
-                ),
-                icon="📏",
-            ),
-        ),
         Tag(
-            "shiny-footer",
-            ui.tags.span(
-                "Inspired by ",
-                ui.tags.a(
-                    "Veritas Admin Dashboard",
-                    href="https://dribbble.com/shots/20836166-Veritas-Admin-Dashboard-Analytics-UX",
-                ),
-            ),
-            Tag("theme-chooser"),
+            "shiny-section",
+            Tag("posit-logo", withName=True, slot="icon"),
+            ui.h2("EBird!"),
+            slot="title",
         ),
-        ui.tags.div("Birds are cool", {"slot": "header"}),
     ),
 )
+
 
 def server(input: Inputs, output: Outputs, session: Session):
     @reactive.Calc
@@ -171,7 +163,11 @@ def server(input: Inputs, output: Outputs, session: Session):
         bird = species_to_id[input.species()]
         # Get nearby records for the past 3 days
         records = get_nearby_species(
-            api_key, bird, *ann_arbor_lat_lon, dist=input.radius(), back=input.days_back()
+            api_key,
+            bird,
+            *ann_arbor_lat_lon,
+            dist=input.radius(),
+            back=input.days_back(),
         )
 
         return pd.DataFrame.from_records(records)
@@ -226,16 +222,23 @@ def server(input: Inputs, output: Outputs, session: Session):
     @output
     @render.text
     def results_blurb():
-
         num_results = len(ebird_results())
         species = input.species()
         radius = input.radius()
 
-        num_results_text = "There have been no observations" if num_results == 0 else "There has been one observation" if num_results == 1 else f"There have been {num_results} observations"
+        num_results_text = (
+            "There have been no observations"
+            if num_results == 0
+            else "There has been one observation"
+            if num_results == 1
+            else f"There have been {num_results} observations"
+        )
         location_text = f"within {radius} miles of Ann Arbor"
-        days_back_text = f"in the past {input.days_back()} {'day' if days_back == 1 else 'days'}"
+        days_back_text = (
+            f"in the past {input.days_back()} {'day' if days_back == 1 else 'days'}"
+        )
 
-        if (num_results == 0):
+        if num_results == 0:
             return f"There have been no observations of {species}s {location_text} {days_back_text}"
 
         return f"{num_results_text} of {species} {location_text} {days_back_text}"

@@ -38,6 +38,10 @@ export class SimpleNumberInput
       );
 
       --_font-size: var(--number-input-font-size, var(--sl-font-size-large));
+
+      position: relative;
+      width: var(--number-input-width, fit-content);
+      height: var(--number-input-height, fit-content);
     }
     .wrapper {
       display: inline-flex;
@@ -101,20 +105,21 @@ export class SimpleNumberInput
       padding-inline-end: var(--_number-input-padding-inline);
     }
 
-    span {
-      display: inline-block;
+    .validation-msg {
+      position: absolute;
       /* margin-left: var(--space-x-small); */
       font-size: var(
         --number-input-warning-font-size,
         var(--sl-font-size-x-small)
       );
+      top: calc(115%);
       color: var(--_warning-color);
       transform: scaleX(0);
       transition: transform var(--sl-transition-fast) var(--ease-squish-2);
       transform-origin: left;
     }
 
-    .wrapper.invalid + span {
+    .wrapper.invalid .validation-msg {
       transform: scaleX(1);
     }
   `;
@@ -217,8 +222,10 @@ export class SimpleNumberInput
         >
           +
         </button>
+        <span class="validation-msg"
+          >Make sure your number is between ${this.min} and ${this.max}</span
+        >
       </div>
-      <span>Make sure your number is between ${this.min} and ${this.max}</span>
     `;
   }
 }
