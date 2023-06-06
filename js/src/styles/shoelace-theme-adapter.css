@@ -1,9 +1,7 @@
 /* This file takes a shoelace theme and hooks it up to the openprops variables
 we have. When this file is included, any shoelace components should
 automatically match the current open-props theme */
-:root,
-:host,
-.sl-theme-light {
+:where(html) {
   /*
    * Theme Tokens
    */

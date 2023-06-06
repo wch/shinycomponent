@@ -1,4 +1,3 @@
-import "@shoelace-style/shoelace/dist/themes/light.css";
 import { ForgeInputCheckbox } from "./input-checkbox";
 import { ForgeInputCheckboxGroup } from "./input-checkbox-group";
 import { ForgeInputNumber } from "./input-number";

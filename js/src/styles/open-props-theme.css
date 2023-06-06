@@ -40,8 +40,7 @@
   --gray-10-hsl: 214 14% 10%;
   --gray-11-hsl: 216 16% 6%;
   --gray-12-hsl: 210 40% 2%;
-}
-html {
+
   /* light */
   --brand-light: var(--orange-6);
   --text-1-light: var(--gray-8);
@@ -135,7 +134,7 @@ html {
   }
 }
 
-body:has([choice="light"]),
+:root:has([choice="light"]),
 [color-scheme="light"] {
   color-scheme: light;
 
@@ -150,7 +149,7 @@ body:has([choice="light"]),
   --shadow-strength: var(--shadow-strength-light);
 }
 
-body:has([choice="dark"]),
+:root:has([choice="dark"]),
 [color-scheme="dark"] {
   color-scheme: dark;
 
@@ -165,7 +164,7 @@ body:has([choice="dark"]),
   --shadow-strength: var(--shadow-strength-dark);
 }
 
-body:has([choice="dim"]),
+:root:has([choice="dim"]),
 [color-scheme="dim"] {
   color-scheme: dark;
 
@@ -180,7 +179,7 @@ body:has([choice="dim"]),
   --shadow-strength: var(--shadow-strength-dim);
 }
 
-body:has([choice="grape"]),
+:root:has([choice="grape"]),
 [color-scheme="grape"] {
   color-scheme: light;
 
@@ -195,7 +194,7 @@ body:has([choice="grape"]),
   --shadow-strength: var(--shadow-strength-grape);
 }
 
-body:has([choice="choco"]),
+:root:has([choice="choco"]),
 [color-scheme="choco"] {
   color-scheme: light;
 
@@ -219,7 +218,7 @@ html {
   block-size: 100%;
   background-color: var(--surface-1);
   color: var(--text-1);
-  accent-color: var(--brand);
+  /* accent-color: var(--brand); */
 }
 
 main {

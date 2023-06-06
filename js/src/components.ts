@@ -20,7 +20,6 @@ import { Tabset } from "./tabset";
 import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
 
-import "./design-tokens.css";
 // import { ShinyIcon } from "./icon";
 import { TabsetLogip } from "./tabset-logip";
 

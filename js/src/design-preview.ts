@@ -1,5 +1,4 @@
 import { LitElement, css, html } from "lit";
-import "./design-tokens.css";
 
 const colors = [
   "primary",

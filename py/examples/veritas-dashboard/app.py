@@ -172,13 +172,13 @@ app_ui = sc.page(
             ),
             Tag(
                 "shiny-section",
-                ui.input_selectize(
+                sc.forge.input_select(
                     "xvar",
                     "X variable",
                     numeric_cols,
                     selected="Bill Length (mm)",
                 ),
-                ui.input_selectize(
+                sc.forge.input_select(
                     "yvar",
                     "Y variable",
                     numeric_cols,
@@ -195,8 +195,10 @@ app_ui = sc.page(
             ),
             Tag(
                 "shiny-section",
-                ui.input_switch("by_species", "Show species", value=True),
-                ui.input_switch("show_margins", "Show marginal plots", value=True),
+                sc.forge.input_switch("by_species", "Show species", value=True),
+                sc.forge.input_switch(
+                    "show_margins", "Show marginal plots", value=True
+                ),
                 icon="eye",
             ),
         ),
