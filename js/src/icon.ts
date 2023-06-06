@@ -1,9 +1,14 @@
-// import SlIcon from "@shoelace-style/shoelace/dist/components/icon/icon.js";
-import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path.js";
-import { customElement } from "lit/decorators.js";
+import "iconify-icon";
+import { LitElement, html } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
-// TODO: This requires an internet connection so it will need to be figured out how to make it work efficiently offline.
-setBasePath("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist");
+// For list of all available icons, see:
+// https://icon-sets.iconify.design/
+@customElement("shiny-icon")
+export class ShinyIcon extends LitElement {
+  @property() name: string = "info-circle";
 
-// @customElement("shiny-icon")
-// export class ShinyIcon extends SlIcon {}
+  render() {
+    return html`<iconify-icon icon="${this.name}"></iconify-icon>`;
+  }
+}

@@ -20,7 +20,7 @@ import { Tabset } from "./tabset";
 import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
 
-// import { ShinyIcon } from "./icon";
+import { ShinyIcon } from "./icon";
 import { TabsetLogip } from "./tabset-logip";
 
 // Prevent esbuild from tree-shaking these components away.
@@ -46,4 +46,4 @@ PositLogo;
 ShinyCard;
 Section;
 TabsetLogip;
-// ShinyIcon;
+ShinyIcon;

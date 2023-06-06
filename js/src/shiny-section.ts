@@ -18,7 +18,7 @@ export class Section extends LitElement {
       display: grid;
       align-items: center;
       grid-template-columns: var(--sidebar-content-columns, auto 1fr);
-      gap: var(--sidebar-content-gap, var(--size-2));
+      gap: var(--sidebar-content-gap, var(--size-fluid-2));
       height: var(--sidebar-content-height, auto);
       /* width: 100%; */
 
@@ -43,21 +43,24 @@ export class Section extends LitElement {
       padding-block: 0;
       font-weight: var(--font-weight-6);
     }
+
     .content > ::slotted(*:last-child) {
       margin-bottom: 0 !important;
     }
 
     .content {
       overflow: var(--sidebar-content-overflow);
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-fluid-2);
     }
   `;
 
   render() {
     return html`<div class="icon">
-        ${this.icon && html`<sl-icon name=${this.icon}></sl-icon>`}
+        ${this.icon && html`<shiny-icon name=${this.icon}></shiny-icon>`}
         <slot name="icon"></slot>
       </div>
       <div class="content"><slot></slot></div>`;
   }
 }
-// customElements.define("shiny-section", Section);

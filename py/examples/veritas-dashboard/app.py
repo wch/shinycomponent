@@ -168,7 +168,7 @@ app_ui = sc.page(
                         "Below are some inputs that control the app content. Use them and explore the inferior world of penguins!"
                     )
                 ),
-                icon="info-circle",
+                icon="bi:info-circle",
             ),
             Tag(
                 "shiny-section",
@@ -184,14 +184,14 @@ app_ui = sc.page(
                     numeric_cols,
                     selected="Bill Depth (mm)",
                 ),
-                icon="sliders2",
+                icon="bi:sliders2",
             ),
             Tag(
                 "shiny-section",
                 sc.forge.input_checkbox_group(
                     "species", "Filter by species", species, selected=species
                 ),
-                icon="funnel",
+                icon="bi:funnel",
             ),
             Tag(
                 "shiny-section",
@@ -199,7 +199,7 @@ app_ui = sc.page(
                 sc.forge.input_switch(
                     "show_margins", "Show marginal plots", value=True
                 ),
-                icon="eye",
+                icon="bi:eye",
             ),
         ),
         Tag(

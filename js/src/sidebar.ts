@@ -5,7 +5,7 @@ import { set_el_attr } from "./set_el_attr";
 @customElement("shiny-sidebar")
 export class Sidebar extends LitElement {
   @property({ type: Boolean, reflect: true }) closed: boolean = false;
-  @property({ type: Number }) openWidthPx: number = 300;
+  @property({ type: Number }) openWidthPx: number = 320;
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -17,7 +17,7 @@ export class Sidebar extends LitElement {
 
       --sidebar-content-columns: auto 1fr;
       --sidebar-content-height: auto;
-      --sidebar-content-gap: var(--size-3);
+      --sidebar-content-gap: var(--size-fluid-2);
 
       height: 100%;
       position: relative;

@@ -35,6 +35,7 @@
     "@preact/compat": "^17.1.2",
     "@tanstack/react-table": "^8.9.1",
     "@tanstack/react-virtual": "3.0.0-beta.54",
+    "iconify-icon": "^1.0.7",
     "lit": "^2.7.4",
     "preact": "^10.15.1",
     "react": "npm:@preact/compat@^17.1.2",
