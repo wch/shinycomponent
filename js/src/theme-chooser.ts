@@ -1,6 +1,6 @@
+import { SlChangeEvent } from "@shoelace-style/shoelace";
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { make_input_binding } from "./make_input_binding";
 
 const themes = ["default", "light", "dark", "dim", "grape"] as const;
 type Theme = (typeof themes)[number];
@@ -14,26 +14,25 @@ export class ThemeChooser extends LitElement {
       border-radius: var(--radius-1);
     }
   `;
-  handle_change(e: InputEvent) {
-    this.choice = (e.target as HTMLInputElement).value as Theme;
+
+  handleChange(e: SlChangeEvent) {
+    const radios = this.shadowRoot!.querySelector("forge-input-radio-buttons")!;
+    this.choice = radios.getValue() as Theme;
   }
+
+  constructor() {
+    super();
+    this.addEventListener("sl-change", (e) => this.handleChange(e));
+  }
+
   render() {
     return html`
-      <form>
-        ${themes.map((choice, i) => {
-          return html`
-            <input
-              type="radio"
-              id="${choice}"
-              name="theme"
-              value="${choice}"
-              @change=${this.handle_change}
-              ?checked=${i === 0}
-            />
-            <label for="${choice}">${choice}</label>
-          `;
-        })}
-      </form>
+      <forge-input-radio-buttons
+        choices=${JSON.stringify(themes)}
+        selected="default"
+        inline
+      >
+      </forge-input-radio-buttons>
     `;
   }
 }
