@@ -59,9 +59,9 @@ automatically match the current open-props theme */
   --sl-color-danger-950: var(--danger);
 
   /* Neutral */
-  --sl-color-neutral-50: var(--text-2);
-  --sl-color-neutral-100: var(--text-2);
-  --sl-color-neutral-200: var(--text-2);
+  --sl-color-neutral-50: var(--suface-3);
+  --sl-color-neutral-100: var(--surface-4);
+  --sl-color-neutral-200: var(--suface-4);
   --sl-color-neutral-300: var(--text-2);
   --sl-color-neutral-400: var(--text-2);
   --sl-color-neutral-500: var(--text-2);
@@ -183,10 +183,10 @@ automatically match the current open-props theme */
   --sl-input-height-medium: var(--size-7); /* 40px */
   --sl-input-height-large: var(--size-8); /* 50px */
 
-  --sl-input-background-color: var(--sl-color-neutral-0);
+  --sl-input-background-color: var(--surface-2);
   --sl-input-background-color-hover: var(--sl-input-background-color);
   --sl-input-background-color-focus: var(--sl-input-background-color);
-  --sl-input-background-color-disabled: var(--sl-color-neutral-100);
+  --sl-input-background-color-disabled: var(--suface-4);
   --sl-input-border-color: var(--sl-color-neutral-300);
   --sl-input-border-color-hover: var(--sl-color-neutral-400);
   --sl-input-border-color-focus: var(--sl-color-primary-500);
@@ -223,10 +223,16 @@ automatically match the current open-props theme */
   --sl-input-focus-ring-color: var(--brand);
   --sl-input-focus-ring-offset: 0;
 
-  --sl-input-filled-background-color: var(--sl-color-neutral-100);
-  --sl-input-filled-background-color-hover: var(--sl-color-neutral-100);
-  --sl-input-filled-background-color-focus: var(--sl-color-neutral-100);
-  --sl-input-filled-background-color-disabled: var(--sl-color-neutral-100);
+  --sl-input-filled-background-color: var(--surface-1);
+  --sl-input-filled-background-color-hover: var(
+    --sl-input-filled-background-color
+  );
+  --sl-input-filled-background-color-focus: var(
+    --sl-input-filled-background-color
+  );
+  --sl-input-filled-background-color-disabled: var(
+    --sl-input-filled-background-color
+  );
   --sl-input-filled-color: var(--sl-color-neutral-800);
   --sl-input-filled-color-hover: var(--sl-color-neutral-800);
   --sl-input-filled-color-focus: var(--sl-color-neutral-700);
@@ -259,7 +265,7 @@ automatically match the current open-props theme */
    * Panels
    */
 
-  --sl-panel-background-color: var(--sl-color-neutral-0);
+  --sl-panel-background-color: var(--surface-3);
   --sl-panel-border-color: var(--sl-color-neutral-200);
   --sl-panel-border-width: var(--border-size-1);
 
@@ -268,7 +274,7 @@ automatically match the current open-props theme */
    */
 
   --sl-tooltip-border-radius: var(--sl-border-radius-medium);
-  --sl-tooltip-background-color: var(--sl-color-neutral-800);
+  --sl-tooltip-background-color: var(--surface-3);
   --sl-tooltip-color: var(--sl-color-neutral-0);
   --sl-tooltip-font-family: var(--sl-font-sans);
   --sl-tooltip-font-weight: var(--sl-font-weight-normal);
