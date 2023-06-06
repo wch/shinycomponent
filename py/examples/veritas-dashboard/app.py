@@ -166,13 +166,9 @@ app_ui = sc.page(
                 nCols=2,
             ),
             name="Nearby",
+            color_scheme="grape",
         ),
-        Tag(
-            "shiny-section",
-            Tag("posit-logo", withName=True, slot="icon"),
-            ui.h2("EBird!"),
-            slot="title",
-        ),
+        Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
     ),
 )
 
