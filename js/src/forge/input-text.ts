@@ -11,6 +11,7 @@ export class ForgeInputText
   implements CustomElementInputValue<string>
 {
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   "wait-for-enter": boolean = false;
   debounce: number = 250;
 
