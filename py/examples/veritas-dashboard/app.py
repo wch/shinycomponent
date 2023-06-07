@@ -1,29 +1,19 @@
 # Inspired by https://dribbble.com/shots/20836166-Veritas-Admin-Dashboard-Analytics-UX
 import os
 from pathlib import Path
-from typing import List
 
 import ipyleaflet as L
 import pandas as pd
-import seaborn as sns
 import shiny.experimental as x
 from ebird.api import get_nearby_observations, get_nearby_species, get_taxonomy
-from htmltools import Tag, TagAttrs, TagChild
+from htmltools import Tag
 from ipywidgets import Layout
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shinywidgets import output_widget, register_widget
 
 import shinycomponent as sc
 
-sns.set_theme()
-
 www_dir = Path(__file__).parent.resolve() / "www"
-
-df = pd.read_csv(Path(__file__).parent / "penguins.csv", na_values="NA")
-numeric_cols: List[str] = df.select_dtypes(include=["float64"]).columns.tolist()
-species: List[str] = df["Species"].unique().tolist()
-species.sort()
-
 
 api_key = os.environ["EBIRD_API_KEY"]
 
@@ -51,24 +41,20 @@ def info_box(title: str, output_id: str, icon: str, color: str):
     )
 
 
-def centered_container(*args: TagChild | TagAttrs):
-    return ui.div(*args, style="display: grid; place-content: center;")
-
-
-hide_leaflet_footer = ".leaflet-container .leaflet-control-attribution {display: none;}"
-
 app_ui = sc.page(
-    ui.tags.head(ui.tags.style(hide_leaflet_footer)),
-    Tag(
-        "shiny-op-tabset",
+    ui.tags.head(
+        # Hide the leaflet footer
+        ui.tags.style(
+            ".leaflet-container .leaflet-control-attribution {display: none;}"
+        )
+    ),
+    sc.op_tabset(
         sc.sidebar(
-            Tag(
-                "shiny-section",
+            sc.icon_section(
                 Tag("posit-logo", withName=True, slot="icon"),
                 ui.h2("EBird Explorer"),
             ),
-            Tag(
-                "shiny-section",
+            sc.icon_section(
                 ui.tags.small(
                     ui.em(
                         "Below are some inputs that control the app content. Use them and explore the birds of Ann Arbor!"
@@ -76,8 +62,7 @@ app_ui = sc.page(
                 ),
                 icon="bi:info-circle",
             ),
-            Tag(
-                "shiny-section",
+            sc.icon_section(
                 sc.forge.input_select(
                     id="species",
                     label="Species",
@@ -86,8 +71,7 @@ app_ui = sc.page(
                 ),
                 icon="bi:sliders2",
             ),
-            Tag(
-                "shiny-section",
+            sc.icon_section(
                 sc.forge.input_number(
                     id="radius",
                     label="Distance from Ann Arbor",
@@ -108,8 +92,9 @@ app_ui = sc.page(
         sc.tab(
             # Make a grid with 4 rows and 3 columns
             sc.grid(
-                centered_container(
+                ui.div(
                     ui.output_text("common_name", container=ui.h2),
+                    style="display: grid; place-content: center;",
                 ),
                 sc.grid_item(
                     output_widget("map", width="100%", height="100%"),
@@ -175,10 +160,9 @@ app_ui = sc.page(
             name="Nearby",
             color_scheme="grape",
         ),
-        Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
+        sc.footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
         ui.div(
-            Tag(
-                "shiny-avatar",
+            sc.avatar(
                 name="My Account",
                 src="profile-photo.jpg",
                 variant="circle",

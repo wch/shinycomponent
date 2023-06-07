@@ -11,7 +11,7 @@ export class TabsetLogip extends Tabset {
       --_gap: var(--gap, var(--size-fluid-3));
       --_border-radius: var(--border-radius, var(--radius-3));
 
-      --_sidebar_width: var(--sidebar-width, var(--size-header-2));
+      --_sidebar_width: var(--sidebar-width, auto);
 
       --_main-bg: var(--main-bg, var(--sl-color-neutral-50));
       --_main-color: var(--main-color, var(--sl-color-neutral-950));

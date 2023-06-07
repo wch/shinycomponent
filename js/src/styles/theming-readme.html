@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Style Guidelines and Tokens</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="theming-readme_files/libs/clipboard/clipboard.min.js"></script>
+<script src="theming-readme_files/libs/quarto-html/quarto.js"></script>
+<script src="theming-readme_files/libs/quarto-html/popper.min.js"></script>
+<script src="theming-readme_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="theming-readme_files/libs/quarto-html/anchor.min.js"></script>
+<link href="theming-readme_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="theming-readme_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="theming-readme_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="theming-readme_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="theming-readme_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+<link rel="stylesheet" href="https://unpkg.com/open-props">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#colors" id="toc-colors" class="nav-link active" data-scroll-target="#colors">Colors</a>
+  <ul class="collapse">
+  <li><a href="#brand" id="toc-brand" class="nav-link" data-scroll-target="#brand"><code>brand</code></a></li>
+  <li><a href="#text-1" id="toc-text-1" class="nav-link" data-scroll-target="#text-1"><code>text-1</code></a></li>
+  <li><a href="#text-2" id="toc-text-2" class="nav-link" data-scroll-target="#text-2"><code>text-2</code></a></li>
+  <li><a href="#surface-1" id="toc-surface-1" class="nav-link" data-scroll-target="#surface-1"><code>surface-1</code></a></li>
+  <li><a href="#surface-23" id="toc-surface-23" class="nav-link" data-scroll-target="#surface-23"><code>surface-{2,3}</code></a></li>
+  <li><a href="#surface-4" id="toc-surface-4" class="nav-link" data-scroll-target="#surface-4"><code>surface-4</code></a></li>
+  <li><a href="#success" id="toc-success" class="nav-link" data-scroll-target="#success"><code>success</code></a></li>
+  <li><a href="#warning" id="toc-warning" class="nav-link" data-scroll-target="#warning"><code>warning</code></a></li>
+  <li><a href="#error" id="toc-error" class="nav-link" data-scroll-target="#error"><code>error</code></a></li>
+  </ul></li>
+  <li><a href="#sizes" id="toc-sizes" class="nav-link" data-scroll-target="#sizes">Sizes</a></li>
+  <li><a href="#size-xxs" id="toc-size-xxs" class="nav-link" data-scroll-target="#size-xxs">–size-xxs</a></li>
+  <li><a href="#size-xs" id="toc-size-xs" class="nav-link" data-scroll-target="#size-xs">–size-xs</a></li>
+  <li><a href="#size-s" id="toc-size-s" class="nav-link" data-scroll-target="#size-s">–size-s</a></li>
+  <li><a href="#size-m" id="toc-size-m" class="nav-link" data-scroll-target="#size-m">–size-m</a></li>
+  <li><a href="#size-l" id="toc-size-l" class="nav-link" data-scroll-target="#size-l">–size-l</a></li>
+  <li><a href="#size-xl" id="toc-size-xl" class="nav-link" data-scroll-target="#size-xl">–size-xl</a></li>
+  <li><a href="#size-xxl" id="toc-size-xxl" class="nav-link" data-scroll-target="#size-xxl">–size-xxl</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Style Guidelines and Tokens</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="colors" class="level2">
+<h2 class="anchored" data-anchor-id="colors">Colors</h2>
+<p>We have a small set of colors that are used for theming. The following are the colors and where they should be used.</p>
+<section id="brand" class="level3">
+<h3 class="anchored" data-anchor-id="brand"><code>brand</code></h3>
+<p>This is typically a colorful color. It should be used for actionable items. E.g. a button that can be pressed. It should not be used for text or backgrounds.</p>
+</section>
+<section id="text-1" class="level3">
+<h3 class="anchored" data-anchor-id="text-1"><code>text-1</code></h3>
+<p>This is the typical text color. It should be used for things like headers and primary text.</p>
+</section>
+<section id="text-2" class="level3">
+<h3 class="anchored" data-anchor-id="text-2"><code>text-2</code></h3>
+<p>This is the secondary text color. It is typically a little less contrasty to deemphasize it. It should be used for text that is not critical to the main action and thus doesn’t need to be as prominent.</p>
+</section>
+<section id="surface-1" class="level3">
+<h3 class="anchored" data-anchor-id="surface-1"><code>surface-1</code></h3>
+<p>This is the primary background color. It will have the greatest contrast with the text colors and is typically usesd for things like backgrounds of a full app etc..</p>
+</section>
+<section id="surface-23" class="level3">
+<h3 class="anchored" data-anchor-id="surface-23"><code>surface-{2,3}</code></h3>
+<p>These is a secondary background colors. Their contrast is alittle softer than <code>surface-1</code> but it is still very legible. This will often be used for things like cards etc.</p>
+</section>
+<section id="surface-4" class="level3">
+<h3 class="anchored" data-anchor-id="surface-4"><code>surface-4</code></h3>
+<p>This is a relatively low contrast background color. It should be used for contents that have large text or icons so the contrast is still acceptable. It’s useful for creating a hierarchy of information and things like headers and footers for cards etc..</p>
+</section>
+<section id="success" class="level3">
+<h3 class="anchored" data-anchor-id="success"><code>success</code></h3>
+<p>This is most often a shade of green. It should be used almost exclusively for success messages.</p>
+</section>
+<section id="warning" class="level3">
+<h3 class="anchored" data-anchor-id="warning"><code>warning</code></h3>
+<p>Often a shade of orange. Like <code>success</code> it should be used almost exclusively for warning messages.</p>
+</section>
+<section id="error" class="level3">
+<h3 class="anchored" data-anchor-id="error"><code>error</code></h3>
+<p>Often a shade of red. Like <code>success</code> it should be used almost exclusively for error messages.</p>
+</section>
+</section>
+<section id="sizes" class="level2">
+<h2 class="anchored" data-anchor-id="sizes">Sizes</h2>
+<p>The following are the design tokens related to sizes, e.g.&nbsp;paddings, margins, etc.</p>
+<div class="cell">
+
+</div>
+<style>
+html {
+  --size-xxs: var(--size-1);
+  --size-xs: var(--size-2);
+  --size-s: var(--size-3);
+  --size-m: var(--size-fluid-2);
+  --size-l: var(--size-fluid-3);
+  --size-xl: var(--size-fluid-5);
+  --size-xxl: var(--size-fluid-6);
+
+  --brand: var(--orange-6);
+  --text-1: var(--gray-8);
+  --text-2: var(--gray-7);
+  --surface-1: var(--gray-0);
+  --surface-2: var(--gray-1);
+  --surface-3: var(--gray-2);
+  --surface-4: var(--gray-3);
+
+
+}
+
+.size-card {
+  background-color: var(--surface-1);
+  color: var(--text-1);
+  padding: var(--size-l);
+  max-inline-size: var(--size-content-2);
+  border-radius: var(--radius-3);
+  border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+  box-shadow: 0 1rem 0.5rem -0.5rem;
+  box-shadow: 0 2.8px 2.2px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+    0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
+    0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+    0 22.3px 17.9px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+    0 41.8px 33.4px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+    0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+
+  margin-block: var(--size-l);
+  margin-inline: auto;
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  gap: var(--size-m);
+}
+
+.size-card > * {
+  margin: 0;
+  padding: 0;
+}
+
+.size-card > *:empty {
+  display: none;
+}
+
+.size-card > h2 {
+  grid-area:  span 1 / span 1;
+  font-family: var(--font-mono);
+  margin: 0;
+  border: none;
+}
+
+.size-card > *:last-child {
+  margin-block: 0;
+}
+
+.size-card > *:nth-child(3) {
+  grid-area:  span 1 / span 1;
+}
+
+.size-card > *:nth-child(5) {
+  grid-area:  span 1 / span 2;
+}
+
+.size-card > .size-demo {
+  display: inline-block;
+  height: var(--size-m);
+  background-color: var(--brand);
+}
+</style>
+</section>
+<section id="size-xxs" class="level2 size-card">
+<h2 class="size-card anchored" data-anchor-id="size-xxs">–size-xxs</h2>
+<p></p><div class="size-demo" style="width: var(--size-xxs)"></div><p></p>
+<p>This size should very rarely be used. If it is used, it should be for minor adjustments of positions, like nudging an icon up or down to make more visually centered layout.</p>
+<p>OP mapping: <code>calc(var(--size-1) / 2)</code></p>
+</section>
+<section id="size-xs" class="level2 size-card">
+<h2 class="size-card anchored" data-anchor-id="size-xs">–size-xs</h2>
+<p></p><div class="size-demo" style="width: var(--size-xs)"></div><p></p>
+<p>Used for spacing things within a given small unit of design. E.g. creating a tight border around an element like a button.</p>
+<p>OP mapping: <code>--size-1</code></p>
+</section>
+<section id="size-s" class="level2 size-card">
+<h2 class="size-card anchored" data-anchor-id="size-s">–size-s</h2>
+<p></p><div class="size-demo" style="width: var(--size-s)"></div><p></p>
+<p>Separating distinct atomic units of a design. E.g. the margin between a series of buttons and description text above them.</p>
+<p>OP mapping: <code>--size-2</code></p>
+</section>
+<section id="size-m" class="level2 size-card">
+<h2 class="size-card anchored" data-anchor-id="size-m">–size-m</h2>
+<p></p><div class="size-demo" style="width: var(--size-m)"></div><p></p>
+<p>Separating larger components. E.g. Padding within a card or spacing between menu items in a controls panel.</p>
+<p>OP mapping: <code>--size-3</code></p>
+</section>
+<section id="size-l" class="level2 size-card">
+<h2 class="size-card anchored" data-anchor-id="size-l">–size-l</h2>
+<p></p><div class="size-demo" style="width: var(--size-l)"></div><p></p>
+<p>Thematic separation. E.g. separating two cards from eachother or a sidebar from another the main content of the app.</p>
+<p>OP mapping: <code>--size-fluid-2</code></p>
+</section>
+<section id="size-xl" class="level2 size-card">
+<h2 class="size-card anchored" data-anchor-id="size-xl">–size-xl</h2>
+<p></p><div class="size-demo" style="width: var(--size-xl)"></div><p></p>
+<p>App level separation. E.g. margins on the side of content.</p>
+<p>OP mapping: <code>--size-fluid-3</code></p>
+</section>
+<section id="size-xxl" class="level2 size-card">
+<h2 class="size-card anchored" data-anchor-id="size-xxl">–size-xxl</h2>
+<p></p><div class="size-demo" style="width: var(--size-xxl)"></div><p></p>
+<p>Rarely used but can be used to create extra space between items that otherwise would be closer together. E.g. Isolating a given card to draw focus to it. Should rarely be used in internal component design.</p>
+<p>OP mapping: <code>--size-fluid-6</code></p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

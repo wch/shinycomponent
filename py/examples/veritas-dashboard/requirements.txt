@@ -1,4 +1,6 @@
 shiny
-shinyswatch
 pandas
-seaborn
+ipyleaflet
+ebird.api
+ipywidgets
+shinywidgets

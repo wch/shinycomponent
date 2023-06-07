@@ -2,3 +2,5 @@ node_modules
 yarn-error.log
 .Rproj.user
 venv
+
+js/src/styles/theming-readme_files/

@@ -100,7 +100,6 @@ export class OpTabset extends Tabset {
     .tab {
       cursor: pointer;
       position: relative;
-      padding-block: var(--size-0);
       padding-inline: var(--size-5);
       border-radius: var(--child-radius);
       color: var(--text-2);

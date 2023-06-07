@@ -58,10 +58,6 @@ export class DesignPreview extends LitElement {
       box-shadow: var(--shadow-small);
     }
 
-    :host > div > h2 {
-      margin-block: var(--size-00) var(--space-small);
-    }
-
     .box-container {
       width: 100%;
       display: grid;

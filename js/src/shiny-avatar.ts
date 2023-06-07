@@ -1,7 +1,6 @@
 import { LitElement, css, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
 import { themePrimitives } from "./styles/op-classes";
-// setBasePath("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist");
+import { customElement, property } from "lit/decorators.js";
 
 @customElement("shiny-avatar")
 export class ShinyAvatar extends LitElement {
@@ -55,7 +54,7 @@ export class ShinyAvatar extends LitElement {
   `;
 
   render() {
-    return html` <span class="name"> ${this.name}</span>
+    return html`<span class="name">${this.name}</span>
       <img
         class="${this.variant}"
         style="width:${this.size}px;"

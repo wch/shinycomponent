@@ -28,7 +28,7 @@ export class Sidebar extends LitElement {
 
     :host([closed]) {
       --sidebar-content-columns: auto 0px;
-      --sidebar-content-height: var(--size-fluid-6);
+      --sidebar-content-height: var(--size-11);
       --sidebar-content-gap: 0;
       --sidebar-content-overflow: hidden;
 

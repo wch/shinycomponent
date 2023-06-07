@@ -1,0 +1,235 @@
+---
+title: "Style Guidelines and Tokens"
+format:
+  html:
+    toc: true
+    css: https://unpkg.com/open-props
+---
+
+## Colors
+
+We have a small set of colors that are used for theming. The following are the colors and where they should be used.
+
+### `brand`
+
+This is typically a colorful color. It should be used for actionable items. E.g. a button that can be pressed. It should not be used for text or backgrounds.
+
+### `text-1`
+
+This is the typical text color. It should be used for things like headers and primary text.
+
+### `text-2`
+
+This is the secondary text color. It is typically a little less contrasty to deemphasize it. It should be used for text that is not critical to the main action and thus doesn't need to be as prominent.
+
+### `surface-1`
+
+This is the primary background color. It will have the greatest contrast with the text colors and is typically usesd for things like backgrounds of a full app etc..
+
+### `surface-{2,3}`
+
+These is a secondary background colors. Their contrast is alittle softer than `surface-1` but it is still very legible. This will often be used for things like cards etc.
+
+### `surface-4`
+
+This is a relatively low contrast background color. It should be used for contents that have large text or icons so the contrast is still acceptable. It's useful for creating a hierarchy of information and things like headers and footers for cards etc..
+
+### `success`
+
+This is most often a shade of green. It should be used almost exclusively for success messages.
+
+### `warning`
+
+Often a shade of orange. Like `success` it should be used almost exclusively for warning messages.
+
+### `error`
+
+Often a shade of red. Like `success` it should be used almost exclusively for error messages.
+
+## Sizes
+
+The following are the design tokens related to sizes, e.g. paddings, margins, etc.
+
+```{r}
+#| echo: false
+library(htmltools)
+library(tibble)
+
+size_usage <- tribble(
+  ~count, ~name,
+  1, "--size-xxs",
+  6, "--size-3",
+  6, "--size-1",
+  5, "--size-fluid-2",
+  4, "--size-2",
+  3, "--size-fluid-3",
+  3, "--size-fluid-1",
+  1, "--size-7",
+  1, "--size-5",
+  1, "--size-11",
+  1, "--size-fluid-6",
+)
+
+size_divs <- tagList()
+
+for (i in 1:nrow(size_usage)) {
+  size <- size_usage$name[i]
+  count <- size_usage$count[i]
+  size_divs[[i]] <- tags$div(
+    tags$div(style=paste0("background-color: pink; display: inline-block; height: var(--size-3); width: var(",size,")")),
+    tags$code(size),
+    tags$span("count:", count, style="margin-left:auto; font-family: var(--font-mono);"),
+    style="display: flex; gap: var(--size-2); align-items: center;"
+  )
+}
+
+show_size <- function(size) {
+   tags$div(
+    class="size-demo",
+    style=paste0("width: var(",size,")")
+  )
+}
+# size_divs
+```
+
+
+
+<style>
+html {
+  --size-xxs: var(--size-1);
+  --size-xs: var(--size-2);
+  --size-s: var(--size-3);
+  --size-m: var(--size-fluid-2);
+  --size-l: var(--size-fluid-3);
+  --size-xl: var(--size-fluid-5);
+  --size-xxl: var(--size-fluid-6);
+
+  --brand: var(--orange-6);
+  --text-1: var(--gray-8);
+  --text-2: var(--gray-7);
+  --surface-1: var(--gray-0);
+  --surface-2: var(--gray-1);
+  --surface-3: var(--gray-2);
+  --surface-4: var(--gray-3);
+
+
+}
+
+.size-card {
+  background-color: var(--surface-1);
+  color: var(--text-1);
+  padding: var(--size-l);
+  max-inline-size: var(--size-content-2);
+  border-radius: var(--radius-3);
+  border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+  box-shadow: 0 1rem 0.5rem -0.5rem;
+  box-shadow: 0 2.8px 2.2px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+    0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
+    0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+    0 22.3px 17.9px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+    0 41.8px 33.4px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+    0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+
+  margin-block: var(--size-l);
+  margin-inline: auto;
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  gap: var(--size-m);
+}
+
+.size-card > * {
+  margin: 0;
+  padding: 0;
+}
+
+.size-card > *:empty {
+  display: none;
+}
+
+.size-card > h2 {
+  grid-area:  span 1 / span 1;
+  font-family: var(--font-mono);
+  margin: 0;
+  border: none;
+}
+
+.size-card > *:last-child {
+  margin-block: 0;
+}
+
+.size-card > *:nth-child(3) {
+  grid-area:  span 1 / span 1;
+}
+
+.size-card > *:nth-child(5) {
+  grid-area:  span 1 / span 2;
+}
+
+.size-card > .size-demo {
+  display: inline-block;
+  height: var(--size-m);
+  background-color: var(--brand);
+}
+</style>
+
+
+## --size-xxs {.size-card}
+
+`r show_size("--size-xxs")`
+
+This size should very rarely be used. If it is used, it should be for minor adjustments of positions, like nudging an icon up or down to make more visually centered layout.
+
+OP mapping: `calc(var(--size-1) / 2)`
+
+
+## --size-xs {.size-card}
+`r show_size("--size-xs")`
+
+Used for spacing things within a given small unit of design. E.g. creating a tight border around an element like a button.
+
+OP mapping: `--size-1`
+
+## --size-s {.size-card}
+`r show_size("--size-s")`
+
+Separating distinct atomic units of a design. E.g. the margin between a series of buttons and description text above them.
+
+
+OP mapping: `--size-2`
+
+## --size-m {.size-card}
+
+`r show_size("--size-m")`
+
+Separating larger components. E.g. Padding within a card or spacing between menu items in a controls panel.
+
+OP mapping: `--size-3`
+
+## --size-l {.size-card}
+`r show_size("--size-l")`
+
+Thematic separation. E.g. separating two cards from eachother or a sidebar from another the main content of the app.
+
+OP mapping: `--size-fluid-2`
+
+## --size-xl {.size-card}
+
+`r show_size("--size-xl")`
+
+App level separation. E.g. margins on the side of content.
+
+OP mapping: `--size-fluid-3`
+
+
+## --size-xxl {.size-card}
+`r show_size("--size-xxl")`
+
+Rarely used but can be used to create extra space between items that otherwise would be closer together. E.g. Isolating a given card to draw focus to it. Should rarely be used in internal component design.
+
+OP mapping: `--size-fluid-6`
