@@ -45,6 +45,7 @@
   },
   "isort.args": ["--profile", "black"],
   "prettier.prettierPath": "./js/node_modules/prettier",
+  "eslint.workingDirectories": [ "./js" ],
   "files.exclude": {
     ".venv/": true,
     "**/__pycache__": true,
