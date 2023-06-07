@@ -46,16 +46,22 @@
   "isort.args": ["--profile", "black"],
   "prettier.prettierPath": "./js/node_modules/prettier",
   "files.exclude": {
+    ".venv/": true,
     "**/__pycache__": true,
-    "py/build": true,
     "**/.Rproj.user": true,
+    "**/node_modules": true,
+    "py/build": true,
+    "venv/": true
   },
   "search.exclude": {
+    ".venv/": true,
     "**/__pycache__": true,
-    "py/build": true,
-    "**/*.egg-info": true,
     "**/.Rproj.user": true,
+    "**/node_modules": true,
+    "**/*.egg-info": true,
     "**/*.js.map": true,
+    "py/build": true,
+    "venv/": true
   },
   "cssvar.files": [
     // if you have an alternative path to where your styles are located
