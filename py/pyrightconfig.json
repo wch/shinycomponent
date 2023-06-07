@@ -1,3 +1,7 @@
+// This file is linked to from the top level of the repository (above the py/
+// directory), because VS Code wants it to be there. However, it's also needed
+// inside the py/ directory to be able to run `pyright` from the command line.
 {
-  "typeCheckingMode": "strict"
+  "typeCheckingMode": "strict",
+  "reportUnusedFunction": "none"
 }
