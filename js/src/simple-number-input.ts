@@ -1,9 +1,9 @@
 import { LitElement, css, html } from "lit";
 import {
   CustomElementInputValue,
-  make_input_binding,
+  makeInputBinding,
 } from "./make_input_binding";
-import { make_value_change_emitter } from "./make_value_change_emitter";
+import { makeValueChangeEmitter } from "./make_value_change_emitter";
 
 export class SimpleNumberInput
   extends LitElement
@@ -15,7 +15,7 @@ export class SimpleNumberInput
   invalid: boolean = false;
 
   onChangeCallback = (x: boolean) => {};
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   static properties = {
     min: { type: Number },
@@ -128,7 +128,7 @@ export class SimpleNumberInput
     return this.shadowRoot!.querySelector("input")!;
   }
 
-  handle_minus(e: InputEvent | KeyboardEvent) {
+  handleMinus(e: InputEvent | KeyboardEvent) {
     // Cases:
     // - inputValue is min or less : set to min
     // - inputValue is between (min, max] : set to inputValue - 1
@@ -146,10 +146,10 @@ export class SimpleNumberInput
     this.getInputElement().value = newValue.toString();
     this.value = newValue;
     this.invalid = false;
-    this.alert_of_change();
+    this.alertOfChange();
   }
 
-  handle_plus(e: InputEvent | KeyboardEvent) {
+  handlePlus(e: InputEvent | KeyboardEvent) {
     const inputValue = this.getInputElement().valueAsNumber;
     let newValue;
 
@@ -162,25 +162,25 @@ export class SimpleNumberInput
     this.getInputElement().value = newValue.toString();
     this.value = newValue;
     this.invalid = false;
-    this.alert_of_change();
+    this.alertOfChange();
   }
 
-  handle_change(e: InputEvent) {
+  handleChange(e: InputEvent) {
     const inputValue = (e.target as HTMLInputElement).valueAsNumber;
     const clampedValue = clamp(inputValue, this.min, this.max);
 
     if (clampedValue === inputValue) {
       this.value = clampedValue;
       this.invalid = false;
-      this.alert_of_change();
+      this.alertOfChange();
     } else {
       this.invalid = true;
     }
   }
 
-  alert_of_change() {
+  alertOfChange() {
     this.onChangeCallback(true); // Tell the output binding we've changed
-    this.on_value_change({ type: "number", value: this.value });
+    this.onValueChange({ type: "number", value: this.value });
   }
 
   connectedCallback() {
@@ -189,7 +189,7 @@ export class SimpleNumberInput
     // Attempt to send message about value as late as possible so watchers can still
     // pick it up.
     setTimeout(() => {
-      this.alert_of_change();
+      this.alertOfChange();
     }, 2);
   }
 
@@ -199,9 +199,9 @@ export class SimpleNumberInput
         <button
           part="minus-button"
           class="plusminus left"
-          @mousedown=${this.handle_minus}
+          @mousedown=${this.handleMinus}
           @keydown=${(e: KeyboardEvent) => {
-            if (e.code === "Space") this.handle_minus(e);
+            if (e.code === "Space") this.handleMinus(e);
           }}
         >
           −</button
@@ -210,14 +210,14 @@ export class SimpleNumberInput
           value=${this.value}
           min=${this.min}
           max=${this.max}
-          @input=${this.handle_change}
+          @input=${this.handleChange}
           type="number"
         /><button
           part="plus-button"
           class="plusminus right"
-          @mousedown=${this.handle_plus}
+          @mousedown=${this.handlePlus}
           @keydown=${(e: KeyboardEvent) => {
-            if (e.code === "Space") this.handle_plus(e);
+            if (e.code === "Space") this.handlePlus(e);
           }}
         >
           +
@@ -232,7 +232,7 @@ export class SimpleNumberInput
 
 // Register both the custom element and the input bindings
 customElements.define("simple-number-input", SimpleNumberInput);
-make_input_binding("simple-number-input");
+makeInputBinding("simple-number-input");
 
 function clamp(x: number, min: number, max: number): number {
   return Math.max(Math.min(x, max), min);

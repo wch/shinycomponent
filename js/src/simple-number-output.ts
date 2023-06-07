@@ -1,15 +1,15 @@
 import { LitElement, css, html } from "lit";
 import {
   DataPassingEventWatcher,
-  dummy_data_passing_watcher,
-  make_data_passing_watcher,
+  dummyDataPassingWatcher,
+  makeDataPassingWatcher,
 } from "./make_value_change_emitter";
 
 export class SimpleNumberOutput extends LitElement {
   value: number | null = null;
   watch: string = "";
 
-  watcher: DataPassingEventWatcher = dummy_data_passing_watcher;
+  watcher: DataPassingEventWatcher = dummyDataPassingWatcher;
 
   static properties = {
     value: { type: Number },
@@ -19,7 +19,7 @@ export class SimpleNumberOutput extends LitElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.watcher = make_data_passing_watcher(this.watch, (payload) => {
+    this.watcher = makeDataPassingWatcher(this.watch, (payload) => {
       if (payload.type !== "number") {
         console.error("Expected number, got", payload.value);
         return;

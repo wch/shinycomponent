@@ -3,4 +3,5 @@
  * e.g. a static quarto document.
  *
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Shiny: typeof window.Shiny | undefined = window.Shiny;

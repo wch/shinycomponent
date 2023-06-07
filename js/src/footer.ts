@@ -1,5 +1,5 @@
 import { LitElement, css, html } from "lit";
-import { set_el_attr } from "./set_el_attr";
+import { setElAttr } from "./set_el_attr";
 
 export class Footer extends LitElement {
   static properties = {};
@@ -23,7 +23,7 @@ export class Footer extends LitElement {
 
   constructor() {
     super();
-    set_el_attr(this, "slot", "footer");
+    setElAttr(this, "slot", "footer");
   }
 
   render() {

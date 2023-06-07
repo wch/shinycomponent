@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { set_el_attr } from "./set_el_attr";
+import { setElAttr } from "./set_el_attr";
 
 @customElement("shiny-sidebar")
 export class Sidebar extends LitElement {
@@ -95,24 +95,24 @@ export class Sidebar extends LitElement {
 
   constructor() {
     super();
-    set_el_attr(this, "slot", "sidebar");
+    setElAttr(this, "slot", "sidebar");
 
     this.addEventListener("click", (e) => {
       if (!this.closed) {
         return;
       }
 
-      this.toggle_closed();
+      this.toggleClosed();
     });
   }
 
-  toggle_closed() {
+  toggleClosed() {
     this.closed = !this.closed;
   }
 
-  handle_toggle_btn_click(e: MouseEvent) {
+  handleToggleBtnClick(e: MouseEvent) {
     e.stopPropagation();
-    this.toggle_closed();
+    this.toggleClosed();
   }
 
   render() {
@@ -121,7 +121,7 @@ export class Sidebar extends LitElement {
         <slot></slot>
       </div>
       <div
-        @click=${this.handle_toggle_btn_click}
+        @click=${this.handleToggleBtnClick}
         title=${this.closed ? "Open sidebar" : "Close sidebar"}
         class="open-toggle"
       >

@@ -1,11 +1,11 @@
 import { MdStandardIconButton } from "@material/web/iconbutton/standard-icon-button";
-import { make_input_binding } from "../make_input_binding";
-import { make_value_change_emitter } from "../make_value_change_emitter";
+import { makeInputBinding } from "../make_input_binding";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 
 export class M3StandardIconButton extends MdStandardIconButton {
   onChangeCallback: (x: boolean) => void;
 
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   constructor() {
     super();
@@ -22,7 +22,7 @@ export class M3StandardIconButton extends MdStandardIconButton {
 
 customElements.define("m3-standard-icon-button", M3StandardIconButton);
 
-make_input_binding("m3-standard-icon-button");
+makeInputBinding("m3-standard-icon-button");
 
 declare global {
   interface HTMLElementTagNameMap {

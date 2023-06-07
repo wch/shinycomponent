@@ -2,9 +2,9 @@ import { SlSwitch } from "@shoelace-style/shoelace";
 import { CSSResultGroup, css } from "lit";
 import {
   CustomElementInputGetValue,
-  make_input_binding,
+  makeInputBinding,
 } from "../make_input_binding";
-import { make_value_change_emitter } from "../make_value_change_emitter";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 
 export class ForgeInputSwitch
   extends SlSwitch
@@ -30,7 +30,7 @@ export class ForgeInputSwitch
 
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   connectedCallback() {
     super.connectedCallback();
@@ -50,14 +50,14 @@ export class ForgeInputSwitch
   updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has("checked")) {
       this.onChangeCallback(true);
-      this.on_value_change({ type: "boolean", value: this.checked });
+      this.onValueChange({ type: "boolean", value: this.checked });
     }
   }
 }
 
 customElements.define("forge-input-switch", ForgeInputSwitch);
 
-make_input_binding("forge-input-switch");
+makeInputBinding("forge-input-switch");
 
 declare global {
   interface HTMLElementTagNameMap {

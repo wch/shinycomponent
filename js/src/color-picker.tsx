@@ -4,9 +4,9 @@ import { SketchPicker } from "react-color";
 import { createRoot } from "react-dom/client";
 import {
   CustomElementInputValue,
-  make_input_binding,
+  makeInputBinding,
 } from "./make_input_binding";
-import { make_value_change_emitter } from "./make_value_change_emitter";
+import { makeValueChangeEmitter } from "./make_value_change_emitter";
 
 // Color Picker React component
 function ColorPickerReact({
@@ -31,7 +31,7 @@ export class ColorPicker
 {
   value: string;
   onChangeCallback: (x: boolean) => void;
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   constructor() {
     super();
@@ -46,7 +46,7 @@ export class ColorPicker
 
   notifyChange() {
     this.onChangeCallback(true); // Tell the output binding we've changed
-    this.on_value_change({ type: "string", value: this.value });
+    this.onValueChange({ type: "string", value: this.value });
   }
 
   connectedCallback() {
@@ -67,7 +67,7 @@ export class ColorPicker
 
 customElements.define("color-picker", ColorPicker);
 
-make_input_binding("color-picker");
+makeInputBinding("color-picker");
 
 declare global {
   interface HTMLElementTagNameMap {

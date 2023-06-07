@@ -52,7 +52,7 @@ export class StarRating extends LitElement {
     this.onChangeCallback = (x: boolean) => {};
   }
 
-  update_rating(delta: number) {
+  updateRating(delta: number) {
     this.rating = Math.max(Math.min(this.rating + delta, this.high), this.low);
     // Tell the output binding we've changed
     this.onChangeCallback(true);
@@ -62,7 +62,7 @@ export class StarRating extends LitElement {
     return html`
       <button
         class="thumb_down ${this.rating === this.low ? "disabled" : ""}"
-        @click=${() => this.update_rating(-1)}
+        @click=${() => this.updateRating(-1)}
       >
         ➖
       </button>
@@ -70,7 +70,7 @@ export class StarRating extends LitElement {
       </emoji-reaction>
       <button
         class="thumb_up ${this.rating === this.high ? "disabled" : ""}"
-        @click=${() => this.update_rating(1)}
+        @click=${() => this.updateRating(1)}
       >
         ➕
       </button>
@@ -104,11 +104,11 @@ class EmojiReaction extends LitElement {
   }
 
   render() {
-    const at_max = this.rating === this.high;
-    const at_min = this.rating === this.low;
+    const atMax = this.rating === this.high;
+    const atMin = this.rating === this.low;
     const rotation =
-      at_max || at_min ? 0 : (this.rating / (this.high - this.low)) * 180;
-    const emoji = at_max ? "🤩" : at_min ? "😫" : "👎";
+      atMax || atMin ? 0 : (this.rating / (this.high - this.low)) * 180;
+    const emoji = atMax ? "🤩" : atMin ? "😫" : "👎";
 
     return html`
       <div style="rotate:${rotation}deg" title="Rating of ${this.rating}">

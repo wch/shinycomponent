@@ -1,8 +1,7 @@
 import { css } from "lit";
-import { make_input_binding } from "./make_input_binding";
+import { makeInputBinding } from "./make_input_binding";
 import { Tabset } from "./tabset";
 
-type TabElements = { name: string; el: HTMLElement }[];
 /**
  * Special version of the tabset that's styled using shoelace instead of out custom tokens
  */
@@ -162,7 +161,7 @@ export class SlTabset extends Tabset {
 
 customElements.define("shiny-sl-tabset", SlTabset);
 
-make_input_binding("shiny-sl-tabset");
+makeInputBinding("shiny-sl-tabset");
 
 declare global {
   interface HTMLElementTagNameMap {

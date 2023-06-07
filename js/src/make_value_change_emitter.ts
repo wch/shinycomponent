@@ -1,8 +1,8 @@
-export function make_input_event_id(tag_name: string, id: string) {
-  return `${tag_name}-${id}`;
+export function makeInputEventId(tagName: string, id: string) {
+  return `${tagName}-${id}`;
 }
 
-const Data_Passing_Event_ID = "shiny-data-passing-event";
+const DATA_PASSING_EVENT_ID = "shiny-data-passing-event";
 
 type DataPassingEventPayload =
   | {
@@ -28,7 +28,7 @@ type DataPassingEventPayload =
 
 export type ValueChangeEmitter = (payload: DataPassingEventPayload) => void;
 
-function is_data_passing_payload(x: unknown): x is DataPassingEventPayload {
+function isDataPassingPayload(x: unknown): x is DataPassingEventPayload {
   if (typeof x !== "object") {
     return false;
   }
@@ -37,10 +37,10 @@ function is_data_passing_payload(x: unknown): x is DataPassingEventPayload {
     return false;
   }
 
-  const has_type_field = "type" in x && typeof x.type === "string";
-  const has_value_field = "value" in x;
+  const hasTypeField = "type" in x && typeof x.type === "string";
+  const hasValueField = "value" in x;
 
-  if (!has_type_field || !has_value_field) return false;
+  if (!hasTypeField || !hasValueField) return false;
 
   switch (x.type) {
     case "string":
@@ -58,14 +58,14 @@ function is_data_passing_payload(x: unknown): x is DataPassingEventPayload {
   }
 }
 
-function make_data_passing_payload(
+function makeDataPassingPayload(
   id: string,
   msg: DataPassingEventPayload
 ): DataPassingEventPayload & { id: string } {
   return { ...msg, id };
 }
 
-export function get_data_passing_event_value(
+export function getDataPassingEventValue(
   evt: Event,
   id: string
 ): DataPassingEventPayload | null {
@@ -73,7 +73,7 @@ export function get_data_passing_event_value(
     return null;
   }
 
-  if (evt.type !== Data_Passing_Event_ID) {
+  if (evt.type !== DATA_PASSING_EVENT_ID) {
     return null;
   }
 
@@ -87,20 +87,20 @@ export function get_data_passing_event_value(
     return null;
   }
 
-  if (!is_data_passing_payload(payload)) {
+  if (!isDataPassingPayload(payload)) {
     return null;
   }
 
   return payload;
 }
 
-export function make_value_change_emitter(
+export function makeValueChangeEmitter(
   el: HTMLElement,
   id: string
 ): ValueChangeEmitter {
   return (payload: DataPassingEventPayload) => {
-    const event = new CustomEvent(Data_Passing_Event_ID, {
-      detail: make_data_passing_payload(id, payload),
+    const event = new CustomEvent(DATA_PASSING_EVENT_ID, {
+      detail: makeDataPassingPayload(id, payload),
       bubbles: true,
     });
     el.dispatchEvent(event);
@@ -111,16 +111,16 @@ export type DataPassingEventWatcher = {
   unsubscribe: () => void;
 };
 
-export const dummy_data_passing_watcher = {
+export const dummyDataPassingWatcher = {
   unsubscribe: () => {},
 };
 
-export function make_data_passing_watcher(
-  watch_id: string,
+export function makeDataPassingWatcher(
+  watchId: string,
   callback: (payload: DataPassingEventPayload) => void
 ): DataPassingEventWatcher {
-  const on_event = (e: Event) => {
-    const payload = get_data_passing_event_value(e, watch_id);
+  const onEvent = (e: Event) => {
+    const payload = getDataPassingEventValue(e, watchId);
 
     if (payload === null) {
       return;
@@ -134,11 +134,11 @@ export function make_data_passing_watcher(
 
     callback(payload);
   };
-  window.addEventListener(Data_Passing_Event_ID, on_event);
+  window.addEventListener(DATA_PASSING_EVENT_ID, onEvent);
 
   return {
     unsubscribe: () => {
-      window.removeEventListener(Data_Passing_Event_ID, on_event);
+      window.removeEventListener(DATA_PASSING_EVENT_ID, onEvent);
     },
   };
 }

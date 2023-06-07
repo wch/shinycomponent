@@ -17,7 +17,7 @@ import {
 
 import {
   DataPassingEventWatcher,
-  dummy_data_passing_watcher,
+  dummyDataPassingWatcher,
 } from "./make_value_change_emitter";
 
 declare module "@tanstack/react-table" {
@@ -306,7 +306,7 @@ export class TanstackTable extends HTMLElement {
   value: number | null = null;
   watch: string = "";
 
-  watcher: DataPassingEventWatcher = dummy_data_passing_watcher;
+  watcher: DataPassingEventWatcher = dummyDataPassingWatcher;
 
   connectedCallback() {
     const shadowRoot = this.attachShadow({ mode: "open" });

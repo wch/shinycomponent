@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { theme_primitives } from "./styles/op-classes";
+import { themePrimitives } from "./styles/op-classes";
 // setBasePath("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist");
 
 @customElement("shiny-avatar")
@@ -28,7 +28,7 @@ export class ShinyAvatar extends LitElement {
 
     img {
       aspect-ratio: 1;
-      ${theme_primitives.fancy_shadow}
+      ${themePrimitives.fancy_shadow}
     }
 
     img.circle {

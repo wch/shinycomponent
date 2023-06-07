@@ -3,9 +3,9 @@ import { html, render } from "lit";
 import { property } from "lit/decorators.js";
 import {
   CustomElementInputValue,
-  make_input_binding,
+  makeInputBinding,
 } from "../make_input_binding";
-import { make_value_change_emitter } from "../make_value_change_emitter";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import { escapeSpaces, unescapeSpaces } from "./utils";
 
 // TODO:
@@ -18,7 +18,7 @@ export class ForgeInputRadioButtons
 {
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   @property({ type: Array }) choices: string[] = [];
   @property({ type: String }) selected: string = "";
@@ -61,7 +61,7 @@ export class ForgeInputRadioButtons
   updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has("value")) {
       this.onChangeCallback(true);
-      this.on_value_change({ type: "string", value: this.getValue() });
+      this.onValueChange({ type: "string", value: this.getValue() });
     }
   }
 
@@ -71,7 +71,7 @@ export class ForgeInputRadioButtons
 }
 
 customElements.define("forge-input-radio-buttons", ForgeInputRadioButtons);
-make_input_binding("forge-input-radio-buttons");
+makeInputBinding("forge-input-radio-buttons");
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -15,7 +15,7 @@ const colors = [
   "text-2",
 ].map((c) => `--color-${c}`);
 
-const font_sizes = [
+const fontSizes = [
   "heading-1",
   "heading-2",
   "heading-3",
@@ -25,11 +25,11 @@ const font_sizes = [
   "x-small",
 ].map((s) => `--font-${s}`);
 
-const s_m_l = ["small", "medium", "large"];
-const shadows = s_m_l.map((x) => `--shadow-${x}`);
-const borders = s_m_l.map((x) => `--border-${x}`);
-const radii = s_m_l.map((x) => `--radius-${x}`);
-const spacings = ["x-small", ...s_m_l, "x-large", "xx-large"].map(
+const sml = ["small", "medium", "large"];
+const shadows = sml.map((x) => `--shadow-${x}`);
+const borders = sml.map((x) => `--border-${x}`);
+const radii = sml.map((x) => `--radius-${x}`);
+const spacings = ["x-small", ...sml, "x-large", "xx-large"].map(
   (s) => `--space-${s}`
 );
 
@@ -122,7 +122,7 @@ export class DesignPreview extends LitElement {
       <div>
         <h2>Font Sizes</h2>
         <div class="font-sizes-container">
-          ${font_sizes.map(
+          ${fontSizes.map(
             (size) => html`<p class="font-size" style="font-size: var(${size})">
               ${size}
             </p>`

@@ -1,6 +1,6 @@
 import { css } from "lit";
 
-export const surface_1 = css`
+export const surface1 = css`
   background-color: var(--surface-1);
   color: var(--text-2);
 `;
@@ -9,7 +9,7 @@ export const surface_1 = css`
  * A series of psuedo classes that can be unfolded into a css declaration to
  * apply more than a single style in one go
  */
-export const theme_primitives = {
+export const themePrimitives = {
   brand: css`
     color: var(--brand);
     background-color: var(--brand);

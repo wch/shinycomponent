@@ -1,5 +1,5 @@
 import { LitElement, css, html } from "lit";
-import { theme_primitives } from "./styles/op-classes";
+import { themePrimitives } from "./styles/op-classes";
 
 export class ShinyCard extends LitElement {
   shadowed: boolean = false;
@@ -19,7 +19,7 @@ export class ShinyCard extends LitElement {
       display: flex;
       flex-direction: column;
 
-      ${theme_primitives.surface_1}
+      ${themePrimitives.surface_1}
 
       border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
 
@@ -30,7 +30,7 @@ export class ShinyCard extends LitElement {
     }
 
     :host([shadowed]) {
-      ${theme_primitives.fancy_shadow}
+      ${themePrimitives.fancy_shadow}
     }
 
     :host([centercontent]) {

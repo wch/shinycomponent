@@ -1,15 +1,17 @@
 import { LitElement, css, html } from "lit";
 
-type Collapse_Dir = "to_right" | "to_left" | "to_bottom" | "to_top";
+type CollapseDir = "to_right" | "to_left" | "to_bottom" | "to_top";
 
-const dir_to_icon = {
+/* eslint-disable @typescript-eslint/naming-convention */
+const dirToIcon = {
   to_right: "►",
   to_left: "◀︎",
   to_bottom: "▲",
   to_top: "▲",
 };
+/* eslint-enable @typescript-eslint/naming-convention */
 
-const horizontal_collapse_styles = css`
+const horizontalCollapseStyles = css`
   .horizontal .content {
     max-width: 100vw;
     transition: max-width var(--transition), transform var(--transition),
@@ -38,7 +40,7 @@ const horizontal_collapse_styles = css`
   }
 `;
 
-const to_left_collapse_styles = css`
+const toLeftCollapseStyles = css`
   .to_left .content {
     transform-origin: left;
   }
@@ -50,7 +52,7 @@ const to_left_collapse_styles = css`
   }
 `;
 
-const to_right_collapse_styles = css`
+const toRightCollapseStyles = css`
   .to_right .content {
     transform-origin: left;
   }
@@ -63,7 +65,7 @@ const to_right_collapse_styles = css`
   }
 `;
 
-const vertical_collapse_styles = css`
+const verticalCollapseStyles = css`
   .vertical {
     flex-direction: column;
   }
@@ -98,7 +100,7 @@ const vertical_collapse_styles = css`
   }
 `;
 
-const to_bottom_collapse_styles = css`
+const toBottomCollapseStyles = css`
   .to_bottom .toggle {
     order: -1;
     right: var(--space-medium);
@@ -106,7 +108,7 @@ const to_bottom_collapse_styles = css`
   }
 `;
 
-const to_top_collapse_styles = css`
+const toTopCollapseStyles = css`
   .to_top .toggle {
     right: var(--size-1);
   }
@@ -114,10 +116,11 @@ const to_top_collapse_styles = css`
 
 export class Collapsible extends LitElement {
   label: string | null;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   start_state: string;
   opened: boolean | null;
   // Which direction should the collapsible collapse in? "to_right" = left to right, etc...
-  dir: Collapse_Dir;
+  dir: CollapseDir;
 
   static properties = {
     label: {},
@@ -167,12 +170,12 @@ export class Collapsible extends LitElement {
         color: var(--color-action);
       }
     `,
-    horizontal_collapse_styles,
-    to_right_collapse_styles,
-    to_left_collapse_styles,
-    vertical_collapse_styles,
-    to_bottom_collapse_styles,
-    to_top_collapse_styles,
+    horizontalCollapseStyles,
+    toRightCollapseStyles,
+    toLeftCollapseStyles,
+    verticalCollapseStyles,
+    toBottomCollapseStyles,
+    toTopCollapseStyles,
   ];
 
   constructor() {
@@ -195,31 +198,31 @@ export class Collapsible extends LitElement {
         class="container ${this.dir} ${this.dir === "to_bottom" ||
         this.dir === "to_top"
           ? "vertical"
-          : "horizontal"} ${this.is_open ? "open" : "closed"}"
+          : "horizontal"} ${this.isOpen ? "open" : "closed"}"
       >
         <div class="content">
           <slot></slot>
         </div>
         <div
           class="toggle"
-          @click=${this.toggle_open}
-          title=${this.is_open ? "Close collapsible" : "Open collapsible"}
+          @click=${this.toggleOpen}
+          title=${this.isOpen ? "Close collapsible" : "Open collapsible"}
         >
           ${this.label ? html`<span>${this.label}</span>` : ""}
-          <span class="icon"> ${dir_to_icon[this.dir]} </span>
+          <span class="icon"> ${dirToIcon[this.dir]} </span>
         </div>
       </div>
     `;
   }
 
-  get is_open(): boolean {
+  get isOpen(): boolean {
     if (this.opened === null) {
       return this.start_state === "open";
     }
     return this.opened;
   }
 
-  toggle_open() {
+  toggleOpen() {
     if (this.opened === null) {
       this.opened = this.start_state !== "open";
       return;

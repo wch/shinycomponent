@@ -3,9 +3,9 @@ import { html, render } from "lit";
 import { property } from "lit/decorators.js";
 import {
   CustomElementInputGetValue,
-  make_input_binding,
+  makeInputBinding,
 } from "../make_input_binding";
-import { make_value_change_emitter } from "../make_value_change_emitter";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import { escapeSpaces, unescapeSpaces } from "./utils";
 
 // TODO:
@@ -19,7 +19,7 @@ export class ForgeInputSelect
   implements CustomElementInputGetValue<string>
 {
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   @property({ type: Array }) choices: string[] = [];
   @property({ type: String }) selected: string = "";
@@ -43,7 +43,7 @@ export class ForgeInputSelect
   updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has("value")) {
       this.onChangeCallback(true);
-      this.on_value_change({
+      this.onValueChange({
         type: "string",
         value: this.getValue(),
       });
@@ -57,7 +57,7 @@ export class ForgeInputSelect
 
 customElements.define("forge-input-select", ForgeInputSelect);
 
-make_input_binding("forge-input-select");
+makeInputBinding("forge-input-select");
 
 declare global {
   interface HTMLElementTagNameMap {

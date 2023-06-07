@@ -2,9 +2,9 @@ import { SlInput } from "@shoelace-style/shoelace";
 import debounce from "just-debounce-it";
 import {
   CustomElementInputValue,
-  make_input_binding,
+  makeInputBinding,
 } from "../make_input_binding";
-import { make_value_change_emitter } from "../make_value_change_emitter";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 
 export class ForgeInputText
   extends SlInput
@@ -19,7 +19,7 @@ export class ForgeInputText
     debounce: { type: Number },
   };
 
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -45,13 +45,13 @@ export class ForgeInputText
 
   notifyChange(): void {
     this.onChangeCallback(true);
-    this.on_value_change({ type: "string", value: this.value });
+    this.onValueChange({ type: "string", value: this.value });
   }
 }
 
 customElements.define("forge-input-text", ForgeInputText);
 
-make_input_binding("forge-input-text");
+makeInputBinding("forge-input-text");
 
 declare global {
   interface HTMLElementTagNameMap {

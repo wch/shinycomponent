@@ -1,9 +1,9 @@
 import { MdSlider } from "@material/web/slider/slider";
 import {
   CustomElementInputValue,
-  make_input_binding,
+  makeInputBinding,
 } from "../make_input_binding";
-import { make_value_change_emitter } from "../make_value_change_emitter";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 
 export class M3Slider
   extends MdSlider
@@ -11,7 +11,7 @@ export class M3Slider
 {
   onChangeCallback: (x: boolean) => void;
 
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   constructor() {
     super();
@@ -22,13 +22,13 @@ export class M3Slider
 
   myHandleChange(e: Event): void {
     this.onChangeCallback(true);
-    this.on_value_change({ type: "number", value: this.value });
+    this.onValueChange({ type: "number", value: this.value });
   }
 }
 
 customElements.define("m3-slider", M3Slider);
 
-make_input_binding("m3-slider");
+makeInputBinding("m3-slider");
 
 declare global {
   interface HTMLElementTagNameMap {

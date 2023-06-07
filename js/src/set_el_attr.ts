@@ -5,7 +5,7 @@
  * @param value Value of the attribute (e.g. "footer")
  * @returns Returns element which has been modified in place
  */
-export function set_el_attr(el: HTMLElement, type: string, value: string) {
+export function setElAttr(el: HTMLElement, type: string, value: string) {
   const attr = document.createAttribute(type);
   attr.value = value;
   el.attributes.setNamedItem(attr);

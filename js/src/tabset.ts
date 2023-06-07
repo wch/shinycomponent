@@ -1,7 +1,7 @@
 import { LitElement, css, html } from "lit";
 import {
   CustomElementInputGetValue,
-  make_input_binding,
+  makeInputBinding,
 } from "./make_input_binding";
 
 type TabElements = { name: string; el: HTMLElement }[];
@@ -10,6 +10,7 @@ export class Tabset
   implements CustomElementInputGetValue<string>
 {
   tabs: TabElements = [];
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   selected_tab_index: number;
   static properties = {
     tabs: {},
@@ -173,37 +174,37 @@ export class Tabset
 
     if (!slot) return;
 
-    const nodes_in_slot = slot.assignedNodes({ flatten: true });
+    const nodesInSlot = slot.assignedNodes({ flatten: true });
 
-    this.tabs = nodes_in_slot.reduce<TabElements>((all, node) => {
+    this.tabs = nodesInSlot.reduce<TabElements>((all, node) => {
       if (
         node instanceof HTMLElement &&
         node.tagName.toLowerCase() === "shiny-tab"
       ) {
-        const tab_name = node.attributes.getNamedItem("name")?.value;
+        const tabName = node.attributes.getNamedItem("name")?.value;
 
-        if (!tab_name) {
+        if (!tabName) {
           return all;
         }
 
-        all.push({ name: tab_name, el: node });
+        all.push({ name: tabName, el: node });
       }
 
       return all;
     }, []);
 
-    this.select_tab();
+    this.selectTab();
   }
 
-  select_tab(tab_index: number = this.selected_tab_index) {
-    this.selected_tab_index = tab_index;
+  selectTab(tabIndex: number = this.selected_tab_index) {
+    this.selected_tab_index = tabIndex;
     this.tabs.forEach((tab, i) => {
-      const is_selected = i === tab_index;
-      const currently_hidden = tab.el.style.display === "none";
+      const isSelected = i === tabIndex;
+      const currentlyHidden = tab.el.style.display === "none";
 
       // Is this tab the one being shifted away from?
-      const hiding_tab = !currently_hidden && !is_selected;
-      if (hiding_tab) {
+      const hidingTab = !currentlyHidden && !isSelected;
+      if (hidingTab) {
         $(tab.el).trigger("hidden");
         // Make sure that screen readers know to not include the hidden tabs
         tab.el.inert = true;
@@ -211,8 +212,8 @@ export class Tabset
       }
 
       // Is this tab the one being shifted to?
-      const showing_tab = currently_hidden && is_selected;
-      if (showing_tab) {
+      const showingTab = currentlyHidden && isSelected;
+      if (showingTab) {
         $(tab.el).trigger("shown");
         tab.el.inert = false;
         tab.el.style.display = "block";
@@ -222,12 +223,12 @@ export class Tabset
     this.onChangeCallback(true);
   }
 
-  current_tab_name(): string {
+  currentTabName(): string {
     return this.tabs[this.selected_tab_index].name;
   }
 
   getValue(): string {
-    return this.current_tab_name();
+    return this.currentTabName();
   }
 
   render() {
@@ -243,7 +244,7 @@ export class Tabset
                   class="tab ${i === this.selected_tab_index
                     ? "selected-tab"
                     : ""}"
-                  @click=${() => this.select_tab(i)}
+                  @click=${() => this.selectTab(i)}
                 >
                   ${tab.name}
                 </div>`
@@ -266,7 +267,7 @@ export class Tabset
 
 customElements.define("shiny-tabset", Tabset);
 
-make_input_binding("shiny-tabset");
+makeInputBinding("shiny-tabset");
 
 declare global {
   interface HTMLElementTagNameMap {

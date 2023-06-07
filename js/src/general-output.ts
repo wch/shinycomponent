@@ -1,15 +1,15 @@
 import { LitElement, html } from "lit";
 import {
   DataPassingEventWatcher,
-  dummy_data_passing_watcher,
-  make_data_passing_watcher,
+  dummyDataPassingWatcher,
+  makeDataPassingWatcher,
 } from "./make_value_change_emitter";
 
 export class GeneralOutput extends LitElement {
   value: string | null = null;
   watch: string = "";
 
-  watcher: DataPassingEventWatcher = dummy_data_passing_watcher;
+  watcher: DataPassingEventWatcher = dummyDataPassingWatcher;
 
   static properties = {
     value: {},
@@ -18,7 +18,7 @@ export class GeneralOutput extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.watcher = make_data_passing_watcher(this.watch, (payload) => {
+    this.watcher = makeDataPassingWatcher(this.watch, (payload) => {
       // Try and parse the value to string
       // this.value = JSON.stringify(payload.value);
       this.value = String(payload.value);

@@ -2,7 +2,7 @@ import { css, html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { Tabset } from "./tabset";
 // Based on https://dribbble.com/shots/20807295-Logip-Admin-Dashboard-Analytics-UX
-import { theme_primitives } from "./styles/op-classes";
+import { themePrimitives } from "./styles/op-classes";
 
 @customElement("shiny-logip-tabset")
 export class TabsetLogip extends Tabset {
@@ -64,7 +64,7 @@ export class TabsetLogip extends Tabset {
       width: var(--_sidebar_width);
       z-index: 2;
       --padding: var(--size-3);
-      ${theme_primitives.fancy_shadow}
+      ${themePrimitives.fancy_shadow}
     }
 
     .main {
@@ -102,7 +102,7 @@ export class TabsetLogip extends Tabset {
         (tab, i) =>
           html`<div
             class="tab ${i === this.selected_tab_index ? "selected-tab" : ""}"
-            @click=${() => this.select_tab(i)}
+            @click=${() => this.selectTab(i)}
           >
             ${tab.name}
           </div>`

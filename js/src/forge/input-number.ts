@@ -2,16 +2,16 @@ import { CSSResultGroup, css } from "lit";
 import { property } from "lit/decorators.js";
 import {
   CustomElementInputGetValue,
-  make_input_binding,
+  makeInputBinding,
 } from "../make_input_binding";
-import { make_value_change_emitter } from "../make_value_change_emitter";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import { ForgeInputText } from "./input-text";
 
 export class ForgeInputNumber
   extends ForgeInputText
   implements CustomElementInputGetValue<number>
 {
-  on_value_change = make_value_change_emitter(this, this.id);
+  onValueChange = makeValueChangeEmitter(this, this.id);
 
   @property({ type: Number }) min: number = -Infinity;
   @property({ type: Number }) max: number = Infinity;
@@ -65,12 +65,12 @@ export class ForgeInputNumber
       return;
     }
     this.onChangeCallback(true);
-    this.on_value_change({ type: "number", value: this.getValue() });
+    this.onValueChange({ type: "number", value: this.getValue() });
   }
 }
 
 customElements.define("forge-input-number", ForgeInputNumber);
-make_input_binding("forge-input-number", { type: "shiny.number" });
+makeInputBinding("forge-input-number", { type: "shiny.number" });
 
 function clamp(x: number, min: number, max: number): number {
   return Math.max(Math.min(x, max), min);

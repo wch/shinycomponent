@@ -23,7 +23,7 @@ export type CustomElementInput<T> =
  * @param tagName Name of the tag that corresponds to the input binding
  * @returns Nothing
  */
-export function make_input_binding<T>(
+export function makeInputBinding<T>(
   tagName: string,
   { type = null }: { type?: string | null } = {}
 ) {

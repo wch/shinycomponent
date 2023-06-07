@@ -1,11 +1,10 @@
 import { css, html } from "lit";
-import { theme_primitives } from "./styles/op-classes";
+import { themePrimitives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
 
-import { make_input_binding } from "./make_input_binding";
+import { makeInputBinding } from "./make_input_binding";
 import "./styles/open-props-theme.css";
 import "./styles/shoelace-theme-adapter.css";
-type TabElements = { name: string; el: HTMLElement }[];
 /**
  * Special version of the tabset that's styled using open-props instead of our custom tokens
  */
@@ -26,7 +25,7 @@ export class OpTabset extends Tabset {
       display: block;
       height: 100%;
       box-sizing: border-box;
-      ${theme_primitives.surface_3}
+      ${themePrimitives.surface_3}
     }
 
     .tabset {
@@ -95,7 +94,7 @@ export class OpTabset extends Tabset {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      ${theme_primitives.surface_4}
+      ${themePrimitives.surface_4}
     }
 
     .tab {
@@ -108,13 +107,13 @@ export class OpTabset extends Tabset {
     }
 
     .selected-tab {
-      ${theme_primitives.surface_1}
+      ${themePrimitives.surface_1}
     }
 
     .sidebar {
       padding: 0;
       grid-area: sidebar;
-      ${theme_primitives.surface_1}
+      ${themePrimitives.surface_1}
     }
 
     .main {
@@ -151,7 +150,7 @@ export class OpTabset extends Tabset {
                   class="tab ${i === this.selected_tab_index
                     ? "selected-tab"
                     : ""}"
-                  @click=${() => this.select_tab(i)}
+                  @click=${() => this.selectTab(i)}
                 >
                   ${tab.name}
                 </div>`
@@ -177,7 +176,7 @@ export class OpTabset extends Tabset {
 
 customElements.define("shiny-op-tabset", OpTabset);
 
-make_input_binding("shiny-op-tabset");
+makeInputBinding("shiny-op-tabset");
 
 declare global {
   interface HTMLElementTagNameMap {
