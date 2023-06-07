@@ -16,7 +16,7 @@ export const theme_primitives = {
   `,
   surface_1: css`
     background-color: var(--surface-1);
-    color: var(--text-2);
+    color: var(--text-1);
   `,
   surface_2: css`
     background-color: var(--surface-2);

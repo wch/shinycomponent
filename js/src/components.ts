@@ -21,6 +21,7 @@ import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
 
 import { ShinyIcon } from "./icon";
+import { ShinyAvatar } from "./shiny-avatar";
 import { TabsetLogip } from "./tabset-logip";
 
 // Prevent esbuild from tree-shaking these components away.
@@ -47,3 +48,4 @@ ShinyCard;
 Section;
 TabsetLogip;
 ShinyIcon;
+ShinyAvatar;

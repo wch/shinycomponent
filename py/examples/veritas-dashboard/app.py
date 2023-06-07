@@ -8,7 +8,7 @@ import pandas as pd
 import seaborn as sns
 import shiny.experimental as x
 from ebird.api import get_nearby_observations, get_nearby_species, get_taxonomy
-from htmltools import Tag
+from htmltools import Tag, TagAttrs, TagChild
 from ipywidgets import Layout
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shinywidgets import output_widget, register_widget
@@ -30,7 +30,11 @@ api_key = os.environ["EBIRD_API_KEY"]
 species_to_id = {
     "Eastern Wood-Pewee": "eawpew",
     "Wood Duck": "wooduc",
+    "Northern Flicker": "norfli",
 }
+
+# Get keys of species_to_id in a vector
+species_names = list(species_to_id.keys())
 
 ann_arbor_lat_lon = [42.273991, -83.754550]
 
@@ -41,20 +45,27 @@ def info_box(title: str, output_id: str, icon: str, color: str):
         ui.output_text(output_id, container=ui.h3),
         showcase=ui.h2(icon),
         theme_color=None,
-        style=f"background-color: {color};",
+        style=f"background-color: {color}; color: var(--gray-8);",
         height="90px",
         full_screen=True,
     )
 
 
+def centered_container(*args: TagChild | TagAttrs):
+    return ui.div(*args, style="display: grid; place-content: center;")
+
+
+hide_leaflet_footer = ".leaflet-container .leaflet-control-attribution {display: none;}"
+
 app_ui = sc.page(
+    ui.tags.head(ui.tags.style(hide_leaflet_footer)),
     Tag(
         "shiny-op-tabset",
         sc.sidebar(
             Tag(
                 "shiny-section",
                 Tag("posit-logo", withName=True, slot="icon"),
-                ui.h2("Shiny"),
+                ui.h2("EBird Explorer"),
             ),
             Tag(
                 "shiny-section",
@@ -70,23 +81,23 @@ app_ui = sc.page(
                 sc.forge.input_select(
                     id="species",
                     label="Species",
-                    choices=["Eastern Wood-Pewee", "Wood Duck"],
-                    selected="Eastern Wood-Pewee",
+                    choices=species_names,
+                    selected=species_names[0],
                 ),
                 icon="bi:sliders2",
             ),
             Tag(
                 "shiny-section",
-                "Distance from Ann Arbor",
-                sc.simple_number_input(
-                    "radius",
+                sc.forge.input_number(
+                    id="radius",
+                    label="Distance from Ann Arbor",
                     value=10,
                     min=1,
                     max=100,
                 ),
-                "Days back to look",
-                sc.simple_number_input(
-                    "days_back",
+                sc.forge.input_number(
+                    id="days_back",
+                    label="Days back to look",
                     value=3,
                     min=1,
                     max=100,
@@ -97,26 +108,30 @@ app_ui = sc.page(
         sc.tab(
             # Make a grid with 4 rows and 3 columns
             sc.grid(
-                # Blurb takes up 2 of 3 columns
+                centered_container(
+                    ui.output_text("common_name", container=ui.h2),
+                ),
                 sc.grid_item(
                     output_widget("map", width="100%", height="100%"),
                     width=2,
-                    height=2,
+                    height=3,
                     shadowed=True,
-                ),
-                sc.grid_item(
-                    ui.output_text("common_name", container=ui.h2),
-                    width=1,
-                    height=1,
-                    shadowed=True,
-                    centercontent=True,
                 ),
                 sc.grid_item(
                     ui.output_text("results_blurb"),
                     width=1,
-                    height=1,
+                    height=2,
                     shadowed=True,
                     centercontent=True,
+                    style="font-size: calc(var(--font-size-fluid-1)/1.25);",
+                ),
+                # Value boxes are 4 rows tall
+                # sc.grid_item(ui.output_text("results_blurb")),
+                sc.grid_item(
+                    sc.output_data_grid("results_table"),
+                    width=2,
+                    height=3,
+                    shadowed=True,
                 ),
                 sc.grid_item(
                     info_box(
@@ -141,15 +156,7 @@ app_ui = sc.page(
                     height=3,
                     shadowed=True,
                 ),
-                # Value boxes are 4 rows tall
-                # sc.grid_item(ui.output_text("results_blurb")),
-                sc.grid_item(
-                    sc.output_data_grid("results_table"),
-                    width=2,
-                    height=3,
-                    shadowed=True,
-                ),
-                nRows=5,
+                nRows=6,
                 nCols=3,
             ),
             name="Main",
@@ -169,6 +176,16 @@ app_ui = sc.page(
             color_scheme="grape",
         ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
+        ui.div(
+            Tag(
+                "shiny-avatar",
+                name="My Account",
+                src="profile-photo.jpg",
+                variant="circle",
+                size="50",
+            ),
+            slot="header-right",
+        ),
     ),
 )
 
@@ -215,7 +232,6 @@ def server(input: Inputs, output: Outputs, session: Session):
         for record_index in range(len(records)):
             center = (records["lat"][record_index], records["lng"][record_index])
             location = records["locName"][record_index]
-            print("Adding marker to leaflet map", location)
             marker = L.Marker(location=center, draggable=False, title=location)
             markers_for_records.append(marker)
 

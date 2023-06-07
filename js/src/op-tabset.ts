@@ -76,6 +76,12 @@ export class OpTabset extends Tabset {
       position: relative;
       padding: var(--padding);
       padding-block-end: 0;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .header-right {
+      margin-left: auto;
     }
 
     .tabs {
@@ -151,6 +157,9 @@ export class OpTabset extends Tabset {
                   ${tab.name}
                 </div>`
             )}
+          </div>
+          <div class="header-right">
+            <slot name="header-right"></slot>
           </div>
         </div>
         <div class="sidebar">
