@@ -5,6 +5,7 @@ import { ForgeInputRadioButtons } from "./input-radio-buttons";
 import { ForgeInputSelect } from "./input-select";
 import { ForgeInputSwitch } from "./input-switch";
 import { ForgeInputText } from "./input-text";
+import { ForgeInputTextArea } from "./input-text-area";
 import { ForgeSplitPanel } from "./split-panel";
 
 // Prevent esbuild from tree-shaking these components away.
@@ -15,4 +16,5 @@ ForgeInputRadioButtons;
 ForgeInputSelect;
 ForgeInputSwitch;
 ForgeInputText;
+ForgeInputTextArea;
 ForgeSplitPanel;

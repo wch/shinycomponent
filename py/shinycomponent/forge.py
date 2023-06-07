@@ -99,6 +99,24 @@ def input_text(
     )
 
 
+def input_text_area(
+    id: str,
+    label: TagChild,
+    *args: TagChild | TagAttrs,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-text-area",
+        forge_dep(),
+        tags.div(label, slot="label") if (label is not None) else None,
+        *args,
+        id=id,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
+
+
 def input_number(
     id: str,
     label: TagChild,

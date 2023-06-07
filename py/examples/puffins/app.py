@@ -304,6 +304,13 @@ app_ui = sc.page(
                 selected="Beta 2",
             ),
             ui.br(),
+            sc.forge.input_text_area(
+                id="forgetextarea",
+                label="Text area",
+                rows=1,
+                placeholder="Placeholder text",
+                resize="auto",
+            ),
             ui.output_text_verbatim("forgetext_out", placeholder=True),
             name="Number Input",
         ),
@@ -405,6 +412,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             + f"\n{input.forgenum()}\n{input.forgenum2()}"
             + f"\n{input.forgecheckbox()}\n{input.forgeswitch()}\n{input.forgeswitch2()}"
             + f"\n{input.forgeradio()}"
+            + f"\n{input.forgetextarea()}"
         )
 
     @reactive.Calc
