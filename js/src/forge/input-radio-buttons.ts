@@ -58,7 +58,7 @@ export class ForgeInputRadioButtons
     render(children, this);
   }
 
-  updated(changedProperties: Map<string, any>) {
+  updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has("value")) {
       this.onChangeCallback(true);
       this.on_value_change({ type: "string", value: this.getValue() });

@@ -47,7 +47,7 @@ export class ForgeInputSwitch
     return this.checked;
   }
 
-  updated(changedProperties: Map<string, any>) {
+  updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has("checked")) {
       this.onChangeCallback(true);
       this.on_value_change({ type: "boolean", value: this.checked });

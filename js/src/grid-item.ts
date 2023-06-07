@@ -1,14 +1,13 @@
 import { ShinyCard } from "./shiny-card";
 
 export class GridItem extends ShinyCard {
-  width: Number = 1;
-  height: Number = 1;
+  width: number = 1;
+  height: number = 1;
 
   static properties = {
     width: { type: Number },
     height: { type: Number },
-    shadowed: { type: Boolean },
-    centercontent: { type: Boolean },
+    ...ShinyCard.properties,
   };
 
   connectedCallback() {

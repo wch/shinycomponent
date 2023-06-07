@@ -4,8 +4,8 @@ import { customElement, property } from "lit/decorators.js";
 @customElement("posit-logo")
 export class PositLogo extends LitElement {
   @property({ type: Boolean }) withName: boolean = false;
-  @property({ type: Number }) width: Number = 40;
-  @property({ type: Number }) height: Number = 40;
+  @property({ type: Number }) width: number = 40;
+  @property({ type: Number }) height: number = 40;
 
   static styles = css`
     :host {

@@ -1,4 +1,4 @@
-import { LitElement, css, html } from "lit";
+import { LitElement, html } from "lit";
 import {
   DataPassingEventWatcher,
   dummy_data_passing_watcher,

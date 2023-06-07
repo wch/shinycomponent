@@ -1,6 +1,5 @@
-import { setBasePath } from "@shoelace-style/shoelace";
 import { LitElement, css, html } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { theme_primitives } from "./styles/op-classes";
 // setBasePath("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist");
 

@@ -1,9 +1,5 @@
-import { LitElement, css, html } from "lit";
-import { Shiny } from "./OptionalShiny";
-import {
-  CustomElementInputValue,
-  make_input_binding,
-} from "./make_input_binding";
+import { css } from "lit";
+import { make_input_binding } from "./make_input_binding";
 import { Tabset } from "./tabset";
 
 type TabElements = { name: string; el: HTMLElement }[];

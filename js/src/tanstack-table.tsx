@@ -18,7 +18,6 @@ import {
 import {
   DataPassingEventWatcher,
   dummy_data_passing_watcher,
-  make_data_passing_watcher,
 } from "./make_value_change_emitter";
 
 declare module "@tanstack/react-table" {
@@ -27,7 +26,7 @@ declare module "@tanstack/react-table" {
   }
 }
 
-type DfRow = Map<string, string | Number>;
+type DfRow = Map<string, string | number>;
 
 // Give our default column cell renderer editing superpowers!
 const defaultColumn: Partial<ColumnDef<DfRow>> = {

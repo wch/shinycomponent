@@ -2,8 +2,8 @@ import { LitElement, css, html } from "lit";
 import { theme_primitives } from "./styles/op-classes";
 
 export class ShinyCard extends LitElement {
-  shadowed: Boolean = false;
-  centercontent: Boolean = false;
+  shadowed: boolean = false;
+  centercontent: boolean = false;
 
   static properties = {
     shadowed: { type: Boolean },

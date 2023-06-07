@@ -3,8 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 @customElement("shiny-grid")
 export class Grid extends LitElement {
-  @property({ type: Number }) nRows: Number = 2;
-  @property({ type: Number }) nCols: Number = 2;
+  @property({ type: Number }) nRows: number = 2;
+  @property({ type: Number }) nCols: number = 2;
   @property({ type: String }) alignItems: string = "stretch";
 
   // Styles are scoped to this element: they won't conflict with styles

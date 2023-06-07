@@ -1,5 +1,4 @@
 import { LitElement, css, html } from "lit";
-import { set_el_attr } from "./set_el_attr";
 
 type Collapse_Dir = "to_right" | "to_left" | "to_bottom" | "to_top";
 

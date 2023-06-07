@@ -1,5 +1,4 @@
 import { css, html } from "lit";
-import { Shiny } from "./OptionalShiny";
 import { theme_primitives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
 

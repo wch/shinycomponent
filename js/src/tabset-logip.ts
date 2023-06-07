@@ -1,6 +1,5 @@
-import { LitElement, css, html } from "lit";
+import { css, html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { Shiny } from "./OptionalShiny";
 import { Tabset } from "./tabset";
 // Based on https://dribbble.com/shots/20807295-Logip-Admin-Dashboard-Analytics-UX
 import { theme_primitives } from "./styles/op-classes";
