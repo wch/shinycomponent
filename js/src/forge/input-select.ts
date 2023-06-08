@@ -52,7 +52,10 @@ export class ForgeInputSelect
     }
   }
 
-  getValue(): string {
+  getValue(): string | string[] {
+    if (Array.isArray(this.value)) {
+      return this.value.map(unescapeSpaces);
+    }
     return unescapeSpaces(this.value as string);
   }
 }
