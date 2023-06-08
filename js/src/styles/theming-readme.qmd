@@ -3,279 +3,14 @@ title: "Style Guidelines and Tokens"
 format:
   html:
     toc: true
-    css: [https://unpkg.com/open-props, "open-props-theme.css"]
+    css: [https://unpkg.com/open-props, "open-props-theme.css", "theming-readme-styles.css"]
 ---
 
 
-<style>
-html {
-  font-family: var(--font-sans);
-}
-
-section.level2 {
-  display: grid;
-  gap: var(--size-l);
-  grid-template-columns: repeat(auto-fill, var(--size-content-2));
-}
-
-section.token-card {
-  background-color: var(--surface-2);
-  color: var(--text-1);
-  padding: var(--size-l);
-  width:100%;
-
-  border-radius: var(--radius-3);
-  border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
-  box-shadow: var(--shadow-m);
-
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  grid-template-rows: auto;
-  gap: var(--size-m);
-}
-
-#sizes > section.token-card,
-#colors > section.token-card {
-  grid-template-columns: 2fr 1fr;
-}
-
-.token-card code {
-  background-color: transparent;
-}
-
-.token-card > * {
-  margin: 0;
-  padding: 0;
-  max-inline-size: var(--size-content-2);
-}
-
-.token-card > p:empty {
-  display: none;
-}
-
-.token-card > h3,
-.token-card > h4 {
-  grid-area:  span 1 / span 1;
-  font-family: var(--font-mono);
-  margin: 0;
-  border: none;
-}
-
-.token-card > *:last-child {
-  margin-block: 0;
-}
-
-.token-card > *:nth-child(3) {
-  grid-area:  span 1 / span 1;
-}
-
-.token-card > *:nth-child(5) {
-  grid-area:  span 1 / span 2;
-}
-
-.size-demo {
-  background-color: var(--brand);
-  justify-self: end;
-}
-
-.animation-demo {
-  background-color: var(--brand);
-  padding: var(--size-s);
-  width: 50%;
-  border-radius: var(--radius-2);
-}
-
-#animation-speeds .token-card:hover  .animation-demo {
-  animation-name: shuffle;
-  animation-iteration-count: infinite;
-  animation-duration: var(--speed, 10s);
-  animation-timing-function: var(--ease-2);
-  color: var(--brand);
-}
-
-@keyframes shuffle {
-  0% {
-    transform: translateX(0%);
-  }
-
-  50% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0%);
-  }
-
-}
-
-.animation-demo.fast {
-  --speed: var(--speed-fast);
-}
-
-.animation-demo.normal {
-  --speed: var(--speed-normal);
-}
-
-.animation-demo.slow {
-  --speed: var(--speed-slow);
-}
-
-.animation-demo,
-.color-demo {
-  box-shadow: var(--shadow-l);
-}
-
-
-.shadow-demo,
-.color-demo {
-   width: 100%;
-   border-radius: var(--radius-2);
-}
-
-.animation-demo,
-.size-demo,
-.color-demo,
-.shadow-demo {
-  display: inline-block;
-  height: 100%;
-}
-
-
-section.token-card.shadow-none {
-  box-shadow: none;
-}
-
-section.token-card.shadow-none > h4 {
-  font-family: var(--font-sans);
-}
-
-section.token-card.shadow-s {
-  box-shadow: var(--shadow-s);
-}
-section.token-card.shadow-m {
-  box-shadow: var(--shadow-m);
-}
-section.token-card.shadow-l {
-  box-shadow: var(--shadow-l);
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: var(--line-height-headings);
-  font-weight: var(--font-weight-headings);
-  border-bottom: none;
-  padding: 0;
-}
-
-h1 {
-  font-size: var(--font-size-h1);
-}
-
-h2 {
-  font-size: var(--font-size-h2);
-  margin-block-end: calc(-1*var(--size-s));
-}
-
-h3 {
-  font-size: var(--font-size-h3);
-}
-h4 {
-  font-size: var(--font-size-h4);
-}
-h5 {
-  font-size: var(--font-size-h5);
-}
-
-p, ul, ol, dl, h6 {
-  font-size: var(--font-size-main);
-}
-
-a, u, ins, abbr {
-  text-underline-offset: 1px;
-
-  @supports (-moz-appearance: none) {
-    text-underline-offset: 2px;
-  }
-}
-
-section.level1 {
-  margin-block: var(--size-l);
-}
-
-section.level2 {
-  margin-block: var(--size-m);
-}
-
-#border-thin,
-#border-normal,
-#border-thick {
-  border-color: var(--text-2);
-  border-style: solid;
-}
-
-#border-thin {
-  border-width: var(--border-thin);
-}
-#border-normal {
-  border-width: var(--border-normal);
-}
-#border-thick {
-  border-width: var(--border-thick);
-}
-
-#border-optional {
-  border-width: var(--border-optional);
-}
-
-#radius-s {
-  border-radius: var(--radius-s);
-}
-
-#radius-m {
-  border-radius: var(--radius-m);
-}
-
-#radius-l {
-  border-radius: var(--radius-l);
-}
-#radius-pill {
-  border-radius: var(--radius-pill);
-}
-</style>
 
 ```{r}
 #| echo: false
 library(htmltools)
-library(tibble)
-
-size_usage <- tribble(
-  ~count, ~name,
-  1, "--size-xxs",
-  6, "--size-3",
-  6, "--size-1",
-  5, "--size-fluid-2",
-  4, "--size-2",
-  3, "--size-fluid-3",
-  3, "--size-fluid-1",
-  1, "--size-7",
-  1, "--size-5",
-  1, "--size-11",
-  1, "--size-fluid-6",
-)
-
-size_divs <- tagList()
-
-for (i in 1:nrow(size_usage)) {
-  size <- size_usage$name[i]
-  count <- size_usage$count[i]
-  size_divs[[i]] <- tags$div(
-    tags$div(style=paste0("background-color: pink; display: inline-block; height: var(--size-3); width: var(",size,")")),
-    tags$code(size),
-    tags$span("count:", count, style="margin-left:auto; font-family: var(--font-mono);"),
-    style="display: flex; gap: var(--size-2); align-items: center;"
-  )
-}
 
 show_size <- function(size) {
    tags$div(
@@ -319,6 +54,49 @@ show_line_height <- function(lh) {
 }
 ```
 
+
+<form id="theme-switcher">
+<label>Choose theme</label>
+<div id="holder">
+<div>
+<input checked type="radio" id="auto" name="theme" value="auto">
+<label for="auto">Auto</label>
+</div>
+<div>
+<input type="radio" id="light" name="theme" value="light">
+<label for="light">Light</label>
+</div>
+<div>
+<input type="radio" id="dark" name="theme" value="dark">
+<label for="dark">Dark</label>
+</div>
+<div>
+<input type="radio" id="dim" name="theme" value="dim">
+<label for="dim">Dim</label>
+</div>
+<div>
+<input type="radio" id="grape" name="theme" value="grape">
+<label for="grape">Grape</label>
+</div>
+<div>
+<input type="radio" id="choco" name="theme" value="choco">
+<label for="choco">Choco</label>
+</div>
+</div>
+</form>
+
+```{js}
+#| echo: false
+const switcher = document.querySelector('#theme-switcher')
+const doc = document.firstElementChild
+
+switcher.addEventListener('input', e =>
+  setTheme(e.target.value))
+
+const setTheme = theme =>
+  doc.setAttribute('color-scheme', theme)
+```
+
 ## Colors
 
 
@@ -354,20 +132,20 @@ This is the tertiary text color. It is typically a little text like placeholders
 
 `r show_color("--surface-1")`
 
-This is the primary background color. It will have the greatest contrast with the text colors and is typically usesd for things like backgrounds of a full app etc..
+This is the primary background color. It will have the greatest contrast with the text colors and is typically used for things like backgrounds of a cards where legibility of the content is most important.
 
 #### --surface-2 {.token-card}
 
 `r show_color("--surface-2")`
 
-These is a secondary background colors. Their contrast is alittle softer than `surface-1` but it is still very legible. This will often be used for things like cards etc.
+These is a secondary background colors. Their contrast is a little softer than `surface-1` but it is still very legible. This will often be used for things like backgrounds that cards sit on top of etc.
 
 
 #### --surface-3 {.token-card}
 
 `r show_color("--surface-3")`
 
-These is a secondary background colors. Their contrast is alittle softer than `surface-1` but it is still very legible. This will often be used for things like cards etc.
+These is a secondary background colors. Their contrast is a little softer than `surface-2` but it is still very legible. Another option for backgrounds where there are items with `surface-{1,2}` backgrounds on top of them that want should pop.
 
 
 #### --surface-4 {.token-card}
@@ -619,3 +397,10 @@ Large radii should be reserved for more decorative situations and infrequently b
 #### --radius-pill {.token-card}
 
 Useful for buttons or other items where a large click/selection space is needed but the content is not neccesarily large. Need to be careful with content being cut off.
+
+
+
+
+
+
+
