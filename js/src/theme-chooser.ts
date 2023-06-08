@@ -2,7 +2,7 @@ import { SlChangeEvent } from "@shoelace-style/shoelace";
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-const themes = ["default", "light", "dark", "dim", "grape"] as const;
+const themes = ["default", "light", "dark", "dim", "grape", "choco"] as const;
 type Theme = (typeof themes)[number];
 
 @customElement("theme-chooser")
