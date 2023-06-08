@@ -10,7 +10,15 @@ __all__ = (
 from pathlib import PurePath
 from typing import Optional
 
-from htmltools import HTMLDependency, Tag, TagAttrs, TagAttrValue, TagChild, tags
+from htmltools import (
+    HTMLDependency,
+    Tag,
+    TagAttrs,
+    TagAttrValue,
+    TagChild,
+    TagList,
+    tags,
+)
 
 from . import __version__
 from ._htmldeps import open_props_dep
@@ -137,10 +145,12 @@ def input_number(
 
 def input_select(
     id: str,
-    label: str | None,
-    choices: list[str],
+    label: str,
+    choices: list[str] | dict[str, str | list[str] | dict[str, str]],
     *args: TagChild | TagAttrs,
     selected: Optional[str | list[str]] = None,
+    multiple: bool = False,
+    clearable: bool = False,
     _add_ws: bool = True,
     **kwargs: TagAttrValue,
 ) -> Tag:
@@ -151,7 +161,9 @@ def input_select(
         *args,
         id=id,
         choices=attr_to_escaped_json(choices),
-        selected=selected,
+        selected=attr_to_escaped_json(selected),
+        multiple=multiple,
+        clearable=clearable,
         _add_ws=_add_ws,
         **kwargs,
     )
