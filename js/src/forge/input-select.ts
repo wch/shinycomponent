@@ -16,7 +16,7 @@ import { escapeSpaces, unescapeSpaces } from "./utils";
 
 export class ForgeInputSelect
   extends SlSelect
-  implements CustomElementInputGetValue<string>
+  implements CustomElementInputGetValue<string | string[]>
 {
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
   onValueChange = makeValueChangeEmitter(this, this.id);
@@ -45,9 +45,15 @@ export class ForgeInputSelect
   updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has("value")) {
       this.onChangeCallback(true);
+      let value = this.getValue();
+      // TODO: Modify makeValueChangeEmitter to allow for union types, like
+      // string | string[]. Then the wrapping below can be removed.
+      if (!Array.isArray(value)) {
+        value = [value];
+      }
       this.onValueChange({
-        type: "string",
-        value: this.getValue(),
+        type: "string[]",
+        value: value,
       });
     }
   }
