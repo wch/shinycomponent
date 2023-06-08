@@ -116,6 +116,37 @@
   --danger: var(--red-8);
 
   --radius-pill: 9999px;
+
+  /* Sizes */
+  --size-xxs: var(--size-1);
+  --size-xs: var(--size-2);
+  --size-s: var(--size-3);
+  --size-m: var(--size-fluid-2);
+  --size-l: var(--size-fluid-3);
+  --size-xl: var(--size-fluid-5);
+  --size-xxl: var(--size-fluid-6);
+
+  /* Shadows */
+  --shadow-s: var(--shadow-1);
+  --shadow-m: var(--shadow-3);
+  --shadow-l: var(--shadow-5);
+
+  /* Text */
+
+  /* Sizes */
+  --font-size-main: var(--font-size-2);
+  --font-size-h1: var(--font-size-8);
+  --font-size-h2: var(--font-size-6);
+  --font-size-h3: var(--font-size-5);
+  --font-size-h4: var(--font-size-4);
+  --font-size-h5: var(--font-size-3);
+
+  /* Weights */
+  --font-weight-headings: var(--font-weight-3);
+  --font-weight-bold: var(--font-weight-5);
+  --line-height-headings: var(--font-lineheight-1);
+
+  --line-height-main: var(--font-lineheight-3);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -3,52 +3,120 @@ title: "Style Guidelines and Tokens"
 format:
   html:
     toc: true
-    css: https://unpkg.com/open-props
+    css: [https://unpkg.com/open-props, "open-props-theme.css"]
 ---
 
-## Colors
 
-We have a small set of colors that are used for theming. The following are the colors and where they should be used.
+<style>
 
-### `brand`
+html {
+  font-family: var(--font-sans);
+}
 
-This is typically a colorful color. It should be used for actionable items. E.g. a button that can be pressed. It should not be used for text or backgrounds.
+section.token-card {
+  background-color: var(--surface-2);
+  color: var(--text-1);
+  padding: var(--size-l);
+  max-inline-size: var(--size-content-2);
+  border-radius: var(--radius-3);
+  border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+  box-shadow: 0 1rem 0.5rem -0.5rem;
+  box-shadow: 0 2.8px 2.2px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+    0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
+    0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+    0 22.3px 17.9px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+    0 41.8px 33.4px
+      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+    0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
 
-### `text-1`
+  margin-block: var(--size-l);
+  margin-inline: auto;
 
-This is the typical text color. It should be used for things like headers and primary text.
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  gap: var(--size-m);
+}
 
-### `text-2`
+.token-card code {
+  background-color: transparent;
+}
 
-This is the secondary text color. It is typically a little less contrasty to deemphasize it. It should be used for text that is not critical to the main action and thus doesn't need to be as prominent.
+.token-card > * {
+  margin: 0;
+  padding: 0;
+}
 
-### `surface-1`
+.token-card > p:empty {
+  display: none;
+}
 
-This is the primary background color. It will have the greatest contrast with the text colors and is typically usesd for things like backgrounds of a full app etc..
+.token-card > h3 {
+  grid-area:  span 1 / span 1;
+  font-family: var(--font-mono);
+  margin: 0;
+  border: none;
+}
 
-### `surface-{2,3}`
+.token-card > *:last-child {
+  margin-block: 0;
+}
 
-These is a secondary background colors. Their contrast is alittle softer than `surface-1` but it is still very legible. This will often be used for things like cards etc.
+.token-card > *:nth-child(3) {
+  grid-area:  span 1 / span 1;
+}
 
-### `surface-4`
+.token-card > *:nth-child(5) {
+  grid-area:  span 1 / span 2;
+}
 
-This is a relatively low contrast background color. It should be used for contents that have large text or icons so the contrast is still acceptable. It's useful for creating a hierarchy of information and things like headers and footers for cards etc..
+.size-demo {
+  background-color: var(--brand);
+  justify-self: end;
+}
 
-### `success`
+.shadow-demo,
+.color-demo {
+   width: 100%;
+   border-radius: var(--radius-2);
+}
 
-This is most often a shade of green. It should be used almost exclusively for success messages.
+.size-demo,
+.color-demo,
+.shadow-demo {
+  display: inline-block;
+  height: 100%;
+}
 
-### `warning`
 
-Often a shade of orange. Like `success` it should be used almost exclusively for warning messages.
+section.token-card.shadow-none,
+section.token-card.shadow-s,
+section.token-card.shadow-m,
+section.token-card.shadow-l,
+#text > section.token-card {
+  grid-template-columns: 1fr;
+}
 
-### `error`
+section.token-card.shadow-none {
+  box-shadow: none;
+}
+section.token-card.shadow-none > h3 {
+  font-family: var(--font-sans);
+}
 
-Often a shade of red. Like `success` it should be used almost exclusively for error messages.
-
-## Sizes
-
-The following are the design tokens related to sizes, e.g. paddings, margins, etc.
+section.token-card.shadow-s {
+  box-shadow: var(--shadow-s);
+}
+section.token-card.shadow-m {
+  box-shadow: var(--shadow-m);
+}
+section.token-card.shadow-l {
+  box-shadow: var(--shadow-l);
+}
+</style>
 
 ```{r}
 #| echo: false
@@ -89,97 +157,121 @@ show_size <- function(size) {
     style=paste0("width: var(",size,")")
   )
 }
-# size_divs
+
+show_color <- function(color) {
+   tags$div(
+    class="color-demo rad-shadow",
+    style=paste0("background-color: var(",color,")")
+  )
+}
+
+show_shadow <- function(shadow) {
+   tags$div(
+    class="shadow-demo",
+    style=paste0("box-shadow: var(",shadow,")")
+  )
+}
+
+show_font_size <- function(size, text) {
+  tags$span(
+    text,
+    style=paste0("font-size: var(",size,")")
+  )
+}
+
+show_font_weight <- function(weight) {
+  tags$span(
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    style=paste0("font-weight: var(",weight,")")
+  )
+}
+show_line_height <- function(lh) {
+  tags$span(
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    style=paste0("line-height: var(",lh,")")
+  )
+}
 ```
 
+## Colors
 
 
-<style>
-html {
-  --size-xxs: var(--size-1);
-  --size-xs: var(--size-2);
-  --size-s: var(--size-3);
-  --size-m: var(--size-fluid-2);
-  --size-l: var(--size-fluid-3);
-  --size-xl: var(--size-fluid-5);
-  --size-xxl: var(--size-fluid-6);
+We have a small set of colors that are used for theming. The following are the colors and where they should be used.
 
-  --brand: var(--orange-6);
-  --text-1: var(--gray-8);
-  --text-2: var(--gray-7);
-  --surface-1: var(--gray-0);
-  --surface-2: var(--gray-1);
-  --surface-3: var(--gray-2);
-  --surface-4: var(--gray-3);
+### --brand {.token-card}
+
+`r show_color("--brand")`
+
+This is typically a colorful color. It should be used for actionable items. E.g. a button that can be pressed. It should not be used for text or backgrounds.
 
 
-}
+### --text-1 {.token-card}
 
-.size-card {
-  background-color: var(--surface-1);
-  color: var(--text-1);
-  padding: var(--size-l);
-  max-inline-size: var(--size-content-2);
-  border-radius: var(--radius-3);
-  border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
-  box-shadow: 0 1rem 0.5rem -0.5rem;
-  box-shadow: 0 2.8px 2.2px
-      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
-    0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
-    0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
-    0 22.3px 17.9px
-      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
-    0 41.8px 33.4px
-      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
-    0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+`r show_color("--text-1")`
 
-  margin-block: var(--size-l);
-  margin-inline: auto;
+This is the typical text color. It should be used for things like headers and primary text.
 
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto;
-  gap: var(--size-m);
-}
+### --text-2  {.token-card}
 
-.size-card > * {
-  margin: 0;
-  padding: 0;
-}
+`r show_color("--text-2")`
 
-.size-card > *:empty {
-  display: none;
-}
+This is the secondary text color. It is typically a little less contrasty to deemphasize it. It should be used for text that is not critical to the main action and thus doesn't need to be as prominent.
 
-.size-card > h2 {
-  grid-area:  span 1 / span 1;
-  font-family: var(--font-mono);
-  margin: 0;
-  border: none;
-}
+### --surface-1 {.token-card}
 
-.size-card > *:last-child {
-  margin-block: 0;
-}
+`r show_color("--surface-1")`
 
-.size-card > *:nth-child(3) {
-  grid-area:  span 1 / span 1;
-}
+This is the primary background color. It will have the greatest contrast with the text colors and is typically usesd for things like backgrounds of a full app etc..
 
-.size-card > *:nth-child(5) {
-  grid-area:  span 1 / span 2;
-}
+### --surface-2 {.token-card}
 
-.size-card > .size-demo {
-  display: inline-block;
-  height: var(--size-m);
-  background-color: var(--brand);
-}
-</style>
+`r show_color("--surface-2")`
+
+These is a secondary background colors. Their contrast is alittle softer than `surface-1` but it is still very legible. This will often be used for things like cards etc.
 
 
-## --size-xxs {.size-card}
+### --surface-3 {.token-card}
+
+`r show_color("--surface-3")`
+
+These is a secondary background colors. Their contrast is alittle softer than `surface-1` but it is still very legible. This will often be used for things like cards etc.
+
+
+### --surface-4 {.token-card}
+
+`r show_color("--surface-4")`
+
+This is a relatively low contrast background color. It should be used for contents that have large text or icons so the contrast is still acceptable. It's useful for creating a hierarchy of information and things like headers and footers for cards etc..
+
+### --success {.token-card}
+
+`r show_color("--success")`
+
+
+This is most often a shade of green. It should be used almost exclusively for success messages.
+
+### --warning {.token-card}
+
+`r show_color("--warning")`
+
+Often a shade of orange. Like `success` it should be used almost exclusively for warning messages.
+
+### --danger {.token-card}
+
+`r show_color("--danger")`
+
+
+Often a shade of red. Like `success` it should be used almost exclusively for error messages or other not-good things.
+
+## Sizes
+
+The following are the design tokens related to sizes, e.g. paddings, margins, etc.
+
+
+
+
+
+### --size-xxs {.token-card}
 
 `r show_size("--size-xxs")`
 
@@ -188,14 +280,14 @@ This size should very rarely be used. If it is used, it should be for minor adju
 OP mapping: `calc(var(--size-1) / 2)`
 
 
-## --size-xs {.size-card}
+### --size-xs {.token-card}
 `r show_size("--size-xs")`
 
 Used for spacing things within a given small unit of design. E.g. creating a tight border around an element like a button.
 
 OP mapping: `--size-1`
 
-## --size-s {.size-card}
+### --size-s {.token-card}
 `r show_size("--size-s")`
 
 Separating distinct atomic units of a design. E.g. the margin between a series of buttons and description text above them.
@@ -203,7 +295,7 @@ Separating distinct atomic units of a design. E.g. the margin between a series o
 
 OP mapping: `--size-2`
 
-## --size-m {.size-card}
+### --size-m {.token-card}
 
 `r show_size("--size-m")`
 
@@ -211,14 +303,14 @@ Separating larger components. E.g. Padding within a card or spacing between menu
 
 OP mapping: `--size-3`
 
-## --size-l {.size-card}
+### --size-l {.token-card}
 `r show_size("--size-l")`
 
 Thematic separation. E.g. separating two cards from eachother or a sidebar from another the main content of the app.
 
 OP mapping: `--size-fluid-2`
 
-## --size-xl {.size-card}
+### --size-xl {.token-card}
 
 `r show_size("--size-xl")`
 
@@ -227,9 +319,89 @@ App level separation. E.g. margins on the side of content.
 OP mapping: `--size-fluid-3`
 
 
-## --size-xxl {.size-card}
+### --size-xxl {.token-card}
 `r show_size("--size-xxl")`
 
 Rarely used but can be used to create extra space between items that otherwise would be closer together. E.g. Isolating a given card to draw focus to it. Should rarely be used in internal component design.
 
 OP mapping: `--size-fluid-6`
+
+
+## Shadows
+
+Box shadows are a polarizing design token but seem to be have settled on a nice standard of using them to elevate certian items and bring them to the user's attention. They should be used sparingly and with clear purpose.
+
+### no shadow {.token-card .shadow-none}
+
+Sample card with no box-shadow for reference.
+
+### --shadow-s {.token-card .shadow-s}
+
+This shadow can be used to minorly elevate items. Just to make them "pop" a little bit more. For instance an avatar image may use this to give it the apperance of being important but not the main thing of importance on the page.
+
+
+### --shadow-m {.token-card .shadow-m}
+
+
+The "average" shadow. Used to draw the raise something clearly above the background and thus draw attention to it. E.g. a card filled with information. Should be used primarily with larger items or else it will overpower the item.
+
+### --shadow-l {.token-card .shadow-l}
+
+
+Almost never used. Only if the effect of elevation should be really pronounced. Could be used as a hover state for something interactive that already has a `--shadow-m` on it.
+
+
+## Text
+
+Most of the variables for fonts are automatically applied when adding the `text_reset` snippet to a components `static styles` definition and as long as you use the proper semantic elements for your situation everything will work.
+
+
+
+### --font-size-main {.token-card}
+
+`r show_font_size("--font-size-main", "Main/Body fonts")`
+
+
+### --font-size-h1 {.token-card}
+
+`r show_font_size("--font-size-h1", "Level-1 Headers")`
+
+### --font-size-h2 {.token-card}
+
+`r show_font_size("--font-size-h2", "Level-2 Headers")`
+
+### --font-size-h3 {.token-card}
+
+`r show_font_size("--font-size-h3", "Level-3 Headers")`
+
+### --font-size-h4 {.token-card}
+
+`r show_font_size("--font-size-h4", "Level-4 Headers")`
+
+### --font-size-h5 {.token-card}
+
+`r show_font_size("--font-size-h5", "Level-5 Headers")`
+
+
+### --font-weight-headings {.token-card}
+
+`r show_font_weight("--font-weight-headings")`
+
+### --font-weight-bold {.token-card}
+
+`r show_font_weight("--font-weight-bold")`
+
+
+### --line-height-headings {.token-card}
+
+
+[Header text can have a tighter line-height than normal... The purpose of the spacing between lines is to help people read from one line to the next, comfortably. While a line height of at least 1.5 (150%) works well for body text, it’s unnecessary on larger sized text such as headings. The larger the font size, the smaller the line height should be, to maintain comfortable spacing.]{style="line-height: var(--line-height-headings)"}
+
+
+### --line-height-main {.token-card}
+
+[Main text should be slightly more spaced out... The purpose of the spacing between lines is to help people read from one line to the next, comfortably. While a line height of at least 1.5 (150%) works well for body text, it’s unnecessary on larger sized text such as headings. The larger the font size, the smaller the line height should be, to maintain comfortable spacing.]{style="line-height: var(--line-height-main)"}
+
+
+
+

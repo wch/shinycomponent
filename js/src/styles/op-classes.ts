@@ -45,4 +45,43 @@ export const themePrimitives = {
         hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
       0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
   `,
+  /**
+   * A series of definitions that will reset text in a component to use standards without having to manually assign everything.
+   */
+  text_reset: css`
+    :where(h1, h2, h3, h4, h5, h6) {
+      line-height: var(--line-height-headings);
+      font-weight: var(--font-weight-headings);
+    }
+
+    :where(h1) {
+      font-size: var(--font-size-h1);
+    }
+
+    :where(h2) {
+      font-size: var(--font-size-h2);
+    }
+
+    :where(h3) {
+      font-size: var(--font-size-h3);
+    }
+    :where(h4) {
+      font-size: var(--font-size-h4);
+    }
+    :where(h5) {
+      font-size: var(--font-size-h5);
+    }
+
+    :where(p, ul, ol, dl, h6) {
+      font-size: var(--font-size-main);
+    }
+
+    :where(a, u, ins, abbr) {
+      text-underline-offset: 1px;
+
+      @supports (-moz-appearance: none) {
+        text-underline-offset: 2px;
+      }
+    }
+  `,
 };
