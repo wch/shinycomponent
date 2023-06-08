@@ -8,7 +8,7 @@ __all__ = (
 )
 
 from pathlib import PurePath
-from typing import Optional
+from typing import Literal, Optional
 
 from htmltools import HTMLDependency, Tag, TagAttrs, TagAttrValue, TagChild, tags
 
@@ -27,6 +27,8 @@ def input_checkbox(
     id: str,
     label: TagChild,
     *args: TagChild | TagAttrs,
+    value: bool = False,
+    size: Literal["small", "medium", "large"] = "medium",
     _add_ws: bool = True,
     **kwargs: TagAttrValue,
 ) -> Tag:
@@ -36,6 +38,8 @@ def input_checkbox(
         label if (label is not None) else None,
         *args,
         id=id,
+        value=value,
+        size=size,
         _add_ws=_add_ws,
         **kwargs,
     )
@@ -67,6 +71,8 @@ def input_switch(
     id: str,
     label: TagChild,
     *args: TagChild | TagAttrs,
+    value: bool = False,
+    size: Literal["small", "medium", "large"] = "medium",
     _add_ws: bool = True,
     **kwargs: TagAttrValue,
 ) -> Tag:
@@ -76,6 +82,8 @@ def input_switch(
         label if (label is not None) else None,
         *args,
         id=id,
+        value=value,
+        size=size,
         _add_ws=_add_ws,
         **kwargs,
     )

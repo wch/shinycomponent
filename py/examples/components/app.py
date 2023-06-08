@@ -110,6 +110,61 @@ app_ui = sc.page(
             ),
             name="Select",
         ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_checkbox(
+                        id="checkbox1",
+                        label="Basic",
+                    ),
+                    sc.forge.input_checkbox(
+                        id="checkbox2", label="Checked", value=True
+                    ),
+                    sc.forge.input_checkbox(
+                        id="checkbox3",
+                        label="Small",
+                        size="small",
+                    ),
+                ),
+                sc.grid_item(
+                    ui.output_text_verbatim("out_checkbox1", placeholder=True),
+                    ui.output_text_verbatim("out_checkbox2", placeholder=True),
+                    ui.output_text_verbatim("out_checkbox3", placeholder=True),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Checkbox",
+        ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_switch(
+                        id="switch1",
+                        label="Basic",
+                    ),
+                    sc.forge.input_switch(id="switch2", label="Checked", value=True),
+                    sc.forge.input_switch(id="switch3", label="Small", size="small"),
+                    sc.forge.input_switch(
+                        id="switch4",
+                        label="Huge, via CSS vars",
+                        style="""--width: calc(var(--height) * 1.75);
+                                --height: 44px;
+                                --thumb-size: 40px;
+                                """,
+                    ),
+                ),
+                sc.grid_item(
+                    ui.output_text_verbatim("out_switch1", placeholder=True),
+                    ui.output_text_verbatim("out_switch2", placeholder=True),
+                    ui.output_text_verbatim("out_switch3", placeholder=True),
+                    ui.output_text_verbatim("out_switch4", placeholder=True),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Switch",
+        ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
     ),
 )
@@ -121,6 +176,12 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     for i in range(4):
         make_output(input[f"select{i+1}"], f"out_select{i+1}", output)
+
+    for i in range(3):
+        make_output(input[f"checkbox{i+1}"], f"out_checkbox{i+1}", output)
+
+    for i in range(4):
+        make_output(input[f"switch{i+1}"], f"out_switch{i+1}", output)
 
 
 def make_output(input_val: reactive.Value[object], out_label: str, output: Outputs):

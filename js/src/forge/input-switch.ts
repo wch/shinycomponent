@@ -18,12 +18,15 @@ export class ForgeInputSwitch
     css`
       :host([size="small"]) {
         --thumb-size: calc(var(--sl-toggle-size-small) * 0.85);
+        --width: calc(var(--height) * 1.65);
       }
       :host([size="medium"]) {
         --thumb-size: calc(var(--sl-toggle-size-medium) * 0.85);
+        --width: calc(var(--height) * 1.65);
       }
       :host([size="large"]) {
         --thumb-size: calc(var(--sl-toggle-size-large) * 0.85);
+        --width: calc(var(--height) * 1.65);
       }
     `,
   ];
