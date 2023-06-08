@@ -20,7 +20,44 @@ app_ui = sc.page(
             # Make a grid with 2 columns
             sc.grid(
                 sc.grid_item(
-                    ui.h2("Select inputs"),
+                    sc.forge.input_text(
+                        id="text1",
+                        label="Basic",
+                    ),
+                    sc.forge.input_text(
+                        id="text2",
+                        label="Help text",
+                        help_text="This is some help text",
+                        placeholder="Placeholder text",
+                    ),
+                    sc.forge.input_text(
+                        id="text3",
+                        label="Starting value, clearable",
+                        value="This is a starting value",
+                        clearable=True,
+                    ),
+                    sc.forge.input_text(
+                        id="text4",
+                        label="Password, pill",
+                        password=True,
+                        pill=True,
+                    ),
+                ),
+                sc.grid_item(
+                    ui.output_text_verbatim("out_text1", placeholder=True),
+                    ui.output_text_verbatim("out_text2", placeholder=True),
+                    ui.output_text_verbatim("out_text3", placeholder=True),
+                    ui.output_text_verbatim("out_text4", placeholder=True),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Text",
+        ),
+        sc.tab(
+            # Make a grid with 2 columns
+            sc.grid(
+                sc.grid_item(
                     sc.forge.input_select(
                         id="select1",
                         label="Basic",
@@ -51,7 +88,7 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_select(
                         id="select4",
-                        label="Option groups, placeholder",
+                        label="Option groups, placeholder, pill",
                         choices={
                             "Group A": {"a1": "Choice A1", "a2": "Choice A2"},
                             "Group B": ["Choice B"],
@@ -59,9 +96,15 @@ app_ui = sc.page(
                         },
                         selected=["second", "first"],
                         placeholder="Select something",
+                        pill=True,
                     ),
                 ),
-                sc.grid_item(),
+                sc.grid_item(
+                    ui.output_text_verbatim("out_select1", placeholder=True),
+                    ui.output_text_verbatim("out_select2", placeholder=True),
+                    ui.output_text_verbatim("out_select3", placeholder=True),
+                    ui.output_text_verbatim("out_select4", placeholder=True),
+                ),
                 nCols=2,
                 nRows=1,
             ),
@@ -73,7 +116,18 @@ app_ui = sc.page(
 
 
 def server(input: Inputs, output: Outputs, session: Session):
-    ...
+    for i in range(4):
+        make_output(input[f"text{i+1}"], f"out_text{i+1}", output)
+
+    for i in range(4):
+        make_output(input[f"select{i+1}"], f"out_select{i+1}", output)
+
+
+def make_output(input_val: reactive.Value[object], out_label: str, output: Outputs):
+    @output(id=out_label)
+    @render.text()
+    def _():
+        return str(input_val())
 
 
 app = App(

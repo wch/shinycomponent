@@ -10,15 +10,7 @@ __all__ = (
 from pathlib import PurePath
 from typing import Optional
 
-from htmltools import (
-    HTMLDependency,
-    Tag,
-    TagAttrs,
-    TagAttrValue,
-    TagChild,
-    TagList,
-    tags,
-)
+from htmltools import HTMLDependency, Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from . import __version__
 from ._htmldeps import open_props_dep
@@ -93,6 +85,11 @@ def input_text(
     id: str,
     label: TagChild,
     *args: TagChild | TagAttrs,
+    help_text: str | None = None,
+    placeholder: str | None = None,
+    clearable: bool = False,
+    password: bool = False,
+    pill: bool = False,
     _add_ws: bool = True,
     **kwargs: TagAttrValue,
 ) -> Tag:
@@ -101,7 +98,12 @@ def input_text(
         forge_dep(),
         tags.div(label, slot="label") if (label is not None) else None,
         *args,
+        {"type": "password", "password_toggle": password} if password else None,
         id=id,
+        help_text=help_text,
+        placeholder=placeholder,
+        clearable=clearable,
+        pill=pill,
         _add_ws=_add_ws,
         **kwargs,
     )
@@ -151,6 +153,7 @@ def input_select(
     selected: Optional[str | list[str]] = None,
     multiple: bool = False,
     clearable: bool = False,
+    pill: bool = False,
     _add_ws: bool = True,
     **kwargs: TagAttrValue,
 ) -> Tag:
@@ -164,6 +167,7 @@ def input_select(
         selected=attr_to_escaped_json(selected),
         multiple=multiple,
         clearable=clearable,
+        pill=pill,
         _add_ws=_add_ws,
         **kwargs,
     )
@@ -175,6 +179,7 @@ def input_radio_buttons(
     choices: list[str],
     *args: TagChild | TagAttrs,
     selected: Optional[str] = None,
+    pill: bool = False,
     _add_ws: bool = True,
     **kwargs: TagAttrValue,
 ) -> Tag:
@@ -186,6 +191,7 @@ def input_radio_buttons(
         id=id,
         choices=attr_to_escaped_json(choices),
         selected=selected,
+        pill=pill,
         _add_ws=_add_ws,
         **kwargs,
     )
