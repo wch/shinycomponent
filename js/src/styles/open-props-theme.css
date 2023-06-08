@@ -144,9 +144,34 @@
   /* Weights */
   --font-weight-headings: var(--font-weight-3);
   --font-weight-bold: var(--font-weight-5);
-  --line-height-headings: var(--font-lineheight-1);
 
+  --line-height-headings: var(--font-lineheight-1);
   --line-height-main: var(--font-lineheight-3);
+
+  /* Transitions */
+  --speed-fast: 0.15s;
+  --speed-normal: 0.3s;
+  --speed-slow: 0.75s;
+
+  /* Borders */
+  --border-optional: 0;
+  --border-thin: var(--border-size-1);
+  --border-normal: var(--border-size-2);
+  --border-thick: var(--border-size-3);
+
+  --radius-s: var(--radius-2);
+  --radius-m: var(--radius-3);
+  --radius-l: var(--radius-4);
+  --radius-pill: var(--radius-pill);
+}
+
+/* Set transition speeds to zero when the user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --speed-fast: 0s;
+    --speed-normal: 0s;
+    --speed-slow: 0s;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -328,4 +353,39 @@ div.shiny-input-container > .form-switch > input[type="checkbox"],
   [data-selectable]
   .highlight {
   background-color: var(--surface-3);
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  line-height: var(--line-height-headings);
+  font-weight: var(--font-weight-headings);
+}
+
+:where(h1) {
+  font-size: var(--font-size-h1);
+}
+
+:where(h2) {
+  font-size: var(--font-size-h2);
+}
+
+:where(h3) {
+  font-size: var(--font-size-h3);
+}
+:where(h4) {
+  font-size: var(--font-size-h4);
+}
+:where(h5) {
+  font-size: var(--font-size-h5);
+}
+
+:where(p, ul, ol, dl, h6) {
+  font-size: var(--font-size-main);
+}
+
+:where(a, u, ins, abbr) {
+  text-underline-offset: 1px;
+
+  @supports (-moz-appearance: none) {
+    text-underline-offset: 2px;
+  }
 }

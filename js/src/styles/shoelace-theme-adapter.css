@@ -78,10 +78,10 @@ automatically match the current open-props theme */
   /*
    * Border radii
    */
-  --sl-border-radius-small: var(--border-2);
-  --sl-border-radius-medium: var(--border-3);
-  --sl-border-radius-large: var(--border-4);
-  --sl-border-radius-x-large: var(--border-5);
+  --sl-border-radius-small: var(calc(--radius-s/2));
+  --sl-border-radius-medium: var(--radius-s);
+  --sl-border-radius-large: var(--radius-m);
+  --sl-border-radius-x-large: var(--radius-l);
 
   --sl-border-radius-circle: 50%;
   --sl-border-radius-pill: 9999px;
