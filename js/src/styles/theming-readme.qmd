@@ -8,7 +8,6 @@ format:
 
 
 <style>
-
 html {
   font-family: var(--font-sans);
 }
@@ -344,6 +343,12 @@ This is the typical text color. It should be used for things like headers and pr
 `r show_color("--text-2")`
 
 This is the secondary text color. It is typically a little less contrasty to deemphasize it. It should be used for text that is not critical to the main action and thus doesn't need to be as prominent.
+
+#### --text-3  {.token-card}
+
+`r show_color("--text-3")`
+
+This is the tertiary text color. It is typically a little text like placeholders in inputs. Where the content is purposefully not punchy but provides a hint that text can be somewhere.
 
 #### --surface-1 {.token-card}
 

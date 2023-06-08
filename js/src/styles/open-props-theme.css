@@ -43,8 +43,10 @@
 
   /* light */
   --brand-light: var(--orange-6);
-  --text-1-light: var(--gray-8);
-  --text-2-light: var(--gray-7);
+  --text-light-hs: 210 10%; /* Base of grey-8-hsl*/
+  --text-1-light: var(--gray-10);
+  --text-2-light: var(--gray-8);
+  --text-3-light: var(--gray-6);
   --surface-1-light: var(--gray-0);
   --surface-2-light: var(--gray-1);
   --surface-3-light: var(--gray-2);
@@ -56,6 +58,7 @@
   --brand-dark: var(--orange-3);
   --text-1-dark: var(--gray-3);
   --text-2-dark: var(--gray-5);
+  --text-3-dark: var(--gray-7);
   --surface-1-dark: var(--gray-12);
   --surface-2-dark: var(--gray-11);
   --surface-3-dark: var(--gray-10);
@@ -67,6 +70,7 @@
   --brand-dim: var(--orange-4);
   --text-1-dim: var(--gray-3);
   --text-2-dim: var(--gray-4);
+  --text-2-dim: var(--gray-5);
   --surface-1-dim: var(--gray-8);
   --surface-2-dim: var(--gray-7);
   --surface-3-dim: var(--gray-6);
@@ -78,6 +82,7 @@
   --brand-grape: var(--purple-5);
   --text-1-grape: var(--purple-9);
   --text-2-grape: var(--purple-7);
+  --text-2-grape: var(--purple-5);
   --surface-1-grape: var(--purple-0);
   --surface-2-grape: var(--purple-1);
   --surface-3-grape: var(--purple-2);
@@ -89,6 +94,7 @@
   --brand-choco: var(--choco-5);
   --text-1-choco: var(--choco-1);
   --text-2-choco: var(--choco-2);
+  --text-2-choco: var(--choco-4);
   --surface-1-choco: var(--choco-12);
   --surface-2-choco: var(--choco-11);
   --surface-3-choco: var(--choco-10);
@@ -104,6 +110,7 @@
   --brand: var(--brand-light);
   --text-1: var(--text-1-light);
   --text-2: var(--text-2-light);
+  --text-3: var(--text-3-light);
   --surface-1: var(--surface-1-light);
   --surface-2: var(--surface-2-light);
   --surface-3: var(--surface-3-light);
@@ -181,6 +188,7 @@
     --brand: var(--brand-dark);
     --text-1: var(--text-1-dark);
     --text-2: var(--text-2-dark);
+    --text-3: var(--text-3-dark);
     --surface-1: var(--surface-1-dark);
     --surface-2: var(--surface-2-dark);
     --surface-3: var(--surface-3-dark);
@@ -197,6 +205,7 @@
   --brand: var(--brand-light);
   --text-1: var(--text-1-light);
   --text-2: var(--text-2-light);
+  --text-3: var(--text-3-light);
   --surface-1: var(--surface-1-light);
   --surface-2: var(--surface-2-light);
   --surface-3: var(--surface-3-light);
@@ -212,6 +221,7 @@
   --brand: var(--brand-dark);
   --text-1: var(--text-1-dark);
   --text-2: var(--text-2-dark);
+  --text-3: var(--text-3-dark);
   --surface-1: var(--surface-1-dark);
   --surface-2: var(--surface-2-dark);
   --surface-3: var(--surface-3-dark);
@@ -227,6 +237,7 @@
   --brand: var(--brand-dim);
   --text-1: var(--text-1-dim);
   --text-2: var(--text-2-dim);
+  --text-3: var(--text-3-dim);
   --surface-1: var(--surface-1-dim);
   --surface-2: var(--surface-2-dim);
   --surface-3: var(--surface-3-dim);
@@ -242,6 +253,7 @@
   --brand: var(--brand-grape);
   --text-1: var(--text-1-grape);
   --text-2: var(--text-2-grape);
+  --text-3: var(--text-3-grape);
   --surface-1: var(--surface-1-grape);
   --surface-2: var(--surface-2-grape);
   --surface-3: var(--surface-3-grape);
@@ -257,6 +269,7 @@
   --brand: var(--brand-choco);
   --text-1: var(--text-1-choco);
   --text-2: var(--text-2-choco);
+  --text-3: var(--text-3-choco);
   --surface-1: var(--surface-1-choco);
   --surface-2: var(--surface-2-choco);
   --surface-3: var(--surface-3-choco);
