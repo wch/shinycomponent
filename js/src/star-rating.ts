@@ -19,29 +19,29 @@ export class StarRating extends LitElement {
       position: relative;
       display: flex;
       align-items: center;
-      padding: var(--size-2);
-      gap: var(--size-2);
-      font-size: var(--font-size-6);
+      padding: var(--size-xs);
+      gap: var(--size-xs;
+      font-size: var(--font-size-h4);
     }
 
     button {
-      font-size: var(--font-size-6);
+      font-size: var(--font-size-h5);
       border: none;
     }
 
     button.disabled {
-      background-color: var(--gray-3);
+      background-color: var(--surface-4);
       opacity: 0.5;
       cursor: not-allowed;
     }
 
     .thumb-down {
-      background-color: var(--red-3);
+      background-color: var(--error);
       border-radius: var(--radius-blob-1);
     }
 
     .thumb-up {
-      background-color: var(--blue-3);
+      background-color: var(--success);
       border-radius: var(--radius-blob-2);
     }
   `;

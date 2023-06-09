@@ -8,9 +8,6 @@ export class PositLogo extends LitElement {
   @property({ type: Number }) height: number = 40;
 
   static styles = css`
-    :host {
-    }
-
     svg {
       translate: 0 3.5px;
     }

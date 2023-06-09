@@ -12,14 +12,11 @@ export class Section extends LitElement {
   // via CSS custom properties.
   static styles = css`
     :host {
-      /* border: 1px solid red; */
       display: grid;
       align-items: center;
       grid-template-columns: var(--sidebar-content-columns, auto 1fr);
-      gap: var(--sidebar-content-gap, var(--size-fluid-2));
+      gap: var(--sidebar-content-gap, var(--size-m));
       height: var(--sidebar-content-height, auto);
-      /* width: 100%; */
-
       padding-block: var(--padding, 100px);
     }
 
@@ -33,13 +30,12 @@ export class Section extends LitElement {
     }
 
     .icon {
-      font-size: var(--size-fluid-3);
+      font-size: var(--font-size-h3);
     }
 
     .content > ::slotted(h2) {
       margin: 0;
       padding-block: 0;
-      font-weight: var(--font-weight-6);
     }
 
     .content > ::slotted(*:last-child) {
@@ -50,7 +46,7 @@ export class Section extends LitElement {
       overflow: var(--sidebar-content-overflow);
       display: flex;
       flex-direction: column;
-      gap: var(--size-fluid-2);
+      gap: var(--size-s);
     }
   `;
 

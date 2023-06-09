@@ -15,10 +15,11 @@ export class Grid extends LitElement {
       display: grid;
       grid-template-columns: repeat(var(--nCols), 1fr);
       grid-template-rows: repeat(var(--nRows), 1fr);
-      gap: var(--grid-gap, var(--size-fluid-2));
+      gap: var(--grid-gap, var(--size-m));
       align-items: var(--align-items);
       height: 100%;
     }
+
     * {
       box-sizing: border-box;
     }

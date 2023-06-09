@@ -18,18 +18,15 @@ export class SlTabset extends Tabset {
     */
       --_main-bg: var(--main-bg, var(--sl-color-neutral-50));
       --_main-color: var(--main-color, var(--sl-color-neutral-950));
-
       --_sidebar-bg: var(--sidebar-bg, var(--sl-color-neutral-200));
       --_sidebar-color: var(--sidebar-color, var(--sl-color-neutral-950));
       --_sidebar-border: var(--sidebar-border);
-
       --_tab-spacing: var(--tab-spacing, var(--sl-spacing-small));
       --_tab-selection-thickness: var(
         --tab-selection-thickness,
         var(--sl-spacing-2x-small)
       );
       --_tab_radius: var(--tab-radius, var(--sl-border-radius-medium));
-
       --_header-bg-color: var(--header-bg-color, var(--sl-color-primary-200));
       --_header-bg-image: var(--header-bg-image);
       --_header-color: var(--header-color);
@@ -79,11 +76,14 @@ export class SlTabset extends Tabset {
 
     .main {
       z-index: 1;
+      grid-area: content;
+      overflow: auto;
     }
 
     .header,
     .footer {
       background-color: var(--_header-bg-color);
+
       /* Use background image if passed */
       background-image: var(--_header-bg-image);
       color: var(--_header-color);
@@ -141,11 +141,6 @@ export class SlTabset extends Tabset {
       grid-area: sidebar;
       background-color: var(--_sidebar-bg);
       color: var(--_sidebar-color);
-    }
-
-    .main {
-      grid-area: content;
-      overflow: auto;
     }
 
     .footer {

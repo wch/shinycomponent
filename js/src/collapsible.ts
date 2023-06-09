@@ -1,13 +1,13 @@
 import { LitElement, css, html } from "lit";
 
-type CollapseDir = "to_right" | "to_left" | "to_bottom" | "to_top";
+type CollapseDir = "right" | "left" | "bottom" | "top";
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const dirToIcon = {
-  to_right: "►",
-  to_left: "◀︎",
-  to_bottom: "▲",
-  to_top: "▲",
+  right: "►",
+  left: "◀︎",
+  bottom: "▲",
+  top: "▲",
 };
 /* eslint-enable @typescript-eslint/naming-convention */
 
@@ -16,9 +16,6 @@ const horizontalCollapseStyles = css`
     max-width: 100vw;
     transition: max-width var(--transition), transform var(--transition),
       padding-inline var(--transition);
-  }
-
-  .horizontal.open .content {
   }
 
   .horizontal .content > * {
@@ -41,11 +38,11 @@ const horizontalCollapseStyles = css`
 `;
 
 const toLeftCollapseStyles = css`
-  .to_left .content {
+  .left .content {
     transform-origin: left;
   }
 
-  .to_left .toggle {
+  .left .toggle {
     top: var(--size-1);
     right: var(--space-small);
     width: var(--toggle-size);
@@ -54,10 +51,11 @@ const toLeftCollapseStyles = css`
 `;
 
 const toRightCollapseStyles = css`
-  .to_right .content {
+  .right .content {
     transform-origin: left;
   }
-  .to_right .toggle {
+
+  .right .toggle {
     order: -1;
     top: var(--size-1);
     right: 0;
@@ -102,7 +100,7 @@ const verticalCollapseStyles = css`
 `;
 
 const toBottomCollapseStyles = css`
-  .to_bottom .toggle {
+  .bottom .toggle {
     order: -1;
     right: var(--space-medium);
     bottom: 0;
@@ -110,7 +108,7 @@ const toBottomCollapseStyles = css`
 `;
 
 const toTopCollapseStyles = css`
-  .to_top .toggle {
+  .top .toggle {
     right: var(--size-1);
   }
 `;
@@ -120,7 +118,7 @@ export class Collapsible extends LitElement {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   start_state: string;
   opened: boolean | null;
-  // Which direction should the collapsible collapse in? "to_right" = left to right, etc...
+  // Which direction should the collapsible collapse in? "right" = left to right, etc...
   dir: CollapseDir;
 
   static properties = {
@@ -136,11 +134,12 @@ export class Collapsible extends LitElement {
   static styles = [
     css`
       :host {
-        display: block;
-        font-family: var(--font-family, sans-serif);
         --transition: 0.4s var(--ease-3);
         --toggle-size: 20px;
         --accent-color: var(--stone-3);
+
+        display: block;
+        font-family: var(--font-family, sans-serif);
         position: relative;
         outline: 1px solid var(--accent-color, pink);
         margin: var(--size-3);
@@ -189,15 +188,15 @@ export class Collapsible extends LitElement {
     this.start_state = "open";
 
     this.opened = null;
-    this.dir = "to_top";
+    this.dir = "top";
     this.label = null;
   }
 
   render() {
     return html`
       <div
-        class="container ${this.dir} ${this.dir === "to_bottom" ||
-        this.dir === "to_top"
+        class="container ${this.dir} ${this.dir === "bottom" ||
+        this.dir === "top"
           ? "vertical"
           : "horizontal"} ${this.isOpen ? "open" : "closed"}"
       >
