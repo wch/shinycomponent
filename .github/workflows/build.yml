@@ -3,8 +3,8 @@ name: Build packages on build branch
 on:
   push:
     branches: [main]
-  # pull_request:
-  #   branches: [main]
+  pull_request:
+    branches: [main]
 
 
 jobs:
@@ -32,8 +32,8 @@ jobs:
       - name: Build JS and CSS resources
         run: |
           cd js
-          yarn
-          yarn build
+          npm install
+          npm run build
 
       - name: Build Python package
         run: |
@@ -74,6 +74,7 @@ jobs:
   # Build and deploy site
   # =====================================================
   deploy-site:
+    if: github.ref == 'refs/heads/main'
     # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
     permissions:
       contents: read
