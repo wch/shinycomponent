@@ -3,7 +3,6 @@ from __future__ import annotations
 from typing import Optional
 
 from htmltools import TagAttrs, TagChild, tags
-from shiny.ui._html_dependencies import bootstrap_deps
 
 from ._htmldeps import page_dep
 
@@ -24,7 +23,7 @@ def page(
                        """
             ),
         ),
-        tags.body(*bootstrap_deps(), *args),
+        tags.body(*args),
         page_dep(),
         lang=lang,
     )
