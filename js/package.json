@@ -20,6 +20,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "just-debounce-it": "^3.2.0",
     "open-props": "^1.5.8",
+    "postcss-lit": "^1.1.0",
     "prettier": "^2.8.8",
     "prettier-plugin-organize-imports": "^3.2.2",
     "stylelint": "^15.7.0",

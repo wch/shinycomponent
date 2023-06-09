@@ -20,11 +20,12 @@ export class OpTabset extends Tabset {
         doesn't cascade down to other elements
       */
 
-      --padding: var(--size-fluid-3);
+      --padding: var(--size-m);
 
       display: block;
       height: 100%;
       box-sizing: border-box;
+
       ${themePrimitives.surface_3}
     }
 
@@ -32,12 +33,11 @@ export class OpTabset extends Tabset {
       height: 100%;
       width: 100%;
       display: grid;
-      grid-template-columns: auto 1fr;
-      grid-template-rows: auto 1fr auto;
-      grid-template-areas:
-        "sidebar header"
-        "sidebar content"
-        "sidebar footer";
+      grid-template:
+        "sidebar header" auto
+        "sidebar content" 1fr
+        "sidebar footer" auto /
+        auto 1fr;
       isolation: isolate;
     }
 
@@ -54,6 +54,8 @@ export class OpTabset extends Tabset {
 
     .main {
       z-index: 1;
+      grid-area: content;
+      padding: var(--padding);
     }
 
     .header,
@@ -68,14 +70,13 @@ export class OpTabset extends Tabset {
 
     .header {
       grid-area: header;
-      font-family: var(--_header-font);
-      font-weight: var(--_header-font-weight);
       margin: 0;
       position: relative;
       padding: var(--padding);
       padding-block-end: 0;
       display: flex;
       justify-content: space-evenly;
+      align-items: baseline;
     }
 
     .header-right {
@@ -85,15 +86,16 @@ export class OpTabset extends Tabset {
     .tabs {
       --container-radius: var(--radius-4);
       --container-pad: var(--size-1);
+
       /* Subtract padding from radius of tabs so they fit like they've shrunk down */
       --child-radius: calc(var(--container-radius) - var(--container-pad));
 
       border-radius: var(--container-radius);
       padding: var(--container-pad);
-
       display: flex;
       align-items: center;
       flex-wrap: wrap;
+
       ${themePrimitives.surface_4}
     }
 
@@ -112,12 +114,8 @@ export class OpTabset extends Tabset {
     .sidebar {
       padding: 0;
       grid-area: sidebar;
-      ${themePrimitives.surface_1}
-    }
 
-    .main {
-      grid-area: content;
-      padding: var(--padding);
+      ${themePrimitives.surface_1}
     }
 
     .footer {
