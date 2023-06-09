@@ -16,7 +16,6 @@ export class StarRating extends LitElement {
   // via CSS custom properties.
   static styles = css`
     :host {
-      display: block;
       position: relative;
       display: flex;
       align-items: center;

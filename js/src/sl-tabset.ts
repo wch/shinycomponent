@@ -13,9 +13,9 @@ export class SlTabset extends Tabset {
   static styles = css`
     :host {
       /* This is where all the variables are defined. If the user wants to
-        update something they just have to replace the main variable and it
-        doesn't cascade down to other elements
-      */
+      update something they just have to replace the main variable and it
+      doesn't cascade down to other elements
+    */
       --_main-bg: var(--main-bg, var(--sl-color-neutral-50));
       --_main-color: var(--main-color, var(--sl-color-neutral-950));
 
@@ -58,12 +58,11 @@ export class SlTabset extends Tabset {
       height: 100%;
       width: 100%;
       display: grid;
-      grid-template-columns: auto 1fr;
-      grid-template-rows: auto 1fr auto;
-      grid-template-areas:
-        "header  header"
-        "sidebar content"
-        "footer  footer";
+      grid-template:
+        "header  header" auto
+        "sidebar content" 1fr
+        "footer  footer" auto /
+        auto 1fr;
       isolation: isolate;
     }
 

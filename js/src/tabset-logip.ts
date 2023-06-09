@@ -42,9 +42,9 @@ export class TabsetLogip extends Tabset {
       height: 100%;
       width: 100%;
       display: grid;
-      grid-template-columns: auto 1fr;
-      grid-template-rows: 1fr;
-      grid-template-areas: "sidebar content";
+      grid-template:
+        "sidebar content" 1fr /
+        auto 1fr;
       isolation: isolate;
       padding: var(--_gap);
     }
@@ -77,8 +77,7 @@ export class TabsetLogip extends Tabset {
 
     .tabs {
       display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
+      flex-flow: column wrap;
       font-size: var(--font-size-fluid-1);
       padding-block: var(--_tab-spacing);
       gap: var(--_tab-spacing);

@@ -12,7 +12,7 @@ export class PositLogo extends LitElement {
     }
 
     svg {
-      translate: 0px 3.5px;
+      translate: 0 3.5px;
     }
   `;
 

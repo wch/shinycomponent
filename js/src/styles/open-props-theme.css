@@ -185,6 +185,7 @@ override styles from our reset layer */
 
   /* Border with a tinge of the brand color */
   --border-color: hsl(var(--brand-hue) 10% 50% / 15%);
+  --border-normal: var(--border-thin) solid var(--border-color);
 
   --radius-s: var(--radius-2);
   --radius-m: var(--radius-3);

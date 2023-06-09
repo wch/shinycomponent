@@ -16,9 +16,9 @@ export class OpTabset extends Tabset {
   static styles = css`
     :host {
       /* This is where all the variables are defined. If the user wants to
-        update something they just have to replace the main variable and it
-        doesn't cascade down to other elements
-      */
+      update something they just have to replace the main variable and it
+      doesn't cascade down to other elements
+    */
 
       --padding: var(--size-m);
 

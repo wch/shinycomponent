@@ -12,7 +12,6 @@ export class Grid extends LitElement {
   // via CSS custom properties.
   static styles = css`
     :host {
-      height: 100%;
       display: grid;
       grid-template-columns: repeat(var(--nCols), 1fr);
       grid-template-rows: repeat(var(--nRows), 1fr);

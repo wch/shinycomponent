@@ -71,7 +71,7 @@ export class DesignPreview extends LitElement {
       aspect-ratio: 1;
       display: grid;
       align-items: end;
-      border: 0px solid var(--color-border);
+      border: 0 solid var(--color-border);
       box-shadow: var(--shadow-medium);
       border-radius: var(--radius-small);
       background-color: var(--color-bg-2);

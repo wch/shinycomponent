@@ -12,12 +12,11 @@ export class Sidebar extends LitElement {
   // via CSS custom properties.
   static styles = css`
     :host {
-      --transition: 0.3s var(--ease-3);
-      --padding: var(--size-fluid-2);
-
+      --transition: var(--speed-normal) var(--ease-3);
+      --padding: var(--size-m);
       --sidebar-content-columns: auto 1fr;
       --sidebar-content-height: auto;
-      --sidebar-content-gap: var(--size-fluid-2);
+      --sidebar-content-gap: var(--size-m);
 
       height: 100%;
       position: relative;
@@ -27,16 +26,12 @@ export class Sidebar extends LitElement {
     }
 
     :host([closed]) {
-      --sidebar-content-columns: auto 0px;
-      --sidebar-content-height: var(--size-11);
+      --sidebar-content-columns: auto 0;
+      --sidebar-content-height: var(--size-xxl);
       --sidebar-content-gap: 0;
       --sidebar-content-overflow: hidden;
 
       cursor: e-resize;
-    }
-
-    :host([closed]) .content {
-      width: fit-content;
     }
 
     * {
@@ -47,14 +42,15 @@ export class Sidebar extends LitElement {
       height: 100%;
       overflow: auto;
       margin: 0;
-
       padding-inline: var(--padding);
-      width: var(--sidebar-width, 100px);
-
+      width: var(--sidebar-width, 30vw);
       transition: width var(--transition), padding var(--transition);
-
       display: flex;
       flex-direction: column;
+    }
+
+    :host([closed]) .content {
+      width: fit-content;
     }
 
     .content > ::slotted(hr) {
@@ -62,8 +58,9 @@ export class Sidebar extends LitElement {
     }
 
     .content > ::slotted(shiny-section) {
-      border-bottom: 1px solid var(--surface-4);
+      border-bottom: var(--border-normal);
     }
+
     .content > ::slotted(shiny-section:last-child) {
       border-bottom: none;
     }
@@ -85,7 +82,8 @@ export class Sidebar extends LitElement {
       position: absolute;
       top: 0;
       right: 0;
-      font-size: var(--font-size-3);
+      font-size: var(--font-size-h4);
+      font-weight: var(--font-weight-headings);
       width: var(--padding);
       height: fit-content;
       cursor: pointer;

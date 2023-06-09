@@ -73,17 +73,20 @@ export class SimpleNumberInput
       outline-width: 0;
       text-align: center;
     }
+
     input:focus-visible {
       outline-width: 0;
     }
 
     /* Hide the number input's spin buttons */
+
     /* Chrome, Safari, Edge, Opera */
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
+
     /* Firefox */
     input[type="number"] {
       -moz-appearance: textfield;
@@ -107,6 +110,7 @@ export class SimpleNumberInput
 
     .validation-msg {
       position: absolute;
+
       /* margin-left: var(--space-x-small); */
       font-size: var(
         --number-input-warning-font-size,
