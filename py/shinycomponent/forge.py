@@ -48,7 +48,7 @@ def input_checkbox(
 def input_checkbox_group(
     id: str,
     label: TagChild,
-    choices: list[str],
+    choices: list[str] | dict[str, str],
     *args: TagChild | TagAttrs,
     selected: Optional[str | list[str]] = None,
     _add_ws: bool = True,
@@ -57,7 +57,7 @@ def input_checkbox_group(
     return Tag(
         "forge-input-checkbox-group",
         forge_dep(),
-        label if (label is not None) else None,
+        tags.div(label, slot="label") if (label is not None) else None,
         *args,
         id=id,
         choices=attr_to_escaped_json(choices),

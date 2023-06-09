@@ -1,30 +1,39 @@
-import { LitElement, html } from "lit";
+import { CSSResultGroup, LitElement, TemplateResult, css, html } from "lit";
+import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import {
-  CustomElementInputValue,
+  CustomElementInputGetValue,
   makeInputBinding,
 } from "../make_input_binding";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
-
-// TODO:
-// - Accept choices as object, not just string[]
-// - Is 'name' the right attribute name?
+import { escapeSpaces, unescapeSpaces } from "./utils";
 
 export class ForgeInputCheckboxGroup
   extends LitElement
-  implements CustomElementInputValue<string[]>
+  implements CustomElementInputGetValue<string[]>
 {
+  static styles: CSSResultGroup = css`
+    .form-control--small {
+      font-size: var(--sl-input-label-font-size-small);
+    }
+    .form-control--medium {
+      font-size: var(--sl-input-label-font-size-medium);
+    }
+
+    label.form-control-label {
+      display: inline-block;
+      color: var(--sl-input-label-color);
+      margin-bottom: var(--sl-spacing-3x-small);
+    }
+  `;
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
   onValueChange = makeValueChangeEmitter(this, this.id);
 
-  static properties = {
-    choices: { type: Array },
-    selected: { type: Array },
-    value: { type: Array },
-  };
-  choices?: string[];
-  selected?: string[] = [];
-  value: string[] = [];
+  @property({ type: String }) label: string | null = null;
+  @property({ type: Array }) choices: string[] = [];
+  @property({ type: Array }) selected: string[] = [];
+  @property({ type: String }) size: "small" | "medium" | "large" = "medium";
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -33,39 +42,58 @@ export class ForgeInputCheckboxGroup
     } else if (typeof this.selected === "string") {
       this.selected = [this.selected];
     }
-
-    this.value = [...this.selected];
   }
 
   handleChange() {
-    this.value = [];
-    this.shadowRoot!.querySelectorAll("forge-input-checkbox").forEach((el) => {
-      if (el.checked) {
-        this.value.push(el.getAttribute("name")!);
-      }
-    });
-
-    this.onValueChange({ type: "string[]", value: this.value });
+    this.selected = this.findSelectedItems();
+    this.onValueChange({ type: "string[]", value: this.getValue() });
     this.onChangeCallback(true);
   }
 
   render() {
     const selected = this.selected || [];
+    const changeCallback = () => {
+      this.handleChange();
+    };
 
+    console.log(this.label);
     return html`
-      <div class="checkbox-group">
-        ${this.choices?.map((choice) => {
-          return html`<forge-input-checkbox
-            name=${choice}
-            ?value=${selected.includes(choice)}
-            .onChangeCallback=${() => {
-              this.handleChange();
-            }}
-            >${choice}</forge-input-checkbox
-          >`;
+      <div
+        part="form-control"
+        class=${classMap({
+          "form-control": true,
+          "form-control--small": this.size === "small",
+          "form-control--medium": this.size === "medium",
+          "form-control--large": this.size === "large",
+          "form-control--has-label": this.label !== null,
         })}
+      >
+        <label
+          part="form-control-label"
+          class="form-control-label"
+          aria-hidden=${this.label !== null}
+        >
+          <slot name="label">${this.label}</slot>
+        </label>
+        <div part="form-control-input" class="form-control-input">
+          ${generateOptions(this.choices, selected, this.size, changeCallback)}
+        </div>
       </div>
     `;
+  }
+
+  getValue(): string[] {
+    return this.selected.map(unescapeSpaces);
+  }
+
+  findSelectedItems(): string[] {
+    const selected: string[] = [];
+    this.shadowRoot!.querySelectorAll("forge-input-checkbox").forEach((el) => {
+      if (el.checked) {
+        selected.push(unescapeSpaces(el.getAttribute("name")!));
+      }
+    });
+    return selected;
   }
 }
 
@@ -76,4 +104,43 @@ declare global {
   interface HTMLElementTagNameMap {
     "forge-input-checkbox-group": ForgeInputCheckboxGroup;
   }
+}
+
+// =============================================================================
+// Utility functions
+// =============================================================================
+
+// Choices could be be like the following.
+//   ["a", "b", "c"]
+//   {"a": "Choice A", "b": "<i>Choice B</i>"}
+type CheckboxGroupChoices = string[] | Record<string, string>;
+
+type NormalizedCheckboxGroupChoices = Record<string, string>;
+
+export function normalizeCheckboxGroupChoices(
+  choices: CheckboxGroupChoices
+): NormalizedCheckboxGroupChoices {
+  if (Array.isArray(choices)) {
+    return Object.fromEntries(choices.map((x) => [x, x]));
+  } else {
+    return choices;
+  }
+}
+
+function generateOptions(
+  choices: CheckboxGroupChoices,
+  selected: string[],
+  size: "small" | "medium" | "large",
+  changeCallback: () => void
+): TemplateResult {
+  const normalized = normalizeCheckboxGroupChoices(choices);
+  return html`${Object.entries(normalized).map(([key, value]) => {
+    return html`<forge-input-checkbox
+      name=${escapeSpaces(key)}
+      ?value=${selected.includes(escapeSpaces(key))}
+      size=${size}
+      .onChangeCallback=${changeCallback}
+      >${value}</forge-input-checkbox
+    >`;
+  })}`;
 }

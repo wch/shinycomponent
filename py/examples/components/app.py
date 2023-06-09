@@ -165,6 +165,45 @@ app_ui = sc.page(
             ),
             name="Switch",
         ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_checkbox_group(
+                        id="checkboxgroup1",
+                        label="Basic",
+                        choices=["First choice", "Second choice", "Third choice"],
+                    ),
+                    sc.forge.input_checkbox_group(
+                        id="checkboxgroup2",
+                        label="Some checked, dictionary choices",
+                        choices={
+                            "choice1": "First choice",
+                            "choice2": "Second choice",
+                            "choice3": "Third choice",
+                        },
+                        selected=["choice1", "choice3"],
+                    ),
+                    sc.forge.input_checkbox_group(
+                        id="checkboxgroup3",
+                        label="Small, dictionary choices",
+                        choices={
+                            "choice1": "First choice",
+                            "choice2": "Second choice",
+                            "choice3": "Third choice",
+                        },
+                        size="small",
+                    ),
+                ),
+                sc.grid_item(
+                    ui.output_text_verbatim("out_checkboxgroup1", placeholder=True),
+                    ui.output_text_verbatim("out_checkboxgroup2", placeholder=True),
+                    ui.output_text_verbatim("out_checkboxgroup3", placeholder=True),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Checkbox group",
+        ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
     ),
 )
@@ -182,6 +221,9 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     for i in range(4):
         make_output(input[f"switch{i+1}"], f"out_switch{i+1}", output)
+
+    for i in range(3):
+        make_output(input[f"checkboxgroup{i+1}"], f"out_checkboxgroup{i+1}", output)
 
 
 def make_output(input_val: reactive.Value[object], out_label: str, output: Outputs):
