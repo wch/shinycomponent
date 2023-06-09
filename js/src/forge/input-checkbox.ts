@@ -1,4 +1,6 @@
 import { SlCheckbox } from "@shoelace-style/shoelace";
+import { CSSResultGroup, css } from "lit";
+import { property } from "lit/decorators.js";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
@@ -8,14 +10,24 @@ import {
   makeValueChangeEmitter,
 } from "../make_value_change_emitter";
 
-// TODO: Figure out clearner way to deal with `value` attribute not containing
-// the checked value.
-
 export class ForgeInputCheckbox
   extends SlCheckbox
   implements CustomElementInputGetValue<boolean>
 {
-  inline: boolean = false;
+  static styles: CSSResultGroup = [
+    SlCheckbox.styles,
+    css`
+      :host {
+        display: block;
+      }
+      :host(.inline) {
+        display: inline-block;
+        margin-right: var(--sl-spacing-small);
+      }
+    `,
+  ];
+
+  @property({ type: Boolean }) inline: boolean = false;
 
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
   onValueChange: ValueChangeEmitter = () => {};
@@ -26,8 +38,8 @@ export class ForgeInputCheckbox
     if (this.value !== undefined) {
       this.checked = true;
     }
-    if (!this.inline) {
-      this.style.display = "block";
+    if (this.inline) {
+      this.classList.add("inline");
     }
   }
 

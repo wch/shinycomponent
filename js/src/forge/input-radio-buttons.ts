@@ -1,5 +1,5 @@
 import { SlRadioGroup } from "@shoelace-style/shoelace";
-import { html, render } from "lit";
+import { CSSResultGroup, TemplateResult, css, html, render } from "lit";
 import { property } from "lit/decorators.js";
 import {
   CustomElementInputValue,
@@ -9,19 +9,29 @@ import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import { escapeSpaces, unescapeSpaces } from "./utils";
 
 // TODO:
-// - Accept choices as object, not just string[]
-// - Is 'name' the right attribute name?
+// -
 
 export class ForgeInputRadioButtons
   extends SlRadioGroup
   implements CustomElementInputValue<string>
 {
+  static styles: CSSResultGroup = [
+    SlRadioGroup.styles,
+    css`
+      ::slotted(sl-radio.inline) {
+        display: inline-block;
+        // TODO: Fix precedence so this rule gets used.
+        margin-right: var(--sl-spacing-small);
+      }
+    `,
+  ];
+
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
   onValueChange = makeValueChangeEmitter(this, this.id);
 
   @property({ type: Array }) choices: string[] = [];
-  @property({ type: String }) selected: string = "";
+  @property({ type: String }) selected: string | null = null;
   @property({ type: String }) size: "small" | "medium" | "large" = "medium";
   @property({ type: Boolean }) inline: boolean = false;
   @property({ type: Boolean }) button: boolean = false;
@@ -35,26 +45,13 @@ export class ForgeInputRadioButtons
 
     // Insert the <sl-radio> elements at this time, before the first update
     // cycle.
-    const children = html`
-      ${this.choices?.map((choice) => {
-        if (this.button) {
-          return html`<sl-radio-button
-            style=${this.inline ? "display: inline;" : null}
-            value=${escapeSpaces(choice)}
-            size=${this.size}
-            pill=${this.pill}
-            >${choice}</sl-radio-button
-          >`;
-        } else {
-          return html`<sl-radio
-            style=${this.inline ? "display: inline;" : null}
-            value=${escapeSpaces(choice)}
-            >${choice}</sl-radio
-          >`;
-        }
-      })}
-    `;
-
+    const children = generateOptions(
+      this.choices,
+      this.button,
+      this.size,
+      this.inline,
+      this.pill
+    );
     render(children, this);
   }
 
@@ -77,4 +74,53 @@ declare global {
   interface HTMLElementTagNameMap {
     "forge-input-radio-buttons": ForgeInputRadioButtons;
   }
+}
+
+// =============================================================================
+// Utility functions
+// =============================================================================
+
+// Choices could be be like the following.
+//   ["a", "b", "c"]
+//   {"a": "Choice A", "b": "<i>Choice B</i>"}
+type RadioChoices = string[] | Record<string, string>;
+
+type NormalizedRadioChoices = Record<string, string>;
+
+export function normalizeRadioChoices(
+  choices: RadioChoices
+): NormalizedRadioChoices {
+  if (Array.isArray(choices)) {
+    return Object.fromEntries(choices.map((x) => [x, x]));
+  } else {
+    return choices;
+  }
+}
+
+function generateOptions(
+  choices: RadioChoices,
+  button: boolean,
+  size: "small" | "medium" | "large",
+  inline: boolean,
+  pill: boolean
+): TemplateResult {
+  const normalized = normalizeRadioChoices(choices);
+
+  return html`${Object.entries(normalized).map(([key, value]) => {
+    if (button) {
+      return html`<sl-radio-button
+        value=${escapeSpaces(key)}
+        size=${size}
+        pill=${pill}
+        >${value}</sl-radio-button
+      >`;
+    } else {
+      return html`<sl-radio
+        value=${escapeSpaces(key)}
+        class=${inline ? "inline" : null}
+        size=${size}
+        >${value}</sl-radio
+      >`;
+    }
+  })}`;
 }

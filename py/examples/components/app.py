@@ -25,7 +25,9 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_text(
                         id="text2",
-                        label="Help text",
+                        label=ui.TagList(
+                            "Help text, placeholder, ", ui.tags.b("bold label")
+                        ),
                         help_text="This is some help text",
                         placeholder="Placeholder text",
                     ),
@@ -76,7 +78,9 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_select(
                         id="select3",
-                        label="Multiple, clearable",
+                        label=ui.TagList(
+                            "Multiple, clearable, ", ui.tags.b("bold label")
+                        ),
                         choices={
                             "first": "First choice",
                             "second": "Second choice",
@@ -174,7 +178,10 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_checkbox_group(
                         id="checkboxgroup2",
-                        label="Some checked, dictionary choices",
+                        label=ui.TagList(
+                            "Some checked, dictionary choices, ",
+                            ui.tags.b("bold label"),
+                        ),
                         choices={
                             "choice1": "First choice",
                             "choice2": "Second choice",
@@ -184,13 +191,14 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_checkbox_group(
                         id="checkboxgroup3",
-                        label="Small, dictionary choices",
+                        label="Small, dictionary choices, inline",
                         choices={
                             "choice1": "First choice",
                             "choice2": "Second choice",
                             "choice3": "Third choice",
                         },
                         size="small",
+                        inline=True,
                     ),
                 ),
                 sc.grid_item(
@@ -202,6 +210,61 @@ app_ui = sc.page(
                 nRows=1,
             ),
             name="Checkbox group",
+        ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_radio_buttons(
+                        id="radio1",
+                        label="Basic",
+                        choices=["First choice", "Second choice", "Third choice"],
+                    ),
+                    sc.forge.input_radio_buttons(
+                        id="radio2",
+                        label=ui.TagList(
+                            "One selected, dictionary choices, ",
+                            ui.tags.b("bold label"),
+                        ),
+                        choices={
+                            "choice1": "First choice",
+                            "choice2": "Second choice",
+                            "choice3": "Third choice",
+                        },
+                        selected="choice3",
+                    ),
+                    sc.forge.input_radio_buttons(
+                        id="radio3",
+                        label="Small, dictionary choices, inline",
+                        choices={
+                            "choice1": "First choice",
+                            "choice2": "Second choice",
+                            "choice3": "Third choice",
+                        },
+                        inline=True,
+                        size="small",
+                    ),
+                    sc.forge.input_radio_buttons(
+                        id="radio4",
+                        label="Button",
+                        choices={
+                            "choice1": "First choice",
+                            "choice2": "Second choice",
+                            "choice3": "Third choice",
+                        },
+                        button=True,
+                        size="small",
+                    ),
+                ),
+                sc.grid_item(
+                    ui.output_text_verbatim("out_radio1", placeholder=True),
+                    ui.output_text_verbatim("out_radio2", placeholder=True),
+                    ui.output_text_verbatim("out_radio3", placeholder=True),
+                    ui.output_text_verbatim("out_radio4", placeholder=True),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Radio",
         ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
     ),
@@ -223,6 +286,9 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     for i in range(3):
         make_output(input[f"checkboxgroup{i+1}"], f"out_checkboxgroup{i+1}", output)
+
+    for i in range(4):
+        make_output(input[f"radio{i+1}"], f"out_radio{i+1}", output)
 
 
 def make_output(input_val: reactive.Value[object], out_label: str, output: Outputs):

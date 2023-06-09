@@ -34,6 +34,7 @@ export class ForgeInputCheckboxGroup
   @property({ type: Array }) choices: string[] = [];
   @property({ type: Array }) selected: string[] = [];
   @property({ type: String }) size: "small" | "medium" | "large" = "medium";
+  @property({ type: Boolean }) inline: boolean = false;
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -56,7 +57,6 @@ export class ForgeInputCheckboxGroup
       this.handleChange();
     };
 
-    console.log(this.label);
     return html`
       <div
         part="form-control"
@@ -76,7 +76,13 @@ export class ForgeInputCheckboxGroup
           <slot name="label">${this.label}</slot>
         </label>
         <div part="form-control-input" class="form-control-input">
-          ${generateOptions(this.choices, selected, this.size, changeCallback)}
+          ${generateOptions(
+            this.choices,
+            selected,
+            this.size,
+            this.inline,
+            changeCallback
+          )}
         </div>
       </div>
     `;
@@ -131,6 +137,7 @@ function generateOptions(
   choices: CheckboxGroupChoices,
   selected: string[],
   size: "small" | "medium" | "large",
+  inline: boolean,
   changeCallback: () => void
 ): TemplateResult {
   const normalized = normalizeCheckboxGroupChoices(choices);
@@ -138,6 +145,7 @@ function generateOptions(
     return html`<forge-input-checkbox
       name=${escapeSpaces(key)}
       ?value=${selected.includes(escapeSpaces(key))}
+      ?inline=${inline}
       size=${size}
       .onChangeCallback=${changeCallback}
       >${value}</forge-input-checkbox

@@ -155,7 +155,7 @@ def input_number(
 
 def input_select(
     id: str,
-    label: str,
+    label: TagChild,
     choices: list[str] | dict[str, str | list[str] | dict[str, str]],
     *args: TagChild | TagAttrs,
     selected: Optional[str | list[str]] = None,
@@ -168,7 +168,7 @@ def input_select(
     return Tag(
         "forge-input-select",
         forge_dep(),
-        label=label,
+        tags.div(label, slot="label") if (label is not None) else None,
         *args,
         id=id,
         choices=attr_to_escaped_json(choices),
@@ -184,9 +184,11 @@ def input_select(
 def input_radio_buttons(
     id: str,
     label: TagChild,
-    choices: list[str],
+    choices: list[str] | dict[str, str],
     *args: TagChild | TagAttrs,
     selected: Optional[str] = None,
+    size: Literal["small", "medium", "large"] = "medium",
+    button: bool = False,
     pill: bool = False,
     _add_ws: bool = True,
     **kwargs: TagAttrValue,
@@ -194,11 +196,13 @@ def input_radio_buttons(
     return Tag(
         "forge-input-radio-buttons",
         forge_dep(),
-        label if (label is not None) else None,
+        tags.div(label, slot="label") if (label is not None) else None,
         *args,
         id=id,
         choices=attr_to_escaped_json(choices),
         selected=selected,
+        size=size,
+        button=button,
         pill=pill,
         _add_ws=_add_ws,
         **kwargs,

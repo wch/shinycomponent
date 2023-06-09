@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "lit";
-import { themePrimitives } from "./styles/op-classes";
 import { customElement, property } from "lit/decorators.js";
+import { themePrimitives } from "./styles/op-classes";
 
 @customElement("shiny-avatar")
 export class ShinyAvatar extends LitElement {
