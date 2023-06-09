@@ -18,7 +18,7 @@ export class ShinyAvatar extends LitElement {
     :host {
       display: flex;
       align-items: center;
-      gap: calc(var(--size-fluid-1));
+      gap: var(--size-s);
     }
 
     :host([inline]) {
@@ -27,6 +27,7 @@ export class ShinyAvatar extends LitElement {
 
     img {
       aspect-ratio: 1;
+
       ${themePrimitives.fancy_shadow}
     }
 
@@ -39,8 +40,7 @@ export class ShinyAvatar extends LitElement {
     }
 
     .name {
-      font-weight: var(--font-weight-5);
-      font-size: var(--font-size-fluid-1);
+      font-size: var(--font-size-main);
     }
 
     .name:empty {

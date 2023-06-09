@@ -84,8 +84,8 @@ export class OpTabset extends Tabset {
     }
 
     .tabs {
-      --container-radius: var(--radius-4);
-      --container-pad: var(--size-1);
+      --container-radius: var(--radius-m);
+      --container-pad: var(--size-xxs);
 
       /* Subtract padding from radius of tabs so they fit like they've shrunk down */
       --child-radius: calc(var(--container-radius) - var(--container-pad));
@@ -102,7 +102,7 @@ export class OpTabset extends Tabset {
     .tab {
       cursor: pointer;
       position: relative;
-      padding-inline: var(--size-5);
+      padding-inline: var(--size-m);
       border-radius: var(--child-radius);
       color: var(--text-2);
     }
@@ -128,8 +128,6 @@ export class OpTabset extends Tabset {
     }
 
     .header > ::slotted(div) {
-      font-size: var(--font-size-fluid-1);
-      font-weight: var(--font-weight-7);
       margin: 0;
       padding: 0;
     }
