@@ -31,7 +31,8 @@
   },
   "scripts": {
     "open-props": "cp node_modules/open-props/open-props.min.css out",
-    "build": "tsx scripts/build.ts"
+    "build": "tsx scripts/build.ts",
+    "watch": "npm run build -- --watch"
   },
   "dependencies": {
     "@material/web": "^1.0.0-pre.9",

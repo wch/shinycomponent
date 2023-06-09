@@ -83,7 +83,6 @@
 
   // Setup extension settings
   "stylelint.configFile": "",
-  "stylelint.packageManager": "yarn",
   "stylelint.validate": ["css", "less", "postcss", "typescript"],
   "stylelint.configBasedir": "js",
   "stylelint.reportNeedlessDisables": true,

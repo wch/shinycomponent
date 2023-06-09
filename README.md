@@ -1,5 +1,4 @@
-Shiny component experiments
-===========================
+# Shiny component experiments
 
 This repository contains experiments with Shiny components for both R and Python.
 
@@ -8,7 +7,6 @@ The folders are organized as follows:
 - `r`: R package
 - `python`: Python package
 - `js`: TypeScript code for the component
-
 
 ## Using the component
 
@@ -25,7 +23,6 @@ After installing, you can run the demo app. Either copy and paste the [example a
 ```R
 shiny::runApp(system.file("examples/puffins", package = "shinycomponent"))
 ```
-
 
 ### Python
 
@@ -64,7 +61,6 @@ Quarto documents can use these components via R. First, install the R package as
 
 See the [example document](quarto/components.qmd).
 
-
 ## Developing the component
 
 To do development on the component, first clone this repository.
@@ -83,7 +79,6 @@ Or you can load the package from disk without installing. It will stay loaded fo
 devtools::load_all(".")
 ```
 
-
 ### Python
 
 To install the Python package in development mode:
@@ -98,10 +93,9 @@ cd py
 pip install -e .[dev]
 ```
 
-
 ### TypeScript
 
-The component is written in TypeScript. To set up the build environment, first [install yarn](https://classic.yarnpkg.com/lang/en/docs/install/).
+The component is written in TypeScript. To set up the build environment, first make sure you have [node/npm installed.](https://nodejs.org/en/download)
 
 Then, install the dependencies:
 
