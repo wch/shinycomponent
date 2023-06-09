@@ -44,6 +44,7 @@ const toLeftCollapseStyles = css`
   .to_left .content {
     transform-origin: left;
   }
+
   .to_left .toggle {
     top: var(--size-1);
     right: var(--space-small);

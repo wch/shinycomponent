@@ -26,23 +26,14 @@ export class SimpleNumberInput
 
   static styles = css`
     :host {
-      --_number-input-padding-block: var(
-        --number-input-padding-inline,
-        var(--size-2)
-      );
-      --_number-input-padding-inline: var(
-        --number-input-padding-block,
-        var(--size-1)
-      );
+      --inline-padding: var(--number-input-padding-block, var(--size-1));
 
-      --_warning-color: var(--number-input-color-invalid, var(--warning));
-
-      --_font-size: var(--number-input-font-size, var(--font-size-3));
-
+      font-size: var(--number-input-font-size, var(--font-size-3));
       position: relative;
       width: var(--number-input-width, fit-content);
       height: var(--number-input-height, fit-content);
     }
+
     .wrapper {
       display: inline-flex;
       background-color: var(
@@ -58,15 +49,16 @@ export class SimpleNumberInput
       );
       outline: var(--number-input-border-width, var(--sl-input-border-width))
         solid var(--number-input-border-color, var(--sl-input-border-color));
-      padding: var(--_number-input-padding-inline)
-        var(--_number-input-padding-block);
+      padding: var(--inline-padding)
+        var(--number-input-padding-inline, var(--size-2));
     }
+
     .wrapper.invalid {
-      outline-color: var(--_warning-color);
+      outline-color: var(--warning);
     }
 
     input {
-      font-size: var(--_font-size);
+      font-size: inherit;
       border: none;
       background-color: transparent;
       color: inherit;
@@ -93,19 +85,22 @@ export class SimpleNumberInput
     }
 
     .plusminus {
-      font-size: var(--_font-size);
+      font-size: inherit;
       border: var(--number-input-plusminus-border, none);
       background-color: transparent;
       color: inherit;
     }
+
     .plusminus:hover {
       cursor: pointer;
     }
+
     .plusminus.left {
-      padding-inline-start: var(--_number-input-padding-inline);
+      padding-inline-start: var(--inline-padding);
     }
+
     .plusminus.right {
-      padding-inline-end: var(--_number-input-padding-inline);
+      padding-inline-end: var(--inline-padding);
     }
 
     .validation-msg {
@@ -117,7 +112,7 @@ export class SimpleNumberInput
         var(--sl-font-size-x-small)
       );
       top: calc(115%);
-      color: var(--_warning-color);
+      color: var(--warning);
       transform: scaleX(0);
       transition: transform var(--sl-transition-fast) var(--ease-squish-2);
       transform-origin: left;

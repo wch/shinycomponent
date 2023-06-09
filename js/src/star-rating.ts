@@ -35,11 +35,12 @@ export class StarRating extends LitElement {
       cursor: not-allowed;
     }
 
-    .thumb_down {
+    .thumb-down {
       background-color: var(--red-3);
       border-radius: var(--radius-blob-1);
     }
-    .thumb_up {
+
+    .thumb-up {
       background-color: var(--blue-3);
       border-radius: var(--radius-blob-2);
     }
@@ -60,7 +61,7 @@ export class StarRating extends LitElement {
   render() {
     return html`
       <button
-        class="thumb_down ${this.rating === this.low ? "disabled" : ""}"
+        class="thumb-down ${this.rating === this.low ? "disabled" : ""}"
         @click=${() => this.updateRating(-1)}
       >
         ➖
@@ -68,7 +69,7 @@ export class StarRating extends LitElement {
       <emoji-reaction rating=${this.rating} low=${this.low} high=${this.high}>
       </emoji-reaction>
       <button
-        class="thumb_up ${this.rating === this.high ? "disabled" : ""}"
+        class="thumb-up ${this.rating === this.high ? "disabled" : ""}"
         @click=${() => this.updateRating(1)}
       >
         ➕

@@ -11,7 +11,7 @@ export class ThemeChooser extends LitElement {
 
   static styles = css`
     input {
-      border-radius: var(--radius-1);
+      border-radius: var(--radius-s);
     }
   `;
 
