@@ -32,8 +32,8 @@ jobs:
       - name: Build JS and CSS resources
         run: |
           cd js
-          yarn
-          yarn build
+          npm install
+          npm run build
 
       - name: Build Python package
         run: |

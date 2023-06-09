@@ -107,12 +107,17 @@ Then, install the dependencies:
 
 ```bash
 cd js
-yarn
+npm i
 ```
 
 To build the component:
 
 ```bash
-yarn build
+npm run build
 ```
 
+To watch for changes and rebuild automatically:
+
+```bash
+npm run build -- --watch
+```
