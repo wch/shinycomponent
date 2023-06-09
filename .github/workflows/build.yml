@@ -99,6 +99,8 @@ jobs:
           packages:
             any::knitr
             any::rmarkdown
+            any::tibble
+            any::htmltools
             # any::reticulate
 
       - uses: quarto-dev/quarto-actions/setup@v2
