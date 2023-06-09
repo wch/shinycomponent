@@ -1,7 +1,6 @@
 # Inspired by https://dribbble.com/shots/20836166-Veritas-Admin-Dashboard-Analytics-UX
 
-import shiny.experimental as x
-from htmltools import Tag, TagAttrs, TagChild
+from htmltools import Tag
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 
 import shinycomponent as sc
