@@ -49,6 +49,7 @@ override styles from our reset layer */
   --gray-12-hsl: 210 40% 2%;
 
   /* light */
+  --brand-light-hue: 27;
   --brand-light: var(--orange-6);
   --text-light-hs: 210 10%; /* Base of grey-8-hsl*/
   --text-1-light: var(--gray-10);
@@ -62,6 +63,7 @@ override styles from our reset layer */
   --shadow-strength-light: 2%;
 
   /* dark */
+  --brand-dark-hue: 32
   --brand-dark: var(--orange-3);
   --text-1-dark: var(--gray-3);
   --text-2-dark: var(--gray-5);
@@ -74,6 +76,7 @@ override styles from our reset layer */
   --shadow-strength-dark: 80%;
 
   /* dim */
+  --brand-dim-hue: 31;
   --brand-dim: var(--orange-4);
   --text-1-dim: var(--gray-3);
   --text-2-dim: var(--gray-4);
@@ -86,6 +89,7 @@ override styles from our reset layer */
   --shadow-strength-dim: 20%;
 
   /* grape */
+  --brand-grape-hue: 288;
   --brand-grape: var(--purple-5);
   --text-1-grape: var(--purple-9);
   --text-2-grape: var(--purple-7);
@@ -98,6 +102,7 @@ override styles from our reset layer */
   --shadow-strength-grape: 2%;
 
   /* choco */
+  --brand-choco-hue: 25;
   --brand-choco: var(--choco-5);
   --text-1-choco: var(--choco-1);
   --text-2-choco: var(--choco-2);
@@ -113,7 +118,10 @@ override styles from our reset layer */
 :root {
   color-scheme: light;
 
-  /* set defaults */
+  /* Set defaults */
+
+  /* The H of hsl for the brand color */
+  --brand-hue: var(--brand-light-hue);
   --brand: var(--brand-light);
   --text-1: var(--text-1-light);
   --text-2: var(--text-2-light);
@@ -132,6 +140,8 @@ override styles from our reset layer */
   --radius-pill: 9999px;
 
   /* Sizes */
+
+  /* Things like adding padding around a toggle switch */
   --size-xxs: var(--size-1);
   --size-xs: var(--size-2);
   --size-s: var(--size-3);
@@ -173,6 +183,9 @@ override styles from our reset layer */
   --border-normal: var(--border-size-2);
   --border-thick: var(--border-size-3);
 
+  /* Border with a tinge of the brand color */
+  --border-color: hsl(var(--brand-hue) 10% 50% / 15%);
+
   --radius-s: var(--radius-2);
   --radius-m: var(--radius-3);
   --radius-l: var(--radius-4);
@@ -192,6 +205,7 @@ override styles from our reset layer */
   :root {
     color-scheme: dark;
 
+    --brand-hue: var(--brand-dark-hue);
     --brand: var(--brand-dark);
     --text-1: var(--text-1-dark);
     --text-2: var(--text-2-dark);
@@ -209,6 +223,7 @@ override styles from our reset layer */
 [color-scheme="light"] {
   color-scheme: light;
 
+  --brand-hue: var(--brand-light-hue);
   --brand: var(--brand-light);
   --text-1: var(--text-1-light);
   --text-2: var(--text-2-light);
@@ -225,6 +240,7 @@ override styles from our reset layer */
 [color-scheme="dark"] {
   color-scheme: dark;
 
+  --brand-hue: var(--brand-dark-hue);
   --brand: var(--brand-dark);
   --text-1: var(--text-1-dark);
   --text-2: var(--text-2-dark);
@@ -241,6 +257,7 @@ override styles from our reset layer */
 [color-scheme="dim"] {
   color-scheme: dark;
 
+  --brand-hue: var(--brand-dim-hue);
   --brand: var(--brand-dim);
   --text-1: var(--text-1-dim);
   --text-2: var(--text-2-dim);
@@ -257,6 +274,7 @@ override styles from our reset layer */
 [color-scheme="grape"] {
   color-scheme: light;
 
+  --brand-hue: var(--brand-grape-hue);
   --brand: var(--brand-grape);
   --text-1: var(--text-1-grape);
   --text-2: var(--text-2-grape);
@@ -273,6 +291,7 @@ override styles from our reset layer */
 [color-scheme="choco"] {
   color-scheme: light;
 
+  --brand-hue: var(--brand-choco-hue);
   --brand: var(--brand-choco);
   --text-1: var(--text-1-choco);
   --text-2: var(--text-2-choco);
