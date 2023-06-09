@@ -69,10 +69,6 @@ jobs:
 
           git push -f origin main-build:main-build
 
-          - uses: quarto-dev/quarto-actions/setup@v2
-          with:
-            version: 1.3.340
-
 
   # =====================================================
   # Build and deploy site
