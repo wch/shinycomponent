@@ -82,7 +82,7 @@
   "scss.validate": false,
 
   // Setup extension settings
-  "stylelint.configFile": "js/.stylelintrc.json",
+  "stylelint.configFile": "",
   "stylelint.packageManager": "yarn",
   "stylelint.validate": ["css", "less", "postcss", "typescript"],
   "stylelint.configBasedir": "js",

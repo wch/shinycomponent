@@ -5,5 +5,9 @@
       "files": ["*.js"],
       "customSyntax": "postcss-lit"
     }
-  ]
+  ],
+  "rules": {
+    "property-no-vendor-prefix": null,
+    "color-no-hex": true
+  }
 }
