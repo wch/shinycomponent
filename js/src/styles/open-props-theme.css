@@ -321,6 +321,10 @@ they can be easily overwridden by user styles
     color: var(--text-1);
   }
 
+  body {
+    font-family: var(--font-sans);
+  }
+
   h1 {
     font-weight: var(--font-weight-1);
   }
