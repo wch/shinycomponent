@@ -1,3 +1,10 @@
+/* Define layer order. Right now we only have a single layer of resets but in
+the future may want to add more. Any code added by a user that doesn't
+explicitely target a layer will go to the highest priority level and thus always
+override styles from our reset layer */
+@layer reset;
+
+/* Put variables in the highest layer */
 :where(html) {
   --choco-0-hsl: 48 100% 93%;
   --choco-1-hsl: 35 91% 86%;
@@ -278,127 +285,136 @@
   --shadow-strength: var(--shadow-strength-choco);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
+/*
+Define styles that will generally make non-shadow-dom elements look nicer and
+inherit styles from theme variables.  These are placed in the `reset` layer so
+they can be easily overwridden by user styles
+*/
+@layer reset {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
 
-html {
-  block-size: 100%;
-  background-color: var(--surface-1);
-  color: var(--text-1);
-}
+  html {
+    block-size: 100%;
+    background-color: var(--surface-1);
+    color: var(--text-1);
+  }
 
-h1 {
-  font-weight: var(--font-weight-1);
-}
+  h1 {
+    font-weight: var(--font-weight-1);
+  }
 
-p {
-  line-height: var(--font-lineheight-3);
-}
+  p {
+    line-height: var(--font-lineheight-3);
+  }
 
-.brand {
-  color: var(--brand);
-  background-color: var(--brand);
-}
+  .brand {
+    color: var(--brand);
+    background-color: var(--brand);
+  }
 
-.surface-1 {
-  background-color: var(--surface-1);
-  color: var(--text-2);
-}
+  .surface-1 {
+    background-color: var(--surface-1);
+    color: var(--text-2);
+  }
 
-.surface-2 {
-  background-color: var(--surface-2);
-  color: var(--text-2);
-}
+  .surface-2 {
+    background-color: var(--surface-2);
+    color: var(--text-2);
+  }
 
-.surface-3 {
-  background-color: var(--surface-3);
-  color: var(--text-1);
-}
+  .surface-3 {
+    background-color: var(--surface-3);
+    color: var(--text-1);
+  }
 
-.surface-4 {
-  background-color: var(--surface-4);
-  color: var(--text-1);
-}
+  .surface-4 {
+    background-color: var(--surface-4);
+    color: var(--text-1);
+  }
 
-.text-1 {
-  color: var(--text-1);
-  font-weight: var(--font-weight-2);
-}
+  .text-1 {
+    color: var(--text-1);
+    font-weight: var(--font-weight-2);
+  }
 
-.text-2 {
-  color: var(--text-2);
-}
+  .text-2 {
+    color: var(--text-2);
+  }
 
-.rad-shadow {
-  border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
-  box-shadow: 0 1rem 0.5rem -0.5rem;
-  box-shadow: 0 2.8px 2.2px
-      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
-    0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
-    0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
-    0 22.3px 17.9px
-      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
-    0 41.8px 33.4px
-      hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
-    0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
-}
+  .rad-shadow {
+    border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+    box-shadow: 0 1rem 0.5rem -0.5rem;
+    box-shadow: 0 2.8px 2.2px
+        hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+      0 6.7px 5.3px
+        hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
+      0 12.5px 10px
+        hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+      0 22.3px 17.9px
+        hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+      0 41.8px 33.4px
+        hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+      0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+  }
 
-/* Update non-component items with styles where applicable */
-div.shiny-input-container > .form-switch > input[type="checkbox"],
-.shiny-options-group > div.checkbox label > input:checked {
-  background-color: var(--brand);
-  border-color: var(--brand);
-}
+  /* Update non-component items with styles where applicable */
+  div.shiny-input-container > .form-switch > input[type="checkbox"],
+  .shiny-options-group > div.checkbox label > input:checked {
+    background-color: var(--brand);
+    border-color: var(--brand);
+  }
 
-.shiny-bound-input div.selectize-input,
-.shiny-bound-input div.selectize-control div.selectize-input.input-active,
-.shiny-bound-input div.selectize-dropdown-content > div.option {
-  border-color: var(--surface-4);
-  color: var(--text-1);
-  background-color: var(--surface-1);
-}
+  .shiny-bound-input div.selectize-input,
+  .shiny-bound-input div.selectize-control div.selectize-input.input-active,
+  .shiny-bound-input div.selectize-dropdown-content > div.option {
+    border-color: var(--surface-4);
+    color: var(--text-1);
+    background-color: var(--surface-1);
+  }
 
-.shiny-bound-input
-  div.selectize-control
-  .selectize-dropdown
-  [data-selectable]
-  .highlight {
-  background-color: var(--surface-3);
-}
+  .shiny-bound-input
+    div.selectize-control
+    .selectize-dropdown
+    [data-selectable]
+    .highlight {
+    background-color: var(--surface-3);
+  }
 
-:where(h1, h2, h3, h4, h5, h6) {
-  line-height: var(--line-height-headings);
-  font-weight: var(--font-weight-headings);
-}
+  :where(h1, h2, h3, h4, h5, h6) {
+    line-height: var(--line-height-headings);
+    font-weight: var(--font-weight-headings);
+  }
 
-:where(h1) {
-  font-size: var(--font-size-h1);
-}
+  :where(h1) {
+    font-size: var(--font-size-h1);
+  }
 
-:where(h2) {
-  font-size: var(--font-size-h2);
-}
+  :where(h2) {
+    font-size: var(--font-size-h2);
+  }
 
-:where(h3) {
-  font-size: var(--font-size-h3);
-}
-:where(h4) {
-  font-size: var(--font-size-h4);
-}
-:where(h5) {
-  font-size: var(--font-size-h5);
-}
+  :where(h3) {
+    font-size: var(--font-size-h3);
+  }
+  :where(h4) {
+    font-size: var(--font-size-h4);
+  }
+  :where(h5) {
+    font-size: var(--font-size-h5);
+  }
 
-:where(p, ul, ol, dl, h6) {
-  font-size: var(--font-size-main);
-}
+  :where(p, ul, ol, dl, h6) {
+    font-size: var(--font-size-main);
+  }
 
-:where(a, u, ins, abbr) {
-  text-underline-offset: 1px;
+  :where(a, u, ins, abbr) {
+    text-underline-offset: 1px;
 
-  @supports (-moz-appearance: none) {
-    text-underline-offset: 2px;
+    @supports (-moz-appearance: none) {
+      text-underline-offset: 2px;
+    }
   }
 }
