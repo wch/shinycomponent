@@ -207,9 +207,9 @@ automatically match the current open-props theme */
   --sl-input-font-size-large: var(--sl-font-size-large);
   --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
 
-  --sl-input-color: var(--text-3);
-  --sl-input-color-hover: var(--text-3);
-  --sl-input-color-focus: var(--text-3);
+  --sl-input-color: var(--text-2);
+  --sl-input-color-hover: var(--text-2);
+  --sl-input-color-focus: var(--text-2);
   --sl-input-color-disabled: var(--sl-color-neutral-900);
   --sl-input-icon-color: var(--sl-color-neutral-500);
   --sl-input-icon-color-hover: var(--sl-color-neutral-600);
