@@ -32,7 +32,6 @@ customElements.define("forge-output-text-verbatim", ForgeOutputTextVerbatim);
 
   class NewCustomBinding extends Shiny["OutputBinding"] {
     find(scope: HTMLElement): JQuery<HTMLElement> {
-      console.log($(scope).find("forge-output-text-verbatim"));
       return $(scope).find("forge-output-text-verbatim");
     }
 
