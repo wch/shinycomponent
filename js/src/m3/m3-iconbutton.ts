@@ -1,5 +1,5 @@
 import { MdStandardIconButton } from "@material/web/iconbutton/standard-icon-button";
-import { makeInputBinding } from "../make_input_binding";
+import { makeInputBinding } from "../make-input-binding";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 
 export class M3StandardIconButton extends MdStandardIconButton {

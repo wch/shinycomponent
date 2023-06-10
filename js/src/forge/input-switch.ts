@@ -3,7 +3,7 @@ import { CSSResultGroup, css } from "lit";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "../make_input_binding";
+} from "../make-input-binding";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 
 export class ForgeInputSwitch

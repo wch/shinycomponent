@@ -2,7 +2,7 @@ import { MdSlider } from "@material/web/slider/slider";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "../make_input_binding";
+} from "../make-input-binding";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 
 export class M3Slider

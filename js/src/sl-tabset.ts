@@ -1,5 +1,5 @@
 import { css } from "lit";
-import { makeInputBinding } from "./make_input_binding";
+import { makeInputBinding } from "./make-input-binding";
 import { Tabset } from "./tabset";
 
 /**

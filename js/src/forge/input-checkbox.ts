@@ -4,7 +4,7 @@ import { property } from "lit/decorators.js";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "../make_input_binding";
+} from "../make-input-binding";
 import {
   ValueChangeEmitter,
   makeValueChangeEmitter,

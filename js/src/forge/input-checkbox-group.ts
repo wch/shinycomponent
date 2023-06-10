@@ -4,7 +4,7 @@ import { classMap } from "lit/directives/class-map.js";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "../make_input_binding";
+} from "../make-input-binding";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import { escapeSpaces, unescapeSpaces } from "./utils";
 

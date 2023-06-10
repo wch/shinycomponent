@@ -2,7 +2,7 @@ import { LitElement, css, html } from "lit";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "./make_input_binding";
+} from "./make-input-binding";
 import { makeValueChangeEmitter } from "./make_value_change_emitter";
 
 export class SimpleNumberInput

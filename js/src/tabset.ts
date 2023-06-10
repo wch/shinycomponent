@@ -2,7 +2,7 @@ import { LitElement, css, html } from "lit";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "./make_input_binding";
+} from "./make-input-binding";
 
 type TabElements = { name: string; el: HTMLElement }[];
 export class Tabset

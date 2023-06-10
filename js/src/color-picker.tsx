@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "./make_input_binding";
+} from "./make-input-binding";
 import { makeValueChangeEmitter } from "./make_value_change_emitter";
 
 // Color Picker React component
