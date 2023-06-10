@@ -6,6 +6,7 @@ import { ForgeInputSelect } from "./input-select";
 import { ForgeInputSwitch } from "./input-switch";
 import { ForgeInputText } from "./input-text";
 import { ForgeInputTextArea } from "./input-text-area";
+import { ForgeOutputTextVerbatim } from "./output-text-verbatim";
 
 // Prevent esbuild from tree-shaking these components away.
 ForgeInputCheckbox;
@@ -16,3 +17,4 @@ ForgeInputSelect;
 ForgeInputSwitch;
 ForgeInputText;
 ForgeInputTextArea;
+ForgeOutputTextVerbatim;

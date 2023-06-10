@@ -257,6 +257,14 @@ def input_radio_buttons(
     )
 
 
+def output_text_verbatim(id: str):
+    return Tag(
+        "forge-output-text-verbatim",
+        forge_dep(),
+        id=id,
+    )
+
+
 ex_www_path = PurePath(__file__).parent / "www"
 
 
