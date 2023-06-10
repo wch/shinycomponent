@@ -18,8 +18,8 @@ export type CustomElementInput<T> =
   | CustomElementInputGetValue<T>;
 
 /**
- * Given a tag name for a custom element that extends SimpleNumberInput, this will hook
- * up the proper input binding and register it with Shiny.
+ * Given a tag name for a custom element that is a CustomElementInput<T>, this
+ * will hook up the proper input binding and register it with Shiny.
  * @param tagName Name of the tag that corresponds to the input binding
  * @returns Nothing
  */
@@ -38,10 +38,6 @@ export function makeInputBinding<T>(
 
     find(scope: HTMLElement): JQuery<CustomElementInput<T>> {
       return $(scope).find(tagName) as JQuery<CustomElementInput<T>>;
-    }
-
-    getId(el: CustomElementInput<T>): string {
-      return el.id;
     }
 
     getValue(el: CustomElementInputValue<T> | CustomElementInputGetValue<T>) {
