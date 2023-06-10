@@ -124,8 +124,7 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_number(
                         id="number4",
-                        label="Password, pill",
-                        password=True,
+                        label="Pill",
                         pill=True,
                     ),
                 ),
@@ -362,6 +361,9 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     for i in range(4):
         make_output(input[f"textarea{i+1}"], f"out_textarea{i+1}", output)
+
+    for i in range(4):
+        make_output(input[f"number{i+1}"], f"out_number{i+1}", output)
 
     for i in range(4):
         make_output(input[f"select{i+1}"], f"out_select{i+1}", output)

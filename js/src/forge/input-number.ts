@@ -20,7 +20,7 @@ export class ForgeInputNumber
   static styles: CSSResultGroup = [
     css`
       div.invalid {
-        outline: 3px solid var(--color-error);
+        outline: 3px solid var(--danger);
       }
     `,
     ForgeInputText.styles,
