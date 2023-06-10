@@ -25,6 +25,10 @@ export class ForgeInputCheckboxGroup
       color: var(--sl-input-label-color);
       margin-bottom: var(--sl-spacing-3x-small);
     }
+
+    forge-input-checkbox {
+      margin-bottom: var(--sl-spacing-3x-small);
+    }
   `;
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 

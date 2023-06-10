@@ -8,9 +8,6 @@ import {
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import { escapeSpaces, unescapeSpaces } from "./utils";
 
-// TODO:
-// -
-
 export class ForgeInputRadioButtons
   extends SlRadioGroup
   implements CustomElementInputValue<string>
@@ -22,6 +19,10 @@ export class ForgeInputRadioButtons
         display: inline-block;
         // TODO: Fix precedence so this rule gets used.
         margin-right: var(--sl-spacing-small);
+      }
+
+      ::slotted(sl-radio) {
+        margin-bottom: var(--sl-spacing-3x-small);
       }
     `,
   ];
