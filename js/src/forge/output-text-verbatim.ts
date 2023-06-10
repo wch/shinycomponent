@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { property } from "lit/decorators.js";
-import { Shiny } from "../OptionalShiny";
+import { makeOutputBinding } from "../make-output-binding";
 
 export class ForgeOutputTextVerbatim extends LitElement {
   @property({ type: Boolean }) value: string | null = null;
@@ -27,24 +27,7 @@ export class ForgeOutputTextVerbatim extends LitElement {
 
 customElements.define("forge-output-text-verbatim", ForgeOutputTextVerbatim);
 
-(() => {
-  if (!Shiny) return;
-
-  class NewCustomBinding extends Shiny["OutputBinding"] {
-    find(scope: HTMLElement): JQuery<HTMLElement> {
-      return $(scope).find("forge-output-text-verbatim");
-    }
-
-    renderValue(el: ForgeOutputTextVerbatim, data: string): void {
-      el.value = data;
-    }
-  }
-
-  Shiny.outputBindings.register(
-    new NewCustomBinding(),
-    `ForgeOutputTextVerbatimBinding`
-  );
-})();
+makeOutputBinding("forge-output-text-verbatim");
 
 declare global {
   interface HTMLElementTagNameMap {
