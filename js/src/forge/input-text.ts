@@ -1,5 +1,6 @@
 import { SlInput } from "@shoelace-style/shoelace";
 import debounce from "just-debounce-it";
+import { property } from "lit/decorators.js";
 import {
   CustomElementInputValue,
   makeInputBinding,
@@ -11,14 +12,11 @@ export class ForgeInputText
   implements CustomElementInputValue<string>
 {
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  "wait-for-enter": boolean = false;
-  debounce: number = 250;
 
-  static properties = {
-    "wait-for-enter": { type: Boolean },
-    debounce: { type: Number },
-  };
+  @property({ type: Boolean, attribute: "wait-for-enter" })
+  waitForEnter: boolean = false;
+  @property({ type: Number })
+  debounce: number = 250;
 
   onValueChange = makeValueChangeEmitter(this, this.id);
 
@@ -30,12 +28,12 @@ export class ForgeInputText
     }, this.debounce);
 
     this.addEventListener("input", () => {
-      if (this["wait-for-enter"]) return;
+      if (this.waitForEnter) return;
       notifyChangeDebounced();
     });
 
     this.addEventListener("keydown", (e) => {
-      if (!this["wait-for-enter"]) return;
+      if (!this.waitForEnter) return;
       if (e.code === "Enter") {
         this.notifyChange();
       }

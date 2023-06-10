@@ -33,9 +33,10 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_text(
                         id="text3",
-                        label="Starting value, clearable",
+                        label="Starting value, clearable, debounce=0",
                         value="This is a starting value",
                         clearable=True,
+                        debounce=0,
                     ),
                     sc.forge.input_text(
                         id="text4",
@@ -54,6 +55,90 @@ app_ui = sc.page(
                 nRows=1,
             ),
             name="Text",
+        ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_text_area(
+                        id="textarea1",
+                        label="Basic",
+                    ),
+                    sc.forge.input_text_area(
+                        id="textarea2",
+                        label=ui.TagList(
+                            "Help text, placeholder, ", ui.tags.b("bold label")
+                        ),
+                        help_text="This is some help text",
+                        placeholder="Placeholder text",
+                    ),
+                    sc.forge.input_text_area(
+                        id="textarea3",
+                        label="Starting value, small, no resize",
+                        value="This is a starting value",
+                        size="small",
+                        resize="none",
+                    ),
+                    sc.forge.input_text_area(
+                        id="textarea4",
+                        label="1 row, auto resize",
+                        rows=1,
+                        resize="auto",
+                    ),
+                ),
+                sc.grid_item(
+                    ui.output_text_verbatim("out_textarea1", placeholder=True),
+                    ui.output_text_verbatim("out_textarea2", placeholder=True),
+                    ui.output_text_verbatim("out_textarea3", placeholder=True),
+                    ui.output_text_verbatim("out_textarea4", placeholder=True),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Text area",
+        ),
+        sc.tab(
+            # Make a grid with 2 columns
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_number(
+                        id="number1",
+                        label="Basic",
+                    ),
+                    sc.forge.input_number(
+                        id="number2",
+                        label=ui.TagList(
+                            "Min=0, max=1000, value=99, help text, ",
+                            ui.tags.b("bold label"),
+                        ),
+                        value=99,
+                        min=0,
+                        max=1000,
+                        help_text="This is some help text",
+                    ),
+                    sc.forge.input_number(
+                        id="number3",
+                        label="Placeholder, clearable, debounce=0",
+                        placeholder="Placeholder text",
+                        clearable=True,
+                        debounce=0,
+                    ),
+                    sc.forge.input_number(
+                        id="number4",
+                        label="Password, pill",
+                        password=True,
+                        pill=True,
+                    ),
+                ),
+                sc.grid_item(
+                    ui.output_text_verbatim("out_number1", placeholder=True),
+                    ui.output_text_verbatim("out_number2", placeholder=True),
+                    ui.output_text_verbatim("out_number3", placeholder=True),
+                    ui.output_text_verbatim("out_number4", placeholder=True),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Number",
         ),
         sc.tab(
             # Make a grid with 2 columns
@@ -274,6 +359,9 @@ app_ui = sc.page(
 def server(input: Inputs, output: Outputs, session: Session):
     for i in range(4):
         make_output(input[f"text{i+1}"], f"out_text{i+1}", output)
+
+    for i in range(4):
+        make_output(input[f"textarea{i+1}"], f"out_textarea{i+1}", output)
 
     for i in range(4):
         make_output(input[f"select{i+1}"], f"out_select{i+1}", output)
