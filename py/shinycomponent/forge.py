@@ -278,11 +278,11 @@ def forge_dep() -> list[HTMLDependency]:
                 "subdir": str(ex_www_path),
             },
             stylesheet=[
-                {"href": "forge/index.css"},
+                {"href": "forge.css"},
                 # TODO: Fix props so that this won't duplicate the CSS from page_deps().
                 {"href": "components.css"},
             ],
-            script={"src": "forge/index.js", "type": "module"},
+            script={"src": "forge.js", "type": "module"},
         ),
         open_props_dep(),
     ]

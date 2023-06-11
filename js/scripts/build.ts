@@ -11,12 +11,12 @@ const metafile: boolean = process.argv.includes("--metafile");
 async function bundle() {
   try {
     const options = {
-      entryPoints: [
-        "src/components.ts",
-        "src/datagrid/index.tsx",
-        "src/m3/index.ts",
-        "src/forge/index.ts",
-      ],
+      entryPoints: {
+        components: "src/components.ts",
+        datagrid: "src/datagrid/index.tsx",
+        m3: "src/m3/index.ts",
+        forge: "src/forge/index.ts",
+      },
       bundle: true,
       outdir: "out/",
       minify: minify,

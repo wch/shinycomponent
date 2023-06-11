@@ -13,7 +13,7 @@ def m3_slider(
     return Tag("m3-slider", m3_dep(), id=id, *args, _add_ws=_add_ws, **kwargs)
 
 
-ex_www_path = PurePath(__file__).parent / "www" / "m3"
+ex_www_path = PurePath(__file__).parent / "www"
 
 
 def m3_dep() -> HTMLDependency:
@@ -25,6 +25,6 @@ def m3_dep() -> HTMLDependency:
             "subdir": str(ex_www_path),
         },
         script=[
-            {"src": "index.js", "type": "module"},
+            {"src": "m3.js", "type": "module"},
         ],
     )

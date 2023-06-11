@@ -39,7 +39,7 @@ def output_data_grid(id: str) -> Tag:
     )
 
 
-ex_www_path = PurePath(__file__).parent / "www" / "datagrid"
+ex_www_path = PurePath(__file__).parent / "www"
 
 
 def datagrid_dep() -> HTMLDependency:
@@ -51,6 +51,6 @@ def datagrid_dep() -> HTMLDependency:
             "subdir": str(ex_www_path),
         },
         script=[
-            {"src": "index.js", "type": "module"},
+            {"src": "datagrid.js", "type": "module"},
         ],
     )
