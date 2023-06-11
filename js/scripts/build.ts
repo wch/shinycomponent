@@ -3,7 +3,7 @@ import { sassPlugin } from "esbuild-sass-plugin";
 import * as fs from "node:fs";
 
 // Set a boolean value of watch to true if the flag --watch is provided when the file is run from the command line.
-// E.g. node js/scripts/build.ts --watch
+// E.g. tsx scripts/build.ts --watch
 const watch: boolean = process.argv.includes("--watch");
 const minify: boolean = process.argv.includes("--minify");
 const metafile: boolean = process.argv.includes("--metafile");
