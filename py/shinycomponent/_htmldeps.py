@@ -36,7 +36,7 @@ def open_props_theme_dep() -> list[HTMLDependency]:
                 "package": "shinycomponent",
                 "subdir": str(ex_www_path),
             },
-            stylesheet={"href": "open-props-theme.css"},
+            stylesheet={"href": "shiny-theme.css"},
         ),
     ]
 

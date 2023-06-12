@@ -1,0 +1,104 @@
+/* Define layer order. Right now we only have a single layer of resets but in
+the future may want to add more. Any code added by a user that doesn't
+explicitely target a layer will go to the highest priority level and thus always
+override styles from our reset layer */
+
+@layer reset;
+
+@import "color-themes/choco.css";
+@import "color-themes/grape.css";
+@import "color-themes/dark.css";
+@import "color-themes/dim.css";
+@import "color-themes/light.css";
+@import "shoelace-theme-adapter.css";
+
+/* Import resets into a lower layer so they can be easily over-ridden */
+@import "resets.css" layer(reset);
+
+:root {
+  color-scheme: light;
+
+  /* Set defaults */
+
+  /* The H of hsl for the brand color */
+  --brand-hue: var(--brand-light-hue);
+  --brand: var(--brand-light);
+  --text-1: var(--text-1-light);
+  --text-2: var(--text-2-light);
+  --text-3: var(--text-3-light);
+  --surface-1: var(--surface-1-light);
+  --surface-2: var(--surface-2-light);
+  --surface-3: var(--surface-3-light);
+  --surface-4: var(--surface-4-light);
+  --surface-shadow: var(--surface-shadow-light);
+  --shadow-strength: var(--shadow-strength-light);
+
+  /* Status colors */
+  --success: var(--green-4);
+  --warning: var(--orange-8);
+  --danger: var(--red-8);
+
+  /* Sizes */
+
+  /* Things like adding padding around a toggle switch */
+  --size-xxs: var(--size-1);
+  --size-xs: var(--size-2);
+  --size-s: var(--size-3);
+  --size-m: var(--size-fluid-2);
+  --size-l: var(--size-fluid-3);
+  --size-xl: var(--size-fluid-5);
+  --size-xxl: var(--size-fluid-6);
+
+  /* Shadows */
+  --shadow-s: var(--shadow-1);
+  --shadow-m: var(--shadow-3);
+  --shadow-l: var(--shadow-5);
+
+  /* Text */
+
+  /* Sizes */
+  --font-size-main: var(--font-size-2);
+  --font-size-h1: var(--font-size-8);
+  --font-size-h2: var(--font-size-6);
+  --font-size-h3: var(--font-size-5);
+  --font-size-h4: var(--font-size-4);
+  --font-size-h5: var(--font-size-3);
+
+  /* Weights */
+  --font-weight-headings: var(--font-weight-3);
+  --font-weight-bold: var(--font-weight-5);
+
+  /* Line heights */
+  --line-height-headings: var(--font-lineheight-1);
+  --line-height-main: var(--font-lineheight-3);
+
+  /* Transitions */
+  --speed-fast: 0.15s;
+  --speed-normal: 0.3s;
+  --speed-slow: 0.75s;
+
+  /* Borders */
+  --border-optional: 0;
+  --border-thin: var(--border-size-1);
+  --border-normal: var(--border-size-2);
+  --border-thick: var(--border-size-3);
+
+  /* Border with a tinge of the brand color */
+  --border-color: hsl(var(--brand-hue) 10% 50% / 15%);
+  --border-standard: var(--border-thin) solid var(--border-color);
+
+  /* Radii */
+  --radius-s: var(--radius-2);
+  --radius-m: var(--radius-3);
+  --radius-l: var(--radius-4);
+  --radius-pill: 9999px;
+}
+
+/* Set transition speeds to zero when the user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --speed-fast: 0s;
+    --speed-normal: 0s;
+    --speed-slow: 0s;
+  }
+}

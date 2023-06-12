@@ -39,8 +39,6 @@ esbuild
       datagrid: "src/datagrid/index.tsx",
       m3: "src/m3/index.ts",
       forge: "src/forge/index.ts",
-      "open-props-theme": "src/styles/open-props-theme.css",
-      "shoelace-theme-adapter": "src/styles/shoelace-theme-adapter.css",
     },
     bundle: true,
     outdir: "out/",

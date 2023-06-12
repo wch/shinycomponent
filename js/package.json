@@ -22,6 +22,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "just-debounce-it": "^3.2.0",
     "open-props": "^1.5.8",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-import": "^15.1.0",
     "postcss-lit": "^1.1.0",
     "prettier": "^2.8.8",
     "prettier-plugin-organize-imports": "^3.2.2",
@@ -35,7 +39,8 @@
     "open-props": "cp node_modules/open-props/open-props.min.css out",
     "build": "tsx scripts/build.ts",
     "watch": "npm run build -- --watch",
-    "lint-styles": "npx stylelint \"**/*.ts\""
+    "lint-styles": "npx stylelint \"**/*.ts\"",
+    "build-styles": "npx postcss src/styles/shiny-theme.css -o out/shiny-theme.css"
   },
   "dependencies": {
     "@material/web": "^1.0.0-pre.9",

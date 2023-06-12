@@ -9,6 +9,7 @@
   "rules": {
     "property-no-vendor-prefix": null,
     "color-no-hex": true,
-    "custom-property-pattern": null
+    "custom-property-pattern": null,
+    "import-notation": "string"
   }
 }
