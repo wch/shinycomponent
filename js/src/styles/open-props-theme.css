@@ -2,6 +2,7 @@
 the future may want to add more. Any code added by a user that doesn't
 explicitely target a layer will go to the highest priority level and thus always
 override styles from our reset layer */
+
 @layer reset;
 
 /* Put variables in the highest layer */
@@ -20,6 +21,7 @@ override styles from our reset layer */
   --choco-11-hsl: 25 66% 21%;
   --choco-12-hsl: 25 65% 15%;
 
+  /* Purple theme */
   --purple-0-hsl: 280 67% 96%;
   --purple-1-hsl: 287 77% 92%;
   --purple-2-hsl: 288 86% 86%;
@@ -34,6 +36,7 @@ override styles from our reset layer */
   --purple-11-hsl: 288 56% 26%;
   --purple-12-hsl: 288 55% 20%;
 
+  /* Grays */
   --gray-0-hsl: 210 17% 98%;
   --gray-1-hsl: 210 17% 95%;
   --gray-2-hsl: 210 16% 93%;
@@ -51,7 +54,9 @@ override styles from our reset layer */
   /* light */
   --brand-light-hue: 27;
   --brand-light: var(--orange-6);
-  --text-light-hs: 210 10%; /* Base of grey-8-hsl*/
+
+  /* Base of grey-8-hsl */
+  --text-light-hs: 210 10%;
   --text-1-light: var(--gray-10);
   --text-2-light: var(--gray-8);
   --text-3-light: var(--gray-6);
@@ -80,7 +85,7 @@ override styles from our reset layer */
   --brand-dim: var(--orange-4);
   --text-1-dim: var(--gray-3);
   --text-2-dim: var(--gray-4);
-  --text-2-dim: var(--gray-5);
+  --text-3-dim: var(--gray-5);
   --surface-1-dim: var(--gray-8);
   --surface-2-dim: var(--gray-7);
   --surface-3-dim: var(--gray-6);
@@ -93,7 +98,7 @@ override styles from our reset layer */
   --brand-grape: var(--purple-5);
   --text-1-grape: var(--purple-9);
   --text-2-grape: var(--purple-7);
-  --text-2-grape: var(--purple-5);
+  --text-3-grape: var(--purple-5);
   --surface-1-grape: var(--purple-0);
   --surface-2-grape: var(--purple-1);
   --surface-3-grape: var(--purple-2);
@@ -106,7 +111,7 @@ override styles from our reset layer */
   --brand-choco: var(--choco-5);
   --text-1-choco: var(--choco-1);
   --text-2-choco: var(--choco-2);
-  --text-2-choco: var(--choco-4);
+  --text-3-choco: var(--choco-4);
   --surface-1-choco: var(--choco-12);
   --surface-2-choco: var(--choco-11);
   --surface-3-choco: var(--choco-10);
@@ -133,11 +138,11 @@ override styles from our reset layer */
   --surface-shadow: var(--surface-shadow-light);
   --shadow-strength: var(--shadow-strength-light);
 
+  /* Status colors */
   --success: var(--green-4);
   --warning: var(--orange-8);
   --danger: var(--red-8);
 
-  --radius-pill: 9999px;
 
   /* Sizes */
 
@@ -169,6 +174,7 @@ override styles from our reset layer */
   --font-weight-headings: var(--font-weight-3);
   --font-weight-bold: var(--font-weight-5);
 
+  /* Line heights */
   --line-height-headings: var(--font-lineheight-1);
   --line-height-main: var(--font-lineheight-3);
 
@@ -185,12 +191,13 @@ override styles from our reset layer */
 
   /* Border with a tinge of the brand color */
   --border-color: hsl(var(--brand-hue) 10% 50% / 15%);
-  --border-normal: var(--border-thin) solid var(--border-color);
+  --border-standard: var(--border-thin) solid var(--border-color);
 
+  /* Radii */
   --radius-s: var(--radius-2);
   --radius-m: var(--radius-3);
   --radius-l: var(--radius-4);
-  --radius-pill: var(--radius-pill);
+  --radius-pill: 9999px;
 }
 
 /* Set transition speeds to zero when the user prefers reduced motion */
@@ -423,9 +430,11 @@ they can be easily overwridden by user styles
   :where(h3) {
     font-size: var(--font-size-h3);
   }
+
   :where(h4) {
     font-size: var(--font-size-h4);
   }
+
   :where(h5) {
     font-size: var(--font-size-h5);
   }

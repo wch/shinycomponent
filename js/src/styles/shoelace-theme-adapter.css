@@ -72,8 +72,8 @@ automatically match the current open-props theme */
   --sl-color-neutral-950: var(--text-1);
 
   /* Neutral one-offs */
-  --sl-color-neutral-0: hsl(0, 0%, 100%);
-  --sl-color-neutral-1000: hsl(0, 0%, 0%);
+  --sl-color-neutral-0: hsl(0deg 0% 100%);
+  --sl-color-neutral-1000: hsl(0deg 0% 0%);
 
   /*
    * Border radii
@@ -82,9 +82,8 @@ automatically match the current open-props theme */
   --sl-border-radius-medium: var(--radius-s);
   --sl-border-radius-large: var(--radius-m);
   --sl-border-radius-x-large: var(--radius-l);
-
   --sl-border-radius-circle: 50%;
-  --sl-border-radius-pill: 9999px;
+  --sl-border-radius-pill: var(--radius-pill);
 
   /*
    * Elevations
@@ -111,7 +110,7 @@ automatically match the current open-props theme */
   --sl-spacing-3x-large: var(--size-8); /* 48px */
   --sl-spacing-4x-large: var(--size-10); /* 72px */
 
-  /*`
+  /*
    * Transitions
    */
 
@@ -182,7 +181,6 @@ automatically match the current open-props theme */
   --sl-input-height-small: var(--size-6); /* 30px */
   --sl-input-height-medium: var(--size-7); /* 40px */
   --sl-input-height-large: var(--size-8); /* 50px */
-
   --sl-input-background-color: var(--surface-2);
   --sl-input-background-color-hover: var(--sl-input-background-color);
   --sl-input-background-color-focus: var(--sl-input-background-color);
@@ -195,18 +193,15 @@ automatically match the current open-props theme */
   --sl-input-required-content: "*";
   --sl-input-required-content-offset: -2px;
   --sl-input-required-content-color: var(--sl-input-label-color);
-
   --sl-input-border-radius-small: var(--sl-border-radius-medium);
   --sl-input-border-radius-medium: var(--sl-border-radius-medium);
   --sl-input-border-radius-large: var(--sl-border-radius-medium);
-
   --sl-input-font-family: var(--sl-font-sans);
   --sl-input-font-weight: var(--sl-font-weight-normal);
   --sl-input-font-size-small: var(--sl-font-size-small);
   --sl-input-font-size-medium: var(--sl-font-size-medium);
   --sl-input-font-size-large: var(--sl-font-size-large);
   --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
-
   --sl-input-color: var(--text-2);
   --sl-input-color-hover: var(--text-2);
   --sl-input-color-focus: var(--text-2);
@@ -219,10 +214,8 @@ automatically match the current open-props theme */
   --sl-input-spacing-small: var(--sl-spacing-small);
   --sl-input-spacing-medium: var(--sl-spacing-medium);
   --sl-input-spacing-large: var(--sl-spacing-large);
-
   --sl-input-focus-ring-color: var(--brand);
   --sl-input-focus-ring-offset: 0;
-
   --sl-input-filled-background-color: var(--surface-1);
   --sl-input-filled-background-color-hover: var(
     --sl-input-filled-background-color
