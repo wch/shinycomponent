@@ -1,4 +1,4 @@
-import { SlChangeEvent } from "@shoelace-style/shoelace";
+import type { SlChangeEvent } from "@shoelace-style/shoelace";
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 

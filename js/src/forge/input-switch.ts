@@ -1,4 +1,4 @@
-import { SlSwitch } from "@shoelace-style/shoelace";
+import SlSwitch from "@shoelace-style/shoelace/dist/components/switch/switch.js";
 import { CSSResultGroup, css } from "lit";
 import {
   CustomElementInputGetValue,

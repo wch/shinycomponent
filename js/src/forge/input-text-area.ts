@@ -1,4 +1,4 @@
-import { SlTextarea } from "@shoelace-style/shoelace";
+import SlTextarea from "@shoelace-style/shoelace/dist/components/textarea/textarea.js";
 import debounce from "just-debounce-it";
 import { property } from "lit/decorators.js";
 import {

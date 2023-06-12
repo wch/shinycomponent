@@ -1,4 +1,6 @@
-import { SlRadioGroup } from "@shoelace-style/shoelace";
+import SlRadioButton from "@shoelace-style/shoelace/dist/components/radio-button/radio-button.js";
+import SlRadioGroup from "@shoelace-style/shoelace/dist/components/radio-group/radio-group.js";
+import SlRadio from "@shoelace-style/shoelace/dist/components/radio/radio.js";
 import { CSSResultGroup, TemplateResult, css, html, render } from "lit";
 import { property } from "lit/decorators.js";
 import {
@@ -7,6 +9,10 @@ import {
 } from "../make-input-binding";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import { escapeSpaces, unescapeSpaces } from "./utils";
+
+// Prevent tree-shaking of these components, which we rely on.
+SlRadio;
+SlRadioButton;
 
 export class ForgeInputRadioButtons
   extends SlRadioGroup

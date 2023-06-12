@@ -1,4 +1,4 @@
-import { SlInput } from "@shoelace-style/shoelace";
+import SlInput from "@shoelace-style/shoelace/dist/components/input/input.js";
 import debounce from "just-debounce-it";
 import { property } from "lit/decorators.js";
 import {

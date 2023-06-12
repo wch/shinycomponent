@@ -1,4 +1,4 @@
-import { SlCheckbox } from "@shoelace-style/shoelace";
+import SlCheckbox from "@shoelace-style/shoelace/dist/components/checkbox/checkbox.js";
 import { CSSResultGroup, css } from "lit";
 import { property } from "lit/decorators.js";
 import {

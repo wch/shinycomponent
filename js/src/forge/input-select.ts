@@ -1,4 +1,4 @@
-import { SlSelect } from "@shoelace-style/shoelace";
+import SlSelect from "@shoelace-style/shoelace/dist/components/select/select.js";
 import { TemplateResult, html, render } from "lit";
 import { property } from "lit/decorators.js";
 import {
