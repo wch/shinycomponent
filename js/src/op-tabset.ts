@@ -1,10 +1,8 @@
 import { css, html } from "lit";
+import { makeInputBinding } from "./make-input-binding";
 import { themePrimitives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
 
-import { makeInputBinding } from "./make-input-binding";
-import "./styles/open-props-theme.css";
-import "./styles/shoelace-theme-adapter.css";
 /**
  * Special version of the tabset that's styled using open-props instead of our custom tokens
  */

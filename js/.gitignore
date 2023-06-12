@@ -1,3 +1,2 @@
 esbuild-metadata.json
-out/*
-!out/open-props.min.css
+out/

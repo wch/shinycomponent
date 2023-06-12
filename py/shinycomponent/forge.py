@@ -13,7 +13,7 @@ from typing import Literal, Optional
 from htmltools import HTMLDependency, Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from . import __version__
-from ._htmldeps import open_props_dep
+from ._htmldeps import open_props_theme_dep
 from ._utils import attr_to_escaped_json
 
 
@@ -270,6 +270,8 @@ ex_www_path = PurePath(__file__).parent / "www"
 
 def forge_dep() -> list[HTMLDependency]:
     return [
+        *open_props_theme_dep(),
+        *shoelace_adapter_dep(),
         HTMLDependency(
             name="forge",
             version=__version__,
@@ -277,12 +279,24 @@ def forge_dep() -> list[HTMLDependency]:
                 "package": "shinycomponent",
                 "subdir": str(ex_www_path),
             },
-            stylesheet=[
-                {"href": "forge.css"},
-                # TODO: Fix props so that this won't duplicate the CSS from page_deps().
-                {"href": "components.css"},
-            ],
+            # stylesheet=[
+            #     {"href": "forge.css"},
+            # ],
             script={"src": "forge.js", "type": "module"},
         ),
-        open_props_dep(),
+    ]
+
+
+def shoelace_adapter_dep() -> list[HTMLDependency]:
+    return [
+        *open_props_theme_dep(),
+        HTMLDependency(
+            name="shoelace-adapter",
+            version=__version__,
+            source={
+                "package": "shinycomponent",
+                "subdir": str(ex_www_path),
+            },
+            stylesheet={"href": "shoelace-theme-adapter.css"},
+        ),
     ]
