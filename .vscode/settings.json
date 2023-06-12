@@ -62,18 +62,14 @@
     "py/build": true,
     "venv/": true
   },
-  "cssvar.files": [
-    // if you have an alternative path to where your styles are located
-    // you can add it in this array of files
-    "js/node_modules/open-props/open-props.min.css",
-    "js/src/styles/open-props-theme.css"
+
+  "cssVariables.lookupFiles": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "node_modules/open-props/open-props.min.css"
   ],
-
-  // Do not ignore node_modules css files, which is ignored by default
-  "cssvar.ignore": [],
-
-  // add support for autocomplete in JS or JS like files
-  "cssvar.extensions": ["css", "jsx", "tsx", "ts"],
 
   // Stylelint settings
   // Turnoff default linters from vscode
@@ -82,10 +78,8 @@
   "scss.validate": false,
 
   // Setup extension settings
-  "stylelint.configFile": "",
   "stylelint.validate": ["css", "less", "postcss", "typescript"],
   "stylelint.configBasedir": "js",
   "stylelint.reportNeedlessDisables": true,
-  "stylelint.customSyntax": "./node_modules/postcss-lit",
   "stylelint.snippet": ["css", "less", "postcss", "typescript"]
 }
