@@ -16,7 +16,7 @@ export class ForgeInputText
   @property({ type: Boolean, attribute: "wait-for-enter" })
   waitForEnter: boolean = false;
   @property({ type: Number })
-  debounce: number = 250;
+  debounce: number = 200;
 
   onValueChange = makeValueChangeEmitter(this, this.id);
 
