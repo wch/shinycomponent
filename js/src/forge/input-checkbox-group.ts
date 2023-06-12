@@ -13,10 +13,11 @@ export class ForgeInputCheckboxGroup
   implements CustomElementInputGetValue<string[]>
 {
   static styles: CSSResultGroup = css`
-    .form-control--small {
+    .form-control.small {
       font-size: var(--sl-input-label-font-size-small);
     }
-    .form-control--medium {
+
+    .form-control.medium {
       font-size: var(--sl-input-label-font-size-medium);
     }
 
@@ -64,13 +65,12 @@ export class ForgeInputCheckboxGroup
     return html`
       <div
         part="form-control"
-        class=${classMap({
-          "form-control": true,
-          "form-control--small": this.size === "small",
-          "form-control--medium": this.size === "medium",
-          "form-control--large": this.size === "large",
-          "form-control--has-label": this.label !== null,
-        })}
+        class="form-control ${classMap({
+          small: this.size === "small",
+          medium: this.size === "medium",
+          large: this.size === "large",
+          "has-label": this.label !== null,
+        })} "
       >
         <label
           part="form-control-label"
