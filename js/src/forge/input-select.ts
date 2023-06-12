@@ -1,3 +1,4 @@
+import SlOption from "@shoelace-style/shoelace/dist/components/option/option.js";
 import SlSelect from "@shoelace-style/shoelace/dist/components/select/select.js";
 import { TemplateResult, html, render } from "lit";
 import { property } from "lit/decorators.js";
@@ -13,6 +14,9 @@ import { escapeSpaces, unescapeSpaces } from "./utils";
 // - Figure out clearner way to deal with `value` attribute not containing the
 //   checked value.
 // - Accept choices as object, not just string[]
+
+// Prevent tree-shaking of this component, which we rely on.
+SlOption;
 
 export class ForgeInputSelect
   extends SlSelect
@@ -126,7 +130,7 @@ function generateOptions(choices: SelectChoices): TemplateResult {
             >${value}</sl-option
           >`;
         })}
-      </sl-menu>`;
+      `;
     }
   })}`;
 }
