@@ -115,3 +115,23 @@ To watch for changes and rebuild automatically:
 ```bash
 npm run build -- --watch
 ```
+
+### Developement Environment Setup
+
+If using `VSCode` as your IDE, you can use the following extensions to make development easier:
+
+#### [CSS Variable Autocomplete](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables)
+
+Allows autocompete for css variables from open-props and our own built in themes. Will automatically work based on the `.vscode/settings.json`.
+
+#### [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+We try to enforce some fairly strict linting rules to keep code consistant. The extension will do it in real time for you without needing to run the linter from the command line.
+
+#### [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+
+Same as ESLint but for CSS.
+
+#### [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+Easy auto-formatting on save.
