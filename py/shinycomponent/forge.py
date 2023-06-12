@@ -8,7 +8,7 @@ __all__ = (
 )
 
 from pathlib import PurePath
-from typing import Literal, Optional
+from typing import Iterable, Literal, Optional
 
 from htmltools import HTMLDependency, Tag, TagAttrs, TagAttrValue, TagChild, tags
 
@@ -66,6 +66,36 @@ def input_checkbox_group(
         selected=attr_to_escaped_json(selected) if (selected is not None) else None,
         size=size,
         inline=inline,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
+
+
+def input_slider(
+    id: str,
+    label: TagChild,
+    min: float,
+    max: float,
+    value: float | Iterable[float],
+    *args: TagChild | TagAttrs,
+    step: float | None = None,
+    marks: bool | list[dict[str, float | str]] | None = None,
+    debounce: int | None = None,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-slider",
+        forge_dep(),
+        tags.div(label, slot="label") if (label is not None) else None,
+        *args,
+        id=id,
+        min=min,
+        max=max,
+        value=attr_to_escaped_json(value),
+        step=step,
+        marks=attr_to_escaped_json(marks),
+        debounce=debounce,
         _add_ws=_add_ws,
         **kwargs,
     )

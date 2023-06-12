@@ -198,6 +198,63 @@ app_ui = sc.page(
             name="Select",
         ),
         sc.tab(
+            # Make a grid with 2 columns
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_slider(
+                        id="slider1",
+                        label="Basic",
+                        min=0,
+                        max=100,
+                        value=20,
+                    ),
+                    sc.forge.input_slider(
+                        id="slider2",
+                        label=ui.TagList(
+                            "Range, debounce=0, ", ui.tags.b("bold label")
+                        ),
+                        min=0,
+                        max=100,
+                        value=(20, 40),
+                        debounce=0,
+                    ),
+                    sc.forge.input_slider(
+                        id="slider3",
+                        label="Min=3, step=5, marks=True",
+                        min=3,
+                        max=103,
+                        value=23,
+                        step=5,
+                        marks=True,
+                    ),
+                    sc.forge.input_slider(
+                        id="slider4",
+                        label="step=True, custom marks",
+                        min=0,
+                        max=80,
+                        value=20,
+                        step=True,
+                        marks=[
+                            {"value": 0, "label": "Zero"},
+                            {"value": 10, "label": "Ten"},
+                            {"value": 20, "label": "Twenty"},
+                            {"value": 40, "label": "Forty"},
+                            {"value": 80, "label": "Eighty"},
+                        ],
+                    ),
+                ),
+                sc.grid_item(
+                    sc.forge.output_text_verbatim("out_slider1"),
+                    sc.forge.output_text_verbatim("out_slider2"),
+                    sc.forge.output_text_verbatim("out_slider3"),
+                    sc.forge.output_text_verbatim("out_slider4"),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Slider",
+        ),
+        sc.tab(
             sc.grid(
                 sc.grid_item(
                     sc.forge.input_checkbox(
@@ -367,6 +424,9 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     for i in range(4):
         make_output(input[f"select{i+1}"], f"out_select{i+1}", output)
+
+    for i in range(4):
+        make_output(input[f"slider{i+1}"], f"out_slider{i+1}", output)
 
     for i in range(3):
         make_output(input[f"checkbox{i+1}"], f"out_checkbox{i+1}", output)

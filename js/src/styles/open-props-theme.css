@@ -68,7 +68,7 @@ override styles from our reset layer */
   --shadow-strength-light: 2%;
 
   /* dark */
-  --brand-dark-hue: 32
+  --brand-dark-hue: 32;
   --brand-dark: var(--orange-3);
   --text-1-dark: var(--gray-3);
   --text-2-dark: var(--gray-5);
@@ -128,6 +128,7 @@ override styles from our reset layer */
   /* The H of hsl for the brand color */
   --brand-hue: var(--brand-light-hue);
   --brand: var(--brand-light);
+  --brand-hsl: var(--brand-hue) 100% 50%;
   --text-1: var(--text-1-light);
   --text-2: var(--text-2-light);
   --text-3: var(--text-3-light);
