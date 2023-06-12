@@ -10,16 +10,12 @@ export class TabsetLogip extends Tabset {
     :host {
       --_gap: var(--gap, var(--size-fluid-3));
       --_border-radius: var(--border-radius, var(--radius-3));
-
       --_sidebar_width: var(--sidebar-width, auto);
-
       --_main-bg: var(--main-bg, var(--sl-color-neutral-50));
       --_main-color: var(--main-color, var(--sl-color-neutral-950));
-
       --_sidebar-bg: var(--sidebar-bg, var(--sl-color-neutral-200));
       --_sidebar-color: var(--sidebar-color, var(--sl-color-neutral-950));
       --_sidebar-border: var(--sidebar-border);
-
       --_tab-spacing: var(--tab-spacing, var(--sl-spacing-small));
       --_tab-selection-thickness: var(
         --tab-selection-thickness,
@@ -56,6 +52,8 @@ export class TabsetLogip extends Tabset {
     }
 
     .sidebar {
+      --padding: var(--size-3);
+
       grid-area: sidebar;
       padding-inline: var(--size-3);
       padding-block: var(--size-3);
@@ -63,16 +61,16 @@ export class TabsetLogip extends Tabset {
       color: var(--_sidebar-color);
       width: var(--_sidebar_width);
       z-index: 2;
-      --padding: var(--size-3);
+
       ${themePrimitives.fancy_shadow}
     }
 
     .main {
+      --grid-gap: var(--_gap);
+
       grid-area: content;
       z-index: 1;
-      /* overflow: scroll; */
       padding-inline-start: var(--_gap);
-      --grid-gap: var(--_gap);
     }
 
     .tabs {

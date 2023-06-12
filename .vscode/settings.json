@@ -65,7 +65,7 @@
   "cssvar.files": [
     // if you have an alternative path to where your styles are located
     // you can add it in this array of files
-    "js/out/open-props.min.css",
+    "js/node_modules/open-props/open-props.min.css",
     "js/src/styles/open-props-theme.css"
   ],
 

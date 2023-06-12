@@ -65,9 +65,11 @@ export const themePrimitives = {
     :where(h3) {
       font-size: var(--font-size-h3);
     }
+
     :where(h4) {
       font-size: var(--font-size-h4);
     }
+
     :where(h5) {
       font-size: var(--font-size-h5);
     }

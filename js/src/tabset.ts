@@ -31,18 +31,15 @@ export class Tabset
       --_font: var(--font-family, sans-serif);
       --_main-bg: var(--main-bg, var(--color-bg));
       --_main-color: var(--main-color, var(--color-text));
-
       --_sidebar-bg: var(--sidebar-bg, var(--color-bg-1));
       --_sidebar-color: var(--sidebar-color, var(--color-text-1));
       --_sidebar-border: var(--sidebar-border, var(--border-small));
-
       --_tab-spacing: var(--tab-spacing, var(--size-2));
       --_tab-selection-thickness: var(
         --tab-selection-thickness,
         var(--border-medium)
       );
       --_tab_radius: var(--tab-radius, var(--radius-small));
-
       --_header-bg-color: var(--header-bg-color, var(--color-bg-2));
       --_header-bg-image: var(--header-bg-image);
       --_header-color: var(--header-color);
@@ -84,11 +81,14 @@ export class Tabset
 
     .main {
       z-index: 1;
+      grid-area: content;
+      overflow: auto;
     }
 
     .header,
     .footer {
       background-color: var(--_header-bg-color);
+
       /* Use background image if passed */
       background-image: var(--_header-bg-image);
       color: var(--_header-color);
@@ -146,11 +146,6 @@ export class Tabset
       grid-area: sidebar;
       background-color: var(--_sidebar-bg);
       color: var(--_sidebar-color);
-    }
-
-    .main {
-      grid-area: content;
-      overflow: auto;
     }
 
     .footer {

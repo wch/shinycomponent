@@ -20,6 +20,7 @@ export class ForgeInputCheckbox
       :host {
         display: block;
       }
+
       :host(.inline) {
         display: inline-block;
         margin-right: var(--sl-spacing-small);
