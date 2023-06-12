@@ -23,7 +23,6 @@ const metafilePlugin = {
   setup(build: esbuild.PluginBuild) {
     build.onEnd((result) => {
       if (metafile) {
-        console.log("metafile");
         fs.writeFileSync(
           "esbuild-metadata.json",
           JSON.stringify(result.metafile)
@@ -46,6 +45,7 @@ esbuild
     bundle: true,
     outdir: "out/",
     minify: minify,
+    format: "esm",
     sourcemap: true,
     plugins: [
       rebuildLoggerPlugin,
