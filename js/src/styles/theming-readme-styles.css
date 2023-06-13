@@ -272,6 +272,7 @@ section.token-card.shadow-l {
   display: flex;
   gap: var(--size-s);
   align-items: baseline;
+  z-index: 10;
 }
 
 #theme-switcher > label {
