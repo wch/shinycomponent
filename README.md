@@ -116,6 +116,12 @@ To watch for changes and rebuild automatically:
 npm run build -- --watch
 ```
 
+To watch for changes in theming css and javascript concurently
+
+```bash
+npm run dev
+```
+
 ### Developement Environment Setup
 
 If using `VSCode` as your IDE, you can use the following extensions to make development easier:
