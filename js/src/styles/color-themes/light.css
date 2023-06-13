@@ -1,9 +1,9 @@
 @import "gray-hsl.css";
 
 :where(html) {
-  /* light */
-  --brand-light-hue: 27;
-  --brand-light: var(--green-6);
+  /* Taken from posit website */
+  --brand-light: hsl(209deg 57% 45%);
+  --brand-light-hue: 209;
 
   /* Base of grey-8-hsl */
   --text-light-hs: 210 10%;
