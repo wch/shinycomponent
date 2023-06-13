@@ -13,16 +13,23 @@ import { makeValueChangeEmitter } from "../make_value_change_emitter";
 //   theme, like --brand-semi-transparent?
 
 const css = `
+:host {
+  --rail-thickness: 2px;
+  --thumb-size: 16px;
+  --mark-size: 5px;
+  --popup-size: 24px;
+}
+
 .label {
   font-size: var(--font-size-2);
 }
 
 .${sliderClasses.root} {
   color: var(--brand);
-  height: 6px;
+  height: var(--rail-thickness);
   width: 100%;
   padding: 16px 0;
-  display: inline-block;
+  display: block;
   position: relative;
   cursor: pointer;
   touch-action: none;
@@ -44,7 +51,7 @@ const css = `
   display: block;
   position: absolute;
   width: 100%;
-  height: 4px;
+  height: var(--rail-thickness);
   border-radius: 2px;
   background-color: hsl(var(--brand-hue) 90% 85%);
 }
@@ -52,21 +59,21 @@ const css = `
 .${sliderClasses.track} {
   display: block;
   position: absolute;
-  height: 4px;
+  height: var(--rail-thickness);
   border-radius: 2px;
   background-color: currentColor;
 }
 
 .${sliderClasses.thumb} {
   position: absolute;
-  width: 16px;
-  height: 16px;
-  margin-left: -6px;
-  margin-top: -6px;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  margin-left: calc(0.5 * (var(--rail-thickness) - var(--thumb-size)));
+  margin-top: calc(0.5 * (var(--rail-thickness) - var(--thumb-size)));
   box-sizing: border-box;
   border-radius: 50%;
   outline: 0;
-  border: 3px solid currentColor;
+  border: var(--rail-thickness) solid currentColor;
   background-color: #fff;
 }
 
@@ -83,14 +90,14 @@ const css = `
   font-size: 11px;
   background: unset;
   background-color: var(--brand);
-  width: 24px;
-  height: 24px;
+  width: var(--popup-size);
+  height: var(--popup-size);
   padding: 0px;
   visibility: hidden;
   color: #fff;
   border-radius: 50% 50% 50% 0;
   position: absolute;
-  transform: translate(-30%, -140%) rotate(-45deg) scale(0);
+  transform: translate(-25%, -140%) rotate(-45deg) scale(0);
   transition: transform var(--speed-fast) ease;
   display: flex;
   align-items: center;
@@ -101,7 +108,7 @@ const css = `
 .${sliderClasses.thumb}.${sliderClasses.active} .value-popup,
 .${sliderClasses.thumb}.${sliderClasses.focusVisible} .value-popup {
   visibility: visible;
-  transform: translate(-30%, -140%) rotate(-45deg) scale(1);
+  transform: translate(-25%, -140%) rotate(-45deg) scale(1);
 }
 
 .${sliderClasses.thumb}:hover .value-text,
@@ -113,11 +120,11 @@ const css = `
 
 .${sliderClasses.mark} {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: var(--mark-size);
+  height: var(--mark-size);
   border-radius: 99%;
   background-color: hsl(var(--brand-hue) 90% 85%);
-  transform: translateX(-25%) translateY(-25%);
+  transform: translateX(-50%) translateY(calc(0.5*(var(--rail-thickness)) - 50%));
 }
 
 .${sliderClasses.mark}.${sliderClasses.markActive} {
