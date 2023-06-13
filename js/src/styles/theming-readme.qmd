@@ -104,71 +104,71 @@ const setTheme = theme =>
 We have a small set of colors that are used for theming. The following are the colors and where they should be used.
 
 
-### --brand {.token-card}
+### `--brand` {.token-card}
 
 `r show_color("--brand")`
 
 This is typically a colorful color. It should be used for actionable items. E.g. a button that can be pressed. It should not be used for text or backgrounds.
 
 
-### --text-1 {.token-card}
+### `--text-1` {.token-card}
 
 `r show_color("--text-1")`
 
 This is the typical text color. It should be used for things like headers and primary text.
 
-### --text-2  {.token-card}
+### `--text-2`  {.token-card}
 
 `r show_color("--text-2")`
 
 This is the secondary text color. It is typically a little less contrasty to deemphasize it. It should be used for text that is not critical to the main action and thus doesn't need to be as prominent.
 
-### --text-3  {.token-card}
+### `--text-3`  {.token-card}
 
 `r show_color("--text-3")`
 
 This is the tertiary text color. It is typically a little text like placeholders in inputs. Where the content is purposefully not punchy but provides a hint that text can be somewhere.
 
-### --surface-1 {.token-card}
+### `--surface-1` {.token-card}
 
 `r show_color("--surface-1")`
 
 This is the primary background color. It will have the greatest contrast with the text colors and is typically used for things like backgrounds of a cards where legibility of the content is most important.
 
-### --surface-2 {.token-card}
+### `--surface-2` {.token-card}
 
 `r show_color("--surface-2")`
 
 These is a secondary background colors. Their contrast is a little softer than `surface-1` but it is still very legible. This will often be used for things like backgrounds that cards sit on top of etc.
 
 
-### --surface-3 {.token-card}
+### `--surface-3` {.token-card}
 
 `r show_color("--surface-3")`
 
 These is a secondary background colors. Their contrast is a little softer than `surface-2` but it is still very legible. Another option for backgrounds where there are items with `surface-{1,2}` backgrounds on top of them that want should pop.
 
 
-### --surface-4 {.token-card}
+### `--surface-4` {.token-card}
 
 `r show_color("--surface-4")`
 
 This is a relatively low contrast background color. It should be used for contents that have large text or icons so the contrast is still acceptable. It's useful for creating a hierarchy of information and things like headers and footers for cards etc..
 
-### --success {.token-card}
+### `--success` {.token-card}
 
 `r show_color("--success")`
 
 
 This is most often a shade of green. It should be used almost exclusively for success messages.
 
-### --warning {.token-card}
+### `--warning` {.token-card}
 
 `r show_color("--warning")`
 
 Often a shade of orange. Like `success` it should be used almost exclusively for warning messages.
 
-### --danger {.token-card}
+### `--danger` {.token-card}
 
 `r show_color("--danger")`
 
@@ -183,7 +183,7 @@ The following are the design tokens related to sizes, e.g. paddings, margins, et
 
 
 
-#### --size-xxs {.token-card}
+### `--size-xxs` {.token-card}
 
 `r show_size("--size-xxs")`
 
@@ -192,14 +192,14 @@ This size should very rarely be used. If it is used, it should be for minor adju
 OP mapping: `calc(var(--size-xs) / 2)`
 
 
-#### --size-xs {.token-card}
+### `--size-xs` {.token-card}
 `r show_size("--size-xs")`
 
 Used for spacing things within a given small unit of design. E.g. creating a tight border around an element like a button.
 
 OP mapping: `--size-xs`
 
-#### --size-s {.token-card}
+### `--size-s` {.token-card}
 `r show_size("--size-s")`
 
 Separating distinct atomic units of a design. E.g. the margin between a series of buttons and description text above them.
@@ -207,7 +207,7 @@ Separating distinct atomic units of a design. E.g. the margin between a series o
 
 OP mapping: `--size-2`
 
-#### --size-m {.token-card}
+### `--size-m` {.token-card}
 
 `r show_size("--size-m")`
 
@@ -215,14 +215,14 @@ Separating larger components. E.g. Padding within a card or spacing between menu
 
 OP mapping: `--size-s`
 
-#### --size-l {.token-card}
+### `--size-l` {.token-card}
 `r show_size("--size-l")`
 
 Thematic separation. E.g. separating two cards from eachother or a sidebar from another the main content of the app.
 
 OP mapping: `--size-fluid-2`
 
-#### --size-xl {.token-card}
+### `--size-xl` {.token-card}
 
 `r show_size("--size-xl")`
 
@@ -231,7 +231,7 @@ App level separation. E.g. margins on the side of content.
 OP mapping: `--size-fluid-3`
 
 
-#### --size-xxl {.token-card}
+### `--size-xxl` {.token-card}
 `r show_size("--size-xxl")`
 
 Rarely used but can be used to create extra space between items that otherwise would be closer together. E.g. Isolating a given card to draw focus to it. Should rarely be used in internal component design.
@@ -243,21 +243,21 @@ OP mapping: `--size-fluid-6`
 
 Box shadows are a polarizing design token but seem to be have settled on a nice standard of using them to elevate certian items and bring them to the user's attention. They should be used sparingly and with clear purpose.
 
-#### no shadow {.token-card .shadow-none}
+### no shadow {.token-card .shadow-none}
 
 Sample card with no box-shadow for reference.
 
-#### --shadow-s {.token-card .shadow-s}
+### `--shadow-s` {.token-card .shadow-s}
 
 This shadow can be used to minorly elevate items. Just to make them "pop" a little bit more. For instance an avatar image may use this to give it the apperance of being important but not the main thing of importance on the page.
 
 
-#### --shadow-m {.token-card .shadow-m}
+### `--shadow-m` {.token-card .shadow-m}
 
 
 The "average" shadow. Used to draw the raise something clearly above the background and thus draw attention to it. E.g. a card filled with information. Should be used primarily with larger items or else it will overpower the item.
 
-#### --shadow-l {.token-card .shadow-l}
+### `--shadow-l` {.token-card .shadow-l}
 
 
 Almost never used. Only if the effect of elevation should be really pronounced. Could be used as a hover state for something interactive that already has a `--shadow-m` on it.
@@ -269,32 +269,32 @@ Almost never used. Only if the effect of elevation should be really pronounced. 
 Most of the variables for fonts are automatically applied when adding the `text_reset` snippet to a components `static styles` definition and as long as you use the proper semantic elements for your situation everything will work.
 
 
-#### --font-size-main {.token-card}
+### `--font-size-main` {.token-card}
 
 `r show_font_size("--font-size-main", "Main/Body fonts")`
 
-#### --font-size-small {.token-card}
+### `--font-size-small` {.token-card}
 
 `r show_font_size("--font-size-small", "Small callouts")`
 
 
-#### `--font-size-h1` {.token-card}
+### `--font-size-h1` {.token-card}
 
 `r show_font_size("--font-size-h1", "Level-1 Headers")`
 
-#### --font-size-h2 {.token-card}
+### `--font-size-h2` {.token-card}
 
 `r show_font_size("--font-size-h2", "Level-2 Headers")`
 
-#### --font-size-h3 {.token-card}
+### `--font-size-h3` {.token-card}
 
 `r show_font_size("--font-size-h3", "Level-3 Headers")`
 
-#### --font-size-h4 {.token-card}
+### `--font-size-h4` {.token-card}
 
 `r show_font_size("--font-size-h4", "Level-4 Headers")`
 
-#### --font-size-h5 {.token-card}
+### `--font-size-h5` {.token-card}
 
 `r show_font_size("--font-size-h5", "Level-5 Headers")`
 
@@ -303,11 +303,11 @@ Most of the variables for fonts are automatically applied when adding the `text_
 
 Much like the font-sizes, these will almost never need to be applied manually.
 
-#### --font-weight-headings {.token-card}
+### `--font-weight-headings` {.token-card}
 
 `r show_font_weight("--font-weight-headings")`
 
-#### --font-weight-bold {.token-card}
+### `--font-weight-bold` {.token-card}
 
 `r show_font_weight("--font-weight-bold")`
 
@@ -317,13 +317,13 @@ Much like the font-sizes, these will almost never need to be applied manually.
 
 Line heights also are almost never applied directly to your components. However for theming someone may wish to override these to make their app denser or more spaced out.
 
-#### --line-height-headings {.token-card}
+### `--line-height-headings` {.token-card}
 
 
 [Header text can have a tighter line-height than normal... The purpose of the spacing between lines is to help people read from one line to the next, comfortably. While a line height of at least 1.5 (150%) works well for body text, it’s unnecessary on larger sized text such as headings. The larger the font size, the smaller the line height should be, to maintain comfortable spacing.]{style="line-height: var(--line-height-headings)"}
 
 
-#### --line-height-main {.token-card}
+### `--line-height-main` {.token-card}
 
 [Main text should be slightly more spaced out... The purpose of the spacing between lines is to help people read from one line to the next, comfortably. While a line height of at least 1.5 (150%) works well for body text, it’s unnecessary on larger sized text such as headings. The larger the font size, the smaller the line height should be, to maintain comfortable spacing.]{style="line-height: var(--line-height-main)"}
 
@@ -331,15 +331,15 @@ Line heights also are almost never applied directly to your components. However 
 ## Font-Families
 
 
-#### --font-sans {.token-card style="font-family: var(--font-sans)"}
+### `--font-sans` {.token-card style="font-family: var(--font-sans)"}
 
 For our font stacks we just directly match open-props stacks. These use modern system font stacks which look good, are familiar, and are fast.
 
-#### --font-serif {.token-card style="font-family: var(--font-serif)"}
+### `--font-serif` {.token-card style="font-family: var(--font-serif)"}
 
 For our font stacks we just directly match open-props stacks. These use modern system font stacks which look good, are familiar, and are fast.
 
-#### --font-mono {.token-card  style="font-family: var(--font-mono)"}
+### `--font-mono` {.token-card  style="font-family: var(--font-mono)"}
 
 For our font stacks we just directly match open-props stacks. These use modern system font stacks which look good, are familiar, and are fast.
 
@@ -348,15 +348,15 @@ For our font stacks we just directly match open-props stacks. These use modern s
 
 Animations should be used very sparingly in components as it almost always results in the app feeling slower. However, sometimes animation can help the user understand what is happening such as a sidebar collapsing away. <br> By using consitant animation speeds we can make sure animations are cohesive. The default animation speeds are all multiples of eachother so they will appear thematically similar.<br>These are automatically set to zero if `prefers-reduced-motion` is set to `reduce`.
 
-#### --speed-fast {.token-card}
+### `--speed-fast` {.token-card}
 
 [Hover for animation]{.animation-demo .fast}
 
-#### --speed-normal {.token-card}
+### `--speed-normal` {.token-card}
 
 [Hover for animation]{.animation-demo .normal}
 
-#### --speed-slow {.token-card}
+### `--speed-slow` {.token-card}
 
 [Hover for animation]{.animation-demo .slow}
 
@@ -365,19 +365,19 @@ Animations should be used very sparingly in components as it almost always resul
 
 Borders/outlines should be used in moderation as it's typically better to use spacing to group related content.
 
-#### --border-thin {.token-card}
+### `--border-thin` {.token-card}
 
 Thin borders can be used to provide a delicate visual clue that the contents of an item are related when background color or other visual indicators are not available.
 
-#### --border-normal {.token-card}
+### `--border-normal` {.token-card}
 
 Normal borders are appropriate for things such as dividers between sections. Although spacing should be prefered to reduce visual clutter if possible.
 
-#### --border-thick {.token-card}
+### `--border-thick` {.token-card}
 
 Thick borders are primarily a stylistic thing. Rarely are they neccesary or optimal for a design.
 
-#### --border-optional {.token-card}
+### `--border-optional` {.token-card}
 
 Used to provide an optional border to items that by default may not have them. The user can choose to set this to some value themselves if they favor a border-heavy design. Defaults to `0`, aka invisble.
 
@@ -386,20 +386,20 @@ Used to provide an optional border to items that by default may not have them. T
 
 Radii typically are used to round edges of boxes. They can be used to create softer more organic elements.
 
-#### --radius-s {.token-card}
+### `--radius-s` {.token-card}
 
 The small radius option should be used for interior elements within a larger container like a card.
 
-#### --radius-m {.token-card}
+### `--radius-m` {.token-card}
 
 Medium radii should be used for general purpose containers such as cards. Tweaking this token can make a big difference in how the app appears.
 
 
-#### --radius-l {.token-card}
+### `--radius-l` {.token-card}
 
 Large radii should be reserved for more decorative situations and infrequently be used.
 
-#### --radius-pill {.token-card}
+### `--radius-pill` {.token-card}
 
 Useful for buttons or other items where a large click/selection space is needed but the content is not neccesarily large. Need to be careful with content being cut off.
 
