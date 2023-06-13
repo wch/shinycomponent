@@ -3,7 +3,7 @@ title: "Style Guidelines and Tokens"
 format:
   html:
     toc: true
-    css: [https://unpkg.com/open-props, "open-props-theme.css", "theming-readme-styles.css"]
+    css: [https://unpkg.com/open-props, "shiny-theme.css", "theming-readme-styles.css"]
 ---
 
 

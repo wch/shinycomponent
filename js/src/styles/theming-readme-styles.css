@@ -138,9 +138,11 @@ section.token-card {
 
 .animation-demo {
   background-color: var(--brand);
+  color: var(--surface-1);
   padding: var(--size-s);
   width: 50%;
   border-radius: var(--radius-2);
+  text-align: center;
 }
 
 .animation-demo,

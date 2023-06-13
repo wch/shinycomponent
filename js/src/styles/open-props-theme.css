@@ -1,6 +1,0 @@
-/* Define layer order. Right now we only have a single layer of resets but in
-the future may want to add more. Any code added by a user that doesn't
-explicitely target a layer will go to the highest priority level and thus always
-override styles from our reset layer */
-
-@layer reset;
