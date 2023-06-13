@@ -2,12 +2,30 @@
 
 :where(html) {
   /* Taken from posit website */
-  --brand-light: hsl(209deg 57% 45%);
-  --brand-light-hue: 209;
+  --posit-gray-h: 240;
+  --posit-gray-s: 1%;
+  --posit-gray-l: 25%;
+  --posit-gray: hsl(
+    var(--posit-gray-h) var(--posit-gray-s) var(--posit-gray-l)
+  );
+  --posit-blue-h: 209;
+  --posit-blue-s: 38%;
+  --posit-blue-l: 43%;
+  --posit-blue: hsl(
+    var(--posit-blue-h) var(--posit-blue-s) var(--posit-blue-l)
+  );
+  --posit-orange-h: 16;
+  --posit-orange-s: 85%;
+  --posit-orange-l: 56%;
+  --posit-orange: hsl(
+    var(--posit-orange-h) var(--posit-orange-s) var(--posit-orange-l)
+  );
 
-  /* Base of grey-8-hsl */
-  --text-light-hs: 210 10%;
-  --text-1-light: var(--gray-10);
+  /* Brand colors */
+  --brand-light: var(--posit-blue);
+  --brand-light-hue: var(--posit-blue-h);
+  --text-light-hs: var(--posit-gray-h) var(--posit-gray-s);
+  --text-1-light: var(--posit-gray);
   --text-2-light: var(--gray-8);
   --text-3-light: var(--gray-6);
   --surface-1-light: var(--gray-0);
