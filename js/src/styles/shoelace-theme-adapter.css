@@ -58,6 +58,10 @@ automatically match the current open-props theme */
   --sl-color-danger-900: var(--danger);
   --sl-color-danger-950: var(--danger);
 
+  /* Neutral one-offs */
+  --sl-color-neutral-0: hsl(0deg 0% 100%);
+  --sl-color-neutral-1000: hsl(0deg 0% 0%);
+
   /* Neutral */
   --sl-color-neutral-50: var(--suface-3);
   --sl-color-neutral-100: var(--surface-4);
@@ -70,10 +74,6 @@ automatically match the current open-props theme */
   --sl-color-neutral-800: var(--text-1);
   --sl-color-neutral-900: var(--text-1);
   --sl-color-neutral-950: var(--text-1);
-
-  /* Neutral one-offs */
-  --sl-color-neutral-0: hsl(0deg 0% 100%);
-  --sl-color-neutral-1000: hsl(0deg 0% 0%);
 
   /*
    * Border radii
@@ -88,7 +88,6 @@ automatically match the current open-props theme */
   /*
    * Elevations
    */
-
   --sl-shadow-x-small: var(--shadow-1);
   --sl-shadow-small: var(--shadow-2);
   --sl-shadow-medium: var(--shadow-3);

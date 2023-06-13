@@ -97,77 +97,78 @@ const setTheme = theme =>
   doc.setAttribute('color-scheme', theme)
 ```
 
-## Colors
 
+
+## Colors
 
 We have a small set of colors that are used for theming. The following are the colors and where they should be used.
 
 
-#### --brand {.token-card}
+### --brand {.token-card}
 
 `r show_color("--brand")`
 
 This is typically a colorful color. It should be used for actionable items. E.g. a button that can be pressed. It should not be used for text or backgrounds.
 
 
-#### --text-1 {.token-card}
+### --text-1 {.token-card}
 
 `r show_color("--text-1")`
 
 This is the typical text color. It should be used for things like headers and primary text.
 
-#### --text-2  {.token-card}
+### --text-2  {.token-card}
 
 `r show_color("--text-2")`
 
 This is the secondary text color. It is typically a little less contrasty to deemphasize it. It should be used for text that is not critical to the main action and thus doesn't need to be as prominent.
 
-#### --text-3  {.token-card}
+### --text-3  {.token-card}
 
 `r show_color("--text-3")`
 
 This is the tertiary text color. It is typically a little text like placeholders in inputs. Where the content is purposefully not punchy but provides a hint that text can be somewhere.
 
-#### --surface-1 {.token-card}
+### --surface-1 {.token-card}
 
 `r show_color("--surface-1")`
 
 This is the primary background color. It will have the greatest contrast with the text colors and is typically used for things like backgrounds of a cards where legibility of the content is most important.
 
-#### --surface-2 {.token-card}
+### --surface-2 {.token-card}
 
 `r show_color("--surface-2")`
 
 These is a secondary background colors. Their contrast is a little softer than `surface-1` but it is still very legible. This will often be used for things like backgrounds that cards sit on top of etc.
 
 
-#### --surface-3 {.token-card}
+### --surface-3 {.token-card}
 
 `r show_color("--surface-3")`
 
 These is a secondary background colors. Their contrast is a little softer than `surface-2` but it is still very legible. Another option for backgrounds where there are items with `surface-{1,2}` backgrounds on top of them that want should pop.
 
 
-#### --surface-4 {.token-card}
+### --surface-4 {.token-card}
 
 `r show_color("--surface-4")`
 
 This is a relatively low contrast background color. It should be used for contents that have large text or icons so the contrast is still acceptable. It's useful for creating a hierarchy of information and things like headers and footers for cards etc..
 
-#### --success {.token-card}
+### --success {.token-card}
 
 `r show_color("--success")`
 
 
 This is most often a shade of green. It should be used almost exclusively for success messages.
 
-#### --warning {.token-card}
+### --warning {.token-card}
 
 `r show_color("--warning")`
 
 Often a shade of orange. Like `success` it should be used almost exclusively for warning messages.
 
-#### --danger {.token-card}
+### --danger {.token-card}
 
 `r show_color("--danger")`
 
@@ -272,8 +273,12 @@ Most of the variables for fonts are automatically applied when adding the `text_
 
 `r show_font_size("--font-size-main", "Main/Body fonts")`
 
+#### --font-size-small {.token-card}
 
-#### --font-size-h1 {.token-card}
+`r show_font_size("--font-size-small", "Small callouts")`
+
+
+#### `--font-size-h1` {.token-card}
 
 `r show_font_size("--font-size-h1", "Level-1 Headers")`
 
@@ -400,7 +405,219 @@ Useful for buttons or other items where a large click/selection space is needed 
 
 
 
+## Example Component
+
+
+To demonstrate how these tokens work together we can build up a "card" component that sits on a background.
+
+### Background color
+
+We can start by building our background. We'll use the token `surface-3` for its color.
+
+
+```html
+<div class="background">
+  I'm a background
+</div>
+```
+
+```css
+.background {
+  background-color: var(--surface-3);
+}
+```
+
+<div class="background">
+I'm a background
+</div>
 
 
 
+### Adding card element
 
+Next we can place a card onto that background with a plot and two sections of info in it.
+
+```html
+<div class="background">
+ <div class="my-card">
+   <h3>A cool plot</h3>
+  <div class="header-img"></div>
+  <section>
+    A: Here's an important description the user should see about our plot.
+  </section>
+  <section class="secondary">
+    B: This is some secondarily important content that is useful to show but should not be as important as section A.
+  </section>
+ </div>
+</div>
+```
+
+We'll give the card a background color of `surface-1` to make it "pop," we'll also round the corners using `radius-m` and give it a shadow to further emphasize it as important.
+
+
+```css
+.my-card {
+  /* Light background and box-shadow
+     to pop off background */
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow-m);
+
+  /* Round corners */
+  border-radius: var(--radius-m);
+}
+```
+
+<div class="background">
+ <div class="my-card s1">
+   <h3>A cool plot</h3>
+  <div class="header-img"></div>
+  <section>
+    A: Here's an important description the user should see about our plot.
+  </section>
+  <section class="secondary">
+    B: This is some secondarily important content that is useful to show but should not be as important as section A.
+  </section>
+ </div>
+</div>
+
+
+### Padding card contents
+We have a card but the content of that card is completely pushed up against the edge, so we should give it some padding using the `size-m` token.
+
+
+```css
+.my-card {
+  /* Light background and box-shadow
+     to pop off background */
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow-m);
+
+  /* Round corners */
+  border-radius: var(--radius-m);
+
+  /* Give content some breathing room */
+  padding: var(--size-m);
+}
+```
+
+<div class="background">
+ <div class="my-card s2">
+  <h3>A cool plot</h3>
+  <div class="header-img"></div>
+  <section>
+    A: Here's an important description the user should see about our plot.
+  </section>
+  <section class="secondary">
+    B: This is some secondarily important content that is useful to show but should not be as important as section A.
+  </section>
+ </div>
+</div>
+
+
+### Using smaller sizes to separate internal content
+
+Now the outline looks good but we need to make it clear that the info about section A and section B are distinct. To do this we will use `size-s` to create separation of distincts sections within the card. We'll do this by using flexbox and setting the gap property.
+
+
+```css
+.my-card {
+  /* Light background and box-shadow
+     to pop off background */
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow-m);
+
+  /* Round corners */
+  border-radius: var(--radius-m);
+
+  /* Give content some breathing room */
+  padding: var(--size-m);
+
+  /* Give visual separation to each
+     sub-section of the card */
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-s);
+}
+```
+
+
+<div class="background">
+ <div class="my-card s3">
+  <h3>A cool plot</h3>
+  <div class="header-img"></div>
+  <section>
+    A: Here's an important description the user should see about our plot.
+  </section>
+  <section class="secondary">
+    B: This is some secondarily important content that is useful to show but should not be as important as section A.
+  </section>
+ </div>
+</div>
+
+
+### Using different text colors to provide visual hierarchy
+
+This is looking better but we may want to give a better indication to the user that the secondary section is not the most important thing in the card. To do that we can give it `text-2` as it's color so it's not as visually prevelant upon first scanning the card.
+
+```css
+.my-card {
+ ...
+}
+
+.my-card .secondary {
+  /* Slightly de-emphasize the secondary text */
+  color: var(--text-2);
+}
+
+```
+
+
+<div class="background">
+ <div class="my-card s4">
+  <h3>A cool plot</h3>
+  <div class="header-img"></div>
+  <section>
+    A: Here's an important description the user should see about our plot.
+  </section>
+  <section class="secondary">
+    B: This is some secondarily important content that is useful to show but should not be as important as section A.
+  </section>
+ </div>
+</div>
+
+
+The difference is very subtle, but if you defocus your eyes while looking at the card you will notice that there is a definite difference in visual emphasis between the two text sections. When quickly scanning an app this will help guide the user to the most important parts first.
+
+
+## Adapting theme to other component design systems
+
+If you're building a component that uses some other design system you may want to make that component respect the current design-token driven theme. This can be done by writing an adapter using css to make sure the correct tokens are applied to their equivalent places in the other system.
+
+### Shoelace's design system
+
+We use a project for many of our components called "shoelace." Shoelace has it's own design system. All we need to do to make shoelace components respect our theme is, in a css file, use our design tokens. Here's a snippet of what that looks like:
+
+```css
+html {
+  /* Neutral */
+  --sl-color-neutral-50: var(--suface-3);
+  --sl-color-neutral-100: var(--surface-4);
+  --sl-color-neutral-200: var(--suface-4);
+  --sl-color-neutral-300: var(--text-3);
+  --sl-color-neutral-400: var(--text-3);
+  --sl-color-neutral-500: var(--text-3);
+  --sl-color-neutral-600: var(--text-2);
+  --sl-color-neutral-700: var(--text-2);
+  --sl-color-neutral-800: var(--text-1);
+
+  /* Border radii */
+  --sl-border-radius-small: var(calc(--radius-s/2));
+  --sl-border-radius-medium: var(--radius-s);
+  --sl-border-radius-large: var(--radius-m);
+  --sl-border-radius-x-large: var(--radius-l);
+  --sl-border-radius-circle: 50%;
+  --sl-border-radius-pill: var(--radius-pill);
+}
+```
+
+This same pattern can be used for any system that uses non-inline css. Just figure out where the colors are used and update those declarations to use the appropriate token above.
