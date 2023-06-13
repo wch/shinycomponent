@@ -9,7 +9,7 @@ export class TabsetLogip extends Tabset {
   static styles = css`
     :host {
       --_gap: var(--gap, var(--size-fluid-3));
-      --_border-radius: var(--border-radius, var(--radius-3));
+      --_border-radius: var(--border-radius, var(--radius-m));
       --_sidebar_width: var(--sidebar-width, auto);
       --_main-bg: var(--main-bg, var(--sl-color-neutral-50));
       --_main-color: var(--main-color, var(--sl-color-neutral-950));
@@ -52,11 +52,11 @@ export class TabsetLogip extends Tabset {
     }
 
     .sidebar {
-      --padding: var(--size-3);
+      --padding: var(--size-md);
 
       grid-area: sidebar;
-      padding-inline: var(--size-3);
-      padding-block: var(--size-3);
+      padding-inline: var(--size-s);
+      padding-block: var(--size-s);
       background-color: var(--_sidebar-bg);
       color: var(--_sidebar-color);
       width: var(--_sidebar_width);

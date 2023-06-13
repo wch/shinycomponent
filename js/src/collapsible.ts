@@ -23,7 +23,7 @@ const horizontalCollapseStyles = css`
   }
 
   .horizontal .toggle {
-    padding-inline: var(--size-1);
+    padding-inline: var(--size-xs);
   }
 
   .horizontal.closed .toggle > .icon {
@@ -43,7 +43,7 @@ const toLeftCollapseStyles = css`
   }
 
   .left .toggle {
-    top: var(--size-1);
+    top: var(--size-xs);
     right: var(--space-small);
     width: var(--toggle-size);
     height: auto;
@@ -57,7 +57,7 @@ const toRightCollapseStyles = css`
 
   .right .toggle {
     order: -1;
-    top: var(--size-1);
+    top: var(--size-xs);
     right: 0;
     width: var(--toggle-size);
     height: auto;
@@ -76,7 +76,7 @@ const verticalCollapseStyles = css`
   }
 
   .vertical > .toggle {
-    min-height: var(--size-7);
+    min-height: var(--size-l);
   }
 
   .vertical .toggle > .icon {
@@ -109,7 +109,7 @@ const toBottomCollapseStyles = css`
 
 const toTopCollapseStyles = css`
   .top .toggle {
-    right: var(--size-1);
+    right: var(--size-xs);
   }
 `;
 
@@ -142,8 +142,8 @@ export class Collapsible extends LitElement {
         font-family: var(--font-family, sans-serif);
         position: relative;
         outline: 1px solid var(--accent-color, pink);
-        margin: var(--size-3);
-        border-radius: var(--radius-2);
+        margin: var(--size-s);
+        border-radius: var(--radius-s);
       }
 
       .container {
@@ -158,7 +158,7 @@ export class Collapsible extends LitElement {
 
       .toggle {
         background-color: var(--accent-color);
-        font-size: var(--font-size-3);
+        font-size: var(--font-size-main);
         display: grid;
         place-content: center;
         cursor: pointer;

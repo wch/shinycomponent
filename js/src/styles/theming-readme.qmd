@@ -188,7 +188,7 @@ The following are the design tokens related to sizes, e.g. paddings, margins, et
 
 This size should very rarely be used. If it is used, it should be for minor adjustments of positions, like nudging an icon up or down to make more visually centered layout.
 
-OP mapping: `calc(var(--size-1) / 2)`
+OP mapping: `calc(var(--size-xs) / 2)`
 
 
 #### --size-xs {.token-card}
@@ -196,7 +196,7 @@ OP mapping: `calc(var(--size-1) / 2)`
 
 Used for spacing things within a given small unit of design. E.g. creating a tight border around an element like a button.
 
-OP mapping: `--size-1`
+OP mapping: `--size-xs`
 
 #### --size-s {.token-card}
 `r show_size("--size-s")`
@@ -212,7 +212,7 @@ OP mapping: `--size-2`
 
 Separating larger components. E.g. Padding within a card or spacing between menu items in a controls panel.
 
-OP mapping: `--size-3`
+OP mapping: `--size-s`
 
 #### --size-l {.token-card}
 `r show_size("--size-l")`

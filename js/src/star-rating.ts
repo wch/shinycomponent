@@ -92,7 +92,7 @@ class EmojiReaction extends LitElement {
   // via CSS custom properties.
   static styles = css`
     :host {
-      font-size: var(--font-size-6);
+      font-size: var(--font-size-h2);
       text-align: center;
       user-select: none;
     }

@@ -34,7 +34,7 @@ export class Tabset
       --_sidebar-bg: var(--sidebar-bg, var(--color-bg-1));
       --_sidebar-color: var(--sidebar-color, var(--color-text-1));
       --_sidebar-border: var(--sidebar-border, var(--border-small));
-      --_tab-spacing: var(--tab-spacing, var(--size-2));
+      --_tab-spacing: var(--tab-spacing, var(--size-xs));
       --_tab-selection-thickness: var(
         --tab-selection-thickness,
         var(--border-medium)
@@ -44,7 +44,10 @@ export class Tabset
       --_header-bg-image: var(--header-bg-image);
       --_header-color: var(--header-color);
       --_header-font: var(--header-font, var(--font-sans));
-      --_header-font-weight: var(--header-font-weight, var(--font-weight-3));
+      --_header-font-weight: var(
+        --header-font-weight,
+        var(--font-weight-headings)
+      );
       --_header-font-size: var(--header-font-size, var(--font-size-fluid-1));
       --_header-padding: var(--header-padding, var(--size-fluid-1));
 
