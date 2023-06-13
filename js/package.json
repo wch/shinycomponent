@@ -40,7 +40,8 @@
     "build": "tsx scripts/build.ts",
     "watch": "npm run build -- --watch",
     "lint-styles": "npx stylelint \"**/*.ts\"",
-    "build-styles": "npx postcss src/styles/shiny-theme.css -o out/shiny-theme.css"
+    "build-styles": "npx postcss src/styles/shiny-theme.css -o out/shiny-theme.css",
+    "watch-styles": "npm run build-styles -- --watch"
   },
   "dependencies": {
     "@material/web": "^1.0.0-pre.9",
