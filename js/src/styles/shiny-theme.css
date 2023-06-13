@@ -3,8 +3,6 @@ the future may want to add more. Any code added by a user that doesn't
 explicitely target a layer will go to the highest priority level and thus always
 override styles from our reset layer */
 
-@layer reset;
-
 @import "color-themes/choco.css";
 @import "color-themes/grape.css";
 @import "color-themes/dark.css";

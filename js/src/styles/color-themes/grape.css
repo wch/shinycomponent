@@ -29,7 +29,7 @@
 }
 
 :root:has([choice="grape"]),
-[color-scheme="grape"] {
+html[color-scheme="grape"] {
   color-scheme: light;
 
   --brand-hue: var(--brand-grape-hue);

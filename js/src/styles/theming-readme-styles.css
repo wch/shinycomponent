@@ -358,7 +358,8 @@ pre.sourceCode.html::after {
   position: absolute;
   bottom: 0;
   right: var(--size-xxs);
-  color: var(--text-3);
+  color: var(--text-1);
+  font-size: var(--font-size-s);
 }
 
 pre.sourceCode.css::after {

@@ -18,7 +18,7 @@
   --brand-choco: var(--choco-5);
   --text-1-choco: var(--choco-1);
   --text-2-choco: var(--choco-2);
-  --text-3-choco: var(--choco-4);
+  --text-3-choco: var(--choco-3);
   --surface-1-choco: var(--choco-12);
   --surface-2-choco: var(--choco-11);
   --surface-3-choco: var(--choco-10);
@@ -28,7 +28,7 @@
 }
 
 :root:has([choice="choco"]),
-[color-scheme="choco"] {
+html[color-scheme="choco"] {
   color-scheme: light;
 
   --brand-hue: var(--brand-choco-hue);
