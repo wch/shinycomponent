@@ -99,7 +99,7 @@ const setTheme = theme =>
 
 
 
-## Colors
+## Colors {data-section="colors"}
 
 We have a small set of colors that are used for theming. The following are the colors and where they should be used.
 
@@ -175,7 +175,7 @@ Often a shade of orange. Like `success` it should be used almost exclusively for
 Often a shade of red. Like `success` it should be used almost exclusively for error messages or other not-good things.
 
 
-## Sizes
+## Sizes {data-section="sizes"}
 
 The following are the design tokens related to sizes, e.g. paddings, margins, etc.
 
@@ -344,7 +344,7 @@ For our font stacks we just directly match open-props stacks. These use modern s
 For our font stacks we just directly match open-props stacks. These use modern system font stacks which look good, are familiar, and are fast.
 
 
-## Animation Speeds
+## Animation Speeds {data-section="animations"}
 
 Animations should be used very sparingly in components as it almost always results in the app feeling slower. However, sometimes animation can help the user understand what is happening such as a sidebar collapsing away. <br> By using consitant animation speeds we can make sure animations are cohesive. The default animation speeds are all multiples of eachother so they will appear thematically similar.<br>These are automatically set to zero if `prefers-reduced-motion` is set to `reduce`.
 
@@ -405,7 +405,7 @@ Useful for buttons or other items where a large click/selection space is needed 
 
 
 
-## Example Component
+## Example Component {data-section="example-component"}
 
 
 To demonstrate how these tokens work together we can build up a "card" component that sits on a background.
@@ -593,7 +593,7 @@ The difference is very subtle, but if you defocus your eyes while looking at the
 
 If you're building a component that uses some other design system you may want to make that component respect the current design-token driven theme. This can be done by writing an adapter using css to make sure the correct tokens are applied to their equivalent places in the other system.
 
-### Shoelace's design system
+### Shoelace's design system {data-section="shoelace"}
 
 We use a project for many of our components called "shoelace." Shoelace has it's own design system. All we need to do to make shoelace components respect our theme is, in a css file, use our design tokens. Here's a snippet of what that looks like:
 

@@ -92,8 +92,8 @@ section.token-card {
   gap: var(--size-m);
 }
 
-#sizes > section.token-card,
-#colors > section.token-card {
+[data-section="sizes"] > section.token-card,
+[data-section="colors"] > section.token-card {
   grid-template-columns: 2fr 1fr;
 }
 
@@ -177,7 +177,7 @@ section.token-card {
   height: 100%;
 }
 
-#animation-speeds .token-card:hover .animation-demo {
+[data-section="animations"] .token-card:hover .animation-demo {
   animation-name: shuffle;
   animation-iteration-count: infinite;
   animation-duration: var(--speed, 10s);
@@ -294,7 +294,7 @@ section.token-card.shadow-l {
 
 /* Demo code */
 
-section.level2#example-component > section:first-of-type h3 {
+section.level2[data-section="example-component"] > section:first-of-type h3 {
   margin-block-start: 0;
 }
 
@@ -369,6 +369,6 @@ pre.sourceCode.html::after {
   content: "my-comp.html";
 }
 
-#shoelaces-design-system pre.sourceCode.css::after {
+[data-section="shoelace"] pre.sourceCode.css::after {
   content: "shoelace-adapter.css";
 }
