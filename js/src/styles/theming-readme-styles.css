@@ -300,7 +300,8 @@ section.level2[data-section="example-component"] > section:first-of-type h3 {
 
 .background {
   width: 100%;
-  height: 500px;
+  padding-block: var(--size-l);
+  min-height: 400px;
   background-color: var(--surface-3);
   position: relative;
   display: grid;
@@ -320,6 +321,7 @@ section.level2[data-section="example-component"] > section:first-of-type h3 {
 
   /* Tokens */
   background-color: var(--surface-1);
+  color: var(--text-1);
   border-radius: var(--radius-m);
   box-shadow: var(--shadow-m);
 }
@@ -354,6 +356,7 @@ pre.sourceCode {
 }
 
 pre.sourceCode.css::after,
+pre.sourceCode.python::after,
 pre.sourceCode.html::after {
   position: absolute;
   bottom: 0;
@@ -362,14 +365,45 @@ pre.sourceCode.html::after {
   font-size: var(--font-size-s);
 }
 
-pre.sourceCode.css::after {
+[data-section="example-component"] pre.sourceCode.css::after {
   content: "my-comp.css";
 }
 
-pre.sourceCode.html::after {
+[data-section="building-theme"] pre.sourceCode.css::after {
+  content: "app-styles.css";
+}
+
+[data-section="building-theme"] pre.sourceCode.python::after {
+  content: "app.py";
+}
+
+[data-section="example-component"] pre.sourceCode.html::after {
   content: "my-comp.html";
 }
 
 [data-section="shoelace"] pre.sourceCode.css::after {
   content: "shoelace-adapter.css";
+}
+
+/* Custom theme */
+
+.greenery {
+  /* Build theme based on the open-props jungle color palette */
+  --brand: var(--jungle-6);
+  --text-1: var(--jungle-0);
+  --text-2: var(--jungle-1);
+  --text-3: var(--jungle-2);
+  --surface-1: var(--jungle-12);
+  --surface-2: var(--jungle-11);
+  --surface-3: var(--jungle-10);
+  --surface-4: var(--jungle-9);
+
+  /* Make corners much less rounded */
+  --radius-s: 2px;
+  --radius-m: 5px;
+  --radius-l: 10px;
+
+  /* Make things more spaced out */
+  --size-s: 30px;
+  --size-m: 50px;
 }

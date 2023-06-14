@@ -462,6 +462,9 @@ We'll give the card a background color of `surface-1` to make it "pop," we'll al
   background-color: var(--surface-1);
   box-shadow: var(--shadow-m);
 
+  /* Primary text color */
+  color: var(--text-1);
+
   /* Round corners */
   border-radius: var(--radius-m);
 }
@@ -491,6 +494,9 @@ We have a card but the content of that card is completely pushed up against the 
      to pop off background */
   background-color: var(--surface-1);
   box-shadow: var(--shadow-m);
+
+  /* Primary text color */
+  color: var(--text-1);
 
   /* Round corners */
   border-radius: var(--radius-m);
@@ -525,6 +531,9 @@ Now the outline looks good but we need to make it clear that the info about sect
      to pop off background */
   background-color: var(--surface-1);
   box-shadow: var(--shadow-m);
+
+  /* Primary text color */
+  color: var(--text-1);
 
   /* Round corners */
   border-radius: var(--radius-m);
@@ -588,6 +597,100 @@ This is looking better but we may want to give a better indication to the user t
 
 The difference is very subtle, but if you defocus your eyes while looking at the card you will notice that there is a definite difference in visual emphasis between the two text sections. When quickly scanning an app this will help guide the user to the most important parts first.
 
+
+
+## Building a theme {data-section="building-theme"}
+
+Because of how css custom properties are inhereted using the css cascade, you can theme a whole app by defining the variables you wish to change and targeting a root-level selector such as `html` or `:root`. (If you use the theme chooser on this page that's what is being done.)
+
+
+However, because you're just using css you can apply a theme to a specific part of your app without over-riding the rest of the app...
+
+
+### Defining a theme
+
+We can setup a basic theme that updates a few tokens to make a "greenery" theme that is a green dark-mode, makes less use of rounded corners, and has more spaced out content...
+
+```css
+.greenery {
+  /* Build theme based on the open-props
+     jungle color palette */
+  --brand: var(--jungle-6);
+  --text-1: var(--jungle-0);
+  --text-2: var(--jungle-1);
+  --text-3: var(--jungle-2);
+  --surface-1: var(--jungle-12);
+  --surface-2: var(--jungle-11);
+  --surface-3: var(--jungle-10);
+  --surface-4: var(--jungle-9);
+
+  /* Make corners much less rounded */
+  --radius-s: 2px;
+  --radius-m: 5px;
+  --radius-l: 10px;
+
+  /* Make things more spaced out */
+  --size-s: 30px;
+  --size-m: 50px;
+}
+```
+
+### Setting theme on a part of the app
+
+Notice we defined our theme under the selector `.greenery`. This means that we can apply it to our previous card component demo simply by adding the class `greenery` to the container (or the card).
+
+
+```html
+<div class="background greenery">
+ <div class="my-card">
+  <h3>A cool plot</h3>
+  <div class="header-img"></div>
+  <section>
+    A: Here's an important description the user should see about our plot.
+  </section>
+  <section class="secondary">
+    B: This is some secondarily important content that is useful to show but should not be as important as section A.
+  </section>
+ </div>
+</div>
+```
+
+<div class="background greenery">
+ <div class="my-card s4">
+  <h3>A cool plot</h3>
+  <div class="header-img"></div>
+  <section>
+    A: Here's an important description the user should see about our plot.
+  </section>
+  <section class="secondary">
+    B: This is some secondarily important content that is useful to show but should not be as important as section A.
+  </section>
+ </div>
+</div>
+
+### Setting theme on whole app
+
+While this theme may not be to your taste, all you need to do to make your own is tweak the tokens above. You can make it apply to the whole app by simply making the selector at the root level...
+
+```css
+/* Setup app-wide theme */
+:root {
+  /* Build theme based on the open-props
+     jungle color palette */
+  --brand: var(--jungle-6);
+  ...
+}
+```
+
+or by adding the class `greenery` to your page component.
+
+```python
+...
+app_ui = sc.page(
+  ...,
+  class_='greenery'
+)
+```
 
 ## Adapting theme to other component design systems
 
