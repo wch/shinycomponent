@@ -1,4 +1,4 @@
-:root:has([choice="grape"]),
+[data-shinytheme="grape"],
 html[color-scheme="grape"] {
   color-scheme: light;
 

@@ -18,11 +18,17 @@ export class ThemeChooser extends LitElement {
   handleChange(e: SlChangeEvent) {
     const radios = this.shadowRoot!.querySelector("forge-input-radio-buttons")!;
     this.choice = radios.getValue() as Theme;
+
+    if (this.choice === "default") {
+      delete document.body.dataset["shinytheme"];
+      return;
+    }
+    document.body.dataset["shinytheme"] = this.choice;
   }
 
   constructor() {
     super();
-    this.addEventListener("sl-change", (e) => this.handleChange(e));
+    this.addEventListener("sl-change", this.handleChange);
   }
 
   render() {

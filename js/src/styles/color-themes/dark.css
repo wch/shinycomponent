@@ -15,7 +15,7 @@
   --shadow-strength-dark: 80%;
 }
 
-:root:has([choice="dark"]),
+[data-shinytheme="dark"],
 html[color-scheme="dark"] {
   color-scheme: dark;
 

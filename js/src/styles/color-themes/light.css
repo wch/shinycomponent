@@ -36,6 +36,7 @@
 }
 
 :root:has([choice="light"]),
+[data-shinytheme="light"],
 html[color-scheme="light"] {
   color-scheme: light;
 
