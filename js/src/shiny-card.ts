@@ -21,7 +21,7 @@ export class ShinyCard extends LitElement {
 
       ${themePrimitives.surface_1}
 
-      border: var(--border-thin) solid var(--border-color);
+      border: var(--border-standard);
       border-radius: var(--item-radius, var(--radius-m));
       padding: var(--item-padding, var(--size-m));
       gap: var(--item-padding, var(--size-s));

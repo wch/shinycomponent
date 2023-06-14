@@ -73,7 +73,7 @@ export const themePrimitives = {
     }
 
     :where(p, ul, ol, dl, h6) {
-      font-size: var(--font-size-main);
+      font-size: var(--font-size-m);
     }
 
     :where(a, u, ins, abbr) {

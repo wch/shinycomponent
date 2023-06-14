@@ -52,7 +52,7 @@ ul,
 ol,
 dl,
 h6 {
-  font-size: var(--font-size-main);
+  font-size: var(--font-size-m);
 }
 
 a,
@@ -83,7 +83,7 @@ section.token-card {
   padding: var(--size-l);
   width: 100%;
   border-radius: var(--radius-3);
-  border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+  border: var(--border-standard);
   box-shadow: var(--shadow-m);
   display: grid;
   grid-template-columns: 1fr;

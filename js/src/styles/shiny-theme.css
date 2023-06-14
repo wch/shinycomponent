@@ -55,8 +55,9 @@ override styles from our reset layer */
   /* Text */
 
   /* Sizes */
-  --font-size-small: var(--font-size-1);
-  --font-size-main: var(--font-size-2);
+  --font-size-s: var(--font-size-0);
+  --font-size-m: var(--font-size-2);
+  --font-size-l: var(--font-size-4);
   --font-size-h1: var(--font-size-8);
   --font-size-h2: var(--font-size-6);
   --font-size-h3: var(--font-size-5);
@@ -84,6 +85,7 @@ override styles from our reset layer */
 
   /* Border with a tinge of the brand color */
   --border-color: hsl(var(--brand-hue) 10% 50% / 15%);
+  /* stylelint-disable-next-line declaration-block-no-duplicate-custom-properties */
   --border-color: color-mix(in srgb, var(--brand) 20%, var(--surface-1));
   --border-standard: var(--border-thin) solid var(--border-color);
 
@@ -100,5 +102,24 @@ override styles from our reset layer */
     --speed-fast: 0s;
     --speed-normal: 0s;
     --speed-slow: 0s;
+  }
+}
+
+/* Default to dark mode if the user has requested */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --brand-hue: var(--brand-dark-hue);
+    --brand: var(--brand-dark);
+    --text-1: var(--text-1-dark);
+    --text-2: var(--text-2-dark);
+    --text-3: var(--text-3-dark);
+    --surface-1: var(--surface-1-dark);
+    --surface-2: var(--surface-2-dark);
+    --surface-3: var(--surface-3-dark);
+    --surface-4: var(--surface-4-dark);
+    --shadow-color: var(--shadow-color-dark);
+    --shadow-strength: var(--shadow-strength-dark);
   }
 }

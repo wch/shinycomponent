@@ -158,7 +158,7 @@ export class Collapsible extends LitElement {
 
       .toggle {
         background-color: var(--accent-color);
-        font-size: var(--font-size-main);
+        font-size: var(--font-size-m);
         display: grid;
         place-content: center;
         cursor: pointer;

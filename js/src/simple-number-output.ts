@@ -31,7 +31,7 @@ export class SimpleNumberOutput extends LitElement {
   static styles = css`
     .value {
       display: block;
-      font-size: var(--font-size-main);
+      font-size: var(--font-size-m);
       background-color: var(--surface-3);
     }
   `;

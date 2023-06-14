@@ -21,7 +21,7 @@ const css = `
 }
 
 .label {
-  font-size: var(--font-size-main);
+  font-size: var(--font-size-m);
 }
 
 .${sliderClasses.root} {

@@ -269,13 +269,17 @@ Almost never used. Only if the effect of elevation should be really pronounced. 
 Most of the variables for fonts are automatically applied when adding the `text_reset` snippet to a components `static styles` definition and as long as you use the proper semantic elements for your situation everything will work.
 
 
-### `--font-size-main` {.token-card}
+### `--font-size-m` {.token-card}
 
-`r show_font_size("--font-size-main", "Main/Body fonts")`
+`r show_font_size("--font-size-m", "Main/Body fonts")`
 
-### `--font-size-small` {.token-card}
+### `--font-size-s` {.token-card}
 
-`r show_font_size("--font-size-small", "Small callouts")`
+`r show_font_size("--font-size-s", "Small callouts")`
+
+### `--font-size-l` {.token-card}
+
+`r show_font_size("--font-size-l", "Emphasized text")`
 
 
 ### `--font-size-h1` {.token-card}

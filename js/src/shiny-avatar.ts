@@ -40,7 +40,7 @@ export class ShinyAvatar extends LitElement {
     }
 
     .name {
-      font-size: var(--font-size-main);
+      font-size: var(--font-size-m);
     }
 
     .name:empty {
