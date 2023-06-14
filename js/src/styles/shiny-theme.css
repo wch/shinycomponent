@@ -28,7 +28,7 @@ override styles from our reset layer */
   --surface-2: var(--surface-2-light);
   --surface-3: var(--surface-3-light);
   --surface-4: var(--surface-4-light);
-  --surface-shadow: var(--surface-shadow-light);
+  --shadow-color: var(--shadow-color-light);
   --shadow-strength: var(--shadow-strength-light);
 
   /* Status colors */

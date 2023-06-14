@@ -12,34 +12,22 @@
   --choco-10-hsl: 25 71% 26%;
   --choco-11-hsl: 25 66% 21%;
   --choco-12-hsl: 25 65% 15%;
-
-  /* choco */
-  --brand-choco-hue: 25;
-  --brand-choco: var(--choco-5);
-  --text-1-choco: var(--choco-1);
-  --text-2-choco: var(--choco-2);
-  --text-3-choco: var(--choco-3);
-  --surface-1-choco: var(--choco-12);
-  --surface-2-choco: var(--choco-11);
-  --surface-3-choco: var(--choco-10);
-  --surface-4-choco: var(--choco-9);
-  --surface-shadow-choco: 25deg 65% 11%;
-  --shadow-strength-choco: 50%;
 }
 
 :root:has([choice="choco"]),
 html[color-scheme="choco"] {
   color-scheme: light;
 
-  --brand-hue: var(--brand-choco-hue);
-  --brand: var(--brand-choco);
-  --text-1: var(--text-1-choco);
-  --text-2: var(--text-2-choco);
-  --text-3: var(--text-3-choco);
-  --surface-1: var(--surface-1-choco);
-  --surface-2: var(--surface-2-choco);
-  --surface-3: var(--surface-3-choco);
-  --surface-4: var(--surface-4-choco);
-  --surface-shadow: var(--surface-shadow-choco);
-  --shadow-strength: var(--shadow-strength-choco);
+  /* choco */
+  --brand-hue: 25;
+  --brand: var(--choco-5);
+  --text-1: var(--choco-1);
+  --text-2: var(--choco-2);
+  --text-3: var(--choco-3);
+  --surface-1: var(--choco-12);
+  --surface-2: var(--choco-11);
+  --surface-3: var(--choco-10);
+  --surface-4: var(--choco-9);
+  --shadow-color: 25deg 65% 11%;
+  --shadow-strength: 50%;
 }

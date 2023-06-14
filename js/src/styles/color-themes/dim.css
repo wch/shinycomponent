@@ -1,33 +1,18 @@
 @import "gray-hsl.css";
 
-:where(html) {
-  /* dim */
-  --brand-dim-hue: 31;
-  --brand-dim: var(--orange-4);
-  --text-1-dim: var(--gray-2);
-  --text-2-dim: var(--gray-3);
-  --text-3-dim: var(--gray-4);
-  --surface-1-dim: var(--gray-9);
-  --surface-2-dim: var(--gray-8);
-  --surface-3-dim: var(--gray-7);
-  --surface-4-dim: var(--gray-6);
-  --surface-shadow-dim: var(--gray-9-hsl);
-  --shadow-strength-dim: 20%;
-}
-
 :root:has([choice="dim"]),
 html[color-scheme="dim"] {
   color-scheme: dark;
 
-  --brand-hue: var(--brand-dim-hue);
-  --brand: var(--brand-dim);
-  --text-1: var(--text-1-dim);
-  --text-2: var(--text-2-dim);
-  --text-3: var(--text-3-dim);
-  --surface-1: var(--surface-1-dim);
-  --surface-2: var(--surface-2-dim);
-  --surface-3: var(--surface-3-dim);
-  --surface-4: var(--surface-4-dim);
-  --surface-shadow: var(--surface-shadow-dim);
-  --shadow-strength: var(--shadow-strength-dim);
+  --brand-hue: 31;
+  --brand: var(--orange-4);
+  --text-1: var(--gray-2);
+  --text-2: var(--gray-3);
+  --text-3: var(--gray-4);
+  --surface-1: var(--gray-9);
+  --surface-2: var(--gray-8);
+  --surface-3: var(--gray-7);
+  --surface-4: var(--gray-6);
+  --shadow-color: var(--gray-9-hsl);
+  --shadow-strength: 20%;
 }

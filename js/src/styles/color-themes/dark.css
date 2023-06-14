@@ -11,7 +11,7 @@
     --surface-2-dark: var(--gray-11);
     --surface-3-dark: var(--gray-10);
     --surface-4-dark: var(--gray-9);
-    --surface-shadow-dark: var(--gray-12-hsl);
+    --shadow-color-dark: var(--gray-12-hsl);
     --shadow-strength-dark: 80%;
 }
 
@@ -29,7 +29,7 @@
     --surface-2: var(--surface-2-dark);
     --surface-3: var(--surface-3-dark);
     --surface-4: var(--surface-4-dark);
-    --surface-shadow: var(--surface-shadow-dark);
+    --shadow-color: var(--shadow-color-dark);
     --shadow-strength: var(--shadow-strength-dark);
   }
 }
@@ -46,6 +46,6 @@ html[color-scheme="dark"] {
   --surface-2: var(--surface-2-dark);
   --surface-3: var(--surface-3-dark);
   --surface-4: var(--surface-4-dark);
-  --surface-shadow: var(--surface-shadow-dark);
+  --shadow-color: var(--shadow-color-dark);
   --shadow-strength: var(--shadow-strength-dark);
 }
