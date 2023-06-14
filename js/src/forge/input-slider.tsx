@@ -74,7 +74,7 @@ const css = `
   border-radius: 50%;
   outline: 0;
   border: var(--rail-thickness) solid currentColor;
-  background-color: #fff;
+  background-color: var(--thumb-color, var(--surface-1));
 }
 
 .${sliderClasses.thumb}:hover, .${sliderClasses.thumb}.${sliderClasses.focusVisible} {
