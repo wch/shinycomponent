@@ -81,14 +81,6 @@ general_output <- function(id, ...) {
   )
 }
 
-#' @export
-star_rating <- function(id, ...) {
-  tagList(
-    component_dep(),
-    tag("star-rating", list(id = id, ...))
-  )
-}
-
 
 #' @export
 theme_chooser <- function(...) {
