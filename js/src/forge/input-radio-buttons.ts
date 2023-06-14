@@ -23,13 +23,11 @@ export class ForgeInputRadioButtons
     css`
       ::slotted(sl-radio.inline) {
         display: inline-block;
-
-        /* TODO: Fix precedence so this rule gets used. */
-        margin-right: var(--sl-spacing-small);
+        margin-inline-end: var(--size-xs);
       }
 
       ::slotted(sl-radio) {
-        margin-bottom: var(--sl-spacing-3x-small);
+        margin-block-end: var(--size-xxs);
       }
     `,
   ];
