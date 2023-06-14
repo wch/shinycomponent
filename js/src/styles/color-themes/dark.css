@@ -1,23 +1,23 @@
 @import "gray-hsl.css";
 
 :where(html) {
-    /* dark */
-    --brand-dark-hue: 32;
-    --brand-dark: var(--orange-3);
-    --text-1-dark: var(--gray-3);
-    --text-2-dark: var(--gray-5);
-    --text-3-dark: var(--gray-7);
-    --surface-1-dark: var(--gray-12);
-    --surface-2-dark: var(--gray-11);
-    --surface-3-dark: var(--gray-10);
-    --surface-4-dark: var(--gray-9);
-    --shadow-color-dark: var(--gray-12-hsl);
-    --shadow-strength-dark: 80%;
+  /* dark */
+  --brand-dark-hue: 32;
+  --brand-dark: var(--orange-3);
+  --text-1-dark: var(--gray-3);
+  --text-2-dark: var(--gray-5);
+  --text-3-dark: var(--gray-7);
+  --surface-1-dark: var(--gray-12);
+  --surface-2-dark: var(--gray-11);
+  --surface-3-dark: var(--gray-10);
+  --surface-4-dark: var(--gray-9);
+  --shadow-color-dark: var(--gray-12-hsl);
+  --shadow-strength-dark: 80%;
 }
 
-
+:root:has([choice="dark"]),
 html[color-scheme="dark"] {
-    color-scheme: dark;
+  color-scheme: dark;
 
   --brand-hue: var(--brand-dark-hue);
   --brand: var(--brand-dark);
