@@ -34,6 +34,7 @@ jobs:
           cd js
           npm install
           npm run build
+          npm run build-styles
 
       - name: Build Python package
         run: |
