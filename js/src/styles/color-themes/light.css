@@ -25,8 +25,8 @@
   --brand-light: var(--posit-blue);
   --brand-light-hue: var(--posit-blue-h);
   --text-1-light: var(--posit-gray);
-  --text-2-light: color-mix(in srgb, var(--posit-gray) 82%, white);
-  --text-3-light: color-mix(in srgb, var(--posit-gray) 70%, white);
+  --text-2-light: hsl(var(--posit-gray-h) var(--posit-gray-s) 30%);
+  --text-3-light: hsl(var(--posit-gray-h) var(--posit-gray-s) 35%);
   --surface-1-light: var(--gray-0);
   --surface-2-light: var(--gray-1);
   --surface-3-light: var(--gray-2);
