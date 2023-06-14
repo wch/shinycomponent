@@ -294,6 +294,11 @@ section.token-card.shadow-l {
 
 /* Demo code */
 
+.background h3 {
+  margin: 0;
+  padding: 0;
+}
+
 section.level2[data-section="example-component"] > section:first-of-type h3 {
   margin-block-start: 0;
 }
@@ -308,11 +313,6 @@ section.level2[data-section="example-component"] > section:first-of-type h3 {
   place-content: center;
   box-shadow: var(--inner-shadow-2);
   margin-block: var(--size-m);
-}
-
-.background h3 {
-  margin: 0;
-  padding: 0;
 }
 
 .my-card {

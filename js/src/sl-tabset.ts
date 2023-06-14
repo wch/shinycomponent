@@ -13,9 +13,9 @@ export class SlTabset extends Tabset {
   static styles = css`
     :host {
       /* This is where all the variables are defined. If the user wants to
-      update something they just have to replace the main variable and it
-      doesn't cascade down to other elements
-    */
+update something they just have to replace the main variable and it
+doesn't cascade down to other elements
+*/
       --_main-bg: var(--main-bg, var(--sl-color-neutral-50));
       --_main-color: var(--main-color, var(--sl-color-neutral-950));
       --_sidebar-bg: var(--sidebar-bg, var(--sl-color-neutral-200));

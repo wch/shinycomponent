@@ -25,9 +25,9 @@ export class Tabset
   static styles = css`
     :host {
       /* This is where all the variables are defined. If the user wants to
-      update something they just have to replace the main variable and it
-      doesn't cascade down to other elements
-    */
+update something they just have to replace the main variable and it
+doesn't cascade down to other elements
+*/
       --_font: var(--font-family, sans-serif);
       --_main-bg: var(--main-bg, var(--color-bg));
       --_main-color: var(--main-color, var(--color-text));

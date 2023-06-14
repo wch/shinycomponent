@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-standard",
+  "ignoreFiles": ["node_modules/**/*", "src/styles/theming-readme_files"],
   "overrides": [
     {
       "files": ["*.js", "*.ts"],
@@ -10,6 +11,7 @@
     "property-no-vendor-prefix": null,
     "color-no-hex": true,
     "custom-property-pattern": null,
+    "selector-class-pattern": null,
     "import-notation": "string"
   }
 }
