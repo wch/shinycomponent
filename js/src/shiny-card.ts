@@ -19,11 +19,15 @@ export class ShinyCard extends LitElement {
       display: flex;
       flex-direction: column;
 
+      --card-padding: var(--item-padding, var(--size-m));
+      --card-radius: var(--item-radius, var(--radius-m));
+      --child-radius: var(--radius-s);
+
       ${themePrimitives.surface_1}
 
       border: var(--border-standard);
-      border-radius: var(--item-radius, var(--radius-m));
-      padding: var(--item-padding, var(--size-m));
+      border-radius: var(--card-radius);
+      padding: var(--card-padding);
       gap: var(--item-padding, var(--size-s));
       overflow: auto;
     }
@@ -40,6 +44,8 @@ export class ShinyCard extends LitElement {
 
     ::slotted(*) {
       flex: 1;
+      border-radius: var(--child-radius);
+      overflow: hidden;
     }
 
     * {
