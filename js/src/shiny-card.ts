@@ -28,6 +28,7 @@ export class ShinyCard extends LitElement {
       border: var(--border-standard);
       border-radius: var(--card-radius);
       overflow: hidden;
+      display: block;
     }
 
     .contents {
