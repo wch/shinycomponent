@@ -28,10 +28,10 @@ export class Sidebar extends LitElement {
       --closed-content-overflow: hidden;
       --closed-content-padding: 0;
       --open-width: var(--sidebar-width, 30vw);
-      --closed-width: fit-content;
+      --closed-width: calc(4 * var(--padding));
 
       /* Default settings */
-      --transition: var(--speed-normal) var(--ease-3);
+      --transition: var(--speed-fast) var(--ease-3);
       --padding: var(--size-m);
       --sidebar-content-columns: var(--open-content-columns);
       --sidebar-content-height: var(--open-content-height);
@@ -46,20 +46,18 @@ export class Sidebar extends LitElement {
 
     @container (max-width: 700px) {
       :host {
-        width: calc(4 * var(--padding));
+        width: var(--closed-width);
         z-index: 10;
 
         --open-width: var(--sidebar-width, var(--size-content-2));
       }
 
       .content {
-        /* background-color: pink; */
+        /* When on small screens we want the sidebar to slide over the main
+              content rather than pushing it out of the way */
         position: absolute;
         box-shadow: var(--shadow-m);
       }
-
-      /* When on small screens we want the sidebar to slide over the main
-      content rather than pushing it out of the way */
     }
 
     :host([closed]) {
@@ -68,6 +66,7 @@ export class Sidebar extends LitElement {
       --sidebar-content-gap: var(--closed-content-gap);
       --sidebar-content-overflow: var(--closed-content-overflow);
 
+      width: var(--closed-width);
       cursor: e-resize;
     }
 
