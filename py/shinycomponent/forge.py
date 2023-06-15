@@ -301,7 +301,7 @@ ex_www_path = PurePath(__file__).parent / "www"
 def forge_dep() -> list[HTMLDependency]:
     return [
         *open_props_theme_dep(),
-        *shoelace_adapter_dep(),
+        # *shoelace_adapter_dep(),
         HTMLDependency(
             name="forge",
             version=__version__,
@@ -309,14 +309,13 @@ def forge_dep() -> list[HTMLDependency]:
                 "package": "shinycomponent",
                 "subdir": str(ex_www_path),
             },
-            # stylesheet=[
-            #     {"href": "forge.css"},
-            # ],
             script={"src": "forge.js", "type": "module"},
         ),
     ]
 
 
+# This is currently bundled into shiny-theme.css, so typically no need to include
+# separately.
 def shoelace_adapter_dep() -> list[HTMLDependency]:
     return [
         *open_props_theme_dep(),
