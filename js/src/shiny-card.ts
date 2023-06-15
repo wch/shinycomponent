@@ -15,18 +15,23 @@ export class ShinyCard extends LitElement {
   // via CSS custom properties.
   static styles = css`
     :host {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-
       --card-padding: var(--item-padding, var(--size-m));
       --card-radius: var(--item-radius, var(--radius-m));
       --child-radius: var(--radius-s);
+
+      height: 100%;
 
       ${themePrimitives.surface_1}
 
       border: var(--border-standard);
       border-radius: var(--card-radius);
+      overflow: hidden;
+    }
+
+    .contents {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
       padding: var(--card-padding);
       gap: var(--item-padding, var(--size-s));
       overflow: auto;
@@ -36,7 +41,7 @@ export class ShinyCard extends LitElement {
       ${themePrimitives.fancy_shadow}
     }
 
-    :host([centercontent]) {
+    :host([centercontent]) .contents {
       display: grid;
       place-content: center;
       overflow: auto;
@@ -54,7 +59,7 @@ export class ShinyCard extends LitElement {
   `;
 
   render() {
-    return html`<slot></slot>`;
+    return html`<div class="contents"><slot></slot></div>`;
   }
 }
 customElements.define("shiny-card", ShinyCard);
