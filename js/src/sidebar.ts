@@ -21,18 +21,18 @@ export class Sidebar extends LitElement {
       --closed-content-columns: auto 0;
       --open-content-height: auto;
       --closed-content-height: var(--size-xxl);
-      --open-content-gap: var(--size-m);
+      --open-content-gap: var(--padding);
+      --open-content-padding: var(--padding);
       --closed-content-gap: 0;
       --open-content-overflow: auto;
       --closed-content-overflow: hidden;
-      --open-content-padding: var(--size-m);
       --closed-content-padding: 0;
       --open-width: var(--sidebar-width, 30vw);
       --closed-width: fit-content;
 
       /* Default settings */
       --transition: var(--speed-normal) var(--ease-3);
-      --padding: var(--open-content-padding);
+      --padding: var(--size-m);
       --sidebar-content-columns: var(--open-content-columns);
       --sidebar-content-height: var(--open-content-height);
       --sidebar-content-gap: var(--open-content-gap);
@@ -42,6 +42,24 @@ export class Sidebar extends LitElement {
       display: flex;
       flex-direction: column;
       gap: var(--padding);
+    }
+
+    @container (max-width: 700px) {
+      :host {
+        width: calc(4 * var(--padding));
+        z-index: 10;
+
+        --open-width: var(--sidebar-width, var(--size-content-2));
+      }
+
+      .content {
+        /* background-color: pink; */
+        position: absolute;
+        box-shadow: var(--shadow-m);
+      }
+
+      /* When on small screens we want the sidebar to slide over the main
+      content rather than pushing it out of the way */
     }
 
     :host([closed]) {
@@ -62,6 +80,7 @@ export class Sidebar extends LitElement {
       transition: width var(--transition), padding var(--transition);
       display: flex;
       flex-direction: column;
+      background-color: var(--surface-2);
     }
 
     :host([closed]) .content {
@@ -153,13 +172,13 @@ export class Sidebar extends LitElement {
     return html`
       <div class="content" style="--sidebar-width: ${this.openWidthPx}px;">
         <slot></slot>
-      </div>
-      <div
-        @click=${this.handleToggleBtnClick}
-        title=${this.closed ? "Open sidebar" : "Close sidebar"}
-        class="open-toggle"
-      >
-        <div class="toggle-icon">❮</div>
+        <div
+          @click=${this.handleToggleBtnClick}
+          title=${this.closed ? "Open sidebar" : "Close sidebar"}
+          class="open-toggle"
+        >
+          <div class="toggle-icon">❮</div>
+        </div>
       </div>
     `;
   }
