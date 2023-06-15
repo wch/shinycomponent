@@ -11,12 +11,31 @@ export class Sidebar extends LitElement {
   // on the main page or in other components. Styling API can be exposed
   // via CSS custom properties.
   static styles = css`
+    * {
+      box-sizing: border-box;
+    }
+
     :host {
+      /* Define open and closed state variables */
+      --open-content-columns: auto 1fr;
+      --closed-content-columns: auto 0;
+      --open-content-height: auto;
+      --closed-content-height: var(--size-xxl);
+      --open-content-gap: var(--size-m);
+      --closed-content-gap: 0;
+      --open-content-overflow: auto;
+      --closed-content-overflow: hidden;
+      --open-content-padding: var(--size-m);
+      --closed-content-padding: 0;
+      --open-width: var(--sidebar-width, 30vw);
+      --closed-width: fit-content;
+
+      /* Default settings */
       --transition: var(--speed-normal) var(--ease-3);
-      --padding: var(--size-m);
-      --sidebar-content-columns: auto 1fr;
-      --sidebar-content-height: auto;
-      --sidebar-content-gap: var(--size-m);
+      --padding: var(--open-content-padding);
+      --sidebar-content-columns: var(--open-content-columns);
+      --sidebar-content-height: var(--open-content-height);
+      --sidebar-content-gap: var(--open-content-gap);
 
       height: 100%;
       position: relative;
@@ -26,16 +45,12 @@ export class Sidebar extends LitElement {
     }
 
     :host([closed]) {
-      --sidebar-content-columns: auto 0;
-      --sidebar-content-height: var(--size-xxl);
-      --sidebar-content-gap: 0;
-      --sidebar-content-overflow: hidden;
+      --sidebar-content-columns: var(--closed-content-columns);
+      --sidebar-content-height: var(--closed-content-height);
+      --sidebar-content-gap: var(--closed-content-gap);
+      --sidebar-content-overflow: var(--closed-content-overflow);
 
       cursor: e-resize;
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     .content {
@@ -43,14 +58,14 @@ export class Sidebar extends LitElement {
       overflow: auto;
       margin: 0;
       padding-inline: var(--padding);
-      width: var(--sidebar-width, 30vw);
+      width: var(--open-width);
       transition: width var(--transition), padding var(--transition);
       display: flex;
       flex-direction: column;
     }
 
     :host([closed]) .content {
-      width: fit-content;
+      width: var(--closed-width);
     }
 
     .content > ::slotted(hr) {
@@ -111,6 +126,27 @@ export class Sidebar extends LitElement {
   handleToggleBtnClick(e: MouseEvent) {
     e.stopPropagation();
     this.toggleClosed();
+  }
+
+  autoCollapseOnSmallScreens() {
+    // Check if the container is smaller than 700px and set the state to closed if it is
+    const mediaQuery = window.matchMedia("(max-width: 700px)");
+
+    // If the user resizes the screen smaller this will auto-collapse the
+    // sidebar. It will _not_ auto-open it when it gets bigger because that
+    // would be annoying if you had manually closed the sidebar
+    const handleMediaQuery = (e: MediaQueryList | MediaQueryListEvent) => {
+      if (e.matches) {
+        this.closed = true;
+      }
+    };
+    mediaQuery.addEventListener("change", handleMediaQuery);
+    handleMediaQuery(mediaQuery);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.autoCollapseOnSmallScreens();
   }
 
   render() {
