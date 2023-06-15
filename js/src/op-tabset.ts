@@ -1,4 +1,5 @@
 import { css, html } from "lit";
+import { customElement } from "lit/decorators.js";
 import { makeInputBinding } from "./make-input-binding";
 import { themePrimitives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
@@ -7,6 +8,7 @@ import { Tabset } from "./tabset";
  * Special version of the tabset that's styled using open-props instead of our custom tokens
  */
 
+@customElement("shiny-op-tabset")
 export class OpTabset extends Tabset {
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -25,6 +27,8 @@ doesn't cascade down to other elements
       box-sizing: border-box;
 
       ${themePrimitives.surface_3}
+
+      container-type: size;
     }
 
     .tabset {
@@ -44,9 +48,12 @@ doesn't cascade down to other elements
       min-height: 0;
     }
 
-    .header,
-    .footer,
     .sidebar {
+      z-index: 3;
+    }
+
+    .header,
+    .footer {
       z-index: 2;
     }
 
@@ -166,8 +173,6 @@ doesn't cascade down to other elements
     `;
   }
 }
-
-customElements.define("shiny-op-tabset", OpTabset);
 
 makeInputBinding("shiny-op-tabset");
 
