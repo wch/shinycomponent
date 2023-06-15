@@ -181,8 +181,6 @@ export class ForgeInputSlider
     if (this.hasAttribute("marks"))
       this.marks = JSON.parse(this.getAttribute("marks") || "");
 
-    console.log(this.marks);
-
     this.currentValue = this.value;
   }
 
