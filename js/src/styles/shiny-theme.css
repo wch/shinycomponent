@@ -58,11 +58,11 @@ override styles from our reset layer */
   --font-size-s: var(--font-size-0);
   --font-size-m: var(--font-size-2);
   --font-size-l: var(--font-size-4);
-  --font-size-h1: var(--font-size-8);
-  --font-size-h2: var(--font-size-6);
-  --font-size-h3: var(--font-size-5);
-  --font-size-h4: var(--font-size-4);
-  --font-size-h5: var(--font-size-3);
+  --font-size-h1: var(--font-size-fluid-2);
+  --font-size-h2: var(--font-size-fluid-1);
+  --font-size-h3: calc(var(--font-size-fluid-1) / 1.25));
+  --font-size-h4: calc(var(--font-size-fluid-1) / 1.5));
+  --font-size-h5: calc(var(--font-size-fluid-1) / 2));
 
   /* Weights */
   --font-weight-headings: var(--font-weight-3);

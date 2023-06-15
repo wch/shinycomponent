@@ -30,7 +30,8 @@ export class Section extends LitElement {
     }
 
     .icon {
-      font-size: var(--font-size-h3);
+      font-size: var(--size-l);
+      text-align: center;
     }
 
     .content > ::slotted(h2) {
