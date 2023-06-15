@@ -14,12 +14,14 @@ export class ShinyCard extends LitElement {
   // on the main page or in other components. Styling API can be exposed
   // via CSS custom properties.
   static styles = css`
+    * {
+      box-sizing: border-box;
+    }
+
     :host {
       --card-padding: var(--item-padding, var(--size-m));
       --card-radius: var(--item-radius, var(--radius-m));
       --child-radius: var(--radius-s);
-
-      height: 100%;
 
       ${themePrimitives.surface_1}
 
@@ -29,7 +31,9 @@ export class ShinyCard extends LitElement {
     }
 
     .contents {
-      height: 100%;
+      /* For some reason this prevents scrollbars from appearing when they arent
+      needed on wide contents... I wish there was a more satisfying solution */
+      height: 99.999%;
       display: flex;
       flex-direction: column;
       padding: var(--card-padding);
@@ -51,10 +55,6 @@ export class ShinyCard extends LitElement {
       flex: 1;
       border-radius: var(--child-radius);
       overflow: hidden;
-    }
-
-    * {
-      box-sizing: border-box;
     }
   `;
 
