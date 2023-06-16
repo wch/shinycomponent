@@ -1,4 +1,5 @@
 @import "gray-hsl.css";
+@import "open-props/colors-hsl";
 
 :root:has([choice="dim"]),
 [data-shinytheme="dim"],
@@ -6,6 +7,7 @@ html[color-scheme="dim"] {
   color-scheme: dark;
 
   --brand-hue: 31;
+  --brand-hsl: var(--orange-4-hsl);
   --brand: var(--orange-4);
   --text-1: var(--gray-2);
   --text-2: var(--gray-3);

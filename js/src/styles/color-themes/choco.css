@@ -21,6 +21,7 @@ html[color-scheme="choco"] {
 
   /* choco */
   --brand-hue: 25;
+  --brand-hsl: var(--choco-5-hsl);
   --brand: var(--choco-5);
   --text-1: var(--choco-1);
   --text-2: var(--choco-2);

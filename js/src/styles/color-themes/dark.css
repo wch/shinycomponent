@@ -3,6 +3,7 @@
 :where(html) {
   /* dark */
   --brand-dark-hue: 32;
+  --brand-dark-hsl: var(--orange-3-hsl);
   --brand-dark: var(--orange-3);
   --text-1-dark: var(--gray-3);
   --text-2-dark: var(--gray-5);
@@ -20,6 +21,7 @@ html[color-scheme="dark"] {
   color-scheme: dark;
 
   --brand-hue: var(--brand-dark-hue);
+  --brand-hsl: var(--brand-dark-hsl);
   --brand: var(--brand-dark);
   --text-1: var(--text-1-dark);
   --text-2: var(--text-2-dark);

@@ -1,9 +1,12 @@
+@import "open-props/colors-hsl";
+
 [data-shinytheme="grape"],
 html[color-scheme="grape"] {
   color-scheme: light;
 
   --purple-12-hsl: 288 55% 20%;
   --brand-hue: 288;
+  --brand-hsl: var(--purple-5-hsl);
   --brand: var(--purple-5);
   --text-1: var(--purple-9);
   --text-2: var(--purple-7);

@@ -22,6 +22,7 @@
   );
 
   /* Brand colors */
+  --brand-hsl: var(--posit-blue-h) var(--posit-blue-s) var(--posit-blue-l);
   --brand-light: var(--posit-blue);
   --brand-light-hue: var(--posit-blue-h);
   --text-1-light: var(--posit-gray);
