@@ -44,12 +44,18 @@ app_ui = sc.page(
                         password=True,
                         pill=True,
                     ),
+                    sc.forge.input_text(
+                        id="text5",
+                        label="Update on Enter or lost focus",
+                        wait_for_enter=True,
+                    ),
                 ),
                 sc.grid_item(
                     sc.forge.output_text_verbatim("out_text1"),
                     sc.forge.output_text_verbatim("out_text2"),
                     sc.forge.output_text_verbatim("out_text3"),
                     sc.forge.output_text_verbatim("out_text4"),
+                    sc.forge.output_text_verbatim("out_text5"),
                 ),
                 nCols=2,
                 nRows=1,
@@ -80,9 +86,10 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_text_area(
                         id="textarea4",
-                        label="1 row, auto resize",
+                        label="1 row, auto resize, update on Enter or lost focus",
                         rows=1,
                         resize="auto",
+                        wait_for_enter=True,
                     ),
                 ),
                 sc.grid_item(
@@ -124,8 +131,9 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_number(
                         id="number4",
-                        label="Pill",
+                        label="Pill, update on Enter or lost focus",
                         pill=True,
+                        wait_for_enter=True,
                     ),
                 ),
                 sc.grid_item(
@@ -413,7 +421,7 @@ app_ui = sc.page(
 
 
 def server(input: Inputs, output: Outputs, session: Session):
-    for i in range(4):
+    for i in range(5):
         make_output(input[f"text{i+1}"], f"out_text{i+1}", output)
 
     for i in range(4):
