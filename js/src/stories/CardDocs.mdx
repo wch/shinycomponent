@@ -5,9 +5,11 @@ import { ShinyCard } from "../shiny-card";
 
 <Meta of={CardStories} />
 
-## Stories
+All the card examples in this page have the same height as imposed by their containing element.
 
-### Primary
+## Simple
+
+Just a card with a title and a plot. The plot will stretch to fill remaining space.
 
 ```
 card(
@@ -18,11 +20,46 @@ card(
 
 <Story of={CardStories.primary} />
 
+## Sized plot
+
+When the plot is given a height value, then it will always stick to that height even if it doesn't fill the card.
+
 ```
 card(
-  h3("Baz"),
+  h3("Bar"),
   plot(height=300)
 )
 ```
 
 <Story of={CardStories.b} />
+
+## Turning off flex behavior
+
+When `noFill` is set to `True`, then elements that would normally flex, will go to their default size (if none is specified).
+
+```
+card(
+  noFill=True,
+  card_header("I am a header"),
+  plot(),
+  card_footer("I am a footer"),
+)
+```
+
+<Story of={CardStories.c} />
+
+## Overflowing content
+
+When a card is filled with more content than there is space, it will scroll. If a header and footer are added, they will remain fixed in place.
+
+```
+card(
+  card_header("I am a header"),
+  plot(height=250),
+  p(...),
+  plot(height=350),
+  card_footer("I am a footer"),
+)
+```
+
+<Story of={CardStories.d} />

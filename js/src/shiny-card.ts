@@ -1,14 +1,13 @@
 import { LitElement, css, html } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import { setElAttr } from "./set_el_attr";
 import { themePrimitives } from "./styles/op-classes";
 
+@customElement("shiny-card")
 export class ShinyCard extends LitElement {
-  shadowed: boolean = false;
-  centercontent: boolean = false;
-
-  static properties = {
-    shadowed: { type: Boolean },
-    centercontent: { type: Boolean, reflect: true },
-  };
+  @property({ type: Boolean }) shadowed: boolean = false;
+  @property({ type: Boolean, reflect: true }) centercontent: boolean = false;
+  @property({ type: Boolean, reflect: true }) nofill: boolean = false;
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -33,14 +32,38 @@ export class ShinyCard extends LitElement {
     }
 
     .contents {
+      display: flex;
+      flex-direction: column;
+      height: 99.999%;
+    }
+
+    .body {
+      --spacing: var(--item-padding, var(--size-s));
+
       /* For some reason this prevents scrollbars from appearing when they arent
       needed on wide contents... I wish there was a more satisfying solution */
-      height: 99.999%;
       display: flex;
       flex-direction: column;
       padding: var(--card-padding);
-      gap: var(--item-padding, var(--size-s));
+      gap: var(--spacing);
       overflow: auto;
+    }
+
+    :host([nofill]) .body {
+      display: block;
+    }
+
+    ::slotted(*) {
+      margin: 0;
+    }
+
+    /* Need to set all children as block display to keep behavior similar to flex */
+    :host([nofill]) .body > ::slotted(*) {
+      display: block;
+    }
+
+    .footer {
+      margin-block-start: auto;
     }
 
     :host([shadowed]) {
@@ -52,6 +75,44 @@ export class ShinyCard extends LitElement {
       place-content: center;
       overflow: auto;
     }
+  `;
+
+  render() {
+    return html`<div class="contents">
+      <div class="header">
+        <slot name="header"></slot>
+      </div>
+      <div class="body">
+        <slot></slot>
+      </div>
+      <div class="footer">
+        <slot name="footer"></slot>
+      </div>
+    </div>`;
+  }
+}
+
+export class ShinyCardSlot extends LitElement {
+  static styles = css`
+    * {
+      box-sizing: border-box;
+    }
+
+    :host {
+      --card-padding: var(--item-padding, var(--size-m));
+
+      display: block;
+      padding-inline: var(--card-padding);
+      padding-block: var(--card-padding);
+    }
+
+    :host([slot="header"]) {
+      border-bottom: var(--border-standard);
+    }
+
+    :host([slot="footer"]) {
+      border-top: var(--border-standard);
+    }
 
     ::slotted(*) {
       margin: 0;
@@ -59,7 +120,22 @@ export class ShinyCard extends LitElement {
   `;
 
   render() {
-    return html`<div class="contents"><slot></slot></div>`;
+    return html`<slot></slot>`;
   }
 }
-customElements.define("shiny-card", ShinyCard);
+
+@customElement("shiny-card-header")
+export class ShinyCardHeader extends ShinyCardSlot {
+  constructor() {
+    super();
+    setElAttr(this, "slot", "header");
+  }
+}
+
+@customElement("shiny-card-footer")
+export class ShinyCardFooter extends ShinyCardSlot {
+  constructor() {
+    super();
+    setElAttr(this, "slot", "footer");
+  }
+}
