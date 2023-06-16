@@ -1,0 +1,58 @@
+import { Meta, Primary, Controls, Story } from "@storybook/blocks";
+import * as GridStories from "./Grid.stories";
+
+<Meta of={GridStories} />
+
+# Cards in grids and their filling behavior
+
+All the card examples in this page have the same height as imposed by their containing element.
+
+## Simple
+
+```
+grid(
+  card(
+    h3("Foo"),
+    plot()
+  ),
+  card(
+    h3("Bar"),
+    plot(height=150)
+  ),
+  card(
+    h3("Baz"),
+    plot(height=225)
+  ),
+  nCols=3
+)
+```
+
+<Story of={GridStories.a} />
+
+## Breaking out of height of row
+
+A card can be stopped from stretching to fill the container it is in if it is given a height of `"content"` or a numeric value representing pixel size can also be provided.
+
+```
+grid(
+  card(
+    h3("Foo"),
+    plot()
+  ),
+  card(
+    h3("Bar"),
+    plot(height=150),
+    height="content"
+  ),
+  card(
+    h3("Baz"),
+    plot(height=225),
+    height=400
+  ),
+  nCols=3
+)
+```
+
+<Story of={GridStories.b} />
+
+`"content"` is used due to it matching the [property used in flexbox itself to acheive this behavior.](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#syntax)
