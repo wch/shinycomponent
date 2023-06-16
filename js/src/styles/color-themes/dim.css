@@ -1,5 +1,5 @@
 @import "gray-hsl.css";
-@import "open-props/colors-hsl";
+@import "open-props/colors-hsl.min.css";
 
 :root:has([choice="dim"]),
 [data-shinytheme="dim"],

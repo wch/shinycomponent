@@ -1,4 +1,5 @@
 @import "gray-hsl.css";
+@import "open-props/colors-hsl.min.css";
 
 :where(html) {
   /* dark */
