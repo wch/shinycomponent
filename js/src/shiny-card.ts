@@ -8,6 +8,7 @@ export class ShinyCard extends LitElement {
   @property({ type: Boolean }) shadowed: boolean = false;
   @property({ type: Boolean, reflect: true }) centercontent: boolean = false;
   @property({ type: Boolean, reflect: true }) nofill: boolean = false;
+  @property() height?: "content" | number;
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -31,6 +32,16 @@ export class ShinyCard extends LitElement {
       flex: 1 1 auto;
     }
 
+    :host([height]) {
+      height: var(--card-h);
+      flex: 0 0 var(--card-h);
+    }
+
+    :host([height="content"]) {
+      height: fit-content;
+      flex-basis: content;
+    }
+
     .contents {
       display: flex;
       flex-direction: column;
@@ -47,6 +58,7 @@ export class ShinyCard extends LitElement {
       padding: var(--card-padding);
       gap: var(--spacing);
       overflow: auto;
+      flex: 1;
     }
 
     :host([nofill]) .body {
@@ -55,6 +67,14 @@ export class ShinyCard extends LitElement {
 
     ::slotted(*) {
       margin: 0;
+    }
+
+    /* Make block-layout slotted children stretch without neccesary needing to
+    specify it themselves. This will leave text alone etc. It's unclear if this
+    list should be expanded or not or if this is too strong of a selector but it
+    seems reasonable. */
+    ::slotted(:is(div, section)) {
+      flex: 1;
     }
 
     /* Need to set all children as block display to keep behavior similar to flex */
@@ -76,6 +96,14 @@ export class ShinyCard extends LitElement {
       overflow: auto;
     }
   `;
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    if (Number(this.height)) {
+      this.style.setProperty("--card-h", `${this.height}px`);
+    }
+  }
 
   render() {
     return html`<div class="contents">

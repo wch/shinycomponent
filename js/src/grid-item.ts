@@ -13,6 +13,8 @@ export class GridItem extends ShinyCard {
   connectedCallback() {
     super.connectedCallback();
 
+    // Let the grid control height for this card variant
+    this.style.removeProperty("--card-h");
     this.style.setProperty(
       "grid-area",
       `span ${this.height} / span ${this.width}`
