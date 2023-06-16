@@ -11,9 +11,8 @@
   --posit-blue-h: 209;
   --posit-blue-s: 38%;
   --posit-blue-l: 43%;
-  --posit-blue: hsl(
-    var(--posit-blue-h) var(--posit-blue-s) var(--posit-blue-l)
-  );
+  --posit-blue-hsl: var(--posit-blue-h) var(--posit-blue-s) var(--posit-blue-l);
+  --posit-blue: hsl(var(--posit-blue-hsl));
   --posit-orange-h: 16;
   --posit-orange-s: 85%;
   --posit-orange-l: 56%;
@@ -22,7 +21,7 @@
   );
 
   /* Brand colors */
-  --brand-hsl: var(--posit-blue-h) var(--posit-blue-s) var(--posit-blue-l);
+  --brand-light-hsl: var(--posit-blue-hsl);
   --brand-light: var(--posit-blue);
   --brand-light-hue: var(--posit-blue-h);
   --text-1-light: var(--posit-gray);
@@ -42,6 +41,7 @@ html[color-scheme="light"] {
   color-scheme: light;
 
   --brand-hue: var(--brand-light-hue);
+  --brand-hsl: var(--brand-light-hsl);
   --brand: var(--brand-light);
   --text-1: var(--text-1-light);
   --text-2: var(--text-2-light);
