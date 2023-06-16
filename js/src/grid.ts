@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 
 @customElement("shiny-grid")
 export class Grid extends LitElement {
-  @property({ type: Number }) nRows: number = 2;
+  @property({ type: Number }) nRows: number = 1;
   @property({ type: Number }) nCols: number = 2;
   @property({ type: String }) alignItems: string = "stretch";
 
