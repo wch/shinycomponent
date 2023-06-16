@@ -29,6 +29,7 @@ export class ShinyCard extends LitElement {
       border-radius: var(--card-radius);
       overflow: hidden;
       display: block;
+      flex: 1 1 auto;
     }
 
     .contents {
@@ -53,8 +54,7 @@ export class ShinyCard extends LitElement {
     }
 
     ::slotted(*) {
-      flex: 1;
-      border-radius: var(--child-radius);
+      margin: 0;
     }
   `;
 
