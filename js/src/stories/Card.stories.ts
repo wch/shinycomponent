@@ -1,51 +1,37 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 import { html } from "lit";
+import { OutputPlot } from "../output_plot";
 import { ShinyCard } from "../shiny-card";
 
 ShinyCard;
+OutputPlot;
 
-type CardProps = {
-  title: string;
-  shadowed: boolean;
-  centercontent: boolean;
-};
-/**
- * Primary UI component for user interaction
- */
-function card({ title, shadowed = true, centercontent = false }: CardProps) {
-  return html`
-    <div style="padding: var(--size-5);background-color: var(--surface-3);">
-      <shiny-card
-        ?shadowed=${shadowed}
-        ?centercontent=${centercontent}
-        style="max-width:400px;"
+const meta: Meta = {
+  component: "shiny-card",
+  decorators: [
+    (story) =>
+      html`<div
+        style="padding: var(--size-7);background-color: var(--surface-3);max-width:450px;height:550px; display: flex; flex-direction: column;"
       >
-        <h2>${title}</h2>
-        <p>Card Body</p>
-      </shiny-card>
-    </div>
-  `;
-}
-
-const meta = {
-  title: "Example/Card",
-  tags: ["autodocs"],
-  render: (x) => card(x),
-  argTypes: {},
-} satisfies Meta<CardProps>;
-
+        ${story()}
+      </div>`,
+  ],
+};
 export default meta;
-type Story = StoryObj<CardProps>;
+
+type Story = StoryObj;
 
 export const primary: Story = {
-  args: {
-    title: "Basic Card",
-  },
+  render: () => html`<shiny-card>
+    <h2>Foo</h2>
+    <output-plot> </output-plot>
+  </shiny-card>`,
 };
 
-export const noFill: Story = {
-  args: {
-    title: "Fillable Card",
-  },
+export const b: Story = {
+  render: () => html`<shiny-card>
+    <h2>Baz</h2>
+    <output-plot height="300"> </output-plot>
+  </shiny-card>`,
 };

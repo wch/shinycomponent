@@ -1,0 +1,28 @@
+import { Meta, Primary, Controls, Story } from "@storybook/blocks";
+import * as CardStories from "./Card.stories";
+import { OutputPlot } from "../output_plot";
+import { ShinyCard } from "../shiny-card";
+
+<Meta of={CardStories} />
+
+## Stories
+
+### Primary
+
+```
+card(
+  h3("Foo"),
+  plot()
+)
+```
+
+<Story of={CardStories.primary} />
+
+```
+card(
+  h3("Baz"),
+  plot(height=300)
+)
+```
+
+<Story of={CardStories.b} />
