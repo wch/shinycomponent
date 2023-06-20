@@ -40,9 +40,8 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_text(
                         id="text4",
-                        label="Password, password-toggle, pill",
-                        type="password",
-                        password_toggle=True,
+                        label="Password=True, pill",
+                        password=True,
                         pill=True,
                     ),
                     sc.forge.input_text(

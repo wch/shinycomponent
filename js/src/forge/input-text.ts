@@ -20,6 +20,14 @@ export class ForgeInputText
 
   onValueChange = makeValueChangeEmitter(this, this.id);
 
+  constructor() {
+    super();
+    if (this.hasAttribute("password")) {
+      this.type = "password";
+      this.passwordToggle = true;
+    }
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
 
