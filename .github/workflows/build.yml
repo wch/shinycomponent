@@ -107,6 +107,7 @@ jobs:
       - name: Build storybook
         run: |
           cd js/
+          npm ci
           npm run build-storybook
 
       - name: Move build artifacts to site dir
