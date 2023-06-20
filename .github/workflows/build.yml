@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -70,7 +69,6 @@ jobs:
 
           git push -f origin main-build:main-build
 
-
   # =====================================================
   # Build and deploy site
   # =====================================================
@@ -101,17 +99,28 @@ jobs:
             # any::reticulate
 
       - uses: quarto-dev/quarto-actions/setup@v2
-      - name: Build site
+      - name: Build design doc
         run: |
           cd js/src/styles
           quarto render *.qmd
+
+      - name: Build storybook
+        run: |
+          cd js/
+          npm run build-storybook
+
+      - name: Move build artifacts to site dir
+        run: |
+          mkdir -p site
+          cp -R js/src/styles site/style-guide
+          cp -R js/storybook-static site/storybook
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './js/src/styles'
+          path: "./site"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
