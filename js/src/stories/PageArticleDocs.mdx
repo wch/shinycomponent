@@ -1,0 +1,18 @@
+import { Meta, Primary, Controls, Story } from "@storybook/blocks";
+import * as PageArticleStories from "./PageArticle.stories";
+
+<Meta of={PageArticleStories} />
+
+# A non-fixed height article view
+
+```
+page_article(
+  h1("My cool app"),
+  p("Lorem ipsum dolor..."),
+  plot(),
+  p("Lorem ipsum dolor..."),
+  plot(height=150)
+)
+```
+
+<Story of={PageArticleStories.a} />
