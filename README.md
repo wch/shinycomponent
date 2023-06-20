@@ -8,7 +8,7 @@ This repository contains experiments with Shiny components for both R and Python
 The folders are organized as follows:
 
 - `r`: R package
-- `python`: Python package
+- `py`: Python package
 - `js`: TypeScript code for the component
 
 ## Using the component
