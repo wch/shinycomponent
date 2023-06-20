@@ -425,6 +425,46 @@ app_ui = sc.page(
             ),
             name="Radio",
         ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_date(
+                        id="date1",
+                        label="Basic",
+                    ),
+                    sc.forge.input_date(
+                        id="date2",
+                        label=ui.TagList(
+                            "Help text, starting value, ", ui.tags.b("bold label")
+                        ),
+                        help_text="This is some help text",
+                        value="2023-01-01",
+                    ),
+                    sc.forge.input_date(
+                        id="date3",
+                        label="min, max, starting value",
+                        value="2023-01-15",
+                        min="2023-01-10",
+                        max="2023-01-20",
+                    ),
+                    sc.forge.input_date(
+                        id="date4",
+                        label='Pill, size="small"',
+                        pill=True,
+                        size="small",
+                    ),
+                ),
+                sc.grid_item(
+                    sc.forge.output_text_verbatim("out_date1"),
+                    sc.forge.output_text_verbatim("out_date2"),
+                    sc.forge.output_text_verbatim("out_date3"),
+                    sc.forge.output_text_verbatim("out_date4"),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Date",
+        ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
     ),
 )
@@ -457,6 +497,9 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     for i in range(4):
         make_output(input[f"radio{i+1}"], f"out_radio{i+1}", output)
+
+    for i in range(4):
+        make_output(input[f"date{i+1}"], f"out_date{i+1}", output)
 
 
 def make_output(input_val: reactive.Value[object], out_label: str, output: Outputs):

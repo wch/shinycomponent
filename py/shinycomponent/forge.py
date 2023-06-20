@@ -71,6 +71,36 @@ def input_checkbox_group(
     )
 
 
+def input_date(
+    id: str,
+    label: TagChild,
+    value: str | None = None,
+    *args: TagChild | TagAttrs,
+    min: str | None = None,
+    max: str | None = None,
+    help_text: str | None = None,
+    size: Literal["small", "medium", "large"] | None = None,
+    pill: bool = False,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-date",
+        forge_dep(),
+        tags.div(label, slot="label") if (label is not None) else None,
+        *args,
+        id=id,
+        value=value,
+        min=min,
+        max=max,
+        help_text=help_text,
+        size=size,
+        pill=pill,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
+
+
 def input_slider(
     id: str,
     label: TagChild,

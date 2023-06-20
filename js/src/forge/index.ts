@@ -1,5 +1,6 @@
 import { ForgeInputCheckbox } from "./input-checkbox";
 import { ForgeInputCheckboxGroup } from "./input-checkbox-group";
+import { ForgeInputDate } from "./input-date";
 import { ForgeInputNumber } from "./input-number";
 import { ForgeInputRadioButtons } from "./input-radio-buttons";
 import { ForgeInputSelect } from "./input-select";
@@ -12,6 +13,7 @@ import { ForgeOutputTextVerbatim } from "./output-text-verbatim";
 // Prevent esbuild from tree-shaking these components away.
 ForgeInputCheckbox;
 ForgeInputCheckboxGroup;
+ForgeInputDate;
 ForgeInputNumber;
 ForgeInputRadioButtons;
 ForgeInputSelect;
