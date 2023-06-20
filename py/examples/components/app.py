@@ -465,6 +465,46 @@ app_ui = sc.page(
             ),
             name="Date",
         ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    sc.forge.input_time(
+                        id="time1",
+                        label="Basic",
+                    ),
+                    sc.forge.input_time(
+                        id="time2",
+                        label=ui.TagList(
+                            "Help text, starting value, ", ui.tags.b("bold label")
+                        ),
+                        help_text="This is some help text",
+                        value="09:00",
+                    ),
+                    sc.forge.input_time(
+                        id="time3",
+                        label="min, max, starting value",
+                        value="09:00",
+                        min="14:30",
+                        max="08:30",
+                    ),
+                    sc.forge.input_time(
+                        id="time4",
+                        label='Pill, size="small"',
+                        pill=True,
+                        size="small",
+                    ),
+                ),
+                sc.grid_item(
+                    sc.forge.output_text_verbatim("out_time1"),
+                    sc.forge.output_text_verbatim("out_time2"),
+                    sc.forge.output_text_verbatim("out_time3"),
+                    sc.forge.output_text_verbatim("out_time4"),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Time",
+        ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
     ),
 )
@@ -500,6 +540,9 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     for i in range(4):
         make_output(input[f"date{i+1}"], f"out_date{i+1}", output)
+
+    for i in range(4):
+        make_output(input[f"time{i+1}"], f"out_time{i+1}", output)
 
 
 def make_output(input_val: reactive.Value[object], out_label: str, output: Outputs):

@@ -8,6 +8,7 @@ import { ForgeInputSlider } from "./input-slider";
 import { ForgeInputSwitch } from "./input-switch";
 import { ForgeInputText } from "./input-text";
 import { ForgeInputTextArea } from "./input-text-area";
+import { ForgeInputTime } from "./input-time";
 import { ForgeOutputTextVerbatim } from "./output-text-verbatim";
 
 // Prevent esbuild from tree-shaking these components away.
@@ -21,4 +22,5 @@ ForgeInputSlider;
 ForgeInputSwitch;
 ForgeInputText;
 ForgeInputTextArea;
+ForgeInputTime;
 ForgeOutputTextVerbatim;
