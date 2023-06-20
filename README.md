@@ -2,6 +2,9 @@
 
 This repository contains experiments with Shiny components for both R and Python.
 
+* [Style Guidelines and Tokens](https://wch.github.io/shinycomponent/style-guide/theming-readme.html)
+* [Storybook for Shinycomponents](https://wch.github.io/shinycomponent/storybook/)
+
 The folders are organized as follows:
 
 - `r`: R package
