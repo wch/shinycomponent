@@ -20,6 +20,7 @@ export class ForgeInputNumber
   static styles: CSSResultGroup = [
     css`
       div.invalid {
+        outline-offset: -1px;
         outline: 3px solid var(--danger);
       }
     `,

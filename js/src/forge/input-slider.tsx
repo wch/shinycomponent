@@ -12,7 +12,7 @@ import { makeValueChangeEmitter } from "../make_value_change_emitter";
 // - Make slider rail look better in dark theme. Do we need a new entry in the
 //   theme, like --brand-semi-transparent?
 
-const css = `
+const css = /*css*/ `
 :host {
   --rail-thickness: 2px;
   --thumb-size: 16px;
@@ -75,14 +75,16 @@ const css = `
   outline: 0;
   border: var(--rail-thickness) solid currentColor;
   background-color: var(--thumb-color, var(--surface-1));
+  transition: box-shadow 0.1s linear;
 }
 
 .${sliderClasses.thumb}:hover, .${sliderClasses.thumb}.${sliderClasses.focusVisible} {
   box-shadow: 0 0 0 0.35rem hsl(var(--brand-hsl) / 15%);
 }
 
+/* Expand the halo while dragging. */
 .${sliderClasses.thumb}.${sliderClasses.active} {
-  box-shadow: 0 0 0 0.35rem hsla(var(--brand-hsl) / 15%);
+  box-shadow: 0 0 0 0.5rem hsla(var(--brand-hsl) / 15%);
 }
 
 .value-popup {

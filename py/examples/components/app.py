@@ -40,8 +40,9 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_text(
                         id="text4",
-                        label="Password, pill",
-                        password=True,
+                        label="Password, password-toggle, pill",
+                        type="password",
+                        password_toggle=True,
                         pill=True,
                     ),
                     sc.forge.input_text(
@@ -213,8 +214,8 @@ app_ui = sc.page(
                         id="slider1",
                         label="Basic",
                         min=0,
-                        max=100,
-                        value=20,
+                        max=5,
+                        value=2,
                     ),
                     sc.forge.input_slider(
                         id="slider2",
@@ -250,12 +251,22 @@ app_ui = sc.page(
                             {"value": 80, "label": "Eighty"},
                         ],
                     ),
+                    sc.forge.input_slider(
+                        id="slider5",
+                        label="step=True, custom marks",
+                        min=0,
+                        max=80,
+                        value=20,
+                        step=None,
+                        marks=[0, 10, 20, 40, 80],
+                    ),
                 ),
                 sc.grid_item(
                     sc.forge.output_text_verbatim("out_slider1"),
                     sc.forge.output_text_verbatim("out_slider2"),
                     sc.forge.output_text_verbatim("out_slider3"),
                     sc.forge.output_text_verbatim("out_slider4"),
+                    sc.forge.output_text_verbatim("out_slider5"),
                 ),
                 nCols=2,
                 nRows=1,
@@ -433,7 +444,7 @@ def server(input: Inputs, output: Outputs, session: Session):
     for i in range(4):
         make_output(input[f"select{i+1}"], f"out_select{i+1}", output)
 
-    for i in range(4):
+    for i in range(5):
         make_output(input[f"slider{i+1}"], f"out_slider{i+1}", output)
 
     for i in range(3):

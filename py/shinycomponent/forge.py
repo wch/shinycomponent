@@ -79,7 +79,7 @@ def input_slider(
     value: float | Iterable[float],
     *args: TagChild | TagAttrs,
     step: float | None = None,
-    marks: bool | list[dict[str, float | str]] | None = None,
+    marks: bool | list[float] | list[dict[str, float | str]] | None = None,
     debounce: int | None = None,
     _add_ws: bool = True,
     **kwargs: TagAttrValue,
