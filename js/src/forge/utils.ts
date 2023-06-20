@@ -30,3 +30,13 @@ export function unescapeSpaces(str: string): string {
 
   return unescaped;
 }
+
+/**
+ * Returns true if the given object is a plain Object, like {a: 1, b: 2}.
+ * Returns false for arrays, functions, and other non-plain-Objects, as well
+ * as strings, numbers, null, undefined.
+ *
+ */
+export function isPlainObject(x: object): boolean {
+  return !!x && x.constructor === Object;
+}

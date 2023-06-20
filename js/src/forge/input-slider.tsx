@@ -7,6 +7,7 @@ import {
   makeInputBinding,
 } from "../make-input-binding";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
+import { isPlainObject } from "./utils";
 
 // TODO:
 // - Make slider rail look better in dark theme. Do we need a new entry in the
@@ -147,8 +148,30 @@ const css = /*css*/ `
 
 type RichMark = {
   value: number;
-  label?: string;
+  label: string;
 };
+
+// Interactions between step and marks:
+// - No marks, steps at regular intervals - default to 1
+//     step=1 (default)
+// - Marks at regular intervals, steps at same intervals
+//     marks=True, step=5
+// - Marks at uneven intervals, steps at same uneven intervals
+//     marks=[1,2,4,8], step=True
+// - Marks at uneven intervals, steps at same uneven intervals, custom labels
+//     marks=[{value:1, label:"one"}, {value:2, label:"two"}], step=True
+//     marks={"one": 1, "two": 2, "four": 4, "eight": 8}, step=True
+//
+// How would we implement exponential/logarithmic slider?
+// - One answer is to leave the slider linear and then transform the value on
+//   the server. However, this means we can't give the user realtime feedback
+//   of the current value.
+//
+// Add option to always display value
+//
+// Date, datetimes?
+//
+//
 
 export class ForgeInputSlider
   extends HTMLElement
@@ -180,8 +203,27 @@ export class ForgeInputSlider
       this.debounce = Number(this.getAttribute("debounce"));
     if (this.hasAttribute("step"))
       this.step = Number(this.getAttribute("step"));
-    if (this.hasAttribute("marks"))
-      this.marks = JSON.parse(this.getAttribute("marks") || "");
+    if (this.hasAttribute("marks")) {
+      const marks = JSON.parse(this.getAttribute("marks") || "null");
+      if (Array.isArray(marks)) {
+        // If format is [1, 2, 4, 8], convert to [{label: "1", value: 1}, ...]
+        this.marks = (marks as number[]).map((value) => ({
+          label: String(value),
+          value,
+        }));
+      } else if (isPlainObject(marks)) {
+        // If format is {"one": 1, "two": 2, "four": 4, "eight": 8}, convert to
+        // [{label: "one", value: 1}, ...]
+        this.marks = Object.entries(marks as Record<string, number>).map(
+          ([label, value]) => ({
+            label,
+            value,
+          })
+        );
+      } else {
+        this.marks = marks;
+      }
+    }
 
     this.currentValue = this.value;
   }

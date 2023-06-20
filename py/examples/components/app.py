@@ -237,27 +237,40 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_slider(
                         id="slider4",
-                        label="step=True, custom marks",
+                        label="step=1, marks=[0, 10, 20, ...]",
+                        min=0,
+                        max=80,
+                        value=20,
+                        step=1,
+                        marks=[0, 10, 20, 40, 80],
+                    ),
+                    sc.forge.input_slider(
+                        id="slider5",
+                        label='step=True, marks={"Zero":0, "Ten":10, ...}',
                         min=0,
                         max=80,
                         value=20,
                         step=True,
-                        marks=[
-                            {"value": 0, "label": "Zero"},
-                            {"value": 10, "label": "Ten"},
-                            {"value": 20, "label": "Twenty"},
-                            {"value": 40, "label": "Forty"},
-                            {"value": 80, "label": "Eighty"},
-                        ],
+                        marks={
+                            "Zero": 0,
+                            "Ten": 10,
+                            "Twenty": 20,
+                            "Forty": 40,
+                            "Eighty": 80,
+                        },
                     ),
                     sc.forge.input_slider(
-                        id="slider5",
-                        label="step=True, custom marks",
-                        min=0,
-                        max=80,
-                        value=20,
-                        step=None,
-                        marks=[0, 10, 20, 40, 80],
+                        id="slider6",
+                        label='step=True, marks={"Giraffe": 1, ...}',
+                        min=1,
+                        max=3,
+                        value=1,
+                        step=True,
+                        marks={
+                            "Giraffe": 1,
+                            "Hippo": 2,
+                            "Lion": 3,
+                        },
                     ),
                 ),
                 sc.grid_item(
@@ -266,6 +279,7 @@ app_ui = sc.page(
                     sc.forge.output_text_verbatim("out_slider3"),
                     sc.forge.output_text_verbatim("out_slider4"),
                     sc.forge.output_text_verbatim("out_slider5"),
+                    sc.forge.output_text_verbatim("out_slider6"),
                 ),
                 nCols=2,
                 nRows=1,
@@ -523,7 +537,7 @@ def server(input: Inputs, output: Outputs, session: Session):
     for i in range(4):
         make_output(input[f"select{i+1}"], f"out_select{i+1}", output)
 
-    for i in range(5):
+    for i in range(6):
         make_output(input[f"slider{i+1}"], f"out_slider{i+1}", output)
 
     for i in range(3):
