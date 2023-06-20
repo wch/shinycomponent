@@ -170,6 +170,8 @@ app_ui = sc.page(
             ),
             slot="header-right",
         ),
+        # Turn this setting on to allow the app to be as tall as the content demands
+        dynamicHeight=True,
     ),
 )
 

@@ -1,7 +1,6 @@
 import { css, html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { makeInputBinding } from "./make-input-binding";
-import { themePrimitives } from "./styles/op-classes";
 import { Tabset } from "./tabset";
 
 /**
@@ -10,29 +9,30 @@ import { Tabset } from "./tabset";
 
 @customElement("shiny-op-tabset")
 export class OpTabset extends Tabset {
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
-  static styles = css`
-    :host {
-      /* This is where all the variables are defined. If the user wants to
-update something they just have to replace the main variable and it
-doesn't cascade down to other elements
-*/
+  @property({ type: Boolean }) dynamicHeight: boolean = false;
 
+  static styles = css`
+    * {
+      box-sizing: border-box;
+    }
+
+    :host {
       --padding: var(--size-m);
+      --page-h: 100%;
 
       display: block;
       height: 100%;
-      box-sizing: border-box;
-
-      ${themePrimitives.surface_3}
-
       container-type: size;
+      background-color: var(--surface-3);
+      overflow: auto;
+    }
+
+    :host([dynamicHeight]) {
+      --page-h: auto;
     }
 
     .tabset {
-      height: 100%;
+      height: var(--page-h);
       width: 100%;
       display: grid;
       grid-template:
@@ -50,11 +50,9 @@ doesn't cascade down to other elements
 
     .sidebar {
       z-index: 3;
-    }
-
-    .header,
-    .footer {
-      z-index: 2;
+      padding: 0;
+      grid-area: sidebar;
+      background-color: var(--surface-1);
     }
 
     .main {
@@ -67,6 +65,7 @@ doesn't cascade down to other elements
     .footer {
       /* Use background image if passed */
       background-image: var(--header-bg-image);
+      z-index: 2;
       margin: 0;
       display: flex;
       align-items: center;
@@ -100,8 +99,7 @@ doesn't cascade down to other elements
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-
-      ${themePrimitives.surface_4}
+      background-color: var(--surface-4);
     }
 
     .tab {
@@ -113,14 +111,7 @@ doesn't cascade down to other elements
     }
 
     .selected-tab {
-      ${themePrimitives.surface_1}
-    }
-
-    .sidebar {
-      padding: 0;
-      grid-area: sidebar;
-
-      ${themePrimitives.surface_1}
+      background-color: var(--surface-1);
     }
 
     .footer {
