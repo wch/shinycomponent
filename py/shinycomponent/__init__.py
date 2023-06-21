@@ -11,7 +11,6 @@ from ._components import (
     sidebar,
     simple_number_input,
     tab,
-    tanstack_table,
 )
 from ._dashboard import dashboard, page_dashboard
 from ._datagrid import output_data_grid, static_data_grid
@@ -24,7 +23,6 @@ __all__ = (
     "sidebar",
     "simple_number_input",
     "tab",
-    "tanstack_table",
     "page",
     "page_dashboard",
     "dashboard",

@@ -96,7 +96,7 @@ data_grid_dep <- function() {
   htmlDependency(
     name = "data-grid",
     version = as.character(packageVersion("shinycomponent")),
-    src = system.file(package = "shinycomponent", "www", "datagrid"),
-    script = list(src = "index.js", type = "module")
+    src = system.file(package = "shinycomponent", "www"),
+    script = list(src = "datagrid.js", type = "module")
   )
 }

@@ -90,26 +90,6 @@ theme_chooser <- function(...) {
   )
 }
 
-#' @export
-tanstack_table <- function(data, ...) {
-  # Convert the data frame to d3-style format.
-  df_wide <- .mapply(list, data, NULL)
-
-  tagList(
-    component_dep(),
-    tag(
-      "tanstack-table",
-      list(
-        tags$script(
-          type = "application/json",
-          class = "data",
-          HTML(toJSON(df_wide, auto_unbox = TRUE))
-        ),
-        ...
-      )
-    )
-  )
-}
 
 
 convert_to_escaped_json <- function(x) {

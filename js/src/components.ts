@@ -16,7 +16,6 @@ import { Sidebar } from "./sidebar";
 import { SimpleNumberInput } from "./simple-number-input";
 import { SimpleNumberOutput } from "./simple-number-output";
 import { Tab } from "./tab";
-import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
 
 // Prevent esbuild from tree-shaking these components away.
@@ -31,7 +30,6 @@ SimpleNumberInput;
 SimpleNumberOutput;
 Tab;
 ShinyDashboard;
-TanstackTable;
 ThemeChooser;
 Grid;
 GridItem;

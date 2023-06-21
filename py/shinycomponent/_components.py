@@ -1,13 +1,8 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
+from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
-
-if TYPE_CHECKING:
-    import pandas as pd
 
 
 def greeting_card(
@@ -259,21 +254,3 @@ def footer(
     """
 
     return Tag("shiny-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
-
-
-def tanstack_table(
-    data: pd.DataFrame,
-    *args: TagChild | TagAttrs,
-    _add_ws: bool = True,
-    **kwargs: TagAttrValue,
-) -> Tag:
-    return Tag(
-        "tanstack-table",
-        page_dep(),
-        tags.script(
-            data.to_json(orient="records"), type="application/json", class_="data"
-        ),
-        *args,
-        _add_ws=_add_ws,
-        **kwargs,
-    )
