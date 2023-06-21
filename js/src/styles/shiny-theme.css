@@ -65,6 +65,13 @@ override styles from our reset layer */
   --font-size-h4: calc(var(--font-size-fluid-1) / 1.5));
   --font-size-h5: calc(var(--font-size-fluid-1) / 2));
 
+  /* Special variable that allow text to size to its container smartly */
+  --font-size-fluid: clamp(
+    var(--font-size-00),
+    3cqi,
+    var(--font-size-l)
+  );
+
   /* Weights */
   --font-weight-headings: var(--font-weight-3);
   --font-weight-bold: var(--font-weight-5);
@@ -95,6 +102,12 @@ override styles from our reset layer */
   --radius-m: var(--radius-3);
   --radius-l: var(--radius-4);
   --radius-pill: 9999px;
+}
+
+@supports (font-size: 1cqi) {
+  :is(.fluid-type) {
+    font-size: var(--font-size-fluid);
+  }
 }
 
 /* Set transition speeds to zero when the user prefers reduced motion */

@@ -102,12 +102,12 @@ app_ui = sc.page_dashboard(
             shadowed=True,
         ),
         sc.grid_item(
+            {"class": "fluid-type"},
             ui.output_text("results_blurb"),
             width=1,
             height=2,
             shadowed=True,
             centercontent=True,
-            style="font-size: calc(var(--font-size-fluid-1)/1.25);",
         ),
         # Value boxes are 4 rows tall
         # sc.grid_item(ui.output_text("results_blurb")),

@@ -25,6 +25,7 @@ export class ShinyCard extends LitElement {
 
       ${themePrimitives.surface_1}
 
+      container-type: size;
       border: var(--border-standard);
       border-radius: var(--card-radius);
       overflow: hidden;
