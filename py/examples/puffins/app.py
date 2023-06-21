@@ -475,9 +475,8 @@ def server(input: Inputs, output: Outputs, session: Session):
                 title,
                 count,
                 {"class_": "pt-1 pb-0"},
-                showcase=x.ui.bind_fill_role(
+                showcase=x.ui.as_fill_item(
                     ui.tags.img({"style": "object-fit:contain;"}, src=showcase_img),
-                    item=True,
                 ),
                 theme_color=None,
                 style=f"background-color: {bgcol};",
