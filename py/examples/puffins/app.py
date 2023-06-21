@@ -322,25 +322,23 @@ app_ui = sc.page(
             ui.div(
                 {"style": "max-width: 400px; margin-top: 15px;"},
                 ui.h4("Sliders"),
-                sc.m3_slider(id="slider1", value=11, min=1, max=20, withLabel=""),
-                sc.m3_slider(
+                sc.forge.input_slider(id="slider1", label="", value=11, min=1, max=20),
+                sc.forge.input_slider(
                     id="slider2",
+                    label="",
                     value=5,
                     min=1,
                     max=21,
                     step=2,
-                    withTickMarks="",
-                    withLabel="",
+                    marks=True,
                 ),
-                sc.m3_slider(
+                sc.forge.input_slider(
                     id="slider3",
-                    valueStart=8,
-                    valueEnd=12,
-                    range="",
+                    label="range",
+                    value=(8, 12),
                     min=1,
                     max=20,
                     step=2,
-                    withLabel="",
                 ),
             ),
             ui.output_text_verbatim("current_color", placeholder=True),
@@ -350,7 +348,9 @@ app_ui = sc.page(
             ui.tags.h2("Client-side (non-Shiny) interaction"),
             Tag("simple-number-input", id="num_in_static"),
             Tag("simple-number-output", id="num_out_static", watch="num_in_static"),
-            sc.m3_slider(id="num_in_static2", value="20", withLabel=""),
+            sc.forge.input_slider(
+                id="num_in_static2", label="", min=1, max=30, value=20
+            ),
             Tag("simple-number-output", id="num_out_static2", watch="num_in_static2"),
             name="Static",
         ),

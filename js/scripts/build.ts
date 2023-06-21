@@ -37,7 +37,6 @@ esbuild
     entryPoints: {
       components: "src/components.ts",
       datagrid: "src/datagrid/index.tsx",
-      m3: "src/m3/index.ts",
       forge: "src/forge/index.ts",
     },
     bundle: true,

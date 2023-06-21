@@ -59,8 +59,6 @@ ui <- page(
     ),
     tab(
       name = "Plot",
-      star_rating(id = "foo"),
-      star_rating(id = "foo1"),
       verbatimTextOutput("txt"),
       shiny_collapsible(
         uiOutput("value_boxes"),
@@ -80,25 +78,23 @@ ui <- page(
       div(
         style = "max-width: 400px; margin-top: 15px;",
         h4("Sliders"),
-        m3_slider(id="slider1", value=11, min=1, max=20, withLabel=""),
-        m3_slider(
+        input_slider(id="slider1", label="", value=11, min=1, max=20),
+        input_slider(
           id="slider2",
+          label="",
           value=5,
           min=1,
           max=21,
           step=2,
-          withTickMarks="",
-          withLabel=""
+          marks=TRUE
         ),
-        m3_slider(
+        input_slider(
           id="slider3",
-          valueStart=8,
-          valueEnd=12,
-          range="",
+          label="",
+          value=list(8, 12),
           min=1,
           max=20,
-          step=2,
-          withLabel=""
+          step=2
         )
       ),
       verbatimTextOutput("current_color")
