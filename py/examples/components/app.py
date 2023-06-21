@@ -7,7 +7,7 @@ import shinycomponent as sc
 
 app_ui = sc.page(
     Tag(
-        "shiny-op-tabset",
+        "shiny-page",
         sc.sidebar(
             Tag(
                 "shiny-section",
