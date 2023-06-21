@@ -14,6 +14,7 @@ export class ForgeOutputTextVerbatim extends LitElement {
       padding: var(--size-xs);
       font-size: var(–-font-size-main);
       font-family: var(--font-mono);
+      margin: 0;
     }
 
     pre:empty::before {
