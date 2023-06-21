@@ -23,6 +23,24 @@ def split_panel(
     return Tag("forge-split-panel", forge_dep(), *args, _add_ws=_add_ws, **kwargs)
 
 
+def input_action_button(
+    id: str,
+    label: TagChild,
+    *args: TagChild | TagAttrs,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
+) -> Tag:
+    return Tag(
+        "forge-input-action-button",
+        forge_dep(),
+        label,
+        *args,
+        id=id,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
+
+
 def input_checkbox(
     id: str,
     label: TagChild,

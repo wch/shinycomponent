@@ -442,6 +442,27 @@ app_ui = sc.page(
         sc.tab(
             sc.grid(
                 sc.grid_item(
+                    sc.forge.input_action_button(
+                        id="action1",
+                        label="Basic",
+                    ),
+                    sc.forge.input_action_button(
+                        id="action2",
+                        label=ui.TagList("Label with ", ui.tags.i("italic"), " text"),
+                    ),
+                ),
+                sc.grid_item(
+                    sc.forge.output_text_verbatim("out_action1"),
+                    sc.forge.output_text_verbatim("out_action2"),
+                ),
+                nCols=2,
+                nRows=1,
+            ),
+            name="Action button",
+        ),
+        sc.tab(
+            sc.grid(
+                sc.grid_item(
                     sc.forge.input_date(
                         id="date1",
                         label="Basic",
@@ -525,6 +546,9 @@ app_ui = sc.page(
 
 
 def server(input: Inputs, output: Outputs, session: Session):
+    for i in range(2):
+        make_output(input[f"action{i+1}"], f"out_action{i+1}", output)
+
     for i in range(5):
         make_output(input[f"text{i+1}"], f"out_text{i+1}", output)
 

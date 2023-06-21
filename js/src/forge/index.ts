@@ -1,3 +1,4 @@
+import { ForgeInputActionButton } from "./input-action-button";
 import { ForgeInputCheckbox } from "./input-checkbox";
 import { ForgeInputCheckboxGroup } from "./input-checkbox-group";
 import { ForgeInputDate } from "./input-date";
@@ -12,6 +13,7 @@ import { ForgeInputTime } from "./input-time";
 import { ForgeOutputTextVerbatim } from "./output-text-verbatim";
 
 // Prevent esbuild from tree-shaking these components away.
+ForgeInputActionButton;
 ForgeInputCheckbox;
 ForgeInputCheckboxGroup;
 ForgeInputDate;
