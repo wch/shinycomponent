@@ -6,7 +6,9 @@ import { Footer } from "./footer";
 import { GeneralOutput } from "./general-output";
 import { Grid } from "./grid";
 import { GridItem } from "./grid-item";
+import { ShinyIcon } from "./icon";
 import { PositLogo } from "./posit-logo";
+import { ShinyAvatar } from "./shiny-avatar";
 import { ShinyCard } from "./shiny-card";
 import { ShinyDashboard } from "./shiny-dashboard";
 import { Section } from "./shiny-section";
@@ -16,9 +18,6 @@ import { SimpleNumberOutput } from "./simple-number-output";
 import { Tab } from "./tab";
 import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
-
-import { ShinyIcon } from "./icon";
-import { ShinyAvatar } from "./shiny-avatar";
 
 // Prevent esbuild from tree-shaking these components away.
 Collapsible;
