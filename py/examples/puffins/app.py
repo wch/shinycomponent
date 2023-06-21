@@ -194,8 +194,7 @@ app_ui = sc.page(
         ),
     ),
     shinyswatch.theme.pulse(),
-    Tag(
-        "shiny-page",
+    sc.dashboard(
         {"id": "tabset1"},
         sc.tab(
             sc.grid(

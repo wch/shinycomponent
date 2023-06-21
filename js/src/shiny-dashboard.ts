@@ -9,8 +9,8 @@ type TabElements = { name: string; el: HTMLElement }[];
 // Regex to detect text that's exclusively whitespace or newlines
 const detectEmptyText = /^\s*$/;
 
-@customElement("shiny-page")
-export class ShinyPage
+@customElement("shiny-dashboard")
+export class ShinyDashboard
   extends LitElement
   implements CustomElementInputGetValue<string>
 {
@@ -271,10 +271,10 @@ export class ShinyPage
   }
 }
 
-makeInputBinding("shiny-page");
+makeInputBinding("shiny-dashboard");
 
 declare global {
   interface HTMLElementTagNameMap {
-    "shiny-page": ShinyPage;
+    "shiny-dashboard": ShinyDashboard;
   }
 }

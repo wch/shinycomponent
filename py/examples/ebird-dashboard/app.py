@@ -41,112 +41,108 @@ def info_box(title: str, output_id: str, icon: str, color: str):
     )
 
 
-app_ui = sc.page(
+app_ui = sc.page_dashboard(
     ui.tags.head(
         # Hide the leaflet footer
         ui.tags.style(
             ".leaflet-container .leaflet-control-attribution {display: none;}"
         )
     ),
-    sc.op_tabset(
-        sc.sidebar(
-            sc.icon_section(
-                Tag("posit-logo", withName=True, slot="icon"),
-                ui.h2("EBird Explorer"),
-            ),
-            sc.icon_section(
-                ui.tags.small(
-                    ui.em(
-                        "Below are some inputs that control the app content. Use them and explore the birds of Ann Arbor!"
-                    )
-                ),
-                icon="bi:info-circle",
-            ),
-            sc.icon_section(
-                sc.forge.input_select(
-                    id="species",
-                    label="Species",
-                    choices=species_names,
-                    selected=species_names[0],
-                ),
-                icon="bi:sliders2",
-            ),
-            sc.icon_section(
-                sc.forge.input_number(
-                    id="radius",
-                    label="Distance from Ann Arbor",
-                    value=10,
-                    min=1,
-                    max=100,
-                ),
-                sc.forge.input_number(
-                    id="days_back",
-                    label="Days back to look",
-                    value=3,
-                    min=1,
-                    max=100,
-                ),
-                icon="bi:funnel",
-            ),
+    sc.sidebar(
+        sc.icon_section(
+            Tag("posit-logo", withName=True, slot="icon"),
+            ui.h2("EBird Explorer"),
         ),
-        # Make a grid with 4 rows and 3 columns
-        sc.grid(
-            ui.div(
-                ui.output_text("common_name", container=ui.h2),
-                style="display: grid; place-content: center;",
+        sc.icon_section(
+            ui.tags.small(
+                ui.em(
+                    "Below are some inputs that control the app content. Use them and explore the birds of Ann Arbor!"
+                )
             ),
-            sc.grid_item(
-                output_widget("map", width="100%", height="100%"),
-                width=2,
-                height=3,
-                shadowed=True,
-            ),
-            sc.grid_item(
-                ui.output_text("results_blurb"),
-                width=1,
-                height=2,
-                shadowed=True,
-                centercontent=True,
-                style="font-size: calc(var(--font-size-fluid-1)/1.25);",
-            ),
-            # Value boxes are 4 rows tall
-            # sc.grid_item(ui.output_text("results_blurb")),
-            sc.grid_item(
-                sc.output_data_grid("results_table"),
-                width=2,
-                height=3,
-                shadowed=True,
-            ),
-            sc.grid_item(
-                info_box(
-                    title="Scientific Name",
-                    output_id="species_scientific_name",
-                    icon="🥼",
-                    color="var(--orange-4)",
-                ),
-                info_box(
-                    title="Family",
-                    output_id="species_family",
-                    icon="👨‍👩‍👧‍👦",
-                    color="var(--blue-4)",
-                ),
-                info_box(
-                    title="Order",
-                    output_id="species_order",
-                    icon="📦",
-                    color="var(--green-4)",
-                ),
-                width=1,
-                height=3,
-                shadowed=True,
-            ),
-            nRows=6,
-            nCols=3,
+            icon="bi:info-circle",
         ),
-        sc.footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
-        # Turn this setting on to allow the app to be as tall as the content demands
-        # dynamicHeight=True,
+        sc.icon_section(
+            sc.forge.input_select(
+                id="species",
+                label="Species",
+                choices=species_names,
+                selected=species_names[0],
+            ),
+            icon="bi:sliders2",
+        ),
+        sc.icon_section(
+            sc.forge.input_number(
+                id="radius",
+                label="Distance from Ann Arbor",
+                value=10,
+                min=1,
+                max=100,
+            ),
+            sc.forge.input_number(
+                id="days_back",
+                label="Days back to look",
+                value=3,
+                min=1,
+                max=100,
+            ),
+            icon="bi:funnel",
+        ),
     ),
+    # Make a grid with 4 rows and 3 columns
+    sc.grid(
+        ui.div(
+            ui.output_text("common_name", container=ui.h2),
+            style="display: grid; place-content: center;",
+        ),
+        sc.grid_item(
+            output_widget("map", width="100%", height="100%"),
+            width=2,
+            height=3,
+            shadowed=True,
+        ),
+        sc.grid_item(
+            ui.output_text("results_blurb"),
+            width=1,
+            height=2,
+            shadowed=True,
+            centercontent=True,
+            style="font-size: calc(var(--font-size-fluid-1)/1.25);",
+        ),
+        # Value boxes are 4 rows tall
+        # sc.grid_item(ui.output_text("results_blurb")),
+        sc.grid_item(
+            sc.output_data_grid("results_table"),
+            width=2,
+            height=3,
+            shadowed=True,
+        ),
+        sc.grid_item(
+            info_box(
+                title="Scientific Name",
+                output_id="species_scientific_name",
+                icon="🥼",
+                color="var(--orange-4)",
+            ),
+            info_box(
+                title="Family",
+                output_id="species_family",
+                icon="👨‍👩‍👧‍👦",
+                color="var(--blue-4)",
+            ),
+            info_box(
+                title="Order",
+                output_id="species_order",
+                icon="📦",
+                color="var(--green-4)",
+            ),
+            width=1,
+            height=3,
+            shadowed=True,
+        ),
+        nRows=6,
+        nCols=3,
+    ),
+    sc.footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
 )
 
 

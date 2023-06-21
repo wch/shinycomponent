@@ -6,8 +6,7 @@ from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 import shinycomponent as sc
 
 app_ui = sc.page(
-    Tag(
-        "shiny-page",
+    sc.dashboard(
         sc.sidebar(
             Tag(
                 "shiny-section",
