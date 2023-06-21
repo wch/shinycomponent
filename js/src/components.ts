@@ -14,7 +14,6 @@ import { Sidebar } from "./sidebar";
 import { SimpleNumberInput } from "./simple-number-input";
 import { SimpleNumberOutput } from "./simple-number-output";
 import { Tab } from "./tab";
-import { Tabset } from "./tabset";
 import { TanstackTable } from "./tanstack-table";
 import { ThemeChooser } from "./theme-chooser";
 
@@ -32,7 +31,6 @@ Sidebar;
 SimpleNumberInput;
 SimpleNumberOutput;
 Tab;
-Tabset;
 ShinyDashboard;
 TanstackTable;
 ThemeChooser;

@@ -20,7 +20,7 @@ greeting_card <- function(...) {
 tabset <- function(...) {
   tagList(
     component_dep(),
-    tag("shiny-tabset", list(...))
+    tag("shiny-dashboard", list(...))
   )
 }
 
