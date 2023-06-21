@@ -26,7 +26,8 @@ export class SimpleNumberInput
 
   static styles = css`
     :host {
-      --inline-padding: var(--number-input-padding-block, var(--size-xs));
+      --inline-padding: var(--number-input-padding-inline, var(--size-xs));
+      --block-padding: var(--number-input-padding-block, var(--size-xs));
 
       font-size: var(--number-input-font-size, var(--font-size-3));
       position: relative;
@@ -49,8 +50,8 @@ export class SimpleNumberInput
       );
       outline: var(--number-input-border-width, var(--sl-input-border-width))
         solid var(--number-input-border-color, var(--sl-input-border-color));
-      padding: var(--inline-padding)
-        var(--number-input-padding-inline, var(--size-sm));
+      padding-inline: var(--inline-padding);
+      padding-block: var(--block-padding);
     }
 
     .wrapper.invalid {
