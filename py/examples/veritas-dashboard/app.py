@@ -1,3 +1,5 @@
+# pyright: basic
+
 # Inspired by https://dribbble.com/shots/20836166-Veritas-Admin-Dashboard-Analytics-UX
 import os
 from pathlib import Path
