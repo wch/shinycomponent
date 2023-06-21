@@ -1,15 +1,113 @@
-import { css, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { makeInputBinding } from "./make-input-binding";
-import { Tabset } from "./tabset";
+import { LitElement, css, html } from "lit";
+import { customElement, property, state } from "lit/decorators.js";
+import {
+  CustomElementInputGetValue,
+  makeInputBinding,
+} from "./make-input-binding";
+type TabElements = { name: string; el: HTMLElement }[];
 
-/**
- * Special version of the tabset that's styled using open-props instead of our custom tokens
- */
+// Regex to detect text that's exclusively whitespace or newlines
+const detectEmptyText = /^\s*$/;
 
 @customElement("shiny-op-tabset")
-export class OpTabset extends Tabset {
+export class OpTabset
+  extends LitElement
+  implements CustomElementInputGetValue<string>
+{
   @property({ type: Boolean }) dynamicHeight: boolean = false;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  @property({ type: Number }) selected_tab_index: number = 0;
+  @state() tabs: TabElements = [];
+
+  @state() hasHeader: boolean = false;
+
+  onChangeCallback: (x: boolean) => void = (x: boolean) => {};
+
+  // Watch for additions the header slot. If they exist we make sure they're
+  // legit and show the header.
+  watchHeaderSlot(e: Event) {
+    const slot = e.target as HTMLSlotElement | null;
+
+    if (!slot) return;
+
+    const nodesInSlot = slot
+      .assignedNodes({ flatten: true })
+      .filter(
+        (node) =>
+          node instanceof HTMLElement &&
+          !detectEmptyText.test(node.innerHTML ?? "")
+      );
+
+    this.hasHeader = nodesInSlot.length > 0;
+  }
+
+  watchMainSlot(e: Event) {
+    const slot = e.target as HTMLSlotElement | null;
+
+    if (!slot) return;
+
+    // Sometimes we get node that are just newlines and empty text. These don't
+    // matter as they dont inclunce the appearnace of the app so we can filter
+    // them out before working with the slotted elements
+
+    const nodesInSlot = slot
+      .assignedNodes({ flatten: true })
+      .filter((node) => !detectEmptyText.test(node.textContent ?? ""));
+
+    this.tabs = nodesInSlot.reduce<TabElements>((all, node) => {
+      if (
+        node instanceof HTMLElement &&
+        node.tagName.toLowerCase() === "shiny-tab"
+      ) {
+        const tabName = node.attributes.getNamedItem("name")?.value;
+
+        if (!tabName) {
+          return all;
+        }
+
+        all.push({ name: tabName, el: node });
+      }
+
+      return all;
+    }, []);
+
+    this.selectTab();
+  }
+
+  selectTab(tabIndex: number = this.selected_tab_index) {
+    this.selected_tab_index = tabIndex;
+    this.tabs.forEach((tab, i) => {
+      const isSelected = i === tabIndex;
+      const currentlyHidden = tab.el.style.display === "none";
+
+      // Is this tab the one being shifted away from?
+      const hidingTab = !currentlyHidden && !isSelected;
+      if (hidingTab) {
+        $(tab.el).trigger("hidden");
+        // Make sure that screen readers know to not include the hidden tabs
+        tab.el.inert = true;
+        tab.el.style.display = "none";
+      }
+
+      // Is this tab the one being shifted to?
+      const showingTab = currentlyHidden && isSelected;
+      if (showingTab) {
+        $(tab.el).trigger("shown");
+        tab.el.inert = false;
+        tab.el.style.display = "block";
+      }
+    });
+
+    this.onChangeCallback(true);
+  }
+
+  currentTabName(): string {
+    return this.tabs[this.selected_tab_index].name;
+  }
+
+  getValue(): string {
+    return this.currentTabName();
+  }
 
   static styles = css`
     * {
@@ -83,6 +181,10 @@ export class OpTabset extends Tabset {
       align-items: baseline;
     }
 
+    .header.empty-header {
+      display: none;
+    }
+
     .header-right {
       margin-left: auto;
     }
@@ -130,10 +232,11 @@ export class OpTabset extends Tabset {
   `;
 
   render() {
+    const hideHeader = this.tabs.length === 0 && !this.hasHeader;
     return html`
       <div class="tabset">
-        <div class="header">
-          <slot name="header"></slot>
+        <div class="header ${hideHeader ? "empty-header" : ""}">
+          <slot name="header" @slotchange=${this.watchHeaderSlot}></slot>
           <div class="tabs">
             ${this.tabs.map(
               (tab, i) =>
@@ -148,14 +251,17 @@ export class OpTabset extends Tabset {
             )}
           </div>
           <div class="header-right">
-            <slot name="header-right"></slot>
+            <slot
+              name="header-right"
+              @slotchange=${this.watchHeaderSlot}
+            ></slot>
           </div>
         </div>
         <div class="sidebar">
           <slot name="sidebar"></slot>
         </div>
         <div class="main">
-          <slot @slotchange=${this.handleSlotchange}></slot>
+          <slot @slotchange=${this.watchMainSlot}></slot>
         </div>
         <div class="footer">
           <slot name="footer"></slot>
