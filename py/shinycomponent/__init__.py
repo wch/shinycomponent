@@ -8,13 +8,12 @@ from ._components import (
     grid,
     grid_item,
     icon_section,
-    op_tabset,
     sidebar,
     simple_number_input,
     tab,
-    tabset,
     tanstack_table,
 )
+from ._dashboard import dashboard, page_dashboard
 from ._datagrid import output_data_grid, static_data_grid
 from ._m3 import m3_slider
 from ._page import page
@@ -26,10 +25,10 @@ __all__ = (
     "sidebar",
     "simple_number_input",
     "tab",
-    "tabset",
-    "op_tabset",
     "tanstack_table",
     "page",
+    "page_dashboard",
+    "dashboard",
     "output_data_grid",
     "static_data_grid",
     "m3_slider",
