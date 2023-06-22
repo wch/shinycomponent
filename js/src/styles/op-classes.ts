@@ -20,7 +20,7 @@ export const themePrimitives = {
   `,
   surface_2: css`
     background-color: var(--surface-2);
-    color: var(--text-2);
+    color: var(--text-1);
   `,
   surface_3: css`
     background-color: var(--surface-3);

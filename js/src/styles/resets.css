@@ -33,12 +33,12 @@ p {
 
 .surface-1 {
   background-color: var(--surface-1);
-  color: var(--text-2);
+  color: var(--text-1);
 }
 
 .surface-2 {
   background-color: var(--surface-2);
-  color: var(--text-2);
+  color: var(--text-1);
 }
 
 .surface-3 {

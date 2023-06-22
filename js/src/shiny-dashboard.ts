@@ -4,6 +4,8 @@ import {
   CustomElementInputGetValue,
   makeInputBinding,
 } from "./make-input-binding";
+import { themePrimitives } from "./styles/op-classes";
+
 type TabElements = { name: string; el: HTMLElement }[];
 
 // Regex to detect text that's exclusively whitespace or newlines
@@ -118,10 +120,11 @@ export class ShinyDashboard
       --padding: var(--size-m);
       --page-h: 100%;
 
+      ${themePrimitives.surface_3}
+
       display: block;
       height: 100%;
       container-type: size;
-      background-color: var(--surface-3);
       overflow: auto;
     }
 
@@ -150,7 +153,8 @@ export class ShinyDashboard
       z-index: 3;
       padding: 0;
       grid-area: sidebar;
-      background-color: var(--surface-1);
+
+      ${themePrimitives.surface_1}
     }
 
     .main {
