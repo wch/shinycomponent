@@ -1,6 +1,0 @@
-shiny
-pandas
-ipyleaflet
-ebird.api
-ipywidgets
-shinywidgets
