@@ -19,6 +19,8 @@
     "@types/rstudio-shiny": "git+https://github.com/rstudio/shiny#v1.7.4",
     "@typescript-eslint/eslint-plugin": "^5.59.9",
     "@typescript-eslint/parser": "^5.59.9",
+    "@uwdata/mosaic-core": "^0.3.0",
+    "@uwdata/vgplot": "^0.3.1",
     "concurrently": "^8.2.0",
     "esbuild": "^0.17.19",
     "esbuild-plugin-copy": "^2.1.1",

@@ -230,6 +230,16 @@ app_ui = sc.page(
             name="Number Input",
         ),
         sc.tab(
+            sc.grid(
+                sc.grid_item(
+                    ui.Tag("mosaic-output"),
+                ),
+                nRows=1,
+                nCols=1,
+            ),
+            name="Mosaic",
+        ),
+        sc.tab(
             # Make a grid with 4 rows and 3 columns
             sc.grid(
                 # Blurb takes up 2 of 3 columns
