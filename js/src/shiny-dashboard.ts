@@ -54,7 +54,11 @@ export class ShinyDashboard
 
     const nodesInSlot = slot
       .assignedNodes({ flatten: true })
-      .filter((node) => !detectEmptyText.test(node.textContent ?? ""));
+      .filter(
+        (node) =>
+          node instanceof HTMLElement &&
+          !detectEmptyText.test(node.innerHTML ?? "")
+      );
 
     this.tabs = nodesInSlot.reduce<TabElements>((all, node) => {
       if (
