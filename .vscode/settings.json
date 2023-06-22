@@ -81,5 +81,6 @@
   "stylelint.validate": ["css", "less", "postcss", "typescript"],
   "stylelint.configBasedir": "js",
   "stylelint.reportNeedlessDisables": true,
-  "stylelint.snippet": ["css", "less", "postcss", "typescript"]
+  "stylelint.snippet": ["css", "less", "postcss", "typescript"],
+  "lit-plugin.rules.no-invalid-css": "off"
 }
