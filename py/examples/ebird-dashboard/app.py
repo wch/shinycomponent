@@ -1,12 +1,11 @@
 # pyright: basic
 # Inspired by https://dribbble.com/shots/20836166-Veritas-Admin-Dashboard-Analytics-UX
-import os
+import json
 from pathlib import Path
 
 import ipyleaflet as L
 import pandas as pd
 import shiny.experimental as x
-from ebird.api import get_nearby_observations, get_nearby_species, get_taxonomy
 from htmltools import Tag
 from ipywidgets import Layout
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
@@ -16,18 +15,40 @@ import shinycomponent as sc
 
 www_dir = Path(__file__).parent.resolve() / "www"
 
-api_key = os.environ["EBIRD_API_KEY"]
+# Load ebird-data.csv into a pandas dataframeget_records
+ebird_data = pd.read_csv(Path(__file__).parent / "ebird-data.csv")
+
+
+# Read in the json file to a dictionary
+with open(Path(__file__).parent / "species-taxonomy.json", "r") as f:
+    species_taxonomy = json.load(f)
 
 species_to_id = {
     "Eastern Wood-Pewee": "eawpew",
     "Wood Duck": "wooduc",
     "Northern Flicker": "norfli",
+    "Red-Tailed Hawk": "rethaw",
+    "Belted Kingfisher": "belkin1",
+    "Bald Eagle": "baleag",
 }
 
 # Get keys of species_to_id in a vector
 species_names = list(species_to_id.keys())
-
 ann_arbor_lat_lon = [42.273991, -83.754550]
+
+
+# A function to query ebird_data for records that match a given species name, a minimum distance in miles, and a maximum number of days back
+def get_records(species_name: str, min_distance_mi: float, max_days_back: int):
+    return ebird_data[
+        (ebird_data["comName"] == species_name)
+        & (ebird_data["distance_mi"] <= min_distance_mi)
+        & (ebird_data["days_back"] <= max_days_back)
+    ]
+
+
+# A function to get the taxonomy of a species from its name
+def get_taxonomy_from_name(species_name):
+    return species_taxonomy[species_name]
 
 
 def info_box(title: str, output_id: str, icon: str, color: str):
@@ -169,26 +190,22 @@ def server(input: Inputs, output: Outputs, session: Session):
         if input.species() is None:
             return pd.DataFrame()
 
-        bird = species_to_id[input.species()]
         # Get nearby records for the past 3 days
-        records = get_nearby_species(
-            api_key,
-            bird,
-            *ann_arbor_lat_lon,
-            dist=input.radius(),
-            back=input.days_back(),
+        return get_records(
+            input.species(),
+            input.radius(),
+            input.days_back(),
         )
-
-        return pd.DataFrame.from_records(records)
 
     @reactive.Effect
     def update_map():
         records = ebird_results()
-
+        print("Here are the records we're trying to map....")
         markers_for_records = []
         for record_index in range(len(records)):
-            center = (records["lat"][record_index], records["lng"][record_index])
-            location = records["locName"][record_index]
+            record = records.iloc[record_index]
+            center = (record["lat"], record["lng"])
+            location = record["locName"]
             marker = L.Marker(location=center, draggable=False, title=location)
             markers_for_records.append(marker)
 
@@ -198,9 +215,7 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     @reactive.Calc
     def species_info():
-        species = species_to_id[input.species()]
-        bird_info = get_taxonomy(api_key, species=species)
-        return bird_info[0]
+        return get_taxonomy_from_name(input.species())
 
     @output
     @render.text
@@ -222,25 +237,10 @@ def server(input: Inputs, output: Outputs, session: Session):
     def common_name():
         return input.species()
 
-    @reactive.Calc
-    def ebird_nearby() -> pd.DataFrame:
-        """Returns a Pandas data frame that includes only the desired rows"""
-        # Get nearby records for the past 3 days
-        records = get_nearby_observations(
-            api_key, *ann_arbor_lat_lon, dist=input.radius(), back=input.days_back()
-        )
-
-        return pd.DataFrame.from_records(records)
-
     @output
     @sc.data_grid(height="500px", row_selection=True)
     def results_table():
         return ebird_results()
-
-    @output
-    @sc.data_grid(height="500px", row_selection=True)
-    def nearby_table():
-        return ebird_nearby()
 
     @output
     @render.text
