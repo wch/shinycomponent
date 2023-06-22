@@ -3,20 +3,20 @@
   --shiny-datagrid-font-size: 0.9em;
   --shiny-datagrid-padding: 0.3em 0.5em;
 
-  --shiny-datagrid-grid-header-bgcolor: #eee;
-  --shiny-datagrid-grid-header-gridlines-color: #ccc;
+  --shiny-datagrid-grid-header-bgcolor: var(--surface-3, #eee);
+  --shiny-datagrid-grid-header-gridlines-color: var(--surface-4, #ccc);
   --shiny-datagrid-grid-header-gridlines-style: solid;
 
-  --shiny-datagrid-grid-gridlines-color: #ccc;
+  --shiny-datagrid-grid-gridlines-color: var(--surface-4, #ccc);
   --shiny-datagrid-grid-gridlines-style: solid;
 
-  --shiny-datagrid-table-header-bottom-border: 1px solid black;
+  --shiny-datagrid-table-header-bottom-border: 1px solid var(--text-1, black);
 
   --shiny-datagrid-grid-body-hover-bgcolor: var(
     --shiny-datagrid-grid-header-bgcolor
   );
-  --shiny-datagrid-grid-body-selected-bgcolor: var(--bs-primary);
-  --shiny-datagrid-grid-body-selected-color: var(--bs-light);
+  --shiny-datagrid-grid-body-selected-bgcolor: var(--brand, var(--bs-primary));
+  --shiny-datagrid-grid-body-selected-color: var(--surface-1, var(--bs-light));
 }
 
 .shiny-data-grid svg.sort-arrow {
