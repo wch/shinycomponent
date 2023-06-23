@@ -24,7 +24,7 @@ open_props_theme_dep <- function() {
 
 open_props_dep <- function() {
   htmlDependency(
-    name = "open-props-theme",
+    name = "open-props",
     version = as.character(packageVersion("shinycomponent")),
     src = system.file(package = "shinycomponent", "www"),
     stylesheet = "open-props.min.css"
