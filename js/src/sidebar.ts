@@ -9,16 +9,17 @@ export class Sidebar extends LitElement {
   @property({ type: Number }) openWidthPx: number = 320;
   @property({ type: Boolean, reflect: true }) collapseToIcons: boolean = false;
 
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
   static styles = css`
     * {
       box-sizing: border-box;
     }
 
     :host {
-      /* Define open and closed state variables */
+      /* Define open and closed state variables. All the variables that have
+      "*-content-*" in their names are passed through to the <shiny-section> tag
+      that lets it know how to control its content so that it can selectively
+      hide or show the content associated with an icon or not. I don't like how
+      confusing it is and think something like subgrid could help with this */
       --open-content-columns: auto 1fr;
       --closed-content-columns: auto 0;
       --open-content-height: auto;
@@ -47,6 +48,8 @@ export class Sidebar extends LitElement {
       flex-direction: column;
       gap: var(--padding);
       background-color: var(--surface-2);
+      width: var(--open-width);
+      transition: width var(--transition), padding var(--transition);
     }
 
     @container (max-width: 700px) {
@@ -81,15 +84,9 @@ export class Sidebar extends LitElement {
       overflow: auto;
       margin: 0;
       padding-inline: var(--padding);
-      width: var(--open-width);
-      transition: width var(--transition), padding var(--transition);
       display: flex;
       flex-direction: column;
       background-color: inherit;
-    }
-
-    :host([closed]) .content {
-      width: var(--closed-width);
     }
 
     .content > ::slotted(hr) {
@@ -106,11 +103,11 @@ export class Sidebar extends LitElement {
 
     .toggle-icon {
       text-align: center;
+      transition: transform var(--transition);
     }
 
-    :host([open]) .toggle-icon {
-      transition: transform var(--transition);
-      transform: scaleX(1);
+    :host([closed]) .toggle-icon {
+      transform: rotate(180deg);
     }
 
     .open-toggle {
@@ -122,23 +119,16 @@ export class Sidebar extends LitElement {
       width: var(--padding);
       height: fit-content;
       cursor: pointer;
-      color: var(--text-2);
-    }
-
-    :host([closed]) .toggle-icon {
-      rotate: 180deg;
-    }
-
-    :host([closed][collapseToIcons]) .content {
-      width: var(--padding);
+      color: var(--text-3);
+      user-select: none;
     }
 
     :host([closed]:not([collapseToIcons])) .content {
       opacity: 0;
     }
 
-    :host([closed][collapseToIcons]),
-    :host([closed][collapseToIcons]) .content {
+    /* Leave the sidebar wide enough to view the icons */
+    :host([closed][collapseToIcons]) {
       width: calc(4 * var(--padding));
     }
   `;
@@ -193,7 +183,6 @@ export class Sidebar extends LitElement {
     );
 
     this.collapseToIcons = hasOnlySections;
-    console.log("hasOnlySections", hasOnlySections);
   }
 
   render() {
