@@ -30,11 +30,10 @@ export class ForgeInputNumber
   constructor() {
     super();
     this.addEventListener("input", () => {
-      const inputValue = this.shadowRoot!.querySelector("input")!.valueAsNumber;
-      const clampedValue = clamp(inputValue, this.min, this.max);
+      const rawValue = this.shadowRoot!.querySelector("input")!.valueAsNumber;
 
-      if (clampedValue === inputValue) {
-        this.value = String(clampedValue);
+      if (rawValue >= this.min && rawValue <= this.max) {
+        this.value = String(rawValue);
         this.invalid = false;
       } else {
         this.invalid = true;
@@ -72,10 +71,6 @@ export class ForgeInputNumber
 
 customElements.define("forge-input-number", ForgeInputNumber);
 makeInputBinding("forge-input-number", { type: "shiny.number" });
-
-function clamp(x: number, min: number, max: number): number {
-  return Math.max(Math.min(x, max), min);
-}
 
 declare global {
   interface HTMLElementTagNameMap {
