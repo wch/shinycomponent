@@ -37,6 +37,7 @@ type Story = StoryObj;
 
 const bodyContent = html`<shiny-grid nCols="2">
   <shiny-card>
+    <shiny-card-header> A plot </shiny-card-header>
     <output-plot> </output-plot>
   </shiny-card>
   <shiny-card>
