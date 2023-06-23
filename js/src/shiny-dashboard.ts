@@ -5,11 +5,9 @@ import {
   makeInputBinding,
 } from "./make-input-binding";
 import { themePrimitives } from "./styles/op-classes";
+import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
 type TabElements = { name: string; el: HTMLElement }[];
-
-// Regex to detect text that's exclusively whitespace or newlines
-const detectEmptyText = /^\s*$/;
 
 @customElement("shiny-dashboard")
 export class ShinyDashboard
@@ -28,54 +26,26 @@ export class ShinyDashboard
   // Watch for additions the header slot. If they exist we make sure they're
   // legit and show the header.
   watchHeaderSlot(e: Event) {
-    const slot = e.target as HTMLSlotElement | null;
-
-    if (!slot) return;
-
-    const nodesInSlot = slot
-      .assignedNodes({ flatten: true })
-      .filter(
-        (node) =>
-          node instanceof HTMLElement &&
-          !detectEmptyText.test(node.innerHTML ?? "")
-      );
-
-    this.hasHeader = nodesInSlot.length > 0;
+    this.hasHeader = getElementsFromSlotChangeEvent(e).length > 0;
   }
 
   watchMainSlot(e: Event) {
-    const slot = e.target as HTMLSlotElement | null;
+    this.tabs = getElementsFromSlotChangeEvent(e).reduce<TabElements>(
+      (all, node) => {
+        if (node.tagName.toLowerCase() === "shiny-tab") {
+          const tabName = node.attributes.getNamedItem("name")?.value;
 
-    if (!slot) return;
+          if (!tabName) {
+            return all;
+          }
 
-    // Sometimes we get node that are just newlines and empty text. These don't
-    // matter as they dont inclunce the appearnace of the app so we can filter
-    // them out before working with the slotted elements
-
-    const nodesInSlot = slot
-      .assignedNodes({ flatten: true })
-      .filter(
-        (node) =>
-          node instanceof HTMLElement &&
-          !detectEmptyText.test(node.innerHTML ?? "")
-      );
-
-    this.tabs = nodesInSlot.reduce<TabElements>((all, node) => {
-      if (
-        node instanceof HTMLElement &&
-        node.tagName.toLowerCase() === "shiny-tab"
-      ) {
-        const tabName = node.attributes.getNamedItem("name")?.value;
-
-        if (!tabName) {
-          return all;
+          all.push({ name: tabName, el: node });
         }
 
-        all.push({ name: tabName, el: node });
-      }
-
-      return all;
-    }, []);
+        return all;
+      },
+      []
+    );
 
     this.selectTab();
   }
