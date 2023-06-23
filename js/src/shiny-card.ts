@@ -39,7 +39,9 @@ export class ShinyCard extends LitElement {
     }
 
     :host([height="content"]) {
-      height: fit-content;
+      height: auto;
+      min-height: min-content;
+      max-height: max-content;
       flex-basis: content;
     }
 

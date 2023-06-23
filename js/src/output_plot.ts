@@ -14,12 +14,11 @@ export class OutputPlot extends LitElement {
     :host {
       display: block;
       height: var(--plot-h, 400px);
-      flex-basis: var(--plot-h);
+      flex: 1;
     }
 
     :host([height]) {
-      flex-shrink: 0;
-      flex-grow: 0;
+      flex: 0 0 var(--plot-h, 400px);
     }
 
     .plot {
