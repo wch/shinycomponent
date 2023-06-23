@@ -44,10 +44,10 @@
     "typescript-lit-html-plugin": "^0.9.0"
   },
   "scripts": {
-    "open-props": "cp node_modules/open-props/open-props.min.css out",
-    "build": "tsx scripts/build.ts",
+    "build": "npm run build-js && npm run build-styles",
+    "watch": "concurrently \"npm:watch-js\" \"npm:watch-styles\" --names \"esbuild,postcss\" -c \"bgBlue.bold,bgGreen.bold\"",
+    "build-js": "tsx scripts/build.ts",
     "watch-js": "npm run build -- --watch",
-    "dev": "concurrently \"npm:watch-js\" \"npm:watch-styles\" --names \"esbuild,postcss\" -c \"bgBlue.bold,bgGreen.bold\"",
     "lint-styles": "npx stylelint \"**/*.ts\"",
     "build-styles": "npx postcss src/styles/shiny-theme.css -o out/shiny-theme.css",
     "watch-styles": "npm run build-styles -- --watch",
