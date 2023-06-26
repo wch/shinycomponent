@@ -36,7 +36,7 @@ export class Sidebar extends LitElement {
 
       /* Default settings */
       --transition: var(--speed-fast) var(--ease-3);
-      --padding: var(--size-m);
+      --padding: var(--size-s);
       --sidebar-content-columns: var(--open-content-columns);
       --sidebar-content-height: var(--open-content-height);
       --sidebar-content-gap: var(--open-content-gap);
@@ -84,6 +84,7 @@ export class Sidebar extends LitElement {
       overflow: auto;
       margin: 0;
       padding-inline: var(--padding);
+      padding-block-start: calc(var(--padding) / 2);
       display: flex;
       flex-direction: column;
       background-color: inherit;
