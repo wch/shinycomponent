@@ -47,7 +47,7 @@
     "build": "npm run build-js && npm run build-styles",
     "watch": "concurrently \"npm:watch-js\" \"npm:watch-styles\" --names \"esbuild,postcss\" -c \"bgBlue.bold,bgGreen.bold\"",
     "build-js": "tsx scripts/build.ts",
-    "watch-js": "npm run build -- --watch",
+    "watch-js": "npm run build-js -- --watch",
     "lint-styles": "npx stylelint \"**/*.ts\"",
     "build-styles": "npx postcss src/styles/shiny-theme.css -o out/shiny-theme.css",
     "watch-styles": "npm run build-styles -- --watch",
