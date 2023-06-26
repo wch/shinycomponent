@@ -101,26 +101,29 @@ export class Sidebar extends LitElement {
       border-bottom: none;
     }
 
-    .toggle-icon {
-      text-align: center;
-      transition: transform var(--transition);
-    }
-
-    :host([closed]) .toggle-icon {
-      transform: rotate(180deg);
-    }
-
     .open-toggle {
       position: absolute;
       top: var(--size-xxs);
-      left: 0;
-      font-size: var(--font-size-h4);
-      font-weight: var(--font-weight-headings);
+      left: var(--size-xxs);
       width: var(--padding);
-      height: fit-content;
+      height: var(--padding);
       cursor: pointer;
       color: var(--text-3);
       user-select: none;
+      transform: rotate(-90deg);
+      scale: 1.4;
+      transition: transform var(--transition);
+      display: grid;
+      place-content: center;
+      opacity: 0.5;
+    }
+
+    .open-toggle:hover {
+      opacity: 1;
+    }
+
+    :host([closed]) .open-toggle {
+      transform: rotate(90deg) translateY(var(--size-xxs));
     }
 
     :host([closed]:not([collapseToIcons])) .content {
@@ -195,7 +198,7 @@ export class Sidebar extends LitElement {
         title=${this.closed ? "Open sidebar" : "Close sidebar"}
         class="open-toggle"
       >
-        <div class="toggle-icon">❮</div>
+        ⌃
       </div>
     `;
   }
