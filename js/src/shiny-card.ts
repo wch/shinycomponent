@@ -106,8 +106,11 @@ export class ShinyCard extends LitElement {
   connectedCallback() {
     super.connectedCallback();
 
-    if (Number(this.height)) {
-      this.style.setProperty("--card-h", `${this.height}px`);
+    if (this.height) {
+      // If the height is a pure number, add px to the end of it. Otherwise assume it's a css length and just use it as providede
+      const height =
+        typeof this.height === "number" ? `${this.height}px` : this.height;
+      this.style.setProperty("--card-h", height);
     }
   }
 
