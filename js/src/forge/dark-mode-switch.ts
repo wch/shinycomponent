@@ -50,13 +50,13 @@ export class ForgeDarkModeSwitch
       }
 
       [data-theme="dark"] .sun-and-moon > .moon > circle {
-        transform: translateX(-7px);
+        transform: translateX(-9px);
       }
 
       @supports (cx: 1) {
         [data-theme="dark"] .sun-and-moon > .moon > circle {
           transform: translateX(0);
-          cx: 17;
+          cx: 15;
         }
       }
     `,
