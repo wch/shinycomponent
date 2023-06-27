@@ -18,6 +18,7 @@ import { SimpleNumberInput } from "./simple-number-input";
 import { SimpleNumberOutput } from "./simple-number-output";
 import { Tab } from "./tab";
 import { ThemeChooser } from "./theme-chooser";
+import { ThemeProvider } from "./themer/theme-provider";
 
 // Prevent esbuild from tree-shaking these components away.
 Collapsible;
@@ -40,3 +41,4 @@ Section;
 ShinyIcon;
 ShinyAvatar;
 OutputPlot;
+ThemeProvider;

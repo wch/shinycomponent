@@ -72,6 +72,7 @@ app_ui = sc.page_dashboard(
         )
     ),
     sc.sidebar(
+        # Tag("theme-provider", brand="green", background="black"),
         sc.icon_section(
             Tag("posit-logo", withName=True, slot="icon"),
             ui.h2("EBird Explorer"),
