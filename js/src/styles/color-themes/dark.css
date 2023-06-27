@@ -1,7 +1,7 @@
 @import "gray-hsl.css";
 @import "open-props/colors-hsl.min.css";
 
-:where(html) {
+:root {
   /* dark */
   --brand-dark-hue: 32;
   --brand-dark-hsl: var(--orange-3-hsl);
@@ -17,8 +17,10 @@
   --shadow-strength-dark: 80%;
 }
 
-[data-shinytheme="dark"],
-html[color-scheme="dark"] {
+:root [data-shinytheme="dark"],
+:root[data-shinytheme="dark"],
+:root [color-scheme="dark"],
+:root[color-scheme="dark"] {
   color-scheme: dark;
 
   --brand-hue: var(--brand-dark-hue);

@@ -3,7 +3,7 @@
 
 :root:has([choice="dim"]),
 [data-shinytheme="dim"],
-html[color-scheme="dim"] {
+[color-scheme="dim"] {
   color-scheme: dark;
 
   --brand-hue: 31;

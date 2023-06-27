@@ -1,4 +1,4 @@
-:where(html) {
+:root {
   /* Grays */
   --gray-0-hsl: 210 17% 98%;
   --gray-1-hsl: 210 17% 95%;

@@ -1,7 +1,7 @@
 @import "open-props/colors-hsl.min.css";
 
 [data-shinytheme="grape"],
-html[color-scheme="grape"] {
+[color-scheme="grape"] {
   color-scheme: light;
 
   --purple-12-hsl: 288 55% 20%;

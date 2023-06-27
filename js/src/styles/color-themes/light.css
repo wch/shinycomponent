@@ -1,6 +1,6 @@
 @import "gray-hsl.css";
 
-:where(html) {
+:root {
   /* Taken from posit website */
   --posit-gray-h: 240;
   --posit-gray-s: 1%;
@@ -37,7 +37,7 @@
 
 :root:has([choice="light"]),
 [data-shinytheme="light"],
-html[color-scheme="light"] {
+[color-scheme="light"] {
   color-scheme: light;
 
   --brand-hue: var(--brand-light-hue);
