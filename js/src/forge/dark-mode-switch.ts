@@ -198,7 +198,8 @@ export class ForgeDarkModeSwitch
     `;
   }
 
-  onClick(): void {
+  onClick(e: MouseEvent): void {
+    e.stopPropagation();
     this.themeValue = this.themeValue === "light" ? "dark" : "light";
     this.setPreference();
     this.onChangeCallback(true);
