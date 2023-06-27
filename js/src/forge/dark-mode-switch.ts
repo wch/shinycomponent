@@ -88,7 +88,7 @@ export class ForgeDarkModeSwitch
       }
 
       [data-theme="dark"] .sun-and-moon > .sun-beams {
-        transform: rotateZ(-25deg);
+        transform: rotateZ(-25deg) scale(1.75);
         transition-duration: var(--speed-fast);
       }
 
@@ -120,6 +120,7 @@ export class ForgeDarkModeSwitch
         inline-size: 100%;
         block-size: 100%;
         stroke-linecap: round;
+        overflow: visible;
       }
 
       [data-theme="dark"] .theme-toggle {
