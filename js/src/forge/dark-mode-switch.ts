@@ -99,7 +99,7 @@ export class ForgeDarkModeSwitch
     `,
     css`
       .theme-toggle {
-        --size: var(--font-size-4);
+        --size: var(--size-l);
         --icon-fill: hsl(210deg 10% 30%);
         --icon-fill-hover: hsl(210deg 10% 15%);
 
@@ -125,12 +125,6 @@ export class ForgeDarkModeSwitch
       [data-theme="dark"] .theme-toggle {
         --icon-fill: hsl(210deg 10% 70%);
         --icon-fill-hover: hsl(210deg 15% 90%);
-      }
-
-      @media (hover: none) {
-        .theme-toggle {
-          --size: 48px;
-        }
       }
     `,
   ];
