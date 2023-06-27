@@ -70,11 +70,6 @@ export class ShinyCard extends LitElement {
       display: block;
     }
 
-    ::slotted(*) {
-      margin: 0;
-      min-height: 0;
-    }
-
     /* Make block-layout slotted children stretch without neccesary needing to
     specify it themselves. This will leave text alone etc. It's unclear if this
     list should be expanded or not or if this is too strong of a selector but it
