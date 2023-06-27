@@ -1,4 +1,4 @@
-:where(html) {
+:root {
   --choco-0-hsl: 48 100% 93%;
   --choco-1-hsl: 35 91% 86%;
   --choco-2-hsl: 30 85% 79%;
@@ -16,7 +16,7 @@
 
 :root:has([choice="choco"]),
 [data-shinytheme="choco"],
-html[color-scheme="choco"] {
+[color-scheme="choco"] {
   color-scheme: light;
 
   /* choco */
