@@ -20,10 +20,10 @@ export class ThemeChooser extends LitElement {
     this.choice = radios.getValue() as Theme;
 
     if (this.choice === "default") {
-      delete document.body.dataset["shinytheme"];
+      delete document.documentElement.dataset["shinytheme"];
       return;
     }
-    document.body.dataset["shinytheme"] = this.choice;
+    document.documentElement.dataset["shinytheme"] = this.choice;
   }
 
   constructor() {

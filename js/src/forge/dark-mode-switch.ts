@@ -204,7 +204,7 @@ export class ForgeDarkModeSwitch
   }
 
   setPreference() {
-    document.body.dataset["shinytheme"] = this.themeValue;
+    document.documentElement.dataset["shinytheme"] = this.themeValue;
     this.reflectPreference();
   }
 
