@@ -42,7 +42,7 @@ export class ForgeDarkModeSwitch
       }
 
       [data-theme="dark"] .sun-and-moon > .sun {
-        transform: scale(1.75);
+        transform: scale(1.4);
       }
 
       [data-theme="dark"] .sun-and-moon > .sun-beams {
@@ -82,7 +82,7 @@ export class ForgeDarkModeSwitch
       }
 
       [data-theme="dark"] .sun-and-moon > .sun {
-        transform: scale(1.75);
+        transform: scale(1.4);
         transition-timing-function: var(--ease-3);
         transition-duration: var(--speed-fast);
       }
