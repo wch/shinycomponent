@@ -36,8 +36,7 @@
 }
 
 :root:has([choice="light"]),
-[data-shinytheme="light"],
-[color-scheme="light"] {
+:root:is([data-shinytheme="light"]) {
   color-scheme: light;
 
   --brand-hue: var(--brand-light-hue);

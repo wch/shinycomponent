@@ -15,8 +15,7 @@
 }
 
 :root:has([choice="choco"]),
-[data-shinytheme="choco"],
-[color-scheme="choco"] {
+:root:is([data-shinytheme="choco"]) {
   color-scheme: light;
 
   /* choco */
