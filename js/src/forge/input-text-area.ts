@@ -1,11 +1,11 @@
 import SlTextarea from "@shoelace-style/shoelace/dist/components/textarea/textarea.js";
 import debounce from "just-debounce-it";
 import { property } from "lit/decorators.js";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "../make-input-binding";
-import { makeValueChangeEmitter } from "../make_value_change_emitter";
+} from "../shiny/make-input-binding";
 
 export class ForgeInputTextArea
   extends SlTextarea

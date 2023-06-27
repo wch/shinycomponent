@@ -1,11 +1,11 @@
 import SlInput from "@shoelace-style/shoelace/dist/components/input/input.js";
 import debounce from "just-debounce-it";
 import { property } from "lit/decorators.js";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "../make-input-binding";
-import { makeValueChangeEmitter } from "../make_value_change_emitter";
+} from "../shiny/make-input-binding";
 
 export class ForgeInputText
   extends SlInput

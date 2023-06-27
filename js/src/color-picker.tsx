@@ -2,11 +2,11 @@ import React from "react";
 import type { ColorResult } from "react-color";
 import { SketchPicker } from "react-color";
 import { createRoot } from "react-dom/client";
+import { makeValueChangeEmitter } from "./make_value_change_emitter";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "./make-input-binding";
-import { makeValueChangeEmitter } from "./make_value_change_emitter";
+} from "./shiny/make-input-binding";
 
 // Color Picker React component
 function ColorPickerReact({

@@ -1,10 +1,10 @@
 import SlSwitch from "@shoelace-style/shoelace/dist/components/switch/switch.js";
 import { CSSResultGroup, css } from "lit";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "../make-input-binding";
-import { makeValueChangeEmitter } from "../make_value_change_emitter";
+} from "../shiny/make-input-binding";
 
 export class ForgeInputSwitch
   extends SlSwitch

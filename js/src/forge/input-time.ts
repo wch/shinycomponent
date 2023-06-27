@@ -1,9 +1,9 @@
 import SlInput from "@shoelace-style/shoelace/dist/components/input/input.js";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "../make-input-binding";
-import { makeValueChangeEmitter } from "../make_value_change_emitter";
+} from "../shiny/make-input-binding";
 
 export class ForgeInputTime
   extends SlInput

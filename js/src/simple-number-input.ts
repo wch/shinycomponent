@@ -1,9 +1,9 @@
 import { LitElement, css, html } from "lit";
+import { makeValueChangeEmitter } from "./make_value_change_emitter";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "./make-input-binding";
-import { makeValueChangeEmitter } from "./make_value_change_emitter";
+} from "./shiny/make-input-binding";
 
 export class SimpleNumberInput
   extends LitElement

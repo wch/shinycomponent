@@ -2,13 +2,13 @@ import SlButton from "@shoelace-style/shoelace/dist/components/button/button.js"
 import { CSSResultGroup, css } from "lit";
 import { property } from "lit/decorators.js";
 import {
-  CustomElementInputGetValue,
-  makeInputBinding,
-} from "../make-input-binding";
-import {
   ValueChangeEmitter,
   makeValueChangeEmitter,
 } from "../make_value_change_emitter";
+import {
+  CustomElementInputGetValue,
+  makeInputBinding,
+} from "../shiny/make-input-binding";
 
 export class ForgeInputActionButton
   extends SlButton

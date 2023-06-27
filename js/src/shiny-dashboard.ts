@@ -3,7 +3,7 @@ import { customElement, property, state } from "lit/decorators.js";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "./make-input-binding";
+} from "./shiny/make-input-binding";
 import { themePrimitives } from "./styles/op-classes";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 

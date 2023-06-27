@@ -2,11 +2,11 @@ import Slider, { sliderClasses } from "@mui/base/Slider";
 import debounce from "just-debounce-it";
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "../make-input-binding";
-import { makeValueChangeEmitter } from "../make_value_change_emitter";
+} from "../shiny/make-input-binding";
 import { isPlainObject } from "./utils";
 
 // TODO:

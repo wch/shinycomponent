@@ -1,10 +1,10 @@
 import { CSSResultGroup, LitElement, css, html } from "lit";
 import { property } from "lit/decorators.js";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "../make-input-binding";
-import { makeValueChangeEmitter } from "../make_value_change_emitter";
+} from "../shiny/make-input-binding";
 
 // Adapted from:
 // https://web.dev/building-a-theme-switch-component/

@@ -2,11 +2,11 @@ import SlOption from "@shoelace-style/shoelace/dist/components/option/option.js"
 import SlSelect from "@shoelace-style/shoelace/dist/components/select/select.js";
 import { TemplateResult, html, render } from "lit";
 import { property } from "lit/decorators.js";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
-} from "../make-input-binding";
-import { makeValueChangeEmitter } from "../make_value_change_emitter";
+} from "../shiny/make-input-binding";
 import { escapeSpaces, unescapeSpaces } from "./utils";
 
 // TODO:

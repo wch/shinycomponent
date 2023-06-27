@@ -3,11 +3,11 @@ import SlRadioGroup from "@shoelace-style/shoelace/dist/components/radio-group/r
 import SlRadio from "@shoelace-style/shoelace/dist/components/radio/radio.js";
 import { CSSResultGroup, TemplateResult, css, html, render } from "lit";
 import { property } from "lit/decorators.js";
+import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputValue,
   makeInputBinding,
-} from "../make-input-binding";
-import { makeValueChangeEmitter } from "../make_value_change_emitter";
+} from "../shiny/make-input-binding";
 import { escapeSpaces, unescapeSpaces } from "./utils";
 
 // Prevent tree-shaking of these components, which we rely on.
