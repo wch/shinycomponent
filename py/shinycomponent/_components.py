@@ -78,7 +78,11 @@ def tab(
 
 
 def grid(
-    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+    *args: TagChild | TagAttrs,
+    _add_ws: bool = True,
+    nRows: int = 1,
+    nCols: int = 2,
+    **kwargs: TagAttrValue,
 ) -> Tag:
     """
     Create a <shiny-grid> tag.
@@ -91,6 +95,10 @@ def grid(
         Child elements to this tag.
     _add_ws
         Whether whitespace should be added around this tag.
+    nRows
+        Number of rows in the grid.
+    nCols
+        Number of columns in the grid.
     **kwargs
         Attributes to this tag.
 
@@ -103,7 +111,15 @@ def grid(
     ~htmltools.Tag
     """
 
-    return Tag("shiny-grid", page_dep(), *args, _add_ws=_add_ws, **kwargs)
+    return Tag(
+        "shiny-grid",
+        page_dep(),
+        *args,
+        _add_ws=_add_ws,
+        nRows=nRows,
+        nCols=nCols,
+        **kwargs,
+    )
 
 
 def grid_item(
