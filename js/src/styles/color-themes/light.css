@@ -1,4 +1,4 @@
-@import "gray-hsl.css";
+@import "open-props/colors-hsl.min.css";
 
 :root {
   /* Taken from posit website */
@@ -35,8 +35,8 @@
   --shadow-strength-light: 2%;
 }
 
-:root:has([choice="light"]),
-:root:is([data-shinytheme="light"]) {
+[data-shinytheme="light"],
+:root[data-shinytheme="light"] {
   color-scheme: light;
 
   --brand-hue: var(--brand-light-hue);

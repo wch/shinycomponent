@@ -1,7 +1,7 @@
 @import "open-props/colors-hsl.min.css";
 
-:root:has([choice="grape"]),
-:root:is([data-shinytheme="grape"]) {
+[data-shinytheme="grape"],
+:root[data-shinytheme="grape"] {
   color-scheme: light;
 
   --purple-12-hsl: 288 55% 20%;

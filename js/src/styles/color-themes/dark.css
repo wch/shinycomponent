@@ -1,4 +1,3 @@
-@import "gray-hsl.css";
 @import "open-props/colors-hsl.min.css";
 
 :root {
@@ -17,8 +16,8 @@
   --shadow-strength-dark: 80%;
 }
 
-:root:has([choice="dark"]),
-:root:is([data-shinytheme="dark"]) {
+[data-shinytheme="dark"],
+:root[data-shinytheme="dark"] {
   color-scheme: dark;
 
   --brand-hue: var(--brand-dark-hue);
