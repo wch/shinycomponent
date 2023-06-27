@@ -1,3 +1,4 @@
+import { ForgeDarkModeSwitch } from "./dark-mode-switch";
 import { ForgeInputActionButton } from "./input-action-button";
 import { ForgeInputCheckbox } from "./input-checkbox";
 import { ForgeInputCheckboxGroup } from "./input-checkbox-group";
@@ -13,6 +14,7 @@ import { ForgeInputTime } from "./input-time";
 import { ForgeOutputTextVerbatim } from "./output-text-verbatim";
 
 // Prevent esbuild from tree-shaking these components away.
+ForgeDarkModeSwitch;
 ForgeInputActionButton;
 ForgeInputCheckbox;
 ForgeInputCheckboxGroup;

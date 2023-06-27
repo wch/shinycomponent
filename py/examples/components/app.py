@@ -13,6 +13,13 @@ app_ui = sc.page(
                 Tag("posit-logo", withName=True, slot="icon"),
                 ui.h2("New Shiny components"),
             ),
+            Tag(
+                "shiny-section",
+                Tag("forge-dark-mode-switch", id="dark_mode", slot="icon"),
+                sc.forge.output_text_verbatim(
+                    "out_dark_mode",
+                ),
+            ),
         ),
         sc.tab(
             # Make a grid with 2 columns
@@ -545,6 +552,11 @@ app_ui = sc.page(
 
 
 def server(input: Inputs, output: Outputs, session: Session):
+    @output()
+    @render.text()
+    def out_dark_mode():
+        return str(input.dark_mode())
+
     for i in range(2):
         make_output(input[f"action{i+1}"], f"out_action{i+1}", output)
 
