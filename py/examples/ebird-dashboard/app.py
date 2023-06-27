@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import ipyleaflet as L
+import matplotlib.pyplot as plt
 import pandas as pd
 import shiny.experimental as x
 from htmltools import Tag
@@ -139,24 +140,36 @@ app_ui = sc.page_dashboard(
             shadowed=True,
         ),
         sc.grid_item(
-            info_box(
-                title="Scientific Name",
-                output_id="species_scientific_name",
-                icon="🥼",
-                color="var(--orange-4)",
+            sc.card_header("Distance from Ann Arbor"),
+            ui.output_plot("distogram"),
+            sc.card_footer(
+                sc.forge.input_slider(
+                    id="bins",
+                    label="Bins for histogram",
+                    min=5,
+                    max=60,
+                    value=30,
+                    marks=[5, 15, 25, 35, 45, 55],
+                ),
             ),
-            info_box(
-                title="Family",
-                output_id="species_family",
-                icon="👨‍👩‍👧‍👦",
-                color="var(--blue-4)",
-            ),
-            info_box(
-                title="Order",
-                output_id="species_order",
-                icon="📦",
-                color="var(--green-4)",
-            ),
+            # info_box(
+            #     title="Scientific Name",
+            #     output_id="species_scientific_name",
+            #     icon="🥼",
+            #     color="var(--orange-4)",
+            # ),
+            # info_box(
+            #     title="Family",
+            #     output_id="species_family",
+            #     icon="👨‍👩‍👧‍👦",
+            #     color="var(--blue-4)",
+            # ),
+            # info_box(
+            #     title="Order",
+            #     output_id="species_order",
+            #     icon="📦",
+            #     color="var(--green-4)",
+            # ),
             width=1,
             height=3,
             shadowed=True,
@@ -216,6 +229,11 @@ def server(input: Inputs, output: Outputs, session: Session):
     @reactive.Calc
     def species_info():
         return get_taxonomy_from_name(input.species())
+
+    @output
+    @render.plot()
+    def distogram():
+        plt.hist(ebird_results()["distance_mi"], input.bins(), density=True)
 
     @output
     @render.text
