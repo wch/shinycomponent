@@ -25,7 +25,11 @@ export class ShinyCard extends LitElement {
 
       ${themePrimitives.surface_1}
 
-      container-type: size;
+      /* We use inline-size here because the more broad "size" value will force
+      this element to declare its height explicitely. We only really care about
+      width for container queries so that's fine. This is a funny gotcha though
+      that isn't obvious */
+      container-type: inline-size;
       border: var(--border-standard);
       border-radius: var(--card-radius);
       overflow: hidden;
@@ -39,9 +43,7 @@ export class ShinyCard extends LitElement {
     }
 
     :host([height="content"]) {
-      height: auto;
-      min-height: min-content;
-      max-height: max-content;
+      height: fit-content;
       flex-basis: content;
     }
 
@@ -70,6 +72,7 @@ export class ShinyCard extends LitElement {
 
     ::slotted(*) {
       margin: 0;
+      min-height: 0;
     }
 
     /* Make block-layout slotted children stretch without neccesary needing to
