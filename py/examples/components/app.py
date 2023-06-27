@@ -15,10 +15,8 @@ app_ui = sc.page(
             ),
             Tag(
                 "shiny-section",
-                Tag("forge-dark-mode-switch", id="dark_mode", slot="icon"),
-                sc.forge.output_text_verbatim(
-                    "out_dark_mode",
-                ),
+                sc.forge.dark_mode_switch(id="dark_mode", slot="icon"),
+                sc.forge.output_text_verbatim("out_dark_mode"),
             ),
         ),
         sc.tab(
