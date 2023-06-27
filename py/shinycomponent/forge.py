@@ -4,7 +4,6 @@ __all__ = (
     "input_checkbox",
     "input_number",
     "input_text",
-    "split_panel",
 )
 
 from pathlib import PurePath
@@ -17,10 +16,20 @@ from ._htmldeps import open_props_theme_dep
 from ._utils import attr_to_escaped_json
 
 
-def split_panel(
-    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+def dark_mode_switch(
+    id: str | None = None,
+    *args: TagChild | TagAttrs,
+    _add_ws: bool = True,
+    **kwargs: TagAttrValue,
 ) -> Tag:
-    return Tag("forge-split-panel", forge_dep(), *args, _add_ws=_add_ws, **kwargs)
+    return Tag(
+        "forge-dark-mode-switch",
+        forge_dep(),
+        id=id,
+        *args,
+        _add_ws=_add_ws,
+        **kwargs,
+    )
 
 
 def input_action_button(
