@@ -7,18 +7,18 @@ import shinycomponent as sc
 
 app_ui = sc.page(
     sc.dashboard(
-        sc.sidebar(
-            Tag(
-                "shiny-section",
-                Tag("posit-logo", withName=True, slot="icon"),
-                ui.h2("New Shiny components"),
-            ),
-            Tag(
-                "shiny-section",
-                sc.forge.dark_mode_switch(id="dark_mode", slot="icon"),
-                sc.forge.output_text_verbatim("out_dark_mode"),
-            ),
-        ),
+        # sc.sidebar(
+        #     Tag(
+        #         "shiny-section",
+        #         Tag("posit-logo", withName=True, slot="icon"),
+        #         ui.h2("New Shiny components"),
+        #     ),
+        #     Tag(
+        #         "shiny-section",
+        #         sc.forge.dark_mode_switch(id="dark_mode", slot="icon"),
+        #         sc.forge.output_text_verbatim("out_dark_mode"),
+        #     ),
+        # ),
         sc.tab(
             # Make a grid with 2 columns
             sc.grid(
@@ -545,6 +545,7 @@ app_ui = sc.page(
             name="Time",
         ),
         Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
+        sidebarNavigation=True,
     ),
 )
 
