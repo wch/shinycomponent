@@ -24,7 +24,7 @@ export class ForgeDarkModeSwitch
       }
 
       .sun-and-moon > .sun {
-        fill: var(--surface-1);
+        fill: none;
         stroke: var(--text-1);
         stroke-width: 1.5px;
       }
@@ -68,38 +68,44 @@ export class ForgeDarkModeSwitch
     // Transitions
     css`
       .sun-and-moon > .sun {
-        transition: transform var(--speed-normal) var(--ease-in-out-3);
+        transition-property: transform, fill, stroke-width;
+        transition-duration: var(--speed-normal);
+        transition-timing-function: var(--ease-in-out-2);
       }
 
       .sun-and-moon > .sun-beams {
-        transition: transform var(--speed-normal) var(--ease-in-out-3),
-          opacity var(--speed-normal) var(--ease-in-out-2);
+        transition: transform var(--speed-fast) var(--ease-out-3),
+          opacity var(--speed-fast) var(--ease-out-4);
+        transition-delay: var(--speed-fast);
       }
 
       .sun-and-moon .moon > circle {
-        transition: transform var(--speed-fast) var(--ease-in-out-3);
+        transition: transform var(--speed-fast) var(--ease-in-out-2),
+          fill var(--speed-fast) var(--ease-in-out-2);
+        transition-delay: var(--speed-fast);
       }
 
       @supports (cx: 1) {
         .sun-and-moon .moon > circle {
-          transition: cx var(--speed-fast) var(--ease-in-out-3);
+          transition: cx var(--speed-fast) var(--ease-in-out-1);
+        }
+
+        [data-theme="dark"] .sun-and-moon .moon > circle {
+          transition-delay: var(--speed-fast);
         }
       }
 
       [data-theme="dark"] .sun-and-moon > .sun {
-        transform: scale(1.4);
-        transition-timing-function: var(--ease-in-out-3);
-        transition-duration: var(--speed-fast);
+        transition-timing-function: var(--ease-in-out-2);
+        transition-duration: var(--speed-normal);
       }
 
       [data-theme="dark"] .sun-and-moon > .sun-beams {
-        transform: rotateZ(-25deg) scale(1.75);
-        transition-duration: var(--speed-fast);
-      }
-
-      [data-theme="dark"] .sun-and-moon > .moon > circle {
+        transform: scale(0.3);
+        transition: transform var(--speed-fast) var(--ease-in-out-2),
+          opacity var(--speed-normal) var(--ease-out-1);
         transition-delay: 0s;
-        transition-duration: var(--speed-normal);
+        transition-duration: var(--speed-fast);
       }
     `,
     css`
