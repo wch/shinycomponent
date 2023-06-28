@@ -23,8 +23,10 @@ export class ForgeDarkModeSwitch
         transform-origin: center center;
       }
 
-      .sun-and-moon > :is(.moon, .sun) {
-        fill: var(--text-1);
+      .sun-and-moon > .sun {
+        fill: var(--surface-1);
+        stroke: var(--text-1);
+        stroke-width: 1.5px;
       }
 
       .theme-toggle:is(:hover, :focus-visible)
@@ -34,7 +36,7 @@ export class ForgeDarkModeSwitch
 
       .sun-and-moon > .sun-beams {
         stroke: var(--text-1);
-        stroke-width: 2px;
+        stroke-width: 1.5px;
       }
 
       .theme-toggle:is(:hover, :focus-visible) :is(.sun-and-moon > .sun-beams) {
@@ -42,6 +44,9 @@ export class ForgeDarkModeSwitch
       }
 
       [data-theme="dark"] .sun-and-moon > .sun {
+        fill: var(--text-1);
+        stroke: none;
+        stroke-width: 0;
         transform: scale(1.4);
       }
 
@@ -50,7 +55,7 @@ export class ForgeDarkModeSwitch
       }
 
       [data-theme="dark"] .sun-and-moon > .moon > circle {
-        transform: translateX(-9px);
+        transform: translateX(-10px);
       }
 
       @supports (cx: 1) {
@@ -173,7 +178,7 @@ export class ForgeDarkModeSwitch
         >
           <mask class="moon" id="moon-mask">
             <rect x="0" y="0" width="100%" height="100%" fill="white" />
-            <circle cx="24" cy="10" r="6" fill="black" />
+            <circle cx="25" cy="10" r="6" fill="black" />
           </mask>
           <circle
             class="sun"
