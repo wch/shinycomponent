@@ -174,24 +174,44 @@ export class ShinyDashboard
       /* Subtract padding from radius of tabs so they fit like they've shrunk down */
       --child-radius: calc(var(--container-radius) - var(--container-pad));
 
-      border-radius: var(--container-radius);
+      /* border-radius: var(--container-radius); */
       padding: var(--container-pad);
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      background-color: var(--surface-4);
+      row-gap: var(--size-xs);
     }
 
     .tab {
+      --underline-thickness: var(--border-thin);
+
       cursor: pointer;
       position: relative;
       padding-inline: var(--size-m);
-      border-radius: var(--child-radius);
-      color: var(--text-2);
+      padding-block: var(--size-s);
+      color: var(--text-3);
+      border-color: var(--text-3);
+      border-style: solid;
+      border-width: 0 0 var(--underline-thickness) 0;
+      opacity: 0.8;
     }
 
     .selected-tab {
-      background-color: var(--surface-1);
+      opacity: 1;
+      color: var(--text-1);
+    }
+
+    .selected-tab::after {
+      --highlight-thickness: calc(var(--underline-thickness) * 2);
+
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--highlight-thickness);
+      background-color: var(--text-3);
+      border-radius: var(--radius-pill);
     }
 
     .footer {
