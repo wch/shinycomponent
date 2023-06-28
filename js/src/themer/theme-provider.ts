@@ -26,6 +26,8 @@ export class ThemeProvider extends LitElement {
 
 type ThemeColors = {
   brand: string;
+  "brand-hue": string;
+  "brand-hsl": string;
   "text-1": string;
   "text-2": string;
   "text-3": string;
@@ -39,6 +41,11 @@ type ThemeColors = {
   danger: string;
 };
 
+type ThemeInfo = {
+  tokens: ThemeColors;
+  mode: "light" | "dark";
+};
+
 /**
  * Generate color palette for themeing an app with a subset of colors using chroma-js
  * @param colors A set of colors used to seed the theme
@@ -47,7 +54,7 @@ type ThemeColors = {
 function buildThemePalette(colors: {
   brand: string;
   background: string;
-}): ThemeColors {
+}): ThemeInfo {
   const brand = chroma(colors.brand);
   const background = chroma(colors.background);
   if (!brand || !background) {
@@ -62,25 +69,35 @@ function buildThemePalette(colors: {
 
   const darkMode = background.luminance() < 0.5;
 
-  const textDelta = 0.15;
+  const incrementText = (color: chroma.Color) => {
+    const delta = 0.1;
+    return darkMode ? color.darken(delta) : color.brighten(delta);
+  };
+
   const text1 = darkMode ? lightColor : darkColor;
-  const text2 = darkMode ? text1.darken(textDelta) : text1.brighten(textDelta);
-  const text3 = darkMode ? text2.darken(textDelta) : text2.brighten(textDelta);
+  const text2 = incrementText(text1);
+  const text3 = incrementText(text2);
 
-  const surface1 = darkMode ? darkColor : lightColor;
-  const surfaceDelta = 0.15;
-  const surface2 = darkMode
-    ? surface1.brighten(surfaceDelta)
-    : surface1.darken(surfaceDelta);
-  const surface3 = darkMode
-    ? surface2.brighten(surfaceDelta)
-    : surface2.darken(surfaceDelta);
-  const surface4 = darkMode
-    ? surface3.brighten(surfaceDelta)
-    : surface3.darken(surfaceDelta);
+  const incrementSurface = (color: chroma.Color) => {
+    const delta = 0.1;
+    return darkMode ? color.brighten(delta) : color.darken(delta);
+  };
 
-  const parsedColors: Record<keyof ThemeColors, chroma.Color> = {
+  const surface1 = background;
+  const surface2 = incrementSurface(surface1);
+  const surface3 = incrementSurface(surface2);
+  const surface4 = incrementSurface(surface3);
+
+  const [brandH, brandS, brandL] = brand.hsl();
+
+  const parsedColors: Record<keyof ThemeColors, chroma.Color | string> = {
     brand,
+    "brand-hue": String(brandH),
+    "brand-hsl": [
+      brandH,
+      decimalToPercent(brandS),
+      decimalToPercent(brandL),
+    ].join(" "),
     "text-1": text1,
     "text-2": text2,
     "text-3": text3,
@@ -94,21 +111,32 @@ function buildThemePalette(colors: {
     danger: red,
   };
 
-  return Object.fromEntries(
-    Object.entries(parsedColors).map(([key, color]) => [key, color.toString()])
-  ) as ThemeColors;
+  return {
+    mode: darkMode ? "dark" : "light",
+    tokens: Object.fromEntries(
+      Object.entries(parsedColors).map(([key, color]) => [
+        key,
+        typeof color === "string" ? color : color.toString(),
+      ])
+    ) as ThemeColors,
+  };
 }
-
-type ThemeTokens = ThemeColors;
 
 /**
  * Attach theme colors to the root element of the document as css variables
  * @param tokens A set of theme tokens to attach to the root element
  * @returns void
  */
-function attachThemeToRoot(tokens: ThemeTokens) {
+function attachThemeToRoot({ mode, tokens }: ThemeInfo) {
   const root = document.documentElement;
   Object.entries(tokens).forEach(([key, value]) => {
     root.style.setProperty(`--${key}`, value);
   });
+
+  // Set color-scheme to dark or light
+  root.style.setProperty("color-scheme", mode);
+}
+
+function decimalToPercent(x: number) {
+  return `${x * 100}%`;
 }
