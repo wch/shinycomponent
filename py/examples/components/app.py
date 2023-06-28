@@ -544,7 +544,12 @@ app_ui = sc.page(
             ),
             name="Time",
         ),
-        Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
+        Tag(
+            "shiny-footer",
+            ui.span("Experimental Shiny"),
+            sc.forge.dark_mode_switch(id="dark_mode"),
+            Tag("theme-chooser"),
+        ),
         sidebarNavigation=True,
     ),
 )
