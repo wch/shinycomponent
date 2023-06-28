@@ -17,16 +17,17 @@ export class ShinyDashboard
   @property({ type: Boolean }) dynamicHeight: boolean = false;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   @property({ type: Number }) selected_tab_index: number = 0;
+  @property({ type: Boolean }) sidebarNavigation: boolean = false;
   @state() tabs: TabElements = [];
 
-  @state() hasHeader: boolean = false;
+  @state() hasHeaderContents: boolean = false;
 
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
   // Watch for additions the header slot. If they exist we make sure they're
   // legit and show the header.
   watchHeaderSlot(e: Event) {
-    this.hasHeader = getElementsFromSlotChangeEvent(e).length > 0;
+    this.hasHeaderContents = getElementsFromSlotChangeEvent(e).length > 0;
   }
 
   watchMainSlot(e: Event) {
@@ -59,7 +60,9 @@ export class ShinyDashboard
       // Is this tab the one being shifted away from?
       const hidingTab = !currentlyHidden && !isSelected;
       if (hidingTab) {
-        $(tab.el).trigger("hidden");
+        if (typeof $ !== "undefined") {
+          $(tab.el).trigger("hidden");
+        }
         // Make sure that screen readers know to not include the hidden tabs
         tab.el.inert = true;
         tab.el.style.display = "none";
@@ -68,7 +71,9 @@ export class ShinyDashboard
       // Is this tab the one being shifted to?
       const showingTab = currentlyHidden && isSelected;
       if (showingTab) {
-        $(tab.el).trigger("shown");
+        if (typeof $ !== "undefined") {
+          $(tab.el).trigger("shown");
+        }
         tab.el.inert = false;
         tab.el.style.display = "block";
       }
@@ -111,10 +116,10 @@ export class ShinyDashboard
       width: 100%;
       display: grid;
       grid-template:
-        "sidebar header" auto
-        "sidebar content" 1fr
-        "sidebar footer" auto /
-        auto 1fr;
+        "nav sidebar header" auto
+        "nav sidebar content" 1fr
+        "nav sidebar footer" auto /
+        auto auto 1fr;
       isolation: isolate;
     }
 
@@ -168,50 +173,92 @@ export class ShinyDashboard
     }
 
     .tabs {
-      --container-radius: var(--radius-m);
-      --container-pad: var(--size-xxs);
+      /* Some variables that control the little bars that demarkate tabs and
+      also show what is selected */
+      --highlight-thickness: var(--border-thin);
+      --highlight-thickness-selected: var(--border-thick);
+      --highlight-color: var(--text-3);
+      --highlight-color-selected: var(--text-2);
+      --highlight-opacity: 0.8;
 
-      /* Subtract padding from radius of tabs so they fit like they've shrunk down */
-      --child-radius: calc(var(--container-radius) - var(--container-pad));
+      /* Place highlight on bottom of tab */
+      --highlight-inset: auto 0 0 0;
 
-      /* border-radius: var(--container-radius); */
-      padding: var(--container-pad);
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       row-gap: var(--size-xs);
+      position: relative;
+      width: 100%;
+    }
+
+    :host([sidebarNavigation]) .tabs {
+      /* Place highlight to right of tab */
+      --highlight-inset: 0 0 0 auto;
+
+      grid-area: nav;
+      flex-flow: column nowrap;
+      align-items: stretch;
+      overflow: auto;
+      row-gap: 0;
+      max-width: var(--size-content-1);
+      height: 100%;
+    }
+
+    /* Use a psuedo-element to draw a line across all tabs */
+    .tabs::after {
+      content: "";
+      position: absolute;
+      background-color: var(--highlight-color);
+      height: var(--highlight-thickness);
+      opacity: var(--highlight-opacity);
+      inset: var(--highlight-inset);
+    }
+
+    :host([sidebarNavigation]) .tabs::after {
+      height: auto;
+      width: var(--highlight-thickness);
+      inline-size: var(--highlight-thickness);
     }
 
     .tab {
-      --underline-thickness: var(--border-thin);
-
       cursor: pointer;
       position: relative;
       padding-inline: var(--size-m);
+
+      /* Use the container padding for the top of the tab */
+      padding-block: 0 var(--size-s);
+      color: var(--highlight-color);
+      opacity: var(--highlight-opacity);
+
+      /* Add elipses to prevent overflow for tab names that are too long */
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    :host([sidebarNavigation]) .tab {
       padding-block: var(--size-s);
-      color: var(--text-3);
-      border-color: var(--text-3);
-      border-style: solid;
-      border-width: 0 0 var(--underline-thickness) 0;
-      opacity: 0.8;
     }
 
     .selected-tab {
-      opacity: 1;
       color: var(--text-1);
+      opacity: 1;
     }
 
     .selected-tab::after {
-      --highlight-thickness: calc(var(--underline-thickness) * 2);
-
       content: "";
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: var(--highlight-thickness);
-      background-color: var(--text-3);
-      border-radius: var(--radius-pill);
+      background-color: var(--highlight-color-selected);
+      border-radius: var(--radius-s);
+      height: var(--highlight-thickness-selected);
+      inset: var(--highlight-inset);
+    }
+
+    /* Adjust so tab selection indicators are on the side rather than bottom */
+    :host([sidebarNavigation]) .selected-tab::after {
+      height: auto;
+      width: var(--highlight-thickness-selected);
     }
 
     .footer {
@@ -229,25 +276,34 @@ export class ShinyDashboard
     }
   `;
 
+  showHeader() {
+    if (this.hasHeaderContents) return true;
+
+    // If we have tabs and they're meant to be shown on the top of the page,
+    // then we need to show the header
+    if (this.tabs.length > 0 && !this.sidebarNavigation) return true;
+
+    return false;
+  }
+
   render() {
-    const hideHeader = this.tabs.length === 0 && !this.hasHeader;
+    const tabs = this.tabs.map(
+      (tab, i) =>
+        html`<div
+          class="tab ${i === this.selected_tab_index ? "selected-tab" : ""}"
+          @click=${() => this.selectTab(i)}
+        >
+          ${tab.name}
+        </div>`
+    );
+
+    const tabContainer = html`<div class="tabs">${tabs}</div>`;
     return html`
       <div class="tabset">
-        <div class="header ${hideHeader ? "empty-header" : ""}">
+        ${this.sidebarNavigation ? tabContainer : ""}
+        <div class="header ${this.showHeader() ? "" : "empty-header"}">
           <slot name="header" @slotchange=${this.watchHeaderSlot}></slot>
-          <div class="tabs">
-            ${this.tabs.map(
-              (tab, i) =>
-                html`<div
-                  class="tab ${i === this.selected_tab_index
-                    ? "selected-tab"
-                    : ""}"
-                  @click=${() => this.selectTab(i)}
-                >
-                  ${tab.name}
-                </div>`
-            )}
-          </div>
+          ${this.sidebarNavigation ? "" : tabContainer}
           <div class="header-right">
             <slot
               name="header-right"
