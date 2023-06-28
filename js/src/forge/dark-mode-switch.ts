@@ -68,27 +68,27 @@ export class ForgeDarkModeSwitch
     // Transitions
     css`
       .sun-and-moon > .sun {
-        transition: transform var(--speed-normal) var(--ease-out-3);
+        transition: transform var(--speed-normal) var(--ease-in-out-3);
       }
 
       .sun-and-moon > .sun-beams {
-        transition: transform var(--speed-normal) var(--ease-out-4),
-          opacity var(--speed-normal) var(--ease-3);
+        transition: transform var(--speed-normal) var(--ease-in-out-3),
+          opacity var(--speed-normal) var(--ease-in-out-2);
       }
 
       .sun-and-moon .moon > circle {
-        transition: transform var(--speed-fast) var(--ease-out-5);
+        transition: transform var(--speed-fast) var(--ease-in-out-3);
       }
 
       @supports (cx: 1) {
         .sun-and-moon .moon > circle {
-          transition: cx var(--speed-fast) var(--ease-out-5);
+          transition: cx var(--speed-fast) var(--ease-in-out-3);
         }
       }
 
       [data-theme="dark"] .sun-and-moon > .sun {
         transform: scale(1.4);
-        transition-timing-function: var(--ease-3);
+        transition-timing-function: var(--ease-in-out-3);
         transition-duration: var(--speed-fast);
       }
 
