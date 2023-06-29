@@ -8,7 +8,7 @@ override styles from our reset layer */
 @import "color-themes/dark.css";
 @import "color-themes/dim.css";
 @import "color-themes/light.css";
-@import "shoelace-theme-adapter.css";
+@import "adapters/component/shoelace-theme-adapter.css";
 
 /* Import resets into a lower layer so they can be easily over-ridden */
 @import "resets.css" layer(reset);
@@ -19,103 +19,107 @@ override styles from our reset layer */
   /* Set defaults */
 
   /* The H of hsl for the brand color */
-  --brand-hue: var(--brand-light-hue);
-  --brand-hsl: var(--brand-light-hsl);
-  --brand: var(--brand-light);
-  --text-1: var(--text-1-light);
-  --text-2: var(--text-2-light);
-  --text-3: var(--text-3-light);
-  --surface-1: var(--surface-1-light);
-  --surface-2: var(--surface-2-light);
-  --surface-3: var(--surface-3-light);
-  --surface-4: var(--surface-4-light);
-  --shadow-color: var(--shadow-color-light);
-  --shadow-strength: var(--shadow-strength-light);
+  --shiny-brand-hue: var(--shiny-theme-brand-hue, var(--brand-light-hue));
+  --shiny-brand-hsl: var(--shiny-theme-brand-hsl, var(--brand-light-hsl));
+  --shiny-brand: var(--shiny-theme-brand, var(--brand-light));
+  --shiny-text-1: var(--shiny-theme-text-1, var(--text-1-light));
+  --shiny-text-2: var(--shiny-theme-text-2, var(--text-2-light));
+  --shiny-text-3: var(--shiny-theme-text-3, var(--text-3-light));
+  --shiny-surface-1: var(--shiny-theme-surface-1, var(--surface-1-light));
+  --shiny-surface-2: var(--shiny-theme-surface-2, var(--surface-2-light));
+  --shiny-surface-3: var(--shiny-theme-surface-3, var(--surface-3-light));
+  --shiny-surface-4: var(--shiny-theme-surface-4, var(--surface-4-light));
+  --shiny-shadow-color: var(--shiny-theme-shadow-color, var(--shadow-color-light));
+  --shiny-shadow-strength: var(--shiny-theme-shadow-strength, var(--shadow-strength-light));
 
   /* Status colors */
-  --success: var(--green-4);
-  --warning: var(--orange-8);
-  --danger: var(--red-8);
+  --shiny-primary: var(--shiny-theme-primary, var(--shiny-brand));
+  --shiny-success: var(--shiny-theme-success, var(--green-4));
+  --shiny-warning: var(--shiny-theme-warning, var(--orange-8));
+  --shiny-danger: var(--shiny-theme-danger, var(--red-8));
 
   /* Sizes */
 
   /* Things like adding padding around a toggle switch */
-  --size-xxs: var(--size-1);
-  --size-xs: var(--size-2);
-  --size-s: var(--size-3);
-  --size-m: var(--size-fluid-2);
-  --size-l: var(--size-fluid-3);
-  --size-xl: var(--size-fluid-5);
-  --size-xxl: var(--size-fluid-6);
+  --shiny-size-xxs: var(--shiny-theme-size-xxs, var(--size-1));
+  --shiny-size-xs: var(--shiny-theme-size-xs, var(--size-2));
+  --shiny-size-s: var(--shiny-theme-size-s, var(--size-3));
+  --shiny-size-m: var(--shiny-theme-size-m, var(--size-fluid-2));
+  --shiny-size-l: var(--shiny-theme-size-l, var(--size-fluid-3));
+  --shiny-size-xl: var(--shiny-theme-size-xl, var(--size-fluid-5));
+  --shiny-size-xxl: var(--shiny-theme-size-xxl, var(--size-fluid-6));
 
   /* Shadows */
-  --shadow-s: var(--shadow-1);
-  --shadow-m: var(--shadow-3);
-  --shadow-l: var(--shadow-5);
+  --shiny-shadow-s: var(--shiny-theme-shadow-s, var(--shadow-1));
+  --shiny-shadow-m: var(--shiny-theme-shadow-m, var(--shadow-3));
+  --shiny-shadow-l: var(--shiny-theme-shadow-l, var(--shadow-5));
 
   /* Text */
+  --shiny-font-mono: var(--shiny-theme-font-mono, var(--font-mono));
+  --shiny-font-sans: var(--shiny-theme-font-sans, var(--font-sans));
+  --shiny-font-serif: var(--shiny-theme-font-serif, var(--font-serif));
 
   /* Sizes */
-  --font-size-s: var(--font-size-0);
-  --font-size-m: var(--font-size-2);
-  --font-size-l: var(--font-size-4);
-  --font-size-h1: var(--font-size-fluid-2);
-  --font-size-h2: var(--font-size-fluid-1);
-  --font-size-h3: calc(var(--font-size-fluid-1) / 1.25));
-  --font-size-h4: calc(var(--font-size-fluid-1) / 1.5));
-  --font-size-h5: calc(var(--font-size-fluid-1) / 2));
+  --shiny-font-size-s: var(--shiny-theme-font-size-s, var(--font-size-0));
+  --shiny-font-size-m: var(--shiny-theme-font-size-m, var(--font-size-2));
+  --shiny-font-size-l: var(--shiny-theme-font-size-l, var(--font-size-4));
+  --shiny-font-size-h1: var(--shiny-theme-font-size-h1, var(--font-size-fluid-2));
+  --shiny-font-size-h2: var(--shiny-theme-font-size-h2, var(--font-size-fluid-1));
+  --shiny-font-size-h3: var(--shiny-theme-font-size-h3, calc(var(--font-size-fluid-1) / 1.25)));
+  --shiny-font-size-h4: var(--shiny-theme-font-size-h4, calc(var(--font-size-fluid-1) / 1.5)));
+  --shiny-font-size-h5: var(--shiny-theme-font-size-h5, calc(var(--font-size-fluid-1) / 2)));
 
   /* Special variable that allow text to size to its container smartly */
-  --font-size-fluid: clamp(
+  --shiny-font-size-fluid: var(--shiny-theme-font-size-fluid, clamp(
     var(--font-size-00),
     3cqi,
     var(--font-size-l)
-  );
+  ));
 
   /* Weights */
-  --font-weight-headings: var(--font-weight-3);
-  --font-weight-bold: var(--font-weight-5);
+  --shiny-font-weight-headings: var(--shiny-theme-font-weight-headings, var(--font-weight-4));
+  --shiny-font-weight-bold: var(--shiny-theme-font-weight-bold, var(--font-weight-5));
 
   /* Line heights */
-  --line-height-headings: var(--font-lineheight-1);
-  --line-height-main: var(--font-lineheight-3);
+  --shiny-line-height-headings: var(--shiny-theme-line-height-headings, var(--font-lineheight-1));
+  --shiny-line-height-main: var(--shiny-theme-line-height-main, var(--font-lineheight-3));
 
   /* Transitions */
-  --speed-fast: 0.15s;
-  --speed-normal: 0.3s;
-  --speed-slow: 0.75s;
+  --shiny-speed-fast: var(--shiny-theme-speed-fast, 0.15s);
+  --shiny-speed-normal: var(--shiny-theme-speed-normal, 0.3s);
+  --shiny-speed-slow: var(--shiny-theme-speed-slow, 0.75s);
 
   /* Borders */
-  --border-optional: 0;
-  --border-thin: var(--border-size-1);
-  --border-normal: var(--border-size-2);
-  --border-thick: var(--border-size-3);
+  --shiny-border-optional: var(--shiny-theme-border-optional, 0);
+  --shiny-border-thin: var(--shiny-theme-border-thin, var(--border-size-1));
+  --shiny-border-normal: var(--shiny-theme-border-normal, var(--border-size-2));
+  --shiny-border-thick: var(--shiny-theme-border-thick, var(--border-size-3));
 
   /* Border with a tinge of the brand color */
-  --border-color: hsl(var(--brand-hue) 10% 50% / 15%);
+  --shiny-border-color: var(--shiny-theme-border-standard, hsl(var(--brand-hue) 10% 50% / 15%));
   /* stylelint-disable-next-line declaration-block-no-duplicate-custom-properties */
-  --border-color: color-mix(in srgb, var(--brand) 20%, var(--surface-1));
-  --border-standard: var(--border-thin) solid var(--border-color);
+  --shiny-border-color: var(--shiny-theme-border-color, color-mix(in srgb, var(--brand) 20%, var(--surface-1)));
+  --shiny-border-standard: var(--shiny-theme-border-color, var(--border-thin) solid var(--border-color));
 
   /* Radii */
-  --radius-s: var(--radius-2);
-  --radius-m: var(--radius-3);
-  --radius-l: var(--radius-4);
-  --radius-pill: 9999px;
+  --shiny-radius-s: var(--shiny-theme-radius-s, var(--radius-2));
+  --shiny-radius-m: var(--shiny-theme-radius-m, var(--radius-3));
+  --shiny-radius-l: var(--shiny-theme-radius-l, var(--radius-4));
+  --shiny-radius-pill: var(--shiny-theme-radius-pill, 9999px);
 }
 
 @supports (font-size: 1cqi) {
   :is(.fluid-type) {
-    font-size: var(--font-size-fluid);
+    font-size: var(--shiny-font-size-fluid);
   }
 }
 
 /* Set transition speeds to zero when the user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --speed-fast: 0s;
-    --speed-normal: 0s;
-    --speed-slow: 0s;
+    --shiny-speed-fast: 0s;
+    --shiny-speed-normal: 0s;
+    --shiny-speed-slow: 0s;
   }
 }
 
@@ -124,17 +128,17 @@ override styles from our reset layer */
   :root {
     color-scheme: dark;
 
-    --brand-hue: var(--brand-dark-hue);
-    --brand-hsl: var(--brand-dark-hsl);
-    --brand: var(--brand-dark);
-    --text-1: var(--text-1-dark);
-    --text-2: var(--text-2-dark);
-    --text-3: var(--text-3-dark);
-    --surface-1: var(--surface-1-dark);
-    --surface-2: var(--surface-2-dark);
-    --surface-3: var(--surface-3-dark);
-    --surface-4: var(--surface-4-dark);
-    --shadow-color: var(--shadow-color-dark);
-    --shadow-strength: var(--shadow-strength-dark);
+    --shiny-brand-hue: var(--shiny-theme-brand-hue, var(--brand-dark-hue));
+    --shiny-brand-hsl: var(--shiny-theme-brand-hsl, var(--brand-dark-hsl));
+    --shiny-brand: var(--shiny-theme-brand, var(--brand-dark));
+    --shiny-text-1: var(--shiny-theme-text-1, var(--text-1-dark));
+    --shiny-text-2: var(--shiny-theme-text-2, var(--text-2-dark));
+    --shiny-text-3: var(--shiny-theme-text-3, var(--text-3-dark));
+    --shiny-surface-1: var(--shiny-theme-surface-1, var(--surface-1-dark));
+    --shiny-surface-2: var(--shiny-theme-surface-2, var(--surface-2-dark));
+    --shiny-surface-3: var(--shiny-theme-surface-3, var(--surface-3-dark));
+    --shiny-surface-4: var(--shiny-theme-surface-4, var(--surface-4-dark));
+    --shiny-shadow-color: var(--shiny-theme-shadow-color, var(--shadow-color-dark));
+    --shiny-shadow-strength: var(--shiny-theme-shadow-strength, var(--shadow-strength-dark));
   }
 }

@@ -49,7 +49,7 @@
     "build-js": "tsx scripts/build.ts",
     "watch-js": "npm run build-js -- --watch",
     "lint-styles": "npx stylelint \"**/*.ts\"",
-    "build-styles": "npx postcss src/styles/shiny-theme.css -o out/shiny-theme.css",
+    "build-styles": "npx postcss src/styles/shiny-theme.css -o out/shiny-theme.css && npx postcss src/styles/adapters/**/*.css --base src/styles/adapters -d out/adapters",
     "watch-styles": "npm run build-styles -- --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
