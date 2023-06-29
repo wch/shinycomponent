@@ -178,8 +178,8 @@ export class ShinyDashboard
       --highlight-thickness: var(--border-thin);
       --highlight-thickness-selected: var(--border-thick);
       --highlight-color: var(--text-3);
-      --highlight-color-selected: var(--text-2);
-      --highlight-opacity: 0.8;
+      --highlight-color-selected: var(--text-1);
+      --highlight-opacity: 0.75;
 
       /* Place highlight on bottom of tab */
       --highlight-inset: auto 0 0 0;
