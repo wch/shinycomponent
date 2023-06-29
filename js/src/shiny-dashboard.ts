@@ -175,8 +175,12 @@ export class ShinyDashboard
     .tabs {
       /* Some variables that control the little bars that demarkate tabs and
       also show what is selected */
-      --highlight-thickness: var(--border-thin);
+      --highlight-thickness-hover: var(--border-normal);
       --highlight-thickness-selected: var(--border-thick);
+      --highlight-thickness: var(--border-thin);
+      --highlight-radius: 2px;
+      --highlight-border-radii: var(--highlight-radius) var(--highlight-radius)
+        0 0;
       --highlight-color: var(--text-3);
       --highlight-color-selected: var(--text-1);
       --highlight-opacity: 0.75;
@@ -192,9 +196,17 @@ export class ShinyDashboard
       width: 100%;
     }
 
+    .tabs .selected-tab {
+      --highlight-thickness: var(--highlight-thickness-selected);
+      --highlight-color: var(--highlight-color-selected);
+      --highlight-opacity: 1;
+    }
+
     :host([sidebarNavigation]) .tabs {
       /* Place highlight to right of tab */
       --highlight-inset: 0 0 0 auto;
+      --highlight-border-radii: var(--highlight-radius) 0 0
+        var(--highlight-radius);
 
       grid-area: nav;
       flex-flow: column nowrap;
@@ -203,22 +215,6 @@ export class ShinyDashboard
       row-gap: 0;
       max-width: var(--size-content-1);
       height: 100%;
-    }
-
-    /* Use a psuedo-element to draw a line across all tabs */
-    .tabs::after {
-      content: "";
-      position: absolute;
-      background-color: var(--highlight-color);
-      height: var(--highlight-thickness);
-      opacity: var(--highlight-opacity);
-      inset: var(--highlight-inset);
-    }
-
-    :host([sidebarNavigation]) .tabs::after {
-      height: auto;
-      width: var(--highlight-thickness);
-      inline-size: var(--highlight-thickness);
     }
 
     .tab {
@@ -235,30 +231,43 @@ export class ShinyDashboard
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      transition: opacity var(--transition-fast);
+    }
+
+    .tab:hover:not(.selected-tab) {
+      --highlight-thickness: var(--highlight-thickness-hover);
+      --highlight-opacity: 1;
+
+      background-color: var(--surface-4);
     }
 
     :host([sidebarNavigation]) .tab {
       padding-block: var(--size-s);
     }
 
-    .selected-tab {
-      color: var(--text-1);
-      opacity: 1;
-    }
-
-    .selected-tab::after {
+    /* Use a psuedo-element to draw a line across all tabs */
+    .tabs::after,
+    .tab::after {
       content: "";
       position: absolute;
-      background-color: var(--highlight-color-selected);
-      border-radius: var(--radius-s);
-      height: var(--highlight-thickness-selected);
+      background-color: var(--highlight-color);
+      width: auto;
+      height: var(--highlight-thickness);
+      opacity: var(--highlight-opacity);
       inset: var(--highlight-inset);
+      border-radius: var(--highlight-border-radii);
+      transition: width var(--transition-fast), height var(--transition-fast);
+    }
+
+    .tab::after {
+      --highlight-color: var(--highlight-color-selected);
     }
 
     /* Adjust so tab selection indicators are on the side rather than bottom */
-    :host([sidebarNavigation]) .selected-tab::after {
+    :host([sidebarNavigation]) .tab::after,
+    :host([sidebarNavigation]) .tabs::after {
       height: auto;
-      width: var(--highlight-thickness-selected);
+      width: var(--highlight-thickness);
     }
 
     .footer {
@@ -287,15 +296,16 @@ export class ShinyDashboard
   }
 
   render() {
-    const tabs = this.tabs.map(
-      (tab, i) =>
-        html`<div
-          class="tab ${i === this.selected_tab_index ? "selected-tab" : ""}"
-          @click=${() => this.selectTab(i)}
-        >
-          ${tab.name}
-        </div>`
-    );
+    const tabs = this.tabs.map((tab, i) => {
+      const isSelected = i === this.selected_tab_index;
+      return html`<div
+        class="tab ${isSelected ? "selected-tab" : ""}"
+        @click=${() => this.selectTab(i)}
+        title=${isSelected ? "Current tab" : `Switch to tab: ${tab.name}`}
+      >
+        ${tab.name}
+      </div>`;
+    });
 
     const tabContainer = html`<div class="tabs">${tabs}</div>`;
     return html`

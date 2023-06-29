@@ -85,6 +85,12 @@ override styles from our reset layer */
   --speed-normal: 0.3s;
   --speed-slow: 0.75s;
 
+  /* Full transition definitions */
+  --transition-ease: var(--ease-3);
+  --transition-fast: var(--speed-fast) var(--transition-ease);
+  --transition-normal: var(--speed-normal) var(--transition-ease);
+  --transition-slow: var(--speed-slow) var(--transition-ease);
+
   /* Borders */
   --border-optional: 0;
   --border-thin: var(--border-size-1);
