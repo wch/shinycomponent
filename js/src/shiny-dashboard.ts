@@ -172,6 +172,22 @@ export class ShinyDashboard
       margin-left: auto;
     }
 
+    .nav {
+      grid-area: nav;
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+      /* gap: var(--size-s); */
+    }
+
+    .nav > .nav-slot {
+      padding: var(--padding);
+    }
+
+    :host([sidebarNavigation]) .nav {
+      flex-flow: column nowrap;
+    }
+
     .tabs {
       /* Some variables that control the little bars that demarkate tabs and
       also show what is selected */
@@ -188,8 +204,9 @@ export class ShinyDashboard
       /* Place highlight on bottom of tab */
       --highlight-inset: auto 0 0 0;
 
+      flex: 1;
       display: flex;
-      align-items: center;
+      align-items: end;
       flex-wrap: wrap;
       row-gap: var(--size-xs);
       position: relative;
@@ -208,7 +225,6 @@ export class ShinyDashboard
       --highlight-border-radii: var(--highlight-radius) 0 0
         var(--highlight-radius);
 
-      grid-area: nav;
       flex-flow: column nowrap;
       align-items: stretch;
       overflow: auto;
@@ -307,7 +323,12 @@ export class ShinyDashboard
       </div>`;
     });
 
-    const tabContainer = html`<div class="tabs">${tabs}</div>`;
+    const tabContainer = html`<div class="nav">
+      <div class="nav-slot"><slot name="before-nav"></slot></div>
+      <div class="tabs">${tabs}</div>
+      <div class="nav-slot"><slot name="after-nav"></slot></div>
+    </div>`;
+
     return html`
       <div class="tabset">
         ${this.sidebarNavigation ? tabContainer : ""}

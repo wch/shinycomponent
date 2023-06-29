@@ -42,7 +42,9 @@ eget aliquam ultricies, nunc sapien ultricies diam, sed aliquam nunc massa
 nec sapien. Nulla facilisi. Nullam euismod, nisl eget aliquam ultricies,
 nunc sapien ultricies diam, sed aliquam nunc massa nec sapien.`;
 
-const bodyContent = html` <shiny-tab name="Plots">
+const bodyContent = html` <div slot="before-nav">I am before the nav</div>
+  <div slot="after-nav">I am after the nav</div>
+  <shiny-tab name="Plots">
     <h2>Tab A</h2>
     <p>${loremIpsumText}</p>
   </shiny-tab>
