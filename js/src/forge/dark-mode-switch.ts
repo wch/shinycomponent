@@ -29,7 +29,7 @@ export class ForgeDarkModeSwitch
         stroke-width: 1.5px;
       }
 
-      .theme-toggle:is(:hover, :focus-visible)
+      button:is(:hover, :focus-visible)
         > :is(.sun-and-moon > :is(.moon, .sun)) {
         fill: var(--text-2);
       }
@@ -39,15 +39,15 @@ export class ForgeDarkModeSwitch
         stroke-width: 1.5px;
       }
 
-      .theme-toggle:is(:hover, :focus-visible) :is(.sun-and-moon > .sun-beams) {
-        stroke: var(--text-2);
+      button:is(:hover, :focus-visible) :is(.sun-and-moon > .sun-beams) {
+        background-color: var(--text-2);
       }
 
       [data-theme="dark"] .sun-and-moon > .sun {
         fill: var(--text-1);
         stroke: none;
         stroke-width: 0;
-        transform: scale(1.4);
+        transform: scale(1.6);
       }
 
       [data-theme="dark"] .sun-and-moon > .sun-beams {
@@ -109,14 +109,12 @@ export class ForgeDarkModeSwitch
       }
     `,
     css`
-      .theme-toggle {
+      button {
         --size: var(--size-l);
-        --icon-fill: hsl(210deg 10% 30%);
-        --icon-fill-hover: hsl(210deg 10% 15%);
 
         background: none;
         border: none;
-        padding: 0;
+        padding: 12%;
         inline-size: var(--size);
         block-size: var(--size);
         aspect-ratio: 1;
@@ -127,16 +125,17 @@ export class ForgeDarkModeSwitch
         outline-offset: 5px;
       }
 
-      .theme-toggle > svg {
+      /*
+      button:is(:hover, :focus-visible) {
+        background: var(--surface-4);
+      }
+      */
+
+      button > svg {
         inline-size: 100%;
         block-size: 100%;
         stroke-linecap: round;
         overflow: visible;
-      }
-
-      [data-theme="dark"] .theme-toggle {
-        --icon-fill: hsl(210deg 10% 70%);
-        --icon-fill-hover: hsl(210deg 15% 90%);
       }
     `,
   ];
@@ -168,8 +167,6 @@ export class ForgeDarkModeSwitch
   render() {
     return html`
       <button
-        class="theme-toggle"
-        id="theme-toggle"
         title="Toggles light & dark"
         aria-label="auto"
         aria-live="polite"
@@ -223,11 +220,11 @@ export class ForgeDarkModeSwitch
 
   reflectPreference() {
     this.shadowRoot
-      ?.querySelector("#theme-toggle")
+      ?.querySelector("button")
       ?.setAttribute("data-theme", this.themeValue);
 
     this.shadowRoot
-      ?.querySelector("#theme-toggle")
+      ?.querySelector("button")
       ?.setAttribute("aria-label", this.themeValue);
   }
 }
