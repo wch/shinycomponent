@@ -24,7 +24,7 @@
   --brand-light-hsl: var(--posit-blue-hsl);
   --brand-light: var(--posit-blue);
   --brand-light-hue: var(--posit-blue-h);
-  --text-1-light: var(--posit-gray);
+  --text-1-light: hsl(var(--posit-gray-h) var(--posit-gray-s) 12%);
   --text-2-light: hsl(var(--posit-gray-h) var(--posit-gray-s) 30%);
   --text-3-light: hsl(var(--posit-gray-h) var(--posit-gray-s) 35%);
   --surface-1-light: var(--gray-0);
