@@ -68,10 +68,10 @@ export class ForgeDarkModeSwitch
     // Transitions
     css`
       .sun-and-moon > .sun {
-        transition-property: transform, fill, stroke-width;
-        transition-delay: var(--speed-fast);
-        transition-duration: var(--speed-normal);
-        transition-timing-function: var(--ease-in-out-2);
+        transition: transform var(--speed-normal) var(--ease-in-out-2)
+            var(--speed-fast),
+          fill var(--speed-normal) var(--ease-in-out-2) var(--speed-fast),
+          stroke-width var(--speed-normal) var(--ease-in-out-2);
       }
 
       .sun-and-moon > .sun-beams {
