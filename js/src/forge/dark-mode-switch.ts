@@ -149,11 +149,13 @@ export class ForgeDarkModeSwitch
   connectedCallback() {
     super.connectedCallback();
 
-    this.setPreference();
-    // set early so no page flashes / CSS is made aware
-    this.reflectPreference();
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      this.themeValue = "dark";
+    }
 
-    // sync with system changes
+    this.setPreference();
+
+    // Sync with system changes
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", ({ matches: isDark }) => {
@@ -172,6 +174,7 @@ export class ForgeDarkModeSwitch
         title="Toggles light & dark"
         aria-label="auto"
         aria-live="polite"
+        data-theme="${this.themeValue}"
         @click="${this.onClick}"
       >
         <svg
