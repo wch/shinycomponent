@@ -2,15 +2,18 @@ from __future__ import annotations
 
 import json
 import typing
-from typing import Any, Awaitable, Callable, Optional, cast, overload
+from typing import (
+    Any,
+    Awaitable,
+    Callable,
+    Optional,
+    Protocol,
+    cast,
+    overload,
+    runtime_checkable,
+)
 
 from shiny import _utils
-from shiny._typing_extensions import (
-    Protocol,  # pyright: ignore[reportPrivateImportUsage]
-)
-from shiny._typing_extensions import (
-    runtime_checkable,  # pyright: ignore[reportPrivateImportUsage]
-)
 from shiny.render._render import RenderFunction, RenderFunctionAsync
 
 # ======================================================================================
