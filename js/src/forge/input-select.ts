@@ -1,6 +1,6 @@
 import SlOption from "@shoelace-style/shoelace/dist/components/option/option.js";
 import SlSelect from "@shoelace-style/shoelace/dist/components/select/select.js";
-import { TemplateResult, html, render } from "lit";
+import { CSSResultGroup, TemplateResult, css, html, render } from "lit";
 import { property } from "lit/decorators.js";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
@@ -22,6 +22,16 @@ export class ForgeInputSelect
   extends SlSelect
   implements CustomElementInputGetValue<string | string[]>
 {
+  static styles: CSSResultGroup = [
+    SlSelect.styles,
+    css`
+      .form-control--has-label.form-control--medium .form-control__label {
+        margin-bottom: var(--size-xs);
+        font-size: var(--font-size-m);
+      }
+    `,
+  ];
+
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
   onValueChange = makeValueChangeEmitter(this, this.id);
 

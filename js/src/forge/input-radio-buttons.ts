@@ -21,13 +21,19 @@ export class ForgeInputRadioButtons
   static styles: CSSResultGroup = [
     SlRadioGroup.styles,
     css`
-      ::slotted(sl-radio.inline) {
-        display: inline-block;
-        margin-inline-end: var(--size-xs);
+      .form-control--has-label.form-control--medium .form-control__label {
+        margin-bottom: var(--size-xs);
+        font-size: var(--font-size-m);
       }
 
       ::slotted(sl-radio) {
+        font-size: var(--font-size-m);
         margin-block-end: var(--size-xxs);
+      }
+
+      ::slotted(sl-radio.inline) {
+        display: inline-block;
+        margin-inline-end: var(--size-xs);
       }
     `,
   ];

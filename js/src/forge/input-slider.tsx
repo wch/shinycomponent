@@ -23,6 +23,15 @@ const css = /*css*/ `
 
 .label {
   font-size: var(--font-size-m);
+  margin-bottom: var(--size-xxs);
+}
+
+.slider {
+  margin-bottom: var(--size-xs);
+}
+
+.slider.has-marks {
+  margin-bottom: var(--size-s);
 }
 
 .${sliderClasses.root} {
@@ -242,7 +251,10 @@ export class ForgeInputSlider
         <div className="label">
           <slot name="label"></slot>
         </div>
-        <div style={{ width: "100%" }}>
+        <div
+          className={`slider ${this.marks ? "has-marks" : ""}`}
+          style={{ width: "100%" }}
+        >
           <Slider
             defaultValue={this.value}
             min={this.min}

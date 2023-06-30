@@ -14,21 +14,22 @@ export class ForgeInputCheckboxGroup
 {
   static styles: CSSResultGroup = css`
     .form-control.small {
-      font-size: var(--sl-input-label-font-size-small);
+      font-size: var(--font-size-s);
     }
 
     .form-control.medium {
-      font-size: var(--sl-input-label-font-size-medium);
+      font-size: var(--font-size-m);
     }
 
     label.form-control-label {
       display: inline-block;
-      color: var(--sl-input-label-color);
-      margin-bottom: var(--sl-spacing-3x-small);
+      color: inherit;
+      margin-bottom: var(--size-xs);
+      font-size: var(--font-size-m);
     }
 
     forge-input-checkbox {
-      margin-bottom: var(--sl-spacing-3x-small);
+      margin-bottom: var(--size-xxs);
     }
   `;
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};

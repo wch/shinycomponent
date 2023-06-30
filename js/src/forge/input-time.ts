@@ -1,4 +1,5 @@
 import SlInput from "@shoelace-style/shoelace/dist/components/input/input.js";
+import { CSSResultGroup, css } from "lit";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
   CustomElementInputValue,
@@ -9,6 +10,16 @@ export class ForgeInputTime
   extends SlInput
   implements CustomElementInputValue<string>
 {
+  static styles: CSSResultGroup = [
+    SlInput.styles,
+    css`
+      .form-control--has-label.form-control--medium .form-control__label {
+        margin-bottom: var(--size-xs);
+        font-size: var(--font-size-m);
+      }
+    `,
+  ];
+
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
   onValueChange = makeValueChangeEmitter(this, this.id);

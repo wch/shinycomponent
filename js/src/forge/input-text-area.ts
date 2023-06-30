@@ -1,5 +1,6 @@
 import SlTextarea from "@shoelace-style/shoelace/dist/components/textarea/textarea.js";
 import debounce from "just-debounce-it";
+import { CSSResultGroup, css } from "lit";
 import { property } from "lit/decorators.js";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
@@ -11,6 +12,16 @@ export class ForgeInputTextArea
   extends SlTextarea
   implements CustomElementInputValue<string>
 {
+  static styles: CSSResultGroup = [
+    SlTextarea.styles,
+    css`
+      .form-control--has-label.form-control--medium .form-control__label {
+        margin-bottom: var(--size-xs);
+        font-size: var(--font-size-m);
+      }
+    `,
+  ];
+
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
   @property({ type: Boolean, attribute: "wait-for-enter" })
