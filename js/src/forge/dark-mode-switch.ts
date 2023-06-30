@@ -69,6 +69,7 @@ export class ForgeDarkModeSwitch
     css`
       .sun-and-moon > .sun {
         transition-property: transform, fill, stroke-width;
+        transition-delay: var(--speed-fast);
         transition-duration: var(--speed-normal);
         transition-timing-function: var(--ease-in-out-2);
       }
@@ -76,36 +77,37 @@ export class ForgeDarkModeSwitch
       .sun-and-moon > .sun-beams {
         transition: transform var(--speed-fast) var(--ease-out-3),
           opacity var(--speed-fast) var(--ease-out-4);
-        transition-delay: var(--speed-fast);
+        transition-delay: var(--speed-normal);
       }
 
       .sun-and-moon .moon > circle {
         transition: transform var(--speed-fast) var(--ease-in-out-2),
           fill var(--speed-fast) var(--ease-in-out-2);
-        transition-delay: var(--speed-fast);
+        transition-delay: 0s;
       }
 
       @supports (cx: 1) {
         .sun-and-moon .moon > circle {
-          transition: cx var(--speed-fast) var(--ease-in-out-1);
+          transition: cx var(--speed-normal) var(--ease-in-out-2);
         }
 
         [data-theme="dark"] .sun-and-moon .moon > circle {
+          transition: cx var(--speed-fast) var(--ease-in-out-2);
           transition-delay: var(--speed-fast);
         }
       }
 
       [data-theme="dark"] .sun-and-moon > .sun {
-        transition-timing-function: var(--ease-in-out-2);
+        transition-delay: 0s;
         transition-duration: var(--speed-normal);
+        transition-timing-function: var(--ease-in-out-2);
       }
 
       [data-theme="dark"] .sun-and-moon > .sun-beams {
         transform: scale(0.3);
-        transition: transform var(--speed-fast) var(--ease-in-out-2),
-          opacity var(--speed-normal) var(--ease-out-1);
+        transition: transform var(--speed-normal) var(--ease-in-out-2),
+          opacity var(--speed-fast) var(--ease-out-1);
         transition-delay: 0s;
-        transition-duration: var(--speed-fast);
       }
     `,
     css`
