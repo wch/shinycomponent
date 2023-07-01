@@ -22,6 +22,10 @@ def page(
                        body { height: 100%; min-height: 100%; }
                        """
             ),
+            tags.meta(
+                name="viewport",
+                content="width=device-width, initial-scale=1",
+            ),
         ),
         tags.body(*args),
         page_dep(),
