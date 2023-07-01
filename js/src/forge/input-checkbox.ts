@@ -21,9 +21,13 @@ export class ForgeInputCheckbox
         display: block;
       }
 
+      label.checkbox {
+        --toggle-size: var(--size-3);
+      }
+
       :host(.inline) {
         display: inline-block;
-        margin-right: var(--sl-spacing-small);
+        margin-right: var(--size-s);
       }
     `,
   ];

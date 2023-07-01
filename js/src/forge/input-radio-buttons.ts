@@ -1,7 +1,14 @@
 import SlRadioButton from "@shoelace-style/shoelace/dist/components/radio-button/radio-button.js";
 import SlRadioGroup from "@shoelace-style/shoelace/dist/components/radio-group/radio-group.js";
 import SlRadio from "@shoelace-style/shoelace/dist/components/radio/radio.js";
-import { CSSResultGroup, TemplateResult, css, html, render } from "lit";
+import {
+  CSSResultGroup,
+  TemplateResult,
+  css,
+  html,
+  nothing,
+  render,
+} from "lit";
 import { property } from "lit/decorators.js";
 import { makeValueChangeEmitter } from "../make_value_change_emitter";
 import {
@@ -29,11 +36,14 @@ export class ForgeInputRadioButtons
       ::slotted(sl-radio) {
         font-size: var(--font-size-m);
         margin-block-end: var(--size-xxs);
+
+        /* We need to do a hard override of the Shoelace setting here. */
+        --sl-toggle-size-medium: var(--size-3);
       }
 
       ::slotted(sl-radio.inline) {
         display: inline-block;
-        margin-inline-end: var(--size-xs);
+        margin-inline-end: var(--size-s);
       }
     `,
   ];
@@ -44,7 +54,6 @@ export class ForgeInputRadioButtons
 
   @property({ type: Array }) choices: string[] = [];
   @property({ type: String }) selected: string | null = null;
-  @property({ type: String }) size: "small" | "medium" | "large" = "medium";
   @property({ type: Boolean }) inline: boolean = false;
   @property({ type: Boolean }) button: boolean = false;
   @property({ type: Boolean }) pill: boolean = false;
@@ -60,7 +69,6 @@ export class ForgeInputRadioButtons
     const children = generateOptions(
       this.choices,
       this.button,
-      this.size,
       this.inline,
       this.pill
     );
@@ -112,7 +120,6 @@ export function normalizeRadioChoices(
 function generateOptions(
   choices: RadioChoices,
   button: boolean,
-  size: "small" | "medium" | "large",
   inline: boolean,
   pill: boolean
 ): TemplateResult {
@@ -120,17 +127,13 @@ function generateOptions(
 
   return html`${Object.entries(normalized).map(([key, value]) => {
     if (button) {
-      return html`<sl-radio-button
-        value=${escapeSpaces(key)}
-        size=${size}
-        pill=${pill}
+      return html`<sl-radio-button value=${escapeSpaces(key)} ?pill=${pill}
         >${value}</sl-radio-button
       >`;
     } else {
       return html`<sl-radio
         value=${escapeSpaces(key)}
-        class=${inline ? "inline" : null}
-        size=${size}
+        class=${inline ? "inline" : nothing}
         >${value}</sl-radio
       >`;
     }

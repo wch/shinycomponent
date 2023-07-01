@@ -83,9 +83,8 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_text_area(
                         id="textarea3",
-                        label="Starting value, small, no resize",
+                        label="Starting value, no resize",
                         value="This is a starting value",
-                        size="small",
                         resize="none",
                     ),
                     sc.forge.input_text_area(
@@ -300,16 +299,10 @@ app_ui = sc.page(
                     sc.forge.input_checkbox(
                         id="checkbox2", label="Checked", value=True
                     ),
-                    sc.forge.input_checkbox(
-                        id="checkbox3",
-                        label="Small",
-                        size="small",
-                    ),
                 ),
                 sc.grid_item(
                     sc.forge.output_text_verbatim("out_checkbox1"),
                     sc.forge.output_text_verbatim("out_checkbox2"),
-                    sc.forge.output_text_verbatim("out_checkbox3"),
                 ),
                 nCols=2,
                 nRows=1,
@@ -324,9 +317,8 @@ app_ui = sc.page(
                         label="Basic",
                     ),
                     sc.forge.input_switch(id="switch2", label="Checked", value=True),
-                    sc.forge.input_switch(id="switch3", label="Small", size="small"),
                     sc.forge.input_switch(
-                        id="switch4",
+                        id="switch3",
                         label="Huge, via CSS vars",
                         style="""--width: calc(var(--height) * 1.75);
                                 --height: 44px;
@@ -338,7 +330,6 @@ app_ui = sc.page(
                     sc.forge.output_text_verbatim("out_switch1"),
                     sc.forge.output_text_verbatim("out_switch2"),
                     sc.forge.output_text_verbatim("out_switch3"),
-                    sc.forge.output_text_verbatim("out_switch4"),
                 ),
                 nCols=2,
                 nRows=1,
@@ -368,13 +359,12 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_checkbox_group(
                         id="checkboxgroup3",
-                        label="Small, dictionary choices, inline",
+                        label="Dictionary choices, inline",
                         choices={
                             "choice1": "First choice",
                             "choice2": "Second choice",
                             "choice3": "Third choice",
                         },
-                        size="small",
                         inline=True,
                     ),
                 ),
@@ -411,25 +401,24 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_radio_buttons(
                         id="radio3",
-                        label="Small, dictionary choices, inline",
+                        label="Dictionary choices, inline",
                         choices={
                             "choice1": "First choice",
                             "choice2": "Second choice",
                             "choice3": "Third choice",
                         },
                         inline=True,
-                        size="small",
                     ),
                     sc.forge.input_radio_buttons(
                         id="radio4",
-                        label="Button",
+                        label="Button, pill",
                         choices={
                             "choice1": "First choice",
                             "choice2": "Second choice",
                             "choice3": "Third choice",
                         },
                         button=True,
-                        size="small",
+                        pill=True,
                     ),
                 ),
                 sc.grid_item(
@@ -488,9 +477,8 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_date(
                         id="date4",
-                        label='Pill, size="small"',
+                        label="Pill",
                         pill=True,
-                        size="small",
                     ),
                 ),
                 sc.grid_item(
@@ -528,9 +516,8 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_time(
                         id="time4",
-                        label='Pill, size="small"',
+                        label="Pill",
                         pill=True,
-                        size="small",
                     ),
                 ),
                 sc.grid_item(
@@ -579,10 +566,10 @@ def server(input: Inputs, output: Outputs, session: Session):
     for i in range(6):
         make_output(input[f"slider{i+1}"], f"out_slider{i+1}", output)
 
-    for i in range(3):
+    for i in range(2):
         make_output(input[f"checkbox{i+1}"], f"out_checkbox{i+1}", output)
 
-    for i in range(4):
+    for i in range(3):
         make_output(input[f"switch{i+1}"], f"out_switch{i+1}", output)
 
     for i in range(3):
