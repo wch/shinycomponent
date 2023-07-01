@@ -71,7 +71,7 @@ export class ForgeDarkModeSwitch
         transition: transform var(--speed-fast) var(--ease-in-out-2)
             var(--speed-fast),
           fill var(--speed-fast) var(--ease-in-out-2) var(--speed-fast),
-          stroke-width var(--speed-fast) var(--ease-in-out-2);
+          stroke-width var(--speed-normal) var(--ease-in-out-2);
       }
 
       .sun-and-moon > .sun-beams {
