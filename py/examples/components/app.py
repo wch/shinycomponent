@@ -83,9 +83,10 @@ app_ui = sc.page(
                     ),
                     sc.forge.input_text_area(
                         id="textarea3",
-                        label="Starting value, no resize",
+                        label="Starting value, no resize, debounce=0",
                         value="This is a starting value",
                         resize="none",
+                        debounce=0,
                     ),
                     sc.forge.input_text_area(
                         id="textarea4",
