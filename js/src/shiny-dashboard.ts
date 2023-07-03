@@ -173,28 +173,12 @@ export class ShinyDashboard
     }
 
     .nav {
-      grid-area: nav;
-      display: flex;
-      flex-flow: row nowrap;
-      width: 100%;
-      /* gap: var(--size-s); */
-    }
-
-    .nav > .nav-slot {
-      padding: var(--padding);
-    }
-
-    :host([sidebarNavigation]) .nav {
-      flex-flow: column nowrap;
-    }
-
-    .tabs {
       /* Some variables that control the little bars that demarkate tabs and
       also show what is selected */
       --highlight-thickness-hover: var(--border-normal);
       --highlight-thickness-selected: var(--border-thick);
-      --highlight-thickness: var(--border-thin);
-      --highlight-radius: 2px;
+      --highlight-thickness: 0;
+      --highlight-radius: 1px;
       --highlight-border-radii: var(--highlight-radius) var(--highlight-radius)
         0 0;
       --highlight-color: var(--text-3);
@@ -204,13 +188,39 @@ export class ShinyDashboard
       /* Place highlight on bottom of tab */
       --highlight-inset: auto 0 0 0;
 
+      grid-area: nav;
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+      /* gap: var(--size-s); */
+      border-block-end: 1px solid var(--highlight-color);
+    }
+
+    :host([sidebarNavigation]) .nav {
+      flex-flow: column nowrap;
+      border-inline-end: 1px solid var(--highlight-color);
+      border-block-end: unset;
+    }
+
+    .nav > .nav-slot {
+      padding: var(--padding);
+    }
+
+    .nav > * {
+      flex-shrink: 5;
+    }
+
+    .tabs {
+      min-width: var(--size-content-1);
       flex: 1;
+      flex-shrink: 1;
       display: flex;
       align-items: end;
       flex-wrap: wrap;
       row-gap: var(--size-xs);
       position: relative;
       width: 100%;
+      font-weight: var(--font-weight-bold);
     }
 
     .tabs .selected-tab {
@@ -225,6 +235,7 @@ export class ShinyDashboard
       --highlight-border-radii: var(--highlight-radius) 0 0
         var(--highlight-radius);
 
+      min-width: unset;
       flex-flow: column nowrap;
       align-items: stretch;
       overflow: auto;
@@ -262,7 +273,6 @@ export class ShinyDashboard
     }
 
     /* Use a psuedo-element to draw a line across all tabs */
-    .tabs::after,
     .tab::after {
       content: "";
       position: absolute;
