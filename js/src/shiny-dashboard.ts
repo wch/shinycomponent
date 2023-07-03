@@ -1,4 +1,3 @@
-import { SlOption, SlSelect } from "@shoelace-style/shoelace";
 import { LitElement, css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import {
@@ -8,8 +7,6 @@ import {
 import { themePrimitives } from "./styles/op-classes";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
-SlOption;
-SlSelect;
 type TabElements = { name: string; value: string; el: HTMLElement }[];
 
 @customElement("shiny-dashboard")
