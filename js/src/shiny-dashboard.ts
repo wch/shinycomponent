@@ -1,3 +1,4 @@
+import { SlOption, SlSelect } from "@shoelace-style/shoelace";
 import { LitElement, css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import {
@@ -7,7 +8,9 @@ import {
 import { themePrimitives } from "./styles/op-classes";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
-type TabElements = { name: string; el: HTMLElement }[];
+SlOption;
+SlSelect;
+type TabElements = { name: string; value: string; el: HTMLElement }[];
 
 @customElement("shiny-dashboard")
 export class ShinyDashboard
@@ -40,7 +43,11 @@ export class ShinyDashboard
             return all;
           }
 
-          all.push({ name: tabName, el: node });
+          all.push({
+            name: tabName,
+            value: tabName.replaceAll(" ", "_"),
+            el: node,
+          });
         }
 
         return all;
@@ -82,6 +89,17 @@ export class ShinyDashboard
     this.onChangeCallback(true);
   }
 
+  // Callback used in the select input for mobile mode tab selection
+  handleTabSelect(event: Event) {
+    const selectedTabName = (
+      event.target as HTMLSelectElement
+    ).value.replaceAll("_", " ");
+    const selectedTabIndex = this.tabs.findIndex(
+      (tab) => tab.name === selectedTabName
+    );
+    this.selectTab(selectedTabIndex);
+  }
+
   currentTabName(): string {
     return this.tabs[this.selected_tab_index].name;
   }
@@ -103,7 +121,7 @@ export class ShinyDashboard
 
       display: block;
       height: 100%;
-      container-type: size;
+      container-type: inline-size;
       overflow: auto;
     }
 
@@ -192,8 +210,13 @@ export class ShinyDashboard
       display: flex;
       flex-flow: row nowrap;
       width: 100%;
-      /* gap: var(--size-s); */
+      align-items: baseline;
+      justify-content: space-between;
       border-block-end: 1px solid var(--highlight-color);
+    }
+
+    .nav .mobile-tabs {
+      display: none;
     }
 
     :host([sidebarNavigation]) .nav {
@@ -216,7 +239,7 @@ export class ShinyDashboard
       flex-shrink: 1;
       display: flex;
       align-items: end;
-      flex-wrap: wrap;
+      /* flex-wrap: wrap; */
       row-gap: var(--size-xs);
       position: relative;
       width: 100%;
@@ -309,6 +332,24 @@ export class ShinyDashboard
       margin: 0;
       padding: 0;
     }
+
+    /* Mobile styles */
+
+    .mobile-tabs select {
+      background-color: inherit;
+      accent-color: pink;
+    }
+
+    @container (width < 500px) {
+      /* Hide the tabs and show the select */
+      .nav:not(.sidebar-nav) .mobile-tabs {
+        display: unset;
+      }
+
+      .nav:not(.sidebar-nav) .tabs {
+        display: none;
+      }
+    }
   `;
 
   showHeader() {
@@ -327,15 +368,30 @@ export class ShinyDashboard
       return html`<div
         class="tab ${isSelected ? "selected-tab" : ""}"
         @click=${() => this.selectTab(i)}
-        title=${isSelected ? "Current tab" : `Switch to tab: ${tab.name}`}
+        title=${isSelected ? `Current: ${tab.name}` : `Switch to: ${tab.name}`}
       >
         ${tab.name}
       </div>`;
     });
 
-    const tabContainer = html`<div class="nav">
+    const tabOptions = this.tabs.map((tab) => {
+      return html`<sl-option value="${tab.value}">${tab.name}</sl-option>`;
+    });
+
+    // A select input that stands in for the tabs when in mobile mode
+    const tabSelect = html`<sl-select
+      @sl-change=${this.handleTabSelect}
+      value=${this.tabs[this.selected_tab_index]?.value ?? ""}
+    >
+      ${tabOptions}
+    </sl-select>`;
+
+    const tabContainer = html`<div
+      class="nav ${this.sidebarNavigation ? "sidebar-nav" : ""}"
+    >
       <div class="nav-slot"><slot name="before-nav"></slot></div>
       <div class="tabs">${tabs}</div>
+      <div class="mobile-tabs">${tabSelect}</div>
       <div class="nav-slot"><slot name="after-nav"></slot></div>
     </div>`;
 
