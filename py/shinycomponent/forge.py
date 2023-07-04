@@ -356,6 +356,18 @@ def input_radio_buttons(
     )
 
 
+def output_plot(
+    id: str,
+    **kwargs: TagAttrValue,
+):
+    return Tag(
+        "forge-output-plot",
+        forge_dep(),
+        id=id,
+        **kwargs,
+    )
+
+
 def output_text_verbatim(id: str):
     return Tag(
         "forge-output-text-verbatim",

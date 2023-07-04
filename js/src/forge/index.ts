@@ -11,6 +11,7 @@ import { ForgeInputSwitch } from "./input-switch";
 import { ForgeInputText } from "./input-text";
 import { ForgeInputTextArea } from "./input-text-area";
 import { ForgeInputTime } from "./input-time";
+import { ForgeOutputPlot } from "./output-plot";
 import { ForgeOutputTextVerbatim } from "./output-text-verbatim";
 
 // Prevent esbuild from tree-shaking these components away.
@@ -27,4 +28,5 @@ ForgeInputSwitch;
 ForgeInputText;
 ForgeInputTextArea;
 ForgeInputTime;
+ForgeOutputPlot;
 ForgeOutputTextVerbatim;

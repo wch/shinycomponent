@@ -2,7 +2,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-from shiny import App, render, ui
+from shiny import App, render
 
 import shinycomponent as sc
 
@@ -12,7 +12,7 @@ app_ui = sc.page_dashboard(
     ),
     sc.grid(
         sc.grid_item(
-            ui.output_plot("histogram"),
+            sc.forge.output_plot("histogram"),
             width=2,
             height=1,
         )
