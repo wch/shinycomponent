@@ -52,7 +52,7 @@ export class ForgeInputRadioButtons
 
   onValueChange = makeValueChangeEmitter(this, this.id);
 
-  @property({ type: Array }) choices: string[] = [];
+  @property({ type: Array }) choices: string[] | Record<string, string> = [];
   @property({ type: String }) selected: string | null = null;
   @property({ type: Boolean }) inline: boolean = false;
   @property({ type: Boolean }) button: boolean = false;
@@ -60,8 +60,10 @@ export class ForgeInputRadioButtons
 
   connectedCallback(): void {
     super.connectedCallback();
-    if (this.selected === undefined || this.selected === null)
-      this.selected = "";
+    if (this.selected === undefined || this.selected === null) {
+      const firstChoice = getFirstChoice(this.choices);
+      this.selected = firstChoice;
+    }
     this.value = escapeSpaces(this.selected);
 
     // Insert the <sl-radio> elements at this time, before the first update
@@ -107,9 +109,15 @@ type RadioChoices = string[] | Record<string, string>;
 
 type NormalizedRadioChoices = Record<string, string>;
 
-export function normalizeRadioChoices(
-  choices: RadioChoices
-): NormalizedRadioChoices {
+function getFirstChoice(choices: RadioChoices): string {
+  if (Array.isArray(choices)) {
+    return choices[0];
+  } else {
+    return Object.keys(choices)[0];
+  }
+}
+
+function normalizeRadioChoices(choices: RadioChoices): NormalizedRadioChoices {
   if (Array.isArray(choices)) {
     return Object.fromEntries(choices.map((x) => [x, x]));
   } else {

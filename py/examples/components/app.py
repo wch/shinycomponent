@@ -390,7 +390,7 @@ app_ui = sc.page(
                     sc.forge.input_radio_buttons(
                         id="radio2",
                         label=ui.TagList(
-                            "One selected, dictionary choices, ",
+                            'Selected="", dictionary choices, ',
                             ui.tags.b("bold label"),
                         ),
                         choices={
@@ -398,7 +398,7 @@ app_ui = sc.page(
                             "choice2": "Second choice",
                             "choice3": "Third choice",
                         },
-                        selected="choice3",
+                        selected="",
                     ),
                     sc.forge.input_radio_buttons(
                         id="radio3",
