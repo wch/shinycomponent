@@ -43,8 +43,8 @@ app_ui = sc.page_dashboard(
             lorem_ipsum,
             Tag("output-plot"),
         ),
-        nRows=2,
-        nCols=2,
+        n_rows=2,
+        n_cols=2,
     ),
 )
 

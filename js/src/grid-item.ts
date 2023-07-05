@@ -1,14 +1,22 @@
+import { property } from "lit/decorators.js";
 import { ShinyCard } from "./shiny-card";
 
+/**
+ * A custom element representing a grid item.
+ * Inherits from ShinyCard.
+ */
 export class GridItem extends ShinyCard {
-  width: number = 1;
-  height: number = 1;
+  /**
+   * The width of the grid item in columns of the enclosing grid.
+   * Defaults to 1.
+   */
+  @property({ type: Number }) width: number = 1;
 
-  static properties = {
-    width: { type: Number },
-    height: { type: Number },
-    ...ShinyCard.properties,
-  };
+  /**
+   * The height of the grid item in rows of the enclosing grid.
+   * Defaults to 1.
+   */
+  @property({ type: Number }) height: number = 1;
 
   connectedCallback() {
     super.connectedCallback();

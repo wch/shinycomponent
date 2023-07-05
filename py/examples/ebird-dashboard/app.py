@@ -174,8 +174,8 @@ app_ui = sc.page_dashboard(
             height=3,
             shadowed=True,
         ),
-        nRows=6,
-        nCols=3,
+        n_rows=6,
+        n_cols=3,
     ),
     sc.footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
 )
