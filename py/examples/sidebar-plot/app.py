@@ -13,9 +13,9 @@ app_ui = sc.page_dashboard(
     sc.grid(
         sc.grid_item(
             sc.forge.output_plot("histogram"),
-            width=2,
-            height=1,
-        )
+        ),
+        nRows=1,
+        nCols=1,
     ),
 )
 

@@ -11,6 +11,9 @@ export class ForgeOutputPlot extends LitElement {
 
   static styles = css`
     :host {
+      display: block;
+      flex: 1 1 auto;
+      min-height: 50px;
       height: 400px;
       width: 100%;
     }
