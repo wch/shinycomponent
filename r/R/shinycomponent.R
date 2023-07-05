@@ -8,13 +8,6 @@ color_picker <- function(id, ...) {
   )
 }
 
-#' @export
-greeting_card <- function(...) {
-  tagList(
-    component_dep(),
-    tag("greeting-card", list(...))
-  )
-}
 
 #' @export
 tabset <- function(...) {
