@@ -150,7 +150,6 @@ export class ShinyDashboard
       display: flex;
       align-items: center;
       gap: var(--padding);
-      background-color: var(--surface-1);
     }
 
     .header {
