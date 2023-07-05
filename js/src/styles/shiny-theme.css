@@ -43,8 +43,8 @@ override styles from our reset layer */
   --size-xxs: var(--size-1);
   --size-xs: var(--size-2);
   --size-s: var(--size-3);
-  --size-m: var(--size-fluid-2);
-  --size-l: var(--size-fluid-3);
+  --size-m: var(--size-4);
+  --size-l: var(--size-6);
   --size-xl: var(--size-fluid-5);
   --size-xxl: var(--size-fluid-6);
 
