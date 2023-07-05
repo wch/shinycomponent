@@ -7,6 +7,7 @@
   "private": true,
   "devDependencies": {
     "@mui/base": "^5.0.0-beta.4",
+    "@open-wc/lit-helpers": "^0.6.0",
     "@shoelace-style/shoelace": "^2.5.2",
     "@storybook/addon-essentials": "^7.0.21",
     "@storybook/addon-links": "^7.0.21",
