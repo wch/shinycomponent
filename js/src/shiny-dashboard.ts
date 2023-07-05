@@ -39,16 +39,44 @@ type TabInfo = {
 
 type TabElements = TabInfo[];
 
+/**
+ * A dashboard that can have tabs and a sidebar.
+ * Supported children include `<shiny-tab>` elements to add tabbed-navigation, and
+   `<shiny-sidebar>` elements to add a collapsible sidebar.
+  *
+  * @element shiny-dashboard
+*
+*/
 @customElement("shiny-dashboard")
 export class ShinyDashboard
   extends LitElement
   implements CustomElementInputGetValue<string>
 {
+  /**
+   * A boolean property that determines whether the dashboard should have
+   * dynamic height or not. If set to False (the default) then the dashboard
+   * will stretch to fill the vertical height of containing element.
+   */
   @property({ type: Boolean }) dynamicHeight: boolean = false;
+
+  /**
+   * The index of the selected tab. Only used if the dashboard has tabs.
+   */
   @property({ type: Number }) selectedTabIndex: number = 0;
+
+  /**
+   * Whether the dashboard should have sidebar navigation. Only used if the dashboard has tabs.
+   */
   @property({ type: Boolean }) sidebarNavigation: boolean = false;
+
+  /**
+   * An array of objects that contain information about each tab in the dashboard.
+   */
   @state() tabs: TabElements = [];
 
+  /**
+   * A boolean property that determines whether the dashboard has contents in the header slot or not.
+   */
   @state() hasHeaderContents: boolean = false;
 
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
