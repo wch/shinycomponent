@@ -53,7 +53,11 @@ def grid(
 
 
 def grid_item(
-    *args: TagChild | TagAttrs, width: int = 1, height: int = 1, **kwargs: TagAttrValue
+    *args: TagChild | TagAttrs,
+    width: int = 1,
+    height: int = 1,
+    card_styled: bool = True,
+    **kwargs: TagAttrValue,
 ) -> Tag:
     """
     A element to be placed on a grid defined by shinycomponent.grid.
@@ -66,8 +70,10 @@ def grid_item(
         The width of the grid item in columns of the enclosing grid. Defaults to 1.
     height
         The height of the grid item in rows of the enclosing grid. Defaults to 1.
+    card_styled
+        Whether to wrap children in a card (i.e. `shinycomponent.card()`). Defaults to True.
     **kwargs
-        Attributes to this tag.
+        Attributes passed onto the element tag.
 
     Returns
     -------
@@ -76,7 +82,9 @@ def grid_item(
 
     See Also
     --------
-    ~shinycomponent.grid ~htmltools.Tag
+    ~shinycomponent.card
+    ~shinycomponent.grid
+    ~htmltools.Tag
     """
 
     return Tag(
@@ -85,6 +93,7 @@ def grid_item(
         *args,
         width=width,
         height=height,
+        cardStyled=card_styled,
         _add_ws=True,
         **kwargs,
     )
