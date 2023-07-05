@@ -1,0 +1,36 @@
+:root {
+  --shiny-theme-gray-0: var(--bs-light);
+  --shiny-theme-gray-1: var(--bs-gray-100);
+  --shiny-theme-gray-2: var(--bs-gray-200);
+  --shiny-theme-gray-3: var(--bs-gray-300);
+  --shiny-theme-gray-4: var(--bs-gray-400);
+  --shiny-theme-gray-5: var(--bs-gray-500);
+  --shiny-theme-gray-6: var(--bs-gray-600);
+  --shiny-theme-gray-7: var(--bs-gray-700);
+  --shiny-theme-gray-8: var(--bs-gray-800);
+  --shiny-theme-gray-9: var(--bs-gray-900);
+  --shiny-theme-gray-10: var(--bs-gray-dark);
+  --shiny-theme-gray-11: var(--bs-dark);
+  --shiny-theme-gray-12: var(--bs-black);
+  --shiny-theme-surface-1: var(--bs-body-bg);
+  --shiny-theme-text-1: var(--bs-body-color);
+  --shiny-theme-surface-2: var(--bs-primary);
+  --shiny-theme-text-2: var(--bs-primary);
+  --shiny-theme-surface-3: var(--bs-secondary);
+  --shiny-theme-text-3: var(--bs-secondary);
+  --shiny-theme-surface-4: var(--bs-info);
+  --shiny-theme-text-4: var(--bs-info);
+  --shiny-theme-success: var(--bs-success);
+  --shiny-theme-warning: var(--bs-warning);
+  --shiny-theme-danger: var(--bs-danger);
+  --shiny-theme-brand: var(--bs-primary);
+  --shiny-theme-gradient-1: var(--bs-gradient);
+  --shiny-theme-text-1-dim: var(--bs-default);
+  --shiny-theme-font-sans: var(--bs-font-sans-serif);
+  --shiny-theme-font-mono: var(--bs-font-monospace);
+  /* not sure bs-font-serif exists */
+  --shiny-theme-font-serif: var(--bs-font-serif);
+  --shiny-theme-font-size-sm: calc(var(--bs-body-font-size) * 0.875);
+  --shiny-theme-font-size-m: var(--bs-body-font-size);
+  --shiny-theme-font-size-l: calc(var(--bs-body-font-size) * 1.5);
+}

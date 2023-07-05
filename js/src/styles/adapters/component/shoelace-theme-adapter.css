@@ -7,91 +7,91 @@ automatically match the current open-props theme */
    */
 
   /* Primary */
-  --sl-color-primary-50: var(--brand);
-  --sl-color-primary-100: var(--brand);
-  --sl-color-primary-200: var(--brand);
-  --sl-color-primary-300: var(--brand);
-  --sl-color-primary-400: var(--brand);
-  --sl-color-primary-500: var(--brand);
-  --sl-color-primary-600: var(--brand);
-  --sl-color-primary-700: var(--brand);
-  --sl-color-primary-800: var(--brand);
-  --sl-color-primary-900: var(--brand);
-  --sl-color-primary-950: var(--brand);
+  --sl-color-primary-50: var(--shiny-brand);
+  --sl-color-primary-100: var(--shiny-brand);
+  --sl-color-primary-200: var(--shiny-brand);
+  --sl-color-primary-300: var(--shiny-brand);
+  --sl-color-primary-400: var(--shiny-brand);
+  --sl-color-primary-500: var(--shiny-brand);
+  --sl-color-primary-600: var(--shiny-brand);
+  --sl-color-primary-700: var(--shiny-brand);
+  --sl-color-primary-800: var(--shiny-brand);
+  --sl-color-primary-900: var(--shiny-brand);
+  --sl-color-primary-950: var(--shiny-brand);
 
   /* Success */
-  --sl-color-success-50: var(--success);
-  --sl-color-success-100: var(--success);
-  --sl-color-success-200: var(--success);
-  --sl-color-success-300: var(--success);
-  --sl-color-success-400: var(--success);
-  --sl-color-success-500: var(--success);
-  --sl-color-success-600: var(--success);
-  --sl-color-success-700: var(--success);
-  --sl-color-success-800: var(--success);
-  --sl-color-success-900: var(--success);
-  --sl-color-success-950: var(--success);
+  --sl-color-success-50: var(--shiny-success);
+  --sl-color-success-100: var(--shiny-success);
+  --sl-color-success-200: var(--shiny-success);
+  --sl-color-success-300: var(--shiny-success);
+  --sl-color-success-400: var(--shiny-success);
+  --sl-color-success-500: var(--shiny-success);
+  --sl-color-success-600: var(--shiny-success);
+  --sl-color-success-700: var(--shiny-success);
+  --sl-color-success-800: var(--shiny-success);
+  --sl-color-success-900: var(--shiny-success);
+  --sl-color-success-950: var(--shiny-success);
 
   /* Warning */
-  --sl-color-warning-50: var(--warning);
-  --sl-color-warning-100: var(--warning);
-  --sl-color-warning-200: var(--warning);
-  --sl-color-warning-300: var(--warning);
-  --sl-color-warning-400: var(--warning);
-  --sl-color-warning-500: var(--warning);
-  --sl-color-warning-600: var(--warning);
-  --sl-color-warning-700: var(--warning);
-  --sl-color-warning-800: var(--warning);
-  --sl-color-warning-900: var(--warning);
-  --sl-color-warning-950: var(--warning);
+  --sl-color-warning-50: var(--shiny-warning);
+  --sl-color-warning-100: var(--shiny-warning);
+  --sl-color-warning-200: var(--shiny-warning);
+  --sl-color-warning-300: var(--shiny-warning);
+  --sl-color-warning-400: var(--shiny-warning);
+  --sl-color-warning-500: var(--shiny-warning);
+  --sl-color-warning-600: var(--shiny-warning);
+  --sl-color-warning-700: var(--shiny-warning);
+  --sl-color-warning-800: var(--shiny-warning);
+  --sl-color-warning-900: var(--shiny-warning);
+  --sl-color-warning-950: var(--shiny-warning);
 
   /* Danger */
-  --sl-color-danger-50: var(--danger);
-  --sl-color-danger-100: var(--danger);
-  --sl-color-danger-200: var(--danger);
-  --sl-color-danger-300: var(--danger);
-  --sl-color-danger-400: var(--danger);
-  --sl-color-danger-500: var(--danger);
-  --sl-color-danger-600: var(--danger);
-  --sl-color-danger-700: var(--danger);
-  --sl-color-danger-800: var(--danger);
-  --sl-color-danger-900: var(--danger);
-  --sl-color-danger-950: var(--danger);
+  --sl-color-danger-50: var(--shiny-danger);
+  --sl-color-danger-100: var(--shiny-danger);
+  --sl-color-danger-200: var(--shiny-danger);
+  --sl-color-danger-300: var(--shiny-danger);
+  --sl-color-danger-400: var(--shiny-danger);
+  --sl-color-danger-500: var(--shiny-danger);
+  --sl-color-danger-600: var(--shiny-danger);
+  --sl-color-danger-700: var(--shiny-danger);
+  --sl-color-danger-800: var(--shiny-danger);
+  --sl-color-danger-900: var(--shiny-danger);
+  --sl-color-danger-950: var(--shiny-danger);
 
   /* Neutral one-offs */
   --sl-color-neutral-0: hsl(0deg 0% 100%);
   --sl-color-neutral-1000: hsl(0deg 0% 0%);
 
   /* Neutral */
-  --sl-color-neutral-50: var(--suface-3);
-  --sl-color-neutral-100: var(--surface-4);
-  --sl-color-neutral-200: var(--suface-4);
-  --sl-color-neutral-300: var(--text-3);
-  --sl-color-neutral-400: var(--text-3);
-  --sl-color-neutral-500: var(--text-3);
-  --sl-color-neutral-600: var(--text-2);
-  --sl-color-neutral-700: var(--text-2);
-  --sl-color-neutral-800: var(--text-1);
-  --sl-color-neutral-900: var(--text-1);
-  --sl-color-neutral-950: var(--text-1);
+  --sl-color-neutral-50: var(--shiny-surface-3);
+  --sl-color-neutral-100: var(--shiny-surface-4);
+  --sl-color-neutral-200: var(--shiny-surface-4);
+  --sl-color-neutral-300: var(--shiny-text-3);
+  --sl-color-neutral-400: var(--shiny-text-3);
+  --sl-color-neutral-500: var(--shiny-text-3);
+  --sl-color-neutral-600: var(--shiny-text-2);
+  --sl-color-neutral-700: var(--shiny-text-2);
+  --sl-color-neutral-800: var(--shiny-text-1);
+  --sl-color-neutral-900: var(--shiny-text-1);
+  --sl-color-neutral-950: var(--shiny-text-1);
 
   /*
    * Border radii
    */
-  --sl-border-radius-small: var(calc(--radius-s/2));
-  --sl-border-radius-medium: var(--radius-s);
-  --sl-border-radius-large: var(--radius-m);
-  --sl-border-radius-x-large: var(--radius-l);
+  --sl-border-radius-small: var(calc(--shiny-radius-s/2));
+  --sl-border-radius-medium: var(--shiny-radius-s);
+  --sl-border-radius-large: var(--shiny-radius-m);
+  --sl-border-radius-x-large: var(--shiny-radius-l);
   --sl-border-radius-circle: 50%;
-  --sl-border-radius-pill: var(--radius-pill);
+  --sl-border-radius-pill: var(--shiny-radius-pill);
 
   /*
    * Elevations
    */
   --sl-shadow-x-small: var(--shadow-1);
-  --sl-shadow-small: var(--shadow-2);
-  --sl-shadow-medium: var(--shadow-3);
-  --sl-shadow-large: var(--shadow-5);
+  --sl-shadow-small: var(--shiny-shadow-s, var(--shadow-2));
+  --sl-shadow-medium: var(--shiny-shadow-m, var(--shadow-3));
+  --sl-shadow-large: var(--shiny-shadow-l, var(--shadow-5));
   --sl-shadow-x-large: var(--shadow-6);
 
   /*
@@ -124,9 +124,9 @@ automatically match the current open-props theme */
    */
 
   /* Fonts */
-  --sl-font-mono: var(--font-mono);
-  --sl-font-sans: var(--font-sans);
-  --sl-font-serif: var(--font-serif);
+  --sl-font-mono: var(--shiny-font-mono);
+  --sl-font-sans: var(--shiny-font-sans);
+  --sl-font-serif: var(--shiny-font-serif);
 
   /* Font sizes */
   --sl-font-size-2x-small: var(--font-size-00); /* 10px */
@@ -180,7 +180,7 @@ automatically match the current open-props theme */
   --sl-input-height-small: var(--size-6); /* 30px */
   --sl-input-height-medium: var(--size-7); /* 40px */
   --sl-input-height-large: var(--size-8); /* 50px */
-  --sl-input-background-color: var(--surface-2);
+  --sl-input-background-color: var(--shiny-surface-2);
   --sl-input-background-color-hover: var(--sl-input-background-color);
   --sl-input-background-color-focus: var(--sl-input-background-color);
   --sl-input-background-color-disabled: var(--suface-4);
@@ -201,9 +201,9 @@ automatically match the current open-props theme */
   --sl-input-font-size-medium: var(--sl-font-size-medium);
   --sl-input-font-size-large: var(--sl-font-size-large);
   --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
-  --sl-input-color: var(--text-2);
-  --sl-input-color-hover: var(--text-2);
-  --sl-input-color-focus: var(--text-2);
+  --sl-input-color: var(--shiny-text-2);
+  --sl-input-color-hover: var(--shiny-text-2);
+  --sl-input-color-focus: var(--shiny-text-2);
   --sl-input-color-disabled: var(--sl-color-neutral-900);
   --sl-input-icon-color: var(--sl-color-neutral-500);
   --sl-input-icon-color-hover: var(--sl-color-neutral-600);
@@ -213,9 +213,9 @@ automatically match the current open-props theme */
   --sl-input-spacing-small: var(--sl-spacing-small);
   --sl-input-spacing-medium: var(--sl-spacing-medium);
   --sl-input-spacing-large: var(--sl-spacing-large);
-  --sl-input-focus-ring-color: var(--brand);
+  --sl-input-focus-ring-color: var(--shiny-brand);
   --sl-input-focus-ring-offset: 0;
-  --sl-input-filled-background-color: var(--surface-1);
+  --sl-input-filled-background-color: var(--shiny-surface-1);
   --sl-input-filled-background-color-hover: var(
     --sl-input-filled-background-color
   );
@@ -251,13 +251,13 @@ automatically match the current open-props theme */
    * Overlays
    */
 
-  --sl-overlay-background-color: var(--brand);
+  --sl-overlay-background-color: var(--shiny-brand);
 
   /*
    * Panels
    */
 
-  --sl-panel-background-color: var(--surface-3);
+  --sl-panel-background-color: var(--shiny-surface-3);
   --sl-panel-border-color: var(--sl-color-neutral-200);
   --sl-panel-border-width: var(--border-size-1);
 
@@ -266,7 +266,7 @@ automatically match the current open-props theme */
    */
 
   --sl-tooltip-border-radius: var(--sl-border-radius-medium);
-  --sl-tooltip-background-color: var(--surface-3);
+  --sl-tooltip-background-color: var(--shiny-surface-3);
   --sl-tooltip-color: var(--sl-color-neutral-0);
   --sl-tooltip-font-family: var(--sl-font-sans);
   --sl-tooltip-font-weight: var(--sl-font-weight-normal);
