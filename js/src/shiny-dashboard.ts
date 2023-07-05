@@ -1,5 +1,6 @@
-import { LitElement, css, html } from "lit";
+import { LitElement, TemplateResult, css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
+import { TabLabel } from "./TabLabel";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
@@ -7,7 +8,36 @@ import {
 import { themePrimitives } from "./styles/op-classes";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
-type TabElements = { name: string; value: string; el: HTMLElement }[];
+// Force evaluation of TabLabel so it's available for the custom element
+TabLabel;
+
+/**
+ * Information about a tab in the dashboard that is used for rendering and
+ * choosing tabs
+ */
+type TabInfo = {
+  /**
+   * Name of the tab as provided by the tab's name attribute
+   */
+  name: string;
+  /**
+   * Value of the tab as provided by the tab's name attribute but with spaces
+   * replaced by underscores. Needed for the select input that is used in mobile
+   */
+  value: string;
+  /**
+   * The tab element itself
+   */
+  el: HTMLElement;
+  /**
+   * The tab label element. If provided in the Dom as a tab-label element, then
+   * this is the element itself. Otherwise, it's a template result that is
+   * rendered as a tab-label element
+   */
+  label: HTMLElement | TemplateResult;
+};
+
+type TabElements = TabInfo[];
 
 @customElement("shiny-dashboard")
 export class ShinyDashboard
@@ -15,8 +45,7 @@ export class ShinyDashboard
   implements CustomElementInputGetValue<string>
 {
   @property({ type: Boolean }) dynamicHeight: boolean = false;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  @property({ type: Number }) selected_tab_index: number = 0;
+  @property({ type: Number }) selectedTabIndex: number = 0;
   @property({ type: Boolean }) sidebarNavigation: boolean = false;
   @state() tabs: TabElements = [];
 
@@ -31,58 +60,13 @@ export class ShinyDashboard
   }
 
   watchMainSlot(e: Event) {
-    this.tabs = getElementsFromSlotChangeEvent(e).reduce<TabElements>(
-      (all, node) => {
-        if (node.tagName.toLowerCase() === "shiny-tab") {
-          const tabName = node.attributes.getNamedItem("name")?.value;
-
-          if (!tabName) {
-            return all;
-          }
-
-          all.push({
-            name: tabName,
-            value: tabName.replaceAll(" ", "_"),
-            el: node,
-          });
-        }
-
-        return all;
-      },
-      []
-    );
-
+    this.tabs = extractTabsFromElements(getElementsFromSlotChangeEvent(e));
     this.selectTab();
   }
 
-  selectTab(tabIndex: number = this.selected_tab_index) {
-    this.selected_tab_index = tabIndex;
-    this.tabs.forEach((tab, i) => {
-      const isSelected = i === tabIndex;
-      const currentlyHidden = tab.el.style.display === "none";
-
-      // Is this tab the one being shifted away from?
-      const hidingTab = !currentlyHidden && !isSelected;
-      if (hidingTab) {
-        if (typeof $ !== "undefined") {
-          $(tab.el).trigger("hidden");
-        }
-        // Make sure that screen readers know to not include the hidden tabs
-        tab.el.inert = true;
-        tab.el.style.display = "none";
-      }
-
-      // Is this tab the one being shifted to?
-      const showingTab = currentlyHidden && isSelected;
-      if (showingTab) {
-        if (typeof $ !== "undefined") {
-          $(tab.el).trigger("shown");
-        }
-        tab.el.inert = false;
-        tab.el.style.display = "block";
-      }
-    });
-
+  selectTab(tabIndex: number = this.selectedTabIndex) {
+    this.selectedTabIndex = tabIndex;
+    selectTabByIndex(this.tabs, tabIndex);
     this.onChangeCallback(true);
   }
 
@@ -98,7 +82,7 @@ export class ShinyDashboard
   }
 
   currentTabName(): string {
-    return this.tabs[this.selected_tab_index].name;
+    return this.tabs[this.selectedTabIndex].name;
   }
 
   getValue(): string {
@@ -166,17 +150,11 @@ export class ShinyDashboard
       display: flex;
       align-items: center;
       gap: var(--padding);
+      background-color: var(--surface-1);
     }
 
     .header {
       grid-area: header;
-      margin: 0;
-      position: relative;
-      padding: var(--padding);
-      padding-block-end: 0;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: baseline;
     }
 
     .header.empty-header {
@@ -190,18 +168,7 @@ export class ShinyDashboard
     .nav {
       /* Some variables that control the little bars that demarkate tabs and
       also show what is selected */
-      --highlight-thickness-hover: var(--border-normal);
-      --highlight-thickness-selected: var(--border-thick);
-      --highlight-thickness: 0;
-      --highlight-radius: 1px;
-      --highlight-border-radii: var(--highlight-radius) var(--highlight-radius)
-        0 0;
-      --highlight-color: var(--text-3);
-      --highlight-color-selected: var(--text-1);
-      --highlight-opacity: 0.75;
-
-      /* Place highlight on bottom of tab */
-      --highlight-inset: auto 0 0 0;
+      --tab-border-color: var(--text-2);
 
       grid-area: nav;
       display: flex;
@@ -209,59 +176,10 @@ export class ShinyDashboard
       width: 100%;
       align-items: baseline;
       justify-content: space-between;
-      border-block-end: 1px solid var(--highlight-color);
-    }
-
-    .nav .mobile-tabs {
-      display: none;
-    }
-
-    :host([sidebarNavigation]) .nav {
-      flex-flow: column nowrap;
-      border-inline-end: 1px solid var(--highlight-color);
-      border-block-end: unset;
-    }
-
-    .nav > .nav-slot {
-      padding: var(--padding);
-    }
-
-    .nav > * {
-      flex-shrink: 5;
-    }
-
-    .tabs {
-      min-width: var(--size-content-1);
-      flex: 1;
-      flex-shrink: 1;
-      display: flex;
-      align-items: end;
-      /* flex-wrap: wrap; */
-      row-gap: var(--size-xs);
-      position: relative;
-      width: 100%;
-      font-weight: var(--font-weight-bold);
-    }
-
-    .tabs .selected-tab {
-      --highlight-thickness: var(--highlight-thickness-selected);
-      --highlight-color: var(--highlight-color-selected);
-      --highlight-opacity: 1;
-    }
-
-    :host([sidebarNavigation]) .tabs {
-      /* Place highlight to right of tab */
-      --highlight-inset: 0 0 0 auto;
-      --highlight-border-radii: var(--highlight-radius) 0 0
-        var(--highlight-radius);
-
-      min-width: unset;
-      flex-flow: column nowrap;
-      align-items: stretch;
-      overflow: auto;
-      row-gap: 0;
-      max-width: var(--size-content-1);
-      height: 100%;
+      border-block-end: 1px solid var(--border-color);
+      padding: var(--size-m);
+      gap: var(--size-s);
+      background-color: var(--surface-1);
     }
 
     .tab {
@@ -270,50 +188,77 @@ export class ShinyDashboard
       padding-inline: var(--size-m);
 
       /* Use the container padding for the top of the tab */
-      padding-block: 0 var(--size-s);
-      color: var(--highlight-color);
-      opacity: var(--highlight-opacity);
+      padding-block: var(--size-xs);
+      color: var(--text-1);
 
       /* Add elipses to prevent overflow for tab names that are too long */
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      transition: opacity var(--transition-fast);
+      transition: background-color var(--transition-fast);
+      border-radius: var(--radius-s);
+    }
+
+    .selected-tab {
+      background-color: var(--surface-3);
+    }
+
+    .nav.sidebar-nav {
+      overflow: auto;
+      flex-flow: column nowrap;
+      border-inline-end: 1px solid var(--border-color);
+      border-block-end: unset;
+    }
+
+    :host([sidebarNavigation]) .after-nav {
+      margin-block-start: auto;
+    }
+
+    .sidebar-nav .tab {
+      flex-shrink: 0;
+    }
+
+    .nav .mobile-tabs {
+      display: none;
+    }
+
+    .nav > * {
+      flex-shrink: 5;
+    }
+
+    .tabs {
+      flex-shrink: 1;
+      display: flex;
+      align-items: end;
+      row-gap: var(--size-xs);
+      position: relative;
+      width: auto;
+      border-radius: var(--radius-s);
+      background-color: var(--surface-1);
+      overflow: hidden;
+      gap: var(--size-xs);
+    }
+
+    .sidebar-nav .tabs {
+      border-width: 1;
+      min-width: unset;
+      flex-flow: column nowrap;
+      align-items: stretch;
+      overflow: auto;
+      max-width: var(--size-content-1);
+    }
+
+    .tab:last-child {
+      border-inline-end: unset;
     }
 
     .tab:hover:not(.selected-tab) {
-      --highlight-thickness: var(--highlight-thickness-hover);
-      --highlight-opacity: 1;
-
       background-color: var(--surface-4);
     }
 
     :host([sidebarNavigation]) .tab {
-      padding-block: var(--size-s);
-    }
-
-    /* Use a psuedo-element to draw a line across all tabs */
-    .tab::after {
-      content: "";
-      position: absolute;
-      background-color: var(--highlight-color);
-      width: auto;
-      height: var(--highlight-thickness);
-      opacity: var(--highlight-opacity);
-      inset: var(--highlight-inset);
-      border-radius: var(--highlight-border-radii);
-      transition: width var(--transition-fast), height var(--transition-fast);
-    }
-
-    .tab::after {
-      --highlight-color: var(--highlight-color-selected);
-    }
-
-    /* Adjust so tab selection indicators are on the side rather than bottom */
-    :host([sidebarNavigation]) .tab::after,
-    :host([sidebarNavigation]) .tabs::after {
-      height: auto;
-      width: var(--highlight-thickness);
+      padding-block: var(--size-xs);
+      border-inline-end: unset;
     }
 
     .footer {
@@ -361,35 +306,33 @@ export class ShinyDashboard
 
   render() {
     const tabs = this.tabs.map((tab, i) => {
-      const isSelected = i === this.selected_tab_index;
+      const isSelected = i === this.selectedTabIndex;
       return html`<div
         class="tab ${isSelected ? "selected-tab" : ""}"
         @click=${() => this.selectTab(i)}
         title=${isSelected ? `Current: ${tab.name}` : `Switch to: ${tab.name}`}
       >
-        ${tab.name}
+        ${tab.label}
       </div>`;
     });
-
-    const tabOptions = this.tabs.map((tab) => {
-      return html`<sl-option value="${tab.value}">${tab.name}</sl-option>`;
-    });
-
-    // A select input that stands in for the tabs when in mobile mode
-    const tabSelect = html`<sl-select
-      @sl-change=${this.handleTabSelect}
-      value=${this.tabs[this.selected_tab_index]?.value ?? ""}
-    >
-      ${tabOptions}
-    </sl-select>`;
 
     const tabContainer = html`<div
       class="nav ${this.sidebarNavigation ? "sidebar-nav" : ""}"
     >
-      <div class="nav-slot"><slot name="before-nav"></slot></div>
+      <div class="nav-slot before-nav"><slot name="before-nav"></slot></div>
       <div class="tabs">${tabs}</div>
-      <div class="mobile-tabs">${tabSelect}</div>
-      <div class="nav-slot"><slot name="after-nav"></slot></div>
+      <div class="mobile-tabs">
+        <sl-select
+          @sl-change=${this.handleTabSelect}
+          value=${this.tabs[this.selectedTabIndex]?.value ?? ""}
+        >
+          ${this.tabs.map(
+            (tab) =>
+              html`<sl-option value="${tab.value}">${tab.name}</sl-option>`
+          )}
+        </sl-select>
+      </div>
+      <div class="nav-slot after-nav"><slot name="after-nav"></slot></div>
     </div>`;
 
     return html`
@@ -398,12 +341,6 @@ export class ShinyDashboard
         <div class="header ${this.showHeader() ? "" : "empty-header"}">
           <slot name="header" @slotchange=${this.watchHeaderSlot}></slot>
           ${this.sidebarNavigation ? "" : tabContainer}
-          <div class="header-right">
-            <slot
-              name="header-right"
-              @slotchange=${this.watchHeaderSlot}
-            ></slot>
-          </div>
         </div>
         <div class="sidebar">
           <slot name="sidebar"></slot>
@@ -418,8 +355,69 @@ export class ShinyDashboard
     `;
   }
 }
-
 makeInputBinding("shiny-dashboard");
+
+function extractTabsFromElements(elements: HTMLElement[]) {
+  const tabElements: TabElements = [];
+
+  const tabNodes = document.querySelectorAll<HTMLElement>("shiny-tab[name]");
+
+  tabNodes.forEach((node) => {
+    const tabName = node.attributes.getNamedItem("name")?.value;
+    const tabIcon = node.attributes.getNamedItem("icon")?.value;
+
+    if (!tabName) {
+      return;
+    }
+
+    // Check for a custom label
+    const tabLabel = node.querySelector<TabLabel>("tab-label");
+
+    tabElements.push({
+      name: tabName,
+      value: tabName.replaceAll(" ", "_"),
+      el: node,
+      label:
+        tabLabel ??
+        html`
+          <tab-label>
+            ${tabIcon ? html`<shiny-icon name=${tabIcon}></shiny-icon>` : ""}
+            ${tabName}
+          </tab-label>
+        `,
+    });
+  });
+
+  return tabElements;
+}
+
+function selectTabByIndex(tabs: TabElements, index: number) {
+  tabs.forEach((tab, i) => {
+    const isSelected = i === index;
+    const currentlyHidden = tab.el.style.display === "none";
+
+    // Is this tab the one being shifted away from?
+    const hidingTab = !currentlyHidden && !isSelected;
+    if (hidingTab) {
+      if (typeof $ !== "undefined") {
+        $(tab.el).trigger("hidden");
+      }
+      // Make sure that screen readers know to not include the hidden tabs
+      tab.el.inert = true;
+      tab.el.style.display = "none";
+    }
+
+    // Is this tab the one being shifted to?
+    const showingTab = currentlyHidden && isSelected;
+    if (showingTab) {
+      if (typeof $ !== "undefined") {
+        $(tab.el).trigger("shown");
+      }
+      tab.el.inert = false;
+      tab.el.style.display = "block";
+    }
+  });
+}
 
 declare global {
   interface HTMLElementTagNameMap {

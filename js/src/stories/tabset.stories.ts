@@ -44,17 +44,27 @@ nunc sapien ultricies diam, sed aliquam nunc massa nec sapien.`;
 
 const bodyContent = html` <div slot="before-nav">Before the nav</div>
   <div slot="after-nav">After the nav</div>
-  <shiny-tab name="Plots">
-    <h2>Tab A</h2>
-    <p>${loremIpsumText}</p>
+  <shiny-tab name="Plots" icon="ph:chart-line">
+    <shiny-card>
+      <shiny-card-header> Tab A </shiny-card-header>
+      <p>${loremIpsumText}</p>
+    </shiny-card>
   </shiny-tab>
-  <shiny-tab name="A Table">
-    <h2>Tab B</h2>
-    <p>${loremIpsumText}</p>
+  <shiny-tab name="A Table" icon="ph:table">
+    <shiny-card>
+      <h2>Tab B</h2>
+      <p>${loremIpsumText}</p>
+    </shiny-card>
   </shiny-tab>
   <shiny-tab name="A lot of words">
-    <h2>Tab C</h2>
-    <p>${loremIpsumText}</p>
+    <tab-label> Custom <shiny-icon name="ph:scroll"></shiny-icon> </tab-label>
+    <shiny-card>
+      <h2>Tab C</h2>
+      <p>
+        This tab has a custom label provided by the <code>tab-label</code> tag.
+      </p>
+      <p>${loremIpsumText}</p>
+    </shiny-card>
   </shiny-tab>`;
 
 export const verticalTabs: Story = {

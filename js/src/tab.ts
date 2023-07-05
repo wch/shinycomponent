@@ -1,11 +1,9 @@
 import { LitElement, css, html } from "lit";
+import { property } from "lit/decorators.js";
 
 export class Tab extends LitElement {
-  name: string;
-
-  static properties = {
-    name: {},
-  };
+  @property({ type: String }) name: string = "tab";
+  @property({ type: String }) icon: string = "";
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
@@ -21,11 +19,6 @@ export class Tab extends LitElement {
       padding: var(--tab-padding);
     }
   `;
-
-  constructor() {
-    super();
-    this.name = "tab";
-  }
 
   render() {
     return html` <slot></slot> `;
