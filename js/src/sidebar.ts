@@ -3,10 +3,42 @@ import { customElement, property } from "lit/decorators.js";
 import { setElAttr } from "./set_el_attr";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
+/**
+ * A sidebar that can be opened and closed. It is intended to be used within a
+ * `<shiny-dashboard>` or `<shiny-card>` component where it will automatically
+ * be positioned correctly.
+ *
+ * If the children are all `<shiny-section>` elements then the sidebar will
+ * collapse to icons on smaller screens. If the children are not all
+ * `<shiny-section>` elements then the sidebar will collapse to a narrow bar
+ * with the toggle to open it back visible.
+ *
+ * @element shiny-sidebar
+ */
 @customElement("shiny-sidebar")
 export class Sidebar extends LitElement {
+  /**
+   * Whether the sidebar is currently closed. This is a two-way binding so you
+   * can set it to true to close the sidebar or observe the property to know
+   * current state.
+   * @type {boolean}
+   * @reflect
+   */
   @property({ type: Boolean, reflect: true }) closed: boolean = false;
+
+  /**
+   * The width of the sidebar when it is open, in pixels.
+   * @type {number}
+   */
   @property({ type: Number }) openWidthPx: number = 320;
+
+  /**
+   * Whether the sidebar should collapse to icons on smaller screens. This is
+   * only applicable when the children of the sidebar are all `<shiny-section>`
+   * elements.
+   * @type {boolean}
+   * @reflect
+   */
   @property({ type: Boolean, reflect: true }) collapseToIcons: boolean = false;
 
   static styles = css`
