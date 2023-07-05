@@ -538,7 +538,7 @@ app_ui = sc.page(
             ),
             name="Time",
         ),
-        sidebarNavigation=True,
+        sidebar_navigation=True,
     ),
 )
 
