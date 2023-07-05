@@ -3,16 +3,50 @@ import { customElement, property } from "lit/decorators.js";
 import { setElAttr } from "./set_el_attr";
 import { themePrimitives } from "./styles/op-classes";
 
+/**
+ * A custom element that displays a card with a header, body, and footer.
+ * The card can be customized with various properties.
+ *
+ * @element shiny-card
+ *
+ * @cssprop --card-padding - The padding of the card.
+ * @cssprop --card-radius - The border radius of the card.
+ * @cssprop --child-radius - The border radius of the card's children. Defaults to nothing
+ * @cssprop --card-h - The height of the card. Typically set by the `height` attribute instead of this variable.
+ * @cssprop --spacing - The spacing between elements in the card.
+ * @cssprop --card-shadow - The shadow of the card.
+ * @cssprop --card-bg - The surface color of the card.
+ */
 @customElement("shiny-card")
 export class ShinyCard extends LitElement {
-  @property({ type: Boolean }) shadowed: boolean = false;
-  @property({ type: Boolean, reflect: true }) centercontent: boolean = false;
-  @property({ type: Boolean, reflect: true }) nofill: boolean = false;
-  @property() height?: "content" | number;
+  /**
+   * The height of the card. If a number is used, the height wil be set to that
+   * number in pixels. If "content" is used, then the card will take the minimum
+   * height needed to contain all the children (aka typical block-layout
+   * behavior). This value is typically left unset and the card is allowed to to
+   * sized by it's containing environment.
+   *
+   * @attr height
+   */
+  @property()
+  height?: "content" | number;
 
-  // Styles are scoped to this element: they won't conflict with styles
-  // on the main page or in other components. Styling API can be exposed
-  // via CSS custom properties.
+  /**
+   * Whether the content of the card should be centered or not.
+   *
+   * @attr centercontent
+   */
+  @property({ type: Boolean, reflect: true })
+  centercontent: boolean = false;
+
+  /**
+   * Should the contents of the card take their natural size instead of filling remaining space in the card?
+   *
+   * @attr nofill
+   */
+  @property({ type: Boolean, reflect: true })
+  nofill: boolean = false;
+
   static styles = css`
     * {
       box-sizing: border-box;
@@ -20,8 +54,6 @@ export class ShinyCard extends LitElement {
 
     :host {
       --card-padding: var(--item-padding, var(--size-m));
-      --card-radius: var(--item-radius, var(--radius-m));
-      --child-radius: var(--radius-s);
 
       ${themePrimitives.surface_1}
 
@@ -31,7 +63,9 @@ export class ShinyCard extends LitElement {
       that isn't obvious */
       container-type: inline-size;
       border: var(--border-standard);
-      border-radius: var(--card-radius);
+      border-radius: var(--card-radius, var(--radius-m));
+      box-shadow: var(--card-shadow, var(--shadow-m));
+      background-color: var(--card-bg, var(--surface-1));
       overflow: hidden;
       display: block;
       flex: 1 1 auto;
@@ -54,14 +88,12 @@ export class ShinyCard extends LitElement {
     }
 
     .body {
-      --spacing: var(--item-padding, var(--size-s));
-
       /* For some reason this prevents scrollbars from appearing when they arent
       needed on wide contents... I wish there was a more satisfying solution */
       display: flex;
       flex-direction: column;
       padding: var(--card-padding);
-      gap: var(--spacing);
+      gap: var(--spacing, var(--size-s));
       overflow: auto;
       flex: 1;
     }
@@ -81,14 +113,11 @@ export class ShinyCard extends LitElement {
     /* Need to set all children as block display to keep behavior similar to flex */
     :host([nofill]) .body > ::slotted(*) {
       display: block;
+      border-radius: var(--child-radius);
     }
 
     .footer {
       margin-block-start: auto;
-    }
-
-    :host([shadowed]) {
-      ${themePrimitives.fancy_shadow}
     }
 
     :host([centercontent]) .contents {
@@ -156,6 +185,10 @@ export class ShinyCardSlot extends LitElement {
   }
 }
 
+/**
+ * Custom element to be paired with `<shiny-card>` to display a header stuck at
+ * the top of the card.
+ */
 @customElement("shiny-card-header")
 export class ShinyCardHeader extends ShinyCardSlot {
   constructor() {
@@ -164,6 +197,10 @@ export class ShinyCardHeader extends ShinyCardSlot {
   }
 }
 
+/**
+ * Custom element to be paired with `<shiny-card>` to display a footer stuck at
+ * the bottom of the card.
+ */
 @customElement("shiny-card-footer")
 export class ShinyCardFooter extends ShinyCardSlot {
   constructor() {

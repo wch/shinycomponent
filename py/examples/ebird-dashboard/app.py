@@ -121,14 +121,12 @@ app_ui = sc.page_dashboard(
             output_widget("map", width="100%", height="100%"),
             width=2,
             height=3,
-            shadowed=True,
         ),
         sc.grid_item(
             {"class": "fluid-type"},
             ui.output_text("results_blurb"),
             width=1,
             height=2,
-            shadowed=True,
             centercontent=True,
         ),
         # Value boxes are 4 rows tall
@@ -137,7 +135,6 @@ app_ui = sc.page_dashboard(
             sc.output_data_grid("results_table"),
             width=2,
             height=3,
-            shadowed=True,
         ),
         sc.grid_item(
             sc.card_header("Distance from Ann Arbor"),
@@ -172,7 +169,6 @@ app_ui = sc.page_dashboard(
             # ),
             width=1,
             height=3,
-            shadowed=True,
         ),
         n_rows=6,
         n_cols=3,
