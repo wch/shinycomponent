@@ -73,8 +73,8 @@ app_ui = sc.page_dashboard(
     ),
     sc.sidebar(
         sc.icon_section(
-            Tag("posit-logo", withName=True, slot="icon"),
             ui.h2("EBird Explorer"),
+            icon=Tag("posit-logo", withName=True),
         ),
         sc.icon_section(
             ui.tags.small(

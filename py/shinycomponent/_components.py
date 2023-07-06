@@ -80,37 +80,6 @@ def simple_number_input(
     )
 
 
-def icon_section(
-    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> Tag:
-    """
-    Create a <shiny-section> tag.
-
-    A WebComponent for sections with a left-side icon. Can be paired with sidebar to
-    create a sidebar collapsible to icons.
-
-    Parameters
-    ----------
-    *args
-        Child elements to this tag.
-    _add_ws
-        Whether whitespace should be added around this tag.
-    **kwargs
-        Attributes to this tag.
-
-    Returns
-    -------
-    :
-        Tag
-
-    See Also
-    --------
-    ~htmltools.Tag
-    """
-
-    return Tag("shiny-section", page_dep(), *args, _add_ws=_add_ws, **kwargs)
-
-
 def footer(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
 ) -> Tag:

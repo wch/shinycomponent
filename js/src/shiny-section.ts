@@ -4,8 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 
 @customElement("shiny-section")
 export class Section extends LitElement {
-  @property()
-  icon: string = "";
+  @property() icon: string = "";
 
   // Styles are scoped to this element: they won't conflict with styles
   // on the main page or in other components. Styling API can be exposed
