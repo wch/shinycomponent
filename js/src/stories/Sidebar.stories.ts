@@ -58,6 +58,15 @@ export const plainSidebar: Story = {
     <shiny-dashboard>
       <shiny-sidebar>
         <h3>My sidebar</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+          facilisi. Nullam euismod, nisl eget aliquam ultricies, nunc sapien
+          ultricies diam, sed aliquam nunc massa nec sapien. Nulla facilisi.
+          Nullam euismod, nisl eget aliquam ultricies, nunc sapien ultricies
+          diam, sed aliquam nunc massa nec sapien. Nulla facilisi. Nullam
+          euismod, nisl eget aliquam ultricies, nunc sapien ultricies diam, sed
+          aliquam nunc massa nec sapien.
+        </p>
       </shiny-sidebar>
       ${bodyContent}
     </shiny-dashboard>

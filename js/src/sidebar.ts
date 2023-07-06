@@ -47,82 +47,99 @@ export class Sidebar extends LitElement {
     }
 
     :host {
-      /* Define open and closed state variables. All the variables that have
-      "*-content-*" in their names are passed through to the <shiny-section> tag
-      that lets it know how to control its content so that it can selectively
-      hide or show the content associated with an icon or not. I don't like how
-      confusing it is and think something like subgrid could help with this */
-      --open-content-columns: auto 1fr;
-      --closed-content-columns: auto 0;
-      --open-content-height: auto;
-      --closed-content-height: var(--size-xxl);
-      --open-content-gap: var(--padding);
-      --open-content-padding: var(--padding);
-      --closed-content-gap: 0;
-      --open-content-overflow: auto;
-      --closed-content-overflow: hidden;
-      --closed-content-padding: 0;
-      --closed-content-opacity: 0;
-      --open-width: var(--sidebar-width, 30vw);
-      --closed-width: var(--padding);
-
-      /* Default settings */
-      --transition: var(--speed-fast) var(--ease-3);
+      /* How much padding is around the content and between items within the
+      sidebar? This variable controls a lot of the visual appearance */
       --padding: var(--size-m);
-      --sidebar-content-columns: var(--open-content-columns);
-      --sidebar-content-height: var(--open-content-height);
-      --sidebar-content-gap: var(--open-content-gap);
-      --content-opacity: 1;
+
+      /* Sizes related to the toggle icon */
+      --toggle-size: var(--padding);
+      --toggle-pad: calc(var(--padding) / 4);
+      --full-padded-w: calc(var(--toggle-size) + 2 * var(--toggle-pad));
+
+      /* How wide should the sidebar be when in open mode? */
+      --open-width: min(
+        var(
+          --sidebar-width,
+          calc((var(--size-content-1) + var(--size-content-2)) / 2)
+        ),
+        calc(100vw - (3 * var(--padding)))
+      );
+      --closed-width: var(--full-padded-w);
+
+      /* Animation for opening and closing */
+      --transition: var(--speed-fast) var(--ease-3);
+
+      /* All the variables that have "*-content-*" in their names are passed
+      through to the <shiny-section> tag that lets it know how to control its
+      content so that it can selectively hide or show the content associated
+      with an icon or not. I don't like how confusing it is and think something
+      like subgrid could help with this */
+      --section-icon-w: var(--size-l);
+      --sidebar-content-columns: var(--section-icon-w) 1fr;
+      --sidebar-content-gap: var(--padding);
 
       height: 100%;
-      position: relative;
       display: flex;
       flex-direction: column;
-      gap: var(--padding);
       background-color: var(--surface-2);
       width: var(--open-width);
       transition: width var(--transition), padding var(--transition);
     }
 
-    @container (max-width: 700px) {
-      :host {
-        width: var(--closed-width);
-        z-index: 10;
-
-        --open-width: var(--sidebar-width, var(--size-content-2));
-      }
-
-      .content {
-        /* When on small screens we want the sidebar to slide over the main
-              content rather than pushing it out of the way */
-        position: absolute;
-        box-shadow: var(--shadow-m);
-      }
-    }
-
     :host([closed]) {
-      --sidebar-content-columns: var(--closed-content-columns);
-      --sidebar-content-height: var(--closed-content-height);
-      --sidebar-content-gap: var(--closed-content-gap);
-      --sidebar-content-overflow: var(--closed-content-overflow);
-      --content-opacity: var(--closed-content-opacity);
-
       width: var(--closed-width);
       cursor: e-resize;
+      overflow: hidden;
+    }
+
+    /* Leave the sidebar wide enough to view the icons */
+    :host([collapseToIcons]) {
+      --closed-width: calc(var(--section-icon-w) + (2 * var(--padding)));
     }
 
     .content {
       height: 100%;
       overflow: auto;
-      margin: 0;
       padding-inline: var(--padding);
       display: flex;
       flex-direction: column;
       background-color: inherit;
+      width: var(--open-width);
+
+      /* Move content up a bit so there's not an awkward amount of space before
+      content starts */
+      margin-top: calc(-2 * var(--toggle-pad));
+      transition: opacity var(--transition);
     }
 
-    .content > ::slotted(hr) {
-      margin: 0 !important;
+    /* For the normal sidebar collapse we want the opacity to go to zero when
+    collapsed so the content doesn't show */
+    :host([closed]:not([collapseToIcons])) .content {
+      opacity: 0;
+    }
+
+    /* Styles for when the sidebar is in a very small container such as a card
+    or mobile device */
+    @container (max-width: 700px) {
+      :host {
+        width: var(--closed-width);
+        z-index: 10;
+      }
+
+      .container {
+        /* When on small screens we want the sidebar to slide over the main
+        content rather than pushing it out of the way */
+        box-shadow: var(--shadow-l);
+        position: absolute;
+        background-color: inherit;
+        width: var(--open-width);
+        height: 100%;
+        overflow: hidden;
+      }
+
+      :host([closed]) .container {
+        width: var(--closed-width);
+      }
     }
 
     .content > ::slotted(shiny-section) {
@@ -134,34 +151,40 @@ export class Sidebar extends LitElement {
     }
 
     .toggle-icon {
-      text-align: center;
-      transition: transform var(--transition);
-    }
-
-    :host([closed]) .toggle-icon {
-      transform: rotate(180deg);
-    }
-
-    .open-toggle {
-      position: absolute;
-      top: var(--size-xxs);
-      left: 0;
-      font-size: var(--font-size-h4);
-      font-weight: var(--font-weight-headings);
-      width: var(--padding);
-      height: fit-content;
-      cursor: pointer;
+      /* Resting state has a lower opacity to not make the toggle standout so
+      much and distract from content */
+      opacity: 0.5;
+      font-size: var(--font-size-l);
       color: var(--text-3);
+      cursor: pointer;
       user-select: none;
+
+      /* Make sure we're always the same distance from the right of the sidebar
+      when we're closed or open */
+      margin-inline-start: auto;
+      margin-inline-end: 0;
+      width: var(--full-padded-w);
+      height: var(--full-padded-w);
+      padding: var(--toggle-pad);
+
+      /* Make sure the icon itself is nice and centered */
+      display: grid;
+      place-content: center;
+
+      /* We use a transform to flip icon to a collapse icon and also increase
+      the opacity on hover, we animate these to look _cool_ */
+      transition: transform var(--transition), opacity var(--transition);
     }
 
-    :host([closed]:not([collapseToIcons])) .content {
-      opacity: 0;
+    /* Give feedback of action on hover */
+    .toggle-icon:hover {
+      opacity: 1;
     }
 
-    /* Leave the sidebar wide enough to view the icons */
-    :host([closed][collapseToIcons]) {
-      width: calc(4 * var(--padding));
+    /* When we're closed we invert the icon on the x-axis to make it an expand
+    icon */
+    :host([closed]) .toggle-icon {
+      transform: scaleX(-1);
     }
   `;
 
@@ -219,15 +242,19 @@ export class Sidebar extends LitElement {
 
   render() {
     return html`
-      <div class="content" style="--sidebar-width: ${this.openWidthPx}px;">
-        <slot @slotchange=${this.handleSlottedElementsChange}></slot>
-      </div>
-      <div
-        @click=${this.handleToggleBtnClick}
-        title=${this.closed ? "Open sidebar" : "Close sidebar"}
-        class="open-toggle"
-      >
-        <div class="toggle-icon">❮</div>
+      <div class="container">
+        <div>
+          <div
+            class="toggle-icon"
+            @click=${this.handleToggleBtnClick}
+            title=${this.closed ? "Open sidebar" : "Close sidebar"}
+          >
+            <shiny-icon name="ri:expand-left-line"></shiny-icon>
+          </div>
+        </div>
+        <div class="content" style="--sidebar-width: ${this.openWidthPx}px;">
+          <slot @slotchange=${this.handleSlottedElementsChange}></slot>
+        </div>
       </div>
     `;
   }
