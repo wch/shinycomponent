@@ -12,6 +12,8 @@ def dashboard(
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
     sidebar_navigation: bool = False,
+    before_navigation: Optional[str | Tag] = None,
+    after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
 ) -> Tag:
     """
@@ -20,27 +22,62 @@ def dashboard(
 
     Parameters
     ----------
-    *args
+    `*args`
         Child elements to this tag.
-    dynamic_height
-        Whether the dashboard should have dynamic height. If set to False (the default) then the dashboard will stretch to fit the vertical height of the browser window.
-    selected_tab_index
+    `dynamic_height`
+        Whether the dashboard should have dynamic height. If set to False (the default)
+        then the dashboard will stretch to fit the vertical height of the browser
+        window.
+    `selected_tab_index`
         The index of the selected tab. Only used if the dashboard has tabs.
-    sidebar_navigation
-        Whether the dashboard should have sidebar navigation. Only used if the dashboard has tabs.
-    **kwargs
-        Additional named attributes to be added to the HTML element containing the dashboard.
+    `sidebar_navigation`
+        Whether the dashboard should have sidebar navigation. Only used if the dashboard
+        has tabs.
+    `before_navigation`
+        Content to be placed before (i.e. left in normal top-navigation mode and top if
+        `sidebar_navigation` is `True`) the navigation section of the dashboard. This
+        can be a string or a Tag. _Advanced:_ If you want to include content here
+        without using the named argument you can place any tag in the body with the
+        attribute of `slot="before_navigation"` and it will have the same result.
+    `after_navigation`
+        Content to be placed after (i.e. right in normal top-navigation mode and bottom
+        if `sidebar_navigation` is `True`) the navigation section of the dashboard. This
+        can be a string or a Tag. _Advanced:_ If you want to include content here
+        without using the named argument you can place any tag in the body with the
+        attribute of `slot="after_navigation"` and it will have the same result.
+    `**kwargs`
+        Additional named attributes to be added to the HTML element containing the
+        dashboard.
 
     Returns
     -------
-    Tag
+    Dashboard layout
 
     See Also
     --------
-    ~shinycomponent.sidebar
-    ~htmltools.Tag
+    ~shinycomponent.sidebar ~htmltools.Tag
     """
 
+    # Put before_navigation and after_navigation in the right place if they exist
+    if isinstance(before_navigation, str):
+        print("before_navigation is a string")
+        before_nav_slot = tags.div(before_navigation, slot="before_navigation")
+        args = (before_nav_slot, *args)
+
+    if isinstance(before_navigation, Tag):
+        print("before_navigation is a Tag")
+        before_navigation.attrs["slot"] = "before_navigation"
+        args = (before_navigation, *args)
+
+    if isinstance(after_navigation, str):
+        after_nav_slot = tags.div(after_navigation, slot="after_navigation")
+        args = (*args, after_nav_slot)
+
+    if isinstance(after_navigation, Tag):
+        after_navigation.attrs["slot"] = "after_navigation"
+        args = (*args, after_navigation)
+
+    print("No before or after navigation")
     return Tag(
         "shiny-dashboard",
         page_dep(),

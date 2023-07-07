@@ -1,30 +1,16 @@
-# Inspired by https://dribbble.com/shots/20836166-Veritas-Admin-Dashboard-Analytics-UX
-
-from htmltools import Tag
+# A big demo app of (most of) the input components in the shinycomponent library.
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 
 import shinycomponent as sc
 
 app_ui = sc.page(
     sc.dashboard(
-        # sc.sidebar(
-        #     Tag(
-        #         "shiny-section",
-        #         Tag("posit-logo", withName=True, slot="icon"),
-        #         ui.h2("New Shiny components"),
-        #     ),
-        #     Tag(
-        #         "shiny-section",
-        #         sc.forge.dark_mode_switch(id="dark_mode", slot="icon"),
-        #         sc.forge.output_text_verbatim("out_dark_mode"),
-        #     ),
+        # ui.div(ui.h3("Experimental Shiny"), slot="before_navigation"),
+        # ui.div(
+        #     sc.forge.dark_mode_switch(id="dark_mode"),
+        #     sc.forge.output_text_verbatim("out_dark_mode"),
+        #     slot="after_navigation",
         # ),
-        ui.div(ui.h3("Experimental Shiny"), slot="before-nav"),
-        ui.div(
-            sc.forge.dark_mode_switch(id="dark_mode"),
-            sc.forge.output_text_verbatim("out_dark_mode"),
-            slot="after-nav",
-        ),
         sc.tab(
             # Make a grid with 2 columns
             sc.grid(
@@ -539,6 +525,11 @@ app_ui = sc.page(
             name="Time",
         ),
         sidebar_navigation=True,
+        before_navigation=ui.div(ui.h3("Experimental Shiny")),
+        after_navigation=ui.div(
+            sc.forge.dark_mode_switch(id="dark_mode"),
+            sc.forge.output_text_verbatim("out_dark_mode"),
+        ),
     ),
 )
 

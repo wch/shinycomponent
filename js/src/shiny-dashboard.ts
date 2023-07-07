@@ -347,7 +347,9 @@ export class ShinyDashboard
     const tabContainer = html`<div
       class="nav ${this.sidebarNavigation ? "sidebar-nav" : ""}"
     >
-      <div class="nav-slot before-nav"><slot name="before-nav"></slot></div>
+      <div class="nav-slot before-nav">
+        <slot name="before_navigation"></slot>
+      </div>
       <div class="tabs">${tabs}</div>
       <div class="mobile-tabs">
         <sl-select
@@ -360,7 +362,9 @@ export class ShinyDashboard
           )}
         </sl-select>
       </div>
-      <div class="nav-slot after-nav"><slot name="after-nav"></slot></div>
+      <div class="nav-slot after-nav">
+        <slot name="after_navigation"></slot>
+      </div>
     </div>`;
 
     return html`
@@ -390,7 +394,6 @@ function extractTabsFromElements(elements: HTMLElement[]) {
 
   const tabNodes = document.querySelectorAll<HTMLElement>("shiny-tab[name]");
 
-  console.log("Tab nodes", tabNodes);
   tabNodes.forEach((node) => {
     const tabName = node.attributes.getNamedItem("name")?.value;
     const tabIcon = node.attributes.getNamedItem("icon")?.value;

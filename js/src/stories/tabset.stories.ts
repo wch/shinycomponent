@@ -42,8 +42,8 @@ eget aliquam ultricies, nunc sapien ultricies diam, sed aliquam nunc massa
 nec sapien. Nulla facilisi. Nullam euismod, nisl eget aliquam ultricies,
 nunc sapien ultricies diam, sed aliquam nunc massa nec sapien.`;
 
-const bodyContent = html` <div slot="before-nav">Before the nav</div>
-  <div slot="after-nav">After the nav</div>
+const bodyContent = html` <div slot="before_navigation">Before the nav</div>
+  <div slot="after_navigation">After the nav</div>
   <shiny-tab name="Plots" icon="ph:chart-line">
     <shiny-card>
       <shiny-card-header> Tab A </shiny-card-header>
