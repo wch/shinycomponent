@@ -52,18 +52,6 @@ def get_taxonomy_from_name(species_name):
     return species_taxonomy[species_name]
 
 
-def info_box(title: str, output_id: str, icon: str, color: str):
-    return x.ui.value_box(
-        title,
-        ui.output_text(output_id, container=ui.h3),
-        showcase=ui.h2(icon),
-        theme_color=None,
-        style=f"background-color: {color}; color: var(--gray-8);",
-        height="90px",
-        full_screen=True,
-    )
-
-
 app_ui = sc.page_dashboard(
     ui.tags.head(
         # Hide the leaflet footer
@@ -149,24 +137,6 @@ app_ui = sc.page_dashboard(
                     marks=[5, 15, 25, 35, 45, 55],
                 ),
             ),
-            # info_box(
-            #     title="Scientific Name",
-            #     output_id="species_scientific_name",
-            #     icon="🥼",
-            #     color="var(--orange-4)",
-            # ),
-            # info_box(
-            #     title="Family",
-            #     output_id="species_family",
-            #     icon="👨‍👩‍👧‍👦",
-            #     color="var(--blue-4)",
-            # ),
-            # info_box(
-            #     title="Order",
-            #     output_id="species_order",
-            #     icon="📦",
-            #     color="var(--green-4)",
-            # ),
             width=1,
             height=3,
         ),
@@ -230,26 +200,6 @@ def server(input: Inputs, output: Outputs, session: Session):
     @render.plot()
     def distogram():
         plt.hist(ebird_results()["distance_mi"], input.bins(), density=True)
-
-    @output
-    @render.text
-    def species_scientific_name():
-        return species_info()["sciName"]
-
-    @output
-    @render.text
-    def species_order():
-        return species_info()["order"]
-
-    @output
-    @render.text
-    def species_family():
-        return species_info()["familyComName"]
-
-    @output
-    @render.text
-    def common_name():
-        return input.species()
 
     @output
     @sc.data_grid(height="500px", row_selection=True)
