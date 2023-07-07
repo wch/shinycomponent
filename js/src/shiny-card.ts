@@ -74,6 +74,7 @@ export class ShinyCard extends LitElement {
         "sidebar body" 1fr
         "footer footer" auto /
         auto 1fr;
+      isolation: isolate;
     }
 
     :host([height]) {
@@ -86,10 +87,22 @@ export class ShinyCard extends LitElement {
       flex-basis: content;
     }
 
-    .contents {
-      display: flex;
-      flex-direction: column;
-      height: 99.999%;
+    .header {
+      grid-area: header;
+      z-index: 3;
+      position: relative;
+    }
+
+    .footer {
+      grid-area: footer;
+      z-index: 2;
+      position: relative;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      position: relative;
+      z-index: 1;
     }
 
     .body {
@@ -101,7 +114,7 @@ export class ShinyCard extends LitElement {
       padding: var(--card-padding);
       gap: var(--spacing, var(--size-s));
       overflow: auto;
-      flex: 1;
+      z-index: 0;
     }
 
     :host([nofill]) .body {
@@ -122,20 +135,7 @@ export class ShinyCard extends LitElement {
       border-radius: var(--child-radius);
     }
 
-    .header {
-      grid-area: header;
-    }
-
-    .footer {
-      grid-area: footer;
-    }
-
-    .sidebar {
-      grid-area: sidebar;
-      position: relative;
-    }
-
-    :host([centercontent]) .contents {
+    :host([centercontent]) .body {
       display: grid;
       place-content: center;
       overflow: auto;
