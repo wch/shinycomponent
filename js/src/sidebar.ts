@@ -17,6 +17,11 @@ import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChang
  * with the toggle to open it back visible.
  *
  * @element shiny-sidebar
+ *
+ * @cssprop {Color} --sidebar-bg - The background color of the sidebar. Defaults to `var(--surface-2)`.
+ * @cssprop {Length} --sidebar-width - The width of the sidebar when it is open. Defaults to `var(--size-content-1)`.
+ * @cssprop {Length} --sidebar-padding - The padding around the content and between items within the sidebar. Defaults to `var(--size-m)`.
+ *
  */
 @customElement("shiny-sidebar")
 export class Sidebar extends LitElement {
@@ -58,11 +63,13 @@ export class Sidebar extends LitElement {
     :host {
       /* How much padding is around the content and between items within the
       sidebar? This variable controls a lot of the visual appearance */
-      --padding: var(--size-m);
+      --padding: var(--sidebar-padding, var(--size-m));
 
       /* Sizes related to the toggle icon */
       --toggle-size: var(--padding);
       --toggle-pad: calc(var(--padding) / 4);
+
+      /* Internal calculated properties - change at your own risk! */
       --full-padded-w: calc(var(--toggle-size) + 2 * var(--toggle-pad));
 
       /* TODO: Use container query units here if available */
@@ -90,7 +97,7 @@ export class Sidebar extends LitElement {
       height: 100%;
       display: flex;
       flex-direction: column;
-      background-color: var(--surface-2);
+      background-color: var(--sidebar-bg, var(--surface-2));
       width: var(--open-width);
       transition: width var(--transition), padding var(--transition);
     }
@@ -212,22 +219,40 @@ export class Sidebar extends LitElement {
     });
   }
 
+  /**
+   * Toggles the `closed` property on the sidebar which will be reflected in
+   * styles.
+   */
   toggleClosed() {
     this.closed = !this.closed;
   }
 
+  /**
+   * Handles the click event on the toggle button. This is a separate function
+   * so that we can stop propagation of the event.
+   * @param e - The click event.
+   * @returns void
+   */
   handleToggleBtnClick(e: MouseEvent) {
     e.stopPropagation();
     this.toggleClosed();
   }
 
+  /**
+   * The list of elements that are allowed to be containers for the sidebar.
+   * Currently, the known containers are `shiny-dashboard` and `shiny-card`. If
+   * more containers are added in the future, this list will need to be updated
+   * to generalize the search.
+   * @static
+   * @private
+   * @memberof Sidebar
+   * @readonly
+   */
   static allowedContainers = [ShinyDashboard, ShinyCard];
 
   /**
    * Recursively searches for the closest parent element that is a known container
-   * for the sidebar. Currently, the known containers are `shiny-dashboard` and
-   * `shiny-card`. If more containers are added in the future, this method will
-   * need to be updated to generalize the search.
+   * for the sidebar.
    *
    * @param sidebar - The sidebar element to start the search from.
    * @returns The closest parent element that is a known container for the sidebar,
@@ -257,26 +282,36 @@ export class Sidebar extends LitElement {
     return this.findSidebarContainer(parent);
   }
 
+  /**
+   * Checks if the sidebar is in a small container and if so, automatically
+   * collapses the sidebar to avoid it taking up too much space.
+   */
   autoCollapseOnSmallScreens() {
-    // If we're in a small container we should start the sidebar collapsed
     const container = this.findSidebarContainer(this);
     if (container && container.clientWidth < 700) {
       this.closed = true;
     }
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.autoCollapseOnSmallScreens();
-  }
-
-  handleSlottedElementsChange(e: Event) {
+  /**
+   * When the children of the sidebar change, we check if they are all
+   * `<shiny-section>` elements. If they are, we collapse the sidebar to icons
+   * on smaller screens.
+   * @param e - The slotchange event.
+   * @returns void
+   */
+  watchForIconSectionChildren(e: Event) {
     const elementsInSlot = getElementsFromSlotChangeEvent(e);
 
     // If we exclusivly have <shiny-section> elements in the sidebar then we should enable the icon collapse mode
     const hasOnlySections = elementsInSlot.every((el) => el instanceof Section);
 
     this.collapseToIcons = elementsInSlot.length > 0 && hasOnlySections;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.autoCollapseOnSmallScreens();
   }
 
   render() {
@@ -292,7 +327,7 @@ export class Sidebar extends LitElement {
           </div>
         </div>
         <div class="content" style="--sidebar-width: ${this.openWidthPx}px;">
-          <slot @slotchange=${this.handleSlottedElementsChange}></slot>
+          <slot @slotchange=${this.watchForIconSectionChildren}></slot>
         </div>
       </div>
     `;

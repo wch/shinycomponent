@@ -95,10 +95,7 @@ export const iconSidebar: Story = {
             .selected=${"a"}
           >
           </forge-input-select>
-          <small
-            >Below are some inputs that control the app content. Use them and
-            explore the birds of Ann Arbor!</small
-          >
+          <small>Choose your species above</small>
         </shiny-section>
       </shiny-sidebar>
       ${bodyContent}

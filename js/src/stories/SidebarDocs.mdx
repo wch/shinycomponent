@@ -1,0 +1,61 @@
+import { Meta, Primary, Controls, Story } from "@storybook/blocks";
+import * as SidebarStories from "./Sidebar.stories";
+
+<Meta of={SidebarStories} />
+
+# Sidebars
+
+## Simple Dashboard Sidebar
+
+```python
+page_dashboard(
+  sidebar(
+    h3("My Sidebar"),
+    p("Lorem impsum...")
+  ),
+  grid(...)
+)
+```
+
+<Story of={SidebarStories.plainSidebar} />
+
+## Sidebar with icon sections
+
+```python
+page_dashboard(
+  sidebar(
+    section(
+      "My app",
+      icon = posit_logo()
+    ),
+    section(
+      small("Below are some inputs..."),
+      icon = "bi:info-circle"
+    ),
+    section(
+      input_select("Species", "species", choices = ["a", "b", "c"]),
+      small("Choose your species above"),
+      icon="bi:sliders2"
+    )
+  ),
+  grid(...)
+)
+```
+
+<Story of={SidebarStories.iconSidebar} />
+
+## Sidebar in a card
+
+The same sidebar component can be placed inside of a card and behave as one would expect.
+Notice how the sidebar starts collapsed automatically. This is done thanks to container queries.
+
+```python
+card(
+  card_header("I am a header"),
+  sidebar("Some controls for my plot"),
+  output_plot(),
+  card_footer("I am a footer")
+)
+```
+
+<Story of={SidebarStories.cardWithSidebar} />
