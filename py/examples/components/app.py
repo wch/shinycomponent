@@ -5,12 +5,6 @@ import shinycomponent as sc
 
 app_ui = sc.page(
     sc.dashboard(
-        # ui.div(ui.h3("Experimental Shiny"), slot="before_navigation"),
-        # ui.div(
-        #     sc.forge.dark_mode_switch(id="dark_mode"),
-        #     sc.forge.output_text_verbatim("out_dark_mode"),
-        #     slot="after_navigation",
-        # ),
         sc.tab(
             # Make a grid with 2 columns
             sc.grid(
