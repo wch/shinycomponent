@@ -1,7 +1,9 @@
 import { LitElement, css, html } from "lit";
+import { customElement } from "lit/decorators.js";
 import { setElAttr } from "./set_el_attr";
 
-export class Footer extends LitElement {
+@customElement("shiny-dashboard-footer")
+export class DashboardFooter extends LitElement {
   static properties = {};
 
   // Styles are scoped to this element: they won't conflict with styles
@@ -34,5 +36,3 @@ export class Footer extends LitElement {
     `;
   }
 }
-
-customElements.define("shiny-footer", Footer);

@@ -390,7 +390,10 @@ app_ui = sc.page(
             sc.forge.input_switch("by_species", "Show species", value=True),
             sc.forge.input_switch("show_margins", "Show marginal plots", value=True),
         ),
-        Tag("shiny-footer", ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
+        sc.dashboard_footer(
+            ui.tags.span("Experimental Shiny"),
+            Tag("theme-chooser"),
+        ),
         ui.tags.div("Puffins are cool", {"slot": "header"}),
         selected_tab_index=2,
     ),

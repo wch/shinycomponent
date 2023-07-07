@@ -112,3 +112,59 @@ def page_dashboard(
         page_dep(),
         lang=lang,
     )
+
+
+def tab(
+    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> Tag:
+    """
+    Create a <shiny-tab> tag.
+
+    An experimental web-component for creating greeting cards.
+
+    Parameters
+    ----------
+    *args
+        Child elements to this tag.
+    _add_ws
+        Whether whitespace should be added around this tag.
+    **kwargs
+        Attributes to this tag.
+
+    Returns
+    -------
+    Tag
+
+    See Also
+    --------
+    ~htmltools.Tag
+    """
+
+    return Tag("shiny-tab", page_dep(), *args, _add_ws=_add_ws, **kwargs)
+
+
+def dashboard_footer(
+    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> Tag:
+    """
+    A footer for a dashboard. Sticks to bottom of dashboard layouts defined with
+    `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
+
+    Parameters
+    ----------
+    *args
+        Child elements to this tag.
+    **kwargs
+        Attributes passed along to html element.
+
+    Returns
+    -------
+    Tag element
+
+    See Also
+    --------
+    ~shinycomponent.dashboard
+    ~shinycomponent.page_dashboard
+    ~htmltools.Tag
+    """
+    return Tag("shiny-dashboard-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)

@@ -14,6 +14,8 @@ from shinywidgets import output_widget, register_widget
 
 import shinycomponent as sc
 
+# Realworld dashoard example
+
 www_dir = Path(__file__).parent.resolve() / "www"
 
 # Load ebird-data.csv into a pandas dataframeget_records
@@ -143,7 +145,7 @@ app_ui = sc.page_dashboard(
         n_rows=6,
         n_cols=3,
     ),
-    sc.footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
+    sc.dashboard_footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
 )
 
 

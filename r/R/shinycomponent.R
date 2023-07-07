@@ -37,7 +37,7 @@ sidebar <- function(...) {
 footer <- function(...) {
   tagList(
     component_dep(),
-    tag("shiny-footer", list(...))
+    tag("shiny-dashboard-footer", list(...))
   )
 }
 

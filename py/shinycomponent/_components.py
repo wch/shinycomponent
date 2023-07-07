@@ -19,35 +19,6 @@ def avatar(
     return Tag("shiny-avatar", page_dep(), *args, _add_ws=_add_ws, **kwargs)
 
 
-def tab(
-    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> Tag:
-    """
-    Create a <shiny-tab> tag.
-
-    An experimental web-component for creating greeting cards.
-
-    Parameters
-    ----------
-    *args
-        Child elements to this tag.
-    _add_ws
-        Whether whitespace should be added around this tag.
-    **kwargs
-        Attributes to this tag.
-
-    Returns
-    -------
-    Tag
-
-    See Also
-    --------
-    ~htmltools.Tag
-    """
-
-    return Tag("shiny-tab", page_dep(), *args, _add_ws=_add_ws, **kwargs)
-
-
 def simple_number_input(
     id: str, *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
 ) -> Tag:
@@ -78,33 +49,3 @@ def simple_number_input(
     return Tag(
         "simple-number-input", page_dep(), id=id, *args, _add_ws=_add_ws, **kwargs
     )
-
-
-def footer(
-    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> Tag:
-    """
-    Create a <shiny-section> tag.
-
-    A WebComponent for footer to be pared with `tabset`.
-
-    Parameters
-    ----------
-    *args
-        Child elements to this tag.
-    _add_ws
-        Whether whitespace should be added around this tag.
-    **kwargs
-        Attributes to this tag.
-
-    Returns
-    -------
-    :
-        Tag
-
-    See Also
-    --------
-    ~htmltools.Tag
-    """
-
-    return Tag("shiny-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
