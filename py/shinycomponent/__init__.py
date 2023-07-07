@@ -3,7 +3,7 @@ __version__ = "0.0.1"
 from . import forge
 from ._cards import card, card_footer, card_header
 from ._components import avatar, simple_number_input
-from ._dashboard import dashboard, dashboard_footer, page_dashboard, tab
+from ._dashboard import dashboard, dashboard_footer, page_dashboard, tab, tab_label
 from ._datagrid import output_data_grid, static_data_grid
 from ._grids import grid, grid_item
 from ._page import page
@@ -15,6 +15,7 @@ __all__ = (
     "sidebar",
     "simple_number_input",
     "tab",
+    "tab_label",
     "page",
     "page_dashboard",
     "dashboard",

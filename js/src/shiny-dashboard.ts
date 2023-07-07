@@ -1,11 +1,11 @@
 import { LitElement, TemplateResult, css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { TabLabel } from "./TabLabel";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
 } from "./shiny/make-input-binding";
 import { themePrimitives } from "./styles/op-classes";
+import { TabLabel } from "./tab";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
 // Force evaluation of TabLabel so it's available for the custom element
@@ -89,6 +89,7 @@ export class ShinyDashboard
 
   watchMainSlot(e: Event) {
     this.tabs = extractTabsFromElements(getElementsFromSlotChangeEvent(e));
+    console.log("Tab search results", this.tabs);
     this.selectTab();
   }
 
@@ -389,6 +390,7 @@ function extractTabsFromElements(elements: HTMLElement[]) {
 
   const tabNodes = document.querySelectorAll<HTMLElement>("shiny-tab[name]");
 
+  console.log("Tab nodes", tabNodes);
   tabNodes.forEach((node) => {
     const tabName = node.attributes.getNamedItem("name")?.value;
     const tabIcon = node.attributes.getNamedItem("icon")?.value;
