@@ -73,6 +73,6 @@ export const verticalTabs: Story = {
 
 export const horizontalTabs: Story = {
   render: () => html`
-    <shiny-dashboard sidebarNavigation> ${bodyContent} </shiny-dashboard>
+    <shiny-dashboard tabsOnSide> ${bodyContent} </shiny-dashboard>
   `,
 };

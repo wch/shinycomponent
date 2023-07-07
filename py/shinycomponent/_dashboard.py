@@ -11,7 +11,7 @@ def dashboard(
     *args: TagChild | TagAttrs,
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
-    sidebar_navigation: bool = False,
+    tabs_on_side: bool = False,
     before_navigation: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
@@ -85,7 +85,7 @@ def dashboard(
         _add_ws=False,
         dynamicHeight=dynamic_height,
         selectedTabIndex=selected_tab_index,
-        sidebarNavigation=sidebar_navigation,
+        tabsOnSide=tabs_on_side,
         **kwargs,
     )
 
@@ -143,7 +143,7 @@ def page_dashboard(
                 *args,
                 dynamic_height=dynamic_height,
                 selected_tab_index=selected_tab_index,
-                sidebar_navigation=sidebar_navigation,
+                tabs_on_side=sidebar_navigation,
             )
         ),
         page_dep(),

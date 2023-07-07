@@ -67,7 +67,7 @@ export class ShinyDashboard
   /**
    * Whether the dashboard should have sidebar navigation. Only used if the dashboard has tabs.
    */
-  @property({ type: Boolean }) sidebarNavigation: boolean = false;
+  @property({ type: Boolean }) tabsOnSide: boolean = false;
 
   /**
    * An array of objects that contain information about each tab in the dashboard.
@@ -238,7 +238,7 @@ export class ShinyDashboard
       border-block-end: unset;
     }
 
-    :host([sidebarNavigation]) .after-nav {
+    :host([tabsOnSide]) .after-nav {
       margin-block-start: auto;
     }
 
@@ -284,7 +284,7 @@ export class ShinyDashboard
       background-color: var(--surface-4);
     }
 
-    :host([sidebarNavigation]) .tab {
+    :host([tabsOnSide]) .tab {
       padding-block: var(--size-xs);
       border-inline-end: unset;
     }
@@ -327,7 +327,7 @@ export class ShinyDashboard
 
     // If we have tabs and they're meant to be shown on the top of the page,
     // then we need to show the header
-    if (this.tabs.length > 0 && !this.sidebarNavigation) return true;
+    if (this.tabs.length > 0 && !this.tabsOnSide) return true;
 
     return false;
   }
@@ -345,7 +345,7 @@ export class ShinyDashboard
     });
 
     const tabContainer = html`<div
-      class="nav ${this.sidebarNavigation ? "sidebar-nav" : ""}"
+      class="nav ${this.tabsOnSide ? "sidebar-nav" : ""}"
     >
       <div class="nav-slot before-nav">
         <slot name="before_navigation"></slot>
@@ -369,10 +369,10 @@ export class ShinyDashboard
 
     return html`
       <div class="tabset">
-        ${this.sidebarNavigation ? tabContainer : ""}
+        ${this.tabsOnSide ? tabContainer : ""}
         <div class="header ${this.showHeader() ? "" : "empty-header"}">
           <slot name="header" @slotchange=${this.watchHeaderSlot}></slot>
-          ${this.sidebarNavigation ? "" : tabContainer}
+          ${this.tabsOnSide ? "" : tabContainer}
         </div>
         <div class="sidebar">
           <slot name="sidebar"></slot>
