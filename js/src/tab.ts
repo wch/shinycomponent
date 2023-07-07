@@ -52,11 +52,6 @@ export class Tab extends LitElement {
     }
   `;
 
-  /**
-   * Renders the tab.
-   *
-   * @returns {TemplateResult} The rendered template.
-   */
   render() {
     return html` <slot></slot> `;
   }
