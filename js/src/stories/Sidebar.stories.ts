@@ -25,7 +25,9 @@ const meta: Meta = {
   tags: ["pages"],
   decorators: [
     (story) =>
-      html`<div style="width: 100%; height:95vh; outline: 1px solid black; ">
+      html`<div
+        style="width: 100%; height:95vh; max-height:600px; outline: 1px solid black; "
+      >
         ${story()}
       </div>`,
   ],
