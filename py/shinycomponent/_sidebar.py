@@ -42,6 +42,7 @@ def sidebar(
     )
 
 
+# Icon Section Python Function
 def icon_section(
     *args: TagChild | TagAttrs,
     icon: str | Tag,
