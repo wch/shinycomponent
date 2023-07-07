@@ -97,7 +97,7 @@ export class Sidebar extends LitElement {
       height: 100%;
       display: flex;
       flex-direction: column;
-      background-color: var(--sidebar-bg, var(--surface-2));
+      background-color: var(--sidebar-bg, var(--surface-1));
       width: var(--open-width);
       transition: width var(--transition), padding var(--transition);
     }
