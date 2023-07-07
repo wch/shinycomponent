@@ -67,8 +67,13 @@ export class ShinyCard extends LitElement {
       box-shadow: var(--card-shadow, var(--shadow-m));
       background-color: var(--card-bg, var(--surface-1));
       overflow: hidden;
-      display: block;
       flex: 1 1 auto;
+      display: grid;
+      grid-template:
+        "header header" auto
+        "sidebar body" 1fr
+        "footer footer" auto /
+        auto 1fr;
     }
 
     :host([height]) {
@@ -91,6 +96,7 @@ export class ShinyCard extends LitElement {
       /* For some reason this prevents scrollbars from appearing when they arent
       needed on wide contents... I wish there was a more satisfying solution */
       display: flex;
+      grid-area: body;
       flex-direction: column;
       padding: var(--card-padding);
       gap: var(--spacing, var(--size-s));
@@ -116,8 +122,17 @@ export class ShinyCard extends LitElement {
       border-radius: var(--child-radius);
     }
 
+    .header {
+      grid-area: header;
+    }
+
     .footer {
-      margin-block-start: auto;
+      grid-area: footer;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      position: relative;
     }
 
     :host([centercontent]) .contents {
@@ -139,9 +154,12 @@ export class ShinyCard extends LitElement {
   }
 
   render() {
-    return html`<div class="contents">
+    return html`
       <div class="header">
         <slot name="header"></slot>
+      </div>
+      <div class="sidebar">
+        <slot name="sidebar"></slot>
       </div>
       <div class="body">
         <slot></slot>
@@ -149,7 +167,7 @@ export class ShinyCard extends LitElement {
       <div class="footer">
         <slot name="footer"></slot>
       </div>
-    </div>`;
+    `;
   }
 }
 

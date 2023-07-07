@@ -1,6 +1,9 @@
 import { LitElement, css, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import { setElAttr } from "./set_el_attr";
+import { ShinyCard } from "./shiny-card";
+import { ShinyDashboard } from "./shiny-dashboard";
+import { Section } from "./shiny-section";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
 /**
@@ -41,6 +44,12 @@ export class Sidebar extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) collapseToIcons: boolean = false;
 
+  /**
+   * Whether the sidebar is in a dashboard or not. This is currentl used to
+   * determine whether to show a shadow on the sidebar or not.
+   */
+  @state() inDashboard: boolean = false;
+
   static styles = css`
     * {
       box-sizing: border-box;
@@ -56,7 +65,7 @@ export class Sidebar extends LitElement {
       --toggle-pad: calc(var(--padding) / 4);
       --full-padded-w: calc(var(--toggle-size) + 2 * var(--toggle-pad));
 
-      /* How wide should the sidebar be when in open mode? */
+      /* TODO: Use container query units here if available */
       --open-width: min(
         var(
           --sidebar-width,
@@ -129,12 +138,16 @@ export class Sidebar extends LitElement {
       .container {
         /* When on small screens we want the sidebar to slide over the main
         content rather than pushing it out of the way */
-        box-shadow: var(--shadow-l);
         position: absolute;
         background-color: inherit;
         width: var(--open-width);
         height: 100%;
         overflow: hidden;
+        border-right: var(--border-standard);
+      }
+
+      .container.dashboard-sidebar {
+        box-shadow: var(--shadow-l);
       }
 
       :host([closed]) .container {
@@ -208,20 +221,48 @@ export class Sidebar extends LitElement {
     this.toggleClosed();
   }
 
-  autoCollapseOnSmallScreens() {
-    // Check if the container is smaller than 700px and set the state to closed if it is
-    const mediaQuery = window.matchMedia("(max-width: 700px)");
+  static allowedContainers = [ShinyDashboard, ShinyCard];
 
-    // If the user resizes the screen smaller this will auto-collapse the
-    // sidebar. It will _not_ auto-open it when it gets bigger because that
-    // would be annoying if you had manually closed the sidebar
-    const handleMediaQuery = (e: MediaQueryList | MediaQueryListEvent) => {
-      if (e.matches) {
-        this.closed = true;
-      }
-    };
-    mediaQuery.addEventListener("change", handleMediaQuery);
-    handleMediaQuery(mediaQuery);
+  /**
+   * Recursively searches for the closest parent element that is a known container
+   * for the sidebar. Currently, the known containers are `shiny-dashboard` and
+   * `shiny-card`. If more containers are added in the future, this method will
+   * need to be updated to generalize the search.
+   *
+   * @param sidebar - The sidebar element to start the search from.
+   * @returns The closest parent element that is a known container for the sidebar,
+   * or `null` if no container is found.
+   */
+  findSidebarContainer(sidebar: HTMLElement): HTMLElement | null {
+    // If we don't find a container then we'll just return the body element
+    const parent = sidebar.parentElement;
+    if (!parent) {
+      return null;
+    }
+
+    // Special case where we let the sidebar know it's in a dashboard
+    if (parent instanceof ShinyDashboard) {
+      this.inDashboard = true;
+      return parent;
+    }
+
+    const parentIsContainer = Sidebar.allowedContainers.some(
+      (p) => parent instanceof p
+    );
+
+    if (parentIsContainer) {
+      return parent;
+    }
+
+    return this.findSidebarContainer(parent);
+  }
+
+  autoCollapseOnSmallScreens() {
+    // If we're in a small container we should start the sidebar collapsed
+    const container = this.findSidebarContainer(this);
+    if (container && container.clientWidth < 700) {
+      this.closed = true;
+    }
   }
 
   connectedCallback() {
@@ -233,16 +274,14 @@ export class Sidebar extends LitElement {
     const elementsInSlot = getElementsFromSlotChangeEvent(e);
 
     // If we exclusivly have <shiny-section> elements in the sidebar then we should enable the icon collapse mode
-    const hasOnlySections = elementsInSlot.every(
-      (el) => el.tagName === "SHINY-SECTION"
-    );
+    const hasOnlySections = elementsInSlot.every((el) => el instanceof Section);
 
-    this.collapseToIcons = hasOnlySections;
+    this.collapseToIcons = elementsInSlot.length > 0 && hasOnlySections;
   }
 
   render() {
     return html`
-      <div class="container">
+      <div class="container ${this.inDashboard ? "dashboard-sidebar" : ""}">
         <div>
           <div
             class="toggle-icon"

@@ -105,3 +105,16 @@ export const iconSidebar: Story = {
     </shiny-dashboard>
   `,
 };
+
+export const cardWithSidebar: Story = {
+  render: () => html`<div
+    style="padding: var(--size-7);background-color: var(--surface-3);max-width:450px;height:550px; display: flex; flex-direction: column;"
+  >
+    <shiny-card>
+      <shiny-card-header> I am a header </shiny-card-header>
+      <shiny-sidebar> Some controls for my plot </shiny-sidebar>
+      <output-plot> </output-plot>
+      <shiny-card-footer> I am a footer </shiny-card-footer>
+    </shiny-card>
+  </div>`,
+};
