@@ -1,6 +1,7 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
+// Tabs Web Component
 /**
  * A custom element representing a tab that is consumed by the
  * `<shiny-dashboard>` element.
@@ -57,6 +58,7 @@ export class Tab extends LitElement {
   }
 }
 
+// Tab Label Web Component
 /**
  * A custom element representing a label for a tab. This is effectively a div
  * that can have anything put in it which it will layout using a flexbox layout with
