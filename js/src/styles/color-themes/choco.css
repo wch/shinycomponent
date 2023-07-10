@@ -6,7 +6,7 @@
 
   /* choco */
   --brand-hue: 25;
-  --brand-hsl: var(--choco-5-hsl);
+  --brand-hsl: var(--choco-5-hsl, 25 71% 57%);
   --brand: var(--choco-5);
   --text-1: var(--choco-1);
   --text-2: var(--choco-2);
@@ -16,5 +16,5 @@
   --surface-3: var(--choco-10);
   --surface-4: var(--choco-9);
   --shadow-color: 25deg 65% 11%;
-  --shadow-strength: 50%;
+  --shadow-strength: 30%;
 }

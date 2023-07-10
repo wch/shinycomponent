@@ -12,8 +12,8 @@
   --surface-2-dark: var(--gray-11);
   --surface-3-dark: var(--gray-10);
   --surface-4-dark: var(--gray-9);
-  --shadow-color-dark: var(--gray-12-hsl);
-  --shadow-strength-dark: 80%;
+  --shadow-color-dark: var(--gray-12-hsl, 31 100% 65%);
+  --shadow-strength-dark: 5%;
 }
 
 [data-shinytheme="dark"],
