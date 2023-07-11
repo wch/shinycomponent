@@ -16,10 +16,6 @@ export function makeOutputBinding<T>(tagName: string) {
   }
 
   class NewCustomBinding extends Shiny["OutputBinding"] {
-    constructor() {
-      super();
-    }
-
     find(scope: HTMLElement): JQuery<CustomElementOutput<T>> {
       return $(scope).find(tagName) as JQuery<CustomElementOutput<T>>;
     }
