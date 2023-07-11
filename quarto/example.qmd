@@ -1,10 +1,24 @@
 ---
 title: "Shinycomponent Example"
+filters:
+    - shinygrid
 ---
 
 ## Shinycomponent from quarto!
 
-{{< shinycomponent title="Meaning of life" value=42 subvalue="Always bring a towel" >}}
 
 
+::: {.grid nCols=2, nRows=1}
 
+
+{{< valuebox title="Meaning of _life_" value=42 subvalue="Always bring a towel" >}}
+
+### My text div
+this is content
+
+{{< valuebox2
+    title="Meaning of _life_ 2"
+    value=42
+    subvalue="Always bring a towel"
+>}}
+:::

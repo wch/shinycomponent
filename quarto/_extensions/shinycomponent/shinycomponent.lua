@@ -8,16 +8,27 @@ local function ensureHtmlDeps()
 end
 
 return {
-  ['shinycomponent'] = function(args, kwargs, meta)
+  ['valuebox'] = function(args, kwargs, meta)
     ensureHtmlDeps()
 
-    return pandoc.Blocks({
-      pandoc.RawBlock("html","<value-box bg='purple'>"),
-      pandoc.Div(kwargs.title, {slot = "title"}),
-      pandoc.Div(kwargs.value, {slot = "value"}),
-      pandoc.Div(kwargs.subvalue,{slot = "subvalue"}),
-      pandoc.RawBlock("html", "</value-box>")
+    return pandoc.Plain({
+      pandoc.RawInline("html","<value-box bg='purple'>"),
+      pandoc.Span(kwargs.title, {slot = "title"}),
+      pandoc.Span(kwargs.value, {slot = "value"}),
+      pandoc.Span(kwargs.subvalue, {slot = "subvalue"}),
+      pandoc.RawInline("html", "</value-box>")
     })
+  end,
 
+  ['valuebox2'] = function(args, kwargs, meta)
+    ensureHtmlDeps()
+
+    return pandoc.Plain({
+      pandoc.RawInline("html","<value-box bg='green'>"),
+      pandoc.Span(kwargs.title, {slot = "title"}),
+      pandoc.Span(kwargs.value, {slot = "value"}),
+      pandoc.Span(kwargs.subvalue, {slot = "subvalue"}),
+      pandoc.RawInline("html", "</value-box>")
+    })
   end
 }
