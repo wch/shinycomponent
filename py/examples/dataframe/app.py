@@ -8,7 +8,7 @@ import shinycomponent as sc
 app_ui = ui.page_fluid(
     ui.h4("Dynamic data"),
     ui.input_select("dataset", "Dataset", sns.get_dataset_names()),
-    sc.output_data_grid("grid"),
+    sc.output_data_frame("grid"),
     ui.panel_absolute(
         ui.output_text_verbatim("detail"),
         right="10px",
@@ -16,7 +16,7 @@ app_ui = ui.page_fluid(
     ),
     ui.hr(),
     ui.h4("Static data"),
-    sc.static_data_grid(sns.load_dataset("penguins")),
+    sc.output_data_frame(data=sns.load_dataset("penguins")),
 )
 
 
@@ -28,9 +28,9 @@ def server(input: Inputs, output: Outputs, session: Session):
         df.set(sns.load_dataset(req(input.dataset())))
 
     @output
-    @sc.data_grid(height="500px", row_selection=True)
+    @sc.data_frame
     def grid():
-        return df()
+        return sc.DataTable(df(), height="400px")
 
     @reactive.Effect
     @reactive.event(input.grid_cell_edit)

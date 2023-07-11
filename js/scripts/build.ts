@@ -36,7 +36,7 @@ esbuild
   .context({
     entryPoints: {
       components: "src/components.ts",
-      datagrid: "src/datagrid/index.tsx",
+      dataframe: "src/dataframe/index.tsx",
       forge: "src/forge/index.ts",
     },
     bundle: true,
@@ -47,7 +47,7 @@ esbuild
     plugins: [
       rebuildLoggerPlugin,
       metafilePlugin,
-      sassPlugin({ filter: /src\/datagrid\/.*scss$/, type: "css-text" }),
+      sassPlugin({ filter: /src\/dataframe\/.*scss$/, type: "css-text" }),
       copy({
         resolveFrom: "cwd",
         assets: {

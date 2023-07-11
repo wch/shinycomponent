@@ -1,3 +1,4 @@
+import { SortDirection } from "@tanstack/react-table";
 import React from "react";
 
 const sortCommonProps = {
@@ -14,7 +15,7 @@ const sortPathCommonProps = {
   fill: "transparent",
 };
 
-export const sortArrowUp = (
+const sortArrowUp = (
   <svg xmlns="http://www.w3.org/2000/svg" {...sortCommonProps}>
     <path
       d="M -1 0.5 L 0 -0.5 L 1 0.5"
@@ -24,7 +25,7 @@ export const sortArrowUp = (
   </svg>
 );
 
-export const sortArrowDown = (
+const sortArrowDown = (
   <svg xmlns="http://www.w3.org/2000/svg" {...sortCommonProps}>
     <path
       d="M -1 -0.5 L 0 0.5 L 1 -0.5"
@@ -33,6 +34,25 @@ export const sortArrowDown = (
     />
   </svg>
 );
+
+interface SortArrowProps {
+  direction: SortDirection | false;
+}
+
+export function SortArrow({
+  direction,
+}: SortArrowProps): React.JSX.Element | null {
+  if (!direction) {
+    return null;
+  }
+  if (direction === "asc") {
+    return sortArrowUp;
+  }
+  if (direction === "desc") {
+    return sortArrowDown;
+  }
+  throw new Error(`Unexpected sort direction: '${direction}'`);
+}
 
 //const sortArrowUp = <span className="sort-arrow sort-arrow-up"> ▲</span>;
 //const sortArrowDown = <span className="sort-arrow sort-arrow-down"> ▼</span>;

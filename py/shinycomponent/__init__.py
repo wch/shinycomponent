@@ -4,10 +4,10 @@ from . import forge
 from ._cards import card, card_footer, card_header
 from ._components import avatar, simple_number_input
 from ._dashboard import dashboard, dashboard_footer, page_dashboard
-from ._datagrid import output_data_grid, static_data_grid
+from ._dataframe import output_data_frame
 from ._grids import grid, grid_item
 from ._page import page
-from ._render_datagrid import data_grid
+from ._render_dataframe import DataGrid, DataTable, data_frame
 from ._sidebar import icon_section, sidebar
 from ._tabs import tab, tab_label
 
@@ -20,9 +20,10 @@ __all__ = (
     "page",
     "page_dashboard",
     "dashboard",
-    "output_data_grid",
-    "static_data_grid",
-    "data_grid",
+    "output_data_frame",
+    "DataGrid",
+    "DataTable",
+    "data_frame",
     "grid",
     "grid_item",
     "icon_section",
