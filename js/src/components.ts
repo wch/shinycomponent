@@ -6,6 +6,7 @@ import { GeneralOutput } from "./general-output";
 import { Grid } from "./grid";
 import { GridItem } from "./grid-item";
 import { ShinyIcon } from "./icon";
+import { ObservablePlot } from "./observable_plot";
 import { OutputPlot } from "./output_plot";
 import { PositLogo } from "./posit-logo";
 import { ShinyAvatar } from "./shiny-avatar";
@@ -17,6 +18,7 @@ import { SimpleNumberInput } from "./simple-number-input";
 import { SimpleNumberOutput } from "./simple-number-output";
 import { Tab } from "./tab";
 import { ThemeChooser } from "./theme-chooser";
+import { ValueBox } from "./value_box";
 
 // Prevent esbuild from tree-shaking these components away.
 Collapsible;
@@ -38,3 +40,5 @@ Section;
 ShinyIcon;
 ShinyAvatar;
 OutputPlot;
+ValueBox;
+ObservablePlot;
