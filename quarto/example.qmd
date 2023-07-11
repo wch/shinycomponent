@@ -2,9 +2,9 @@
 title: "Shinycomponent Example"
 ---
 
-## Heading
+## Shinycomponent from quarto!
 
-{{< shinycomponent title="Quarto Shortcode" subvalue="Always bring a towel" >}}
+{{< shinycomponent title="Meaning of life" value=42 subvalue="Always bring a towel" >}}
 
 
 
