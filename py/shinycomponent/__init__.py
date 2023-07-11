@@ -3,7 +3,7 @@ __version__ = "0.0.1"
 from . import forge, ml
 from ._cards import card, card_footer, card_header
 from ._components import avatar, simple_number_input
-from ._dashboard import dashboard, dashboard_footer, page_dashboard
+from ._dashboard import dashboard, dashboard_footer, dashboard_header, page_dashboard
 from ._dataframe import output_data_frame
 from ._grids import grid, grid_item
 from ._observable_plot import observable_plot
@@ -31,6 +31,7 @@ __all__ = (
     "grid_item",
     "icon_section",
     "dashboard_footer",
+    "dashboard_header",
     "avatar",
     "card",
     "card_header",

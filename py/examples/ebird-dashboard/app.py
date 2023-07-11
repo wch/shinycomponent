@@ -122,7 +122,7 @@ app_ui = sc.page_dashboard(
         # Value boxes are 4 rows tall
         # sc.grid_item(ui.output_text("results_blurb")),
         sc.grid_item(
-            sc.output_data_grid("results_table"),
+            sc.output_data_frame("results_table"),
             width=2,
             height=3,
         ),
