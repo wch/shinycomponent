@@ -60,12 +60,10 @@ def dashboard(
 
     # Put before_navigation and after_navigation in the right place if they exist
     if isinstance(before_navigation, str):
-        print("before_navigation is a string")
         before_nav_slot = tags.div(before_navigation, slot="before_navigation")
         args = (before_nav_slot, *args)
 
     if isinstance(before_navigation, Tag):
-        print("before_navigation is a Tag")
         before_navigation.attrs["slot"] = "before_navigation"
         args = (before_navigation, *args)
 
@@ -77,7 +75,6 @@ def dashboard(
         after_navigation.attrs["slot"] = "after_navigation"
         args = (*args, after_navigation)
 
-    print("No before or after navigation")
     return Tag(
         "shiny-dashboard",
         page_dep(),
@@ -176,3 +173,30 @@ def dashboard_footer(
     ~htmltools.Tag
     """
     return Tag("shiny-dashboard-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
+
+
+def dashboard_header(
+    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> Tag:
+    """
+    A header for a dashboard. Sticks to top of dashboard layouts defined with
+    `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
+
+    Parameters
+    ----------
+    *args
+        Child elements to this tag.
+    **kwargs
+        Attributes passed along to html element.
+
+    Returns
+    -------
+    Tag element
+
+    See Also
+    --------
+    ~shinycomponent.dashboard
+    ~shinycomponent.page_dashboard
+    ~htmltools.Tag
+    """
+    return Tag("div", page_dep(), *args, slot="header", _add_ws=_add_ws, **kwargs)
