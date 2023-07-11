@@ -383,29 +383,33 @@ function useVirtualizerMeasureWorkaround(
   return measureElementWithRetry;
 }
 
-class ShinyDataFrameOutputBinding extends Shiny.OutputBinding {
-  find(scope: HTMLElement | JQuery<HTMLElement>): JQuery<HTMLElement> {
-    return $(scope).find("shiny-data-frame");
-  }
+const Shiny: typeof window.Shiny | undefined = window.Shiny;
 
-  renderValue(el: ShinyDataFrameOutput, data: unknown): void {
-    el.renderValue(data);
-  }
+if (Shiny) {
+  class ShinyDataFrameOutputBinding extends Shiny.OutputBinding {
+    find(scope: HTMLElement | JQuery<HTMLElement>): JQuery<HTMLElement> {
+      return $(scope).find("shiny-data-frame");
+    }
 
-  renderError(el: ShinyDataFrameOutput, err: ErrorsMessageValue): void {
-    el.classList.add("shiny-output-error");
-    el.renderError(err);
-  }
+    renderValue(el: ShinyDataFrameOutput, data: unknown): void {
+      el.renderValue(data);
+    }
 
-  clearError(el: ShinyDataFrameOutput): void {
-    el.classList.remove("shiny-output-error");
-    el.clearError();
+    renderError(el: ShinyDataFrameOutput, err: ErrorsMessageValue): void {
+      el.classList.add("shiny-output-error");
+      el.renderError(err);
+    }
+
+    clearError(el: ShinyDataFrameOutput): void {
+      el.classList.remove("shiny-output-error");
+      el.clearError();
+    }
   }
+  Shiny.outputBindings.register(
+    new ShinyDataFrameOutputBinding(),
+    "shinyDataFrame"
+  );
 }
-Shiny.outputBindings.register(
-  new ShinyDataFrameOutputBinding(),
-  "shinyDataFrame"
-);
 
 function getComputedBgColor(el: HTMLElement | null): string | null | undefined {
   if (!el) {

@@ -29,23 +29,9 @@ The color is `r general_output("color_static", watch="color")`.
 The number is `r general_output("number_static", watch="number")`.
 
 
-### Sliders
-
-```{r echo=FALSE}
-m3_slider(id="slider_in_static", value="20", withLabel="")
-```
-
-The slider is `r general_output("slider_static", watch="slider_in_static")`.
-
-
-<m3-slider id="slider_in_static2" value="20" withlabel=""></m3-slider>
-
-The next slider is <general-output id="slider_static2" watch="slider_in_static2"></general-output>.
-
-
 
 ### Table
 
 ```{r echo=FALSE}
-static_data_grid(palmerpenguins::penguins, height = "500px")
+output_data_frame(data = palmerpenguins::penguins, height = "500px")
 ```

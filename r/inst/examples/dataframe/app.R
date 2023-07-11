@@ -7,7 +7,7 @@ library(ggplot2)
 ui <- fluidPage(
   h4("Dynamic data"),
   selectInput("dataset", "Dataset", list("mtcars", "penguins", "diamonds")),
-  output_data_grid("grid"),
+  output_data_frame("grid"),
   absolutePanel(
     verbatimTextOutput("detail"),
     right = "10px",
@@ -15,7 +15,7 @@ ui <- fluidPage(
   ),
   hr(),
   h4("Static data"),
-  static_data_grid(penguins, height = "500px")
+  output_data_frame(data = penguins)
 )
 
 
@@ -27,11 +27,11 @@ server <- function(input, output, session) {
     df(get(input$dataset, envir = globalenv()))
   })
 
-  output$grid <- render_data_grid(
+  output$grid <- render_data_frame(
     {
       df()
     },
-    height="500px",
+    height="400px",
     row_selection=TRUE
   )
 }
