@@ -7,6 +7,7 @@ from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 from ._htmldeps import page_dep
 
 
+# Tab Python Function
 def tab(
     *args: TagChild | TagAttrs,
     name: str,
@@ -69,6 +70,7 @@ def tab(
     )
 
 
+# Tab Label Python Function
 def tab_label(
     *args: TagChild | TagAttrs,
     **kwargs: TagAttrValue,

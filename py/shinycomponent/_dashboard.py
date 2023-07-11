@@ -6,6 +6,8 @@ from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from ._htmldeps import page_dep
 
+# Dashboard Python Function
+
 
 def dashboard(
     *args: TagChild | TagAttrs,

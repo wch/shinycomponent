@@ -4,6 +4,8 @@ from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
 
+# Sidebar Python Function
+
 
 def sidebar(
     *args: TagChild | TagAttrs, open_width_px: int = 320, **kwargs: TagAttrValue
@@ -40,6 +42,7 @@ def sidebar(
     )
 
 
+# Icon Section Python Function
 def icon_section(
     *args: TagChild | TagAttrs,
     icon: str | Tag,

@@ -7,6 +7,8 @@ import { ShinyCard } from "../shiny-card";
 ShinyCard;
 OutputPlot;
 
+// Card API examples
+
 const meta: Meta = {
   component: "shiny-card",
   decorators: [

@@ -4,6 +4,8 @@ from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
 
+# Card Python Function
+
 
 def card(
     *args: TagChild | TagAttrs,
@@ -68,6 +70,7 @@ def card(
     )
 
 
+# Card Header Python Function
 def card_header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> Tag:
     """
     A header for a card component. Sticks to top of cards defined with `shinycomponent.card()`.
@@ -92,6 +95,7 @@ def card_header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> Tag:
     return Tag("shiny-card-header", page_dep(), *args, _add_ws=True, **kwargs)
 
 
+# Card Footer Python Function
 def card_footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> Tag:
     """
     A footer for a card component. Sticks to bottom of cards defined with `shinycomponent.card()`.

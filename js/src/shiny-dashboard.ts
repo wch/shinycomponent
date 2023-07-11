@@ -8,6 +8,8 @@ import { themePrimitives } from "./styles/op-classes";
 import { TabLabel } from "./tab";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
+// Dashboard Web Component
+
 // Force evaluation of TabLabel so it's available for the custom element
 TabLabel;
 

@@ -3,6 +3,7 @@ from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 
 import shinycomponent as sc
 
+# Real world tabs example app
 app_ui = sc.page(
     sc.dashboard(
         sc.tab(
