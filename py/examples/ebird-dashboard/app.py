@@ -181,7 +181,6 @@ def server(input: Inputs, output: Outputs, session: Session):
     @reactive.Effect
     def update_map():
         records = ebird_results()
-        print("Here are the records we're trying to map....")
         markers_for_records = []
         for record_index in range(len(records)):
             record = records.iloc[record_index]
