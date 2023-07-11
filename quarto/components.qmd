@@ -29,6 +29,14 @@ The color is `r general_output("color_static", watch="color")`.
 The number is `r general_output("number_static", watch="number")`.
 
 
+### Classification label
+
+```{r echo=FALSE}
+output_classification_label(
+  NULL,
+  value = list(Tigers = 32, Lions = 60, Bears = 15)
+)
+```
 
 ### Table
 

@@ -84,7 +84,6 @@ theme_chooser <- function(...) {
 }
 
 
-
 convert_to_escaped_json <- function(x) {
   res <- toJSON(x, null = "null", auto_unbox = TRUE)
   # res <- htmltools::htmlEscape(res, attribute = TRUE)
