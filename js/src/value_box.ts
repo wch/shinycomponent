@@ -25,6 +25,9 @@ export class ValueBox extends LitElement {
    * @default "gg:chart"
    */
   @property({ type: String }) icon: string = "gg:chart";
+  @property({ type: String }) title: string = "";
+  @property({ type: String }) subtitle: string = "";
+  @property({ type: String }) subvalue: string = "";
 
   static styles = [
     css`
@@ -34,6 +37,7 @@ export class ValueBox extends LitElement {
 
         height: 100%;
         max-height: 200px;
+        min-height: 100px;
         max-width: 400px;
         background-color: var(--bg-color);
         color: var(--text-color);
@@ -85,9 +89,8 @@ export class ValueBox extends LitElement {
     `,
   ];
 
-  connectedCallback() {
-    super.connectedCallback();
-
+  updated() {
+    console.log("Value box initialized");
     this.style.setProperty("--bg-color", validateBgColor(this.bg));
     this.style.setProperty(
       "--text-color",
@@ -100,20 +103,30 @@ export class ValueBox extends LitElement {
 
     const variableValue = sanatizeCssVarName(bgColor);
     if (variableValue) {
-      color = new Color(this.getVariableColor(variableValue));
+      const variableColor = this.getVariableColor(variableValue);
+
+      console.log({ variableValue, variableColor });
+      color = new Color(variableColor);
     }
 
-    if (isHexColor(bgColor)) {
+    try {
       color = new Color(bgColor);
+    } catch (e) {
+      console.warn("Could not parse color", e);
     }
 
     if (!color) {
       return lightText;
     }
 
-    const lightTextContrast = color.contrastWCAG21(lightTextColorObj);
-    const darkTextContrast = color.contrastWCAG21(darkTextColorObj);
+    const lightTextContrast = color.contrastWCAG21(new Color(lightText));
+    const darkTextContrast = color.contrastWCAG21(new Color(darkText));
 
+    console.log("Contrast decision", {
+      color: this.bg,
+      lightTextContrast,
+      darkTextContrast,
+    });
     return lightTextContrast > darkTextContrast ? lightText : darkText;
   }
 
@@ -126,13 +139,19 @@ export class ValueBox extends LitElement {
     return html`
       <div class="title">
         <div class="main">
-          <slot name="title">Title</slot>
+          <slot name="title">${this.title}</slot>
         </div>
-        <div class="subtitle"><slot name="subtitle">subtitle</slot></div>
+        <div class="subtitle">
+          <slot name="subtitle">${this.subtitle}</slot>
+        </div>
       </div>
       <div class="value">
-        <div class="main"><slot name="value">${this.value}</slot></div>
-        <div class="subvalue"><slot name="subvalue">subvalue</slot></div>
+        <div class="main">
+          <slot name="value">${sanatizeValue(this.value)}</slot>
+        </div>
+        <div class="subvalue">
+          <slot name="subvalue">${this.subvalue}</slot>
+        </div>
       </div>
       <div class="icon">
         <slot name="icon">
@@ -149,36 +168,8 @@ function validateBgColor(value: string): string {
     return `var(${unwrappedCssVarName})`;
   }
 
-  if (isHexColor(value)) {
-    return value;
-  }
-
-  return "var(--brand)";
+  return value;
 }
-
-const validOPColors = new Set(
-  [
-    "Stone",
-    "Red",
-    "Pink",
-    "Purple",
-    "Violet",
-    "Indigo",
-    "Blue",
-    "Cyan",
-    "Teal",
-    "Green",
-    "Lime",
-    "Yellow",
-    "Orange",
-    "Choco",
-    "Brown",
-    "Sand",
-    "Camo",
-    "Jungle",
-  ].map((color) => color.toLowerCase())
-);
-
 type CSSVariable = `--${string}`;
 
 /**
@@ -190,6 +181,29 @@ type CSSVariable = `--${string}`;
  * variable.
  */
 function sanatizeCssVarName(value: string): CSSVariable | null {
+  const validOPColors = new Set(
+    [
+      "Stone",
+      "Red",
+      "Pink",
+      "Purple",
+      "Violet",
+      "Indigo",
+      "Blue",
+      "Cyan",
+      "Teal",
+      "Green",
+      "Lime",
+      "Yellow",
+      "Orange",
+      "Choco",
+      "Brown",
+      "Sand",
+      "Camo",
+      "Jungle",
+    ].map((color) => color.toLowerCase())
+  );
+
   if (validOPColors.has(value.toLowerCase())) {
     return `--${value.toLowerCase()}-8` as CSSVariable;
   }
@@ -205,11 +219,19 @@ function sanatizeCssVarName(value: string): CSSVariable | null {
   return null;
 }
 
+function sanatizeValue(value: string): string {
+  // If we can coerce the value to a number, do that and then truncate to 2 decimals
+  const numberValue = Number(value);
+  if (!isNaN(numberValue)) {
+    return numberValue.toFixed(2);
+  }
+
+  return value;
+}
+
 function isHexColor(value: string): boolean {
   return value.startsWith("#");
 }
 
 const lightText = "#f1f3f5";
 const darkText = "#212529";
-const lightTextColorObj = new Color(lightText);
-const darkTextColorObj = new Color(darkText);

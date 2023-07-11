@@ -6,10 +6,12 @@ from ._components import avatar, simple_number_input
 from ._dashboard import dashboard, dashboard_footer, page_dashboard
 from ._dataframe import output_data_frame
 from ._grids import grid, grid_item
+from ._observable_plot import observable_plot
 from ._page import page
 from ._render_dataframe import DataGrid, DataTable, render_data_frame
 from ._sidebar import icon_section, sidebar
 from ._tabs import tab, tab_label
+from ._value_box import value_box
 
 __all__ = (
     "forge",
@@ -33,4 +35,6 @@ __all__ = (
     "card",
     "card_header",
     "card_footer",
+    "value_box",
+    "observable_plot",
 )

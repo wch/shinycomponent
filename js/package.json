@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "@material/web": "^1.0.0-pre.9",
+    "@observablehq/plot": "^0.6.9",
     "@preact/compat": "^17.1.2",
     "@tanstack/react-table": "^8.9.1",
     "@tanstack/react-virtual": "3.0.0-beta.54",
