@@ -15,6 +15,7 @@ max_rev = data["revenue"].max()
 max_rev_format = data[data["revenue"] == max_rev]["format"].values[0]
 
 app_ui = sc.page_dashboard(
+    sc.dashboard_header(ui.h2("Sales of things over years")),
     sc.grid(
         sc.grid_item(
             sc.value_box(
@@ -41,7 +42,7 @@ app_ui = sc.page_dashboard(
             ),
         ),
         sc.grid_item(sc.observable_plot(data=data)),
-    )
+    ),
 )
 
 app = App(
