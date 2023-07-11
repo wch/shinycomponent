@@ -1,0 +1,8 @@
+title: Shinycomponent
+author: Nick Strayer
+version: 1.0.0
+quarto-required: ">=99.9.0"
+contributes:
+  shortcodes:
+    - shinycomponent.lua
+

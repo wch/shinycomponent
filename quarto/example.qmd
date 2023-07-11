@@ -1,0 +1,10 @@
+---
+title: "Shinycomponent Example"
+---
+
+## Heading
+
+{{< shinycomponent title="Quarto Shortcode" subvalue="Always bring a towel" >}}
+
+
+
