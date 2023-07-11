@@ -13,7 +13,7 @@
   --surface-3-dark: var(--gray-10);
   --surface-4-dark: var(--gray-9);
   --shadow-color-dark: var(--gray-12-hsl, 31 100% 65%);
-  --shadow-strength-dark: 5%;
+  --shadow-strength-dark: 2%;
 }
 
 [data-shinytheme="dark"],

@@ -4,9 +4,8 @@
 :root[data-shinytheme="grape"] {
   color-scheme: light;
 
-  --purple-12-hsl: 288 55% 20%;
   --brand-hue: 288;
-  --brand-hsl: var(--purple-5-hsl);
+  --brand-hsl: var(--purple-5-hsl, 288 75% 64%);
   --brand: var(--purple-5);
   --text-1: var(--purple-9);
   --text-2: var(--purple-7);
@@ -15,6 +14,6 @@
   --surface-2: var(--purple-1);
   --surface-3: var(--purple-2);
   --surface-4: var(--purple-3);
-  --shadow-color: var(--purple-12-hsl);
+  --shadow-color: var(--purple-12-hsl, 288 55% 20%);
   --shadow-strength: 2%;
 }
