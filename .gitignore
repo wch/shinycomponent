@@ -3,3 +3,5 @@ node_modules
 venv
 
 js/src/styles/theming-readme_files/
+quarto/*_files/
+quarto/**/*.html
