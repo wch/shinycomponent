@@ -38,6 +38,7 @@ esbuild
       components: "src/components.ts",
       dataframe: "src/dataframe/index.tsx",
       forge: "src/forge/index.ts",
+      ml: "src/ml/index.ts",
     },
     bundle: true,
     outdir: "out/",

@@ -1,6 +1,6 @@
 __version__ = "0.0.1"
 
-from . import forge
+from . import forge, ml
 from ._cards import card, card_footer, card_header
 from ._components import avatar, simple_number_input
 from ._dashboard import dashboard, dashboard_footer, page_dashboard
@@ -13,6 +13,7 @@ from ._tabs import tab, tab_label
 
 __all__ = (
     "forge",
+    "ml",
     "sidebar",
     "simple_number_input",
     "tab",
