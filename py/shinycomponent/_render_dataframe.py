@@ -281,18 +281,20 @@ class RenderDataFrameAsync(
 
 
 @overload
-def data_frame(fn: RenderDataFrameFunc | RenderDataFrameFuncAsync) -> RenderDataFrame:
+def render_data_frame(
+    fn: RenderDataFrameFunc | RenderDataFrameFuncAsync,
+) -> RenderDataFrame:
     ...
 
 
 @overload
-def data_frame() -> (
+def render_data_frame() -> (
     Callable[[RenderDataFrameFunc | RenderDataFrameFuncAsync], RenderDataFrame]
 ):
     ...
 
 
-def data_frame(
+def render_data_frame(
     fn: Optional[RenderDataFrameFunc | RenderDataFrameFuncAsync] = None,
 ) -> (
     RenderDataFrame

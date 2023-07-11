@@ -7,7 +7,7 @@ from ._dashboard import dashboard, dashboard_footer, page_dashboard
 from ._dataframe import output_data_frame
 from ._grids import grid, grid_item
 from ._page import page
-from ._render_dataframe import DataGrid, DataTable, data_frame
+from ._render_dataframe import DataGrid, DataTable, render_data_frame
 from ._sidebar import icon_section, sidebar
 from ._tabs import tab, tab_label
 
@@ -23,7 +23,7 @@ __all__ = (
     "output_data_frame",
     "DataGrid",
     "DataTable",
-    "data_frame",
+    "render_data_frame",
     "grid",
     "grid_item",
     "icon_section",

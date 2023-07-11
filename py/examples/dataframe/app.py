@@ -28,7 +28,7 @@ def server(input: Inputs, output: Outputs, session: Session):
         df.set(sns.load_dataset(req(input.dataset())))
 
     @output
-    @sc.data_frame
+    @sc.render_data_frame
     def grid():
         return sc.DataTable(df(), height="400px")
 
