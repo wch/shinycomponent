@@ -174,6 +174,7 @@ export class ShinyDashboard
     .footer {
       /* Use background image if passed */
       background-image: var(--header-bg-image);
+      background-color: var(--surface-1);
       z-index: 2;
       margin: 0;
       display: flex;
@@ -301,6 +302,7 @@ export class ShinyDashboard
     .header > ::slotted(div) {
       margin: 0;
       padding: 0;
+      padding-inline: var(--padding);
     }
 
     /* Mobile styles */
@@ -367,12 +369,13 @@ export class ShinyDashboard
       </div>
     </div>`;
 
+    const haveTabs = this.tabs.length > 0;
     return html`
       <div class="tabset">
-        ${this.tabsOnSide ? tabContainer : ""}
+        ${this.tabsOnSide && haveTabs ? tabContainer : ""}
         <div class="header ${this.showHeader() ? "" : "empty-header"}">
           <slot name="header" @slotchange=${this.watchHeaderSlot}></slot>
-          ${this.tabsOnSide ? "" : tabContainer}
+          ${this.tabsOnSide ? "" : haveTabs ? tabContainer : ""}
         </div>
         <div class="sidebar">
           <slot name="sidebar"></slot>
