@@ -68,7 +68,6 @@ export class ObservablePlot extends LitElement {
     if (plotDiv) {
       this.heightPx = plotDiv.offsetHeight;
       this.widthPx = plotDiv.offsetWidth;
-      console.log("Resize observed", this.heightPx, this.widthPx);
     }
   }
 
