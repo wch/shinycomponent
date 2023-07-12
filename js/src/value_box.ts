@@ -29,6 +29,9 @@ export class ValueBox extends LitElement {
   @property({ type: String }) subtitle: string = "";
   @property({ type: String }) subvalue: string = "";
 
+  static lightText = "#f1f3f5";
+  static darkText = "#212529";
+
   static styles = [
     css`
       :host {
@@ -89,23 +92,17 @@ export class ValueBox extends LitElement {
     `,
   ];
 
-  updated() {
-    console.log("Value box initialized");
-    this.style.setProperty("--bg-color", validateBgColor(this.bg));
-    this.style.setProperty(
-      "--text-color",
-      this.textColor !== "" ? this.textColor : this.decideTextColor(this.bg)
-    );
-  }
-
   decideTextColor(bgColor: string): string {
     let color: Color | null = null;
 
     const variableValue = sanatizeCssVarName(bgColor);
     if (variableValue) {
-      const variableColor = this.getVariableColor(variableValue);
+      const variableColor =
+        getComputedStyle(this).getPropertyValue(variableValue);
 
-      console.log({ variableValue, variableColor });
+      if (!variableColor) {
+        return ValueBox.darkText;
+      }
       color = new Color(variableColor);
     }
 
@@ -116,23 +113,26 @@ export class ValueBox extends LitElement {
     }
 
     if (!color) {
-      return lightText;
+      return ValueBox.lightText;
     }
 
-    const lightTextContrast = color.contrastWCAG21(new Color(lightText));
-    const darkTextContrast = color.contrastWCAG21(new Color(darkText));
+    const lightTextContrast = color.contrastWCAG21(
+      new Color(ValueBox.lightText)
+    );
+    const darkTextContrast = color.contrastWCAG21(new Color(ValueBox.darkText));
 
-    console.log("Contrast decision", {
-      color: this.bg,
-      lightTextContrast,
-      darkTextContrast,
-    });
-    return lightTextContrast > darkTextContrast ? lightText : darkText;
+    return lightTextContrast > darkTextContrast
+      ? ValueBox.lightText
+      : ValueBox.darkText;
   }
 
-  getVariableColor(variable: CSSVariable): string {
-    const computedStyle = getComputedStyle(this);
-    return computedStyle.getPropertyValue(variable);
+  connectedCallback() {
+    super.connectedCallback();
+    this.style.setProperty("--bg-color", validateBgColor(this.bg));
+    this.style.setProperty(
+      "--text-color",
+      this.textColor !== "" ? this.textColor : this.decideTextColor(this.bg)
+    );
   }
 
   render() {
@@ -181,6 +181,10 @@ type CSSVariable = `--${string}`;
  * variable.
  */
 function sanatizeCssVarName(value: string): CSSVariable | null {
+  if (value === "brand") {
+    return "--brand";
+  }
+
   const validOPColors = new Set(
     [
       "Stone",
@@ -232,6 +236,3 @@ function sanatizeValue(value: string): string {
 function isHexColor(value: string): boolean {
   return value.startsWith("#");
 }
-
-const lightText = "#f1f3f5";
-const darkText = "#212529";
