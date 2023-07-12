@@ -57,6 +57,14 @@ esbuild
         },
         watch: watch,
       }),
+      copy({
+        resolveFrom: "cwd",
+        assets: {
+          from: ["./out/*"],
+          to: ["../quarto/_extensions/shinycomponent/assets/"],
+        },
+        watch: watch,
+      }),
     ],
     metafile: metafile,
   })

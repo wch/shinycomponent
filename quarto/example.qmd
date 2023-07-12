@@ -1,8 +1,14 @@
 ---
 title: "Shinycomponent Example"
 filters:
-    - shinygrid
+    - shinycomponent
 ---
+
+
+```{r include=FALSE}
+library(shinycomponent)
+library(htmltools)
+```
 
 ## Shinycomponent from quarto!
 
@@ -22,3 +28,10 @@ this is content
     subvalue="Always bring a towel"
 >}}
 :::
+
+```{r echo=FALSE}
+output_classification_label(
+  NULL,
+  value = list(Tigers = 32, Lions = 60, Bears = 15)
+)
+```
