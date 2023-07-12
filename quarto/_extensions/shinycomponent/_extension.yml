@@ -6,3 +6,10 @@ contributes:
     - shinycomponent.lua
   filters:
     - shinygrid.lua
+  formats:
+    html:
+      template: dashboard-template.html
+      page-layout: custom
+      dashboard: true
+      filters:
+        - shinygrid.lua

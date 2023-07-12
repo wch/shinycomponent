@@ -52,6 +52,9 @@ export class ValueBox extends LitElement {
         grid-template-areas:
           "title icon"
           "value icon";
+
+        /* TODO: Deal with this eventually */
+        overflow: hidden;
       }
 
       .title {
