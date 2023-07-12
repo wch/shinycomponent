@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
+
+<head>
+
+$metadata.html()$
+
+<style>
+$styles.html()$
+</style>
+
+<!-- htmldependencies:E3FAD763 -->
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(math)$
+$if(mathjax)$
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+$endif$
+  $math$
+$endif$
+
+$for(css)$
+<link rel="stylesheet" href="$css$" />
+$endfor$
+
+<style>
+  :root, body, .page-layout-custom {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Fix conflict with Quarto styles stopping overflow due to compatibility with
+  old selector */
+  div.cell-output-display:not(.no-overflow-x) {
+    overflow-x: unset;
+  }
+
+</style>
+</head>
+
+<body>
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+
+<shiny-dashboard>
+
+$if(title)$
+<div slot="header">
+  <h1>$title$</h1>
+</div>
+$endif$
+
+$body$
+
+</shiny-dashboard>
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+</body>
+
+</html>

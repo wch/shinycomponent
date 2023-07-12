@@ -21,7 +21,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[css]": {
@@ -82,5 +82,6 @@
   "stylelint.configBasedir": "js",
   "stylelint.reportNeedlessDisables": true,
   "stylelint.snippet": ["css", "less", "postcss", "typescript"],
-  "lit-plugin.rules.no-invalid-css": "off"
+  "lit-plugin.rules.no-invalid-css": "off",
+  "editor.formatOnType": false
 }

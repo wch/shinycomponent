@@ -1,37 +1,70 @@
 ---
 title: "Shinycomponent Example"
-filters:
-    - shinycomponent
+format: shinycomponent-html
+execute:
+  echo: false
 ---
 
 
-```{r include=FALSE}
-library(shinycomponent)
-library(htmltools)
-```
-
-## Shinycomponent from quarto!
-
-
-
-::: {.grid nCols=2, nRows=1}
-
+## {.sc-grid .no-title}
 
 {{< valuebox title="Meaning of _life_" value=42 subvalue="Always bring a towel" >}}
 
-### My text div
-this is content
 
-{{< valuebox2
+{{< valuebox
     title="Meaning of _life_ 2"
     value=42
     subvalue="Always bring a towel"
 >}}
-:::
 
-```{r echo=FALSE}
-output_classification_label(
-  NULL,
-  value = list(Tigers = 32, Lions = 60, Bears = 15)
+
+
+### My text div
+this is content
+
+
+## {.sc-grid nCols=2 nRows=1}
+
+```{python}
+import shinycomponent as sc
+
+sc.forge.input_select(
+  id="select1",
+  label="Basic",
+  choices=["First choice", "Second choice", "Third choice"],
 )
 ```
+
+
+```{python}
+import plotly.express as px
+import plotly.io as pio
+df = px.data.iris()
+fig = px.scatter(df, x="sepal_width", y="sepal_length",
+                 color="species",
+                 marginal_y="violin", marginal_x="box",
+                 trendline="ols", template="simple_white")
+fig.show()
+```
+
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'}
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+
+
+## About
+
+Here are some fun facts about the figure you see on the left...
