@@ -31,11 +31,18 @@ return {
     RawBlock= function(el)
       print("Raw block content", el.text)
       if el.format == "html" and el.text:match("<forge%-") then
-        print("Found dark mode switch")
         quarto.doc.add_html_dependency({
           name = 'shinycomponent-forge',
           version = '0.1.0',
           scripts = {{path='assets/forge.js'}}
+        })
+      end
+
+      if el.format == "html" and el.text:match("<ml%-") then
+        quarto.doc.add_html_dependency({
+          name = 'shinycomponent-ml',
+          version = '0.1.0',
+          scripts = {{path='assets/ml.js'}}
         })
       end
     end,
