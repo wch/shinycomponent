@@ -6,9 +6,13 @@ execute:
 ---
 
 
-## {.sc-grid .no-title}
+::: {.sc-grid .no-title}
 
-{{< valuebox title="Meaning of _life_" value=42 subvalue="Always bring a towel" >}}
+{{< valuebox
+  title="Meaning of _life_"
+  value=`5+337`
+  subvalue="Always bring a towel"
+>}}
 
 
 {{< valuebox
@@ -17,13 +21,14 @@ execute:
     subvalue="Always bring a towel"
 >}}
 
-
-
 ### My text div
 this is content
 
+:::
 
-## {.sc-grid nCols=2 nRows=1}
+
+
+::: {.sc-grid nCols=2 nRows=1}
 
 ```{python}
 import shinycomponent as sc
@@ -63,7 +68,7 @@ ax.grid(True)
 plt.show()
 ```
 
-
+:::
 
 ## About
 
