@@ -89,7 +89,6 @@ export class ShinyDashboard
 
   watchMainSlot(e: Event) {
     this.tabs = extractTabsFromElements(getElementsFromSlotChangeEvent(e));
-    console.log("Tab search results", this.tabs);
     this.selectTab();
   }
 
