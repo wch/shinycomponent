@@ -63,31 +63,31 @@ export class ObservablePlot extends LitElement {
     this.data = data;
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-  }
-
-  setPlotHeight(e: Event) {
-    console.log("Resize occured", e);
-  }
-
-  updated() {
+  updatePlotSize() {
     const plotDiv = this.shadowRoot?.querySelector("#plot") as HTMLDivElement;
-
     if (plotDiv) {
       this.heightPx = plotDiv.offsetHeight;
       this.widthPx = plotDiv.offsetWidth;
+      console.log("Resize observed", this.heightPx, this.widthPx);
     }
   }
 
+  resizeWatcher = new ResizeObserver((entries) => {
+    this.updatePlotSize();
+  });
+
+  constructor() {
+    super();
+    this.resizeWatcher.observe(this);
+  }
+
   render() {
-    console.log("Rendering observable-plot");
     return html`
       <div class="slots">
         <slot name="data" @slotchange=${this.watchDataSlot}></slot>
         <slot name="spec"></slot>
       </div>
-      <div id="plot" @show=${this.setPlotHeight}>
+      <div id="plot">
         ${this.data &&
         this.heightPx &&
         this.widthPx &&
