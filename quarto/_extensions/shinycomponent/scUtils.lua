@@ -1,5 +1,7 @@
 -- All of our scripts that we include in this extension/package need the type of
 -- module to load properly. This is to make that easier to declare
+---@param pathToJs string
+---@return pandoc.Meta
 local makeModuleScript = function(pathToJs)
   return {
     path = pathToJs,
@@ -12,6 +14,9 @@ return {
 
   -- Takes a pandoc element and replaces the outer tag with a custom element of
   -- the requested tag
+  ---@param tag string
+  ---@param el pandoc.Div
+  ---@return pandoc.List|nil
   wrapInCustomElement = function(tag, el)
     local openTag = "<" .. tag .. " "
     for k, v in pairs(el.attributes) do
