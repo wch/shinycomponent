@@ -83,5 +83,11 @@ return {
     table.insert(contents, pandoc.RawInline("html", "</value-box>"))
 
     return pandoc.Plain(contents)
+  end,
+  ['dark-mode-switch'] = function(args, kwargs, meta)
+    quarto.doc.add_html_dependency(scUtils.forgeHtmlDep)
+    return pandoc.RawInline("html", "<forge-dark-mode-switch></forge-dark-mode-switch>")
   end
+
+
 }

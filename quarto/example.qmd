@@ -73,5 +73,6 @@ plt.show()
 Lorem ipsum and stuff and things...
 :::
 
+Want to switch themes?
+{{< dark-mode-switch >}}
 
-Other stuff
