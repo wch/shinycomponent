@@ -1,5 +1,8 @@
 local scUtils = require "scUtils"
 
+-- In order to allow markdown in the arguments for shortcodes we need will need
+-- to run it through the pandoc parser. This will eventually be in the quarto
+-- package, but for now we can polyfill it here
 local function markdownToInlines(str)
   if str then
     local doc = pandoc.read(str)
