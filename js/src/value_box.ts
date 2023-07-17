@@ -103,7 +103,19 @@ export class ValueBox extends LitElement {
       const variableColor =
         getComputedStyle(this).getPropertyValue(variableValue);
 
+      // If there's no color, then we have the situation where the css
+      // variable is not yet defined
       if (!variableColor) {
+        if (bgIsOpColor(bgColor)) {
+          // If the color is one of the naked open-props colors like `purple`
+          // then we can use light text because we append a dark-suffix to these
+          // colors.
+          return ValueBox.lightText;
+        }
+        // If we don't know what color the background is (likely beacuse the
+        // variable hasn't loaded yet) we use a dark text color. This isn't
+        // _great_ but should be okay and if user's need to they can define the
+        // text color
         return ValueBox.darkText;
       }
       color = new Color(variableColor);
@@ -175,19 +187,7 @@ function validateBgColor(value: string): string {
 }
 type CSSVariable = `--${string}`;
 
-/**
- * Makes sure that the passed css variable is in the format of `--my-variable`
- * rather than wrapped in a `var()` function. Can also be used to check if a
- * string is a valid css variable.
- * @param value The value to check
- * @returns The unwrapped css variable or null if the value is not a valid css
- * variable.
- */
-function sanatizeCssVarName(value: string): CSSVariable | null {
-  if (value === "brand") {
-    return "--brand";
-  }
-
+function bgIsOpColor(value: string): boolean {
   const validOPColors = new Set(
     [
       "Stone",
@@ -211,7 +211,22 @@ function sanatizeCssVarName(value: string): CSSVariable | null {
     ].map((color) => color.toLowerCase())
   );
 
-  if (validOPColors.has(value.toLowerCase())) {
+  return validOPColors.has(value.toLowerCase());
+}
+/**
+ * Makes sure that the passed css variable is in the format of `--my-variable`
+ * rather than wrapped in a `var()` function. Can also be used to check if a
+ * string is a valid css variable.
+ * @param value The value to check
+ * @returns The unwrapped css variable or null if the value is not a valid css
+ * variable.
+ */
+function sanatizeCssVarName(value: string): CSSVariable | null {
+  if (value === "brand") {
+    return "--brand";
+  }
+
+  if (bgIsOpColor(value)) {
     return `--${value.toLowerCase()}-8` as CSSVariable;
   }
 
@@ -234,8 +249,4 @@ function sanatizeValue(value: string): string {
   }
 
   return value;
-}
-
-function isHexColor(value: string): boolean {
-  return value.startsWith("#");
 }
