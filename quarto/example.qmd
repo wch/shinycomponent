@@ -6,7 +6,7 @@ execute:
 ---
 
 
-::: {.sc-grid nRow=2 nCol=2}
+::: {.sc-grid nRows=2 nCols=2}
 
 {{< valuebox
   title="Meaning of _life_"
