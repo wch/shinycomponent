@@ -6,7 +6,7 @@ execute:
 ---
 
 
-::: {.sc-grid .no-title}
+::: {.sc-grid nRow=2 nCol=2}
 
 {{< valuebox
   title="Meaning of _life_"
@@ -21,14 +21,10 @@ execute:
     subvalue="Always bring a towel"
 >}}
 
-### My text div
-this is content
-
-:::
 
 
 
-::: {.sc-grid nCols=2 nRows=1}
+
 
 ```{python}
 import shinycomponent as sc
@@ -42,14 +38,14 @@ sc.forge.input_select(
 
 
 ```{python}
-import plotly.express as px
-import plotly.io as pio
-df = px.data.iris()
-fig = px.scatter(df, x="sepal_width", y="sepal_length",
-                 color="species",
-                 marginal_y="violin", marginal_x="box",
-                 trendline="ols", template="simple_white")
-fig.show()
+# import plotly.express as px
+# import plotly.io as pio
+# df = px.data.iris()
+# fig = px.scatter(df, x="sepal_width", y="sepal_length",
+#                  color="species",
+#                  marginal_y="violin", marginal_x="box",
+#                  trendline="ols", template="simple_white")
+# fig.show()
 ```
 
 
@@ -70,6 +66,12 @@ plt.show()
 
 :::
 
-## About
+::: {.sc-sidebar}
 
-Here are some fun facts about the figure you see on the left...
+### Welcome to my sidebar
+
+Lorem ipsum and stuff and things...
+:::
+
+
+Other stuff

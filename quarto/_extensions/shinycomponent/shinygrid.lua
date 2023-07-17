@@ -1,12 +1,4 @@
-local function ensureHtmlDeps()
-  quarto.doc.add_html_dependency({
-    name = 'shinycomponent',
-    version = '0.1.0',
-    scripts = {{path='assets/components.js'}},
-    stylesheets = {'assets/open-props.min.css', 'assets/shiny-theme.css'}
-  })
-end
-
+local scUtils = require "scUtils"
 
 return {
   {
@@ -14,61 +6,36 @@ return {
     -- filters and thus lets us know that we're in dashboard mode as set by the
     -- template
     Meta = function(meta)
-      ensureHtmlDeps()
+      -- ensureHtmlDeps()
     end,
 
-    Pandoc = function(doc)
-
-      local blocks = pandoc.List()
-      doc.blocks = pandoc.structure.make_sections(doc.blocks)
-
-
-      quarto.utils.dump(doc.blocks)
-      return doc
-    end
+    -- Pandoc = function(doc)
+    --   local blocks = pandoc.List()
+    --   doc.blocks = pandoc.structure.make_sections(doc.blocks)
+    --   return doc
+    -- end
   },
   {
-    RawBlock= function(el)
-      print("Raw block content", el.text)
+    -- These rawblock filters are used to catch hand-written html to make sure
+    -- we load the right dependencies
+    RawBlock = function(el)
       if el.format == "html" and el.text:match("<forge%-") then
-        quarto.doc.add_html_dependency({
-          name = 'shinycomponent-forge',
-          version = '0.1.0',
-          scripts = {{path='assets/forge.js'}}
-        })
+        quarto.doc.add_html_dependency(scUtils.forgeHtmlDep)
       end
 
       if el.format == "html" and el.text:match("<ml%-") then
-        quarto.doc.add_html_dependency({
-          name = 'shinycomponent-ml',
-          version = '0.1.0',
-          scripts = {{path='assets/ml.js'}}
-        })
+        quarto.doc.add_html_dependency(scUtils.mlHtmlDep)
       end
     end,
-    Div=function(el)
+    Div = function(el)
       if el.classes:includes("sc-grid") then
-
-        ensureHtmlDeps()
-
-        -- Convert attributes into string with format: "key1=value1;key2=value2"
-        local openTag = "<shiny-grid "
-        for k, v in pairs(el.attributes) do
-          openTag = openTag .. k .. "=" .. v .. " "
-        end
-
-        openTag = openTag .. ">"
-
-        -- Make a shiny-grid opening tag with attributes
-        local children = el.content
-        children:insert(1, pandoc.RawBlock("html", openTag))
-        children:insert(pandoc.RawBlock("html", "</shiny-grid>"))
-
-        return el
+        quarto.doc.add_html_dependency(scUtils.scHtmlDep)
+        return scUtils.wrapInCustomElement("shiny-grid", el)
       end
-
+      if el.classes:includes("sc-sidebar") then
+        quarto.doc.add_html_dependency(scUtils.scHtmlDep)
+        return scUtils.wrapInCustomElement("shiny-sidebar", el)
+      end
     end
   }
 }
-
-
