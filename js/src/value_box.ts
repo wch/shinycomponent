@@ -106,17 +106,11 @@ export class ValueBox extends LitElement {
       // If there's no color, then we have the situation where the css
       // variable is not yet defined
       if (!variableColor) {
-        if (bgIsOpColor(bgColor)) {
-          // If the color is one of the naked open-props colors like `purple`
-          // then we can use light text because we append a dark-suffix to these
-          // colors.
-          return ValueBox.lightText;
-        }
         // If we don't know what color the background is (likely beacuse the
-        // variable hasn't loaded yet) we use a dark text color. This isn't
+        // variable hasn't loaded yet) we use a light text color. This isn't
         // _great_ but should be okay and if user's need to they can define the
         // text color
-        return ValueBox.darkText;
+        return ValueBox.lightText;
       }
       color = new Color(variableColor);
     }

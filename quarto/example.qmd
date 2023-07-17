@@ -10,18 +10,18 @@ execute:
 
 {{< valuebox
   title="Meaning of _life_"
-  value=`5+337`
+  value=42
   subvalue="Always bring a towel"
+  icon="mdi:chart-line"
 >}}
 
 
 {{< valuebox
-    title="Meaning of _life_ 2"
-    value=42
-    subvalue="Always bring a towel"
+    title=Number of widgets"
+    value="A lot"
+    bg=pink
+    icon="😀"
 >}}
-
-
 
 
 
