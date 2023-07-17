@@ -1,5 +1,24 @@
 local scUtils = require "scUtils"
 
+
+--- @param node pandoc.Node
+--- @return pandoc.Image | nil
+local extractPlotNode = function(node)
+  local isPara = node.tag == "Para"
+
+  if not isPara then
+    return nil
+  end
+
+  local firstChild = node.content[1]
+
+  if firstChild.tag == nil or firstChild.tag ~= "Image" then
+    return nil
+  end
+
+  return firstChild
+end
+
 return {
   {
     -- This needs to be top level nested so we know it runs before the other
@@ -36,6 +55,26 @@ return {
         quarto.doc.add_html_dependency(scUtils.scHtmlDep)
         return scUtils.wrapInCustomElement("shiny-sidebar", el)
       end
-    end
+
+      -- When we detect a plot node, remove the height and width and tag with
+      -- custom attribute so we can make it dynamically resize with css
+      if el.classes:includes("cell-output-display") then
+        local plotNode = extractPlotNode(el.content[1])
+
+        if (not plotNode) then
+          return nil
+        end
+
+        -- Mark as a plot node so we can target with css
+        el.attributes["data-sc-plot"] = "true"
+
+        -- Remove the width and height attributes so that the plot will be
+        plotNode.attributes["width"] = nil
+        plotNode.attributes["height"] = nil
+
+        return el
+      end
+    end,
+
   }
 }

@@ -38,6 +38,22 @@ $endfor$
     overflow-x: unset;
   }
 
+  /* The data-sc-plot attribute is added to cell outputs by the custom filter.
+  Use it to enable smart plot sizing */
+  .cell-output-display[data-sc-plot],
+  .cell-output-display[data-sc-plot] > p {
+    width: 100%;
+    height: 100%;
+    margin:0;
+    padding:0;
+  }
+  .cell-output-display[data-sc-plot] img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
 </style>
 </head>
 
