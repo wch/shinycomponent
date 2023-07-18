@@ -26,7 +26,7 @@ export class ForgeDarkModeSwitch
       .sun-and-moon > .sun {
         fill: none;
         stroke: var(--text-1);
-        stroke-width: 1.5px;
+        stroke-width: var(--stroke-w);
       }
 
       button:is(:hover, :focus-visible)
@@ -36,7 +36,7 @@ export class ForgeDarkModeSwitch
 
       .sun-and-moon > .sun-beams {
         stroke: var(--text-1);
-        stroke-width: 1.5px;
+        stroke-width: var(--stroke-w);
       }
 
       button:is(:hover, :focus-visible) :is(.sun-and-moon > .sun-beams) {
@@ -113,9 +113,16 @@ export class ForgeDarkModeSwitch
     css`
       :host {
         display: inline-block;
+
+        /* We control the stroke size manually here. We don't want it getting so
+        small its not visible but also not so big it looks cartoonish */
+        --stroke-w: clamp(1px, 0.1em, 6px);
       }
 
       button {
+        /* This is needed to let the svg use the em sizes */
+        font-size: inherit;
+
         /* Make sure the button is fully centered */
         display: grid;
         place-content: center;
@@ -130,6 +137,18 @@ export class ForgeDarkModeSwitch
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
         outline-offset: var(--size-xxs);
+
+        /* Move down to adjust for being large than 1em */
+
+        /* Size of the icon, uses em units so it scales to font-size */
+        --size: 1.3em;
+
+        /* Because we are (most likely) bigger than one em we will need to move
+        the button up or down to keep it looking right inline */
+        --vertical_correction: calc((var(--size) - 1em) / 2);
+
+        transform: translateY(var(--vertical_correction));
+        margin-block-end: var(--vertical_correction);
       }
 
       /*
@@ -139,8 +158,15 @@ export class ForgeDarkModeSwitch
       */
 
       button > svg {
+        height: var(--size);
+        width: var(--size);
         stroke-linecap: round;
         overflow: visible;
+      }
+
+      svg line,
+      svg circle {
+        vector-effect: non-scaling-stroke;
       }
     `,
   ];
@@ -180,13 +206,7 @@ export class ForgeDarkModeSwitch
         data-theme="${this.themeValue}"
         @click="${this.onClick}"
       >
-        <svg
-          class="sun-and-moon"
-          aria-hidden="true"
-          width="1.3em"
-          height="1.3em"
-          viewBox="0 0 24 24"
-        >
+        <svg class="sun-and-moon" aria-hidden="true" viewBox="0 0 24 24">
           <mask class="moon" id="moon-mask">
             <rect x="0" y="0" width="100%" height="100%" fill="white" />
             <circle cx="25" cy="10" r="6" fill="black" />
