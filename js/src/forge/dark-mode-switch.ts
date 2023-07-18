@@ -111,20 +111,25 @@ export class ForgeDarkModeSwitch
       }
     `,
     css`
-      button {
-        --size: var(--size-l);
+      :host {
+        display: inline-block;
+      }
 
+      button {
+        /* Make sure the button is fully centered */
+        display: grid;
+        place-content: center;
+
+        /* A little bit of padding to make it easier to press */
+        padding: var(--size-xxs);
         background: none;
         border: none;
-        padding: 12%;
-        inline-size: var(--size);
-        block-size: var(--size);
         aspect-ratio: 1;
         border-radius: 50%;
         cursor: pointer;
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
-        outline-offset: 5px;
+        outline-offset: var(--size-xxs);
       }
 
       /*
@@ -134,8 +139,6 @@ export class ForgeDarkModeSwitch
       */
 
       button > svg {
-        inline-size: 100%;
-        block-size: 100%;
         stroke-linecap: round;
         overflow: visible;
       }
@@ -180,8 +183,8 @@ export class ForgeDarkModeSwitch
         <svg
           class="sun-and-moon"
           aria-hidden="true"
-          width="24"
-          height="24"
+          width="1.3em"
+          height="1.3em"
           viewBox="0 0 24 24"
         >
           <mask class="moon" id="moon-mask">
