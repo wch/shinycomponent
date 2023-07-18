@@ -46,16 +46,19 @@ export class ForgeInputNumber
   // types 2, 2, 2, in quick succession, the values in the box will be 12, 122,
   // and 1222. We want to send 122, but this requires a bit of record keeping
   // because updates are debounced. That's what lastValidValue is for.
-  lastValidValue: number;
+  //
+  // We initialize to null because we don't know what the initial value is. In
+  // the connnectedCallback we set to the initial value.
+  lastValidValue: number | null = null;
 
   constructor() {
     super();
     this.type = "number";
-    this.lastValidValue = Number(this.value);
   }
 
   connectedCallback(): void {
     super.connectedCallback();
+    this.lastValidValue = Number(this.value);
 
     const notifyChangeDebounced = debounce(
       () => this.notifyChange(),
@@ -88,6 +91,11 @@ export class ForgeInputNumber
   }
 
   getValue(): number {
+    if (this.lastValidValue === null) {
+      throw new Error(
+        "Invalid input state. Attempted to get value of input before element was mounted to page"
+      );
+    }
     return this.lastValidValue;
   }
 
