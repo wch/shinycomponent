@@ -71,8 +71,14 @@ plt.show()
 ### Welcome to my sidebar
 
 Lorem ipsum and stuff and things...
+
+Want to switch themes? {{< dark-mode-switch >}} Try that button
+
+small: <forge-dark-mode-switch style="font-size: var(--font-size-s);"></forge-dark-mode-switch>
+
+Normal: <forge-dark-mode-switch></forge-dark-mode-switch>
+
+[Big: <forge-dark-mode-switch style="font-size: 3rem;"></forge-dark-mode-switch>]{style="font-size:3rem;"}
+
+
 :::
-
-Want to switch themes?
-{{< dark-mode-switch >}}
-
