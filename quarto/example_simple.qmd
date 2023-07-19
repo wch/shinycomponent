@@ -1,0 +1,26 @@
+---
+title: "Shinycomponent Simple"
+format: shinycomponent-html
+execute:
+  echo: false
+---
+
+
+::: {.sc-grid nRows=1 nCols=2}
+
+
+### A
+Item A
+
+
+### B
+Item B
+
+
+:::
+
+
+
+## Sidebar {.sc-sidebar}
+
+Sidebar content: Lorem ipsum and stuff and things...

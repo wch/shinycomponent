@@ -1,5 +1,5 @@
 local scUtils = require "scUtils"
-
+local gridChildrenToCards = require "gridChildrenToCards"
 
 --- @param node pandoc.Node
 --- @return pandoc.Image | nil
@@ -18,6 +18,9 @@ local extractPlotNode = function(node)
 
   return firstChild
 end
+
+
+
 
 return {
   {
@@ -49,6 +52,27 @@ return {
     Div = function(el)
       if el.classes:includes("sc-grid") then
         quarto.doc.add_html_dependency(scUtils.scHtmlDep)
+
+        -- TODO: Walk over the wrappedChildren blocks and turn each outer div into a <shiny-card> element
+        local wrappedChildren = pandoc.structure.make_sections(el.content)
+        el.content = wrappedChildren:walk({
+          traversal = "topdown",
+          Div = function(child)
+            -- Check if the child is a section and has a non empty identifier property
+            -- If so, wrap it in a shiny-card element
+            if child.classes:includes("section") and child.identifier ~= "" then
+              local children = child.content
+              children:insert(1, pandoc.RawInline("html", "<shiny-card>"))
+              children:insert(pandoc.RawInline("html", "</shiny-card>"))
+
+              -- Return false as second value to stop the walk from going deeper
+              return children, false;
+            end
+          end
+        })
+
+
+
         return scUtils.wrapInCustomElement("shiny-grid", el)
       end
       if el.classes:includes("sc-sidebar") then
@@ -60,6 +84,7 @@ return {
       -- custom attribute so we can make it dynamically resize with css
       if el.classes:includes("cell-output-display") then
         local plotNode = extractPlotNode(el.content[1])
+
 
         if (not plotNode) then
           return nil

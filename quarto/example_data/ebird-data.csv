@@ -1,0 +1,549 @@
+speciesCode,comName,sciName,locName,obsDt,howMany,lat,lng,days_back,distance_mi
+eawpew,Eastern Wood-Pewee,Contopus virens,Dino Dr,2023-06-22 05:45,2.0,42.286094,-83.881071,0,6.538383755727794
+eawpew,Eastern Wood-Pewee,Contopus virens,Black Pond Woods Nature Area,2023-06-21 10:32,1.0,42.303809,-83.7296927,1,2.420419836963906
+eawpew,Eastern Wood-Pewee,Contopus virens,North Bay Park/Ford Lake Boardwalk,2023-06-21 09:50,1.0,42.2282671,-83.6102566,1,8.044026547160078
+eawpew,Eastern Wood-Pewee,Contopus virens,Cherry Hill Nature Preserve,2023-06-21 07:59,4.0,42.3071812,-83.6386585,1,6.365499703646013
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #3,2023-06-21 07:55,2.0,42.282043,-83.884523,1,6.685085945838114
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #1,2023-06-21 07:35,1.0,42.279917,-83.883873,1,6.641346524569912
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #2,2023-06-21 07:16,1.0,42.281477,-83.881217,1,6.5130476220509
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #5,2023-06-21 07:00,2.0,42.284094,-83.881616,1,6.5500610155597645
+eawpew,Eastern Wood-Pewee,Contopus virens,Oakwoods Nature Area,2023-06-21 06:26,1.0,42.3186455,-83.6990404,1,4.194044947923885
+eawpew,Eastern Wood-Pewee,Contopus virens,Nichols Arboretum,2023-06-20 14:37,2.0,42.2813095,-83.7221074,1,1.7379278013407216
+eawpew,Eastern Wood-Pewee,Contopus virens,County Farm Park,2023-06-20 11:53,1.0,42.2552048,-83.7072372,1,2.7504181122115954
+eawpew,Eastern Wood-Pewee,Contopus virens,S Lima Center Rd,2023-06-20 09:09,1.0,42.294942,-83.957708,2,10.512016183083277
+eawpew,Eastern Wood-Pewee,Contopus virens,Conservancy Farm,2023-06-20 08:36,1.0,42.2927626,-83.5966498,2,8.19576456214175
+eawpew,Eastern Wood-Pewee,Contopus virens,DeVine Preserve,2023-06-20 07:51,1.0,42.2726409,-83.8490295,2,4.84393316594036
+eawpew,Eastern Wood-Pewee,Contopus virens,Wagner to Hudson Mills on Huron River Drive and B2B Trail,2023-06-19 15:52,1.0,42.3187531,-83.7955521,2,3.7362401424188074
+eawpew,Eastern Wood-Pewee,Contopus virens,B2B Trail--Dexter to Hudson Mills Metropark,2023-06-19 12:34,6.0,42.3435582,-83.8871491,2,8.318881045600195
+eawpew,Eastern Wood-Pewee,Contopus virens,Hudson Mills Metropark,2023-06-19 11:50,,42.3831,-83.91289,2,11.066948718739374
+eawpew,Eastern Wood-Pewee,Contopus virens,Gotfredson Rd-- Dry Fields,2023-06-19 11:14,1.0,42.292937,-83.564478,3,9.82893837186998
+eawpew,Eastern Wood-Pewee,Contopus virens,Dhu Varren Woods Nature Area--AABBS Point 3,2023-06-19 06:45,1.0,42.31413,-83.720616,3,3.2709502730000874
+eawpew,Eastern Wood-Pewee,Contopus virens,Dhu Varren Woods Nature Area--AABBS Point 2,2023-06-19 06:33,1.0,42.3159736,-83.7202394,3,3.3893617562930394
+eawpew,Eastern Wood-Pewee,Contopus virens,Huron Hills Golf Course--AABBS Point 1,2023-06-18 20:33,1.0,42.2651506,-83.6969563,3,3.0148308862928155
+eawpew,Eastern Wood-Pewee,Contopus virens,Huron Hills Golf Course,2023-06-18 20:13,2.0,42.265702,-83.6986971,3,2.919787030761607
+eawpew,Eastern Wood-Pewee,Contopus virens,Trinkle Marsh,2023-06-18 18:06,1.0,42.309387,-83.9339161,3,9.510802577253932
+eawpew,Eastern Wood-Pewee,Contopus virens,Delhi Metropark,2023-06-18 09:45,2.0,42.3310753,-83.8074017,4,4.780880195090478
+eawpew,Eastern Wood-Pewee,Contopus virens,Brown Park (Mary Beth Doyle Park),2023-06-18 09:19,1.0,42.2411953,-83.7111855,4,3.172923540500966
+eawpew,Eastern Wood-Pewee,Contopus virens,Tower Rd Woodlot,2023-06-17 13:14,1.0,42.3800761,-83.6254758,4,9.864893737051634
+eawpew,Eastern Wood-Pewee,Contopus virens,"Joy, between Dixboro & Tower",2023-06-17 13:04,1.0,42.3462852,-83.6585447,4,7.006362898183368
+eawpew,Eastern Wood-Pewee,Contopus virens,"US-MI, Hudson Mills area",2023-06-17 10:15,1.0,42.4033073,-83.9109381,5,11.991593602739744
+eawpew,Eastern Wood-Pewee,Contopus virens,Hudson Mills Metropark  to DELHI,2023-06-17 09:21,19.0,42.383473,-83.908349,5,10.91547064549815
+eawpew,Eastern Wood-Pewee,Contopus virens,Miller Nature Area--AABBS Point 1,2023-06-17 08:03,1.0,42.2880408,-83.7687381,5,1.212104160405751
+eawpew,Eastern Wood-Pewee,Contopus virens,Cedar Bend Nature Area--AABBS Point 4,2023-06-17 07:47,1.0,42.2922332,-83.7287129,5,1.8272541898837062
+eawpew,Eastern Wood-Pewee,Contopus virens,Gallup Park,2023-06-17 07:23,1.0,42.273276,-83.693397,5,3.1350869587621464
+eawpew,Eastern Wood-Pewee,Contopus virens,Cedar Bend Nature Area,2023-06-17 06:40,1.0,42.2920722,-83.725723,5,1.9339925588461522
+eawpew,Eastern Wood-Pewee,Contopus virens,Independence Lake County Park,2023-06-16 12:00,1.0,42.4059513,-83.7960634,5,9.352916106027136
+eawpew,Eastern Wood-Pewee,Contopus virens,Matthaei Botanical Gardens,2023-06-16 11:23,1.0,42.3007381,-83.6628628,5,5.048507055095958
+eawpew,Eastern Wood-Pewee,Contopus virens,Marshall Nature Area,2023-06-16 10:26,2.0,42.3146392,-83.6676693,6,5.262320720280717
+eawpew,Eastern Wood-Pewee,Contopus virens,Rolling Hills Park,2023-06-16 10:15,2.0,42.1781776,-83.6411476,6,8.80764583496297
+eawpew,Eastern Wood-Pewee,Contopus virens,Swift Run Pond,2023-06-16 09:59,2.0,42.2359211,-83.7018369,6,3.7695961969271172
+eawpew,Eastern Wood-Pewee,Contopus virens,Fursternberg Nature Area,2023-06-16 09:45,1.0,42.2803544,-83.7073792,6,2.457404814074103
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #4,2023-06-16 08:55,1.0,42.282677,-83.878375,6,6.375041064630033
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #7,2023-06-16 07:55,1.0,42.284217,-83.877632,6,6.347988906075618
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #8,2023-06-16 07:32,2.0,42.28524,-83.875658,6,6.255768701163225
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #6,2023-06-16 07:01,1.0,42.285771,-83.880247,6,6.493685493568514
+eawpew,Eastern Wood-Pewee,Contopus virens,"4597–4695 Stein Rd, Ann Arbor US-MI 42.34030, -83.79208",2023-06-15 15:47,1.0,42.340297,-83.792082,6,4.964081288001264
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #15,2023-06-15 08:21,1.0,42.282611,-83.865905,7,5.738553616593058
+eawpew,Eastern Wood-Pewee,Contopus virens,Bluffs Nature Area,2023-06-15 08:09,2.0,42.2951197,-83.7490153,7,1.4856588575221996
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #12,2023-06-15 08:05,1.0,42.282411,-83.863295,7,5.604073612599662
+eawpew,Eastern Wood-Pewee,Contopus virens,Sugarbush Park--AABBS Point 2,2023-06-15 07:36,1.0,42.3138749,-83.6973026,7,4.022917671573971
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #11,2023-06-15 07:08,2.0,42.282691,-83.860467,7,5.462002171617107
+eawpew,Eastern Wood-Pewee,Contopus virens,Sugarbush Park,2023-06-15 06:55,2.0,42.3116878,-83.6974311,7,3.9162789357464423
+eawpew,Eastern Wood-Pewee,Contopus virens,"2712 Danbury Ln, Ann Arbor US-MI 42.31183, -83.77647",2023-06-15 06:05,1.0,42.311835,-83.776475,7,2.8434277721784964
+eawpew,Eastern Wood-Pewee,Contopus virens,Dexter Huron Metropark,2023-06-14 12:34,1.0,42.33203,-83.8625895,7,6.832972920258984
+eawpew,Eastern Wood-Pewee,Contopus virens,Skyline High School,2023-06-14 08:10,1.0,42.3050309,-83.7803864,8,2.5185334607889724
+eawpew,Eastern Wood-Pewee,Contopus virens,"Matthaei Botanical Gardens, Ann Arbor US-MI (42.2995,-83.6616)",2023-06-14 08:08,1.0,42.299532,-83.661551,8,5.081705591552609
+eawpew,Eastern Wood-Pewee,Contopus virens,Oakwoods Nature Area--AABBS Point 7,2023-06-14 08:01,1.0,42.322244,-83.699202,8,4.374384652856971
+eawpew,Eastern Wood-Pewee,Contopus virens,Oakwoods Nature Area--AABBS Point 5,2023-06-14 07:05,3.0,42.3201579,-83.6987055,8,4.282768416192246
+eawpew,Eastern Wood-Pewee,Contopus virens,Scarlett-Mitchell Nature Area,2023-06-13 11:00,2.0,42.2326483,-83.6923027,9,4.281377039797527
+eawpew,Eastern Wood-Pewee,Contopus virens,Ann Arbor Landfill/Wheeler Service Center,2023-06-13 10:34,1.0,42.2268967,-83.7038898,9,4.161028880720604
+eawpew,Eastern Wood-Pewee,Contopus virens,Riverview Drive,2023-06-13 09:56,2.0,42.275634,-83.706569,9,2.462069891517065
+eawpew,Eastern Wood-Pewee,Contopus virens,Sycamore field,2023-06-13 09:49,1.0,42.280925,-83.863516,9,5.6057190265894095
+eawpew,Eastern Wood-Pewee,Contopus virens,East woods,2023-06-13 09:03,1.0,42.282725,-83.859669,9,5.421608588306807
+eawpew,Eastern Wood-Pewee,Contopus virens,Eberwhite Woods,2023-06-12 18:39,4.0,42.2736253,-83.768574,9,0.7193102896614222
+eawpew,Eastern Wood-Pewee,Contopus virens,Scio Woods Preserve,2023-06-12 15:58,1.0,42.2559414,-83.8080159,9,3.0108610907103053
+eawpew,Eastern Wood-Pewee,Contopus virens,Whitmore Lake Preserve,2023-06-12 14:01,1.0,42.4130317,-83.7344912,9,9.6516547660401
+eawpew,Eastern Wood-Pewee,Contopus virens,Washtenaw - Prairie Oaks Ecological Station (private),2023-06-12 13:09,3.0,42.2514963,-83.8662332,9,5.932624368182568
+eawpew,Eastern Wood-Pewee,Contopus virens,Kosch-Headwaters Preserve and Springhill Nature Preserve,2023-06-12 12:10,2.0,42.3162417,-83.5996056,9,8.458349694564868
+eawpew,Eastern Wood-Pewee,Contopus virens,Eberwhite Woods--AABBS Point 2,2023-06-12 08:33,1.0,42.2740709,-83.7684899,10,0.7145751086044386
+eawpew,Eastern Wood-Pewee,Contopus virens,Eberwhite Woods-Fritz--AABBS Point 3,2023-06-12 07:53,1.0,42.270922,-83.764984,10,0.575274785217484
+eawpew,Eastern Wood-Pewee,Contopus virens,Arbor Hills Nature Area,2023-06-12 06:10,1.0,42.317808,-83.692929,10,4.372266770051692
+eawpew,Eastern Wood-Pewee,Contopus virens,Brauer Preserve,2023-06-11 15:40,1.0,42.2349202,-83.9006352,10,7.961222019488652
+eawpew,Eastern Wood-Pewee,Contopus virens,Salt Springs Park,2023-06-11 12:16,1.0,42.1560527,-83.7802651,10,8.246371414383587
+eawpew,Eastern Wood-Pewee,Contopus virens,Mooreville Preserve,2023-06-11 10:59,1.0,42.102706,-83.734827,11,11.865359279714584
+eawpew,Eastern Wood-Pewee,Contopus virens,Pittsfield Preserve,2023-06-11 10:30,1.0,42.2117127,-83.7100804,11,4.866028235682491
+eawpew,Eastern Wood-Pewee,Contopus virens,Sandra Richardson Park,2023-06-10 13:43,1.0,42.1555476,-83.692043,11,8.78157423295884
+eawpew,Eastern Wood-Pewee,Contopus virens,LeFurge Woods Nature Preserve,2023-06-10 11:03,1.0,42.2866593,-83.6015797,12,7.889022186549761
+eawpew,Eastern Wood-Pewee,Contopus virens,Mary McCann Park,2023-06-10 10:35,1.0,42.1655004,-83.7182437,12,7.7162512024983245
+eawpew,Eastern Wood-Pewee,Contopus virens,Furstenberg Nature Area--AABBS Point 3,2023-06-10 10:10,1.0,42.2803332,-83.7091255,12,2.3691194561533377
+eawpew,Eastern Wood-Pewee,Contopus virens,Furstenberg Nature Area--AABBS Point 4,2023-06-10 08:44,1.0,42.279093,-83.7080411,12,2.40980182128578
+eawpew,Eastern Wood-Pewee,Contopus virens,Furstenberg Park,2023-06-10 07:51,1.0,42.2775628,-83.7036753,12,2.619372434960491
+eawpew,Eastern Wood-Pewee,Contopus virens,Olson Park,2023-06-10 06:11,1.0,42.3194785,-83.7308514,12,3.3662690728631235
+eawpew,Eastern Wood-Pewee,Contopus virens,"6700–6754 Strawberry Lake Rd, Whitmore Lake US-MI 42.42655, -83.86907",2023-06-10 06:10,1.0,42.426553,-83.869067,12,12.05232395045723
+eawpew,Eastern Wood-Pewee,Contopus virens,Honey Creek School,2023-06-09 13:30,1.0,42.261053,-83.795618,12,2.28690175289217
+eawpew,Eastern Wood-Pewee,Contopus virens,"Cyndi Zuccaro home, 8296 Zeeb Rd.",2023-06-09 07:40,3.0,42.4025656,-83.8434691,13,9.97440061419116
+eawpew,Eastern Wood-Pewee,Contopus virens,Thurston Pond,2023-06-08 14:53,2.0,42.3092283,-83.7003922,13,3.6902182379404738
+eawpew,Eastern Wood-Pewee,Contopus virens,Marshall Nature Area,2023-06-08 08:45,3.0,42.2862979,-83.7681243,14,1.098000067144862
+eawpew,Eastern Wood-Pewee,Contopus virens,Hickory Woods Park,2023-06-08 07:30,1.0,42.2089394,-83.6694074,14,6.263115937963854
+eawpew,Eastern Wood-Pewee,Contopus virens,Baker Woods Preserve,2023-06-07 20:14,1.0,42.3109506,-83.9639783,14,11.03109808778779
+eawpew,Eastern Wood-Pewee,Contopus virens,Leslie Woods Nature Area--AABBS Point 5,2023-06-07 08:22,2.0,42.3035318,-83.7198774,15,2.7045559817653593
+eawpew,Eastern Wood-Pewee,Contopus virens,Leslie Woods Nature Area--AABBS Point 4,2023-06-07 08:09,1.0,42.3036741,-83.7188266,15,2.747551388501141
+eawpew,Eastern Wood-Pewee,Contopus virens,Leslie Woods Nature Area--AABBS Point 3,2023-06-07 07:52,1.0,42.3029536,-83.7171596,15,2.769093942432159
+eawpew,Eastern Wood-Pewee,Contopus virens,Leslie Woods Nature Area--AABBS Point 2,2023-06-07 07:34,2.0,42.3027357,-83.7188699,15,2.6981044897627346
+eawpew,Eastern Wood-Pewee,Contopus virens,Leslie Woods Nature Area--AABBS Point 1,2023-06-07 07:27,1.0,42.3024328,-83.7210661,15,2.607359529058357
+eawpew,Eastern Wood-Pewee,Contopus virens,Leslie Woods Nature Area,2023-06-07 07:15,8.0,42.303079,-83.7200153,15,2.676399028591064
+eawpew,Eastern Wood-Pewee,Contopus virens,Bird Hills Nature Area,2023-06-06 14:56,1.0,42.3042843,-83.7607666,15,2.115012656407164
+eawpew,Eastern Wood-Pewee,Contopus virens,Home to home hiking loop,2023-06-06 12:00,1.0,42.316774,-83.785063,15,3.3413401371268012
+eawpew,Eastern Wood-Pewee,Contopus virens,Osborne Mill Preserve,2023-06-06 11:56,1.0,42.329926,-83.8110272,15,4.824801290538584
+eawpew,Eastern Wood-Pewee,Contopus virens,Knox Presbyterian Church,2023-06-06 11:30,1.0,42.253,-83.796,15,2.5719590626927524
+eawpew,Eastern Wood-Pewee,Contopus virens,Ann Arbor-Avondale,2023-06-06 09:48,1.0,42.260667,-83.768615,16,1.1686025264211954
+eawpew,Eastern Wood-Pewee,Contopus virens,1 Sparrow Nest,2023-06-06 09:00,1.0,42.3249837,-83.8020802,16,4.28002871069893
+eawpew,Eastern Wood-Pewee,Contopus virens,Creekshead Nature Preserve,2023-06-05 19:00,1.0,42.3805511,-83.6072892,16,10.534692041282653
+eawpew,Eastern Wood-Pewee,Contopus virens,Ford Lake Park,2023-06-05 09:49,1.0,42.2099067,-83.5775546,17,10.097611694776113
+eawpew,Eastern Wood-Pewee,Contopus virens,Loyola Drive,2023-06-05 08:39,1.0,42.2904667,-83.7640089,17,1.2361987182512169
+eawpew,Eastern Wood-Pewee,Contopus virens,2712 Danbury Lane,2023-06-05 07:00,1.0,42.2807045,-83.7983093,17,2.2903308639213096
+eawpew,Eastern Wood-Pewee,Contopus virens,"1119 Pearl St, Ypsilanti US-MI 42.24185, -83.63131",2023-06-04 21:10,1.0,42.24185,-83.631313,17,6.6967989431773844
+eawpew,Eastern Wood-Pewee,Contopus virens,Home,2023-06-04 21:10,1.0,42.2087205,-83.5904206,17,9.54726628137659
+eawpew,Eastern Wood-Pewee,Contopus virens,home,2023-06-04 18:56,1.0,42.247574,-83.650914,17,5.6175879503935215
+eawpew,Eastern Wood-Pewee,Contopus virens,Huron River Oxbow,2023-06-04 13:52,3.0,42.3127811,-83.7916523,17,3.283744707486553
+eawpew,Eastern Wood-Pewee,Contopus virens,"915 Hutchins Avenue, Ann Arbor, Michigan, US (42.269, -83.757)",2023-06-04 13:18,1.0,42.269428,-83.7568292,17,0.3359159077771457
+eawpew,Eastern Wood-Pewee,Contopus virens,Burns-Stokes Preserve,2023-06-04 12:30,1.0,42.3241265,-83.8408471,17,5.61487837634188
+eawpew,Eastern Wood-Pewee,Contopus virens,Hewen's Creek Park,2023-06-04 09:01,1.0,42.1733275,-83.6290455,18,9.47237179797683
+eawpew,Eastern Wood-Pewee,Contopus virens,Corner of Trinkle and Fletcher,2023-06-04 08:45,1.0,42.3117377,-83.979221,18,11.804216152131334
+eawpew,Eastern Wood-Pewee,Contopus virens,Dolph Nature Area,2023-06-04 08:02,1.0,42.280502,-83.7965012,18,2.1967512564012805
+eawpew,Eastern Wood-Pewee,Contopus virens,Bird Hills Nature Area--North,2023-06-04 06:43,1.0,42.3089427,-83.758167,18,2.419520573495417
+eawpew,Eastern Wood-Pewee,Contopus virens,Stapp Nature Area,2023-06-03 17:35,1.0,42.3078477,-83.7163675,18,3.0478594262282064
+eawpew,Eastern Wood-Pewee,Contopus virens,tower Rd sugar bush,2023-06-03 10:18,4.0,42.3799117,-83.6255197,19,9.8549721186406
+eawpew,Eastern Wood-Pewee,Contopus virens,"4220 Farrell Road, Dexter, Michigan, US (42.365, -83.816)",2023-06-03 07:36,1.0,42.3651484,-83.8158059,19,7.030805071153702
+eawpew,Eastern Wood-Pewee,Contopus virens,Dominican Meadows Preserve,2023-06-03 07:30,1.0,42.3341639,-83.6621412,19,6.298058491491201
+eawpew,Eastern Wood-Pewee,Contopus virens,Hannah Nature Area,2023-06-02 14:34,1.0,42.2828895,-83.7609948,19,0.6973832882147617
+eawpew,Eastern Wood-Pewee,Contopus virens,Point #9,2023-06-02 11:12,1.0,42.283273,-83.867911,20,5.8456298519300525
+eawpew,Eastern Wood-Pewee,Contopus virens,Point 4,2023-06-02 09:51,1.0,42.28236,-83.863669,20,5.622779962286383
+eawpew,Eastern Wood-Pewee,Contopus virens,Forest Nature Area--AABBS Point 3,2023-06-02 07:32,1.0,42.2705862,-83.6563189,20,5.040907016516903
+eawpew,Eastern Wood-Pewee,Contopus virens,Forest Nature Area--AABBS Point 2,2023-06-02 07:14,1.0,42.2707525,-83.6580188,20,4.953327095326745
+eawpew,Eastern Wood-Pewee,Contopus virens,Forest Nature Area,2023-06-02 06:53,2.0,42.2703862,-83.6577559,20,4.96800625964675
+eawpew,Eastern Wood-Pewee,Contopus virens,West Scio Preserve--Dino Dr. trailhead,2023-06-01 14:54,1.0,42.2867854,-83.8809861,20,6.540305097195173
+eawpew,Eastern Wood-Pewee,Contopus virens,Huron River between Oxbow and Bridge,2023-06-01 14:07,1.0,42.315341,-83.783382,20,3.213767883519612
+eawpew,Eastern Wood-Pewee,Contopus virens,Highland Cemetery,2023-06-01 12:38,1.0,42.2582244,-83.6094363,20,7.518573051540659
+eawpew,Eastern Wood-Pewee,Contopus virens,Washtenaw Co. 2450 Baker Road Scio Sec. 07 NE,2023-06-01 09:42,1.0,42.3262132,-83.8868165,21,7.676038498623946
+eawpew,Eastern Wood-Pewee,Contopus virens,"Webster Township, Joe's Home",2023-06-01 09:08,1.0,42.3640651,-83.8597406,21,8.227052475213284
+eawpew,Eastern Wood-Pewee,Contopus virens,Anthony & Rose Shatter Family Preserve,2023-06-01 08:01,4.0,42.3763382,-83.6131094,21,10.118436591891795
+eawpew,Eastern Wood-Pewee,Contopus virens,Yorktown Drive,2023-06-01 07:24,1.0,42.306104,-83.698251,21,3.638238082816426
+eawpew,Eastern Wood-Pewee,Contopus virens,Buttonbush Nature Area,2023-05-31 08:16,3.0,42.3199767,-83.7119256,22,3.852869566446441
+eawpew,Eastern Wood-Pewee,Contopus virens,Botsford Recreational Preserve--AABBS Point 2,2023-05-31 07:45,2.0,42.2981021,-83.7927032,22,2.5676574320582137
+eawpew,Eastern Wood-Pewee,Contopus virens,Botsford Recreational Preserve--AABBS Point 1,2023-05-31 07:21,2.0,42.299184,-83.794382,22,2.6815636512722394
+eawpew,Eastern Wood-Pewee,Contopus virens,Bluffs Nature Area--AABBS Point 1,2023-05-31 07:21,2.0,42.2927504,-83.7479937,22,1.3376873526493056
+eawpew,Eastern Wood-Pewee,Contopus virens,Tom A. Freeman Preserve,2023-05-30 10:38,1.0,42.316283,-83.673634,23,5.070795227435406
+eawpew,Eastern Wood-Pewee,Contopus virens,Wheeler Service Center- Phase 1- AABBS,2023-05-30 09:16,1.0,42.2262611,-83.7044477,23,4.177741860241621
+eawpew,Eastern Wood-Pewee,Contopus virens,Marshall Nature Area--AABBS Point 8,2023-05-30 08:53,1.0,42.315784,-83.672477,23,5.0998415066883265
+eawpew,Eastern Wood-Pewee,Contopus virens,Marshall Nature Area--AABBS Point 8,2023-05-30 08:53,1.0,42.3157841,-83.6713044,23,5.149509105953315
+eawpew,Eastern Wood-Pewee,Contopus virens,Johnson drain at tower road,2023-05-30 08:36,2.0,42.3995502,-83.6264008,23,10.870585643493202
+eawpew,Eastern Wood-Pewee,Contopus virens,tower road sugar bush,2023-05-30 08:05,4.0,42.3778943,-83.6261075,23,9.731816619362817
+eawpew,Eastern Wood-Pewee,Contopus virens,Bandemer Nature Area--AABBS Point 3,2023-05-30 08:04,1.0,42.2992488,-83.7438484,23,1.8275599588080929
+eawpew,Eastern Wood-Pewee,Contopus virens,Shatter family preserve,2023-05-30 07:55,4.0,42.376545,-83.6112308,23,10.197440012205004
+eawpew,Eastern Wood-Pewee,Contopus virens,Huron Hills Golf Course--AABBS Point 2,2023-05-29 10:37,1.0,42.2662691,-83.7007995,24,2.8064723049841436
+eawpew,Eastern Wood-Pewee,Contopus virens,Arbor Hills Nature Area-- AABBS Point 1,2023-05-29 08:49,1.0,42.3178099,-83.6921282,24,4.402082749069358
+eawpew,Eastern Wood-Pewee,Contopus virens,Bluffs Nature Area--AABBS Point 5,2023-05-29 08:07,2.0,42.2943108,-83.7494805,24,1.4263596779287762
+eawpew,Eastern Wood-Pewee,Contopus virens,Sugarbush Park--AABBS Point 4,2023-05-29 07:36,1.0,42.3111823,-83.6964672,24,3.930466220365826
+eawpew,Eastern Wood-Pewee,Contopus virens,-Loch Alpine Yard (Intentionally Offset),2023-05-29 07:30,,42.3377377,-83.8266629,24,5.745364851971438
+eawpew,Eastern Wood-Pewee,Contopus virens,Scarlett-Mitchell Nature Area--AABBS Point 4,2023-05-29 07:27,1.0,42.2332809,-83.6909144,24,4.306077894354083
+eawpew,Eastern Wood-Pewee,Contopus virens,Scarlett-Mitchell Nature Area--AABBS Point 3,2023-05-29 07:13,1.0,42.2320695,-83.6921268,24,4.314803297266604
+eawpew,Eastern Wood-Pewee,Contopus virens,Scarlett-Mitchell Nature Area--AABBS Point 2,2023-05-29 06:59,1.0,42.2322086,-83.6948627,24,4.205192160555009
+eawpew,Eastern Wood-Pewee,Contopus virens,Scarlett-Mitchell Nature Area--AABBS Point 9,2023-05-29 06:44,1.0,42.2322993,-83.6965851,24,4.136997882100325
+eawpew,Eastern Wood-Pewee,Contopus virens,Sugarbush Park--AABBS Point 1,2023-05-29 06:30,1.0,42.3160311,-83.6980782,24,4.097987576217469
+eawpew,Eastern Wood-Pewee,Contopus virens,Ruthven Nature Area,2023-05-29 06:27,2.0,42.2784519,-83.6974633,24,2.9422947745265793
+eawpew,Eastern Wood-Pewee,Contopus virens,Maple Rd. troll bridge,2023-05-28 19:15,1.0,42.1301394,-83.7754498,24,9.986424536900959
+eawpew,Eastern Wood-Pewee,Contopus virens,"Rolling Hills County Park, Ypsilanti US-MI 42.17475, -83.64896",2023-05-28 13:22,1.0,42.174747,-83.648956,24,8.732927419906371
+eawpew,Eastern Wood-Pewee,Contopus virens,"Rolling Hills County Park, Ypsilanti US-MI 42.17472, -83.64891",2023-05-28 13:22,1.0,42.174721,-83.648907,24,8.735894937663485
+eawpew,Eastern Wood-Pewee,Contopus virens,Greenview/Pioneer--AABBS Point 5,2023-05-28 09:32,1.0,42.2625119,-83.7614845,25,0.8683961963190285
+eawpew,Eastern Wood-Pewee,Contopus virens,Island Park,2023-05-28 09:26,1.0,42.2905841,-83.7287848,25,1.7479944598509083
+eawpew,Eastern Wood-Pewee,Contopus virens,Hansen Nature Area--AABBS Point 3,2023-05-28 09:12,1.0,42.26749,-83.78129,25,1.4423249076236324
+eawpew,Eastern Wood-Pewee,Contopus virens,Bird Hills Nature Area--AABBS Point 5,2023-05-28 08:57,1.0,42.3067791,-83.7587999,25,2.273531140304522
+eawpew,Eastern Wood-Pewee,Contopus virens,Hansen Nature Area,2023-05-28 08:32,1.0,42.2672502,-83.7819529,25,1.4797809968309779
+eawpew,Eastern Wood-Pewee,Contopus virens,Bird Hills Nature Area--AABBS Point 10,2023-05-28 08:08,2.0,42.3002446,-83.7609994,25,1.8419529535950163
+eawpew,Eastern Wood-Pewee,Contopus virens,Greenview/Pioneer,2023-05-28 07:50,1.0,42.2581668,-83.7617934,25,1.1536019792398762
+eawpew,Eastern Wood-Pewee,Contopus virens,Bird Hills Nature Area--AABBS Point 9,2023-05-28 07:49,1.0,42.3008209,-83.757258,25,1.8570251867967098
+eawpew,Eastern Wood-Pewee,Contopus virens,Bird Hills Nature Area--AABBS Point 8,2023-05-28 07:20,1.0,42.3020378,-83.757504,25,1.9417346900073944
+eawpew,Eastern Wood-Pewee,Contopus virens,Bird Hills Nature Area--AABBS Point 4,2023-05-28 06:25,2.0,42.3052039,-83.7606383,25,2.176829075529304
+eawpew,Eastern Wood-Pewee,Contopus virens,Bird Hills Nature Area--AABBS Point 2,2023-05-28 06:11,1.0,42.3056245,-83.7617916,25,2.2146973972508777
+eawpew,Eastern Wood-Pewee,Contopus virens,Jerusalem Road,2023-05-27 16:40,1.0,42.2815896,-83.9227824,25,8.638947755305589
+eawpew,Eastern Wood-Pewee,Contopus virens,"3875 Waters Rd, Ann Arbor US-MI 42.24209, -83.80491",2023-05-27 16:10,1.0,42.242092,-83.804907,25,3.3932051120465854
+eawpew,Eastern Wood-Pewee,Contopus virens,Saginaw Forest,2023-05-27 16:07,1.0,42.2749273,-83.8065863,25,2.668125059575903
+eawpew,Eastern Wood-Pewee,Contopus virens,Trinkle Road,2023-05-27 13:54,1.0,42.3104603,-83.9501286,25,10.333658475150692
+eawpew,Eastern Wood-Pewee,Contopus virens,Barton Nature Area,2023-05-27 13:18,1.0,42.3044517,-83.7555492,25,2.103058479966272
+eawpew,Eastern Wood-Pewee,Contopus virens,Chelsea SGA--Four Mile Lake,2023-05-27 12:58,1.0,42.3291717,-83.9686775,25,11.613584887146802
+eawpew,Eastern Wood-Pewee,Contopus virens,Home ypsi,2023-05-27 08:47,1.0,42.243852,-83.632366,26,6.600948140487302
+eawpew,Eastern Wood-Pewee,Contopus virens,Marshall Nature Area--AABBS Point 6,2023-05-27 08:38,1.0,42.3152418,-83.6638837,26,5.449020550288168
+eawpew,Eastern Wood-Pewee,Contopus virens,Brokaw Nature Area--AABBS Point 3,2023-05-27 08:35,1.0,42.316464,-83.79589,26,3.6168210086119847
+eawpew,Eastern Wood-Pewee,Contopus virens,Brokaw Nature Area--AABBS Point 2,2023-05-27 08:21,1.0,42.3153399,-83.7976605,26,3.609045232607793
+eawpew,Eastern Wood-Pewee,Contopus virens,Marshall Nature Area--AABBS Point 3,2023-05-27 07:58,1.0,42.3142679,-83.6666957,26,5.2910972746679965
+eawpew,Eastern Wood-Pewee,Contopus virens,Miller Natural Area,2023-05-27 07:56,1.0,42.2879872,-83.7683267,26,1.1965838703679057
+eawpew,Eastern Wood-Pewee,Contopus virens,Brokaw Nature Area--AABBS Point 1,2023-05-27 07:47,1.0,42.3153719,-83.7959725,26,3.5585295466049476
+eawpew,Eastern Wood-Pewee,Contopus virens,Brokaw Nature Area,2023-05-27 07:45,2.0,42.3167455,-83.7956616,26,3.625771707205486
+eawpew,Eastern Wood-Pewee,Contopus virens,Marshall Nature Area--AABBS Point 2,2023-05-27 07:41,1.0,42.3128653,-83.6662463,26,5.260718708901007
+eawpew,Eastern Wood-Pewee,Contopus virens,Oakwoods Nature Area--AABBS Point 6,2023-05-27 06:57,1.0,42.3205966,-83.6994873,26,4.2788174290001075
+eawpew,Eastern Wood-Pewee,Contopus virens,Dyer Farm,2023-05-26 18:34,1.0,42.340561,-83.652073,26,6.976823347137638
+eawpew,Eastern Wood-Pewee,Contopus virens,Northfield Woods Preserve,2023-05-26 13:31,2.0,42.3477213,-83.7438118,26,5.1186224945779815
+eawpew,Eastern Wood-Pewee,Contopus virens,Doyle Park--AABBS Point 3,2023-05-26 10:02,2.0,42.2418228,-83.7086749,27,3.2345301601068
+eawpew,Eastern Wood-Pewee,Contopus virens,Doyle Park--AABBS Point 2,2023-05-26 09:49,1.0,42.2404169,-83.7072694,27,3.353628925009949
+eawpew,Eastern Wood-Pewee,Contopus virens,Scarlett,2023-05-25 17:55,1.0,42.2320308,-83.693068,27,4.280931117797103
+eawpew,Eastern Wood-Pewee,Contopus virens,Morgan Woods Nature Preserve,2023-05-25 17:38,2.0,42.2175373,-83.7245536,27,4.189134586985886
+eawpew,Eastern Wood-Pewee,Contopus virens,"Devine Preserve, Ann Arbor US-MI 42.26935, -83.84915",2023-05-25 16:02,1.0,42.269352,-83.84915,27,4.859898744838398
+eawpew,Eastern Wood-Pewee,Contopus virens,Leslee Niethammer Saline River Preserve,2023-05-25 08:54,1.0,42.1536687,-83.7734342,28,8.361014879923943
+eawpew,Eastern Wood-Pewee,Contopus virens,Foster Nature Area,2023-05-23 18:29,3.0,42.3165432,-83.768177,29,3.0188760922752786
+eawpew,Eastern Wood-Pewee,Contopus virens,"2245 Glencoe Hills Drive, Ann Arbor, Michigan, US (42.254, -83.673)",2023-05-23 13:30,,42.253676,-83.6731693,29,4.401526035140103
+wooduc,Wood Duck,Aix sponsa,Gotfredson Rd. marsh,2023-06-21 20:31,13.0,42.3285372,-83.5669041,0,10.325353810938486
+wooduc,Wood Duck,Aix sponsa,Matthaei Botanical Gardens,2023-06-21 19:20,1.0,42.3007381,-83.6628628,0,5.048507055095958
+wooduc,Wood Duck,Aix sponsa,North Bay Park/Ford Lake Boardwalk,2023-06-21 09:50,11.0,42.2282671,-83.6102566,1,8.044026547160078
+wooduc,Wood Duck,Aix sponsa,Scio Church Rd. and Parker Rd. ponds,2023-06-21 09:19,3.0,42.2533109,-83.8965432,1,7.418323363595922
+wooduc,Wood Duck,Aix sponsa,Point #1,2023-06-21 07:35,1.0,42.279917,-83.883873,1,6.641346524569912
+wooduc,Wood Duck,Aix sponsa,South Pond,2023-06-20 12:27,7.0,42.2680362,-83.6880541,1,3.43340550193348
+wooduc,Wood Duck,Aix sponsa,Swift Run Pond,2023-06-19 21:06,5.0,42.2359211,-83.7018369,2,3.7695961969271172
+wooduc,Wood Duck,Aix sponsa,Kosch-Headwaters Preserve and Springhill Nature Preserve,2023-06-19 20:00,4.0,42.3162417,-83.5996056,2,8.458349694564868
+wooduc,Wood Duck,Aix sponsa,Nichols Arboretum,2023-06-19 07:18,1.0,42.2813095,-83.7221074,3,1.7379278013407216
+wooduc,Wood Duck,Aix sponsa,Conservancy Farm,2023-06-18 08:22,2.0,42.2927626,-83.5966498,4,8.19576456214175
+wooduc,Wood Duck,Aix sponsa,Gallup Park,2023-06-17 07:23,15.0,42.273276,-83.693397,5,3.1350869587621464
+wooduc,Wood Duck,Aix sponsa,Oakwoods Nature Area,2023-06-15 07:13,9.0,42.3186455,-83.6990404,7,4.194044947923885
+wooduc,Wood Duck,Aix sponsa,State Rd. at Textile Rd.--pond,2023-06-14 13:26,1.0,42.1990925,-83.7356418,7,5.2597192779898885
+wooduc,Wood Duck,Aix sponsa,Oakwoods Nature Area--AABBS Point 6,2023-06-14 07:36,10.0,42.3205966,-83.6994873,8,4.2788174290001075
+wooduc,Wood Duck,Aix sponsa,S. Parker Rd. marsh,2023-06-13 11:49,3.0,42.2334765,-83.8941153,8,7.683291874907392
+wooduc,Wood Duck,Aix sponsa,Ann Arbor Landfill/Wheeler Service Center,2023-06-13 10:34,2.0,42.2268967,-83.7038898,9,4.161028880720604
+wooduc,Wood Duck,Aix sponsa,M-14 pond,2023-06-12 14:13,1.0,42.2997224,-83.7746572,9,2.05331547495956
+wooduc,Wood Duck,Aix sponsa,Liberty Pond Nature Area,2023-06-12 10:57,5.0,42.2684141,-83.8844037,10,6.667666946053093
+wooduc,Wood Duck,Aix sponsa,Brauer Preserve,2023-06-11 15:40,12.0,42.2349202,-83.9006352,10,7.961222019488652
+wooduc,Wood Duck,Aix sponsa,Mooreville Preserve,2023-06-11 10:59,8.0,42.102706,-83.734827,11,11.865359279714584
+wooduc,Wood Duck,Aix sponsa,Trinkle Marsh,2023-06-11 10:16,1.0,42.309387,-83.9339161,11,9.510802577253932
+wooduc,Wood Duck,Aix sponsa,Chelsea SGA--Four Mile Lake,2023-06-10 20:23,21.0,42.3291717,-83.9686775,11,11.613584887146802
+wooduc,Wood Duck,Aix sponsa,"2670 S Zeeb Rd, Ann Arbor US-MI 42.24760, -83.83772",2023-06-10 08:08,1.0,42.247599,-83.837718,12,4.636847319871862
+wooduc,Wood Duck,Aix sponsa,Waterworks Park,2023-06-09 10:48,2.0,42.2353968,-83.6075771,13,7.993013626139697
+wooduc,Wood Duck,Aix sponsa,"Cyndi Zuccaro home, 8296 Zeeb Rd.",2023-06-09 07:40,11.0,42.4025656,-83.8434691,13,9.97440061419116
+wooduc,Wood Duck,Aix sponsa,Thurston Pond,2023-06-08 07:56,1.0,42.3092283,-83.7003922,14,3.6902182379404738
+wooduc,Wood Duck,Aix sponsa,Parker Mill Park,2023-06-07 10:48,6.0,42.2725774,-83.6631846,15,4.684425970400606
+wooduc,Wood Duck,Aix sponsa,Home to home hiking loop,2023-06-06 12:00,4.0,42.316774,-83.785063,15,3.3413401371268012
+wooduc,Wood Duck,Aix sponsa,"6110 Carpenter Rd, Ypsilanti US-MI 42.19919, -83.68002",2023-06-04 14:13,3.0,42.199189,-83.680025,17,6.423855190367724
+wooduc,Wood Duck,Aix sponsa,Hewen's Creek Park,2023-06-04 09:01,4.0,42.1733275,-83.6290455,18,9.47237179797683
+wooduc,Wood Duck,Aix sponsa,Hudson Mills Metropark,2023-06-03 14:57,3.0,42.3831,-83.91289,18,11.066948718739374
+wooduc,Wood Duck,Aix sponsa,Wheeler Service Center Hayfield 3,2023-06-02 09:51,1.0,42.217079,-83.7136305,20,4.453488615707686
+wooduc,Wood Duck,Aix sponsa,Forest Nature Area--AABBS Point 2,2023-06-02 07:14,5.0,42.2707525,-83.6580188,20,4.953327095326745
+wooduc,Wood Duck,Aix sponsa,Forest Nature Area,2023-06-02 06:53,6.0,42.2703862,-83.6577559,20,4.96800625964675
+wooduc,Wood Duck,Aix sponsa,Whitmore Lake High School swamp,2023-06-01 21:14,2.0,42.391612,-83.770766,20,8.160772073162319
+wooduc,Wood Duck,Aix sponsa,Sugarbush Park--AABBS Point 4,2023-05-29 07:36,2.0,42.3111823,-83.6964672,24,3.930466220365826
+wooduc,Wood Duck,Aix sponsa,Scarlett-Mitchell Nature Area--AABBS Point 4,2023-05-29 07:27,4.0,42.2332809,-83.6909144,24,4.306077894354083
+wooduc,Wood Duck,Aix sponsa,Sugarbush Park,2023-05-29 06:27,2.0,42.3116878,-83.6974311,24,3.9162789357464423
+wooduc,Wood Duck,Aix sponsa,Scarlett-Mitchell Nature Area,2023-05-29 06:15,4.0,42.2326483,-83.6923027,24,4.281377039797527
+wooduc,Wood Duck,Aix sponsa,Independence Lake County Park,2023-05-27 08:00,2.0,42.4059513,-83.7960634,26,9.352916106027136
+wooduc,Wood Duck,Aix sponsa,LeFurge Woods Nature Preserve,2023-05-25 09:40,2.0,42.2866593,-83.6015797,28,7.889022186549761
+wooduc,Wood Duck,Aix sponsa,Fournier Yard3,2023-05-24 08:04,1.0,42.2966672,-83.7322247,29,1.9387648734853933
+wooduc,Wood Duck,Aix sponsa,"Dolph Nature Area, Ann Arbor US-MI 42.27843, -83.79901",2023-05-23 18:30,2.0,42.278427,-83.799013,29,2.299551898156243
+wooduc,Wood Duck,Aix sponsa,Foster Nature Area,2023-05-23 18:29,8.0,42.3165432,-83.768177,29,3.0188760922752786
+norfli,Northern Flicker,Colaptes auratus,Valley Ranch Mini Loop,2023-06-21 16:27,1.0,42.2335176,-83.7590397,0,2.8029764874305023
+norfli,Northern Flicker,Colaptes auratus,Lakeside Park,2023-06-21 10:02,4.0,42.2034476,-83.5640112,1,10.918163018568926
+norfli,Northern Flicker,Colaptes auratus,North Bay Park/Ford Lake Boardwalk,2023-06-21 09:50,1.0,42.2282671,-83.6102566,1,8.044026547160078
+norfli,Northern Flicker,Colaptes auratus,Loonfeather Point Park,2023-06-21 08:44,3.0,42.2198762,-83.5836702,1,9.525773839997434
+norfli,Northern Flicker,Colaptes auratus,Matthaei Botanical Gardens,2023-06-21 07:14,1.0,42.3007381,-83.6628628,1,5.048507055095958
+norfli,Northern Flicker,Colaptes auratus,Nichols Arboretum,2023-06-20 14:37,1.0,42.2813095,-83.7221074,1,1.7379278013407216
+norfli,Northern Flicker,Colaptes auratus,South Pond,2023-06-20 12:27,1.0,42.2680362,-83.6880541,1,3.43340550193348
+norfli,Northern Flicker,Colaptes auratus,Ford Lake Park,2023-06-20 11:38,1.0,42.2099067,-83.5775546,1,10.097611694776113
+norfli,Northern Flicker,Colaptes auratus,Kosch-Headwaters Preserve and Springhill Nature Preserve,2023-06-20 11:37,1.0,42.3162417,-83.5996056,1,8.458349694564868
+norfli,Northern Flicker,Colaptes auratus,Belleville Lake--Van Buren Park,2023-06-20 10:36,1.0,42.2128989,-83.5254822,2,12.481421619037189
+norfli,Northern Flicker,Colaptes auratus,1 Sparrow Nest,2023-06-20 09:30,1.0,42.3249837,-83.8020802,2,4.28002871069893
+norfli,Northern Flicker,Colaptes auratus,Conservancy Farm,2023-06-20 08:36,1.0,42.2927626,-83.5966498,2,8.19576456214175
+norfli,Northern Flicker,Colaptes auratus,Oakwoods Nature Area,2023-06-20 06:26,1.0,42.3186455,-83.6990404,2,4.194044947923885
+norfli,Northern Flicker,Colaptes auratus,Dolph Nature Area,2023-06-20 06:00,1.0,42.280502,-83.7965012,2,2.1967512564012805
+norfli,Northern Flicker,Colaptes auratus,Dyer Farm,2023-06-19 20:00,1.0,42.340561,-83.652073,2,6.976823347137638
+norfli,Northern Flicker,Colaptes auratus,Home Ypsi,2023-06-19 18:59,1.0,42.243378,-83.629303,2,6.760349600473045
+norfli,Northern Flicker,Colaptes auratus,Whitmore Lake Preserve,2023-06-19 18:48,1.0,42.4130317,-83.7344912,2,9.6516547660401
+norfli,Northern Flicker,Colaptes auratus,Wagner to Hudson Mills on Huron River Drive and B2B Trail,2023-06-19 15:52,2.0,42.3187531,-83.7955521,2,3.7362401424188074
+norfli,Northern Flicker,Colaptes auratus,B2B Trail--Dexter to Hudson Mills Metropark,2023-06-19 12:34,4.0,42.3435582,-83.8871491,2,8.318881045600195
+norfli,Northern Flicker,Colaptes auratus,Hudson Mills Metropark,2023-06-19 11:50,,42.3831,-83.91289,2,11.066948718739374
+norfli,Northern Flicker,Colaptes auratus,Gotfredson Rd. marsh,2023-06-19 10:43,1.0,42.3285372,-83.5669041,3,10.325353810938486
+norfli,Northern Flicker,Colaptes auratus,Washtenaw - Prairie Oaks Ecological Station (private),2023-06-19 08:40,1.0,42.2514963,-83.8662332,3,5.932624368182568
+norfli,Northern Flicker,Colaptes auratus,Huron Hills Golf Course--AABBS Point 1,2023-06-18 20:33,1.0,42.2651506,-83.6969563,3,3.0148308862928155
+norfli,Northern Flicker,Colaptes auratus,Huron Hills Golf Course,2023-06-18 20:13,2.0,42.265702,-83.6986971,3,2.919787030761607
+norfli,Northern Flicker,Colaptes auratus,County Farm Park,2023-06-18 14:11,1.0,42.2552048,-83.7072372,3,2.7504181122115954
+norfli,Northern Flicker,Colaptes auratus,Lillie Park,2023-06-18 10:56,1.0,42.2264518,-83.6985254,4,4.361152961414697
+norfli,Northern Flicker,Colaptes auratus,Delhi Metropark,2023-06-18 09:45,3.0,42.3310753,-83.8074017,4,4.780880195090478
+norfli,Northern Flicker,Colaptes auratus,Brown Park (Mary Beth Doyle Park),2023-06-18 09:19,1.0,42.2411953,-83.7111855,4,3.172923540500966
+norfli,Northern Flicker,Colaptes auratus,Gleaner Hall Rd. marsh,2023-06-17 14:34,1.0,42.33784,-83.73274,4,4.546405630580079
+norfli,Northern Flicker,Colaptes auratus,Waterworks Park,2023-06-17 13:45,2.0,42.2353968,-83.6075771,4,7.993013626139697
+norfli,Northern Flicker,Colaptes auratus,Five Mile Rd Fields,2023-06-17 13:36,2.0,42.3884308,-83.6541372,4,9.425311437967224
+norfli,Northern Flicker,Colaptes auratus,Tower Rd Woodlot,2023-06-17 13:14,1.0,42.3800761,-83.6254758,4,9.864893737051634
+norfli,Northern Flicker,Colaptes auratus,"US-MI, Hudson Mills area",2023-06-17 10:15,1.0,42.4033073,-83.9109381,5,11.991593602739744
+norfli,Northern Flicker,Colaptes auratus,LeFurge Woods Nature Preserve,2023-06-17 09:40,1.0,42.2866593,-83.6015797,5,7.889022186549761
+norfli,Northern Flicker,Colaptes auratus,Hudson Mills Metropark  to DELHI,2023-06-17 09:21,5.0,42.383473,-83.908349,5,10.91547064549815
+norfli,Northern Flicker,Colaptes auratus,Independence Lake County Park,2023-06-16 12:00,1.0,42.4059513,-83.7960634,5,9.352916106027136
+norfli,Northern Flicker,Colaptes auratus,Rolling Hills Park,2023-06-16 10:15,1.0,42.1781776,-83.6411476,6,8.80764583496297
+norfli,Northern Flicker,Colaptes auratus,Point #9,2023-06-16 08:27,1.0,42.281559,-83.874941,6,6.192898514865104
+norfli,Northern Flicker,Colaptes auratus,"Webster Township, Joe's Home",2023-06-16 07:57,1.0,42.3640651,-83.8597406,6,8.227052475213284
+norfli,Northern Flicker,Colaptes auratus,Point #7,2023-06-16 07:55,1.0,42.284217,-83.877632,6,6.347988906075618
+norfli,Northern Flicker,Colaptes auratus,Greene Farm Neighborhood Walk,2023-06-16 07:42,1.0,42.178208,-83.610668,6,9.908738217187686
+norfli,Northern Flicker,Colaptes auratus,DeVine Preserve,2023-06-15 09:06,2.0,42.2726409,-83.8490295,7,4.84393316594036
+norfli,Northern Flicker,Colaptes auratus,Arbor Hills Nature Area,2023-06-15 08:55,1.0,42.317808,-83.692929,7,4.372266770051692
+norfli,Northern Flicker,Colaptes auratus,Point # 14,2023-06-15 08:37,1.0,42.281323,-83.86685,7,5.778326716087659
+norfli,Northern Flicker,Colaptes auratus,Sugarbush Park--AABBS Point 3,2023-06-15 07:16,1.0,42.3123229,-83.6971114,7,3.9576961920014693
+norfli,Northern Flicker,Colaptes auratus,Point #11,2023-06-15 07:08,1.0,42.282691,-83.860467,7,5.462002171617107
+norfli,Northern Flicker,Colaptes auratus,Marshall Nature Area,2023-06-15 07:03,6.0,42.3146392,-83.6676693,7,5.262320720280717
+norfli,Northern Flicker,Colaptes auratus,Sugarbush Park,2023-06-15 06:55,3.0,42.3116878,-83.6974311,7,3.9162789357464423
+norfli,Northern Flicker,Colaptes auratus,House lot,2023-06-14 17:40,1.0,42.2782614,-83.7635851,7,0.5489595643546618
+norfli,Northern Flicker,Colaptes auratus,"7 Mile Road, South Lyon, Michigan, US (42.418, -83.666)",2023-06-14 14:46,1.0,42.4178399,-83.6661495,7,10.911748655764576
+norfli,Northern Flicker,Colaptes auratus,Rookery Woods,2023-06-14 13:56,1.0,42.283562,-83.875279,7,6.223217621874164
+norfli,Northern Flicker,Colaptes auratus,"Dixboro Farms Drive Neighborhood, Ann Arbor",2023-06-14 11:55,1.0,42.3560247,-83.6595647,7,7.465576842309071
+norfli,Northern Flicker,Colaptes auratus,Patriot Park,2023-06-14 10:44,5.0,42.3240001,-83.5288918,8,12.066791936069947
+norfli,Northern Flicker,Colaptes auratus,Fuller Park--AABBS Point 3,2023-06-14 08:57,2.0,42.2891589,-83.7290877,8,1.6730570089742454
+norfli,Northern Flicker,Colaptes auratus,Fuller Park,2023-06-14 08:19,2.0,42.2874531,-83.7286823,8,1.6190044145435054
+norfli,Northern Flicker,Colaptes auratus,Skyline High School,2023-06-14 08:10,1.0,42.3050309,-83.7803864,8,2.5185334607889724
+norfli,Northern Flicker,Colaptes auratus,"Matthaei Botanical Gardens, Ann Arbor US-MI (42.2995,-83.6616)",2023-06-14 08:08,2.0,42.299532,-83.661551,8,5.081705591552609
+norfli,Northern Flicker,Colaptes auratus,Oakwoods Nature Area--AABBS Point 6,2023-06-14 07:36,2.0,42.3205966,-83.6994873,8,4.2788174290001075
+norfli,Northern Flicker,Colaptes auratus,"Brecon Park, Saline US-MI (42.1740,-83.7785)",2023-06-14 07:14,1.0,42.173998,-83.778474,8,7.009837418418892
+norfli,Northern Flicker,Colaptes auratus,Scarlett-Mitchell Nature Area,2023-06-13 11:00,1.0,42.2326483,-83.6923027,9,4.281377039797527
+norfli,Northern Flicker,Colaptes auratus,Gallup Park,2023-06-13 10:16,1.0,42.273276,-83.693397,9,3.1350869587621464
+norfli,Northern Flicker,Colaptes auratus,Gallup Park East--AABBS Point 5,2023-06-13 08:55,1.0,42.2761172,-83.6946218,9,3.0753498095222067
+norfli,Northern Flicker,Colaptes auratus,East field,2023-06-13 08:13,1.0,42.280993,-83.859543,9,5.403262076235678
+norfli,Northern Flicker,Colaptes auratus,West Park,2023-06-12 18:09,2.0,42.2835176,-83.7541246,9,0.657897867482791
+norfli,Northern Flicker,Colaptes auratus,Forest Nature Area,2023-06-12 17:10,1.0,42.2703862,-83.6577559,9,4.96800625964675
+norfli,Northern Flicker,Colaptes auratus,Barton Pond,2023-06-12 15:00,1.0,42.3126558,-83.7561071,9,2.6698865751334764
+norfli,Northern Flicker,Colaptes auratus,S Lima Center Rd,2023-06-12 14:25,1.0,42.294942,-83.957708,9,10.512016183083277
+norfli,Northern Flicker,Colaptes auratus,"338 Village Green Boulevard, Ann Arbor, Michigan, US (42.276, -83.676)",2023-06-12 11:50,1.0,42.2763154,-83.6760376,9,4.0276399265476135
+norfli,Northern Flicker,Colaptes auratus,Liberty Pond Nature Area,2023-06-12 10:57,1.0,42.2684141,-83.8844037,10,6.667666946053093
+norfli,Northern Flicker,Colaptes auratus,"2691 Maplewood Ave, Ann Arbor US-MI 42.24840, -83.69730",2023-06-12 09:24,3.0,42.248396,-83.697296,10,3.4260019055616326
+norfli,Northern Flicker,Colaptes auratus,Brauer Preserve,2023-06-11 15:40,1.0,42.2349202,-83.9006352,10,7.961222019488652
+norfli,Northern Flicker,Colaptes auratus,"5308 River Woods Ct, Dexter US-MI 42.32695, -83.83566",2023-06-11 13:37,1.0,42.32695,-83.835658,10,5.53462939610186
+norfli,Northern Flicker,Colaptes auratus,"3417 S Zeeb Rd, Ann Arbor US-MI 42.23705, -83.83723",2023-06-11 13:06,1.0,42.237046,-83.837235,10,4.947415579647124
+norfli,Northern Flicker,Colaptes auratus,Trinkle Marsh,2023-06-11 10:16,2.0,42.309387,-83.9339161,11,9.510802577253932
+norfli,Northern Flicker,Colaptes auratus,Superior Twp. Roads,2023-06-11 09:09,1.0,42.2922212,-83.6031482,11,7.861037750740411
+norfli,Northern Flicker,Colaptes auratus,"554 Castlebury Drive, Saline, Michigan, US (42.165, -83.801)",2023-06-10 18:57,1.0,42.164964,-83.8014745,11,7.900791646646021
+norfli,Northern Flicker,Colaptes auratus,Corner of Trinkle and Fletcher,2023-06-10 13:50,1.0,42.3117377,-83.979221,11,11.804216152131334
+norfli,Northern Flicker,Colaptes auratus,Furstenberg Nature Area--AABBS Point 1,2023-06-10 10:33,1.0,42.2795833,-83.7064722,12,2.49438695798346
+norfli,Northern Flicker,Colaptes auratus,Furstenberg Nature Area--AABBS Point 3,2023-06-10 10:10,1.0,42.2803332,-83.7091255,12,2.3691194561533377
+norfli,Northern Flicker,Colaptes auratus,Gallup Park,2023-06-10 09:55,1.0,42.2703535,-83.6888047,12,3.3795159969726893
+norfli,Northern Flicker,Colaptes auratus,"6105 W Liberty Rd, Ann Arbor US-MI 42.26710, -83.84896",2023-06-10 08:30,1.0,42.267096,-83.848963,12,4.863181294958044
+norfli,Northern Flicker,Colaptes auratus,Olson Park--AABBS Point 3,2023-06-10 08:29,1.0,42.3182279,-83.731071,12,3.2817728230739713
+norfli,Northern Flicker,Colaptes auratus,"2670 S Zeeb Rd, Ann Arbor US-MI 42.24760, -83.83772",2023-06-10 08:08,1.0,42.247599,-83.837718,12,4.636847319871862
+norfli,Northern Flicker,Colaptes auratus,Furstenberg Park,2023-06-10 07:51,4.0,42.2775628,-83.7036753,12,2.619372434960491
+norfli,Northern Flicker,Colaptes auratus,Olson Park,2023-06-10 06:11,1.0,42.3194785,-83.7308514,12,3.3662690728631235
+norfli,Northern Flicker,Colaptes auratus,"448 Greenlawn Ave, Ypsilanti US-MI 42.23639, -83.58208",2023-06-09 15:21,1.0,42.236387,-83.582077,12,9.216529703309519
+norfli,Northern Flicker,Colaptes auratus,Thurston Pond,2023-06-09 11:13,2.0,42.3092283,-83.7003922,13,3.6902182379404738
+norfli,Northern Flicker,Colaptes auratus,Huron River--Superior Rd.,2023-06-09 09:42,1.0,42.2595723,-83.6381006,13,6.0522168801123915
+norfli,Northern Flicker,Colaptes auratus,"Cyndi Zuccaro home, 8296 Zeeb Rd.",2023-06-09 07:40,2.0,42.4025656,-83.8434691,13,9.97440061419116
+norfli,Northern Flicker,Colaptes auratus,Loch Highland,2023-06-08 10:50,1.0,42.318996,-83.852844,14,5.917574941015383
+norfli,Northern Flicker,Colaptes auratus,Wheeler Service Center- Phase 2-AABBS,2023-06-08 10:15,1.0,42.2281519,-83.7100267,14,3.9015865396766682
+norfli,Northern Flicker,Colaptes auratus,"5308 River Woods Ct, Dexter US-MI 42.32675, -83.83584",2023-06-08 09:02,1.0,42.32675,-83.835844,14,5.532698558805359
+norfli,Northern Flicker,Colaptes auratus,Eberwhite Woods,2023-06-07 17:58,1.0,42.2736253,-83.768574,14,0.7193102896614222
+norfli,Northern Flicker,Colaptes auratus,North Hydro Park,2023-06-07 12:04,3.0,42.2075962,-83.5544943,14,11.237045776954444
+norfli,Northern Flicker,Colaptes auratus,Parker Mill Park,2023-06-07 10:48,1.0,42.2725774,-83.6631846,15,4.684425970400606
+norfli,Northern Flicker,Colaptes auratus,Barton Nature Area--AABBS Point 6,2023-06-07 08:10,1.0,42.3057938,-83.7568027,15,2.1981022613991548
+norfli,Northern Flicker,Colaptes auratus,Leslie Woods Nature Area--AABBS Point 4,2023-06-07 08:09,1.0,42.3036741,-83.7188266,15,2.747551388501141
+norfli,Northern Flicker,Colaptes auratus,Barton Nature Area--AABBS Point 1,2023-06-07 07:53,1.0,42.3062915,-83.7544545,15,2.2294259796495353
+norfli,Northern Flicker,Colaptes auratus,Leslie Woods Nature Area--AABBS Point 3,2023-06-07 07:52,1.0,42.3029536,-83.7171596,15,2.769093942432159
+norfli,Northern Flicker,Colaptes auratus,Barton Nature Area--AABBS Point 5,2023-06-07 07:23,1.0,42.3049713,-83.7511122,15,2.145543979647624
+norfli,Northern Flicker,Colaptes auratus,Leslie Woods Nature Area,2023-06-07 07:15,2.0,42.303079,-83.7200153,15,2.676399028591064
+norfli,Northern Flicker,Colaptes auratus,Barton Nature Area,2023-06-07 07:14,3.0,42.3044517,-83.7555492,15,2.103058479966272
+norfli,Northern Flicker,Colaptes auratus,Ruthven Nature Area,2023-06-07 07:00,1.0,42.2784519,-83.6974633,15,2.9422947745265793
+norfli,Northern Flicker,Colaptes auratus,Bird Hills Nature Area,2023-06-06 14:56,1.0,42.3042843,-83.7607666,15,2.115012656407164
+norfli,Northern Flicker,Colaptes auratus,Home to home hiking loop,2023-06-06 12:00,1.0,42.316774,-83.785063,15,3.3413401371268012
+norfli,Northern Flicker,Colaptes auratus,"1355 5 Mile Rd, Whitmore Lake US-MI 42.38899, -83.73812",2023-06-06 07:40,1.0,42.388989,-83.738122,16,7.981826186411058
+norfli,Northern Flicker,Colaptes auratus,Autozone,2023-06-05 15:08,1.0,42.289236,-83.842689,16,4.638355926378086
+norfli,Northern Flicker,Colaptes auratus,2712 Danbury Lane,2023-06-05 07:00,1.0,42.2807045,-83.7983093,17,2.2903308639213096
+norfli,Northern Flicker,Colaptes auratus,home,2023-06-04 18:56,1.0,42.247574,-83.650914,17,5.6175879503935215
+norfli,Northern Flicker,Colaptes auratus,Huron River Oxbow,2023-06-04 13:52,1.0,42.3127811,-83.7916523,17,3.283744707486553
+norfli,Northern Flicker,Colaptes auratus,Hewen's Creek Park,2023-06-04 09:01,1.0,42.1733275,-83.6290455,18,9.47237179797683
+norfli,Northern Flicker,Colaptes auratus,309 MHP,2023-06-03 21:10,1.0,42.283721,-83.761305,18,0.7555727781021019
+norfli,Northern Flicker,Colaptes auratus,Dexter Huron Metropark,2023-06-03 12:54,1.0,42.33203,-83.8625895,18,6.832972920258984
+norfli,Northern Flicker,Colaptes auratus,Bike Trail,2023-06-03 10:27,1.0,42.217827,-83.717299,19,4.321621481469196
+norfli,Northern Flicker,Colaptes auratus,tower Rd sugar bush,2023-06-03 10:18,1.0,42.3799117,-83.6255197,19,9.8549721186406
+norfli,Northern Flicker,Colaptes auratus,"4220 Farrell Road, Dexter, Michigan, US (42.365, -83.816)",2023-06-03 07:36,1.0,42.3651484,-83.8158059,19,7.030805071153702
+norfli,Northern Flicker,Colaptes auratus,Home,2023-06-02 13:42,1.0,42.236252,-83.651291,19,5.900645899181518
+norfli,Northern Flicker,Colaptes auratus,"4409 Inverness St, Dexter US-MI 42.33340, -83.87382",2023-06-02 12:45,,42.333396,-83.873821,19,7.359012623870821
+norfli,Northern Flicker,Colaptes auratus,"5308 River Woods Ct, Dexter US-MI 42.32687, -83.83556",2023-06-02 11:14,2.0,42.326872,-83.835563,20,5.52742077816715
+norfli,Northern Flicker,Colaptes auratus,"1323 Pine Valley Ct, Ann Arbor US-MI (42.2488,-83.7293)",2023-06-02 10:54,1.0,42.248783,-83.729253,20,2.1700963176238828
+norfli,Northern Flicker,Colaptes auratus,"5925–6135 Huron River Dr, Dexter US-MI 42.32593, -83.84944",2023-06-02 10:47,1.0,42.325928,-83.849437,20,6.040559186230079
+norfli,Northern Flicker,Colaptes auratus,Wheeler Service Center Hayfield 1,2023-06-02 08:41,1.0,42.2207314,-83.7168932,20,4.15237148789612
+norfli,Northern Flicker,Colaptes auratus,Forest Nature Area--AABBS Point 3,2023-06-02 07:32,2.0,42.2705862,-83.6563189,20,5.040907016516903
+norfli,Northern Flicker,Colaptes auratus,Forest Nature Area--AABBS Point 2,2023-06-02 07:14,1.0,42.2707525,-83.6580188,20,4.953327095326745
+norfli,Northern Flicker,Colaptes auratus,"1200 Shady Oaks Drive, Ann Arbor, Michigan, US (42.302, -83.825)",2023-06-01 11:28,1.0,42.301941,-83.825407,20,4.111927098267009
+norfli,Northern Flicker,Colaptes auratus,Black Pond Woods Nature Area,2023-06-01 08:58,1.0,42.303809,-83.7296927,21,2.420419836963906
+norfli,Northern Flicker,Colaptes auratus,Anthony & Rose Shatter Family Preserve,2023-06-01 08:01,1.0,42.3763382,-83.6131094,21,10.118436591891795
+norfli,Northern Flicker,Colaptes auratus,Buttonbush Nature Area,2023-05-31 08:16,3.0,42.3199767,-83.7119256,22,3.852869566446441
+norfli,Northern Flicker,Colaptes auratus,"3467 Yellowstone Dr., Ann Arbor, MI 48105",2023-05-30 07:05,1.0,42.3174952,-83.6955482,23,4.261112317080506
+norfli,Northern Flicker,Colaptes auratus,"2795 Windwood Dr, Ann Arbor US-MI 42.31747, -83.70591",2023-05-29 14:09,1.0,42.317473,-83.705912,23,3.901116973412009
+norfli,Northern Flicker,Colaptes auratus,Huron Hills Golf Course--AABBS Point 2,2023-05-29 10:37,1.0,42.2662691,-83.7007995,24,2.8064723049841436
+norfli,Northern Flicker,Colaptes auratus,"1127 Clair Cir, Ann Arbor US-MI 42.29254, -83.76356",2023-05-29 09:26,1.0,42.292538,-83.763564,24,1.3609476026917389
+norfli,Northern Flicker,Colaptes auratus,Arbor Hills Nature Area-- AABBS Point 1,2023-05-29 08:49,1.0,42.3178099,-83.6921282,24,4.402082749069358
+norfli,Northern Flicker,Colaptes auratus,Traver Creek Nature Area--AABBS Point 5,2023-05-29 08:27,1.0,42.3102582,-83.7218606,24,3.012014759145706
+norfli,Northern Flicker,Colaptes auratus,Traver Creek Nature Area,2023-05-29 08:15,2.0,42.3122353,-83.7215281,24,3.1354950661744088
+norfli,Northern Flicker,Colaptes auratus,Scarlett-Mitchell Nature Area--AABBS Point 6,2023-05-29 07:50,1.0,42.233813,-83.6884682,24,4.378523530199322
+norfli,Northern Flicker,Colaptes auratus,Scarlett-Mitchell Nature Area--AABBS Point 4,2023-05-29 07:27,1.0,42.2332809,-83.6909144,24,4.306077894354083
+norfli,Northern Flicker,Colaptes auratus,Sugarbush Park--AABBS Point 1,2023-05-29 06:30,1.0,42.3160311,-83.6980782,24,4.097987576217469
+norfli,Northern Flicker,Colaptes auratus,"Arbor Hills, Ann Arbor US-MI 42.25662, -83.69890",2023-05-28 15:24,1.0,42.256619,-83.698895,24,3.0949467728417073
+norfli,Northern Flicker,Colaptes auratus,Island Park,2023-05-28 09:26,1.0,42.2905841,-83.7287848,25,1.7479944598509083
+norfli,Northern Flicker,Colaptes auratus,Greenview/Pioneer--AABBS Point 3,2023-05-28 08:51,1.0,42.259353,-83.761442,25,1.0703274778336604
+norfli,Northern Flicker,Colaptes auratus,Greenview/Pioneer--AABBS Point 1,2023-05-28 08:02,1.0,42.2571189,-83.7614845,25,1.2175843319735815
+norfli,Northern Flicker,Colaptes auratus,Greenview/Pioneer,2023-05-28 07:50,3.0,42.2581668,-83.7617934,25,1.1536019792398762
+norfli,Northern Flicker,Colaptes auratus,South Pond South--AABBS Point 3B,2023-05-28 06:32,1.0,42.2639606,-83.6847487,25,3.6446302155287293
+norfli,Northern Flicker,Colaptes auratus,Chelsea SGA--Four Mile Lake,2023-05-27 12:58,1.0,42.3291717,-83.9686775,25,11.613584887146802
+norfli,Northern Flicker,Colaptes auratus,Traver Ridge Ponds,2023-05-27 12:11,2.0,42.3110318,-83.7189784,25,3.139906643511757
+norfli,Northern Flicker,Colaptes auratus,Pittsfield Preserve,2023-05-27 11:19,1.0,42.2117127,-83.7100804,25,4.866028235682491
+norfli,Northern Flicker,Colaptes auratus,Wood Duck Bayou,2023-05-27 10:47,1.0,42.3165,-83.7848028,26,3.3183902434130266
+norfli,Northern Flicker,Colaptes auratus,Home ypsi,2023-05-27 08:47,2.0,42.243852,-83.632366,26,6.600948140487302
+norfli,Northern Flicker,Colaptes auratus,Northfield Woods Preserve,2023-05-26 13:31,3.0,42.3477213,-83.7438118,26,5.1186224945779815
+norfli,Northern Flicker,Colaptes auratus,"Devine Preserve, Ann Arbor US-MI 42.26935, -83.84915",2023-05-25 16:02,1.0,42.269352,-83.84915,27,4.859898744838398
+norfli,Northern Flicker,Colaptes auratus,Dominican Meadows Preserve,2023-05-25 09:55,2.0,42.3341639,-83.6621412,28,6.298058491491201
+norfli,Northern Flicker,Colaptes auratus,Leslee Niethammer Saline River Preserve,2023-05-25 08:54,1.0,42.1536687,-83.7734342,28,8.361014879923943
+norfli,Northern Flicker,Colaptes auratus,Burns-Stokes Preserve,2023-05-25 08:15,1.0,42.3241265,-83.8408471,28,5.61487837634188
+norfli,Northern Flicker,Colaptes auratus,Redbud-Scheffler Nature Area--AABBS Point 2,2023-05-25 07:31,1.0,42.252575,-83.69703,28,3.298675513429819
+norfli,Northern Flicker,Colaptes auratus,Redbud Park,2023-05-25 07:05,2.0,42.2531084,-83.6952209,28,3.365906957143528
+norfli,Northern Flicker,Colaptes auratus,Leslie Park Golf Course,2023-05-24 15:35,1.0,42.303574,-83.725147,28,2.5376607831318174
+norfli,Northern Flicker,Colaptes auratus,"Dolph Nature Area, Ann Arbor US-MI 42.27843, -83.79901",2023-05-23 18:30,1.0,42.278427,-83.799013,29,2.299551898156243
+norfli,Northern Flicker,Colaptes auratus,Foster Nature Area,2023-05-23 18:29,1.0,42.3165432,-83.768177,29,3.0188760922752786
+norfli,Northern Flicker,Colaptes auratus,Fox Science Preserve,2023-05-23 14:11,1.0,42.3158768,-83.8319975,29,4.909976137290657
+norfli,Northern Flicker,Colaptes auratus,"S Maple Rd, Saline, MI",2023-05-23 14:08,1.0,42.1386522,-83.7757418,29,9.404199310839529
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Hollway Field,2023-06-21 19:58,2.0,42.2598313,-83.7521817,0,0.9848287063921248
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Matthaei Botanical Gardens,2023-06-21 19:20,1.0,42.3007381,-83.6628628,0,5.048507055095958
+rethaw,Red-tailed Hawk,Buteo jamaicensis,1 Sparrow Nest,2023-06-21 10:00,1.0,42.3249837,-83.8020802,1,4.28002871069893
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Kosch-Headwaters Preserve and Springhill Nature Preserve,2023-06-20 11:37,1.0,42.3162417,-83.5996056,1,8.458349694564868
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Dyer Farm,2023-06-19 20:00,1.0,42.340561,-83.652073,2,6.976823347137638
+rethaw,Red-tailed Hawk,Buteo jamaicensis,North Bay Park/Ford Lake Boardwalk,2023-06-19 17:31,1.0,42.2282671,-83.6102566,2,8.044026547160078
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Ann Arbor Landfill/Wheeler Service Center,2023-06-19 11:59,1.0,42.2268967,-83.7038898,2,4.161028880720604
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Gotfredson Rd. marsh,2023-06-19 10:43,1.0,42.3285372,-83.5669041,3,10.325353810938486
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Ann Arbor Airport Field transect ,2023-06-19 09:34,1.0,42.2224793,-83.7425995,3,3.6078043184708553
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Ann Arbor Municipal Airport,2023-06-19 08:44,2.0,42.223349,-83.746615,3,3.518953556436844
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Trinkle Marsh,2023-06-18 18:06,1.0,42.309387,-83.9339161,3,9.510802577253932
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Huron Hills Golf Course,2023-06-18 13:16,1.0,42.265702,-83.6986971,3,2.919787030761607
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Delhi Metropark,2023-06-18 09:45,2.0,42.3310753,-83.8074017,4,4.780880195090478
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"5100–5158 Jackson Rd, Ann Arbor US-MI 42.28777, -83.83129",2023-06-17 15:20,2.0,42.287775,-83.831295,4,4.046912425885347
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Gleaner Hall Rd. marsh,2023-06-17 14:34,1.0,42.33784,-83.73274,4,4.546405630580079
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Spencer Rd,2023-06-17 14:06,1.0,42.3878423,-83.7231043,4,8.021537025776702
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"M-14 W, Ann Arbor US-MI 42.32803, -83.62965",2023-06-17 13:35,1.0,42.328027,-83.629654,4,7.406913581256849
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Tower Rd Woodlot,2023-06-17 13:14,1.0,42.3800761,-83.6254758,4,9.864893737051634
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"Joy, between Dixboro & Tower",2023-06-17 13:04,1.0,42.3462852,-83.6585447,4,7.006362898183368
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Vreeland Rd.,2023-06-17 12:19,1.0,42.2910722,-83.5701871,4,9.522363838983296
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Hudson Mills Metropark  to DELHI,2023-06-17 09:21,2.0,42.383473,-83.908349,5,10.91547064549815
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Olson Park,2023-06-17 08:32,1.0,42.3194785,-83.7308514,5,3.3662690728631235
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Conservancy Farm,2023-06-17 08:00,1.0,42.2927626,-83.5966498,5,8.19576456214175
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Gallup Park,2023-06-17 07:23,1.0,42.273276,-83.693397,5,3.1350869587621464
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Ford Lake Pickleball Courts,2023-06-16 08:58,1.0,42.2104161,-83.5783188,6,10.046956156658869
+rethaw,Red-tailed Hawk,Buteo jamaicensis,S Lima Center Rd,2023-06-15 15:29,1.0,42.294942,-83.957708,6,10.512016183083277
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Creek field,2023-06-15 08:58,1.0,42.284029,-83.869905,7,5.953040878927622
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Hudson Mills Metropark,2023-06-14 16:55,1.0,42.3831,-83.91289,7,11.066948718739374
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Nichols Arboretum,2023-06-14 13:12,1.0,42.2813095,-83.7221074,7,1.7379278013407216
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Patriot Park,2023-06-14 10:44,1.0,42.3240001,-83.5288918,8,12.066791936069947
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Fuller Park--AABBS Point 1,2023-06-14 09:18,1.0,42.2906606,-83.7273703,8,1.806746159654899
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Dexter Huron,2023-06-13 11:38,1.0,42.329489,-83.856567,8,6.480374330505394
+rethaw,Red-tailed Hawk,Buteo jamaicensis,1130 Hill St,2023-06-13 11:13,1.0,42.271933,-83.734767,9,1.0239859620541945
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"University of Michigan, Ann Arbor US-MI 42.27613, -83.73724",2023-06-12 16:57,1.0,42.27613,-83.737245,9,0.8992352998587962
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Waterworks Park,2023-06-12 12:01,1.0,42.2353968,-83.6075771,9,7.993013626139697
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"United Spanish War Veterans Memorial Highway, Milan, Michigan, US (42.104, -83.68)",2023-06-12 11:39,2.0,42.1036253,-83.6799352,9,12.36663240090467
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Gotfredson/M-14 cloverleaf,2023-06-10 12:07,1.0,42.3644809,-83.5664137,11,11.4838664878138
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Mary McCann Park,2023-06-10 10:35,1.0,42.1655004,-83.7182437,12,7.7162512024983245
+rethaw,Red-tailed Hawk,Buteo jamaicensis,DeVine Preserve,2023-06-10 10:33,1.0,42.2726409,-83.8490295,12,4.84393316594036
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"6001–6643 Zeeb Rd, Dexter US-MI 42.37358, -83.84341",2023-06-10 07:18,1.0,42.373583,-83.843407,12,8.244103798058102
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"6490 Strawberry Lake Rd, Whitmore Lake US-MI 42.44211, -83.81681",2023-06-10 05:40,1.0,42.442106,-83.816805,12,12.033329448009251
+rethaw,Red-tailed Hawk,Buteo jamaicensis,M-14 pond,2023-06-09 11:00,1.0,42.2997224,-83.7746572,13,2.05331547495956
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Cranbrook Park,2023-06-08 18:30,1.0,42.2490333,-83.7535093,13,1.7234289474233746
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Brown Park (Mary Beth Doyle Park),2023-06-08 13:21,1.0,42.2411953,-83.7111855,13,3.172923540500966
+rethaw,Red-tailed Hawk,Buteo jamaicensis,North Hydro Park,2023-06-07 12:04,1.0,42.2075962,-83.5544943,14,11.237045776954444
+rethaw,Red-tailed Hawk,Buteo jamaicensis,West Park,2023-06-06 17:36,1.0,42.2835176,-83.7541246,15,0.657897867482791
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Creekshead Nature Preserve,2023-06-05 19:00,1.0,42.3805511,-83.6072892,16,10.534692041282653
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Traver Ridge Ponds,2023-06-05 13:35,1.0,42.3110318,-83.7189784,16,3.139906643511757
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Huron River Oxbow,2023-06-04 13:52,2.0,42.3127811,-83.7916523,17,3.283744707486553
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Eberwhite Woods,2023-06-04 07:23,1.0,42.2736253,-83.768574,18,0.7193102896614222
+rethaw,Red-tailed Hawk,Buteo jamaicensis,309 MHP,2023-06-03 21:10,1.0,42.283721,-83.761305,18,0.7555727781021019
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Dexter Huron Metropark,2023-06-03 12:54,3.0,42.33203,-83.8625895,18,6.832972920258984
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Baker Woods Preserve,2023-06-03 11:23,1.0,42.3109506,-83.9639783,18,11.03109808778779
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Anthony & Rose Shatter Family Preserve,2023-06-03 09:43,1.0,42.3763382,-83.6131094,19,10.118436591891795
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Staebler Farm County Park,2023-06-02 10:44,2.0,42.332098,-83.6100382,20,8.420663042407986
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Former Ann Arbor MGP,2023-06-02 09:58,1.0,42.289424,-83.743115,20,1.2157921861127212
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Wheeler Service Center Hayfield 1,2023-06-02 08:41,1.0,42.2207314,-83.7168932,20,4.15237148789612
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Rolling Hills Park,2023-06-01 12:00,1.0,42.1781776,-83.6411476,20,8.80764583496297
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"Webster Township, Joe's Home",2023-06-01 09:08,1.0,42.3640651,-83.8597406,21,8.227052475213284
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Recreation Park,2023-06-01 06:51,1.0,42.2403229,-83.6287801,21,6.8545558696153
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Urquharts Tree Farm,2023-05-30 18:26,1.0,42.2830875,-83.9278114,22,8.902843501394024
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Barton Nature Area,2023-05-30 14:18,1.0,42.3044517,-83.7555492,22,2.103058479966272
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"1127 Clair Cir, Ann Arbor US-MI 42.29254, -83.76356",2023-05-30 10:41,1.0,42.292538,-83.763564,23,1.3609476026917389
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Bird Hills Nature Area,2023-05-30 09:14,1.0,42.3042843,-83.7607666,23,2.115012656407164
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"2169–2495 S Zeeb Rd, Ann Arbor US-MI 42.24819, -83.83746",2023-05-28 13:26,2.0,42.248194,-83.83746,24,4.608646301701697
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Island Park,2023-05-28 09:26,1.0,42.2905841,-83.7287848,25,1.7479944598509083
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Jerusalem Road,2023-05-27 16:40,1.0,42.2815896,-83.9227824,25,8.638947755305589
+rethaw,Red-tailed Hawk,Buteo jamaicensis,N Dancer Rd,2023-05-27 16:28,1.0,42.3007917,-83.9377993,25,9.571748046784464
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Marsh on N Lima Center Rd,2023-05-27 15:00,1.0,42.3037176,-83.9577206,25,10.612234862903872
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Brauer Preserve,2023-05-27 14:33,1.0,42.2349202,-83.9006352,25,7.961222019488652
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Water Conservation Easement (Vreeland Rd & Prospect Rd),2023-05-27 10:07,2.0,42.2916436,-83.6072981,26,7.644743068900829
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Oakwoods Nature Area--AABBS Point 9,2023-05-27 09:08,1.0,42.323041,-83.703067,26,4.291911993203598
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Oakwoods Nature Area,2023-05-27 06:45,1.0,42.3186455,-83.6990404,26,4.194044947923885
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"3390 East Huron River Drive, Ann Arbor, Michigan, US (42.271, -83.697)",2023-05-26 13:36,,42.2705301,-83.6965146,26,2.9845299865358332
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Honey Creek School,2023-05-26 13:32,2.0,42.261053,-83.795618,26,2.28690175289217
+rethaw,Red-tailed Hawk,Buteo jamaicensis,LeFurge Woods Nature Preserve,2023-05-26 08:00,1.0,42.2866593,-83.6015797,27,7.889022186549761
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Furstenberg Park,2023-05-25 18:07,2.0,42.2775628,-83.7036753,27,2.619372434960491
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Domino's Farms,2023-05-25 12:58,1.0,42.315379,-83.684363,27,4.593024843100177
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Maple Rd. troll bridge,2023-05-25 10:46,1.0,42.1301394,-83.7754498,28,9.986424536900959
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Leslee Niethammer Saline River Preserve,2023-05-25 08:54,1.0,42.1536687,-83.7734342,28,8.361014879923943
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Black Pond Woods Nature Area,2023-05-25 08:21,1.0,42.303809,-83.7296927,28,2.420419836963906
+rethaw,Red-tailed Hawk,Buteo jamaicensis,Morgan Woods Nature Preserve,2023-05-24 08:50,2.0,42.2175373,-83.7245536,29,4.189134586985886
+rethaw,Red-tailed Hawk,Buteo jamaicensis,"S Maple Rd, Saline, MI",2023-05-23 14:08,1.0,42.1386522,-83.7757418,29,9.404199310839529
+belkin1,Belted Kingfisher,Megaceryle alcyon,Lodi Township - SE corner of Scio Church & Parker Rds,2023-06-21 15:06,1.0,42.2519648,-83.894434,0,7.331015907395688
+belkin1,Belted Kingfisher,Megaceryle alcyon,Lakeside Park,2023-06-21 10:02,1.0,42.2034476,-83.5640112,1,10.918163018568926
+belkin1,Belted Kingfisher,Megaceryle alcyon,North Bay Park/Ford Lake Boardwalk,2023-06-21 09:50,1.0,42.2282671,-83.6102566,1,8.044026547160078
+belkin1,Belted Kingfisher,Megaceryle alcyon,Scio Church Rd. and Parker Rd. ponds,2023-06-21 09:19,1.0,42.2533109,-83.8965432,1,7.418323363595922
+belkin1,Belted Kingfisher,Megaceryle alcyon,Ford Lake Park,2023-06-20 11:38,1.0,42.2099067,-83.5775546,1,10.097611694776113
+belkin1,Belted Kingfisher,Megaceryle alcyon,Belleville Lake--Van Buren Park,2023-06-20 10:36,1.0,42.2128989,-83.5254822,2,12.481421619037189
+belkin1,Belted Kingfisher,Megaceryle alcyon,Brown Park (Mary Beth Doyle Park),2023-06-18 20:42,1.0,42.2411953,-83.7111855,3,3.172923540500966
+belkin1,Belted Kingfisher,Megaceryle alcyon,S Lima Center Rd,2023-06-17 19:54,1.0,42.294942,-83.957708,4,10.512016183083277
+belkin1,Belted Kingfisher,Megaceryle alcyon,Waterworks Park,2023-06-17 13:45,1.0,42.2353968,-83.6075771,4,7.993013626139697
+belkin1,Belted Kingfisher,Megaceryle alcyon,Hudson Mills Metropark  to DELHI,2023-06-17 09:21,1.0,42.383473,-83.908349,5,10.91547064549815
+belkin1,Belted Kingfisher,Megaceryle alcyon,Chelsea SGA--Four Mile Lake,2023-06-17 09:18,1.0,42.3291717,-83.9686775,5,11.613584887146802
+belkin1,Belted Kingfisher,Megaceryle alcyon,Oakwoods Nature Area,2023-06-15 07:13,2.0,42.3186455,-83.6990404,7,4.194044947923885
+belkin1,Belted Kingfisher,Megaceryle alcyon,Hudson Mills Metropark,2023-06-14 16:55,1.0,42.3831,-83.91289,7,11.066948718739374
+belkin1,Belted Kingfisher,Megaceryle alcyon,Thurston Pond,2023-06-14 15:09,1.0,42.3092283,-83.7003922,7,3.6902182379404738
+belkin1,Belted Kingfisher,Megaceryle alcyon,Nichols Arboretum,2023-06-13 09:02,1.0,42.2813095,-83.7221074,9,1.7379278013407216
+belkin1,Belted Kingfisher,Megaceryle alcyon,Gotfredson Rd. marsh,2023-06-12 19:41,1.0,42.3285372,-83.5669041,9,10.325353810938486
+belkin1,Belted Kingfisher,Megaceryle alcyon,-Loch Alpine Yard (Intentionally Offset),2023-06-11 15:36,1.0,42.3377377,-83.8266629,10,5.745364851971438
+belkin1,Belted Kingfisher,Megaceryle alcyon,Whitmore Lake Preserve,2023-06-11 07:43,1.0,42.4130317,-83.7344912,11,9.6516547660401
+belkin1,Belted Kingfisher,Megaceryle alcyon,"2518–2758 W Huron River Dr, Ann Arbor US-MI 42.31532, -83.78326",2023-06-10 20:27,1.0,42.315315,-83.783264,11,3.209397783494809
+belkin1,Belted Kingfisher,Megaceryle alcyon,Matthaei Botanical Gardens,2023-06-10 15:07,1.0,42.3007381,-83.6628628,11,5.048507055095958
+belkin1,Belted Kingfisher,Megaceryle alcyon,Skyline High School,2023-06-09 12:55,1.0,42.3050309,-83.7803864,12,2.5185334607889724
+belkin1,Belted Kingfisher,Megaceryle alcyon,Huron River--Superior Rd.,2023-06-09 09:42,1.0,42.2595723,-83.6381006,13,6.0522168801123915
+belkin1,Belted Kingfisher,Megaceryle alcyon,"Cyndi Zuccaro home, 8296 Zeeb Rd.",2023-06-09 07:40,1.0,42.4025656,-83.8434691,13,9.97440061419116
+belkin1,Belted Kingfisher,Megaceryle alcyon,North Hydro Park,2023-06-07 12:04,1.0,42.2075962,-83.5544943,14,11.237045776954444
+belkin1,Belted Kingfisher,Megaceryle alcyon,Parker Mill Park,2023-06-07 10:48,1.0,42.2725774,-83.6631846,15,4.684425970400606
+belkin1,Belted Kingfisher,Megaceryle alcyon,1 Sparrow Nest,2023-06-06 09:00,1.0,42.3249837,-83.8020802,16,4.28002871069893
+belkin1,Belted Kingfisher,Megaceryle alcyon,"1355 5 Mile Rd, Whitmore Lake US-MI 42.38899, -83.73812",2023-06-06 07:40,1.0,42.388989,-83.738122,16,7.981826186411058
+belkin1,Belted Kingfisher,Megaceryle alcyon,Gallup Park,2023-06-04 18:55,2.0,42.273276,-83.693397,17,3.1350869587621464
+belkin1,Belted Kingfisher,Megaceryle alcyon,Huron River Oxbow,2023-06-04 13:52,1.0,42.3127811,-83.7916523,17,3.283744707486553
+belkin1,Belted Kingfisher,Megaceryle alcyon,Chippewa Clay,2023-06-03 11:37,1.0,42.254753,-83.654023,18,5.322064636371783
+belkin1,Belted Kingfisher,Megaceryle alcyon,Bluffs Nature Area,2023-06-02 18:42,2.0,42.2951197,-83.7490153,19,1.4856588575221996
+belkin1,Belted Kingfisher,Megaceryle alcyon,"3501–3509 Jackson Rd, Ann Arbor US-MI 42.28497, -83.79977",2023-06-02 16:28,1.0,42.284971,-83.799773,19,2.4386599944021916
+belkin1,Belted Kingfisher,Megaceryle alcyon,Former Ann Arbor MGP,2023-06-02 09:58,2.0,42.289424,-83.743115,20,1.2157921861127212
+belkin1,Belted Kingfisher,Megaceryle alcyon,Forest Nature Area--AABBS Point 3,2023-06-02 07:32,1.0,42.2705862,-83.6563189,20,5.040907016516903
+belkin1,Belted Kingfisher,Megaceryle alcyon,Forest Nature Area--AABBS Point 1,2023-06-02 06:58,1.0,42.2708277,-83.6600971,20,4.846662918027289
+belkin1,Belted Kingfisher,Megaceryle alcyon,Forest Nature Area,2023-06-02 06:53,2.0,42.2703862,-83.6577559,20,4.96800625964675
+belkin1,Belted Kingfisher,Megaceryle alcyon,Cayman Chemical,2023-05-31 08:13,1.0,42.22805,-83.722282,22,3.5766401547618116
+belkin1,Belted Kingfisher,Megaceryle alcyon,Sugarbush Park,2023-05-29 06:27,1.0,42.3116878,-83.6974311,24,3.9162789357464423
+belkin1,Belted Kingfisher,Megaceryle alcyon,Marsh on N Lima Center Rd,2023-05-27 15:00,1.0,42.3037176,-83.9577206,25,10.612234862903872
+belkin1,Belted Kingfisher,Megaceryle alcyon,Wood Duck Bayou,2023-05-27 10:47,1.0,42.3165,-83.7848028,26,3.3183902434130266
+belkin1,Belted Kingfisher,Megaceryle alcyon,Bird Hills Nature Area,2023-05-27 09:42,1.0,42.3042843,-83.7607666,26,2.115012656407164
+belkin1,Belted Kingfisher,Megaceryle alcyon,Washtenaw - Prairie Oaks Ecological Station (private),2023-05-26 09:50,1.0,42.2514963,-83.8662332,27,5.932624368182568
+belkin1,Belted Kingfisher,Megaceryle alcyon,Barton Nature Area,2023-05-26 08:11,1.0,42.3044517,-83.7555492,27,2.103058479966272
+belkin1,Belted Kingfisher,Megaceryle alcyon,Burlington Building/Briarcrest Pond,2023-05-24 09:53,1.0,42.245315,-83.745769,29,2.029801164284269
+belkin1,Belted Kingfisher,Megaceryle alcyon,Foster Nature Area,2023-05-23 18:29,1.0,42.3165432,-83.768177,29,3.0188760922752786
+baleag,Bald Eagle,Haliaeetus leucocephalus,Loonfeather Point Park,2023-06-21 08:44,1.0,42.2198762,-83.5836702,1,9.525773839997434
+baleag,Bald Eagle,Haliaeetus leucocephalus,Lillie Park,2023-06-18 10:56,1.0,42.2264518,-83.6985254,4,4.361152961414697
+baleag,Bald Eagle,Haliaeetus leucocephalus,"8835 Lincoln Dr, Whitmore Lake US-MI 42.41330, -83.75868",2023-06-14 19:27,1.0,42.413301,-83.758678,7,9.617762034326928
+baleag,Bald Eagle,Haliaeetus leucocephalus,1 Sparrow Nest,2023-06-13 08:00,1.0,42.3249837,-83.8020802,9,4.28002871069893
+baleag,Bald Eagle,Haliaeetus leucocephalus,Kosch-Headwaters Preserve and Springhill Nature Preserve,2023-06-12 12:10,1.0,42.3162417,-83.5996056,9,8.458349694564868
+baleag,Bald Eagle,Haliaeetus leucocephalus,LeFurge Woods Nature Preserve,2023-06-12 10:13,1.0,42.2866593,-83.6015797,10,7.889022186549761
+baleag,Bald Eagle,Haliaeetus leucocephalus,Chelsea SGA--Four Mile Lake,2023-06-11 11:07,1.0,42.3291717,-83.9686775,11,11.613584887146802
+baleag,Bald Eagle,Haliaeetus leucocephalus,Conservancy Farm,2023-06-11 10:18,1.0,42.2927626,-83.5966498,11,8.19576456214175
+baleag,Bald Eagle,Haliaeetus leucocephalus,"2518–2758 W Huron River Dr, Ann Arbor US-MI 42.31532, -83.78326",2023-06-10 20:27,1.0,42.315315,-83.783264,11,3.209397783494809
+baleag,Bald Eagle,Haliaeetus leucocephalus,DeVine Preserve,2023-06-10 10:33,3.0,42.2726409,-83.8490295,12,4.84393316594036
+baleag,Bald Eagle,Haliaeetus leucocephalus,Dyer Farm,2023-06-04 19:53,1.0,42.340561,-83.652073,17,6.976823347137638
+baleag,Bald Eagle,Haliaeetus leucocephalus,Washtenaw - Prairie Oaks Ecological Station (private),2023-06-04 16:10,1.0,42.2514963,-83.8662332,17,5.932624368182568
+baleag,Bald Eagle,Haliaeetus leucocephalus,Huron River Oxbow,2023-06-04 13:52,1.0,42.3127811,-83.7916523,17,3.283744707486553
+baleag,Bald Eagle,Haliaeetus leucocephalus,Peninsular Park,2023-06-04 09:52,1.0,42.2566989,-83.6239918,18,6.798859182036751
+baleag,Bald Eagle,Haliaeetus leucocephalus,Hudson Mills Metropark,2023-05-31 10:45,1.0,42.3831,-83.91289,22,11.066948718739374
+baleag,Bald Eagle,Haliaeetus leucocephalus,North Bay Park/Ford Lake Boardwalk,2023-05-31 09:31,1.0,42.2282671,-83.6102566,22,8.044026547160078
+baleag,Bald Eagle,Haliaeetus leucocephalus,Brown Park (Mary Beth Doyle Park),2023-05-30 08:43,1.0,42.2411953,-83.7111855,23,3.172923540500966
+baleag,Bald Eagle,Haliaeetus leucocephalus,South Pond Central--AABBS Point 2B,2023-05-28 07:27,1.0,42.2657857,-83.6858733,25,3.5658323819811195
+baleag,Bald Eagle,Haliaeetus leucocephalus,South Pond,2023-05-28 06:25,1.0,42.2680362,-83.6880541,25,3.43340550193348
+baleag,Bald Eagle,Haliaeetus leucocephalus,Wood Duck Bayou,2023-05-27 10:47,1.0,42.3165,-83.7848028,26,3.3183902434130266
+baleag,Bald Eagle,Haliaeetus leucocephalus,Barton Pond,2023-05-24 15:09,1.0,42.3126558,-83.7561071,28,2.6698865751334764
+baleag,Bald Eagle,Haliaeetus leucocephalus,Home,2023-05-23 13:45,1.0,42.285329,-83.7606416,29,0.8425478911203733

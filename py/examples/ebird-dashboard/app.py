@@ -6,7 +6,6 @@ from pathlib import Path
 import ipyleaflet as L
 import matplotlib.pyplot as plt
 import pandas as pd
-import shiny.experimental as x
 from htmltools import Tag
 from ipywidgets import Layout
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
@@ -42,6 +41,7 @@ ann_arbor_lat_lon = [42.273991, -83.754550]
 
 # A function to query ebird_data for records that match a given species name, a minimum distance in miles, and a maximum number of days back
 def get_records(species_name: str, min_distance_mi: float, max_days_back: int):
+    print("get_records", species_name, min_distance_mi, max_days_back)
     return ebird_data[
         (ebird_data["comName"] == species_name)
         & (ebird_data["distance_mi"] <= min_distance_mi)
@@ -122,7 +122,16 @@ app_ui = sc.page_dashboard(
         # Value boxes are 4 rows tall
         # sc.grid_item(ui.output_text("results_blurb")),
         sc.grid_item(
-            sc.output_data_frame("results_table"),
+            sc.value_box(
+                value="100",
+                subvalue="things and stuff",
+                title="Lots of things",
+            ),
+            sc.value_box(
+                value="many",
+                subvalue="Others",
+                title="Birds",
+            ),
             width=2,
             height=3,
         ),
@@ -202,10 +211,10 @@ def server(input: Inputs, output: Outputs, session: Session):
     def distogram():
         plt.hist(ebird_results()["distance_mi"], input.bins(), density=True)
 
-    @output
-    @sc.data_grid(height="500px", row_selection=True)
-    def results_table():
-        return ebird_results()
+    # @output
+    # @sc.output_data_frame(height="500px", row_selection=True)
+    # def results_table():
+    #     return ebird_results()
 
     @output
     @render.text
