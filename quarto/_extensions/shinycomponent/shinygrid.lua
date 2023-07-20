@@ -54,24 +54,20 @@ return {
         quarto.doc.add_html_dependency(scUtils.scHtmlDep)
 
         -- TODO: Walk over the wrappedChildren blocks and turn each outer div into a <shiny-card> element
-        local wrappedChildren = pandoc.structure.make_sections(el.content)
-        el.content = wrappedChildren:walk({
+        el.content = pandoc.structure.make_sections(el.content):walk({
           traversal = "topdown",
           Div = function(child)
             -- Check if the child is a section and has a non empty identifier property
             -- If so, wrap it in a shiny-card element
             if child.classes:includes("section") and child.identifier ~= "" then
-              local children = child.content
-              children:insert(1, pandoc.RawInline("html", "<shiny-card>"))
-              children:insert(pandoc.RawInline("html", "</shiny-card>"))
-
-              -- Return false as second value to stop the walk from going deeper
-              return children, false;
+              return scUtils.wrapInCustomElement("shiny-card", child)
             end
+          end,
+          Header = function(child)
+            -- Replace header with a custom element so pandoc/quarto dont get confused about sections
+            return scUtils.wrapInCustomElement("shiny-card-header", child);
           end
         })
-
-
 
         return scUtils.wrapInCustomElement("shiny-grid", el)
       end
