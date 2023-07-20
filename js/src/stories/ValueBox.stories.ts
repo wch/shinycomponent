@@ -82,3 +82,24 @@ export const small: Story = {
     ${sampleBoxes}
   </div>`,
 };
+
+export const multiSized: Story = {
+  render: () => html` <div
+    style="display: flex; flex-direction: column; gap: var(--size-s);"
+  >
+    <h2>Varying Sizes</h2>
+    ${[500, 400, 300, 200, 100].map(
+      (size) => html`
+        <value-box
+          style="max-width: ${size}px;"
+          title="Product Sales"
+          subtitle="In units"
+          value="1,250"
+          subvalue="This month"
+          bg="blue"
+          icon="fa:money"
+        ></value-box>
+      `
+    )}
+  </div>`,
+};

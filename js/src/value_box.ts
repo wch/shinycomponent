@@ -34,6 +34,10 @@ export class ValueBox extends LitElement {
 
   static styles = [
     css`
+      * {
+        box-sizing: border-box;
+      }
+
       :host {
         --bg-color: var(--surface-1);
         --text-color: var(--text-1);
@@ -44,17 +48,29 @@ export class ValueBox extends LitElement {
         max-width: 400px;
         background-color: var(--bg-color);
         color: var(--text-color);
-        padding: var(--size-m);
         border-radius: var(--radius-m);
         box-shadow: var(--shadow-m);
+        overflow: hidden;
+
+        /* Setup container query context so we can dynamically layout and size
+        things in response to embeding environment */
+        container-type: inline-size;
+        container-name: vbox;
+      }
+
+      .container {
+        --font-size-root: var(--font-size-m);
+        --icon-size: 15cqi;
+
+        height: 100%;
+        padding: var(--size-m);
         display: grid;
         gap: var(--size-s);
         grid-template-areas:
           "title icon"
           "value icon";
-
-        /* TODO: Deal with this eventually */
-        overflow: hidden;
+        grid-template-columns: 1fr auto;
+        align-items: center;
       }
 
       .title {
@@ -62,8 +78,22 @@ export class ValueBox extends LitElement {
       }
 
       .title .main {
-        font-size: var(--font-size-l);
+        font-size: calc(var(--font-size-root) * 1.3);
         font-weight: var(--font-weight-bold);
+      }
+
+      @container vbox (width < 200px) {
+        .container {
+          /* Switch to a stacked orientation when the box is small */
+          --font-size-root: clamp(var(--font-size-s), 3cqi, var(--font-size-l));
+          --icon-size: 35cqi;
+
+          grid-template-areas:
+            "icon"
+            "title"
+            "value";
+          grid-template-columns: 1fr;
+        }
       }
 
       .value {
@@ -71,24 +101,24 @@ export class ValueBox extends LitElement {
       }
 
       .value .main {
-        font-size: var(--font-size-h1);
+        font-size: calc(var(--font-size-root) * 1.8);
         font-family: var(--font-mono);
       }
 
       .subvalue {
-        margin-top: calc(-1 * var(--size-xs));
+        margin-top: calc(-1 * var(--size-xxs));
       }
 
       .subtitle,
       .subvalue {
-        font-size: var(--font-size-m);
+        font-size: calc(var(--font-size-root) * 0.95);
         opacity: 0.8;
         font-style: italic;
       }
 
       .icon {
         grid-area: icon;
-        font-size: var(--size-xl);
+        font-size: var(--icon-size);
         display: grid;
         place-content: center;
       }
@@ -146,26 +176,28 @@ export class ValueBox extends LitElement {
 
   render() {
     return html`
-      <div class="title">
-        <div class="main">
-          <slot name="title">${this.title}</slot>
+      <div class="container">
+        <div class="title">
+          <div class="main">
+            <slot name="title">${this.title}</slot>
+          </div>
+          <div class="subtitle">
+            <slot name="subtitle">${this.subtitle}</slot>
+          </div>
         </div>
-        <div class="subtitle">
-          <slot name="subtitle">${this.subtitle}</slot>
+        <div class="value">
+          <div class="main">
+            <slot name="value">${sanatizeValue(this.value)}</slot>
+          </div>
+          <div class="subvalue">
+            <slot name="subvalue">${this.subvalue}</slot>
+          </div>
         </div>
-      </div>
-      <div class="value">
-        <div class="main">
-          <slot name="value">${sanatizeValue(this.value)}</slot>
+        <div class="icon">
+          <slot name="icon">
+            <shiny-icon name=${this.icon}></shiny-icon>
+          </slot>
         </div>
-        <div class="subvalue">
-          <slot name="subvalue">${this.subvalue}</slot>
-        </div>
-      </div>
-      <div class="icon">
-        <slot name="icon">
-          <shiny-icon name=${this.icon}></shiny-icon>
-        </slot>
       </div>
     `;
   }
