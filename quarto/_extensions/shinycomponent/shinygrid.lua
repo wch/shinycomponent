@@ -6,9 +6,7 @@ local gridChildrenToCards = require "gridChildrenToCards"
 local extractPlotNode = function(node)
   local isPara = node.tag == "Para"
 
-  if not isPara then
-    return nil
-  end
+  if not isPara then return nil end
 
   local firstChild = node.content[1]
 
@@ -20,6 +18,32 @@ local extractPlotNode = function(node)
 end
 
 
+-- Filter that is run on the children of a grid container to properly format them into cards etc.
+local formatGridChildren = {
+  Div = function(child)
+    -- Check if the child is a section and has a non empty identifier property
+    -- If so, wrap it in a shiny-card element
+    if child.classes:includes("section") and not child.classes:includes("no-card") and child.identifier ~= "" then
+      -- If first child is a header element, tag the card with the header class
+      -- so we know to strip the header out in a later filter step
+      if child.content[1].tag == "Header" then
+        child.content[1].classes:insert("sc-card-header")
+      end
+
+      return scUtils.wrapInCustomElement("shiny-card", child)
+    end
+  end
+}
+
+local fixHeaders = {
+  Header = function(child)
+    -- Replace header for cards with a custom element so pandoc/quarto dont get
+    -- confused about sections
+    if child.classes:includes("sc-card-header") then
+      return scUtils.wrapInCustomElement("shiny-card-header", child)
+    end
+  end
+}
 
 
 return {
@@ -27,52 +51,23 @@ return {
     -- This needs to be top level nested so we know it runs before the other
     -- filters and thus lets us know that we're in dashboard mode as set by the
     -- template
-    Meta = function(meta)
-      -- ensureHtmlDeps()
-    end,
-
-    -- Pandoc = function(doc)
-    --   local blocks = pandoc.List()
-    --   doc.blocks = pandoc.structure.make_sections(doc.blocks)
-    --   return doc
-    -- end
+    Pandoc = function(doc)
+      quarto.doc.add_html_dependency(scUtils.scHtmlDep)
+      -- Wrap sections defined by headers into distinct divs/sections so we can
+      -- traverse into them to apply proper components without needing to walk
+      -- down and find all appropriate children
+      doc.blocks = pandoc.structure.make_sections(doc.blocks)
+      return doc
+    end
   },
   {
-    -- These rawblock filters are used to catch hand-written html to make sure
-    -- we load the right dependencies
-    RawBlock = function(el)
-      if el.format == "html" and el.text:match("<forge%-") then
-        quarto.doc.add_html_dependency(scUtils.forgeHtmlDep)
-      end
-
-      if el.format == "html" and el.text:match("<ml%-") then
-        quarto.doc.add_html_dependency(scUtils.mlHtmlDep)
-      end
-    end,
     Div = function(el)
       if el.classes:includes("sc-grid") then
-        quarto.doc.add_html_dependency(scUtils.scHtmlDep)
-
-        -- TODO: Walk over the wrappedChildren blocks and turn each outer div into a <shiny-card> element
-        el.content = pandoc.structure.make_sections(el.content):walk({
-          traversal = "topdown",
-          Div = function(child)
-            -- Check if the child is a section and has a non empty identifier property
-            -- If so, wrap it in a shiny-card element
-            if child.classes:includes("section") and child.identifier ~= "" then
-              return scUtils.wrapInCustomElement("shiny-card", child)
-            end
-          end,
-          Header = function(child)
-            -- Replace header with a custom element so pandoc/quarto dont get confused about sections
-            return scUtils.wrapInCustomElement("shiny-card-header", child);
-          end
-        })
-
+        -- Walk over the blocks and turn each outer div into a <shiny-card> element
+        el.content = el.content:walk(formatGridChildren):walk(fixHeaders)
         return scUtils.wrapInCustomElement("shiny-grid", el)
       end
       if el.classes:includes("sc-sidebar") then
-        quarto.doc.add_html_dependency(scUtils.scHtmlDep)
         return scUtils.wrapInCustomElement("shiny-sidebar", el)
       end
 
@@ -80,7 +75,6 @@ return {
       -- custom attribute so we can make it dynamically resize with css
       if el.classes:includes("cell-output-display") then
         local plotNode = extractPlotNode(el.content[1])
-
 
         if (not plotNode) then
           return nil
@@ -97,5 +91,18 @@ return {
       end
     end,
 
+    -- These rawblock filters are used to catch hand-written html to make sure
+    -- we load the right dependencies
+    RawBlock = function(el)
+      if el.format ~= "html" then return nil end
+
+      if el.text:match("<forge%-") then
+        quarto.doc.add_html_dependency(scUtils.forgeHtmlDep)
+      end
+
+      if el.text:match("<ml%-") then
+        quarto.doc.add_html_dependency(scUtils.mlHtmlDep)
+      end
+    end,
   }
 }

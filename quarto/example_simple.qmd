@@ -6,19 +6,24 @@ execute:
 ---
 
 
-::: {.sc-grid nRows=1 nCols=2}
-
+::: {.sc-grid nRows=2 nCols=2}
 
 ### A
 Item A
 
 
-### B
-Item B
+### B {.no-card}
+Item B (No card)
+
+### C
+Item C
+
+
+### D
+Item D
 
 
 :::
-
 
 
 ## Sidebar {.sc-sidebar}
