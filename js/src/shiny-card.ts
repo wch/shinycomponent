@@ -122,10 +122,11 @@ export class ShinyCard extends LitElement {
     }
 
     /* Make block-layout slotted children stretch without neccesary needing to
-    specify it themselves. This will leave text alone etc. It's unclear if this
-    list should be expanded or not or if this is too strong of a selector but it
-    seems reasonable. */
-    ::slotted(:is(div, section)) {
+    specify it themselves. There's a special exception for inputs which we put
+    into divs. This will leave text alone etc. It's unclear if this list should
+    be expanded or not or if this is too strong of a selector but it seems
+    reasonable. */
+    ::slotted(:is(div:not(.shiny-input-container), section)) {
       flex: 1;
     }
 
