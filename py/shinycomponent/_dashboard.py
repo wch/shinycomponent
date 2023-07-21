@@ -5,6 +5,7 @@ from typing import Optional
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from ._htmldeps import page_dep
+from ._utils import assign_to_slot
 
 
 def dashboard(
@@ -64,16 +65,14 @@ def dashboard(
         args = (before_nav_slot, *args)
 
     if isinstance(before_navigation, Tag):
-        before_navigation.attrs["slot"] = "before_navigation"
-        args = (before_navigation, *args)
+        args = (assign_to_slot(before_navigation, "before_navigation"), *args)
 
     if isinstance(after_navigation, str):
         after_nav_slot = tags.div(after_navigation, slot="after_navigation")
         args = (*args, after_nav_slot)
 
     if isinstance(after_navigation, Tag):
-        after_navigation.attrs["slot"] = "after_navigation"
-        args = (*args, after_navigation)
+        args = (*args, assign_to_slot(after_navigation, "after_navigation"))
 
     return Tag(
         "shiny-dashboard",

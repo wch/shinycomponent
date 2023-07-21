@@ -3,6 +3,7 @@ from __future__ import annotations
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
+from ._utils import assign_to_slot
 
 
 def sidebar(
@@ -80,7 +81,6 @@ def icon_section(
     if isinstance(icon, str):
         kwargs["icon"] = icon
     else:
-        icon.attrs["slot"] = "icon"
-        args = (icon, *args)
+        args = (assign_to_slot(icon, "icon"), *args)
 
     return Tag("shiny-section", page_dep(), *args, _add_ws=True, **kwargs)
