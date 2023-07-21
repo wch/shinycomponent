@@ -164,7 +164,7 @@ def tall_item(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
 ) -> Tag:
     # return sc.grid_item(sc.grid(*args, nRows=3, nCols=1, **kwargs), height=4)
-    return sc.grid_item(*args, height=4, **kwargs)
+    return sc.grid_item(*args, row_height=4, **kwargs)
 
 
 def show_theme(theme_text: str):
@@ -233,14 +233,14 @@ app_ui = sc.page(
             # Make a grid with 4 rows and 3 columns
             sc.grid(
                 # Blurb takes up 2 of 3 columns
-                sc.grid_item(ui.p(about_puffins_blurb), width=2),
+                sc.grid_item(ui.p(about_puffins_blurb), col_width=2),
                 # Value boxes are 4 rows tall
                 ui.output_ui("value_boxes", container=tall_item),
                 # Scatter plot is 3 rows tall and 2 columns wide
                 sc.grid_item(
                     x.ui.output_plot("scatter", fill=True),
-                    width=2,
-                    height=3,
+                    col_width=2,
+                    row_height=3,
                 ),
                 n_rows=4,
                 n_cols=3,
