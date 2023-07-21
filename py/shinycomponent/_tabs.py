@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import NewType, Optional
 
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
+
+TabTag = NewType("TabTag", Tag)
 
 
 def tab(
@@ -12,7 +14,7 @@ def tab(
     name: str,
     icon: Optional[str] = None,
     **kwargs: TagAttrValue,
-) -> Tag:
+) -> TabTag:
     """
     Wrap content in a tab. When this element is used within the main content area of
     `shinycomponent.dashboard()` or `shinycomponent.page_dashboard()`, it will be
@@ -64,15 +66,20 @@ def tab(
     ~htmltools.Tag
     """
 
-    return Tag(
-        "shiny-tab", page_dep(), *args, name=name, icon=icon, _add_ws=True, **kwargs
+    return TabTag(
+        Tag(
+            "shiny-tab", page_dep(), *args, name=name, icon=icon, _add_ws=True, **kwargs
+        )
     )
+
+
+TabLabelTag = NewType("TabLabelTag", Tag)
 
 
 def tab_label(
     *args: TagChild | TagAttrs,
     **kwargs: TagAttrValue,
-) -> Tag:
+) -> TabLabelTag:
     """
     A custom element representing a label for a tab. Any content put in here will be
     placed next to eachother.
@@ -108,4 +115,4 @@ def tab_label(
     --------
     ~shinycomponent.tab ~shinycomponent.dashboard
     """
-    return Tag("tab-label", page_dep(), *args, _add_ws=True, **kwargs)
+    return TabLabelTag(Tag("tab-label", page_dep(), *args, _add_ws=True, **kwargs))

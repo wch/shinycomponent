@@ -1,17 +1,23 @@
 from __future__ import annotations
 
+from typing import NewType
+
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
+from ._cards import CardTag
 from ._htmldeps import page_dep
+
+GridTag = NewType("GridTag", Tag)
+GridItemTag = NewType("GridItemTag", Tag)
 
 
 def grid(
-    *args: TagChild | TagAttrs,
+    *args: GridItemTag | CardTag | TagChild | TagAttrs,
     n_rows: int = 1,
     n_cols: int = 2,
     align_items: str = "stretch",
     **kwargs: TagAttrValue,
-) -> Tag:
+) -> GridTag:
     """
     Layout elements in a grid with a specified number of rows or columns.
 
@@ -40,15 +46,17 @@ def grid(
     ~htmltools.Tag
     """
 
-    return Tag(
-        "shiny-grid",
-        page_dep(),
-        *args,
-        _add_ws=True,
-        nRows=n_rows,
-        nCols=n_cols,
-        alignItems=align_items,
-        **kwargs,
+    return GridTag(
+        Tag(
+            "shiny-grid",
+            page_dep(),
+            *args,
+            _add_ws=True,
+            nRows=n_rows,
+            nCols=n_cols,
+            alignItems=align_items,
+            **kwargs,
+        )
     )
 
 
@@ -58,7 +66,7 @@ def grid_item(
     height: int = 1,
     card_styled: bool = True,
     **kwargs: TagAttrValue,
-) -> Tag:
+) -> GridItemTag:
     """
     A element to be placed on a grid defined by shinycomponent.grid.
 
@@ -87,13 +95,15 @@ def grid_item(
     ~htmltools.Tag
     """
 
-    return Tag(
-        "shiny-grid-item",
-        page_dep(),
-        *args,
-        width=width,
-        height=height,
-        cardStyled=card_styled,
-        _add_ws=True,
-        **kwargs,
+    return GridItemTag(
+        Tag(
+            "shiny-grid-item",
+            page_dep(),
+            *args,
+            width=width,
+            height=height,
+            cardStyled=card_styled,
+            _add_ws=True,
+            **kwargs,
+        )
     )

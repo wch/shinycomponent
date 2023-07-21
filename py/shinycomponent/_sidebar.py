@@ -1,14 +1,20 @@
 from __future__ import annotations
 
+from typing import NewType
+
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
 from ._utils import assign_to_slot
 
+SidebarTag = NewType("SidebarTag", Tag)
+
 
 def sidebar(
-    *args: TagChild | TagAttrs, open_width_px: int = 320, **kwargs: TagAttrValue
-) -> Tag:
+    *args: IconSectionTag | TagChild | TagAttrs,
+    open_width_px: int = 320,
+    **kwargs: TagAttrValue,
+) -> SidebarTag:
     """
     Collapsible sidebar for use in dashboards and cards.
 
@@ -31,21 +37,26 @@ def sidebar(
     ~shinycomponent.card
     ~htmltools.Tag
     """
-    return Tag(
-        "shiny-sidebar",
-        page_dep(),
-        *args,
-        _add_ws=False,
-        openWidthPx=open_width_px,
-        **kwargs,
+    return SidebarTag(
+        Tag(
+            "shiny-sidebar",
+            page_dep(),
+            *args,
+            _add_ws=False,
+            openWidthPx=open_width_px,
+            **kwargs,
+        )
     )
+
+
+IconSectionTag = NewType("IconSectionTag", Tag)
 
 
 def icon_section(
     *args: TagChild | TagAttrs,
     icon: str | Tag,
     **kwargs: TagAttrValue,
-) -> Tag:
+) -> IconSectionTag:
     """
     A section with a left-side icon. Can be paired with sidebar to create a sidebar that
     will collapse to icons
@@ -83,4 +94,6 @@ def icon_section(
     else:
         args = (assign_to_slot(icon, "icon"), *args)
 
-    return Tag("shiny-section", page_dep(), *args, _add_ws=True, **kwargs)
+    return IconSectionTag(
+        Tag("shiny-section", page_dep(), *args, _add_ws=True, **kwargs)
+    )
