@@ -1,22 +1,22 @@
-import { LitElement, css, html } from "lit";
 import { property } from "lit/decorators.js";
+import { ShinyCard } from "./shiny-card";
 
 /**
  * A custom element representing a grid item.
  * Inherits from ShinyCard.
  */
-export class GridItem extends LitElement {
+export class GridItem extends ShinyCard {
   /**
    * The width of the grid item in columns of the enclosing grid.
    * Defaults to 1.
    */
-  @property({ type: Number }) width: number = 1;
+  @property({ type: Number }) colWidth: number = 1;
 
   /**
    * The height of the grid item in rows of the enclosing grid.
    * Defaults to 1.
    */
-  @property({ type: Number }) height: number = 1;
+  @property({ type: Number }) rowHeight: number = 1;
 
   /**
    * Whether to style the grid item as a card. Aka wrapping the children in a
@@ -24,29 +24,14 @@ export class GridItem extends LitElement {
    */
   @property({ type: Boolean }) cardStyled: boolean = true;
 
-  static styles = css`
-    :host {
-      display: flex;
-      flex-direction: column;
-    }
-  `;
-
   connectedCallback() {
     super.connectedCallback();
 
     // Let the grid control height for this card variant
     this.style.setProperty(
       "grid-area",
-      `span ${this.height} / span ${this.width}`
+      `span ${this.rowHeight} / span ${this.colWidth}`
     );
-  }
-
-  render() {
-    const children = html`<slot></slot>`;
-
-    return this.cardStyled
-      ? html`<shiny-card>${children}</shiny-card>`
-      : children;
   }
 }
 

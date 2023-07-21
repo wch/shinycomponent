@@ -29,7 +29,7 @@ export class ShinyCard extends LitElement {
    * @attr height
    */
   @property()
-  height?: "content" | number;
+  rowHeight?: "content" | number;
 
   /**
    * Whether the content of the card should be centered or not.
@@ -146,10 +146,12 @@ export class ShinyCard extends LitElement {
   connectedCallback() {
     super.connectedCallback();
 
-    if (this.height) {
+    if (this.rowHeight) {
       // If the height is a pure number, add px to the end of it. Otherwise assume it's a css length and just use it as providede
       const height =
-        typeof this.height === "number" ? `${this.height}px` : this.height;
+        typeof this.rowHeight === "number"
+          ? `${this.rowHeight}px`
+          : this.rowHeight;
       this.style.setProperty("--card-h", height);
     }
   }

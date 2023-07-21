@@ -109,31 +109,7 @@ app_ui = sc.page_dashboard(
         ),
         sc.grid_item(
             output_widget("map", width="100%", height="100%"),
-            width=2,
-            height=3,
-        ),
-        sc.grid_item(
-            {"class": "fluid-type"},
-            ui.output_text("results_blurb"),
-            width=1,
-            height=2,
-            centercontent=True,
-        ),
-        # Value boxes are 4 rows tall
-        # sc.grid_item(ui.output_text("results_blurb")),
-        sc.grid_item(
-            sc.value_box(
-                value="100",
-                subvalue="things and stuff",
-                title="Lots of things",
-            ),
-            sc.value_box(
-                value="many",
-                subvalue="Others",
-                title="Birds",
-            ),
-            width=2,
-            height=3,
+            col_width=2,
         ),
         sc.grid_item(
             sc.card_header("Distance from Ann Arbor"),
@@ -148,10 +124,23 @@ app_ui = sc.page_dashboard(
                     marks=[5, 15, 25, 35, 45, 55],
                 ),
             ),
-            width=1,
-            height=3,
+            col_width=2,
         ),
-        n_rows=6,
+        sc.grid_item(
+            sc.value_box(
+                value="100",
+                subvalue="things and stuff",
+                title="Lots of things",
+            ),
+            sc.value_box(
+                value="many",
+                subvalue="Others",
+                title="Birds",
+            ),
+            # width=1,
+            # height=3,
+        ),
+        n_rows=2,
         n_cols=3,
     ),
     sc.dashboard_footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
@@ -215,6 +204,11 @@ def server(input: Inputs, output: Outputs, session: Session):
     # @sc.output_data_frame(height="500px", row_selection=True)
     # def results_table():
     #     return ebird_results()
+
+    @output
+    @render.text
+    def common_name():
+        return species_info()["comName"]
 
     @output
     @render.text
