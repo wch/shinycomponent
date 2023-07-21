@@ -1,17 +1,21 @@
-from typing import Optional
+from typing import NewType, Optional
 
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
 
+CardTag = NewType("CardTag", Tag)
+CardHeaderTag = NewType("CardHeaderTag", Tag)
+CardFooterTag = NewType("CardFooterTag", Tag)
+
 
 def card(
-    *args: TagChild | TagAttrs,
+    *args: CardHeaderTag | CardFooterTag | TagChild | TagAttrs,
     height: Optional[str] = None,
     no_fill: bool = False,
     center_content: bool = False,
     **kwargs: TagAttrValue
-) -> Tag:
+) -> CardTag:
     """
     A card component with flexible content sizing and optional header and footer support.
 
@@ -56,19 +60,21 @@ def card(
     ~htmltools.Tag
     """
 
-    return Tag(
-        "shiny-card",
-        page_dep(),
-        *args,
-        height=height,
-        noFill=no_fill,
-        centerContent=center_content,
-        _add_ws=True,
-        **kwargs
+    return CardTag(
+        Tag(
+            "shiny-card",
+            page_dep(),
+            *args,
+            height=height,
+            noFill=no_fill,
+            centerContent=center_content,
+            _add_ws=True,
+            **kwargs
+        )
     )
 
 
-def card_header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> Tag:
+def card_header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardHeaderTag:
     """
     A header for a card component. Sticks to top of cards defined with `shinycomponent.card()`.
 
@@ -89,10 +95,12 @@ def card_header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> Tag:
     ~shinycomponent.card_footer
     ~htmltools.Tag
     """
-    return Tag("shiny-card-header", page_dep(), *args, _add_ws=True, **kwargs)
+    return CardHeaderTag(
+        Tag("shiny-card-header", page_dep(), *args, _add_ws=True, **kwargs)
+    )
 
 
-def card_footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> Tag:
+def card_footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardFooterTag:
     """
     A footer for a card component. Sticks to bottom of cards defined with `shinycomponent.card()`.
 
@@ -113,4 +121,6 @@ def card_footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> Tag:
     ~shinycomponent.card_header
     ~htmltools.Tag
     """
-    return Tag("shiny-card-footer", page_dep(), *args, _add_ws=True, **kwargs)
+    return CardFooterTag(
+        Tag("shiny-card-footer", page_dep(), *args, _add_ws=True, **kwargs)
+    )

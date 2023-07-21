@@ -1,22 +1,35 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import NewType, Optional
 
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 
+from ._grids import GridTag
 from ._htmldeps import page_dep
+from ._sidebar import SidebarTag
+from ._tabs import TabTag
 from ._utils import assign_to_slot
+
+DashboardTag = NewType("DashboardTag", Tag)
+DashboardFooterTag = NewType("DashboardFooterTag", Tag)
+DashboardHeaderTag = NewType("DashboardHeaderTag", Tag)
 
 
 def dashboard(
-    *args: TagChild | TagAttrs,
+    *args: SidebarTag
+    | DashboardHeaderTag
+    | DashboardFooterTag
+    | TabTag
+    | GridTag
+    | TagChild
+    | TagAttrs,
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
     tabs_on_side: bool = False,
     before_navigation: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
-) -> Tag:
+) -> DashboardTag:
     """
     A dashboard layout that can take any combination of a sidebar (with `sidebar()`) and
     header or footer. If `tab()`s are included, they will be reflected in the header.
@@ -74,20 +87,28 @@ def dashboard(
     if isinstance(after_navigation, Tag):
         args = (*args, assign_to_slot(after_navigation, "after_navigation"))
 
-    return Tag(
-        "shiny-dashboard",
-        page_dep(),
-        *args,
-        _add_ws=False,
-        dynamicHeight=dynamic_height,
-        selectedTabIndex=selected_tab_index,
-        tabsOnSide=tabs_on_side,
-        **kwargs,
+    return DashboardTag(
+        Tag(
+            "shiny-dashboard",
+            page_dep(),
+            *args,
+            _add_ws=False,
+            dynamicHeight=dynamic_height,
+            selectedTabIndex=selected_tab_index,
+            tabsOnSide=tabs_on_side,
+            **kwargs,
+        )
     )
 
 
 def page_dashboard(
-    *args: TagChild | TagAttrs,
+    *args: SidebarTag
+    | DashboardHeaderTag
+    | DashboardFooterTag
+    | TabTag
+    | GridTag
+    | TagChild
+    | TagAttrs,
     title: Optional[str] = None,
     lang: Optional[str] = None,
     dynamic_height: bool = False,
@@ -149,7 +170,7 @@ def page_dashboard(
 
 def dashboard_footer(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> Tag:
+) -> DashboardFooterTag:
     """
     A footer for a dashboard. Sticks to bottom of dashboard layouts defined with
     `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
@@ -171,12 +192,14 @@ def dashboard_footer(
     ~shinycomponent.page_dashboard
     ~htmltools.Tag
     """
-    return Tag("shiny-dashboard-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
+    return DashboardFooterTag(
+        Tag("shiny-dashboard-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
+    )
 
 
 def dashboard_header(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> Tag:
+) -> DashboardHeaderTag:
     """
     A header for a dashboard. Sticks to top of dashboard layouts defined with
     `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
@@ -198,4 +221,6 @@ def dashboard_header(
     ~shinycomponent.page_dashboard
     ~htmltools.Tag
     """
-    return Tag("div", page_dep(), *args, slot="header", _add_ws=_add_ws, **kwargs)
+    return DashboardHeaderTag(
+        Tag("div", page_dep(), *args, slot="header", _add_ws=_add_ws, **kwargs)
+    )
