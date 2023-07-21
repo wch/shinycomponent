@@ -1,5 +1,38 @@
-import { LitElement, css, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { LitElement, TemplateResult, css, html } from "lit";
+import { customElement, property, state } from "lit/decorators.js";
+import { extractTabsFromElements, selectTabByIndex } from "./TabBar";
+import { CustomElementInputGetValue } from "./shiny/make-input-binding";
+import { TabLabel } from "./tab";
+import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
+
+TabLabel;
+/**
+ * Information about a tab in the dashboard that is used for rendering and
+ * choosing tabs
+ */
+type TabInfo = {
+  /**
+   * Name of the tab as provided by the tab's name attribute
+   */
+  name: string;
+  /**
+   * Value of the tab as provided by the tab's name attribute but with spaces
+   * replaced by underscores. Needed for the select input that is used in mobile
+   */
+  value: string;
+  /**
+   * The tab element itself
+   */
+  el: HTMLElement;
+  /**
+   * The tab label element. If provided in the Dom as a tab-label element, then
+   * this is the element itself. Otherwise, it's a template result that is
+   * rendered as a tab-label element
+   */
+  label: HTMLElement | TemplateResult;
+};
+
+export type TabElements = TabInfo[];
 
 /**
  * A custom element that acts like a flexible layout container. It can have a
@@ -20,7 +53,10 @@ import { customElement, property } from "lit/decorators.js";
  * @cssprop --container-bg - The surface color of the container.
  */
 @customElement("sc-container")
-export class Container extends LitElement {
+export class Container
+  extends LitElement
+  implements CustomElementInputGetValue<string>
+{
   /**
    * The height of the container. If a number is used, the height wil be set to that
    * number in pixels. If "content" is used, then the container will take the minimum
@@ -46,8 +82,28 @@ export class Container extends LitElement {
    *
    * @attr nofill
    */
-  @property({ type: Boolean, reflect: true })
-  nofill: boolean = false;
+  @property({ type: Boolean, reflect: true }) nofill: boolean = false;
+
+  /**
+   * Whether the dashboard should have sidebar navigation. Only used if the dashboard has tabs.
+   */
+  @property({ type: Boolean, reflect: true }) tabsOnSide: boolean = false;
+
+  /**
+   * The index of the selected tab. Only used if the dashboard has tabs.
+   */
+  @property({ type: Number }) selectedTabIndex: number = 0;
+
+  /**
+   * An array of objects that contain information about each tab in the dashboard.
+   */
+  @state() tabs: TabElements = [];
+
+  /**
+   * Since the container will report the current tab selected (if tabs are
+   * present), we need to define a onChangeCallaback
+   */
+  onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
   static styles = css`
     * {
@@ -67,10 +123,11 @@ export class Container extends LitElement {
       flex: 1 1 auto;
       display: grid;
       grid-template:
-        "header header" auto
-        "sidebar body" 1fr
-        "footer footer" auto /
-        auto 1fr;
+        "vtabs header  header" auto
+        "vtabs tabs    tabs" auto
+        "vtabs sidebar body" 1fr
+        "vtabs footer  footer" auto /
+        auto auto 1fr;
       isolation: isolate;
       max-height: 100%;
 
@@ -81,6 +138,14 @@ export class Container extends LitElement {
       container-type: inline-size;
     }
 
+    :host([tabsOnSide]) {
+      /* grid-template:
+        "header header" auto
+        "sidebar body" 1fr
+        "footer footer" auto /
+        auto 1fr; */
+    }
+
     :host([height]) {
       height: var(--container-h);
       flex: 0 0 var(--container-h);
@@ -89,6 +154,14 @@ export class Container extends LitElement {
     :host([height="content"]) {
       height: fit-content;
       flex-basis: content;
+    }
+
+    tab-bar[orientation="horizontal"] {
+      grid-area: tabs;
+    }
+
+    tab-bar[orientation="vertical"] {
+      grid-area: vtabs;
     }
 
     .header {
@@ -160,16 +233,42 @@ export class Container extends LitElement {
     }
   }
 
+  watchMainSlot(e: Event) {
+    this.tabs = extractTabsFromElements(getElementsFromSlotChangeEvent(e));
+    this.selectTab();
+  }
+
+  selectTab(tabIndex: number = this.selectedTabIndex) {
+    this.selectedTabIndex = tabIndex;
+    selectTabByIndex(this.tabs, tabIndex);
+    this.onChangeCallback(true);
+  }
+
+  currentTabName(): string {
+    return this.tabs[this.selectedTabIndex].name;
+  }
+
+  getValue(): string {
+    return this.currentTabName();
+  }
+
   render() {
     return html`
       <div class="header">
         <slot name="header"></slot>
       </div>
+      <tab-bar
+        .tabs=${this.tabs}
+        @selection=${(e: CustomEvent) => {
+          this.selectTab(e.detail.index);
+        }}
+        orientation=${this.tabsOnSide ? "vertical" : "horizontal"}
+      ></tab-bar>
       <div class="sidebar">
         <slot name="sidebar"></slot>
       </div>
       <div class="body">
-        <slot></slot>
+        <slot @slotchange=${this.watchMainSlot}></slot>
       </div>
       <div class="footer">
         <slot name="footer"></slot>
