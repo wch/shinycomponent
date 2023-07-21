@@ -42,14 +42,15 @@ export class ValueBox extends LitElement {
         --bg-color: var(--surface-1);
         --text-color: var(--text-1);
 
+        display: block;
         height: 100%;
         max-height: 200px;
         min-height: 100px;
         max-width: 400px;
-        background-color: var(--bg-color);
-        color: var(--text-color);
         border-radius: var(--radius-m);
         box-shadow: var(--shadow-m);
+        background-color: var(--bg-color);
+        color: var(--text-color);
         overflow: hidden;
 
         /* Setup container query context so we can dynamically layout and size
