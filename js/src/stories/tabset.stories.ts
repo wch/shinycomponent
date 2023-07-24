@@ -46,7 +46,7 @@ const bodyContent = html` <div slot="before_navigation">Before the nav</div>
   <div slot="after_navigation">After the nav</div>
   <shiny-tab name="Plots" icon="ph:chart-line">
     <shiny-card>
-      <shiny-card-header> Tab A </shiny-card-header>
+      <sc-header> Tab A </sc-header>
       <p>${loremIpsumText}</p>
     </shiny-card>
   </shiny-tab>
