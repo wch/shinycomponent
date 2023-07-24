@@ -95,9 +95,7 @@ def card_header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardHeade
     ~shinycomponent.card_footer
     ~htmltools.Tag
     """
-    return CardHeaderTag(
-        Tag("shiny-card-header", page_dep(), *args, _add_ws=True, **kwargs)
-    )
+    return CardHeaderTag(Tag("sc-header", page_dep(), *args, _add_ws=True, **kwargs))
 
 
 def card_footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardFooterTag:
@@ -121,6 +119,4 @@ def card_footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardFoote
     ~shinycomponent.card_header
     ~htmltools.Tag
     """
-    return CardFooterTag(
-        Tag("shiny-card-footer", page_dep(), *args, _add_ws=True, **kwargs)
-    )
+    return CardFooterTag(Tag("sc-footer", page_dep(), *args, _add_ws=True, **kwargs))

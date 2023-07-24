@@ -39,7 +39,7 @@ type Story = StoryObj;
 
 const bodyContent = html`<shiny-grid nCols="2">
   <shiny-card>
-    <shiny-card-header> A plot </shiny-card-header>
+    <sc-header> A plot </sc-header>
     <output-plot> </output-plot>
   </shiny-card>
   <shiny-card>
@@ -110,10 +110,10 @@ export const cardWithSidebar: Story = {
     style="padding: var(--size-7);background-color: var(--surface-3);max-width:450px;height:550px; display: flex; flex-direction: column;"
   >
     <shiny-card>
-      <shiny-card-header> I am a header </shiny-card-header>
+      <sc-header> I am a header </sc-header>
       <shiny-sidebar> Some controls for my plot </shiny-sidebar>
       <output-plot> </output-plot>
-      <shiny-card-footer> I am a footer </shiny-card-footer>
+      <sc-footer> I am a footer </sc-footer>
     </shiny-card>
   </div>`,
 };

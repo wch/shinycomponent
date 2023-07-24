@@ -40,7 +40,7 @@ local fixHeaders = {
     -- Replace header for cards with a custom element so pandoc/quarto dont get
     -- confused about sections
     if child.classes:includes("sc-card-header") then
-      return scUtils.wrapInCustomElement("shiny-card-header", child)
+      return scUtils.wrapInCustomElement("sc-header", child)
     end
   end
 }

@@ -31,25 +31,39 @@ export const primary: Story = {
 
 export const b: Story = {
   render: () => html`<shiny-card>
-    <h2>Bar</h2>
+    <h2>Fixed height plot</h2>
     <output-plot height="300"> </output-plot>
   </shiny-card>`,
 };
 
 export const c: Story = {
   render: () => html`<shiny-card nofill>
-    <shiny-card-header> I am a header </shiny-card-header>
+    <sc-header> I am a header </sc-header>
     <output-plot> </output-plot>
-    <shiny-card-footer> I am a footer </shiny-card-footer>
+    <sc-footer> I am a footer </sc-footer>
   </shiny-card>`,
 };
 
 export const d: Story = {
   render: () => html`<shiny-card>
-    <shiny-card-header> I am a header </shiny-card-header>
+    <sc-header> I am a header </sc-header>
     <output-plot height="250"> </output-plot>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     <output-plot height="350"> </output-plot>
-    <shiny-card-footer> I am a footer </shiny-card-footer>
+    <sc-footer> I am a footer </sc-footer>
   </shiny-card>`,
+};
+
+export const tabbedContent: Story = {
+  render: () => html`<shiny-card>
+    <shiny-tab name="plot">
+      <span>I am a plot</span>
+      <output-plot> </output-plot>
+    </shiny-tab>
+    <shiny-tab name="prose">
+      <span>I am some prose</span>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam</p>
+    </shiny-tab>
+    <sc-footer> I am a footer </sc-footer>
+  </shiny-card> `,
 };

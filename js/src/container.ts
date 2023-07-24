@@ -1,4 +1,4 @@
-import { LitElement, TemplateResult, css, html } from "lit";
+import { CSSResultGroup, LitElement, TemplateResult, css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { extractTabsFromElements, selectTabByIndex } from "./TabBar";
 import { CustomElementInputGetValue } from "./shiny/make-input-binding";
@@ -44,13 +44,13 @@ export type TabElements = TabInfo[];
  *
  * @cssprop --container-padding - The padding of the container.
  * @cssprop --container-radius - The border radius of the container.
- * @cssprop --child-radius - The border radius of the container's children. Defaults
+ * @cssprop --container-child-radius - The border radius of the container's children. Defaults
  * to nothing
- * @cssprop --container-h - The height of the container. Typically set by the `height`
- * attribute instead of this variable.
- * @cssprop --spacing - The spacing between elements in the container.
+ * @cssprop --container-border - The border of the container.
  * @cssprop --container-shadow - The shadow of the container.
  * @cssprop --container-bg - The surface color of the container.
+ * @cssprop --container-h - The height of the container. Typically set by the `height`
+ * attribute instead of this variable.
  */
 @customElement("sc-container")
 export class Container
@@ -103,20 +103,27 @@ export class Container
    */
   onChangeCallback: (x: boolean) => void = (x: boolean) => {};
 
-  static styles = css`
+  static styles: CSSResultGroup = css`
     * {
       box-sizing: border-box;
     }
 
     :host {
-      --container-padding: var(--item-padding, var(--size-m));
-      --content-padding: var(--container-padding);
-      --content-gap: var(--spacing, var(--size-s));
+      /* All the available css properties to customize. Some have defaults and
+      some dont */
+      --_container-bg: var(--container-bg);
+      --_container-padding: var(--container-padding, var(--size-s));
+      --_container-gap: var(--container-gap, var(--_container-padding));
+      --_container-border: var(--container-border, var(--border-standard));
+      --_container-shadow: var(--container-shadow);
+      --_container-radius: var(--container-radius);
+      --_container-child-radius: var(--container-child-radius);
+      --_container-h: var(--container-h, 100%);
 
-      border: var(--border-standard);
-      border-radius: var(--container-radius);
-      box-shadow: var(--container-shadow);
-      background-color: var(--container-bg);
+      border: var(--_container-border);
+      border-radius: var(--_container-radius);
+      box-shadow: var(--_container-shadow);
+      background-color: var(--_container-bg);
       overflow: hidden;
       flex: 1 1 auto;
       display: grid;
@@ -127,8 +134,7 @@ export class Container
         "vtabs footer  footer" auto /
         auto auto 1fr;
       isolation: isolate;
-
-      height: var(--container-h, 100%);
+      height: var(--_container-h);
       max-height: 100%;
 
       /* We use inline-size here because the more broad "size" value will force
@@ -147,8 +153,8 @@ export class Container
     }
 
     :host([height]) {
-      height: var(--container-h);
-      flex: 0 0 var(--container-h);
+      height: var(--_container-h);
+      flex: 0 0 var(--_container-h);
     }
 
     :host([height="content"]) {
@@ -186,8 +192,8 @@ export class Container
       grid-area: body;
       display: flex;
       flex-direction: column;
-      padding: var(--content-padding);
-      gap: var(--content-gap);
+      padding: var(--_container-padding);
+      gap: var(--_container-gap);
       overflow: auto;
       z-index: 0;
     }
@@ -208,7 +214,7 @@ export class Container
     /* Need to set all children as block display to keep behavior similar to flex */
     :host([nofill]) .body > ::slotted(*) {
       display: block;
-      border-radius: var(--child-radius);
+      border-radius: var(--_container-child-radius);
     }
 
     :host([centercontent]) .body {
@@ -280,11 +286,13 @@ export class ContainerSlot extends LitElement {
     }
 
     :host {
-      --container-padding: var(--item-padding, var(--size-m));
+      /* Use container padding but default back to the container's padding
+      variable if not set specifically on the slot element. */
+      --_pad: var(--container-padding, var(--_container-padding));
 
       display: block;
-      padding-inline: var(--container-padding);
-      padding-block: var(--container-padding);
+      padding-inline: var(--_pad);
+      padding-block: var(--_pad);
     }
 
     :host([slot="header"]) {
