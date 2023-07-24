@@ -66,16 +66,14 @@ export class Container
    *
    * @attr height
    */
-  @property()
-  rowHeight?: "content" | number;
+  @property() height?: "content" | number;
 
   /**
    * Whether the content of the container should be centered or not.
    *
    * @attr centercontent
    */
-  @property({ type: Boolean, reflect: true })
-  centercontent: boolean = false;
+  @property({ type: Boolean, reflect: true }) centercontent: boolean = false;
 
   /**
    * Should the contents of the container take their natural size instead of filling remaining space in the container?
@@ -129,6 +127,8 @@ export class Container
         "vtabs footer  footer" auto /
         auto auto 1fr;
       isolation: isolate;
+
+      height: var(--container-h, 100%);
       max-height: 100%;
 
       /* We use inline-size here because the more broad "size" value will force
@@ -183,10 +183,8 @@ export class Container
     }
 
     .body {
-      /* For some reason this prevents scrollbars from appearing when they arent
-      needed on wide contents... I wish there was a more satisfying solution */
-      display: flex;
       grid-area: body;
+      display: flex;
       flex-direction: column;
       padding: var(--content-padding);
       gap: var(--content-gap);
@@ -223,12 +221,10 @@ export class Container
   connectedCallback() {
     super.connectedCallback();
 
-    if (this.rowHeight) {
+    if (this.height) {
       // If the height is a pure number, add px to the end of it. Otherwise assume it's a css length and just use it as providede
       const height =
-        typeof this.rowHeight === "number"
-          ? `${this.rowHeight}px`
-          : this.rowHeight;
+        typeof this.height === "number" ? `${this.height}px` : this.height;
       this.style.setProperty("--container-h", height);
     }
   }

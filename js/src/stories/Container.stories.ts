@@ -32,13 +32,13 @@ export const primary: Story = {
 export const b: Story = {
   render: () => html`<sc-container>
     <sc-header> I am a header </sc-header>
-    <output-plot height="300"> </output-plot>
+    <output-plot> </output-plot>
   </sc-container>`,
 };
 
 export const c: Story = {
   render: () => html`<sc-container nofill>
-    <sc-header> I am a header </sc-header>
+    <sc-header> Using nofill=true </sc-header>
     <output-plot> </output-plot>
     <sc-footer> I am a footer </sc-footer>
   </sc-container>`,
@@ -70,7 +70,7 @@ export const tabbedContent: Story = {
   render: () => html`<sc-container>
     <shiny-tab name="plot">
       <span>I am a plot</span>
-      <output-plot height="250"> </output-plot>
+      <output-plot> </output-plot>
     </shiny-tab>
     <shiny-tab name="prose">
       <span>I am some prose</span>
