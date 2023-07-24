@@ -125,10 +125,10 @@ export class Container
       flex: 1 1 auto;
       display: grid;
       grid-template:
-        "vtabs header  header" auto
+        "header header  header" auto
         "vtabs tabs    tabs" auto
         "vtabs sidebar body" 1fr
-        "vtabs footer  footer" auto /
+        "footer footer  footer" auto /
         auto auto 1fr;
       isolation: isolate;
       height: var(--_container-h);
@@ -139,14 +139,17 @@ export class Container
       width for container queries so that's fine. This is a funny gotcha though
       that isn't obvious */
       container-type: inline-size;
+      container-name: sc-container;
     }
 
-    :host([tabsOnSide]) {
-      /* grid-template:
-        "header header" auto
-        "sidebar body" 1fr
-        "footer footer" auto /
-        auto 1fr; */
+    @container sc-container (width < 400px) {
+      .header,
+      .footer,
+      .sidebar,
+      tab-bar,
+      .body {
+        --_container-padding: var(--container-padding, var(--size-s));
+      }
     }
 
     :host([height]) {
@@ -159,8 +162,13 @@ export class Container
       flex-basis: content;
     }
 
+    tab-bar {
+      padding: var(--_container-padding);
+    }
+
     tab-bar[orientation="horizontal"] {
       grid-area: tabs;
+      padding-block: calc(var(--_container-padding) / 1.5);
     }
 
     tab-bar[orientation="vertical"] {
@@ -296,6 +304,11 @@ export class ContainerSlot extends LitElement {
       display: block;
       padding-inline: var(--_pad);
       padding-block: var(--_pad);
+    }
+
+    :host([slot="header"]),
+    :host([slot="footer"]) {
+      padding-block: calc(var(--_pad) / 1.5);
     }
 
     :host([slot="header"]) {
