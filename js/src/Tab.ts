@@ -1,6 +1,6 @@
 import { css } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { Container } from "../container";
+import { Container } from "./container";
 
 /**
  * A custom element representing a tab that is consumed by the
@@ -41,9 +41,9 @@ export class Tab extends Container {
     css`
       :host {
         /* Map card-scoped variables to the underlying container variables */
-        --container-padding: var(--tab-padding);
-        --container-border: none;
-        --container-h: var(100%);
+        --_container-padding: var(--tab-padding, var(--size-s));
+        --_container-border: none;
+        --_container-shadow: none;
 
         position: relative;
       }

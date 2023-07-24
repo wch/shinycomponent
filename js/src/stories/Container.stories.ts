@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 import { html } from "lit";
+import { Tab } from "../Tab";
 import { Container } from "../container";
 import { OutputPlot } from "../output_plot";
 
 Container;
 OutputPlot;
+Tab;
 
 const meta: Meta = {
   component: "sc-container",
@@ -84,10 +86,12 @@ export const verticalTabbedContent: Story = {
   render: () => html`
     <sc-container tabsOnSide>
       <shiny-tab name="plot">
+        <sc-header> Plot Tab #1</sc-header>
         <span>I am a plot</span>
         <output-plot height="250"> </output-plot>
       </shiny-tab>
       <shiny-tab name="prose">
+        <sc-header> Prose Tab </sc-header>
         <span>I am some prose</span>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam</p>
       </shiny-tab>

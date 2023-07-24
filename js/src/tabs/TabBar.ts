@@ -186,10 +186,11 @@ export class TabBar extends LitElement {
       </div>`;
   }
 }
-export function extractTabsFromElements(elements: HTMLElement[]) {
+
+export function extractTabsFromElements(container: HTMLElement) {
   const tabElements: TabElements = [];
 
-  const tabNodes = document.querySelectorAll<HTMLElement>("shiny-tab[name]");
+  const tabNodes = container.querySelectorAll<HTMLElement>("shiny-tab[name]");
 
   tabNodes.forEach((node) => {
     const tabName = node.attributes.getNamedItem("name")?.value;
