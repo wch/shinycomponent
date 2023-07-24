@@ -1,11 +1,9 @@
 import { CSSResultGroup, LitElement, TemplateResult, css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { extractTabsFromElements, selectTabByIndex } from "./TabBar";
 import { CustomElementInputGetValue } from "./shiny/make-input-binding";
-import { TabLabel } from "./tab";
+import { extractTabsFromElements, selectTabByIndex } from "./tabs/TabBar";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
-TabLabel;
 /**
  * Information about a tab in the dashboard that is used for rendering and
  * choosing tabs

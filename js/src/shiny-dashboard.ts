@@ -5,11 +5,8 @@ import {
   makeInputBinding,
 } from "./shiny/make-input-binding";
 import { themePrimitives } from "./styles/op-classes";
-import { TabLabel } from "./tab";
+import { TabLabel } from "./tabs/TabBar";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
-
-// Force evaluation of TabLabel so it's available for the custom element
-TabLabel;
 
 /**
  * Information about a tab in the dashboard that is used for rendering and
