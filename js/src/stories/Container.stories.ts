@@ -54,6 +54,18 @@ export const d: Story = {
   </sc-container>`,
 };
 
+export const withSidebar: Story = {
+  render: () => html`<sc-container>
+    <sc-header> I am a header </sc-header>
+    <output-plot> </output-plot>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <shiny-sidebar>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </shiny-sidebar>
+    <sc-footer> I am a footer </sc-footer>
+  </sc-container>`,
+};
+
 export const tabbedContent: Story = {
   render: () => html`<sc-container>
     <shiny-tab name="plot">
@@ -67,6 +79,7 @@ export const tabbedContent: Story = {
     <sc-footer> I am a footer </sc-footer>
   </sc-container> `,
 };
+
 export const verticalTabbedContent: Story = {
   render: () => html`
     <sc-container tabsOnSide>
