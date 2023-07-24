@@ -45,8 +45,7 @@ export class TabBar extends LitElement {
         align-items: baseline;
         justify-content: space-between;
         border-block-end: 1px solid var(--border-color);
-        padding: var(--size-m);
-        gap: var(--size-s);
+        gap: calc(var(--pad) / 2);
         background-color: var(--surface-1);
       }
 
