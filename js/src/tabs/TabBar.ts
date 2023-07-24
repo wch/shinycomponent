@@ -1,7 +1,28 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { TabElements } from "./container";
-import { TabLabel } from "./tab";
+import { TabElements } from "../container";
+
+/**
+ * A custom element representing a label for a tab. This is effectively a div
+ * that can have anything put in it which it will layout using a flexbox layout with
+ * `align-items: center` and `gap: var(--size-xxs)`.
+ */
+@customElement("tab-label")
+export class TabLabel extends LitElement {
+  static styles = [
+    css`
+      :host {
+        display: flex;
+        align-items: center;
+        gap: var(--size-xxs);
+      }
+    `,
+  ];
+
+  render() {
+    return html`<slot></slot>`;
+  }
+}
 
 @customElement("tab-bar")
 export class TabBar extends LitElement {

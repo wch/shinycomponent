@@ -1,5 +1,6 @@
-import { LitElement, css, html } from "lit";
+import { css } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { Container } from "../container";
 
 /**
  * A custom element representing a tab that is consumed by the
@@ -16,7 +17,7 @@ import { customElement, property } from "lit/decorators.js";
  * @cssprop --tab-padding - The padding of the tab.
  */
 @customElement("shiny-tab")
-export class Tab extends LitElement {
+export class Tab extends Container {
   /**
    * The name of the tab. This is also used as the id returned when treating the tabset as an input
    *
@@ -35,48 +36,19 @@ export class Tab extends LitElement {
    */
   @property({ type: String }) icon: string = "";
 
-  /**
-   * Styles are scoped to this element: they won't conflict with styles
-   * on the main page or in other components. Styling API can be exposed
-   * via CSS custom properties.
-   */
-  static styles = css`
-    :host {
-      display: block;
-      position: relative;
-      height: 100%;
-      min-height: 0;
-      width: 100%;
-      min-width: 0;
-      padding: var(--tab-padding);
-    }
-  `;
-
-  render() {
-    return html` <slot></slot> `;
-  }
-}
-
-/**
- * A custom element representing a label for a tab. This is effectively a div
- * that can have anything put in it which it will layout using a flexbox layout with
- * `align-items: center` and `gap: var(--size-xxs)`.
- */
-@customElement("tab-label")
-export class TabLabel extends LitElement {
   static styles = [
+    Container.styles,
     css`
       :host {
-        display: flex;
-        align-items: center;
-        gap: var(--size-xxs);
+        /* Map card-scoped variables to the underlying container variables */
+        --container-padding: var(--tab-padding);
+        --container-border: none;
+        --container-h: var(100%);
+
+        position: relative;
       }
     `,
   ];
-
-  render() {
-    return html`<slot></slot>`;
-  }
 }
 
 declare global {
