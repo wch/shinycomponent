@@ -223,7 +223,7 @@ export function extractTabsFromElements(container: HTMLElement) {
 export function selectTabByIndex(tabs: TabElements, index: number) {
   tabs.forEach((tab, i) => {
     const isSelected = i === index;
-    const currentlyHidden = tab.el.style.display === "none";
+    const currentlyHidden = tab.el.hasAttribute("aria-hidden");
 
     // Is this tab the one being shifted away from?
     const hidingTab = !currentlyHidden && !isSelected;
@@ -233,7 +233,7 @@ export function selectTabByIndex(tabs: TabElements, index: number) {
       }
       // Make sure that screen readers know to not include the hidden tabs
       tab.el.inert = true;
-      tab.el.style.display = "none";
+      tab.el.setAttribute("aria-hidden", "");
     }
 
     // Is this tab the one being shifted to?
@@ -243,7 +243,7 @@ export function selectTabByIndex(tabs: TabElements, index: number) {
         $(tab.el).trigger("shown");
       }
       tab.el.inert = false;
-      tab.el.style.display = "block";
+      tab.el.removeAttribute("aria-hidden");
     }
   });
 }

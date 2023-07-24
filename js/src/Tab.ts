@@ -47,6 +47,10 @@ export class Tab extends Container {
 
         position: relative;
       }
+
+      :host([aria-hidden]) {
+        display: none;
+      }
     `,
   ];
 }
