@@ -133,6 +133,13 @@ export class TabBar extends LitElement {
   }
 
   render() {
+    if (this.tabs.length === 0) {
+      this.style.display = "none";
+      return html``;
+    }
+
+    this.style.display = "flex";
+
     const tabs = this.tabs.map((tab, i) => {
       const isSelected = i === this.selectedTabIndex;
       return html`<div
