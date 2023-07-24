@@ -24,14 +24,14 @@ export class ShinyCard extends Container {
     css`
       :host {
         /* Map card-scoped variables to the underlying container variables */
-        --container-padding: var(--card-padding);
-        --container-gap: var(--card-gap);
-        --container-radius: var(--card-radius, var(--radius-m));
-        --container-child-radius: var(--card-child-radius);
-        --container-border: var(--card-border);
-        --container-shadow: var(--card-shadow, var(--shadow-m));
-        --container-bg: var(--card-bg, var(--surface-1));
-        --container-h: var(--card-h);
+        --_container-bg: var(--card-bg, var(--surface-1));
+        --_container-padding: var(--card-padding, var(--size-s));
+        --_container-gap: var(--card-gap, var(--_container-padding));
+        --_container-border: var(--card-border, var(--border-standard));
+        --_container-shadow: var(--card-shadow, var(--shadow-m));
+        --_container-radius: var(--card-radius, var(--radius-m));
+        --_container-child-radius: var(--card-child-radius);
+        --_container-h: var(--card-h, 100%);
       }
     `,
   ];

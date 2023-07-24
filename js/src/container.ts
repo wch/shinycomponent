@@ -2,7 +2,6 @@ import { CSSResultGroup, LitElement, TemplateResult, css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { CustomElementInputGetValue } from "./shiny/make-input-binding";
 import { extractTabsFromElements, selectTabByIndex } from "./tabs/TabBar";
-import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
 /**
  * Information about a tab in the dashboard that is used for rendering and
@@ -196,6 +195,11 @@ export class Container
       z-index: 0;
     }
 
+    /* Let the tab containers take care of padding */
+    .body.withTabs {
+      padding: 0;
+    }
+
     :host([nofill]) .body {
       display: block;
     }
@@ -234,7 +238,7 @@ export class Container
   }
 
   watchMainSlot(e: Event) {
-    this.tabs = extractTabsFromElements(getElementsFromSlotChangeEvent(e));
+    this.tabs = extractTabsFromElements(this);
     this.selectTab();
   }
 
@@ -253,6 +257,7 @@ export class Container
   }
 
   render() {
+    const hasTabs = this.tabs.length > 0;
     return html`
       <div class="header">
         <slot name="header"></slot>
@@ -267,7 +272,7 @@ export class Container
       <div class="sidebar">
         <slot name="sidebar"></slot>
       </div>
-      <div class="body">
+      <div class="body ${hasTabs ? "withTabs" : ""}">
         <slot @slotchange=${this.watchMainSlot}></slot>
       </div>
       <div class="footer">

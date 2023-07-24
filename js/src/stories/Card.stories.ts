@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 import { html } from "lit";
+import { Tab } from "../Tab";
 import { OutputPlot } from "../output_plot";
 import { ShinyCard } from "../shiny-card";
 
 ShinyCard;
 OutputPlot;
+Tab;
 
 const meta: Meta = {
   component: "shiny-card",
@@ -66,4 +68,22 @@ export const tabbedContent: Story = {
     </shiny-tab>
     <sc-footer> I am a footer </sc-footer>
   </shiny-card> `,
+};
+
+export const verticalTabbedContent: Story = {
+  render: () => html`
+    <shiny-card tabsOnSide>
+      <shiny-tab name="plot">
+        <sc-header> Plot Tab #1</sc-header>
+        <span>I am a plot</span>
+        <output-plot height="250"> </output-plot>
+      </shiny-tab>
+      <shiny-tab name="prose">
+        <sc-header> Prose Tab </sc-header>
+        <span>I am some prose</span>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam</p>
+      </shiny-tab>
+      <sc-footer> I am a footer </sc-footer>
+    </shiny-card>
+  `,
 };

@@ -16,7 +16,7 @@ import { Section } from "./shiny-section";
 import { Sidebar } from "./sidebar";
 import { SimpleNumberInput } from "./simple-number-input";
 import { SimpleNumberOutput } from "./simple-number-output";
-import { Tab } from "./tabs/tab";
+import { Tab } from "./Tab";
 import { ThemeChooser } from "./theme-chooser";
 import { ValueBox } from "./value_box";
 
