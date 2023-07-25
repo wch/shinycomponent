@@ -276,7 +276,10 @@ export class Container
           this.selectTab(e.detail.index);
         }}
         orientation=${this.tabsOnSide ? "vertical" : "horizontal"}
-      ></tab-bar>
+      >
+        <slot name="before_navigation" slot="before_navigation"> </slot>
+        <slot name="after_navigation" slot="after_navigation"> </slot>
+      </tab-bar>
       <div class="sidebar">
         <slot name="sidebar"></slot>
       </div>
