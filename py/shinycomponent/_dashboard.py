@@ -7,6 +7,8 @@ from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 from ._htmldeps import page_dep
 from ._utils import assign_to_slot
 
+# Dashboard Python Function
+
 
 def dashboard(
     *args: TagChild | TagAttrs,

@@ -3,6 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 import { setElAttr } from "./set_el_attr";
 import { themePrimitives } from "./styles/op-classes";
 
+// Card Web Component
+
 /**
  * A custom element that displays a card with a header, body, and footer.
  * The card can be customized with various properties.
@@ -204,6 +206,7 @@ export class ShinyCardSlot extends LitElement {
   }
 }
 
+// Card Header Web Component
 /**
  * Custom element to be paired with `<shiny-card>` to display a header stuck at
  * the top of the card.
@@ -216,6 +219,7 @@ export class ShinyCardHeader extends ShinyCardSlot {
   }
 }
 
+// Card Footer Web Component
 /**
  * Custom element to be paired with `<shiny-card>` to display a footer stuck at
  * the bottom of the card.

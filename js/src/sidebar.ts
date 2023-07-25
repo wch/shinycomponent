@@ -6,6 +6,8 @@ import { ShinyDashboard } from "./shiny-dashboard";
 import { Section } from "./shiny-section";
 import { getElementsFromSlotChangeEvent } from "./utils/getElementsFromSlotChangeEvent";
 
+// Sidebar Web Component
+
 /**
  * A sidebar that can be opened and closed. It is intended to be used within a
  * `<shiny-dashboard>` or `<shiny-card>` component where it will automatically
