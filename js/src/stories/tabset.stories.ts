@@ -10,6 +10,7 @@ import { ShinyCard } from "../shiny-card";
 import { ShinyDashboard } from "../shiny-dashboard";
 import { Section } from "../shiny-section";
 import { Sidebar } from "../sidebar";
+import { Tab } from "../tabs/ScTab";
 
 OutputPlot;
 Grid;
@@ -20,6 +21,8 @@ ForgeInputSelect;
 Section;
 PositLogo;
 ShinyIcon;
+Tab;
+
 const meta: Meta = {
   component: "shiny-dashboard",
   tags: ["pages"],
@@ -42,37 +45,41 @@ eget aliquam ultricies, nunc sapien ultricies diam, sed aliquam nunc massa
 nec sapien. Nulla facilisi. Nullam euismod, nisl eget aliquam ultricies,
 nunc sapien ultricies diam, sed aliquam nunc massa nec sapien.`;
 
-const bodyContent = html` <div slot="before_navigation">Before the nav</div>
+const bodyContent = html`<div slot="before_navigation">Before the nav</div>
   <div slot="after_navigation">After the nav</div>
   <shiny-tab name="Plots" icon="ph:chart-line">
-    <shiny-card>
-      <sc-header> Tab A </sc-header>
-      <p>${loremIpsumText}</p>
-    </shiny-card>
+    <sc-header>Plots Tab </sc-header>
+    <p>${loremIpsumText}</p>
   </shiny-tab>
   <shiny-tab name="A Table" icon="ph:table">
-    <shiny-card>
-      <h2>Tab B</h2>
-      <p>${loremIpsumText}</p>
-    </shiny-card>
+    <sc-header>Table Tab</sc-header>
+    <p>${loremIpsumText}</p>
   </shiny-tab>
   <shiny-tab name="A lot of words">
     <tab-label> Custom <shiny-icon name="ph:scroll"></shiny-icon> </tab-label>
-    <shiny-card>
-      <h2>Tab C</h2>
-      <p>
-        This tab has a custom label provided by the <code>tab-label</code> tag.
-      </p>
-      <p>${loremIpsumText}</p>
-    </shiny-card>
+    <sc-header>Words Tab </sc-header>
+    <p>
+      This tab has a custom label provided by the <code>tab-label</code> tag.
+    </p>
+    <p>${loremIpsumText}</p>
   </shiny-tab>`;
 
 export const verticalTabs: Story = {
-  render: () => html` <shiny-dashboard> ${bodyContent} </shiny-dashboard> `,
+  render: () =>
+    html` <shiny-dashboard tabsOnSide> ${bodyContent} </shiny-dashboard> `,
 };
 
 export const horizontalTabs: Story = {
   render: () => html`
-    <shiny-dashboard tabsOnSide> ${bodyContent} </shiny-dashboard>
+    <shiny-dashboard>
+      ${bodyContent}
+      <shiny-sidebar>
+        <h3>Sidebar</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+          facilisi. Nullam euismod, nisl eget aliquam ultricies, nunc sapien
+        </p>
+      </shiny-sidebar>
+    </shiny-dashboard>
   `,
 };
