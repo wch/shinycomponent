@@ -143,7 +143,11 @@ app_ui = sc.page_dashboard(
         n_rows=2,
         n_cols=3,
     ),
-    sc.footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
+    sc.footer(
+        ui.tags.span("Experimental Shiny"),
+        Tag("theme-chooser"),
+        style="display:flex; justify-content:space-between; align-items:center;",
+    ),
 )
 
 
