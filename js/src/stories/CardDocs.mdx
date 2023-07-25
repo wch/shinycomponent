@@ -42,9 +42,9 @@ When `noFill` is set to `True`, then elements that would normally flex, will go 
 ```
 card(
   noFill=True,
-  card_header("I am a header"),
+  header("I am a header"),
   plot(),
-  card_footer("I am a footer"),
+  footer("I am a footer"),
 )
 ```
 
@@ -56,11 +56,11 @@ When a card is filled with more content than there is space, it will scroll. If 
 
 ```
 card(
-  card_header("I am a header"),
+  header("I am a header"),
   plot(height=250),
   p(...),
   plot(height=350),
-  card_footer("I am a footer"),
+  footer("I am a footer"),
 )
 ```
 

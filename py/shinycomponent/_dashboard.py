@@ -168,7 +168,7 @@ def page_dashboard(
     )
 
 
-def dashboard_footer(
+def footer(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
 ) -> DashboardFooterTag:
     """
@@ -193,11 +193,11 @@ def dashboard_footer(
     ~htmltools.Tag
     """
     return DashboardFooterTag(
-        Tag("shiny-dashboard-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
+        Tag("sc-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
     )
 
 
-def dashboard_header(
+def header(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
 ) -> DashboardHeaderTag:
     """
@@ -222,5 +222,5 @@ def dashboard_header(
     ~htmltools.Tag
     """
     return DashboardHeaderTag(
-        Tag("div", page_dep(), *args, slot="header", _add_ws=_add_ws, **kwargs)
+        Tag("sc-header", page_dep(), *args, _add_ws=_add_ws, **kwargs)
     )
