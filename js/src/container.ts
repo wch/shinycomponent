@@ -221,6 +221,13 @@ export class Container
       flex: 1;
     }
 
+    /* This is needed to keep sizing as expected for flex-items. Why? No one
+    knows. But if you remove this there will be infinite resizing loops for
+    plots... sometimes */
+    .body > ::slotted(*) {
+      min-height: 0;
+    }
+
     /* Need to set all children as block display to keep behavior similar to flex */
     :host([nofill]) .body > ::slotted(*) {
       display: block;
