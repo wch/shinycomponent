@@ -1,6 +1,6 @@
 import { css } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { Container } from "./container";
+import { Container } from "../container";
 
 /**
  * A custom element representing a tab that is consumed by the

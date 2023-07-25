@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 import { html } from "lit";
-import { Tab } from "../Tab";
 import { OutputPlot } from "../output_plot";
 import { ShinyCard } from "../shiny-card";
+import { Tab } from "../tabs/ScTab";
 
 ShinyCard;
 OutputPlot;

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 import { html } from "lit";
-import { Tab } from "../Tab";
 import { Container } from "../container";
 import { OutputPlot } from "../output_plot";
+import { Tab } from "../tabs/ScTab";
 
 Container;
 OutputPlot;
