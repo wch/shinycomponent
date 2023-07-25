@@ -22,7 +22,7 @@ def card(
     Parameters
     ----------
     *args
-        Child elements to this tag. Special children include `shinycomponent.card_header()` and `shinycomponent.card_footer()` for adding a header and footer to card.
+        Child elements to this tag. Special children include `shinycomponent.header()` and `shinycomponent.footer()` for adding a header and footer to card.
     height
         The height of the card. If a number is used, the height wil be set to that
         number in pixels. If "content" is used, then the card will take the minimum
@@ -54,8 +54,8 @@ def card(
 
     See Also
     --------
-    ~shinycomponent.card_header
-    ~shinycomponent.card_footer
+    ~shinycomponent.header
+    ~shinycomponent.footer
     ~shinycomponent.grid_item
     ~htmltools.Tag
     """
@@ -74,7 +74,7 @@ def card(
     )
 
 
-def card_header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardHeaderTag:
+def header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardHeaderTag:
     """
     A header for a card component. Sticks to top of cards defined with `shinycomponent.card()`.
 
@@ -92,13 +92,13 @@ def card_header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardHeade
     See Also
     --------
     ~shinycomponent.card
-    ~shinycomponent.card_footer
+    ~shinycomponent.footer
     ~htmltools.Tag
     """
     return CardHeaderTag(Tag("sc-header", page_dep(), *args, _add_ws=True, **kwargs))
 
 
-def card_footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardFooterTag:
+def footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardFooterTag:
     """
     A footer for a card component. Sticks to bottom of cards defined with `shinycomponent.card()`.
 
@@ -116,7 +116,7 @@ def card_footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardFoote
     See Also
     --------
     ~shinycomponent.card
-    ~shinycomponent.card_header
+    ~shinycomponent.header
     ~htmltools.Tag
     """
     return CardFooterTag(Tag("sc-footer", page_dep(), *args, _add_ws=True, **kwargs))

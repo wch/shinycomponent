@@ -112,9 +112,9 @@ app_ui = sc.page_dashboard(
             col_width=2,
         ),
         sc.grid_item(
-            sc.card_header("Distance from Ann Arbor"),
+            sc.header("Distance from Ann Arbor"),
             ui.output_plot("distogram"),
-            sc.card_footer(
+            sc.footer(
                 sc.forge.input_slider(
                     id="bins",
                     label="Bins for histogram",
@@ -143,7 +143,7 @@ app_ui = sc.page_dashboard(
         n_rows=2,
         n_cols=3,
     ),
-    sc.dashboard_footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
+    sc.footer(ui.tags.span("Experimental Shiny"), Tag("theme-chooser")),
 )
 
 

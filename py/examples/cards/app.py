@@ -15,30 +15,30 @@ app_ui = sc.page_dashboard(
     ),
     sc.grid(
         sc.card(
-            sc.card_header("Pure flex card"),
+            sc.header("Pure flex card"),
             Tag("output-plot"),
             lorem_ipsum,
-            sc.card_footer("A footer"),
+            sc.footer("A footer"),
         ),
         sc.card(
-            sc.card_header("Plot with fixed height"),
+            sc.header("Plot with fixed height"),
             Tag("output-plot", height="100"),
             lorem_ipsum,
-            sc.card_footer(
+            sc.footer(
                 sc.forge.input_slider("n", "Number of bins", 10, 100, 20),
             ),
         ),
         sc.card(
-            sc.card_header("Break out of the grid-row height"),
+            sc.header("Break out of the grid-row height"),
             Tag("output-plot", height="100"),
             lorem_ipsum,
-            sc.card_footer(
+            sc.footer(
                 sc.forge.input_slider("n", "Number of bins", 10, 100, 20),
             ),
             height="content",
         ),
         sc.card(
-            sc.card_header("...Or don't"),
+            sc.header("...Or don't"),
             Tag("output-plot", height="90"),
             lorem_ipsum,
             Tag("output-plot"),
