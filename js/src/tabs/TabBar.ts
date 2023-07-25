@@ -45,15 +45,29 @@ export class TabBar extends LitElement {
         align-items: baseline;
         justify-content: space-between;
         border-block-end: 1px solid var(--border-color);
-        gap: calc(var(--pad) / 2);
+        gap: var(--_container-gap);
         background-color: var(--surface-1);
       }
 
       :host([orientation="vertical"]) {
         overflow: auto;
         flex-flow: column nowrap;
+        justify-content: flex-start;
         border-inline-end: 1px solid var(--border-color);
         border-block-end: unset;
+        gap: 0;
+      }
+
+      :host([orientation="vertical"]) > .after_navigation {
+        margin-block-start: auto;
+      }
+
+      :host([orientation="vertical"]) > .before_navigation ::slotted(*) {
+        padding-block-end: var(--_container-gap);
+      }
+
+      :host([orientation="vertical"]) > .after_navigation ::slotted(*) {
+        padding-block-start: var(--_container-gap);
       }
 
       .tab {
@@ -171,7 +185,14 @@ export class TabBar extends LitElement {
       </div>`;
     });
 
-    return html`<div class="tabs">${tabs}</div>
+    return html`
+      <div class="before_navigation">
+        <slot name="before_navigation">
+          <div class="before_navigation_fallback">fallback</div>
+        </slot>
+      </div>
+
+      <div class="tabs">${tabs}</div>
       <div class="mobile-tabs">
         <sl-select
           @sl-change=${this.handleTabSelect}
@@ -182,7 +203,12 @@ export class TabBar extends LitElement {
               html`<sl-option value="${tab.value}">${tab.name}</sl-option>`
           )}
         </sl-select>
-      </div>`;
+      </div>
+
+      <div class="after_navigation">
+        <slot name="after_navigation"></slot>
+      </div>
+    `;
   }
 }
 
