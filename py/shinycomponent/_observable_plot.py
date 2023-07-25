@@ -1,6 +1,10 @@
 from __future__ import annotations
 
-import pandas as pd
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import pandas as pd
+
 from htmltools import Tag, TagAttrValue, tags
 
 from ._htmldeps import page_dep
