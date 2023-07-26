@@ -8,6 +8,7 @@
   "devDependencies": {
     "@mui/base": "^5.0.0-beta.4",
     "@open-wc/lit-helpers": "^0.6.0",
+    "@playwright/test": "^1.36.2",
     "@shoelace-style/shoelace": "^2.5.2",
     "@storybook/addon-essentials": "^7.1.0",
     "@storybook/addon-links": "^7.1.0",
@@ -54,9 +55,10 @@
     "lint-styles": "npx stylelint \"**/*.ts\"",
     "build-styles": "npx postcss src/styles/shiny-theme.css -o out/shiny-theme.css",
     "watch-styles": "npm run build-styles -- --watch",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev",
     "build-storybook": "storybook build",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "playwright": "playwright test --project=chromium"
   },
   "dependencies": {
     "@material/web": "^1.0.0-pre.9",
