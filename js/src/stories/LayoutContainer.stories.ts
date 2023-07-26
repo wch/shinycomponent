@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 import { html } from "lit";
-import { Container } from "../container";
+import { LayoutContainer } from "../layout-container";
 import { OutputPlot } from "../output_plot";
 import { Tab } from "../tabs/ScTab";
 
-Container;
+LayoutContainer;
 OutputPlot;
 Tab;
 
 const meta: Meta = {
-  component: "sc-container",
+  component: "sc-layout-container",
   decorators: [
     (story) =>
       html`<div
@@ -25,39 +25,39 @@ export default meta;
 type Story = StoryObj;
 
 export const primary: Story = {
-  render: () => html`<sc-container>
+  render: () => html`<sc-layout-container>
     <h2>Foo</h2>
     <output-plot> </output-plot>
-  </sc-container>`,
+  </sc-layout-container>`,
 };
 
 export const b: Story = {
-  render: () => html`<sc-container>
+  render: () => html`<sc-layout-container>
     <sc-header> I am a header </sc-header>
     <output-plot> </output-plot>
-  </sc-container>`,
+  </sc-layout-container>`,
 };
 
 export const c: Story = {
-  render: () => html`<sc-container nofill>
+  render: () => html`<sc-layout-container nofill>
     <sc-header> Using nofill=true </sc-header>
     <output-plot> </output-plot>
     <sc-footer> I am a footer </sc-footer>
-  </sc-container>`,
+  </sc-layout-container>`,
 };
 
 export const d: Story = {
-  render: () => html`<sc-container>
+  render: () => html`<sc-layout-container>
     <sc-header> I am a header </sc-header>
     <output-plot height="250"> </output-plot>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     <output-plot height="350"> </output-plot>
     <sc-footer> I am a footer </sc-footer>
-  </sc-container>`,
+  </sc-layout-container>`,
 };
 
 export const withSidebar: Story = {
-  render: () => html`<sc-container>
+  render: () => html`<sc-layout-container>
     <sc-header> I am a header </sc-header>
     <output-plot> </output-plot>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -65,11 +65,11 @@ export const withSidebar: Story = {
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </shiny-sidebar>
     <sc-footer> I am a footer </sc-footer>
-  </sc-container>`,
+  </sc-layout-container>`,
 };
 
 export const tabbedContent: Story = {
-  render: () => html`<sc-container>
+  render: () => html`<sc-layout-container>
     <shiny-tab name="plot">
       <span>I am a plot</span>
       <output-plot> </output-plot>
@@ -79,12 +79,12 @@ export const tabbedContent: Story = {
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam</p>
     </shiny-tab>
     <sc-footer> I am a footer </sc-footer>
-  </sc-container> `,
+  </sc-layout-container> `,
 };
 
 export const verticalTabbedContent: Story = {
   render: () => html`
-    <sc-container tabsOnSide>
+    <sc-layout-container tabsOnSide>
       <shiny-tab name="plot">
         <sc-header> Plot Tab #1</sc-header>
         <span>I am a plot</span>
@@ -96,6 +96,6 @@ export const verticalTabbedContent: Story = {
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam</p>
       </shiny-tab>
       <sc-footer> I am a footer </sc-footer>
-    </sc-container>
+    </sc-layout-container>
   `,
 };

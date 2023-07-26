@@ -1,6 +1,6 @@
 import { css } from "lit";
 import { customElement } from "lit/decorators.js";
-import { Container } from "./container";
+import { LayoutContainer } from "./layout-container";
 import {
   CustomElementInputGetValue,
   makeInputBinding,
@@ -16,22 +16,28 @@ import {
 */
 @customElement("shiny-dashboard")
 export class ShinyDashboard
-  extends Container
+  extends LayoutContainer
   implements CustomElementInputGetValue<string>
 {
   static styles = [
-    Container.styles,
+    LayoutContainer.styles,
     css`
       :host {
         /* Map card-scoped variables to the underlying container variables */
-        --_container-bg: var(--dashboard-bg, var(--surface-1));
-        --_container-padding: var(--dashboard-padding, var(--size-s));
-        --_container-gap: var(--dashboard-gap, var(--_container-padding));
-        --_container-border: var(--dashboard-border, var(--border-standard));
-        --_container-shadow: var(--dashboard-shadow, var(--shadow-m));
-        --_container-radius: var(--dashboard-radius, 0);
-        --_container-child-radius: var(--dashboard-child-radius);
-        --_container-h: var(--dashboard-h, 100%);
+        --_layout-container-bg: var(--dashboard-bg, var(--surface-1));
+        --_layout-container-padding: var(--dashboard-padding, var(--size-s));
+        --_layout-container-gap: var(
+          --dashboard-gap,
+          var(--_layout-container-padding)
+        );
+        --_layout-container-border: var(
+          --dashboard-border,
+          var(--border-standard)
+        );
+        --_layout-container-shadow: var(--dashboard-shadow, var(--shadow-m));
+        --_layout-container-radius: var(--dashboard-radius, 0);
+        --_layout-container-child-radius: var(--dashboard-child-radius);
+        --_layout-container-h: var(--dashboard-h, 100%);
 
         /* Background image of dashboard. Can be used to set things like
         gradients. Defaults to nothing */

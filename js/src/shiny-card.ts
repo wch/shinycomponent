@@ -1,6 +1,6 @@
 import { css } from "lit";
 import { customElement } from "lit/decorators.js";
-import { Container } from "./container";
+import { LayoutContainer } from "./layout-container";
 
 /**
  * A custom element that displays a card with a header, body, and footer.
@@ -18,20 +18,23 @@ import { Container } from "./container";
  * @cssprop --card-h - The height of the card. Typically set by the `height` attribute instead of this variable.
  */
 @customElement("shiny-card")
-export class ShinyCard extends Container {
+export class ShinyCard extends LayoutContainer {
   static styles = [
-    Container.styles,
+    LayoutContainer.styles,
     css`
       :host {
         /* Map card-scoped variables to the underlying container variables */
-        --_container-bg: var(--card-bg, var(--surface-1));
-        --_container-padding: var(--card-padding, var(--size-s));
-        --_container-gap: var(--card-gap, var(--_container-padding));
-        --_container-border: var(--card-border, var(--border-standard));
-        --_container-shadow: var(--card-shadow, var(--shadow-m));
-        --_container-radius: var(--card-radius, var(--radius-m));
-        --_container-child-radius: var(--card-child-radius);
-        --_container-h: var(--card-h, 100%);
+        --_layout-container-bg: var(--card-bg, var(--surface-1));
+        --_layout-container-padding: var(--card-padding, var(--size-s));
+        --_layout-container-gap: var(
+          --card-gap,
+          var(--_layout-container-padding)
+        );
+        --_layout-container-border: var(--card-border, var(--border-standard));
+        --_layout-container-shadow: var(--card-shadow, var(--shadow-m));
+        --_layout-container-radius: var(--card-radius, var(--radius-m));
+        --_layout-container-child-radius: var(--card-child-radius);
+        --_layout-container-h: var(--card-h, 100%);
       }
     `,
   ];

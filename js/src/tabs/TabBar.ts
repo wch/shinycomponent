@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { TabElements } from "../container";
+import { TabElements } from "../layout-container";
 
 /**
  * A custom element representing a label for a tab. This is effectively a div
@@ -45,7 +45,7 @@ export class TabBar extends LitElement {
         align-items: baseline;
         justify-content: space-between;
         border-block-end: 1px solid var(--border-color);
-        gap: var(--_container-gap);
+        gap: var(--_layout-container-gap);
         background-color: var(--surface-1);
       }
 
@@ -63,11 +63,11 @@ export class TabBar extends LitElement {
       }
 
       :host([orientation="vertical"]) > .before_navigation ::slotted(*) {
-        padding-block-end: var(--_container-gap);
+        padding-block-end: var(--_layout-container-gap);
       }
 
       :host([orientation="vertical"]) > .after_navigation ::slotted(*) {
-        padding-block-start: var(--_container-gap);
+        padding-block-start: var(--_layout-container-gap);
       }
 
       .tab {
