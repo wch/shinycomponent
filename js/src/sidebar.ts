@@ -315,13 +315,15 @@ export class Sidebar extends LitElement {
   }
 
   render() {
+    const toggleLabel = this.closed ? "Open sidebar" : "Close sidebar";
     return html`
       <div class="container ${this.inDashboard ? "dashboard-sidebar" : ""}">
         <div>
           <div
             class="toggle-icon"
             @click=${this.handleToggleBtnClick}
-            title=${this.closed ? "Open sidebar" : "Close sidebar"}
+            aria-label=${toggleLabel}
+            title=${toggleLabel}
           >
             <shiny-icon name="ri:expand-left-line"></shiny-icon>
           </div>
