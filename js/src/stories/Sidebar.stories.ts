@@ -93,8 +93,8 @@ export const iconSidebar: Story = {
           <forge-input-select
             id="species"
             label="Species"
-            .choices=${["a", "b", "c"]}
-            .selected=${"a"}
+            choices=${`["a", "b", "c"]`}
+            selected=${`"a"`}
           >
           </forge-input-select>
           <small>Choose your species above</small>
