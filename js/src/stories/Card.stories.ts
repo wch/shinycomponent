@@ -14,6 +14,7 @@ const meta: Meta = {
   decorators: [
     (story) =>
       html`<div
+        id="card-container"
         style="padding: var(--size-7);background-color: var(--surface-3);max-width:450px;height:550px; display: flex; flex-direction: column;"
       >
         ${story()}
@@ -24,21 +25,21 @@ export default meta;
 
 type Story = StoryObj;
 
-export const primary: Story = {
+export const basic: Story = {
   render: () => html`<shiny-card>
     <h2>Foo</h2>
     <output-plot> </output-plot>
   </shiny-card>`,
 };
 
-export const b: Story = {
+export const fixedHeightPlot: Story = {
   render: () => html`<shiny-card>
     <h2>Fixed height plot</h2>
     <output-plot height="300"> </output-plot>
   </shiny-card>`,
 };
 
-export const c: Story = {
+export const noFill: Story = {
   render: () => html`<shiny-card nofill>
     <sc-header> I am a header </sc-header>
     <output-plot> </output-plot>
@@ -46,7 +47,7 @@ export const c: Story = {
   </shiny-card>`,
 };
 
-export const d: Story = {
+export const overflowingContent: Story = {
   render: () => html`<shiny-card>
     <sc-header> I am a header </sc-header>
     <output-plot height="250"> </output-plot>
@@ -56,7 +57,7 @@ export const d: Story = {
   </shiny-card>`,
 };
 
-export const tabbedContent: Story = {
+export const horizontalTabbedContent: Story = {
   render: () => html`<shiny-card>
     <sc-header>I am a header </sc-header>
     <shiny-tab name="plot">
