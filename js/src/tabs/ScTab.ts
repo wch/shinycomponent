@@ -1,6 +1,6 @@
 import { css } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { Container } from "../container";
+import { LayoutContainer } from "../layout-container";
 
 /**
  * A custom element representing a tab that is consumed by the
@@ -17,7 +17,7 @@ import { Container } from "../container";
  * @cssprop --tab-padding - The padding of the tab.
  */
 @customElement("shiny-tab")
-export class Tab extends Container {
+export class Tab extends LayoutContainer {
   /**
    * The name of the tab. This is also used as the id returned when treating the tabset as an input
    *
@@ -37,13 +37,13 @@ export class Tab extends Container {
   @property({ type: String }) icon: string = "";
 
   static styles = [
-    Container.styles,
+    LayoutContainer.styles,
     css`
       :host {
         /* Map card-scoped variables to the underlying container variables */
-        --_container-padding: var(--tab-padding, var(--size-s));
-        --_container-border: none;
-        --_container-shadow: none;
+        --_layout-container-padding: var(--tab-padding, var(--size-s));
+        --_layout-container-border: none;
+        --_layout-container-shadow: none;
 
         position: relative;
       }
