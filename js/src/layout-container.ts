@@ -151,10 +151,8 @@ export class LayoutContainer
       container-name: sc-layout-container;
     }
 
-    @container sc-layout-container (width < 400px) {
-      .header,
-      .footer,
-      .sidebar,
+    @container sc-layout-container (width < 300px) {
+      ::slotted(:is(sc-header, sc-footer, shiny-sidebar)),
       tab-bar,
       .body {
         --_layout-container-padding: var(
@@ -187,19 +185,26 @@ export class LayoutContainer
       grid-area: vtabs;
     }
 
-    .header {
+    ::slotted(sc-header) {
       grid-area: header;
       z-index: 3;
-      position: relative;
+      border-bottom: var(--border-standard);
     }
 
-    .footer {
+    ::slotted(sc-footer) {
       grid-area: footer;
       z-index: 2;
+      border-top: var(--border-standard);
+    }
+
+    ::slotted(sc-header),
+    ::slotted(sc-footer) {
+      padding-inline: var(--_layout-container-padding);
+      padding-block: calc(var(--_layout-container-padding) / 1.5);
       position: relative;
     }
 
-    .sidebar {
+    ::slotted(shiny-sidebar) {
       grid-area: sidebar;
       position: relative;
       z-index: 1;
@@ -286,59 +291,35 @@ export class LayoutContainer
   render() {
     const hasTabs = this.tabs.length > 0;
     return html`
-      <div class="header">
-        <slot name="header"></slot>
-      </div>
+      <slot name="header"></slot>
       <tab-bar
         .tabs=${this.tabs}
         @selection=${(e: CustomEvent) => {
           this.selectTab(e.detail.index);
         }}
         orientation=${this.tabsOnSide ? "vertical" : "horizontal"}
+        part="tabs"
       >
         <slot name="before_navigation" slot="before_navigation"> </slot>
         <slot name="after_navigation" slot="after_navigation"> </slot>
       </tab-bar>
-      <div class="sidebar">
-        <slot name="sidebar"></slot>
-      </div>
-      <div class="body ${hasTabs ? "withTabs" : ""}">
+      <slot name="sidebar"></slot>
+      <div class="body ${hasTabs ? "withTabs" : ""}" part="body">
         <slot @slotchange=${this.watchMainSlot}></slot>
       </div>
-      <div class="footer">
-        <slot name="footer"></slot>
-      </div>
+      <slot name="footer"></slot>
     `;
   }
 }
 
-export class ContainerSlot extends LitElement {
+class ContainerSlot extends LitElement {
   static styles = css`
     * {
       box-sizing: border-box;
     }
 
     :host {
-      /* Use container padding but default back to the container's padding
-      variable if not set specifically on the slot element. */
-      --_pad: var(--layout-container-padding, var(--_layout-container-padding));
-
       display: block;
-      padding-inline: var(--_pad);
-      padding-block: var(--_pad);
-    }
-
-    :host([slot="header"]),
-    :host([slot="footer"]) {
-      padding-block: calc(var(--_pad) / 1.5);
-    }
-
-    :host([slot="header"]) {
-      border-bottom: var(--border-standard);
-    }
-
-    :host([slot="footer"]) {
-      border-top: var(--border-standard);
     }
 
     ::slotted(*) {
