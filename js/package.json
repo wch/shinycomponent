@@ -60,7 +60,7 @@
     "test-storybook": "test-storybook",
     "playwright": "playwright test --project=chromium",
     "playwright-ui": "playwright test --ui",
-    "update-screenshots": "playwright test --update-snapshots"
+    "update-screenshots": "npm run playwright -- --update-snapshots"
   },
   "dependencies": {
     "@material/web": "^1.0.0-pre.9",

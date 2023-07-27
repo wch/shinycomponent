@@ -32,6 +32,11 @@ export type TabInfo = {
 export type TabElements = TabInfo[];
 
 /**
+ * CSS selectors used to specify which elements should be allowed to flex by default
+ */
+const flexibleElementSelectors = css`{[".shiny-plot-output"].join(", ")}`;
+
+/**
  * A custom element that acts like a flexible layout container. It can have a
  * header, sidebar, and footer added to it. It is used as the base for other
  * elements like cards and dashboard layouts. Typically this component isn't
@@ -230,13 +235,19 @@ export class LayoutContainer
       display: block;
     }
 
-    /* Make block-layout slotted children stretch without neccesary needing to
-    specify it themselves. There's a special exception for inputs which we put
-    into divs. This will leave text alone etc. It's unclear if this list should
-    be expanded or not or if this is too strong of a selector but it seems
-    reasonable. */
-    ::slotted(:is(div:not(.shiny-input-container), section)) {
-      flex: 1;
+    /* List of items who should explicitely not be flexing to fit available space. The choice to do this in the direction of explicitely choosing what _doesnt_ rather than what _does_ flex is semi-arbitrary. The idea being that  */
+    ::slotted(:is(p, span, h1, h2, h3, h4, h5, h6, label)) {
+      flex: 0 0 auto;
+    }
+
+    /* stylelint-disable-next-line selector-type-no-unknown, selector-type-case */
+    ::slotted(div:not(${flexibleElementSelectors})) {
+      flex: 0 0 auto;
+    }
+
+    /* Allow elements to say they can flex with a special property */
+    ::slotted([can-flex]) {
+      flex: 1 1 auto;
     }
 
     /* This is needed to keep sizing as expected for flex-items. Why? No one
