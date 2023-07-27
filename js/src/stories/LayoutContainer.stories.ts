@@ -84,7 +84,7 @@ export const tabbedContent: Story = {
 
 export const verticalTabbedContent: Story = {
   render: () => html`
-    <sc-layout-container tabsOnSide>
+    <sc-layout-container sidebar-nav>
       <shiny-tab name="plot">
         <sc-header> Plot Tab #1</sc-header>
         <span>I am a plot</span>

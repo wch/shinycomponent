@@ -82,7 +82,8 @@ export class LayoutContainer
   /**
    * Whether the dashboard should have sidebar navigation. Only used if the dashboard has tabs.
    */
-  @property({ type: Boolean, reflect: true }) tabsOnSide: boolean = false;
+  @property({ type: Boolean, reflect: true, attribute: "sidebar-nav" })
+  sidebarNav: boolean = false;
 
   /**
    * The index of the selected tab. Only used if the dashboard has tabs.
@@ -297,7 +298,7 @@ export class LayoutContainer
         @selection=${(e: CustomEvent) => {
           this.selectTab(e.detail.index);
         }}
-        orientation=${this.tabsOnSide ? "vertical" : "horizontal"}
+        orientation=${this.sidebarNav ? "vertical" : "horizontal"}
         part="tabs"
       >
         <slot name="before_navigation" slot="before_navigation"> </slot>

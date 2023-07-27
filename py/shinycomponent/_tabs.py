@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from typing import NewType, Optional
 
-from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
+from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from ._htmldeps import page_dep
 from ._layout_elements import FooterTag, HeaderTag, SidebarTag
+from ._utils import assign_to_slot
 
 TabTag = NewType("TabTag", Tag)
 
@@ -14,6 +15,10 @@ def tab(
     *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
     name: str,
     icon: Optional[str] = None,
+    selected_tab_index: int = 0,
+    sidebar_nav: bool = False,
+    before_navigation: Optional[str | Tag] = None,
+    after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
 ) -> TabTag:
     """
@@ -31,19 +36,36 @@ def tab(
 
     Parameters
     ----------
-    *args
+    `*args`
         Child elements, aka the content of the tab. Special children include
         `shinycomponent.header()` and `shinycomponent.footer()` for adding a header and
         footer, `shinycomponent.sidebar()` for adding a sidebar, and
         `shinycomponent.tab()` for adding a tabs to the card.
-    name
+    `name`
         The name of the tab. This is also used as the id returned when treating the
         tabset as an input.
-    icon
+    `icon`
         Optional icon of the tab. If this is provided the icon will be prefixed to the
         tab label before the name. This will be ignored if a label element is provided
         using `shinycomponent.tab_label`.
-    **kwargs
+    `selected_tab_index`
+        The index of the selected tab. Only used if the tab has nested tabs.
+    `sidebar_nav`
+        Whether the tab should have sidebar navigation. Only used if the tab
+        has tabs.
+    `before_navigation`
+        Content to be placed before (i.e. left in normal top-navigation mode and top if
+        `sidebar_nav` is `True`) the navigation section of the tab. This
+        can be a string or a Tag. _Advanced:_ If you want to include content here
+        without using the named argument you can place any tag in the body with the
+        attribute of `slot="before_navigation"` and it will have the same result.
+    `after_navigation`
+        Content to be placed after (i.e. right in normal top-navigation mode and bottom
+        if `sidebar_nav` is `True`) the navigation section of the tab. This
+        can be a string or a Tag. _Advanced:_ If you want to include content here
+        without using the named argument you can place any tag in the body with the
+        attribute of `slot="after_navigation"` and it will have the same result.
+    `**kwargs`
         Attributes to this tag.
 
     Returns
@@ -68,9 +90,32 @@ def tab(
     ~shinycomponent.dashboard ~shinycomponent.tab_label ~htmltools.Tag
     """
 
+    # Put before_navigation and after_navigation in the right place if they exist
+    if isinstance(before_navigation, str):
+        before_nav_slot = tags.div(before_navigation, slot="before_navigation")
+        args = (before_nav_slot, *args)
+
+    if isinstance(before_navigation, Tag):
+        args = (assign_to_slot(before_navigation, "before_navigation"), *args)
+
+    if isinstance(after_navigation, str):
+        after_nav_slot = tags.div(after_navigation, slot="after_navigation")
+        args = (*args, after_nav_slot)
+
+    if isinstance(after_navigation, Tag):
+        args = (*args, assign_to_slot(after_navigation, "after_navigation"))
+
     return TabTag(
         Tag(
-            "shiny-tab", page_dep(), *args, name=name, icon=icon, _add_ws=True, **kwargs
+            "shiny-tab",
+            page_dep(),
+            *args,
+            name=name,
+            icon=icon,
+            sidebar_nav=sidebar_nav,
+            selectedTabIndex=selected_tab_index,
+            _add_ws=True,
+            **kwargs,
         )
     )
 

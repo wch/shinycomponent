@@ -66,7 +66,7 @@ const bodyContent = html`<div slot="before_navigation">Before the nav</div>
 
 export const verticalTabs: Story = {
   render: () =>
-    html` <shiny-dashboard tabsOnSide> ${bodyContent} </shiny-dashboard> `,
+    html` <shiny-dashboard sidebar-nav> ${bodyContent} </shiny-dashboard> `,
 };
 
 export const horizontalTabs: Story = {
@@ -86,7 +86,7 @@ export const horizontalTabs: Story = {
 
 export const nestedTabs: Story = {
   render: () => html`
-    <shiny-dashboard tabsOnSide>
+    <shiny-dashboard sidebar-nav>
       <shiny-tab name="Plots" icon="ph:chart-line">
         <shiny-card>
           <shiny-tab name="Line Plot" icon="ph:chart-line">

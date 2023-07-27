@@ -74,7 +74,7 @@ export const horizontalTabbedContent: Story = {
 
 export const verticalTabbedContent: Story = {
   render: () => html`
-    <shiny-card tabsOnSide>
+    <shiny-card sidebar-nav>
       <sc-header>I am a header </sc-header>
 
       <shiny-tab name="plot">

@@ -16,7 +16,7 @@ def dashboard(
     *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
-    tabs_on_side: bool = False,
+    sidebar_nav: bool = False,
     before_navigation: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
@@ -38,18 +38,18 @@ def dashboard(
         window.
     `selected_tab_index`
         The index of the selected tab. Only used if the dashboard has tabs.
-    `sidebar_navigation`
+    `sidebar_nav`
         Whether the dashboard should have sidebar navigation. Only used if the dashboard
         has tabs.
     `before_navigation`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
-        `sidebar_navigation` is `True`) the navigation section of the dashboard. This
+        `sidebar_nav` is `True`) the navigation section of the dashboard. This
         can be a string or a Tag. _Advanced:_ If you want to include content here
         without using the named argument you can place any tag in the body with the
         attribute of `slot="before_navigation"` and it will have the same result.
     `after_navigation`
         Content to be placed after (i.e. right in normal top-navigation mode and bottom
-        if `sidebar_navigation` is `True`) the navigation section of the dashboard. This
+        if `sidebar_nav` is `True`) the navigation section of the dashboard. This
         can be a string or a Tag. _Advanced:_ If you want to include content here
         without using the named argument you can place any tag in the body with the
         attribute of `slot="after_navigation"` and it will have the same result.
@@ -89,7 +89,7 @@ def dashboard(
             _add_ws=False,
             dynamicHeight=dynamic_height,
             selectedTabIndex=selected_tab_index,
-            tabsOnSide=tabs_on_side,
+            sidebar_nav=sidebar_nav,
             **kwargs,
         )
     )
@@ -101,7 +101,7 @@ def page_dashboard(
     lang: Optional[str] = None,
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
-    sidebar_navigation: bool = False,
+    sidebar_nav: bool = False,
 ) -> Tag:
     """
     Dashboard layout for a Shiny app.
@@ -120,7 +120,7 @@ def page_dashboard(
         will stretch to fit the vertical height of the browser window.
     selected_tab_index (int):
         The index of the selected tab. Only used if the dashboard has tabs.
-    sidebar_navigation (bool):
+    sidebar_nav (bool):
         Whether the dashboard should have sidebar navigation. Only used if the dashboard has tabs.
 
     Returns
@@ -148,7 +148,7 @@ def page_dashboard(
                 *args,
                 dynamic_height=dynamic_height,
                 selected_tab_index=selected_tab_index,
-                tabs_on_side=sidebar_navigation,
+                sidebar_nav=sidebar_nav,
             )
         ),
         page_dep(),

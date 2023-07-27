@@ -6,139 +6,224 @@ import shinycomponent as sc
 app_ui = sc.page(
     sc.dashboard(
         sc.tab(
-            # Make a grid with 2 columns
-            sc.grid(
-                sc.grid_item(
-                    sc.forge.input_text(
-                        id="text1",
-                        label="Basic",
-                    ),
-                    sc.forge.input_text(
-                        id="text2",
-                        label=ui.TagList(
-                            "Help text, placeholder, ", ui.tags.b("bold label")
+            sc.tab(
+                sc.grid(
+                    sc.grid_item(
+                        sc.forge.input_text(
+                            id="text1",
+                            label="Basic",
                         ),
-                        help_text="This is some help text",
-                        placeholder="Placeholder text",
+                        sc.forge.input_text(
+                            id="text2",
+                            label=ui.TagList(
+                                "Help text, placeholder, ", ui.tags.b("bold label")
+                            ),
+                            help_text="This is some help text",
+                            placeholder="Placeholder text",
+                        ),
+                        sc.forge.input_text(
+                            id="text3",
+                            label="Starting value, clearable, debounce=0",
+                            value="This is a starting value",
+                            clearable=True,
+                            debounce=0,
+                        ),
+                        sc.forge.input_text(
+                            id="text4",
+                            label="Password=True, pill",
+                            password=True,
+                            pill=True,
+                        ),
+                        sc.forge.input_text(
+                            id="text5",
+                            label="Update on Enter or lost focus",
+                            wait_for_enter=True,
+                        ),
                     ),
-                    sc.forge.input_text(
-                        id="text3",
-                        label="Starting value, clearable, debounce=0",
-                        value="This is a starting value",
-                        clearable=True,
-                        debounce=0,
+                    sc.grid_item(
+                        sc.forge.output_text_verbatim("out_text1"),
+                        sc.forge.output_text_verbatim("out_text2"),
+                        sc.forge.output_text_verbatim("out_text3"),
+                        sc.forge.output_text_verbatim("out_text4"),
+                        sc.forge.output_text_verbatim("out_text5"),
                     ),
-                    sc.forge.input_text(
-                        id="text4",
-                        label="Password=True, pill",
-                        password=True,
-                        pill=True,
-                    ),
-                    sc.forge.input_text(
-                        id="text5",
-                        label="Update on Enter or lost focus",
-                        wait_for_enter=True,
-                    ),
+                    n_cols=2,
+                    n_rows=1,
                 ),
-                sc.grid_item(
-                    sc.forge.output_text_verbatim("out_text1"),
-                    sc.forge.output_text_verbatim("out_text2"),
-                    sc.forge.output_text_verbatim("out_text3"),
-                    sc.forge.output_text_verbatim("out_text4"),
-                    sc.forge.output_text_verbatim("out_text5"),
+                name="Basic Text",
+            ),
+            sc.tab(
+                sc.grid(
+                    sc.grid_item(
+                        sc.forge.input_text_area(
+                            id="textarea1",
+                            label="Basic",
+                        ),
+                        sc.forge.input_text_area(
+                            id="textarea2",
+                            label=ui.TagList(
+                                "Help text, placeholder, ", ui.tags.b("bold label")
+                            ),
+                            help_text="This is some help text",
+                            placeholder="Placeholder text",
+                        ),
+                        sc.forge.input_text_area(
+                            id="textarea3",
+                            label="Starting value, no resize, debounce=0",
+                            value="This is a starting value",
+                            resize="none",
+                            debounce=0,
+                        ),
+                        sc.forge.input_text_area(
+                            id="textarea4",
+                            label="1 row, auto resize, update on Enter or lost focus",
+                            rows=1,
+                            resize="auto",
+                            wait_for_enter=True,
+                        ),
+                    ),
+                    sc.grid_item(
+                        sc.forge.output_text_verbatim("out_textarea1"),
+                        sc.forge.output_text_verbatim("out_textarea2"),
+                        sc.forge.output_text_verbatim("out_textarea3"),
+                        sc.forge.output_text_verbatim("out_textarea4"),
+                    ),
+                    n_cols=2,
+                    n_rows=1,
                 ),
-                n_cols=2,
-                n_rows=1,
+                name="Text Areas",
             ),
             name="Text",
         ),
         sc.tab(
-            sc.grid(
-                sc.grid_item(
-                    sc.forge.input_text_area(
-                        id="textarea1",
-                        label="Basic",
-                    ),
-                    sc.forge.input_text_area(
-                        id="textarea2",
-                        label=ui.TagList(
-                            "Help text, placeholder, ", ui.tags.b("bold label")
+            sc.tab(
+                # Make a grid with 2 columns
+                sc.grid(
+                    sc.grid_item(
+                        sc.forge.input_number(
+                            id="number1",
+                            label="Basic",
                         ),
-                        help_text="This is some help text",
-                        placeholder="Placeholder text",
+                        sc.forge.input_number(
+                            id="number2",
+                            label=ui.TagList(
+                                "Min=0, max=1000, value=99, help text, ",
+                                ui.tags.b("bold label"),
+                            ),
+                            value=99,
+                            min=0,
+                            max=1000,
+                            help_text="This is some help text",
+                        ),
+                        sc.forge.input_number(
+                            id="number3",
+                            label="Placeholder, clearable, debounce=0",
+                            placeholder="Placeholder text",
+                            clearable=True,
+                            debounce=0,
+                        ),
+                        sc.forge.input_number(
+                            id="number4",
+                            label="Pill, update on Enter or lost focus",
+                            pill=True,
+                            wait_for_enter=True,
+                        ),
                     ),
-                    sc.forge.input_text_area(
-                        id="textarea3",
-                        label="Starting value, no resize, debounce=0",
-                        value="This is a starting value",
-                        resize="none",
-                        debounce=0,
+                    sc.grid_item(
+                        sc.forge.output_text_verbatim("out_number1"),
+                        sc.forge.output_text_verbatim("out_number2"),
+                        sc.forge.output_text_verbatim("out_number3"),
+                        sc.forge.output_text_verbatim("out_number4"),
                     ),
-                    sc.forge.input_text_area(
-                        id="textarea4",
-                        label="1 row, auto resize, update on Enter or lost focus",
-                        rows=1,
-                        resize="auto",
-                        wait_for_enter=True,
-                    ),
+                    n_cols=2,
+                    n_rows=1,
                 ),
-                sc.grid_item(
-                    sc.forge.output_text_verbatim("out_textarea1"),
-                    sc.forge.output_text_verbatim("out_textarea2"),
-                    sc.forge.output_text_verbatim("out_textarea3"),
-                    sc.forge.output_text_verbatim("out_textarea4"),
-                ),
-                n_cols=2,
-                n_rows=1,
+                name="Simple",
             ),
-            name="Text area",
+            sc.tab(
+                # Make a grid with 2 columns
+                sc.grid(
+                    sc.grid_item(
+                        sc.forge.input_slider(
+                            id="slider1",
+                            label="Basic",
+                            min=0,
+                            max=5,
+                            value=2,
+                        ),
+                        sc.forge.input_slider(
+                            id="slider2",
+                            label=ui.TagList(
+                                "Range, debounce=0, ", ui.tags.b("bold label")
+                            ),
+                            min=0,
+                            max=100,
+                            value=(20, 40),
+                            debounce=0,
+                        ),
+                        sc.forge.input_slider(
+                            id="slider3",
+                            label="Min=3, step=5, marks=True",
+                            min=3,
+                            max=103,
+                            value=23,
+                            step=5,
+                            marks=True,
+                        ),
+                        sc.forge.input_slider(
+                            id="slider4",
+                            label="step=1, marks=[0, 10, 20, ...]",
+                            min=0,
+                            max=80,
+                            value=20,
+                            step=1,
+                            marks=[0, 10, 20, 40, 80],
+                        ),
+                        sc.forge.input_slider(
+                            id="slider5",
+                            label='step=True, marks={"Zero":0, "Ten":10, ...}',
+                            min=0,
+                            max=80,
+                            value=20,
+                            step=True,
+                            marks={
+                                "Zero": 0,
+                                "Ten": 10,
+                                "Twenty": 20,
+                                "Forty": 40,
+                                "Eighty": 80,
+                            },
+                        ),
+                        sc.forge.input_slider(
+                            id="slider6",
+                            label='step=True, marks={"Giraffe": 1, ...}',
+                            min=1,
+                            max=3,
+                            value=1,
+                            step=True,
+                            marks={
+                                "Giraffe": 1,
+                                "Hippo": 2,
+                                "Lion": 3,
+                            },
+                        ),
+                    ),
+                    sc.grid_item(
+                        sc.forge.output_text_verbatim("out_slider1"),
+                        sc.forge.output_text_verbatim("out_slider2"),
+                        sc.forge.output_text_verbatim("out_slider3"),
+                        sc.forge.output_text_verbatim("out_slider4"),
+                        sc.forge.output_text_verbatim("out_slider5"),
+                        sc.forge.output_text_verbatim("out_slider6"),
+                    ),
+                    n_cols=2,
+                    n_rows=1,
+                ),
+                name="Sliders",
+            ),
+            name="Numbers",
         ),
         sc.tab(
-            # Make a grid with 2 columns
-            sc.grid(
-                sc.grid_item(
-                    sc.forge.input_number(
-                        id="number1",
-                        label="Basic",
-                    ),
-                    sc.forge.input_number(
-                        id="number2",
-                        label=ui.TagList(
-                            "Min=0, max=1000, value=99, help text, ",
-                            ui.tags.b("bold label"),
-                        ),
-                        value=99,
-                        min=0,
-                        max=1000,
-                        help_text="This is some help text",
-                    ),
-                    sc.forge.input_number(
-                        id="number3",
-                        label="Placeholder, clearable, debounce=0",
-                        placeholder="Placeholder text",
-                        clearable=True,
-                        debounce=0,
-                    ),
-                    sc.forge.input_number(
-                        id="number4",
-                        label="Pill, update on Enter or lost focus",
-                        pill=True,
-                        wait_for_enter=True,
-                    ),
-                ),
-                sc.grid_item(
-                    sc.forge.output_text_verbatim("out_number1"),
-                    sc.forge.output_text_verbatim("out_number2"),
-                    sc.forge.output_text_verbatim("out_number3"),
-                    sc.forge.output_text_verbatim("out_number4"),
-                ),
-                n_cols=2,
-                n_rows=1,
-            ),
-            name="Number",
-        ),
-        sc.tab(
-            # Make a grid with 2 columns
             sc.grid(
                 sc.grid_item(
                     sc.forge.input_select(
@@ -196,107 +281,72 @@ app_ui = sc.page(
             name="Select",
         ),
         sc.tab(
-            # Make a grid with 2 columns
-            sc.grid(
-                sc.grid_item(
-                    sc.forge.input_slider(
-                        id="slider1",
-                        label="Basic",
-                        min=0,
-                        max=5,
-                        value=2,
-                    ),
-                    sc.forge.input_slider(
-                        id="slider2",
-                        label=ui.TagList(
-                            "Range, debounce=0, ", ui.tags.b("bold label")
+            sc.tab(
+                sc.grid(
+                    sc.grid_item(
+                        sc.forge.input_checkbox(
+                            id="checkbox1",
+                            label="Basic",
                         ),
-                        min=0,
-                        max=100,
-                        value=(20, 40),
-                        debounce=0,
+                        sc.forge.input_checkbox(
+                            id="checkbox2", label="Checked", value=True
+                        ),
                     ),
-                    sc.forge.input_slider(
-                        id="slider3",
-                        label="Min=3, step=5, marks=True",
-                        min=3,
-                        max=103,
-                        value=23,
-                        step=5,
-                        marks=True,
+                    sc.grid_item(
+                        sc.forge.output_text_verbatim("out_checkbox1"),
+                        sc.forge.output_text_verbatim("out_checkbox2"),
                     ),
-                    sc.forge.input_slider(
-                        id="slider4",
-                        label="step=1, marks=[0, 10, 20, ...]",
-                        min=0,
-                        max=80,
-                        value=20,
-                        step=1,
-                        marks=[0, 10, 20, 40, 80],
-                    ),
-                    sc.forge.input_slider(
-                        id="slider5",
-                        label='step=True, marks={"Zero":0, "Ten":10, ...}',
-                        min=0,
-                        max=80,
-                        value=20,
-                        step=True,
-                        marks={
-                            "Zero": 0,
-                            "Ten": 10,
-                            "Twenty": 20,
-                            "Forty": 40,
-                            "Eighty": 80,
-                        },
-                    ),
-                    sc.forge.input_slider(
-                        id="slider6",
-                        label='step=True, marks={"Giraffe": 1, ...}',
-                        min=1,
-                        max=3,
-                        value=1,
-                        step=True,
-                        marks={
-                            "Giraffe": 1,
-                            "Hippo": 2,
-                            "Lion": 3,
-                        },
-                    ),
+                    n_cols=2,
+                    n_rows=1,
                 ),
-                sc.grid_item(
-                    sc.forge.output_text_verbatim("out_slider1"),
-                    sc.forge.output_text_verbatim("out_slider2"),
-                    sc.forge.output_text_verbatim("out_slider3"),
-                    sc.forge.output_text_verbatim("out_slider4"),
-                    sc.forge.output_text_verbatim("out_slider5"),
-                    sc.forge.output_text_verbatim("out_slider6"),
-                ),
-                n_cols=2,
-                n_rows=1,
+                name="Checkbox",
             ),
-            name="Slider",
+            sc.tab(
+                sc.grid(
+                    sc.grid_item(
+                        sc.forge.input_checkbox_group(
+                            id="checkboxgroup1",
+                            label="Basic",
+                            choices=["First choice", "Second choice", "Third choice"],
+                        ),
+                        sc.forge.input_checkbox_group(
+                            id="checkboxgroup2",
+                            label=ui.TagList(
+                                "Some checked, dictionary choices, ",
+                                ui.tags.b("bold label"),
+                            ),
+                            choices={
+                                "choice1": "First choice",
+                                "choice2": "Second choice",
+                                "choice3": "Third choice",
+                            },
+                            selected=["choice1", "choice3"],
+                        ),
+                        sc.forge.input_checkbox_group(
+                            id="checkboxgroup3",
+                            label="Dictionary choices, inline",
+                            choices={
+                                "choice1": "First choice",
+                                "choice2": "Second choice",
+                                "choice3": "Third choice",
+                            },
+                            inline=True,
+                        ),
+                    ),
+                    sc.grid_item(
+                        sc.forge.output_text_verbatim("out_checkboxgroup1"),
+                        sc.forge.output_text_verbatim("out_checkboxgroup2"),
+                        sc.forge.output_text_verbatim("out_checkboxgroup3"),
+                    ),
+                    n_cols=2,
+                    n_rows=1,
+                ),
+                name="Checkbox group",
+            ),
+            name="Checkboxes",
         ),
         sc.tab(
-            sc.grid(
-                sc.grid_item(
-                    sc.forge.input_checkbox(
-                        id="checkbox1",
-                        label="Basic",
-                    ),
-                    sc.forge.input_checkbox(
-                        id="checkbox2", label="Checked", value=True
-                    ),
-                ),
-                sc.grid_item(
-                    sc.forge.output_text_verbatim("out_checkbox1"),
-                    sc.forge.output_text_verbatim("out_checkbox2"),
-                ),
-                n_cols=2,
-                n_rows=1,
-            ),
-            name="Checkbox",
-        ),
-        sc.tab(
+            sc.header("Switches"),
             sc.grid(
                 sc.grid_item(
                     sc.forge.input_switch(
@@ -324,48 +374,7 @@ app_ui = sc.page(
             name="Switch",
         ),
         sc.tab(
-            sc.grid(
-                sc.grid_item(
-                    sc.forge.input_checkbox_group(
-                        id="checkboxgroup1",
-                        label="Basic",
-                        choices=["First choice", "Second choice", "Third choice"],
-                    ),
-                    sc.forge.input_checkbox_group(
-                        id="checkboxgroup2",
-                        label=ui.TagList(
-                            "Some checked, dictionary choices, ",
-                            ui.tags.b("bold label"),
-                        ),
-                        choices={
-                            "choice1": "First choice",
-                            "choice2": "Second choice",
-                            "choice3": "Third choice",
-                        },
-                        selected=["choice1", "choice3"],
-                    ),
-                    sc.forge.input_checkbox_group(
-                        id="checkboxgroup3",
-                        label="Dictionary choices, inline",
-                        choices={
-                            "choice1": "First choice",
-                            "choice2": "Second choice",
-                            "choice3": "Third choice",
-                        },
-                        inline=True,
-                    ),
-                ),
-                sc.grid_item(
-                    sc.forge.output_text_verbatim("out_checkboxgroup1"),
-                    sc.forge.output_text_verbatim("out_checkboxgroup2"),
-                    sc.forge.output_text_verbatim("out_checkboxgroup3"),
-                ),
-                n_cols=2,
-                n_rows=1,
-            ),
-            name="Checkbox group",
-        ),
-        sc.tab(
+            sc.header("Radio buttons"),
             sc.grid(
                 sc.grid_item(
                     sc.forge.input_radio_buttons(
@@ -420,6 +429,7 @@ app_ui = sc.page(
             name="Radio",
         ),
         sc.tab(
+            sc.header("Action buttons"),
             sc.grid(
                 sc.grid_item(
                     sc.forge.input_action_button(
@@ -441,6 +451,7 @@ app_ui = sc.page(
             name="Action button",
         ),
         sc.tab(
+            sc.header("Date inputs"),
             sc.grid(
                 sc.grid_item(
                     sc.forge.input_date(
@@ -480,6 +491,7 @@ app_ui = sc.page(
             name="Date",
         ),
         sc.tab(
+            sc.header("Time inputs"),
             sc.grid(
                 sc.grid_item(
                     sc.forge.input_time(
@@ -518,7 +530,7 @@ app_ui = sc.page(
             ),
             name="Time",
         ),
-        tabs_on_side=True,
+        sidebar_nav=True,
         before_navigation=ui.div(ui.h3("Experimental Shiny")),
         after_navigation=ui.div(
             sc.forge.dark_mode_switch(id="dark_mode"),
