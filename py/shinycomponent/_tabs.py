@@ -5,12 +5,13 @@ from typing import NewType, Optional
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
+from ._layout_elements import FooterTag, HeaderTag, SidebarTag
 
 TabTag = NewType("TabTag", Tag)
 
 
 def tab(
-    *args: TagChild | TagAttrs,
+    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
     name: str,
     icon: Optional[str] = None,
     **kwargs: TagAttrValue,
@@ -30,16 +31,19 @@ def tab(
 
     Parameters
     ----------
-    *args : Union[TagChild, TagAttrs]
-        Child elements, aka the content of the tab.
-    name: str
+    *args
+        Child elements, aka the content of the tab. Special children include
+        `shinycomponent.header()` and `shinycomponent.footer()` for adding a header and
+        footer, `shinycomponent.sidebar()` for adding a sidebar, and
+        `shinycomponent.tab()` for adding a tabs to the card.
+    name
         The name of the tab. This is also used as the id returned when treating the
         tabset as an input.
-    icon: Optional[str]
-        Optional icon of the tab. If this is provided the icon will be prefixed to
-        the tab label before the name. This will be ignored if a label element is
-        provided using `shinycomponent.tab_label`.
-    **kwargs : Dict[str, TagAttrValue]
+    icon
+        Optional icon of the tab. If this is provided the icon will be prefixed to the
+        tab label before the name. This will be ignored if a label element is provided
+        using `shinycomponent.tab_label`.
+    **kwargs
         Attributes to this tag.
 
     Returns
@@ -61,9 +65,7 @@ def tab(
 
     See Also
     --------
-    ~shinycomponent.dashboard
-    ~shinycomponent.tab_label
-    ~htmltools.Tag
+    ~shinycomponent.dashboard ~shinycomponent.tab_label ~htmltools.Tag
     """
 
     return TabTag(

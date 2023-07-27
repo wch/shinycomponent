@@ -1,38 +1,58 @@
 from typing import NewType, Optional
 
-from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
+from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from ._htmldeps import page_dep
+from ._layout_elements import FooterTag, HeaderTag, SidebarTag
+from ._tabs import TabTag
+from ._utils import assign_to_slot
 
 CardTag = NewType("CardTag", Tag)
-CardHeaderTag = NewType("CardHeaderTag", Tag)
-CardFooterTag = NewType("CardFooterTag", Tag)
 
 
 def card(
-    *args: CardHeaderTag | CardFooterTag | TagChild | TagAttrs,
+    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
     height: Optional[str] = None,
     no_fill: bool = False,
     center_content: bool = False,
+    before_navigation: Optional[str | Tag] = None,
+    after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue
 ) -> CardTag:
     """
-    A card component with flexible content sizing and optional header and footer support.
+    A card component with flexible content sizing and optional header and footer
+    support.
 
     Parameters
     ----------
     *args
-        Child elements to this tag. Special children include `shinycomponent.header()` and `shinycomponent.footer()` for adding a header and footer to card.
+        Child elements to this tag. Special children include `shinycomponent.header()`
+        and `shinycomponent.footer()` for adding a header and footer,
+        `shinycomponent.sidebar()` for adding a sidebar, and `shinycomponent.tab()` for
+        adding a tabs.
     height
         The height of the card. If a number is used, the height wil be set to that
         number in pixels. If "content" is used, then the card will take the minimum
-        height needed to contain all the children (aka typical block-layout
-        behavior). This value is typically left unset and the card is allowed to to
-        sized by it's containing environment.
+        height needed to contain all the children (aka typical block-layout behavior).
+        This value is typically left unset and the card is allowed to to sized by it's
+        containing environment.
     no_fill
-        Should the contents of the card take their natural size instead of filling remaining space in the card?
+        Should the contents of the card take their natural size instead of filling
+        remaining space in the card?
     center_content
         Whether the content of the card should be centered or not.
+       `before_navigation`
+        Content to be placed before (i.e. left in normal top-navigation mode and top if
+        `sidebar_navigation` is `True`) the navigation section of the dashboard. This
+        can be a string or a Tag. _Advanced:_ If you want to include content here
+        without using the named argument you can place any tag in the body with the
+        attribute of `slot="before_navigation"` and it will have the same result.
+    `after_navigation`
+        Content to be placed after (i.e. right in normal top-navigation mode and bottom
+        if `sidebar_navigation` is `True`) the navigation section of the dashboard. This
+        can be a string or a Tag. _Advanced:_ If you want to include content here
+        without using the named argument you can place any tag in the body with the
+        attribute of `slot="after_navigation"` and it will have the same result.
     **kwargs
         Attributes passed along to html element.
 
@@ -42,8 +62,10 @@ def card(
     The following css-variables can be used to customize the style of the card header:
         - `--card-padding` - The padding of the card.
         - `--card-radius` - The border radius of the card.
-        - `--child-radius` - The border radius of the card's children. Defaults to nothing
-        - `--card-h` - The height of the card. Typically set by the `height` attribute instead of this variable.
+        - `--child-radius` - The border radius of the card's children. Defaults to
+          nothing
+        - `--card-h` - The height of the card. Typically set by the `height` attribute
+          instead of this variable.
         - `--spacing -` The spacing between elements in the card.
         - `--card-shadow` - The shadow of the card.
         - `--card-bg` - The surface color of the card.
@@ -54,11 +76,24 @@ def card(
 
     See Also
     --------
-    ~shinycomponent.header
-    ~shinycomponent.footer
-    ~shinycomponent.grid_item
+    ~shinycomponent.header ~shinycomponent.footer ~shinycomponent.grid_item
     ~htmltools.Tag
     """
+
+    # Put before_navigation and after_navigation in the right place if they exist
+    if isinstance(before_navigation, str):
+        before_nav_slot = tags.div(before_navigation, slot="before_navigation")
+        args = (before_nav_slot, *args)
+
+    if isinstance(before_navigation, Tag):
+        args = (assign_to_slot(before_navigation, "before_navigation"), *args)
+
+    if isinstance(after_navigation, str):
+        after_nav_slot = tags.div(after_navigation, slot="after_navigation")
+        args = (*args, after_nav_slot)
+
+    if isinstance(after_navigation, Tag):
+        args = (*args, assign_to_slot(after_navigation, "after_navigation"))
 
     return CardTag(
         Tag(
@@ -72,51 +107,3 @@ def card(
             **kwargs
         )
     )
-
-
-def header(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardHeaderTag:
-    """
-    A header for a card component. Sticks to top of cards defined with `shinycomponent.card()`.
-
-    Parameters
-    ----------
-    *args
-        Child elements to this tag.
-    **kwargs
-        Attributes passed along to html element.
-
-    Returns
-    -------
-    Tag element
-
-    See Also
-    --------
-    ~shinycomponent.card
-    ~shinycomponent.footer
-    ~htmltools.Tag
-    """
-    return CardHeaderTag(Tag("sc-header", page_dep(), *args, _add_ws=True, **kwargs))
-
-
-def footer(*args: TagChild | TagAttrs, **kwargs: TagAttrValue) -> CardFooterTag:
-    """
-    A footer for a card component. Sticks to bottom of cards defined with `shinycomponent.card()`.
-
-    Parameters
-    ----------
-    *args
-        Child elements to this tag.
-    **kwargs
-        Attributes passed along to html element.
-
-    Returns
-    -------
-    Tag element
-
-    See Also
-    --------
-    ~shinycomponent.card
-    ~shinycomponent.header
-    ~htmltools.Tag
-    """
-    return CardFooterTag(Tag("sc-footer", page_dep(), *args, _add_ws=True, **kwargs))

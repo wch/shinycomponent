@@ -4,25 +4,16 @@ from typing import NewType, Optional
 
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 
-from ._grids import GridTag
 from ._htmldeps import page_dep
-from ._sidebar import SidebarTag
+from ._layout_elements import FooterTag, HeaderTag, SidebarTag
 from ._tabs import TabTag
 from ._utils import assign_to_slot
 
 DashboardTag = NewType("DashboardTag", Tag)
-DashboardFooterTag = NewType("DashboardFooterTag", Tag)
-DashboardHeaderTag = NewType("DashboardHeaderTag", Tag)
 
 
 def dashboard(
-    *args: SidebarTag
-    | DashboardHeaderTag
-    | DashboardFooterTag
-    | TabTag
-    | GridTag
-    | TagChild
-    | TagAttrs,
+    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
     tabs_on_side: bool = False,
@@ -37,7 +28,10 @@ def dashboard(
     Parameters
     ----------
     `*args`
-        Child elements to this tag.
+        Child elements to this tag. Special children include `shinycomponent.header()`
+        and `shinycomponent.footer()` for adding a header and footer,
+        `shinycomponent.sidebar()` for adding a sidebar, and `shinycomponent.tab()` for
+        adding a tabs.
     `dynamic_height`
         Whether the dashboard should have dynamic height. If set to False (the default)
         then the dashboard will stretch to fit the vertical height of the browser
@@ -102,13 +96,7 @@ def dashboard(
 
 
 def page_dashboard(
-    *args: SidebarTag
-    | DashboardHeaderTag
-    | DashboardFooterTag
-    | TabTag
-    | GridTag
-    | TagChild
-    | TagAttrs,
+    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
     title: Optional[str] = None,
     lang: Optional[str] = None,
     dynamic_height: bool = False,
@@ -165,62 +153,4 @@ def page_dashboard(
         ),
         page_dep(),
         lang=lang,
-    )
-
-
-def footer(
-    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> DashboardFooterTag:
-    """
-    A footer for a dashboard. Sticks to bottom of dashboard layouts defined with
-    `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
-
-    Parameters
-    ----------
-    *args
-        Child elements to this tag.
-    **kwargs
-        Attributes passed along to html element.
-
-    Returns
-    -------
-    Tag element
-
-    See Also
-    --------
-    ~shinycomponent.dashboard
-    ~shinycomponent.page_dashboard
-    ~htmltools.Tag
-    """
-    return DashboardFooterTag(
-        Tag("sc-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
-    )
-
-
-def header(
-    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> DashboardHeaderTag:
-    """
-    A header for a dashboard. Sticks to top of dashboard layouts defined with
-    `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
-
-    Parameters
-    ----------
-    *args
-        Child elements to this tag.
-    **kwargs
-        Attributes passed along to html element.
-
-    Returns
-    -------
-    Tag element
-
-    See Also
-    --------
-    ~shinycomponent.dashboard
-    ~shinycomponent.page_dashboard
-    ~htmltools.Tag
-    """
-    return DashboardHeaderTag(
-        Tag("sc-header", page_dep(), *args, _add_ws=_add_ws, **kwargs)
     )

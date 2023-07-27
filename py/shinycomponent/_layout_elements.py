@@ -49,6 +49,66 @@ def sidebar(
     )
 
 
+FooterTag = NewType("DashboardFooterTag", Tag)
+
+
+def footer(
+    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> FooterTag:
+    """
+    A footer for a dashboard. Sticks to bottom of dashboard layouts defined with
+    `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
+
+    Parameters
+    ----------
+    *args
+        Child elements to this tag.
+    **kwargs
+        Attributes passed along to html element.
+
+    Returns
+    -------
+    Tag element
+
+    See Also
+    --------
+    ~shinycomponent.dashboard
+    ~shinycomponent.page_dashboard
+    ~htmltools.Tag
+    """
+    return FooterTag(Tag("sc-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs))
+
+
+HeaderTag = NewType("DashboardHeaderTag", Tag)
+
+
+def header(
+    *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
+) -> HeaderTag:
+    """
+    A header for a dashboard. Sticks to top of dashboard layouts defined with
+    `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
+
+    Parameters
+    ----------
+    *args
+        Child elements to this tag.
+    **kwargs
+        Attributes passed along to html element.
+
+    Returns
+    -------
+    Tag element
+
+    See Also
+    --------
+    ~shinycomponent.dashboard
+    ~shinycomponent.page_dashboard
+    ~htmltools.Tag
+    """
+    return HeaderTag(Tag("sc-header", page_dep(), *args, _add_ws=_add_ws, **kwargs))
+
+
 IconSectionTag = NewType("IconSectionTag", Tag)
 
 

@@ -3,13 +3,13 @@ __version__ = "0.0.1"
 from . import forge, ml
 from ._cards import card
 from ._components import avatar, simple_number_input
-from ._dashboard import dashboard, footer, header, page_dashboard
+from ._dashboard import dashboard, page_dashboard
 from ._dataframe import output_data_frame
 from ._grids import grid, grid_item
+from ._layout_elements import footer, header, icon_section, sidebar
 from ._observable_plot import observable_plot
 from ._page import page
 from ._render_dataframe import DataGrid, DataTable, render_data_frame
-from ._sidebar import icon_section, sidebar
 from ._tabs import tab, tab_label
 from ._value_box import value_box
 
