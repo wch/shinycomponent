@@ -7,7 +7,7 @@ import { extractTabsFromElements, selectTabByIndex } from "./tabs/TabBar";
  * Information about a tab in the dashboard that is used for rendering and
  * choosing tabs
  */
-type TabInfo = {
+export type TabInfo = {
   /**
    * Name of the tab as provided by the tab's name attribute
    */

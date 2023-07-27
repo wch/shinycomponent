@@ -34,7 +34,7 @@ for (const vboxStory of ["Primary", "Small", "Multi Sized"]) {
 // ====================================================
 // Tabsets/Dashboards
 // ====================================================
-for (const tabsetStory of ["Vertical Tabs", "Horizontal Tabs"]) {
+for (const tabsetStory of ["Vertical Tabs", "Horizontal Tabs", "Nested Tabs"]) {
   test(`Tabset: ${tabsetStory}`, async ({ page }) => {
     await loadStory(getStoryId("tabset", tabsetStory), page);
     await screenshotStory(page);
@@ -44,13 +44,13 @@ for (const tabsetStory of ["Vertical Tabs", "Horizontal Tabs"]) {
 // ====================================================
 // Sidebars
 // ====================================================
-for (const tabsetStory of [
+for (const sidebarStory of [
   "Plain Sidebar",
   "Icon Sidebar",
   "Card With Sidebar",
 ]) {
-  test(`Sidebar: ${tabsetStory}`, async ({ page }) => {
-    await loadStory(getStoryId("sidebar", tabsetStory), page);
+  test(`Sidebar: ${sidebarStory}`, async ({ page }) => {
+    await loadStory(getStoryId("sidebar", sidebarStory), page);
     await screenshotStory(page);
   });
 }

@@ -83,3 +83,25 @@ export const horizontalTabs: Story = {
     </shiny-dashboard>
   `,
 };
+
+export const nestedTabs: Story = {
+  render: () => html`
+    <shiny-dashboard tabsOnSide>
+      <shiny-tab name="Plots" icon="ph:chart-line">
+        <shiny-card>
+          <shiny-tab name="Line Plot" icon="ph:chart-line">
+            <p>Line Plots are cool! Here's some content</p>
+          </shiny-tab>
+          <shiny-tab name="Bar Plot" icon="ph:bar-plot">
+            <p>Bar Plots are cool! Here's some content</p>
+          </shiny-tab>
+        </shiny-card>
+      </shiny-tab>
+      <shiny-tab name="A Table" icon="ph:table">
+        <shiny-card>
+          <p>Tables are cool! Here's some content</p>
+        </shiny-card>
+      </shiny-tab>
+    </shiny-dashboard>
+  `,
+};

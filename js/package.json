@@ -58,7 +58,9 @@
     "storybook": "storybook dev",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
-    "playwright": "playwright test --project=chromium"
+    "playwright": "playwright test --project=chromium",
+    "playwright-ui": "playwright test --ui",
+    "update-screenshots": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@material/web": "^1.0.0-pre.9",

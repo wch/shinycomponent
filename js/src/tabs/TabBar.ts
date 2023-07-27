@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { TabElements } from "../layout-container";
+import { TabElements, TabInfo } from "../layout-container";
 
 /**
  * A custom element representing a label for a tab. This is effectively a div
@@ -213,38 +213,41 @@ export class TabBar extends LitElement {
 }
 
 export function extractTabsFromElements(container: HTMLElement) {
-  const tabElements: TabElements = [];
+  let unnamedTabCounter = 0;
+  // We directly traverse the immediate children here instead of using a
+  // querySelector so we avoid accidentally finding tabs of children
+  const tabElements: TabElements = Array.from(container.children)
+    .filter(({ tagName }) => tagName === "SHINY-TAB")
+    .map((child) => {
+      // We checked this in the filter above, so force the type
+      const tabName =
+        child.attributes.getNamedItem("name")?.value ??
+        `Tab ${unnamedTabCounter++}`;
+      const tabIcon = child.attributes.getNamedItem("icon")?.value;
 
-  const tabNodes = container.querySelectorAll<HTMLElement>("shiny-tab[name]");
+      // Check for a custom label.
+      const tabLabel = Array.from(child.children).find(
+        (el) => el.tagName === "TAB-LABEL"
+      ) as HTMLElement | undefined;
 
-  tabNodes.forEach((node) => {
-    const tabName = node.attributes.getNamedItem("name")?.value;
-    const tabIcon = node.attributes.getNamedItem("icon")?.value;
-
-    if (!tabName) {
-      return;
-    }
-
-    // Check for a custom label
-    const tabLabel = node.querySelector<TabLabel>("tab-label");
-
-    tabElements.push({
-      name: tabName,
-      value: tabName.replaceAll(" ", "_"),
-      el: node,
-      label:
-        tabLabel ??
-        html`
-          <tab-label>
-            ${tabIcon ? html`<shiny-icon name=${tabIcon}></shiny-icon>` : ""}
-            ${tabName}
-          </tab-label>
-        `,
+      return {
+        name: tabName,
+        value: tabName.replaceAll(" ", "_"),
+        el: child as HTMLElement,
+        label:
+          tabLabel ??
+          html`
+            <tab-label>
+              ${tabIcon ? html`<shiny-icon name=${tabIcon}></shiny-icon>` : ""}
+              ${tabName}
+            </tab-label>
+          `,
+      } satisfies TabInfo;
     });
-  });
 
   return tabElements;
 }
+
 export function selectTabByIndex(tabs: TabElements, index: number) {
   tabs.forEach((tab, i) => {
     const isSelected = i === index;
