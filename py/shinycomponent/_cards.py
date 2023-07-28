@@ -1,11 +1,11 @@
 from typing import NewType, Optional
 
-from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
+from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
 from ._layout_elements import FooterTag, HeaderTag, SidebarTag
 from ._tabs import TabTag
-from ._utils import assign_to_slot
+from ._utils import add_navigation_slots
 
 CardTag = NewType("CardTag", Tag)
 
@@ -86,30 +86,15 @@ def card(
     ~htmltools.Tag
     """
 
-    # Put before_navigation and after_navigation in the right place if they exist
-    if isinstance(before_navigation, str):
-        before_nav_slot = tags.div(before_navigation, slot="before_navigation")
-        args = (before_nav_slot, *args)
-
-    if isinstance(before_navigation, Tag):
-        args = (assign_to_slot(before_navigation, "before_navigation"), *args)
-
-    if isinstance(after_navigation, str):
-        after_nav_slot = tags.div(after_navigation, slot="after_navigation")
-        args = (*args, after_nav_slot)
-
-    if isinstance(after_navigation, Tag):
-        args = (*args, assign_to_slot(after_navigation, "after_navigation"))
-
     return CardTag(
         Tag(
             "shiny-card",
             page_dep(),
-            *args,
+            *add_navigation_slots(args, before_navigation, after_navigation),
             height=height,
             no_flex=no_flex,
             centerContent=center_content,
-            selectedTabIndex=selected_tab_index,
+            selected_tab_index=selected_tab_index,
             sidebar_nav=sidebar_nav,
             _add_ws=True,
             **kwargs

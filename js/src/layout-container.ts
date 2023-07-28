@@ -95,7 +95,8 @@ export class LayoutContainer
   /**
    * The index of the selected tab. Only used if the dashboard has tabs.
    */
-  @property({ type: Number }) selectedTabIndex: number = 0;
+  @property({ type: Number, attribute: "selected-tab-index" })
+  selectedTabIndex: number = 0;
 
   /**
    * An array of objects that contain information about each tab in the dashboard.

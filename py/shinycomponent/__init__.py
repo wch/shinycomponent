@@ -3,7 +3,7 @@ __version__ = "0.0.1"
 from . import forge, ml
 from ._cards import card
 from ._components import avatar, simple_number_input
-from ._dashboard import dashboard, page_dashboard
+from ._dashboard import dashboard, page_dashboard, page_sidebar_nav
 from ._dataframe import output_data_frame
 from ._grids import grid, grid_item
 from ._layout_elements import footer, header, icon_section, sidebar
@@ -22,6 +22,7 @@ __all__ = (
     "tab_label",
     "page",
     "page_dashboard",
+    "page_sidebar_nav",
     "dashboard",
     "output_data_frame",
     "DataGrid",
