@@ -39,8 +39,8 @@ export const fixedHeightPlot: Story = {
   </shiny-card>`,
 };
 
-export const noFill: Story = {
-  render: () => html`<shiny-card nofill>
+export const noFlex: Story = {
+  render: () => html`<shiny-card no-flex>
     <sc-header> I am a header </sc-header>
     <output-plot> </output-plot>
     <sc-footer> I am a footer </sc-footer>

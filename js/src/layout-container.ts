@@ -78,11 +78,13 @@ export class LayoutContainer
   @property({ type: Boolean, reflect: true }) centercontent: boolean = false;
 
   /**
-   * Should the contents of the container take their natural size instead of filling remaining space in the container?
+   * Should the contents of the container take their natural size instead of
+   * filling remaining space in the container?
    *
-   * @attr nofill
+   * @attr no-flex
    */
-  @property({ type: Boolean, reflect: true }) nofill: boolean = false;
+  @property({ type: Boolean, reflect: true, attribute: "no-flex" })
+  noFlex: boolean = false;
 
   /**
    * Whether the dashboard should have sidebar navigation. Only used if the dashboard has tabs.
@@ -231,7 +233,7 @@ export class LayoutContainer
       padding: 0;
     }
 
-    :host([nofill]) .body {
+    :host([no-flex]) .body {
       display: block;
     }
 
@@ -256,7 +258,7 @@ export class LayoutContainer
     }
 
     /* Need to set all children as block display to keep behavior similar to flex */
-    :host([nofill]) .body > ::slotted(*) {
+    :host([no-flex]) .body > ::slotted(*) {
       display: block;
       border-radius: var(--_layout-container-child-radius);
     }

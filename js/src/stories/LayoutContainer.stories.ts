@@ -39,8 +39,8 @@ export const b: Story = {
 };
 
 export const c: Story = {
-  render: () => html`<sc-layout-container nofill>
-    <sc-header> Using nofill=true </sc-header>
+  render: () => html`<sc-layout-container no-flex>
+    <sc-header> Using no-flex=true </sc-header>
     <output-plot> </output-plot>
     <sc-footer> I am a footer </sc-footer>
   </sc-layout-container>`,

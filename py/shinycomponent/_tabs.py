@@ -17,6 +17,7 @@ def tab(
     icon: Optional[str] = None,
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
+    no_flex: bool = False,
     before_navigation: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
@@ -53,6 +54,9 @@ def tab(
     `sidebar_nav`
         Whether the tab should have sidebar navigation. Only used if the tab
         has tabs.
+    `no_flex`
+        Should the contents of the tab take their natural size instead of flexing to
+        fill remaining space in the tab?
     `before_navigation`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
         `sidebar_nav` is `True`) the navigation section of the tab. This
@@ -112,6 +116,7 @@ def tab(
             *args,
             name=name,
             icon=icon,
+            no_flex=no_flex,
             sidebar_nav=sidebar_nav,
             selectedTabIndex=selected_tab_index,
             _add_ws=True,

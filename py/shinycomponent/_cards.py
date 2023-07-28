@@ -13,7 +13,7 @@ CardTag = NewType("CardTag", Tag)
 def card(
     *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
     height: Optional[str] = None,
-    no_fill: bool = False,
+    no_flex: bool = False,
     center_content: bool = False,
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
@@ -38,28 +38,27 @@ def card(
         height needed to contain all the children (aka typical block-layout behavior).
         This value is typically left unset and the card is allowed to to sized by it's
         containing environment.
-    `no_fill`
-        Should the contents of the card take their natural size instead of filling
-        remaining space in the card?
+    `no_flex`
+        Should the contents of the card take their natural size instead of flexing to
+        fill remaining space in the card?
     `center_content`
         Whether the content of the card should be centered or not.
     `selected_tab_index`
         The index of the selected tab. Only used if the card has tabs.
     `sidebar_nav`
-        Whether the card should have sidebar navigation. Only used if the card
-        has tabs.
+        Whether the card should have sidebar navigation. Only used if the card has tabs.
     `before_navigation`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
-        `sidebar_nav` is `True`) the navigation section of the card. This
-        can be a string or a Tag. _Advanced:_ If you want to include content here
-        without using the named argument you can place any tag in the body with the
-        attribute of `slot="before_navigation"` and it will have the same result.
+        `sidebar_nav` is `True`) the navigation section of the card. This can be a
+        string or a Tag. _Advanced:_ If you want to include content here without using
+        the named argument you can place any tag in the body with the attribute of
+        `slot="before_navigation"` and it will have the same result.
     `after_navigation`
         Content to be placed after (i.e. right in normal top-navigation mode and bottom
-        if `sidebar_nav` is `True`) the navigation section of the card. This
-        can be a string or a Tag. _Advanced:_ If you want to include content here
-        without using the named argument you can place any tag in the body with the
-        attribute of `slot="after_navigation"` and it will have the same result.
+        if `sidebar_nav` is `True`) the navigation section of the card. This can be a
+        string or a Tag. _Advanced:_ If you want to include content here without using
+        the named argument you can place any tag in the body with the attribute of
+        `slot="after_navigation"` and it will have the same result.
     `**kwargs`
         Attributes passed along to html element.
 
@@ -108,7 +107,7 @@ def card(
             page_dep(),
             *args,
             height=height,
-            noFill=no_fill,
+            no_flex=no_flex,
             centerContent=center_content,
             selectedTabIndex=selected_tab_index,
             sidebar_nav=sidebar_nav,

@@ -10,7 +10,7 @@ import { getStoryId, loadStory, screenshotStory } from "./storybook-utils";
 for (const cardStory of [
   "Basic",
   "Fixed Height Plot",
-  "No Fill",
+  "No Flex",
   "Overflowing Content",
   "Horizontal Tabbed Content",
   "Vertical Tabbed Content",

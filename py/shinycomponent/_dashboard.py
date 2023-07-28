@@ -17,6 +17,7 @@ def dashboard(
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
+    no_flex: bool = False,
     before_navigation: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
@@ -41,6 +42,9 @@ def dashboard(
     `sidebar_nav`
         Whether the dashboard should have sidebar navigation. Only used if the dashboard
         has tabs.
+    `no_flex`
+        Should the contents of the dashboard take their natural size instead of flexing to
+        fill remaining space in the dashboard?
     `before_navigation`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
         `sidebar_nav` is `True`) the navigation section of the dashboard. This
@@ -88,6 +92,7 @@ def dashboard(
             *args,
             _add_ws=False,
             dynamicHeight=dynamic_height,
+            no_flex=no_flex,
             selectedTabIndex=selected_tab_index,
             sidebar_nav=sidebar_nav,
             **kwargs,
@@ -100,6 +105,7 @@ def page_dashboard(
     title: Optional[str] = None,
     lang: Optional[str] = None,
     dynamic_height: bool = False,
+    no_flex: bool = False,
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
 ) -> Tag:
@@ -108,20 +114,37 @@ def page_dashboard(
 
     Parameters
     ----------
-    *args:
+    `*args:`
         Child tags or attributes to include in the body of the page. If `sc.tab` elements are included,
         tab-based navigation will be enabled. If no `sc.tab` elements are included, then no tabs will be displayed.
-    title (Optional[str]):
+    `title` (Optional[str]):
         The title of the page.
-    lang (Optional[str]):
+    `lang` (Optional[str]):
         The language of the page.
-    dynamic_height (bool):
-        Whether the dashboard should have dynamic height. If set to False (the default) then the dashboard
-        will stretch to fit the vertical height of the browser window.
-    selected_tab_index (int):
+    `dynamic_height`
+        Whether the dashboard should have dynamic height. If set to False (the default)
+        then the dashboard will stretch to fit the vertical height of the browser
+        window.
+    `selected_tab_index`
         The index of the selected tab. Only used if the dashboard has tabs.
-    sidebar_nav (bool):
-        Whether the dashboard should have sidebar navigation. Only used if the dashboard has tabs.
+    `sidebar_nav`
+        Whether the dashboard should have sidebar navigation. Only used if the dashboard
+        has tabs.
+    `no_flex`
+        Should the contents of the dashboard take their natural size instead of flexing to
+        fill remaining space in the dashboard?
+    `before_navigation`
+        Content to be placed before (i.e. left in normal top-navigation mode and top if
+        `sidebar_nav` is `True`) the navigation section of the dashboard. This
+        can be a string or a Tag. _Advanced:_ If you want to include content here
+        without using the named argument you can place any tag in the body with the
+        attribute of `slot="before_navigation"` and it will have the same result.
+    `after_navigation`
+        Content to be placed after (i.e. right in normal top-navigation mode and bottom
+        if `sidebar_nav` is `True`) the navigation section of the dashboard. This
+        can be a string or a Tag. _Advanced:_ If you want to include content here
+        without using the named argument you can place any tag in the body with the
+        attribute of `slot="after_navigation"` and it will have the same result.
 
     Returns
     -------
@@ -146,8 +169,9 @@ def page_dashboard(
         tags.body(
             dashboard(
                 *args,
-                dynamic_height=dynamic_height,
-                selected_tab_index=selected_tab_index,
+                dynamicHeight=dynamic_height,
+                no_flex=no_flex,
+                selectedTabIndex=selected_tab_index,
                 sidebar_nav=sidebar_nav,
             )
         ),
