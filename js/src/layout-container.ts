@@ -235,18 +235,16 @@ export class LayoutContainer
       display: block;
     }
 
-    /* List of items who should explicitely not be flexing to fit available space. The choice to do this in the direction of explicitely choosing what _doesnt_ rather than what _does_ flex is semi-arbitrary. The idea being that  */
+    /* List of items who should explicitely not be flexing to fit available
+    space. The choice to do this in the direction of explicitely choosing what
+    _doesnt_ rather than what _does_ flex is semi-arbitrary.
+    */
     ::slotted(:is(p, span, h1, h2, h3, h4, h5, h6, label)) {
       flex: 0 0 auto;
     }
 
-    /* stylelint-disable-next-line selector-type-no-unknown, selector-type-case */
-    ::slotted(div:not(${flexibleElementSelectors})) {
-      flex: 0 0 auto;
-    }
-
     /* Allow elements to say they can flex with a special property */
-    ::slotted([can-flex]) {
+    ::slotted(:is([can-flex, ${flexibleElementSelectors}])) {
       flex: 1 1 auto;
     }
 
