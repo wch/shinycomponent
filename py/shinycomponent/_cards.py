@@ -17,7 +17,7 @@ def card(
     center_content: bool = False,
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
-    before_navigation: Optional[str | Tag] = None,
+    title: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue
 ) -> CardTag:
@@ -47,12 +47,12 @@ def card(
         The index of the selected tab. Only used if the card has tabs.
     `sidebar_nav`
         Whether the card should have sidebar navigation. Only used if the card has tabs.
-    `before_navigation`
+    `title`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
         `sidebar_nav` is `True`) the navigation section of the card. This can be a
         string or a Tag. _Advanced:_ If you want to include content here without using
         the named argument you can place any tag in the body with the attribute of
-        `slot="before_navigation"` and it will have the same result.
+        `slot="title"` and it will have the same result.
     `after_navigation`
         Content to be placed after (i.e. right in normal top-navigation mode and bottom
         if `sidebar_nav` is `True`) the navigation section of the card. This can be a
@@ -90,7 +90,7 @@ def card(
         Tag(
             "shiny-card",
             page_dep(),
-            *add_navigation_slots(args, before_navigation, after_navigation),
+            *add_navigation_slots(args, title, after_navigation),
             height=height,
             no_flex=no_flex,
             centerContent=center_content,

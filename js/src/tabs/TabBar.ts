@@ -62,7 +62,7 @@ export class TabBar extends LitElement {
         margin-block-start: auto;
       }
 
-      :host([orientation="vertical"]) > .before_navigation ::slotted(*) {
+      :host([orientation="vertical"]) > .title ::slotted(*) {
         padding-block-end: var(--_layout-container-gap);
       }
 
@@ -186,9 +186,9 @@ export class TabBar extends LitElement {
     });
 
     return html`
-      <div class="before_navigation">
-        <slot name="before_navigation">
-          <div class="before_navigation_fallback">fallback</div>
+      <div class="title">
+        <slot name="title">
+          <div class="title_fallback">fallback</div>
         </slot>
       </div>
 

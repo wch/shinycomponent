@@ -32,6 +32,14 @@ export const basic: Story = {
   </shiny-card>`,
 };
 
+export const withTitle: Story = {
+  render: () => html`<shiny-card>
+    <div slot="title">My Title</div>
+    <h2>Foo</h2>
+    <output-plot> </output-plot>
+  </shiny-card>`,
+};
+
 export const fixedHeightPlot: Story = {
   render: () => html`<shiny-card>
     <h2>Fixed height plot</h2>

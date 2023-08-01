@@ -18,7 +18,7 @@ def tab(
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
     no_flex: bool = False,
-    before_navigation: Optional[str | Tag] = None,
+    title: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
 ) -> TabTag:
@@ -57,12 +57,12 @@ def tab(
     `no_flex`
         Should the contents of the tab take their natural size instead of flexing to
         fill remaining space in the tab?
-    `before_navigation`
+    `title`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
         `sidebar_nav` is `True`) the navigation section of the tab. This
         can be a string or a Tag. _Advanced:_ If you want to include content here
         without using the named argument you can place any tag in the body with the
-        attribute of `slot="before_navigation"` and it will have the same result.
+        attribute of `slot="title"` and it will have the same result.
     `after_navigation`
         Content to be placed after (i.e. right in normal top-navigation mode and bottom
         if `sidebar_nav` is `True`) the navigation section of the tab. This
@@ -98,7 +98,7 @@ def tab(
         Tag(
             "shiny-tab",
             page_dep(),
-            *add_navigation_slots(args, before_navigation, after_navigation),
+            *add_navigation_slots(args, title, after_navigation),
             name=name,
             icon=icon,
             no_flex=no_flex,

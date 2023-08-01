@@ -45,7 +45,7 @@ eget aliquam ultricies, nunc sapien ultricies diam, sed aliquam nunc massa
 nec sapien. Nulla facilisi. Nullam euismod, nisl eget aliquam ultricies,
 nunc sapien ultricies diam, sed aliquam nunc massa nec sapien.`;
 
-const bodyContent = html`<div slot="before_navigation">Before the nav</div>
+const bodyContent = html`<div slot="title">Before the nav</div>
   <div slot="after_navigation">After the nav</div>
   <shiny-tab name="Plots" icon="ph:chart-line">
     <sc-header>Plots Tab </sc-header>

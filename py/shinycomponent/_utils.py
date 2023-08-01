@@ -36,11 +36,11 @@ def assign_to_slot(t: Tag, slot: str) -> Tag:
 
 def add_navigation_slots(
     args: Tuple[TagChild | TagAttrs],
-    before_navigation: Optional[str | Tag] = None,
+    title: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
 ):
     """
-    Add `before_navigation` and `after_navigation` slots to the args list for
+    Add `title` and `after_navigation` slots to the args list for
     layout-container descendent element (if they exist.)
 
     Parameters
@@ -50,12 +50,12 @@ def add_navigation_slots(
         and `shinycomponent.footer()` for adding a header and footer,
         `shinycomponent.sidebar()` for adding a sidebar, and `shinycomponent.tab()` for
         adding a tabs.
-    - `before_navigation` : str or Tag, optional
+    - `title` : str or Tag, optional
         Content to be placed before (i.e. left in normal top-navigation mode and top if
         `sidebar_nav` is `True`) the navigation section of the dashboard. This can be a
         string or a Tag. _Advanced:_ If you want to include content here without using
         the named argument you can place any tag in the body with the attribute of
-        `slot="before_navigation"` and it will have the same result.
+        `slot="title"` and it will have the same result.
     - `after_navigation` : str or Tag, optional
         Content to be placed after (i.e. right in normal top-navigation mode and bottom
         if `sidebar_nav` is `True`) the navigation section of the dashboard. This can be
@@ -66,19 +66,19 @@ def add_navigation_slots(
     Returns
     -------
     tuple
-        Modified args list with the before_navigation and after_navigation tags in the
+        Modified args list with the title and after_navigation tags in the
         correct place.
     """
 
     print("[add_navigation_slots]")
-    print("~~ Before navigation: ", before_navigation)
+    print("~~ Before navigation: ", title)
     print("~~ After navigation: ", after_navigation)
-    if isinstance(before_navigation, str):
-        before_nav_slot = tags.div(before_navigation, slot="before_navigation")
+    if isinstance(title, str):
+        before_nav_slot = tags.div(title, slot="title")
         args = (before_nav_slot, *args)  # type: ignore
 
-    if isinstance(before_navigation, Tag):
-        args = (assign_to_slot(before_navigation, "before_navigation"), *args)  # type: ignore
+    if isinstance(title, Tag):
+        args = (assign_to_slot(title, "title"), *args)  # type: ignore
 
     if isinstance(after_navigation, str):
         after_nav_slot = tags.div(after_navigation, slot="after_navigation")

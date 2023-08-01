@@ -313,7 +313,7 @@ export class LayoutContainer
         orientation=${this.sidebarNav ? "vertical" : "horizontal"}
         part="tabs"
       >
-        <slot name="before_navigation" slot="before_navigation"> </slot>
+        <slot name="title" slot="title"> </slot>
         <slot name="after_navigation" slot="after_navigation"> </slot>
       </tab-bar>
       <slot name="sidebar"></slot>

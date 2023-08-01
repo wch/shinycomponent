@@ -18,7 +18,7 @@ def dashboard(
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
     no_flex: bool = False,
-    before_navigation: Optional[str | Tag] = None,
+    title: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
     **kwargs: TagAttrValue,
 ) -> DashboardTag:
@@ -45,12 +45,12 @@ def dashboard(
     `no_flex`
         Should the contents of the dashboard take their natural size instead of flexing to
         fill remaining space in the dashboard?
-    `before_navigation`
+    `title`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
         `sidebar_nav` is `True`) the navigation section of the dashboard. This
         can be a string or a Tag. _Advanced:_ If you want to include content here
         without using the named argument you can place any tag in the body with the
-        attribute of `slot="before_navigation"` and it will have the same result.
+        attribute of `slot="title"` and it will have the same result.
     `after_navigation`
         Content to be placed after (i.e. right in normal top-navigation mode and bottom
         if `sidebar_nav` is `True`) the navigation section of the dashboard. This
@@ -77,7 +77,7 @@ def dashboard(
         Tag(
             "shiny-dashboard",
             page_dep(),
-            *add_navigation_slots(args, before_navigation, after_navigation),
+            *add_navigation_slots(args, title, after_navigation),
             _add_ws=False,
             dynamic_height=dynamic_height,
             no_flex=no_flex,
@@ -96,7 +96,7 @@ def page_dashboard(
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
     no_flex: bool = False,
-    before_navigation: Optional[str | Tag] = None,
+    title: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
 ) -> Tag:
     """
@@ -123,12 +123,12 @@ def page_dashboard(
     `no_flex`
         Should the contents of the dashboard take their natural size instead of flexing to
         fill remaining space in the dashboard?
-    `before_navigation`
+    `title`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
         `sidebar_nav` is `True`) the navigation section of the dashboard. This
         can be a string or a Tag. _Advanced:_ If you want to include content here
         without using the named argument you can place any tag in the body with the
-        attribute of `slot="before_navigation"` and it will have the same result.
+        attribute of `slot="title"` and it will have the same result.
     `after_navigation`
         Content to be placed after (i.e. right in normal top-navigation mode and bottom
         if `sidebar_nav` is `True`) the navigation section of the dashboard. This
@@ -166,7 +166,7 @@ def page_dashboard(
                 selected_tab_index=selected_tab_index,
                 sidebar_nav=sidebar_nav,
                 no_flex=no_flex,
-                before_navigation=before_navigation,
+                title=title,
                 after_navigation=after_navigation,
             )
         ),
@@ -182,7 +182,7 @@ def page_sidebar_nav(
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
     no_flex: bool = False,
-    before_navigation: Optional[str | Tag] = None,
+    title: Optional[str | Tag] = None,
     after_navigation: Optional[str | Tag] = None,
 ) -> Tag:
     """
@@ -208,12 +208,12 @@ def page_sidebar_nav(
     `no_flex`
         Should the contents of the dashboard take their natural size instead of flexing
         to fill remaining space in the dashboard?
-    `before_navigation`
+    `title`
         Content to be placed before (i.e. left in normal top-navigation mode and top if
         `sidebar_nav` is `True`) the navigation section of the dashboard. This can be a
         string or a Tag. _Advanced:_ If you want to include content here without using
         the named argument you can place any tag in the body with the attribute of
-        `slot="before_navigation"` and it will have the same result.
+        `slot="title"` and it will have the same result.
     `after_navigation`
         Content to be placed after (i.e. right in normal top-navigation mode and bottom
         if `sidebar_nav` is `True`) the navigation section of the dashboard. This can be
@@ -243,6 +243,6 @@ def page_sidebar_nav(
         no_flex=no_flex,
         selected_tab_index=selected_tab_index,
         sidebar_nav=True,
-        before_navigation=before_navigation,
+        title=title,
         after_navigation=after_navigation,
     )
