@@ -46,13 +46,15 @@ const flexibleElementSelectors = css`{[".shiny-plot-output"].join(", ")}`;
  *
  * @cssprop --layout-container-padding - The padding of the container.
  * @cssprop --layout-container-radius - The border radius of the container.
- * @cssprop --layout-container-child-radius - The border radius of the container's children. Defaults
- * to nothing
+ * @cssprop --layout-container-child-radius - The border radius of the
+ * container's children. Defaults to nothing
  * @cssprop --layout-container-border - The border of the container.
  * @cssprop --layout-container-shadow - The shadow of the container.
  * @cssprop --layout-container-bg - The surface color of the container.
- * @cssprop --layout-container-h - The height of the container. Typically set by the `height`
- * attribute instead of this variable.
+ * @cssprop --layout-container-bg-image - The background image of the container.
+ * Useful for things like gradients and patterns. Defaults to nothing.
+ * @cssprop --layout-container-h - The height of the container. Typically set by
+ * the `height` attribute instead of this variable.
  */
 @customElement("sc-layout-container")
 export class LayoutContainer
@@ -139,6 +141,7 @@ export class LayoutContainer
       border-radius: var(--_layout-container-radius);
       box-shadow: var(--_layout-container-shadow);
       background-color: var(--_layout-container-bg);
+      background-image: var(--_layout-container-bg-image);
       overflow: hidden;
       flex: 1 1 auto;
       display: grid;
