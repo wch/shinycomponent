@@ -1,6 +1,11 @@
+import {
+  fastButton,
+  provideFASTDesignSystem,
+} from "@microsoft/fast-components";
 import { Collapsible } from "./collapsible";
 import { ColorPicker } from "./color-picker";
 import { DesignPreview } from "./design-preview";
+import { counter } from "./fast/counter";
 import { DashboardFooter } from "./footer";
 import { GeneralOutput } from "./general-output";
 import { Grid } from "./grid";
@@ -42,3 +47,8 @@ ShinyAvatar;
 OutputPlot;
 ValueBox;
 ObservablePlot;
+
+provideFASTDesignSystem().register(
+  fastButton(),
+  counter({ defaultButtonContent: "Please count." })
+);

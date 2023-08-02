@@ -64,6 +64,9 @@
   },
   "dependencies": {
     "@material/web": "^1.0.0-pre.9",
+    "@microsoft/fast-components": "^2.30.6",
+    "@microsoft/fast-element": "^1.12.0",
+    "@microsoft/fast-foundation": "^2.49.0",
     "@observablehq/plot": "^0.6.9",
     "@preact/compat": "^17.1.2",
     "@tanstack/react-table": "^8.9.1",
