@@ -16,10 +16,21 @@ color_picker("color")
 
 ### Pick a number
 
-```{r echo=FALSE}
-simple_number_input("number")
-```
+```{r}
+#| echo: false
+#| output: asis
+simple_number_input("number", min=0, max=100, value=25)
 
+input_slider(
+  id="slider1", label="Slider1", min=1, max=30, value=20,
+  debounce=0
+)
+
+input_slider(
+  id="slider2", label="Slider2", min=3, max=103, value=23, step=5,
+  marks="true", debounce=0
+)
+```
 
 
 ### Info
@@ -27,6 +38,18 @@ simple_number_input("number")
 The color is `r general_output("color_static", watch="color")`.
 
 The number is `r general_output("number_static", watch="number")`.
+
+The slider1 is `r general_output("slider_1", watch="slider1")`.
+
+The slider2 is `r general_output("slider_2", watch="slider2")`.
+
+
+### Table
+
+```{r echo=FALSE}
+output_data_frame(data = palmerpenguins::penguins, height = "500px")
+```
+
 
 
 ### Classification label
@@ -36,10 +59,4 @@ output_classification_label(
   NULL,
   value = list(Tigers = 32, Lions = 60, Bears = 15)
 )
-```
-
-### Table
-
-```{r echo=FALSE}
-output_data_frame(data = palmerpenguins::penguins, height = "500px")
 ```
