@@ -93,7 +93,7 @@ python -m venv venv
 
 cd py
 
-pip install -e .[dev]
+pip install -e ".[dev]"
 ```
 
 ### TypeScript
