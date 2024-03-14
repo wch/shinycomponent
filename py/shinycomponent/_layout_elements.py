@@ -49,12 +49,12 @@ def sidebar(
     )
 
 
-FooterTag = NewType("DashboardFooterTag", Tag)
+DashboardFooterTag = NewType("DashboardFooterTag", Tag)
 
 
 def footer(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> FooterTag:
+) -> DashboardFooterTag:
     """
     A footer for a dashboard. Sticks to bottom of dashboard layouts defined with
     `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
@@ -76,15 +76,17 @@ def footer(
     ~shinycomponent.page_dashboard
     ~htmltools.Tag
     """
-    return FooterTag(Tag("sc-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs))
+    return DashboardFooterTag(
+        Tag("sc-footer", page_dep(), *args, _add_ws=_add_ws, **kwargs)
+    )
 
 
-HeaderTag = NewType("DashboardHeaderTag", Tag)
+DashboardHeaderTag = NewType("DashboardHeaderTag", Tag)
 
 
 def header(
     *args: TagChild | TagAttrs, _add_ws: bool = True, **kwargs: TagAttrValue
-) -> HeaderTag:
+) -> DashboardHeaderTag:
     """
     A header for a dashboard. Sticks to top of dashboard layouts defined with
     `shinycomponent.page_dashboard()` or `shinycomponent.dashboard()`.
@@ -106,7 +108,9 @@ def header(
     ~shinycomponent.page_dashboard
     ~htmltools.Tag
     """
-    return HeaderTag(Tag("sc-header", page_dep(), *args, _add_ws=_add_ws, **kwargs))
+    return DashboardHeaderTag(
+        Tag("sc-header", page_dep(), *args, _add_ws=_add_ws, **kwargs)
+    )
 
 
 IconSectionTag = NewType("IconSectionTag", Tag)

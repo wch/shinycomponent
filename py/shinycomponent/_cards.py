@@ -3,7 +3,7 @@ from typing import NewType, Optional
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
-from ._layout_elements import FooterTag, HeaderTag, SidebarTag
+from ._layout_elements import DashboardFooterTag, DashboardHeaderTag, SidebarTag
 from ._tabs import TabTag
 from ._utils import add_navigation_slots
 
@@ -11,7 +11,12 @@ CardTag = NewType("CardTag", Tag)
 
 
 def card(
-    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
+    *args: SidebarTag
+    | DashboardHeaderTag
+    | DashboardFooterTag
+    | TabTag
+    | TagChild
+    | TagAttrs,
     height: Optional[str] = None,
     no_flex: bool = False,
     center_content: bool = False,

@@ -5,7 +5,7 @@ from typing import NewType, Optional
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild, tags
 
 from ._htmldeps import page_dep
-from ._layout_elements import FooterTag, HeaderTag, SidebarTag
+from ._layout_elements import DashboardFooterTag, DashboardHeaderTag, SidebarTag
 from ._tabs import TabTag
 from ._utils import add_navigation_slots
 
@@ -13,7 +13,12 @@ DashboardTag = NewType("DashboardTag", Tag)
 
 
 def dashboard(
-    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
+    *args: SidebarTag
+    | DashboardHeaderTag
+    | DashboardFooterTag
+    | TabTag
+    | TagChild
+    | TagAttrs,
     dynamic_height: bool = False,
     selected_tab_index: int = 0,
     sidebar_nav: bool = False,
@@ -91,7 +96,12 @@ def dashboard(
 
 
 def page_dashboard(
-    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
+    *args: SidebarTag
+    | DashboardHeaderTag
+    | DashboardFooterTag
+    | TabTag
+    | TagChild
+    | TagAttrs,
     title: Optional[str] = None,
     lang: Optional[str] = None,
     dynamic_height: bool = False,
@@ -178,7 +188,12 @@ def page_dashboard(
 
 
 def page_sidebar_nav(
-    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
+    *args: SidebarTag
+    | DashboardHeaderTag
+    | DashboardFooterTag
+    | TabTag
+    | TagChild
+    | TagAttrs,
     title: Optional[str] = None,
     lang: Optional[str] = None,
     dynamic_height: bool = False,

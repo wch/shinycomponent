@@ -9,7 +9,6 @@ from htmltools import HTMLDependency, Tag, tags
 from shiny._namespaces import resolve_id
 
 from . import __version__
-from ._render_dataframe import render_data_frame
 
 if TYPE_CHECKING:
     import pandas as pd
@@ -48,6 +47,7 @@ def output_data_frame(
     )
 
     if data is not None:
+        from ._render_dataframe import render_data_frame
 
         @render_data_frame
         def data_fn() -> pd.DataFrame:

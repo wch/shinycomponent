@@ -13,7 +13,7 @@ app_ui = ui.page_fluid(
             ui.h3("Dynamic output"),
             sc.ml.output_classification_label("label1"),
             ui.h3("Static output", style="margin-top: 3rem;"),
-            ui.ml.output_classification_label(
+            sc.ml.output_classification_label(
                 "label2",
                 value={
                     "Tigers": 32,

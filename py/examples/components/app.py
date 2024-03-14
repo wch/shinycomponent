@@ -527,7 +527,7 @@ app_ui = sc.page_sidebar_nav(
         ),
         name="Time",
     ),
-    title=ui.div(ui.h3("Experimental Shiny")),
+    title="Experimental Shiny",
     after_navigation=ui.div(
         sc.forge.dark_mode_switch(id="dark_mode"),
         sc.forge.output_text_verbatim("out_dark_mode"),

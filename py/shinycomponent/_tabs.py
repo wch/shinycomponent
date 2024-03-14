@@ -5,14 +5,19 @@ from typing import NewType, Optional
 from htmltools import Tag, TagAttrs, TagAttrValue, TagChild
 
 from ._htmldeps import page_dep
-from ._layout_elements import FooterTag, HeaderTag, SidebarTag
+from ._layout_elements import DashboardFooterTag, DashboardHeaderTag, SidebarTag
 from ._utils import add_navigation_slots
 
 TabTag = NewType("TabTag", Tag)
 
 
 def tab(
-    *args: SidebarTag | HeaderTag | FooterTag | TabTag | TagChild | TagAttrs,
+    *args: SidebarTag
+    | DashboardHeaderTag
+    | DashboardFooterTag
+    | TabTag
+    | TagChild
+    | TagAttrs,
     name: str,
     icon: Optional[str] = None,
     selected_tab_index: int = 0,
